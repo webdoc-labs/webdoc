@@ -1,12 +1,12 @@
 // @flow
 
-import * as parser from '@babel/parser';
-import traverse from '@babel/traverse';
+import {parse} from './parse';
 
 const code = `
 /**
  * Yo yo
  * @class
+ * @emitter
  */
 class Babri
 {
@@ -29,58 +29,18 @@ class Babri
 }
 `;
 
-class Tag {
-  constructor(name, tokens) {
-    this.name = name;
-    this.tokens = tokens;
-  }
+const code2 = `
+/**
+ * Disturbed?
+ */
+class Kutta {
+
 }
+`;
 
-function parseDoclet(node) {
-  if (!node.leadingComments) {
-    return;
-  }
-  let input = node.leadingComments[node.leadingComments.length - 1].value;
+require('util').inspect.defaultOptions.depth = 4;
 
-  if (!input) {
-    return;
-  }
+const doc = parse(code);
+parse(code2, doc);
 
-  input = input.split('\n');
-
-  const result = {
-    tags: [],
-  };
-
-  for (let i = 0; i < input.length; i++) {
-    input[i] = input[i].trim();
-
-    if (input[i].startsWith('*')) {
-      input[i] = input[i].replace('*', '').trimStart();
-    }
-
-    if (input[i].startsWith('@')) {
-      const tokens = input[i].split(' ');
-      const tag = tokens[0].replace('@', '');
-
-      //      console.log(tokens);
-      result.tags.push(new Tag(tag, tokens.slice(0)));
-      // result.node = node;
-    }
-  }
-
-  return result;
-}
-
-export function parse(expr) {
-  console.log('HERE');
-  const ast = parser.parse(expr);
-
-  traverse(ast, {
-    enter(p) {
-      console.log(parseDoclet(p.node));
-    },
-  });
-}
-
-parse(code);
+console.log(doc);
