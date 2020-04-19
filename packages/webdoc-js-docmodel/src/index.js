@@ -1,7 +1,2 @@
-module.exports = {
-  ClassDoc: require('./ClassDoc'),
-  Doc: require('./Doc'),
-  InlineDoc: require('./InlineDoc'),
-  MemberDoc: require('./MemberDoc'),
-  ParamDoc: require('./ParamDoc'),
-};
+export * from './docs';
+export * from './tags';

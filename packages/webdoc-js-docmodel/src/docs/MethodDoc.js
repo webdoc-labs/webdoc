@@ -1,6 +1,6 @@
-const Doc = require('./Doc');
+import {Doc} from './Doc';
 
-class MemberDoc extends Doc {
+export class MethodDoc extends Doc {
   constructor(options) {
     super(options);
 
@@ -10,5 +10,3 @@ class MemberDoc extends Doc {
     this.paramDocs = [];
   }
 }
-
-module.exports = MemberDoc;

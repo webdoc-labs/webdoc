@@ -1,8 +1,13 @@
 "use strict";
 
-const Doc = require('./Doc');
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.ClassDoc = void 0;
 
-class ClassDoc extends Doc {
+var _Doc = require("./Doc");
+
+class ClassDoc extends _Doc.Doc {
   constructor(options) {
     super(options);
     /**
@@ -24,4 +29,4 @@ class ClassDoc extends Doc {
 
 }
 
-module.exports = ClassDoc;
+exports.ClassDoc = ClassDoc;

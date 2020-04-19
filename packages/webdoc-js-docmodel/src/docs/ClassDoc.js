@@ -1,6 +1,6 @@
-const Doc = require('./Doc');
+import {Doc} from './Doc';
 
-class ClassDoc extends Doc {
+export class ClassDoc extends Doc {
   constructor(options) {
     super(options);
 
@@ -20,5 +20,3 @@ class ClassDoc extends Doc {
     this.props = [];
   }
 }
-
-module.exports = ClassDoc;

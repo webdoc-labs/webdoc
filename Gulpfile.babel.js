@@ -1,6 +1,7 @@
 import * as gulp from 'gulp';
 import babel from 'gulp-babel';
 import monorepoTasks from 'gulp-tasks-monorepo';
+import del from 'del';
 import * as path from 'path';
 import * as gutil from 'gulp-util';
 
@@ -9,9 +10,18 @@ const monorepo = monorepoTasks({
 });
 
 monorepo.task('build', (pkg) => {
-  gutil.log(`Building ${pkg.name()} at ${pkg.location()}`);
+  const pkgLocation = pkg.location();
+  const pkgLib = path.join(pkgLocation, '/lib');
 
-  return gulp.src(path.join(pkg.location(), '/src/*.js'))
+  gutil.log(`Building ${pkg.name()} at ${pkgLocation}`);
+
+  try {
+    del(pkgLib);
+  } catch (e) {
+
+  }
+
+  return gulp.src(path.join(pkg.location(), '/src/**/*.js'))
       .pipe(babel())
-      .pipe(gulp.dest(path.join(pkg.location(), '/lib')));
+      .pipe(gulp.dest(pkgLib));
 });

@@ -4,7 +4,8 @@
   "description": "Documentation generator for Javascript",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "gulp build",
+    "test": ""
   },
   "repository": {
     "type": "git",
@@ -32,6 +33,7 @@
     "@lerna/filter-packages": "^3.18.0",
     "@lerna/project": "^3.18.0",
     "babel-eslint": "^10.1.0",
+    "del": "^5.1.0",
     "eslint": "^6.8.0",
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-flow": "^2.29.1",
