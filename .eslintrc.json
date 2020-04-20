@@ -16,7 +16,13 @@
         "ecmaVersion": 2018
     },
     "rules": {
-        "require-jsdoc": "off"
+        "require-jsdoc": "off",
+        "max-len": [
+            "error",
+            {
+                "code": 100
+            }
+        ]
     },
     "plugins": [
         "eslint-plugin-flow"

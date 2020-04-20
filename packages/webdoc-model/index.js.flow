@@ -1,0 +1,81 @@
+declare module '@webdoc/model' {
+  declare type IDocOptions = {
+    node?: Node,
+    name?: string,
+    tags?: Tag[],
+    parentDoc?: Doc,
+    rawText?: string
+  }
+
+  declare class Doc {
+    node: Node;
+    name: string;
+    path: string;
+    tags: ?Tag[];
+
+    children: Doc[];
+    parentDoc: Doc;
+
+    rawText: string;
+
+    constructor(options: IDocOptions): Doc;
+    child(lname: string): ?Doc;
+    addChild(doc: Doc): Doc;
+  }
+
+  declare class RootDoc extends Doc {
+    constructor(): RootDoc;
+    doc(globalName: string, autoCreate?: boolean, type?: typeof Doc): ?Doc;
+  }
+
+  declare class ClassDoc extends Doc {
+    members: MemberDoc[];
+    methods: MethodDoc[];
+    props: PropertyDoc[];
+
+    constructor(options: IDocOptions): ClassDoc;
+  }
+
+  declare class MethodDoc extends Doc {
+    constructor(options: IDocOptions): MethodDoc;
+  }
+
+  declare type IPropertyDocOptions = {
+    ...IDocOptions,
+    type: Doc | string;
+  }
+
+  declare class PropertyDoc extends Doc {
+    type: ?Doc;
+    typePath: ?string;
+  }
+
+  declare type ITagOptions = {
+    name: string,
+    value?: string,
+    doc?: Doc;
+  }
+
+  declare class Tag {
+    name: string;
+    value: string;
+    doc: ?Doc;
+
+    constructor(options: ITagOptions): Tag;
+
+    static parse(name: string, value: string): Tag;
+  }
+
+  declare type IMemberTagOptions = {
+    ...ITagOptions,
+    typePath?: string
+  }
+
+  declare class MemberTag extends Tag {
+    typePath?: string;
+
+    constructor(options: IMemberTagOptions): MemberTag;
+
+    static parse(value: string): MemberTag;
+  }
+}

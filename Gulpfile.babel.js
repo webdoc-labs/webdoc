@@ -16,7 +16,7 @@ monorepo.task('build', (pkg) => {
   gutil.log(`Building ${pkg.name()} at ${pkgLocation}`);
 
   try {
-    del(pkgLib);
+    del.sync(pkgLib);
   } catch (e) {
 
   }

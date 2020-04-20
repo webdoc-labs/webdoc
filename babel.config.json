@@ -7,7 +7,9 @@
                     "node": "current"
                 }
             }
-        ],
-        "@babel/preset-flow"
+        ]
+    ],
+    "plugins": [
+        "@babel/plugin-transform-flow-comments"
     ]
 }

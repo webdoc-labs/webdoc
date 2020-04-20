@@ -1,5 +1,5 @@
 {
-  "name": "@webdoc/js-docmodel",
+  "name": "@webdoc/model",
   "version": "0.0.1-alpha.0",
   "description": "Doclet API for JavaScript",
   "keywords": [
@@ -10,7 +10,7 @@
   "author": "Shukant Pal <shukantpal@outlook.com>",
   "homepage": "https://github.com/SukantPal/webdoc/tree/master/packages/js-docmodel#readme",
   "license": "MIT",
-  "main": "lib/index.js",
+  "main": "index.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
