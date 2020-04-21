@@ -1,11 +1,3 @@
-# `@webdoc/parser`
+# @webdoc/parser
 
-> TODO: description
-
-## Usage
-
-```
-const parser = require('@webdoc/parser');
-
-// TODO: DEMONSTRATE API
-```
+This package parses a file and outputs it documentation tree.

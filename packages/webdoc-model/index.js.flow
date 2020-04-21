@@ -25,7 +25,7 @@ declare module '@webdoc/model' {
 
   declare class RootDoc extends Doc {
     constructor(): RootDoc;
-    doc(globalName: string, autoCreate?: boolean, type?: typeof Doc): ?Doc;
+    doc(path: string | string[], autoCreate?: boolean, type?: typeof Doc): ?Doc;
   }
 
   declare class ClassDoc extends Doc {

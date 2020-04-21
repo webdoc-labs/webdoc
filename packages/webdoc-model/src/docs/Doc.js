@@ -18,6 +18,7 @@ export class Doc {
   node: Node;
   name: string;
   path: ?string;
+  stack: string[];
   tags: Tag[];
 
   children: Doc[];
@@ -51,6 +52,8 @@ export class Doc {
      */
     this.children = [];
 
+    this.stack = [];
+
     this.rawText = options.rawText || '';
     this.tags = options.tags || [];
     this.parentDoc = options.parentDoc;
@@ -70,6 +73,12 @@ export class Doc {
       this.path = `${doc.path}.${this.name}`;
     } else {
       this.path = this.name;
+    }
+
+    if (doc) {
+      this.stack = [...doc.stack, this.name];
+    } else {
+      this.stack = [this.name];
     }
   }
 

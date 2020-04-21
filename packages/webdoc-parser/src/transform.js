@@ -1,16 +1,6 @@
 // @flow
 
 import {
-  ClassDoc,
-  MethodDoc,
-  Tag,
-  RootDoc,
-  Doc,
-  PropertyDoc,
-  MemberTag,
-} from '@webdoc/model';
-
-import {
   Node,
   isExpressionStatement,
   isClassDeclaration,
@@ -19,6 +9,10 @@ import {
   isThisExpression,
 } from '@babel/types';
 
+import extract from './extract';
+
+/*
+// These tags define what is being documented and override the actual code.
 const TAG_MAP = {
   'class': (options) => {
     return new ClassDoc({...options, name: options.node.id.name});
@@ -60,68 +54,69 @@ function createDoc(options: { tags: Tag[], node: Node, [id:string]: any }) {
   }
 
   return null;
-}
+}*/
+
+export type DocableExpression = {
+  node: Node,
+  name: string,
+  path: string[],
+  comment: string
+};
+
 
 /**
- * Transforms the Babel AST node into a {@code Doc}, if documentation has been added.
+ * Transforms the Babel AST node into a {@code DocableExpression}, if documentation has been added.
  *
  * @param {Node} node
- * @param {RootDoc} root - the documentation tree
+ * @param {string[]} scope - the documentation tree
  * @return {Doc}
  */
-export function transform(node: Node, root?: RootDoc): Doc {
+export function docable(node: Node, scope: string[]): DocableExpression[] {
+  const docs: DocableExpression[] = [];
+
   if (!node.leadingComments) {
-    return;
-  }
-  let input = node.leadingComments[node.leadingComments.length - 1].value;
-
-  if (!input) {
-    return;
+    return [];
   }
 
-  input = input.split('\n');
+  let name = '';
 
-  const tags = [];
+  if (isClassMethod(node)) {
+    name = node.key.name;
+  } else if (isClassDeclaration(node)) {
+    name = node.id.name;
+  } else if (isExpressionStatement(node) &&
+      isMemberExpression(node.expression.left) &&
+      isThisExpression(node.expression.left.object)) {
+    name = node.expression.left.property.name;
+  }
 
-  for (let i = 0; i < input.length; i++) {
-    input[i] = input[i].trim();
+  for (let i = 0; i < node.leadingComments.length; i++) {
+    if (node.leadingComments[i].documented) {
+      continue;
+    }
 
-    if (input[i].startsWith('*')) {
-      input[i] = input[i].replace('*', '').trimStart();
+    const comment = extract(node.leadingComments[i]);
+
+    if (!comment) {
+      continue;
+    }
+
+    if (i === node.leadingComments.length - 1) {
+      docs.push({
+        node,
+        name,
+        path: [...scope, name],
+        comment,
+      });
+    } else {
+      docs.push({
+        node: null,
+        name: '',
+        path: [...scope, ''],
+        comment,
+      });
     }
   }
 
-  for (let i = 0; i < input.length; i++) {
-    if (input[i].startsWith('@')) {
-      const tokens = input[i].split(' ');
-      const tag = tokens[0].replace('@', '');
-
-      let value = tokens.slice(1).join('');
-
-      for (let j = i + 1; j < input.length; j++) {
-        if (input[j].startsWith('@') || !input[j]) {
-          break;
-        }
-
-        value += '\n' + input[i];
-      }
-
-      if (TAG_PARSERS[tag]) {
-        tags.push(TAG_PARSERS[tag](value));
-      } else {
-        tags.push(Tag.parse({name: tag, value}));
-      }
-    }
-  }
-
-  const doc = createDoc({
-    tags,
-    node,
-  });
-
-  for (let i = 0; i < tags.length; i++) {
-    tags[i].doc = doc;
-  }
-
-  return doc;
+  return docs;
 }

@@ -26,11 +26,11 @@ export class RootDoc extends Doc {
    * // Returns AbstractBatchRenderer doc only if it exists
    * root.doc('PIXI.AbstractBatchRenderer');
    */
-  doc(path: string, autoCreate: boolean = false, Type?: typeof Doc): ?Doc {
-    const docStack = path.split(/[.|#]/);
+  doc(path: string | string[], autoCreate: boolean = false, Type?: typeof Doc): ?Doc {
+    const docStack = Array.isArray(path) ? path : path.split(/[.|#]/);
     let doc = this;
 
-    for (let i = 0; docStack.length; i++) {
+    for (let i = 0; i < docStack.length; i++) {
       let child = doc.child(docStack[i]);
 
       if (!autoCreate && !child) {
