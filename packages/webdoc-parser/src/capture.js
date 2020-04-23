@@ -5,16 +5,17 @@ import {
   Node,
   isExpressionStatement,
   isClassDeclaration,
+  isClassExpression,
   isClassMethod,
   isMemberExpression,
   isThisExpression,
   SourceLocation,
   isScope,
-  isClass,
-  isBlockStatement,
+  isClassProperty,
 } from "@babel/types";
 import extract from "./extract";
-import {Doc} from "@webdoc/model";
+import {type Doc} from "@webdoc/types";
+import {nanoid} from "nanoid";
 
 // PartialDoc is a interim format that holds the context+comment of a documentation.
 export type PartialDoc = {
@@ -66,10 +67,12 @@ function addChildPartialDoc(doc: PartialDoc, scope: PartialDoc): PartialDoc {
 export default function capture(node: Node, scope: PartialDoc): ?PartialDoc {
   let name = "";
 
-  if (isClassMethod(node)) {
+  if (isClassMethod(node) || isClassProperty(node)) {
     name = node.key.name;
   } else if (isClassDeclaration(node)) {
     name = node.id.name;
+  } else if (isClassExpression(node)) {
+    name = node.id ? node.id.name : `<Class-${nanoid()}>`;
   } else if (isExpressionStatement(node) &&
       isMemberExpression(node.expression.left) &&
       isThisExpression(node.expression.left.object)) {

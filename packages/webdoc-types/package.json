@@ -1,14 +1,18 @@
 {
-  "name": "@webdoc/model",
-  "version": "0.0.1-alpha.0",
-  "description": "Doclet API for JavaScript",
+  "name": "@webdoc/types",
+  "version": "0.0.0",
+  "description": "Type definitions for @webdoc/model",
   "keywords": [
-    "doclet",
-    "docs",
-    "jsdoc"
+    "flow",
+    "ts",
+    "typescript",
+    "types",
+    "webdoc",
+    "jsdoc",
+    "documentation"
   ],
   "author": "Shukant Pal <shukantpal@outlook.com>",
-  "homepage": "https://github.com/SukantPal/webdoc/tree/master/packages/js-docmodel#readme",
+  "homepage": "https://github.com/SukantPal/webdoc/tree/master/packages/webdoc-types#readme",
   "license": "MIT",
   "main": "index.js",
   "directories": {
@@ -18,9 +22,6 @@
   "files": [
     "lib"
   ],
-  "publishConfig": {
-    "access": "public"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SukantPal/webdoc.git"
@@ -30,8 +31,5 @@
   },
   "bugs": {
     "url": "https://github.com/SukantPal/webdoc/issues"
-  },
-  "dependencies": {
-    "@webdoc/types": "0.0.0"
   }
 }

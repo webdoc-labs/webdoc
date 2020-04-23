@@ -1,4 +1,0 @@
-/**
- * @interface Parser
- * @method {(string) => RootDoc} parse
- */

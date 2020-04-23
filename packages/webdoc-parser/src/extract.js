@@ -1,7 +1,7 @@
 // @flow
 // This module extracts the documentation comment from a node, if one exists.
 
-import {CommentBlock} from '@babel/types';
+import {CommentBlock} from "@babel/types";
 
 /**
  * Extracts the documentation of the node, if one exists. This also handles the case where the node
@@ -17,19 +17,19 @@ export default function extract(node: CommentBlock): ?string {
   if (!doc) {
     return;
   }
-  if (!doc.startsWith('*') && !doc.startsWith('!')) {
+  if (!doc.startsWith("*") && !doc.startsWith("!")) {
     return;
   }
 
-  const docLines = doc.split('\n');
+  const docLines = doc.split("\n");
 
   for (let i = 0; i < docLines.length; i++) {
     docLines[i] = docLines[i].trim();
 
-    if (docLines[i].startsWith('*')) {
-      docLines[i] = docLines[i].replace('*', '').trimStart();
+    if (docLines[i].startsWith("*")) {
+      docLines[i] = docLines[i].replace("*", "").trimStart();
     }
   }
 
-  return docLines.join('\n');
+  return docLines.join("\n");
 }

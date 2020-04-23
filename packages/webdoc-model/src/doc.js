@@ -1,61 +1,15 @@
 // @flow
 
-import {type Tag} from "./tag";
+import type {BaseDoc, Doc} from "@webdoc/types";
 
-export type BaseDoc = {
-  name: string,
-  path: string,
-  stack: string[],
-  parent: Doc,
-  children: Doc[],
-  tags: Tag[],
-  brief: string,
-  description: string,
-  visiblity: "public" | "protected" | "private",
-  version: "alpha" | "beta" | "internal" | "public" | "deprecated",
-  type: "ClassDoc" | "FunctionDoc" | "MethodDoc" | "ObjectDoc" | "RootDoc" | "TypedefDoc"
-};
+function updateScope(doc: Doc, scopeStack: string[], scopePath: string): void {
+  doc.stack = [...scopeStack, doc.name];
+  doc.path = `${scopePath}.${doc.name}`;
 
-export type Doc = BaseDoc | ClassDoc | ObjectDoc | FunctionDoc | MethodDoc | PropertyDoc
-    | TypedefDoc;
-
-export type RootDoc = {
-  ...Doc,
-  type: "RootDoc"
-};
-
-export type ClassDoc = {
-  ...Doc,
-  type: "ClassDoc"
-};
-
-export type FunctionDoc = {
-  ...Doc,
-  type: "FunctionDoc"
-};
-
-export type MethodDoc = {
-  ...Doc,
-  type: "MethodDoc"
-};
-
-export type ObjectDoc = {
-  ...Doc,
-  type: "ObjectDoc"
-};
-
-export type PropertyDoc = {
-  ...Doc,
-  scope: string | "this",
-  type: "PropertyDoc"
-};
-
-export type TypedefDoc = {
-  ...Doc,
-  org: Doc,
-  alias: string,
-  type: "Typedefdoc",
-};
+  for (let i = 0; i < doc.children.length; i++) {
+    updateScope(doc.children[i], doc.stack, doc.path);
+  }
+}
 
 /**
  * Creates a valid doc object with a name & type.
@@ -132,8 +86,7 @@ export function addChildDoc<T: BaseDoc>(doc: T, scope: BaseDoc): T {
   }
 
   doc.parent = scope;
-  doc.stack = [...scope.stack, doc.name];
-  doc.path = `${scope.path}.${doc.name}`;
+  updateScope(doc, scope.stack, scope.path);
 
   return doc;
 }

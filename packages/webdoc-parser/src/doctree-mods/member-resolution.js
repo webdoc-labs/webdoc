@@ -20,7 +20,8 @@ function resolvedThis(doc: PropertyDoc): boolean {
 }
 
 export default function memberResolve(doc: Doc, root: RootDoc) {
-  if (doc.type === "PropertyDoc" && doc.scope !== doc.parent.name && !resolvedThis(doc)) {
+  if (doc.type === "PropertyDoc" && doc.scope !== doc.parent.name &&
+    !resolvedThis(doc) && doc.scope) {
     const scope = doc.scope === "this" ? bubbleThis(doc) : doc_(doc.scope, root);
 
     if (scope) {

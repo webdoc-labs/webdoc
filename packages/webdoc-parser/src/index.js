@@ -5,32 +5,36 @@ import {parse} from "./parse";
 
 const code = `
 /**
- * Yo yo
- * @class
- * @emitter
+ * Class
  */
-class Babri
+class Example
 {
-    constructor()
-    {
-        /**
-         * What is kya?
-         * @member {PIXI.filters}
-         */
-        this.kya = true;
-    }
+  /**
+   * @ctor
+   */
+  constructor()
+  {
+    this.member = 'value';
 
-    /**
-     * Do karta.
-     * @param {{boolean} kyu
-     */
-    karta(kyu) {
+    this.clog = {
+      val: 'ddo'
+    };
+  }
+}
 
-    }
+Example.ChildClass = class {
+  helloworld() {
+    
+  }
 }
 `;
 
 const code2 = `
+/** @class */
+class PIXI {
+
+}
+
 /**
  * Disturbed?
  * 
@@ -54,6 +58,20 @@ class Renderer {
      * last
      * @tag
      */
+
+    /**
+     * Static inner class
+     * @class
+     */
+    static prop = class RendererScope {
+
+      constructor() {
+        /**
+         * @member {string}
+         */
+        this.member = 'value';
+      }
+    }
 }
 `;
 
@@ -71,7 +89,7 @@ export function printDoc(doc: Doc) {
   }
 }
 
-require("util").inspect.defaultOptions.depth = 6;
+require("util").inspect.defaultOptions.depth = 9;
 
 function printPartial(d) {
   let space = "";

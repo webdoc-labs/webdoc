@@ -1,0 +1,94 @@
+export type BaseDoc = {
+  name: string,
+  path: string,
+  stack: string[],
+  parent: Doc,
+  children: Doc[],
+  tags: Tag[],
+  brief: string,
+  description: string,
+  visiblity: "public" | "protected" | "private",
+  version: "alpha" | "beta" | "internal" | "public" | "deprecated",
+  type: "ClassDoc" | "FunctionDoc" | "MethodDoc" | "ObjectDoc" | "RootDoc" | "TypedefDoc"
+};
+
+export type Doc = BaseDoc | ClassDoc | ObjectDoc | FunctionDoc | MethodDoc | PropertyDoc
+  | TypedefDoc;
+
+export type RootDoc = BaseDoc | {
+  type: "RootDoc"
+};
+
+export type ClassDoc = BaseDoc | {
+  type: "ClassDoc"
+};
+
+export type FunctionDoc = BaseDoc | {
+  type: "FunctionDoc"
+};
+
+export type MethodDoc = BaseDoc | {
+  type: "MethodDoc"
+};
+
+export type ObjectDoc = BaseDoc | {
+  type: "ObjectDoc"
+};
+
+export type PropertyDoc = BaseDoc | {
+  type: "PropertyDoc"
+};
+
+export type TypedefDoc = BaseDoc | {
+  org: Doc,
+  alias: string,
+  type: "Typedefdoc",
+};
+
+export type BaseTag = {
+  name: string,
+  value: string,
+  type: "link" | "param" | "return" | "throws"
+};
+
+export type Tag = BaseTag | DeprecatedTag | TypedTag | ParamTag | ReturnTag | ThrowsTag
+  | PrivateTag | ProtectedTag | PublicTag | VisibilityTag
+
+export type DeprecatedTag = BaseTag | {
+  type: "DeprecatedTag"
+};
+
+export type TypedTag = BaseTag | {
+  dataType: string,
+  description: string,
+  type: "TypedTag",
+};
+
+export type ParamTag = TypedTag | {
+  type: "ParamTag"
+};
+
+export type ReturnTag = TypedTag | {
+  type: "ReturnTag"
+};
+
+export type ThrowsTag = TypedTag | {
+  type: "ThrowsTag"
+};
+
+export type PrivateTag = BaseTag | {
+  type: "PrivateTag"
+};
+
+export type ProtectedTag = BaseTag | {
+  type: "ProtectedTag"
+};
+
+export type PublicTag = BaseTag | {
+  type: "PublicTag"
+};
+
+export type VisibilityTag = BaseTag | {
+  visiblity: "public" | "protected" | "private",
+  type: "VisibilityTag"
+};

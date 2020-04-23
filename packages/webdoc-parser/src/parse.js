@@ -3,7 +3,7 @@
 import * as parser from "@babel/parser";
 import traverse, {type NodePath} from "@babel/traverse";
 import capture, {type PartialDoc} from "./capture";
-import memberResolve from "./doctree-mods/member-resolution";
+import mod from "./doctree-mods";
 
 import {
   type ClassDoc,
@@ -12,6 +12,9 @@ import {
   type RootDoc,
   type Doc,
   type MemberTag,
+} from "@webdoc/types";
+
+import {
   createDoc,
   addChildDoc,
 } from "@webdoc/model";
@@ -22,12 +25,49 @@ import {
   isClassMethod,
   isMemberExpression,
   isThisExpression,
+  isClassProperty,
+  isClassExpression,
 } from "@babel/types";
+
+const babelPlugins = [
+  "asyncGenerators",
+  "bigInt",
+  "classPrivateMethods",
+  "classPrivateProperties",
+  "classProperties",
+  "doExpressions",
+  "dynamicImport",
+  "exportDefaultFrom",
+  "flow",
+  "flowComments",
+  "functionBind",
+  "functionSent",
+  "importMeta",
+  "jsx",
+  "logicalAssignment",
+  "nullishCoalescingOperator",
+  "numericSeparator",
+  "objectRestSpread",
+  "optionalCatchBinding",
+  "optionalChaining",
+  "throwExpressions",
+];
+
+function getNodeName(node: any): string {
+  if (node.id) {
+    return node.id.name;
+  }
+  if (node.key) {
+    return node.key.name;
+  }
+
+  return "<Unknown>";
+}
 
 // These tags define what is being documented and override the actual code.
 const TAG_MAP = {
-  "class": (node, options): ClassDoc => createDoc(options.node.id.name, "ClassDoc", options),
-  "method": (node, options): MethodDoc => createDoc(options.node.key.name, "MethodDoc", options),
+  "class": (node, options): ClassDoc => createDoc(getNodeName(node), "ClassDoc", options),
+  "method": (node, options): MethodDoc => createDoc(getNodeName(node), "MethodDoc", options),
   // "typedef": (options) => ({...options, name: "tbh", type: "TypedefDoc"}),
 };
 
@@ -45,7 +85,7 @@ export const TAG_PARSERS = {
  */
 function partial(file: string): PartialDoc {
   const module: PartialDoc = capture.root();
-  const ast = parser.parse(file);
+  const ast = parser.parse(file, {plugins: [...babelPlugins]});
   const stack: PartialDoc[] = [module];
 
   traverse(ast, {
@@ -120,11 +160,14 @@ function transform(partialDoc: PartialDoc): ?Doc {
     return null;
   }
 
-  if (isClassDeclaration(node)) {
-    return createDoc(node.id.name, "ClassDoc", options);
+  if (isClassDeclaration(node) || isClassExpression(node)) {
+    return createDoc(partialDoc.name, "ClassDoc", options);
   }
   if (isClassMethod(node)) {
     return createDoc(node.key.name, "MethodDoc", options);
+  }
+  if (isClassProperty(node)) {
+    return createDoc(node.key.name, "PropertyDoc", options);
   }
   if (isExpressionStatement(node) &&
       isMemberExpression(node.expression.left)) {
@@ -183,7 +226,7 @@ function assemble(partialDoc: PartialDoc, root: RootDoc): void {
  * * Post-Transform Phase: The "@memberof" tag is handled by moving docs to their final path;
  *     <this> member docs are moved to the appropriate scope.
  *     Plugins are allowed access to make any post-transform changes as well.
- * * Pruning Phase:
+ * * Pruning Phase: Undocumented entities are removed from the doc-tree.
  *
  * @param {string | string[]} target
  * @param {RootDoc} root
@@ -194,6 +237,7 @@ export function parse(target: string | string[], root?: RootDoc = {
   path: "",
   stack: [""],
   type: "RootDoc",
+  tags: [],
 }): RootDoc {
   const files = Array.isArray(target) ? target : [target];
   const partialDoctrees = new Array(files.length);
@@ -208,7 +252,7 @@ export function parse(target: string | string[], root?: RootDoc = {
     assemble(partialDoctrees[i], root);
   }
 
-  memberResolve(root, root);
+  mod(root);
 
   return root;
 }
