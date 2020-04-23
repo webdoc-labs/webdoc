@@ -1,2 +1,2 @@
-export * from './docs';
-export * from './tags';
+export * from "./tag";
+export * from "./doc";

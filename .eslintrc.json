@@ -22,6 +22,14 @@
             {
                 "code": 100
             }
+        ],
+        "quotes": [
+            "error",
+            "double"
+        ],
+        "indent": [
+            "error",
+            2
         ]
     },
     "plugins": [
