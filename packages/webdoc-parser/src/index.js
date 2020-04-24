@@ -105,7 +105,10 @@ function printPartial(d) {
   }
 }
 
-const doc = parse(code2);
+export {parse};
+export default parse;
+
+// const doc = parse(code2);
 // parse(code2, doc);
-console.log(doc);
+// console.log(doc);
 // printPartial(doc);

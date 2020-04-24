@@ -2,10 +2,12 @@
 import type {RootDoc} from "@webdoc/types";
 import member from "./member-resolution";
 import memberof from "./memberof";
+import prune from "./prune";
 
 const mods = [
   member,
   memberof,
+  prune,
 ];
 
 export default function mod(doctree: RootDoc) {

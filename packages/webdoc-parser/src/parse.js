@@ -223,10 +223,10 @@ function assemble(partialDoc: PartialDoc, root: RootDoc): void {
  *     a temporary list of partial-doc trees.
  * * Transform Phase: Each file's partial-doc tree is transformed into docs and assembled in
  *     monolithic doc-tree.
- * * Post-Transform Phase: The "@memberof" tag is handled by moving docs to their final path;
+ * * Mod Phase: The "@memberof" tag is handled by moving docs to their final path;
  *     <this> member docs are moved to the appropriate scope.
- *     Plugins are allowed access to make any post-transform changes as well.
- * * Pruning Phase: Undocumented entities are removed from the doc-tree.
+ *     Plugins are allowed access to make any post-transform changes as well. Undocumented entities
+ *     are removed from the doc-tree.
  *
  * @param {string | string[]} target
  * @param {RootDoc} root

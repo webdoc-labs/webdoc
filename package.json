@@ -33,6 +33,7 @@
     "@lerna/filter-packages": "^3.18.0",
     "@lerna/project": "^3.18.0",
     "babel-eslint": "^10.1.0",
+    "chai": "^4.2.0",
     "del": "^5.1.0",
     "eslint": "^6.8.0",
     "eslint-config-google": "^0.14.0",
@@ -43,6 +44,7 @@
     "gulp-tasks-monorepo": "^0.5.0",
     "gulp-util": "^3.0.8",
     "lerna": "^3.20.2",
-    "minimist": "^1.2.5"
+    "minimist": "^1.2.5",
+    "mocha": "^7.1.1"
   }
 }

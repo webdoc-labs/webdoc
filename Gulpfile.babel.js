@@ -1,17 +1,17 @@
-import * as gulp from 'gulp';
-import babel from 'gulp-babel';
-import monorepoTasks from 'gulp-tasks-monorepo';
-import del from 'del';
-import * as path from 'path';
-import * as gutil from 'gulp-util';
+import * as gulp from "gulp";
+import babel from "gulp-babel";
+import monorepoTasks from "gulp-tasks-monorepo";
+import del from "del";
+import * as path from "path";
+import * as gutil from "gulp-util";
 
 const monorepo = monorepoTasks({
-  dir: path.join(__dirname, 'packages'),
+  dir: path.join(__dirname, "packages"),
 });
 
-monorepo.task('build', (pkg) => {
+monorepo.task("build", (pkg) => {
   const pkgLocation = pkg.location();
-  const pkgLib = path.join(pkgLocation, '/lib');
+  const pkgLib = path.join(pkgLocation, "/lib");
 
   gutil.log(`Building ${pkg.name()} at ${pkgLocation}`);
 
@@ -21,7 +21,7 @@ monorepo.task('build', (pkg) => {
 
   }
 
-  return gulp.src(path.join(pkg.location(), '/src/**/*.js'))
-      .pipe(babel())
-      .pipe(gulp.dest(pkgLib));
+  return gulp.src(path.join(pkg.location(), "/src/**/*.js"))
+    .pipe(babel())
+    .pipe(gulp.dest(pkgLib));
 });

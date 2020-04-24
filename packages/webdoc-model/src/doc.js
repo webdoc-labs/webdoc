@@ -91,6 +91,20 @@ export function addChildDoc<T: BaseDoc>(doc: T, scope: BaseDoc): T {
   return doc;
 }
 
+export function removeChildDoc(doc: BaseDoc, noUpdate: boolean = false) {
+  if (doc.parent) {
+    const i = doc.parent.children.indexOf(doc);
+
+    if (i >= 0) {
+      doc.parent.children.splice(i, 1);
+
+      if (!noUpdate) {
+        updateScope(doc, [], "");
+      }
+    }
+  }
+}
+
 /**
  * Finds the doc whose relative path is {@code path} w.r.t {@code root}.
  *

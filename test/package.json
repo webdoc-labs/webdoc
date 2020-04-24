@@ -1,0 +1,36 @@
+{
+  "name": "@webdoc/tests",
+  "version": "0.0.0",
+  "description": "Tests for the webdoc monorepo",
+  "keywords": [
+    "tests",
+    "mocha",
+    "webdoc",
+    "@webdoc"
+  ],
+  "author": "Shukant Pal <shukantpal@outlook.com>",
+  "homepage": "https://github.com/SukantPal/webdoc/tree/master/packages/test#readme",
+  "license": "MIT",
+  "main": "webdoc.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SukantPal/webdoc.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/SukantPal/webdoc/issues"
+  },
+  "dependencies": {
+    "@webdoc/parser": "0.0.1-alpha.0",
+    "@webdoc/externalize": "0.0.0"
+  }
+}

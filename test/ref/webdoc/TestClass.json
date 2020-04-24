@@ -1,0 +1,53 @@
+{
+	"type": "RootDoc",
+	"children": [
+		{
+			"name": "TestClass",
+			"type": "ClassDoc",
+			"children": [
+				{
+					"name": "constructor",
+					"type": "MethodDoc",
+					"children": []
+				},
+				{
+					"name": "method0",
+					"type": "MethodDoc",
+					"children": [
+						{
+							"name": "MethodClass",
+							"type": "ClassDoc",
+							"children": []
+						}
+					]
+				},
+				{
+					"name": "TEST_PROPERTY",
+					"type": "PropertyDoc",
+					"children": []
+				},
+				{
+					"name": "property0",
+					"type": "PropertyDoc",
+					"children": []
+				},
+				{
+					"name": "property1",
+					"type": "PropertyDoc",
+					"children": []
+				}
+			]
+		},
+		{
+			"name": "OtherClass",
+			"type": "ClassDoc",
+			"children": [
+				{
+					"name": "AliasClass",
+					"type": "PropertyDoc",
+					"children": []
+				}
+			]
+		}
+	]
+}

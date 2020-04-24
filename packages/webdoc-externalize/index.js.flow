@@ -1,0 +1,11 @@
+declare module "@webdoc/externalize" {
+  import type {RootDoc} from "@webdoc/types";
+
+  declare export function readDoctree(data: string): RootDoc;
+  declare export function writeDoctree(doc: RootDoc): string;
+
+  declare export default {
+    readDoctree: readDoctree,
+    writeDoctree: writeDoctree
+  };
+}
