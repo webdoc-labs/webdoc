@@ -3,8 +3,13 @@
 import type {BaseDoc, Doc} from "@webdoc/types";
 
 function updateScope(doc: Doc, scopeStack: string[], scopePath: string): void {
-  doc.stack = [...scopeStack, doc.name];
-  doc.path = `${scopePath}.${doc.name}`;
+  if (scopePath) {
+    doc.stack = [...scopeStack, doc.name];
+    doc.path = `${scopePath}.${doc.name}`;
+  } else {
+    doc.stack = [doc.name];
+    doc.path = `${doc.name}`;
+  }
 
   for (let i = 0; i < doc.children.length; i++) {
     updateScope(doc.children[i], doc.stack, doc.path);

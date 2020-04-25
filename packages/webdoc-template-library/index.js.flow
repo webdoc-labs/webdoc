@@ -1,0 +1,6 @@
+declare module "@webdoc/template-library" {
+  declare class TemplateGenerator {
+    constructor(templateDir: string, docDatabase: any): TemplateGenerator;
+    render(filePath: string, data: any): string;
+  }
+}

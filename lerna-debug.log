@@ -1,11 +1,88 @@
 0 silly argv {
-0 silly argv   _: [ 'create' ],
+0 silly argv   _: [ 'bootstrap' ],
 0 silly argv   lernaVersion: '3.20.2',
-0 silly argv   '$0': '/usr/local/bin/lerna',
-0 silly argv   name: './test'
+0 silly argv   '$0': '/usr/local/bin/lerna'
 0 silly argv }
 1 notice cli v3.20.2
 2 verbose rootPath /Users/shukantpal/Web Projects/webdoc
-3 error TypeError: Expected the input to be `string | string[]`
-3 error     at camelCase (/Users/shukantpal/Web Projects/webdoc/node_modules/camelcase/index.js:34:9)
-3 error     at CreateCommand.initialize (/Users/shukantpal/Web Projects/webdoc/node_modules/@lerna/create/index.js:63:22)
+3 silly npmConfig {
+3 silly npmConfig   registry: undefined,
+3 silly npmConfig   npmClient: 'npm',
+3 silly npmConfig   npmClientArgs: [],
+3 silly npmConfig   mutex: undefined
+3 silly npmConfig }
+4 info Bootstrapping 8 packages
+5 verbose lifecycle preinstall
+6 silly lifecycle No script for "preinstall" in "@webdoc/legacy-template", continuing
+7 silly lifecycle No script for "preinstall" in "@webdoc/types", continuing
+8 silly lifecycle No script for "preinstall" in "@webdoc/model", continuing
+9 silly lifecycle No script for "preinstall" in "@webdoc/externalize", continuing
+10 silly lifecycle No script for "preinstall" in "@webdoc/parser", continuing
+11 silly lifecycle No script for "preinstall" in "@webdoc/cli", continuing
+12 silly lifecycle No script for "preinstall" in "@webdoc/tests", continuing
+13 silly lifecycle No script for "preinstall" in "@webdoc/example", continuing
+14 silly hasDependencyInstalled @webdoc/cli yargs
+15 silly hasDependencyInstalled @webdoc/cli missionlog
+16 silly hasDependencyInstalled @webdoc/cli globby
+17 silly hasDependencyInstalled @webdoc/legacy-template @jsdoc/cli
+18 silly hasDependencyInstalled @webdoc/legacy-template @jsdoc/core
+19 silly hasDependencyInstalled @webdoc/legacy-template @jsdoc/util
+20 silly hasDependencyInstalled @webdoc/legacy-template bluebird
+21 silly hasDependencyInstalled @webdoc/legacy-template catharsis
+22 silly hasDependencyInstalled @webdoc/legacy-template code-prettify
+23 silly hasDependencyInstalled @webdoc/legacy-template color-themes-for-google-code-prettify
+24 silly hasDependencyInstalled @webdoc/legacy-template common-path-prefix
+25 silly hasDependencyInstalled @webdoc/legacy-template escape-string-regexp
+26 silly hasDependencyInstalled @webdoc/legacy-template lodash
+27 silly hasDependencyInstalled @webdoc/legacy-template markdown-it
+28 silly hasDependencyInstalled @webdoc/legacy-template markdown-it-anchor
+29 silly hasDependencyInstalled @webdoc/legacy-template marked
+30 silly hasDependencyInstalled @webdoc/legacy-template open-sans-fonts
+31 silly hasDependencyInstalled @webdoc/legacy-template requizzle
+32 silly hasDependencyInstalled @webdoc/legacy-template strip-bom
+33 silly hasDependencyInstalled @webdoc/legacy-template strip-json-comments
+34 silly hasDependencyInstalled @webdoc/legacy-template taffydb
+35 silly hasDependencyInstalled @webdoc/model taffydb
+36 silly hasDependencyInstalled @webdoc/parser @babel/parser
+37 silly hasDependencyInstalled @webdoc/parser @babel/traverse
+38 silly hasDependencyInstalled @webdoc/parser @babel/types
+39 silly hasDependencyInstalled @webdoc/parser nanoid
+40 silly root dependencies {}
+41 silly leaf dependencies {}
+42 info Symlinking packages and binaries
+43 silly resolveSymlink /Users/shukantpal/Web Projects/webdoc/example/node_modules/@webdoc/cli
+44 verbose resolveSymlink [
+44 verbose resolveSymlink   '/Users/shukantpal/Web Projects/webdoc/example/node_modules/@webdoc/cli',
+44 verbose resolveSymlink   '/Users/shukantpal/Web Projects/webdoc/packages/webdoc-cli'
+44 verbose resolveSymlink ]
+45 silly createSymlink [
+45 silly createSymlink   '/Users/shukantpal/Web Projects/webdoc/packages/webdoc-cli',
+45 silly createSymlink   '/Users/shukantpal/Web Projects/webdoc/example/node_modules/@webdoc/cli',
+45 silly createSymlink   'junction'
+45 silly createSymlink ]
+46 silly createSymbolicLink [
+46 silly createSymbolicLink   '../../../packages/webdoc-cli',
+46 silly createSymbolicLink   '/Users/shukantpal/Web Projects/webdoc/example/node_modules/@webdoc/cli',
+46 silly createSymbolicLink   'junction'
+46 silly createSymbolicLink ]
+47 silly createSymlink [
+47 silly createSymlink   '/Users/shukantpal/Web Projects/webdoc/packages/webdoc-cli/lib/index.js',
+47 silly createSymlink   '/Users/shukantpal/Web Projects/webdoc/example/node_modules/.bin/@webdoc/cli',
+47 silly createSymlink   'exec'
+47 silly createSymlink ]
+48 silly createSymlink [
+48 silly createSymlink   '/Users/shukantpal/Web Projects/webdoc/packages/webdoc-cli/lib/index.js',
+48 silly createSymlink   '/Users/shukantpal/Web Projects/webdoc/example/node_modules/.bin/webdoc',
+48 silly createSymlink   'exec'
+48 silly createSymlink ]
+49 silly createSymbolicLink [
+49 silly createSymbolicLink   '../../../../packages/webdoc-cli/lib/index.js',
+49 silly createSymbolicLink   '/Users/shukantpal/Web Projects/webdoc/example/node_modules/.bin/@webdoc/cli',
+49 silly createSymbolicLink   'file'
+49 silly createSymbolicLink ]
+50 silly createSymbolicLink [
+50 silly createSymbolicLink   '../../../packages/webdoc-cli/lib/index.js',
+50 silly createSymbolicLink   '/Users/shukantpal/Web Projects/webdoc/example/node_modules/.bin/webdoc',
+50 silly createSymbolicLink   'file'
+50 silly createSymbolicLink ]
+51 error

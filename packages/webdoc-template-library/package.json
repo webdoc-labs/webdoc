@@ -1,14 +1,18 @@
 {
-  "name": "@webdoc/model",
+  "name": "@webdoc/template-library",
   "version": "0.0.1-alpha.0",
-  "description": "Doclet API for JavaScript",
+  "description": "Goodies for @webdoc template packages! See @webdoc/legacy-template for an example!",
   "keywords": [
-    "doclet",
-    "docs",
-    "jsdoc"
+    "webdoc",
+    "jsdoc",
+    "template",
+    "jsdoc-template",
+    "template-helpers",
+    "template-library",
+    "doc"
   ],
   "author": "Shukant Pal <shukantpal@outlook.com>",
-  "homepage": "https://github.com/SukantPal/webdoc/tree/master/packages/js-docmodel#readme",
+  "homepage": "https://github.com/SukantPal/webdoc/tree/master/webdoc-template-library#readme",
   "license": "MIT",
   "main": "index.js",
   "directories": {
@@ -18,9 +22,6 @@
   "files": [
     "lib"
   ],
-  "publishConfig": {
-    "access": "public"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SukantPal/webdoc.git"
@@ -32,7 +33,6 @@
     "url": "https://github.com/SukantPal/webdoc/issues"
   },
   "dependencies": {
-    "@webdoc/types": "0.0.0",
-    "taffydb": "2.7.3"
+    "missionlog": "1.6.0"
   }
 }
