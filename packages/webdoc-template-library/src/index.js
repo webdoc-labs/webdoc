@@ -1,2 +1,2 @@
 export * from "./Logger";
-export * from "./TemplateGenerator";
+export * from "./TemplateRenderer";

@@ -12,7 +12,7 @@ import {templateLogger, tag} from "./Logger";
  * The {@code this} context for template code is always the template generator. This allows you
  * to access the API provided by the generator in your template files.
  */
-export class TemplateGenerator {
+export class TemplateRenderer {
   templateDir: string;
   docDatabase: any;
   layout: any;

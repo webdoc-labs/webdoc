@@ -5,7 +5,7 @@ const path = require("path");
 const {taffy} = require("taffydb");
 const helper = require("./helper");
 const hasOwnProp = Object.prototype.hasOwnProperty;
-const {TemplateGenerator} = require("@webdoc/template-library");
+const {TemplateRenderer} = require("@webdoc/template-library");
 
 const {Log, LogLevel} = require("missionlog");
 
@@ -493,7 +493,7 @@ exports.publish = (options) => {
 
   templatePath = __dirname;
 
-  view = new TemplateGenerator(path.join(templatePath, "tmpl"), taffyData);
+  view = new TemplateRenderer(path.join(templatePath, "tmpl"), taffyData);
 
   // claim some special filenames in advance, so the All-Powerful Overseer of Filename Uniqueness
   // doesn't try to hand them out later
