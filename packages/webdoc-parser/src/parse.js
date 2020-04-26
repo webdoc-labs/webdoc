@@ -4,7 +4,17 @@ import * as parser from "@babel/parser";
 import traverse, {type NodePath} from "@babel/traverse";
 import capture, {type PartialDoc} from "./capture";
 import mod from "./doctree-mods";
-import {parseParam} from "./tag-parsers";
+import {
+  parseParam,
+  parsePrivate,
+  parseProtected,
+  parsePublic,
+  parseTypedef,
+  parseVisibility,
+} from "./tag-parsers";
+import {
+  parseTypedef as parseTypedefDoc,
+} from "./doc-parsers";
 
 import {
   type ClassDoc,
@@ -14,6 +24,7 @@ import {
   type Doc,
   type MemberTag,
   type NSDoc,
+  type TypedefDoc,
 } from "@webdoc/types";
 
 import {
@@ -73,17 +84,21 @@ function getNodeName(node: any): string {
 const TAG_MAP = {
   "class": (node, options): ClassDoc => createDoc(getNodeName(node), "ClassDoc", options),
   "method": (node, options): MethodDoc => createDoc(getNodeName(node), "MethodDoc", options),
-  // "typedef": (options) => ({...options, name: "tbh", type: "TypedefDoc"}),
+  "typedef": parseTypedefDoc,
   "namespace": (node, options): NSDoc => createDoc(
     getNodeName(node) || options.tags.find((tag) => tag.name === "namespace").value,
     "NSDoc", options),
 };
 
-// TODO: These parse the tag's contents and fill and special fields
 export const TAG_PARSERS = {
   "param": parseParam,
+  "protected": parseProtected,
+  "private": parsePrivate,
+  "public": parsePublic,
   "member": (name: string, value: string): MemberTag => ({name, value}),
   "tag": (name: string, value: string): Tag => ({name, value}),
+  "typedef": parseTypedef,
+  "visiblity": parseVisibility,
 };
 
 /**
@@ -133,6 +148,7 @@ function transform(partialDoc: PartialDoc): ?Doc {
   const {comment, node} = partialDoc;
   const commentLines = comment.split("\n");
 
+  const options: any = {node};
   const tags: Tag[] = [];
   let brief = "";
   let description = "";
@@ -154,7 +170,7 @@ function transform(partialDoc: PartialDoc): ?Doc {
       }
 
       if (TAG_PARSERS[tag]) {
-        tags.push(TAG_PARSERS[tag](value));
+        tags.push(TAG_PARSERS[tag](value, options));
       } else {
         tags.push(TAG_PARSERS["tag"](tag, value));
       }
@@ -169,7 +185,9 @@ function transform(partialDoc: PartialDoc): ?Doc {
     }
   }
 
-  const options: any = {tags, brief, description};
+  options.tags = tags;
+  options.brief = brief;
+  options.description = description;
 
   for (let i = 0; i < tags.length; i++) {
     if (TAG_MAP[tags[i].name]) {

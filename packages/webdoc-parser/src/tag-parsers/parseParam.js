@@ -63,7 +63,7 @@ function extractIdentifer(from: string, index: number = 0): {
 }
 
 // Parses a ParamTag from a string
-export function parseParam(value: string): ParamTag {
+export function parseParam(value: string, options: any): ParamTag {
   // Finds the {Type} closure,
   const refClosure = /{([^{}])+}/.exec(value);
 

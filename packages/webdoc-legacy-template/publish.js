@@ -367,7 +367,7 @@ function buildMemberNav(items, itemHeading, itemsSeen, linktoFn) {
           displayName = item.name;
         }
         publishLog.warn(tag.ContentBar, "Linking " + item.path);
-        itemsNav += `<li>${linktoFn(item.path, displayName.replace(/\b(module|event):/g, ""))}</li>`;
+        itemsNav += `<li>${linktoFn(item.path, displayName.replace(/\b(module|event):/g, ""))}</li>`;// eslint-disable-line max-len
 
         itemsSeen[item.path] = true;
       }

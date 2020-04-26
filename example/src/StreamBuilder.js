@@ -16,6 +16,15 @@ class StreamBuilder {
   }
 
   /**
+   * Setup up stream processing threads
+   * @protected
+   * @param {number}[threads=8]
+   */
+  setupThreads(threads = 8) {
+
+  }
+
+  /**
    * Builds the stream object.
    *
    * @param {string} [streamName='default'] - the stream's name

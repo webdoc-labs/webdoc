@@ -1,3 +1,5 @@
+// This API comes from [jsdoc/lib/]jsdoc/util/templateHelper.js
+
 const {SymbolLinks} = require("@webdoc/template-library");
 
 Object.defineProperty(exports, "pathToUrl", {

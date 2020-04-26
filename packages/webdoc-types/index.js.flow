@@ -53,9 +53,9 @@ declare module "@webdoc/types" {
 
     declare type TypedefDoc = {
       ...Doc,
-      org: Doc,
+      of: [string],
       alias: string,
-      type: "Typedefdoc",
+      type: "TypedefDoc",
     };
 
     declare type BaseTag = {
@@ -74,7 +74,7 @@ declare module "@webdoc/types" {
 
     declare type TypedTag = {
       ...BaseTag,
-      dataType: string,
+      dataType: string[],
       description: string,
       type: "TypedTag",
     };
@@ -104,6 +104,12 @@ declare module "@webdoc/types" {
     declare type ThrowsTag = {
       ...TypedTag,
       type: "ThrowsTag"
+    };
+
+    declare type TypedefTag = {
+      of: string[],
+      alias: String,
+      type: "TypedefTag"
     };
 
     declare type PrivateTag = {
