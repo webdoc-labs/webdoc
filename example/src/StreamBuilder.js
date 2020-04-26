@@ -49,6 +49,8 @@ class StreamBuffer {
 }
 
 /**
+ * This can used to configure {@link StreamBuilder} post-instantiation.
+ * @memberof EX
  * @typedef {object} IStreamConfig
  * @property {number} bufferSize
  */

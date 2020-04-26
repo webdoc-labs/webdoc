@@ -52,7 +52,7 @@
             <?js doc.modules.forEach(function(module) { ?>
                 <?js= self.partial('method.tmpl', module) ?>
             <?js }) ?>
-        <?js } else if (doc.type === "ClassDoc" || (doc.type === 'namespace' && doc.signature)) { ?>
+        <?js } else if (doc.type === "ClassDoc" || (doc.type === 'NSDoc' && doc.signature)) { ?>
             <?js= self.partial('method.tmpl', doc.children.find(childDoc => childDoc.name === "constructor") || doc) ?>
         <?js } else { ?>
             <?js if (doc.description) { ?>
@@ -149,7 +149,7 @@
     <?js } ?>
 
     <?js
-        var methods = doc.children.filter(child => child.type === 'MethodDoc' && child.name !== 'constructor')
+        var methods = doc.children.filter(child => child.type === 'MethodDoc' && child.name !== 'constructor');
         if (methods && methods.length && methods.forEach) {
     ?>
         <h3 class="subsection-title">Methods</h3>
@@ -160,8 +160,8 @@
     <?js } ?>
 
     <?js
-        var typedefs = self.find({type: 'typedef', memberof: isGlobalPage ? {isUndefined: true} : doc.path});
-        if (typedefs && typedefs.length && typedefs.forEach) {
+        var typedefs = doc.children.filter(child => child.type === "TypedefDoc");
+        if (typedefs.length) {
     ?>
         <h3 class="subsection-title">Type Definitions</h3>
 
