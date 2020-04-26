@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>webdoc: Class: StreamBuffer</title>
+    <title>webdoc: Home</title>
 
     <script src="scripts/prettify.js"> </script>
     <script src="scripts/lang-css.js"> </script>
@@ -14,7 +14,7 @@
 </head>
 <body>
     <div id="main">
-        <h1 class="page-title">Class: StreamBuffer</h1>
+        <h1 class="page-title">Home</h1>
         
 
 
@@ -26,7 +26,7 @@
     
         <h2>
             
-            EX.StreamBuffer
+            
             
         </h2>
         
@@ -38,39 +38,11 @@
         
             
 
-    
-
-    
-        <h4 class="name" id="StreamBuffer">
-            StreamBuffer
-        </h4>
-    
-
-
-
-    <div class="description">
-        This is a clas.
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
+            
 
 
 <dl class="details">
 
-    
-    <dt class="tag-version">Version:</dt>
-    <dd class="tag-version"><ul class="dummy"><li>public</li></ul></dd>
     
 
     
@@ -105,24 +77,7 @@
 </dl>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            
         
     </div>
 
@@ -130,6 +85,16 @@
 
     
 
+    
+        <h3 class="subsection-title">Classes</h3>
+
+        <dl>
+            <dt><a href="EX.StreamBuffer.html">StreamBuffer</a></dt>
+            <dd></dd>
+        
+            <dt><a href="EX.StreamBuilder.html">StreamBuilder</a></dt>
+            <dd></dd>
+        </dl>
     
 
     

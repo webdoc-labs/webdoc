@@ -34,6 +34,7 @@
   },
   "dependencies": {
     "missionlog": "1.6.0",
-    "catharsis": "0.8.11"
+    "catharsis": "0.8.11",
+    "@webdoc/types": "^0.0.0"
   }
 }
