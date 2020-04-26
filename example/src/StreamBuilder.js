@@ -16,12 +16,18 @@ class StreamBuilder {
   }
 
   /**
-   * Setup up stream processing threads
+   * Setup up stream processing threads.
    * @protected
    * @param {number}[threads=8]
+   * @return {StreamBuilder} - this
+   * @example
+   * new StreamBuilder({ threads: 16 })
+   *  .setupThreads();
+   *
+   * Here are some more details: (nothing)
    */
   setupThreads(threads = 8) {
-
+    return this;
   }
 
   /**
@@ -29,6 +35,7 @@ class StreamBuilder {
    *
    * @param {string} [streamName='default'] - the stream's name
    * @param {StreamBuffer} [buffer] - the buffer to use
+   * @static
    */
   build(streamName = "default", buffer) {
 

@@ -24,10 +24,10 @@ export default function extract(node: CommentBlock): ?string {
   const docLines = doc.split("\n");
 
   for (let i = 0; i < docLines.length; i++) {
-    docLines[i] = docLines[i].trim();
+    docLines[i] = docLines[i].trimEnd();
 
-    if (docLines[i].startsWith("*")) {
-      docLines[i] = docLines[i].replace("*", "").trimStart();
+    if (docLines[i].startsWith(" *")) {
+      docLines[i] = docLines[i].replace(" *", "");
     }
   }
 

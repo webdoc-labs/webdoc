@@ -7,7 +7,7 @@ var self = this;
         <h2>Constructor</h2>
     <?js } ?>
 
-    <?js if (data.type !== 'namespace') { ?>
+    <?js if (data.type !== 'NSDoc') { ?>
         <h4 class="name" id="<?js= id ?>">
             <?js= data.attribs + (data.name === "constructor" && data.parent 
                 ? `new ${data.parent.path}` : data.name) + (data.signature || '') ?>
@@ -108,15 +108,23 @@ var self = this;
     <?js });
 } } ?>
 
-<?js if (data.returns && returns.length) { ?>
-<h5>Returns:</h5>
-<?js if (returns.length > 1) { ?><ul><?js
-    returns.forEach(function(r) { ?>
-        <li><?js= self.partial('returns.tmpl', r) ?></li>
-    <?js });
-?></ul><?js } else {
-    returns.forEach(function(r) { ?>
-        <?js= self.partial('returns.tmpl', r) ?>
+<?js
+    const returnTags = data.tags.filter(tag => tag.type === "ReturnTag");
+
+    if (returnTags.length) { ?>
+
+    <h5>Returns:</h5>
+
+    <?js if (returnTags.length > 1) { ?>
+        <ul>
+        <?js
+            returnTags.forEach(function(r) { ?>
+                <li><?js= self.partial('returns.tmpl', r) ?></li>
+            <?js }); ?>
+        </ul>
+        <?js } else {
+            returnTags.forEach(function(r) { ?>
+            <?js= self.partial('returns.tmpl', r) ?>
     <?js });
 } } ?>
 
@@ -132,7 +140,10 @@ var self = this;
     <?js });
 } } ?>
 
-<?js if (data.examples && examples.length) { ?>
-    <h5>Example<?js= examples.length > 1? 's':'' ?></h5>
-    <?js= this.partial('examples.tmpl', examples) ?>
-<?js } ?>
+<?js 
+    const exampleTags = data.tags.filter(tag => tag.type === "ExampleTag");
+
+    if (exampleTags.length) { ?>
+        <h5>Example<?js= exampleTags.length > 1 ? 's':'' ?></h5>
+        <?js= this.partial('examples.tmpl', exampleTags) ?>
+    <?js } ?>

@@ -10,7 +10,12 @@ import {
   parseProtected,
   parsePublic,
   parseTypedef,
-  parseVisibility,
+  parseAccess,
+  parseStatic,
+  parseInner,
+  parseInstance,
+  parseScope,
+  parseReturn,
 } from "./tag-parsers";
 import {
   parseTypedef as parseTypedefDoc,
@@ -25,6 +30,7 @@ import {
   type MemberTag,
   type NSDoc,
   type TypedefDoc,
+  type ExampleTag,
 } from "@webdoc/types";
 
 import {
@@ -91,14 +97,21 @@ const TAG_MAP = {
 };
 
 export const TAG_PARSERS = {
+  "access": parseAccess,
+  "example": (value: string): ExampleTag => ({name: "example", code: value, value, type: "ExampleTag"}),
+  "inner": parseInner,
+  "instance": parseInstance,
+  "member": (name: string, value: string): MemberTag => ({name, value}),
   "param": parseParam,
   "protected": parseProtected,
   "private": parsePrivate,
   "public": parsePublic,
-  "member": (name: string, value: string): MemberTag => ({name, value}),
+  "return": parseReturn,
+  "returns": parseReturn,
+  "scope": parseScope,
+  "static": parseStatic,
   "tag": (name: string, value: string): Tag => ({name, value}),
   "typedef": parseTypedef,
-  "visiblity": parseVisibility,
 };
 
 /**
@@ -166,6 +179,7 @@ function transform(partialDoc: PartialDoc): ?Doc {
           break;
         }
 
+        ++i;
         value += "\n" + commentLines[i];
       }
 

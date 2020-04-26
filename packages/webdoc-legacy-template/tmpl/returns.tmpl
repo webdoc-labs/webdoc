@@ -1,19 +1,19 @@
 <?js
-var data = obj || {};
-if (data.description) {
-?>
-<div class="param-desc">
-    <?js= description ?>
-</div>
+    var data = obj || {};
+    if (data.description) {?>
+
+    <div class="param-desc">
+        <?js= description ?>
+    </div>
 <?js } ?>
 
-<?js if (data.type && data.type.names) {?>
+<?js if (data.dataType) {?>
 <dl>
     <dt>
         Type
     </dt>
     <dd>
-        <?js= this.partial('type.tmpl', data.type.names) ?>
+        <?js= this.partial('type.tmpl', data.dataType) ?>
     </dd>
 </dl>
 <?js } ?>

@@ -8,13 +8,14 @@ declare module "@webdoc/types" {
       tags: Tag[],
       brief: string,
       description: string,
-      visiblity: "public" | "protected" | "private",
+      access: "public" | "protected" | "private",
+      scope: "static" | "instance" | "inner",
       version: "alpha" | "beta" | "internal" | "public" | "deprecated",
       type: "ClassDoc" | "FunctionDoc" | "MethodDoc" | "ObjectDoc" | "RootDoc" | "TypedefDoc"
     };
 
     declare type Doc = BaseDoc | ClassDoc | ObjectDoc | FunctionDoc | MethodDoc | PropertyDoc
-        | TypedefDoc | NSDoc;
+        | TypedefDoc | NSDoc | ReturnTag;
 
     declare type RootDoc = {
       ...Doc,
@@ -64,19 +65,41 @@ declare module "@webdoc/types" {
       type: "link" | "param" | "return" | "throws"
     };
 
-    declare type Tag = BaseTag | DeprecatedTag | TypedTag | ParamTag | ReturnTag | ThrowsTag
-        | PrivateTag | ProtectedTag | PublicTag | VisibilityTag
+    declare type Tag = AccessTag | BaseTag | DeprecatedTag | ExampleTag | TypedTag |
+        ParamTag | ReturnTag
+        | ThrowsTag | PrivateTag | ProtectedTag | PublicTag
+
+    declare type AccessTag = {
+      ...BaseTag,
+      access: "public" | "protected" | "private",
+      type: "AccessTag"
+    };
 
     declare type DeprecatedTag = {
       ...BaseTag,
       type: "DeprecatedTag"
     };
 
+    declare type ExampleTag = {
+      ...BaseTag,
+      code: string,
+      type: "ExampleTag"
+    };
+
+    declare type InnerTag = {
+      ...BaseTag,
+      type: "InnerTag"
+    };
+
+    declare type InstanceTag = {
+      ...BaseTag,
+      type: "InstanceTag"
+    };
+
     declare type TypedTag = {
       ...BaseTag,
       dataType: string[],
       description: string,
-      type: "TypedTag",
     };
 
     declare type MemberofTag = {
@@ -99,6 +122,17 @@ declare module "@webdoc/types" {
     declare type ReturnTag = {
       ...TypedTag,
       type: "ReturnTag"
+    };
+
+    declare type StaticTag = {
+      ...BaseTag,
+      type: "StaticTag"
+    };
+
+    declare type ScopeTag = {
+      ...BaseTag,
+      scope: "static" | "instance" | "inner",
+      type: "ScopeTag"
     };
 
     declare type ThrowsTag = {
@@ -125,11 +159,5 @@ declare module "@webdoc/types" {
     declare type PublicTag = {
       ...BaseTag,
       type: "PublicTag"
-    };
-
-    declare type VisibilityTag = {
-      ...BaseTag,
-      visiblity: "public" | "protected" | "private",
-      type: "VisibilityTag"
     };
 }

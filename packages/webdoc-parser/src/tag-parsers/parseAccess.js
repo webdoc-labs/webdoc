@@ -1,21 +1,21 @@
 import {parserLogger, tag} from "../Logger";
-import type {PublicTag, ProtectedTag, PrivateTag, VisiblityTag} from "@webdoc/types";
+import type {PublicTag, ProtectedTag, PrivateTag, AccessTag} from "@webdoc/types";
 
-// Parse the @visiblity [public, private, protected] tag
-export function parseVisibility(value: string, options: any): VisiblityTag {
+// Parse the @access [public, private, protected] tag
+export function parseAccess(value: string, options: any): AccessTag {
   value = value.trim();
 
   if (value === "public" || value === "protected" || value === "private") {
-    options.visiblity = value;
+    options.access = value;
   } else {
     parserLogger.warn(tag.TagParser,
-      "@visiblity tag only accepts one of [public, private, protected]");
-    options.visiblity = "public";
+      "@access tag only accepts one of [public, private, protected]");
+    options.access = "public";
   }
 
   return {
-    name: "visibility",
-    type: "VisibilityTag",
+    name: "access",
+    type: "AccessTag",
   };
 }
 
@@ -25,7 +25,7 @@ export function parsePublic(value: string, options: any): PublicTag {
     parserLogger.warn(tag.TagParser, "@public tags do not contain any description");
   }
 
-  options.visiblity = "public";
+  options.access = "public";
 
   return {
     name: "public",
@@ -39,7 +39,7 @@ export function parseProtected(value: string, options: any): ProtectedTag {
     parserLogger.warn(tag.TagParser, "@protected tags do not contain any description");
   }
 
-  options.visiblity = "protected";
+  options.access = "protected";
 
   return {
     name: "protected",
@@ -53,7 +53,7 @@ export function parsePrivate(value: string, options: any): PrivateTag {
     parserLogger.warn(tag.TagParser, "@private tags do not contain any description");
   }
 
-  options.visiblity = "private";
+  options.access = "private";
 
   return {
     name: "private",

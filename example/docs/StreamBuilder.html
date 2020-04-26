@@ -30,6 +30,13 @@
             
         </h2>
         
+            <div class="class-description">*
+ The stream builder can be used to generate an optimized memory channel for parallel
+ processing in Node.js applications.
+ @memberof EX
+ @public
+</div>
+        
         
 </header>
 
@@ -43,7 +50,7 @@
     
 
     
-        <h4 class="name" id="constructor">
+        <h4 class="name" id="MethodDocconstructor">
             new StreamBuilder
         </h4>
     
@@ -52,6 +59,13 @@
 
 
 
+    <div class="description">
+        *
+   * @constructor
+   * @param {object} options
+   * @param {number}[options.threads]
+
+    </div>
 
 
 
@@ -59,103 +73,6 @@
 
 
 
-
-        <h5>Parameters:</h5>
-        
-
-<table class="params">
-    <thead>
-    <tr>
-        
-            <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-            <th>Attributes</th>
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>options</code></td>
-            
-
-            <td class="type">
-            
-                
-
-    <span class="param-type">object</span>
-    
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last">
-                
-                
-            </td>
-        </tr>
-    
-
-        <tr>
-            
-                <td class="name"><code>options.threads</code></td>
-            
-
-            <td class="type">
-            
-                
-
-    <span class="param-type">number</span>
-    
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last">
-                
-                
-            </td>
-        </tr>
-    
-    </tbody>
-</table>
 
 
 
@@ -245,15 +162,27 @@
     
 
     
-        <h4 class="name" id="build">
-            build
+        <h4 class="name" id="MethodDocsetupThreads">
+            setupThreads
         </h4>
     
 
 
 
+
+
     <div class="description">
-        Builds the stream object.
+        *
+   * Setup up stream processing threads.
+   * @protected
+   * @param {number}[threads=8]
+   * @return {StreamBuilder} - this
+   * @example
+   * new StreamBuilder({ threads: 16 })
+   *  .setupThreads();
+   *
+   * Here are some more details: (nothing)
+
     </div>
 
 
@@ -266,116 +195,96 @@
 
 
 
-        <h5>Parameters:</h5>
-        
 
-<table class="params">
-    <thead>
-    <tr>
-        
-            <th>Name</th>
-        
 
-        <th>Type</th>
+<dl class="details">
 
-        
-            <th>Attributes</th>
-        
-
-        
-            <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
+    
+    <dt class="tag-version">Version:</dt>
+    <dd class="tag-version"><ul class="dummy"><li>public</li></ul></dd>
     
 
-        <tr>
-            
-                <td class="name"><code>streamName</code></td>
-            
-
-            <td class="type">
-            
-                
-
-    <span class="param-type">string</span>
     
 
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                    
-                        'default'
-                    
-                </td>
-            
-
-            <td class="description last">
-                the stream's name
-                
-            </td>
-        </tr>
     
 
-        <tr>
-            
-                <td class="name"><code>buffer</code></td>
-            
-
-            <td class="type">
-            
-                
-
-    <span class="param-type"><a href="StreamBuffer.html">StreamBuffer</a></span>
     
 
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                    
-                </td>
-            
-
-            <td class="description last">
-                the buffer to use
-                
-            </td>
-        </tr>
     
-    </tbody>
-</table>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+        <h4 class="name" id="MethodDocbuild">
+            build
+        </h4>
+    
+
+
+
+
+
+    <div class="description">
+        *
+   * Builds the stream object.
+   *
+   * @param {string} [streamName='default'] - the stream's name
+   * @param {StreamBuffer} [buffer] - the buffer to use
+   * @static
+
+    </div>
+
+
+
+
+
+
+
 
 
 
@@ -454,11 +363,11 @@
 
     </div>
     <nav>
-        <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li>EX</li></ul><h3>Classes</h3><ul><li>StreamBuffer</li><li>StreamBuilder</li></ul>
+        <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="StreamBuffer.html">StreamBuffer</a></li><li><a href="StreamBuilder.html">StreamBuilder</a></li></ul>
     </nav>
     <br class="clear">
     <footer>
-        Documentation generated by <a href="https://github.com/jsdoc/jsdoc">webdoc 1</a>
+        Documentation generated by <a href="https://github.com/jsdoc/jsdoc">webdoc 1</a> on Sun Apr 26 2020 16:58:08 GMT-0400 (Eastern Daylight Time)
     </footer>
     <script> prettyPrint(); </script>
     <script src="scripts/linenumber.js"> </script>
