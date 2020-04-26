@@ -33,6 +33,7 @@
     "url": "https://github.com/SukantPal/webdoc/issues"
   },
   "dependencies": {
-    "missionlog": "1.6.0"
+    "missionlog": "1.6.0",
+    "catharsis": "0.8.11"
   }
 }

@@ -20,7 +20,7 @@ export let templateLogger: Log = null;
  *
  * @param {string}[defaultLevel="WARN"]
  */
-export function initTemplateLogger(defaultLevel: string = "INFO") {
+export function initTemplateLogger(defaultLevel: string = "WARN") {
   templateLogger = new Log().init(
     {
       TemplateLibrary: defaultLevel,

@@ -10,6 +10,11 @@ const defaultConfig = {
     tags: {
       dictionaries: [],
     },
+    templates: {
+      default: {
+        useLongNameInNav: true,
+      },
+    },
   },
   opts: {
     destination: "docs",

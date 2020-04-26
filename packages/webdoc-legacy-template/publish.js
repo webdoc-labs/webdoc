@@ -7,13 +7,23 @@ const helper = require("./helper");
 const hasOwnProp = Object.prototype.hasOwnProperty;
 const {TemplateRenderer} = require("@webdoc/template-library");
 
-const {Log, LogLevel} = require("missionlog");
+TemplateRenderer.prototype.linkto = helper.linkto;
+TemplateRenderer.prototype.htmlsafe = (str) => {
+  if (typeof str !== "string") {
+    str = String(str);
+  }
+
+  return str.replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;");
+};
+
+const {Log, LogLevel, tag} = require("missionlog");
 
 const linkto = helper.linkto;
 const klawSync = require("klaw-sync");
 
 let publishLog;
-let taffyData;
+let docDatabase;
 
 lsSync = ((dir, opts = {}) => {
   const depth = _.has(opts, "depth") ? opts.depth : -1;
@@ -348,17 +358,18 @@ function buildMemberNav(items, itemHeading, itemsSeen, linktoFn) {
     items.forEach((item) => {
       let displayName;
 
-      if ( !hasOwnProp.call(item, "longname") ) {
+      if ( !hasOwnProp.call(item, "path") ) {
         itemsNav += `<li>${linktoFn("", item.name)}</li>`;
-      } else if ( !hasOwnProp.call(itemsSeen, item.longname) ) {
+      } else if ( !hasOwnProp.call(itemsSeen, item.path) ) {
         if (env.conf.templates.default.useLongnameInNav) {
-          displayName = item.longname;
+          displayName = item.path;
         } else {
           displayName = item.name;
         }
-        itemsNav += `<li>${linktoFn(item.longname, displayName.replace(/\b(module|event):/g, ""))}</li>`;
+        publishLog.warn(tag.ContentBar, "Linking " + item.path);
+        itemsNav += `<li>${linktoFn(item.path, displayName.replace(/\b(module|event):/g, ""))}</li>`;
 
-        itemsSeen[item.longname] = true;
+        itemsSeen[item.path] = true;
       }
     });
 
@@ -435,11 +446,12 @@ function sourceToDestination(parentDir, sourcePath, destDir) {
 }
 
 function initLogger() {
-  const defaultLevel = "DEBUG";
+  const defaultLevel = "WARN";
 
   publishLog = new Log().init(
     {
       TemplateGenerator: defaultLevel,
+      ContentBar: defaultLevel,
     },
     (level, tag, msg, params) => {
       tag = `[${tag}]:`;
@@ -463,7 +475,7 @@ function initLogger() {
 exports.publish = (options) => {
   initLogger();
 
-  taffyData = options.docDatabase;
+  docDatabase = options.docDatabase;
   const opts = options.opts;
   const tutorials = options.tutorials;
   env = options.config;
@@ -471,13 +483,11 @@ exports.publish = (options) => {
 
   let conf;
   let cwd;
-  let files;
   let fromDir;
   let globalUrl;
   let indexUrl;
   let outputSourceFiles;
   let packageInfo;
-  let packages;
   const sourceFilePaths = [];
   let sourceFiles = {};
   let staticFileFilter;
@@ -486,14 +496,14 @@ exports.publish = (options) => {
   let staticFileScanner;
   let templatePath;
 
-  data = taffyData;
+  data = docDatabase;
 
   conf = env.conf.templates || {};
   conf.default = conf.default || {};
 
   templatePath = __dirname;
 
-  view = new TemplateRenderer(path.join(templatePath, "tmpl"), taffyData);
+  view = new TemplateRenderer(path.join(templatePath, "tmpl"), docDatabase);
 
   // claim some special filenames in advance, so the All-Powerful Overseer of Filename Uniqueness
   // doesn't try to hand them out later
@@ -713,8 +723,8 @@ exports.publish = (options) => {
   }
 
   // index page displays information from package.json and lists files
-  files = find({kind: "file"});
-  packages = find({kind: "package"});
+  const files = docDatabase({kind: "file"}).get();
+  const packages = docDatabase({kind: "package"}).get();
 
   generate("Home",
     packages.concat(
@@ -722,6 +732,7 @@ exports.publish = (options) => {
         kind: "mainpage",
         readme: opts.readme,
         longname: (opts.mainpagetitle) ? opts.mainpagetitle : "Main Page",
+        children: [],
       }],
     ).concat(files), indexUrl);
 

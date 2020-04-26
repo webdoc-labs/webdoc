@@ -14,7 +14,7 @@ declare module "@webdoc/types" {
     };
 
     declare type Doc = BaseDoc | ClassDoc | ObjectDoc | FunctionDoc | MethodDoc | PropertyDoc
-        | TypedefDoc;
+        | TypedefDoc | NSDoc;
 
     declare type RootDoc = {
       ...Doc,
@@ -34,6 +34,11 @@ declare module "@webdoc/types" {
     declare type MethodDoc = {
       ...Doc,
       type: "MethodDoc"
+    };
+
+    declare type NSDoc = {
+      ...Doc,
+      type: "NSDoc"
     };
 
     declare type ObjectDoc = {
@@ -82,6 +87,12 @@ declare module "@webdoc/types" {
 
     declare type ParamTag = {
       ...TypedTag,
+      identifer: string,
+      referred: string,
+      description: string,
+      optional?: Boolean,
+      default?: string,
+      variadic?: boolean,
       type: "ParamTag"
     };
 

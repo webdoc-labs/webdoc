@@ -108,7 +108,6 @@ function buildLink(docPath, linkText, options) {
   const classString = options.cssClass ? ` class="${options.cssClass}"` : "";
   let fileUrl;
   const fragmentString = ""; // fragmentHash(options.fragmentId);
-  let stripped;
   let text;
 
   let parsedType;
@@ -116,7 +115,7 @@ function buildLink(docPath, linkText, options) {
   // handle cases like:
   // @see <http://example.org>
   // @see http://example.org
-  stripped = docPath ? docPath.replace(/^<|>$/g, "") : "";
+  const stripped = docPath ? docPath.replace(/^<|>$/g, "") : "";
   if (hasUrlPrefix(stripped)) {
     fileUrl = stripped;
     text = linkText || stripped;

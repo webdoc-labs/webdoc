@@ -4,6 +4,7 @@ import * as parser from "@babel/parser";
 import traverse, {type NodePath} from "@babel/traverse";
 import capture, {type PartialDoc} from "./capture";
 import mod from "./doctree-mods";
+import {parseParam} from "./tag-parsers";
 
 import {
   type ClassDoc,
@@ -12,6 +13,7 @@ import {
   type RootDoc,
   type Doc,
   type MemberTag,
+  type NSDoc,
 } from "@webdoc/types";
 
 import {
@@ -54,6 +56,9 @@ const babelPlugins = [
 ];
 
 function getNodeName(node: any): string {
+  if (!node) {
+    return "";
+  }
   if (node.id) {
     return node.id.name;
   }
@@ -69,10 +74,14 @@ const TAG_MAP = {
   "class": (node, options): ClassDoc => createDoc(getNodeName(node), "ClassDoc", options),
   "method": (node, options): MethodDoc => createDoc(getNodeName(node), "MethodDoc", options),
   // "typedef": (options) => ({...options, name: "tbh", type: "TypedefDoc"}),
+  "namespace": (node, options): NSDoc => createDoc(
+    getNodeName(node) || options.tags.find((tag) => tag.name === "namespace").value,
+    "NSDoc", options),
 };
 
 // TODO: These parse the tag's contents and fill and special fields
 export const TAG_PARSERS = {
+  "param": parseParam,
   "member": (name: string, value: string): MemberTag => ({name, value}),
   "tag": (name: string, value: string): Tag => ({name, value}),
 };
@@ -125,13 +134,16 @@ function transform(partialDoc: PartialDoc): ?Doc {
   const commentLines = comment.split("\n");
 
   const tags: Tag[] = [];
+  let brief = "";
+  let description = "";
+  let noBrief = false;
 
   for (let i = 0; i < commentLines.length; i++) {
     if (commentLines[i].startsWith("@")) {
       const tokens = commentLines[i].split(" ");
       const tag = tokens[0].replace("@", "");
 
-      let value = tokens.slice(1).join("");
+      let value = tokens.slice(1).join(" ");
 
       for (let j = i + 1; j < commentLines.length; j++) {
         if (commentLines[j].startsWith("@") || !commentLines[j]) {
@@ -146,10 +158,18 @@ function transform(partialDoc: PartialDoc): ?Doc {
       } else {
         tags.push(TAG_PARSERS["tag"](tag, value));
       }
+    } else if (commentLines[i]) {
+      if (!brief && !commentLines[i + 1] && !noBrief) {
+        brief = `${commentLines[i]}`;
+      } else {
+        description += `${commentLines[i]}\n`;
+      }
+
+      noBrief = true;
     }
   }
 
-  const options: any = {tags};
+  const options: any = {tags, brief, description};
 
   for (let i = 0; i < tags.length; i++) {
     if (TAG_MAP[tags[i].name]) {

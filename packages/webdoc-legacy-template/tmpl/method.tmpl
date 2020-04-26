@@ -2,25 +2,29 @@
 var data = obj;
 var self = this;
 ?>
-<?js if (data.kind !== 'module' && !data.hideconstructor) { ?>
-    <?js if (data.kind === 'class' && data.classdesc) { ?>
-    <h2>Constructor</h2>
+<?js if (data.type !== 'ModuleDoc' && !data.hideconstructor) { ?>
+    <?js if (data.name === "constructor" && data.parent && data.parent.type === "ClassDoc") { ?>
+        <h2>Constructor</h2>
     <?js } ?>
 
-    <?js if (data.kind !== 'namespace') { ?>
-    <h4 class="name" id="<?js= id ?>"><?js= data.attribs + (kind === 'class' ? 'new ' : '') +
-    name + (data.signature || '') ?></h4>
-    <?js } ?>
-
-    <?js if (data.summary) { ?>
-    <p class="summary"><?js= summary ?></p>
+    <?js if (data.type !== 'namespace') { ?>
+        <h4 class="name" id="<?js= id ?>">
+            <?js= data.attribs + (data.name === "constructor" && data.parent 
+                ? `new ${data.parent.path}` : data.name) + (data.signature || '') ?>
+        </h4>
     <?js } ?>
 <?js } ?>
 
-<?js if (data.kind !== 'module' && data.description && !data.hideconstructor) { ?>
-<div class="description">
-    <?js= data.description ?>
-</div>
+<?js if (data.brief && !data.hideconstructor) { ?>
+    <div class="description">
+        <?js= data.brief ?>
+    </div>
+<?js } ?>
+
+<?js if (data.type !== 'ModuleDoc' && data.description && !data.hideconstructor) { ?>
+    <div class="description">
+        <?js= data.description ?>
+    </div>
 <?js } ?>
 
 <?js if (data.augments && data.alias && data.alias.indexOf('module:') === 0) { ?>
@@ -28,7 +32,7 @@ var self = this;
     <?js= self.partial('augments.tmpl', data) ?>
 <?js } ?>
 
-<?js if (kind === 'event' && data.type && data.type.names) {?>
+<?js if (type === 'event' && data.type && data.type.names) {?>
     <h5>Type:</h5>
     <ul>
         <li>
@@ -42,14 +46,17 @@ var self = this;
     <ul><li><?js= this.linkto(data['this'], data['this']) ?></li></ul>
 <?js } ?>
 
-<?js if (data.params && params.length && !data.hideconstructor) { ?>
-    <h5>Parameters:</h5>
-    <?js= this.partial('params.tmpl', params) ?>
+<?js
+    const params = data.tags.filter(tag => tag.type === 'ParamTag');
+
+    if (params.length && !data.hideconstructor) { ?>
+        <h5>Parameters:</h5>
+        <?js= this.partial('params.tmpl', params) ?>
 <?js } ?>
 
 <?js= this.partial('details.tmpl', data) ?>
 
-<?js if (data.kind !== 'module' && data.requires && data.requires.length) { ?>
+<?js if (data.type !== 'module' && data.requires && data.requires.length) { ?>
 <h5>Requires:</h5>
 <ul><?js data.requires.forEach(function(r) { ?>
     <li><?js= self.linkto(r) ?></li>

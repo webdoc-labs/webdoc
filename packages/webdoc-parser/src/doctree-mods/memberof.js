@@ -1,20 +1,19 @@
-// @flow
-import type {Doc, RootDoc, Tag} from "@webdoc/types";
-import {doc as findDoc, addChildDoc} from "@webdoc/model";
+"use strict";
 
-// Used to queue all Docs with a @memberof tag
-type ResolveTarget = {
-  doc: Doc,
-  destination: string[]
-};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = memberofResolve;
 
-function queueTargets(doc: Doc, into: ResolveTarget[] = []): ResolveTarget[] {
-  const memberofTag: Tag = doc.tags.find((tag) => tag.name === "memberof");
+var _model = require("@webdoc/model");
+
+function queueTargets(doc, into = []) {
+  const memberofTag = doc.tags.find(tag => tag.name === "memberof");
 
   if (memberofTag) {
     into.push({
       doc,
-      destination: memberofTag.value.split("."),
+      destination: memberofTag.value.split(".")
     });
   }
 
@@ -25,15 +24,15 @@ function queueTargets(doc: Doc, into: ResolveTarget[] = []): ResolveTarget[] {
   return into;
 }
 
-function queueResolve(queue: ResolveTarget[], root: RootDoc): ResolveTarget[] {
+function queueResolve(queue, root) {
   const backlog = [];
 
   while (queue.length) {
     const resolve = queue.shift();
-    const scope = findDoc(resolve.destination, root);
+    const scope = (0, _model.doc)(resolve.destination, root);
 
     if (scope) {
-      addChildDoc(resolve.doc, scope);
+      (0, _model.addChildDoc)(resolve.doc, scope);
     } else {
       backlog.push(resolve);
     }
@@ -42,14 +41,13 @@ function queueResolve(queue: ResolveTarget[], root: RootDoc): ResolveTarget[] {
   return backlog;
 }
 
-export default function memberofResolve(doc: Doc, root: RootDoc): void {
+function memberofResolve(doc, root) {
   let iqueue = queueTargets(root);
   let lastQueueLength = iqueue.length + 1;
 
   while (iqueue.length) {
     if (iqueue.length === lastQueueLength) {
-      throw new Error(
-        "@memberof dependencies are circular; cannot resolve after " + lastQueueLength);
+      throw new Error("@memberof dependencies are circular; cannot resolve after " + lastQueueLength);
     }
 
     lastQueueLength = iqueue.length;
