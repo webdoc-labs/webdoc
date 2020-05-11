@@ -18,6 +18,7 @@ const defaultConfig = {
   },
   opts: {
     destination: "docs",
+    export: "example.api.json",
     template: "@webdoc/legacy-template",
   },
   version: {

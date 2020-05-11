@@ -726,13 +726,15 @@ exports.publish = (options) => {
   const files = docDatabase({kind: "file"}).get();
   const packages = docDatabase({kind: "package"}).get();
 
+  const arr = [];
   generate("Home",
     packages.concat(
       [{
         kind: "mainpage",
         readme: opts.readme,
         longname: (opts.mainpagetitle) ? opts.mainpagetitle : "Main Page",
-        children: [],
+        children: arr,
+        members: arr,
       }],
     ).concat(files), indexUrl);
 

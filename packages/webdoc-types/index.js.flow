@@ -1,21 +1,51 @@
 declare module "@webdoc/types" {
+    declare type DataType = [string];
+
+    declare type ParserOpts = {
+      memberof?: string
+    };
+
+    declare type Param = {
+      identifer: string,
+      referred: string,
+      description: string,
+      optional?: Boolean,
+      default?: string,
+      variadic?: boolean,
+    };
+
+    declare type Typedef = {
+      of: string[],
+      alias: String,
+    };
+
+    declare type TypedDesc = {
+      dataType: DataType,
+      description: string,
+    };
+
+    declare type Return = TypedDesc;
+
     declare type BaseDoc = {
       name: string,
       path: string,
       stack: string[],
       parent: Doc,
       children: Doc[],
+      members: Doc[],
       tags: Tag[],
       brief: string,
       description: string,
       access: "public" | "protected" | "private",
+      fires: [],
       scope: "static" | "instance" | "inner",
       version: "alpha" | "beta" | "internal" | "public" | "deprecated",
-      type: "ClassDoc" | "FunctionDoc" | "MethodDoc" | "ObjectDoc" | "RootDoc" | "TypedefDoc"
+      type: "ClassDoc" | "FunctionDoc" | "MethodDoc" | "ObjectDoc" | "RootDoc" | "TypedefDoc",
+      parserOpts?: ParserOpts
     };
 
     declare type Doc = BaseDoc | ClassDoc | ObjectDoc | FunctionDoc | MethodDoc | PropertyDoc
-        | TypedefDoc | NSDoc | ReturnTag;
+        | TypedefDoc | NSDoc | ReturnTag | EventDoc;
 
     declare type RootDoc = {
       ...Doc,
@@ -24,16 +54,28 @@ declare module "@webdoc/types" {
 
     declare type ClassDoc = {
       ...Doc,
+      params?: Param[],
       type: "ClassDoc"
+    };
+
+    declare type EventDoc = {
+      ...Doc,
+      eventType: string,
+      params?: Param[],
+      type: "EventDoc"
     };
 
     declare type FunctionDoc = {
       ...Doc,
+      params: Param[],
+      returns: Return,
       type: "FunctionDoc"
     };
 
     declare type MethodDoc = {
       ...Doc,
+      params: Param[],
+      returns: Return,
       type: "MethodDoc"
     };
 
@@ -49,6 +91,8 @@ declare module "@webdoc/types" {
 
     declare type PropertyDoc = {
       ...Doc,
+      object: "this" | string,
+      dataType: DataType,
       type: "PropertyDoc"
     };
 
@@ -66,7 +110,7 @@ declare module "@webdoc/types" {
     };
 
     declare type Tag = AccessTag | BaseTag | DeprecatedTag | ExampleTag | TypedTag |
-        ParamTag | ReturnTag
+        ParamTag | ReturnTag | MemberTag
         | ThrowsTag | PrivateTag | ProtectedTag | PublicTag
 
     declare type AccessTag = {
@@ -80,10 +124,22 @@ declare module "@webdoc/types" {
       type: "DeprecatedTag"
     };
 
+    declare type EventTag = {
+      ...BaseTag,
+      event: string,
+      type: "EventTag"
+    };
+
     declare type ExampleTag = {
       ...BaseTag,
       code: string,
       type: "ExampleTag"
+    };
+
+    declare type FiresTag = {
+      ...BaseTag,
+      event: string,
+      type: "FiresTag"
     };
 
     declare type InnerTag = {
@@ -98,8 +154,13 @@ declare module "@webdoc/types" {
 
     declare type TypedTag = {
       ...BaseTag,
-      dataType: string[],
+      dataType: DataType,
       description: string,
+    };
+
+    declare type MemberTag = {
+      ...BaseTag,
+      dataType: DataType
     };
 
     declare type MemberofTag = {

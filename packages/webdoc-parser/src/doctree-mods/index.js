@@ -1,17 +1,19 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+  value: true,
 });
 exports.default = mod;
 
-var _memberResolution = _interopRequireDefault(require("./member-resolution"));
+const _memberResolution = _interopRequireDefault(require("./member-resolution"));
 
-var _memberof = _interopRequireDefault(require("./memberof"));
+const _memberof = _interopRequireDefault(require("./memberof"));
 
-var _prune = _interopRequireDefault(require("./prune"));
+const _prune = _interopRequireDefault(require("./prune"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {default: obj};
+}
 
 const mods = [_memberResolution.default, _memberof.default, _prune.default];
 

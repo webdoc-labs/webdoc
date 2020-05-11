@@ -6,6 +6,7 @@ import globby from "globby";
 import type {RootDoc} from "@webdoc/types";
 import {parse} from "@webdoc/parser";
 import {exportTaffy} from "@webdoc/model";
+import {writeDoctree} from "@webdoc/externalize";
 import fs from "fs";
 
 export function initLogger(verbose: boolean = false) {
@@ -59,11 +60,17 @@ async function main(argv: yargs.Arguments<>) {
     tags: [],
   };
 
+  doctree.members = doctree.children;
+
   for (let i = 0; i < sourceFiles.length; i++) {
     log.info(tag.Parser, `Parsing ${sourceFiles[i]}`);
     parse(fs.readFileSync(path.join(process.cwd(), sourceFiles[i]), "utf8"), doctree);
   }
   console.log("Parsed all");
+
+  if (config.opts.export) {
+    fs.writeFileSync(config.opts.export, writeDoctree(doctree));
+  }
 
   const db = exportTaffy(doctree);
 

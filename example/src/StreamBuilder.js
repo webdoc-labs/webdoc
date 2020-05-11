@@ -12,7 +12,11 @@ class StreamBuilder {
    * @param {number}[options.threads]
    */
   constructor(options) {
-
+    /**
+     * The layout of stream entities in memory
+     * @member {object}
+     */
+    this.entityLayout = {};
   }
 
   /**
@@ -40,6 +44,12 @@ class StreamBuilder {
   build(streamName = "default", buffer) {
 
   }
+
+  /**
+   * This event is fired when a stream is built.
+   *
+   * @event EX.StreamBuilder.built
+   */
 }
 
 /**
@@ -54,6 +64,13 @@ class StreamBuilder {
 class StreamBuffer {
 
 }
+
+/**
+ * Parallel reducer algorithm for running statistical summarization on a buffered stream.
+ */
+StreamBuffer.Reducer = class {
+
+};
 
 /**
  * This can used to configure {@link StreamBuilder} post-instantiation.

@@ -40,6 +40,7 @@
     "@webdoc/parser": "0.0.1-alpha.0",
     "@webdoc/model": "0.0.1-alpha.0",
     "@webdoc/legacy-template": "0.0.1-alpha.0",
+    "@webdoc/externalize": "0.0.0",
     "requizzle": "0.2.3",
     "jsdoc": "3.6.4"
   }

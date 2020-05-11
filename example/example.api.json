@@ -1,0 +1,91 @@
+{
+	"type": "RootDoc",
+	"children": [
+		{
+			"name": "EX",
+			"type": "NSDoc",
+			"access": "public",
+			"scope": "static",
+			"version": "public",
+			"brief": "",
+			"children": [
+				{
+					"name": "StreamBuilder",
+					"type": "ClassDoc",
+					"access": "public",
+					"scope": "static",
+					"version": "public",
+					"brief": "",
+					"children": [
+						{
+							"name": "constructor",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"version": "public",
+							"brief": ""
+						},
+						{
+							"name": "setupThreads",
+							"type": "MethodDoc",
+							"access": "protected",
+							"scope": "instance",
+							"version": "public",
+							"brief": ""
+						},
+						{
+							"name": "build",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "static",
+							"version": "public",
+							"brief": " Builds the stream object."
+						},
+						{
+							"name": "entityLayout",
+							"type": "PropertyDoc",
+							"access": "public",
+							"scope": "instance",
+							"version": "public",
+							"brief": ""
+						},
+						{
+							"name": "built",
+							"type": "EventDoc",
+							"access": "public",
+							"scope": "static",
+							"version": "public",
+							"brief": " This event is fired when a stream is built."
+						}
+					]
+				},
+				{
+					"name": "StreamBuffer",
+					"type": "ClassDoc",
+					"access": "public",
+					"scope": "static",
+					"version": "public",
+					"brief": " This is a clas.",
+					"children": [
+						{
+							"name": "Reducer",
+							"type": "ClassDoc",
+							"access": "public",
+							"scope": "static",
+							"version": "public",
+							"brief": " Parallel reducer algorithm for running statistical summarization on a buffered stream."
+						}
+					]
+				},
+				{
+					"name": " IStreamConfig",
+					"type": "TypedefDoc",
+					"access": "public",
+					"scope": "static",
+					"version": "public",
+					"brief": ""
+				}
+			]
+		}
+	]
+}

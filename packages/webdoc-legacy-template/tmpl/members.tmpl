@@ -4,21 +4,21 @@ var self = this;
 ?>
 <h4 class="name" id="<?js= id ?>"><?js= data.attribs + name + (data.signature ? data.signature : '') ?></h4>
 
-<?js if (data.summary) { ?>
-<p class="summary"><?js= summary ?></p>
+<?js if (data.brief) { ?>
+    <p class="summary"><?js= data.brief ?></p>
 <?js } ?>
 
 <?js if (data.description) { ?>
-<div class="description">
-    <?js= data.description ?>
-</div>
+    <div class="description">
+        <?js= data.description ?>
+    </div>
 <?js } ?>
 
-<?js if (data.type && data.type.names) {?>
+<?js if (data.dataType) {?>
     <h5>Type:</h5>
     <ul>
         <li>
-            <?js= self.partial('type.tmpl', data.type.names) ?>
+            <?js= self.partial('type.tmpl', data.dataType) ?>
         </li>
     </ul>
 <?js } ?>

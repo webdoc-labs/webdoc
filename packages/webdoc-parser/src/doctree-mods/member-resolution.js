@@ -1,11 +1,11 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+  value: true,
 });
 exports.default = memberResolve;
 
-var _model = require("@webdoc/model");
+const _model = require("@webdoc/model");
 
 function bubbleThis(doc) {
   if (doc.type === "ClassDoc" || doc.type === "ObjectDoc") {
@@ -24,15 +24,15 @@ function resolvedThis(doc) {
 }
 
 function memberResolve(doc, root) {
-  if (doc.type === "PropertyDoc" && doc.scope !== doc.parent.name && !resolvedThis(doc) && doc.scope) {
-    const scope = doc.scope === "this" ? bubbleThis(doc) : (0, _model.doc)(doc.scope, root);
+  if (doc.path !== (doc.parent ? `${doc.parent.name}.${doc.name}` : doc.name) && !resolvedThis(doc) && doc.object) {
+    const scope = doc.object === "this" ? bubbleThis(doc) : (0, _model.doc)(doc.object, root);
 
     if (scope) {
       console.log(doc.name + " parent" + " " + scope.name);
       (0, _model.addChildDoc)(doc, scope);
       return;
     } else {
-      console.warn(`Member ${doc.path} could not be resolved to ${doc.scope}`);
+      console.warn(`Member ${doc.path} could not be resolved to ${doc.object}`);
     }
   }
 

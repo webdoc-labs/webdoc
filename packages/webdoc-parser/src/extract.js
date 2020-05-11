@@ -26,8 +26,8 @@ export default function extract(node: CommentBlock): ?string {
   for (let i = 0; i < docLines.length; i++) {
     docLines[i] = docLines[i].trimEnd();
 
-    if (docLines[i].startsWith(" *")) {
-      docLines[i] = docLines[i].replace(" *", "");
+    if (docLines[i].trimStart().startsWith("*")) {
+      docLines[i] = docLines[i].trimStart().replace("*", "");
     }
   }
 

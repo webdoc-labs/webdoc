@@ -139,7 +139,7 @@
                 return m.path && m.path.indexOf('module:') !== 0;
             });
         }
-        if (members && members.length && members.forEach) {
+        if (members.length) {
     ?>
         <h3 class="subsection-title">Members</h3>
 
@@ -180,7 +180,7 @@
     <?js } ?>
 
     <?js
-        var events = self.find({type: 'event', memberof: isGlobalPage ? {isUndefined: true} : doc.path});
+        var events = doc.members.filter(child => child.type === "EventType");
         if (events && events.length && events.forEach) {
     ?>
         <h3 class="subsection-title">Events</h3>

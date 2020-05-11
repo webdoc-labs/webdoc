@@ -6,15 +6,22 @@ function sanitizeDoc(doc: Doc): SanitizedDoc {
   const sanitized: SanitizedDoc = {
     name: doc.name,
     type: doc.type,
-    children: new Array(doc.children.length),
+    access: doc.access,
+    scope: doc.scope,
+    version: doc.version,
+    brief: doc.brief,
   };
+
+  if (doc.children.length) {
+    sanitized.children = new Array(doc.children.length);
+
+    for (let i = 0; i < doc.children.length; i++) {
+      (sanitized.children: any)[i] = sanitizeDoc(doc.children[i]);
+    }
+  }
 
   if (doc.url) {
     sanitized.url = doc.url;
-  }
-
-  for (let i = 0; i < doc.children.length; i++) {
-    sanitized.children[i] = sanitizeDoc(doc.children[i]);
   }
 
   return sanitized;

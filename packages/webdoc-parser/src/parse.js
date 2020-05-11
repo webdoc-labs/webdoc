@@ -2,7 +2,7 @@
 
 import * as parser from "@babel/parser";
 import traverse, {type NodePath} from "@babel/traverse";
-import capture, {type PartialDoc} from "./capture";
+import capture, {type PartialDoc, PD_VIRTUAL} from "./capture";
 import mod from "./doctree-mods";
 import {
   parseParam,
@@ -16,9 +16,15 @@ import {
   parseInstance,
   parseScope,
   parseReturn,
+  parseMember,
+  parseEvent,
+  parseFires,
 } from "./tag-parsers";
 import {
-  parseTypedef as parseTypedefDoc,
+  parseMethodDoc,
+  parseTypedefDoc,
+  parsePropertyDoc,
+  parseEventDoc,
 } from "./doc-parsers";
 
 import {
@@ -29,7 +35,6 @@ import {
   type Doc,
   type MemberTag,
   type NSDoc,
-  type TypedefDoc,
   type ExampleTag,
 } from "@webdoc/types";
 
@@ -94,14 +99,17 @@ const TAG_MAP = {
   "namespace": (node, options): NSDoc => createDoc(
     getNodeName(node) || options.tags.find((tag) => tag.name === "namespace").value,
     "NSDoc", options),
+  "event": parseEventDoc,
 };
 
 export const TAG_PARSERS = {
   "access": parseAccess,
+  "event": parseEvent,
   "example": (value: string): ExampleTag => ({name: "example", code: value, value, type: "ExampleTag"}),
+  "fires": parseFires,
   "inner": parseInner,
   "instance": parseInstance,
-  "member": (name: string, value: string): MemberTag => ({name, value}),
+  "member": parseMember,
   "param": parseParam,
   "protected": parseProtected,
   "private": parsePrivate,
@@ -135,11 +143,22 @@ function partial(file: string): PartialDoc {
       }
     },
     exit(nodePath: NodePath) {
-      const currentPtr = stack[stack.length - 1];
+      const currentPardoc = stack[stack.length - 1];
 
-      if (currentPtr && currentPtr.node === nodePath.node) {
-        // currentPtr.node = null;
+      if (currentPardoc && currentPardoc.node === nodePath.node) {
         stack.pop();
+
+        // Delete PD_VIRTUAL flagged partial-docs & lift up their children.
+        if (currentPardoc.flags & PD_VIRTUAL) {
+          const parentPardoc: PartialDoc = (currentPardoc.parent: any);
+
+          parentPardoc.children.splice(parentPardoc.children.indexOf(currentPardoc), 1);
+          parentPardoc.children.push(...currentPardoc.children);
+
+          for (let i = 0; i < currentPardoc.children.length; i++) {
+            currentPardoc.children[i].parent = parentPardoc;
+          }
+        }
       }
     },
   });
@@ -159,23 +178,29 @@ function partial(file: string): PartialDoc {
  */
 function transform(partialDoc: PartialDoc): ?Doc {
   const {comment, node} = partialDoc;
+
   const commentLines = comment.split("\n");
 
-  const options: any = {node};
+  let options: any = {node};
+
+  if (partialDoc.options) {
+    options = {...options, ...partialDoc.options};
+  }
+
   const tags: Tag[] = [];
   let brief = "";
   let description = "";
   let noBrief = false;
 
   for (let i = 0; i < commentLines.length; i++) {
-    if (commentLines[i].startsWith("@")) {
-      const tokens = commentLines[i].split(" ");
+    if (commentLines[i].trimStart().startsWith("@")) {
+      const tokens = commentLines[i].trim().split(" ");
       const tag = tokens[0].replace("@", "");
 
       let value = tokens.slice(1).join(" ");
 
       for (let j = i + 1; j < commentLines.length; j++) {
-        if (commentLines[j].startsWith("@") || !commentLines[j]) {
+        if (commentLines[j].trim().startsWith("@") || !commentLines[j]) {
           break;
         }
 
@@ -202,10 +227,17 @@ function transform(partialDoc: PartialDoc): ?Doc {
   options.tags = tags;
   options.brief = brief;
   options.description = description;
+  options.node = null;
 
   for (let i = 0; i < tags.length; i++) {
     if (TAG_MAP[tags[i].name]) {
-      return TAG_MAP[tags[i].name](node, options);
+      const doc = TAG_MAP[tags[i].name](node, options);
+
+      if (doc) {
+        return doc;
+      } else {
+        console.log(tags[i].name + " couldn't parse doc");
+      }
     }
   }
   if (!node) {
@@ -216,17 +248,14 @@ function transform(partialDoc: PartialDoc): ?Doc {
     return createDoc(partialDoc.name, "ClassDoc", options);
   }
   if (isClassMethod(node)) {
-    return createDoc(node.key.name, "MethodDoc", options);
+    return parseMethodDoc(node, options);
   }
   if (isClassProperty(node)) {
-    return createDoc(node.key.name, "PropertyDoc", options);
+    return createDoc(partialDoc.name, "PropertyDoc", options);
   }
   if (isExpressionStatement(node) &&
       isMemberExpression(node.expression.left)) {
-    options.scope = isThisExpression(node.expression.left.object) ?
-      "this" : node.expression.left.object.name;
-
-    return createDoc(node.expression.left.property.name, "PropertyDoc", options);
+    return parsePropertyDoc(node, options);
   }
 
   return null;
@@ -242,11 +271,13 @@ function assemble(partialDoc: PartialDoc, root: RootDoc): void {
   const doc: Doc = transform(partialDoc);
 
   if (!doc && partialDoc.name !== "File") {
-    partialDoc.node= null;
     partialDoc.parent = null;
     console.log(partialDoc);
+    console.log(partialDoc.node);
     console.log("^ failed");
     return;
+  } else if (doc) {
+    doc.members = doc.children;
   }
 
   const parent = partialDoc.parent ? partialDoc.parent.doc : null;

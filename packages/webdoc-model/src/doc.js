@@ -16,6 +16,7 @@ function updateScope(doc: Doc, scopeStack: string[], scopePath: string): void {
   }
 }
 
+// eslint-disable-next-line
 /**
  * Creates a valid doc object with a name & type.
  *
@@ -24,8 +25,8 @@ function updateScope(doc: Doc, scopeStack: string[], scopePath: string): void {
  * @param {*}[options]
  * @return {BaseDoc}
  */
-export const createDoc = (name?: string, type?: string = "BaseDoc", options: any) =>
-  (Object.assign({
+export const createDoc = (name?: string, type?: string = "BaseDoc", options: any) => {
+  const doc = Object.assign({
     name,
     path: "",
     stack: [""],
@@ -38,7 +39,13 @@ export const createDoc = (name?: string, type?: string = "BaseDoc", options: any
     scope: type === "MethodDoc" ? "instance" : "static",
     version: "public",
     type,
-  }, options || {}));
+  }, options || {});
+
+  doc.children = doc.children || [];
+  doc.members = doc.children;
+
+  return doc;
+};
 
 /**
  * Searches for the doc named {@code lname} in the given scoped documentation.
@@ -121,6 +128,10 @@ export function removeChildDoc(doc: BaseDoc, noUpdate: boolean = false) {
 export function doc(path: string | string[], root: BaseDoc): ?Doc {
   const docStack = Array.isArray(path) ? path : path.split(/[.|#]/);
   let doc = root;
+
+  if (docStack.length === 1 && docStack[0] === "") {
+    return doc;
+  }
 
   for (let i = 0; i < docStack.length; i++) {
     const child = childDoc(docStack[i], doc);

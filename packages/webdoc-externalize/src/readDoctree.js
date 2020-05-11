@@ -7,7 +7,11 @@ function restoreDoc(sanitized: SanitizedDoc, scope?: Doc): Doc {
   const doc: Doc = {
     name: sanitized.name,
     type: sanitized.type,
-    children: new Array(sanitized.children.length),
+    children: sanitized.children ? new Array(sanitized.children.length) : [],
+    access: sanitized.access,
+    scope: sanitized.scope,
+    version: sanitized.version,
+    brief: sanitized.brief,
   };
 
   if (sanitized.url) {
@@ -19,7 +23,7 @@ function restoreDoc(sanitized: SanitizedDoc, scope?: Doc): Doc {
   }
 
   for (let i = 0; i < doc.children.length; i++) {
-    doc.children[i] = restoreDoc(sanitized.children[i], doc);
+    doc.children[i] = restoreDoc((sanitized.children: any)[i], doc);
   }
 
   return doc;

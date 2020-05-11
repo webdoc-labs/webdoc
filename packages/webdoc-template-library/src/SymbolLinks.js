@@ -1,6 +1,8 @@
 // @flow
 import {templateLogger} from "./Logger";
 import type {Doc} from "@webdoc/types";
+
+// TODO: Replace catharsis with a in-built @webdoc/data-type-parser
 const catharsis = require("catharsis");
 
 type LinkOptions = {

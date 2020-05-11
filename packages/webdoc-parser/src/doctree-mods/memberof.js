@@ -1,19 +1,24 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+  value: true,
 });
 exports.default = memberofResolve;
 
-var _model = require("@webdoc/model");
+const _model = require("@webdoc/model");
 
 function queueTargets(doc, into = []) {
-  const memberofTag = doc.tags.find(tag => tag.name === "memberof");
+  const memberofTag = doc.tags.find((tag) => tag.name === "memberof");
 
   if (memberofTag) {
     into.push({
       doc,
-      destination: memberofTag.value.split(".")
+      destination: memberofTag.value.split("."),
+    });
+  } else if (doc.parserOpts && doc.parserOpts.memberof != null && typeof doc.parserOpts.memberof !== "undefined") {
+    into.push({
+      doc,
+      destination: doc.parserOpts.memberof,
     });
   }
 
@@ -31,7 +36,13 @@ function queueResolve(queue, root) {
     const resolve = queue.shift();
     const scope = (0, _model.doc)(resolve.destination, root);
 
+    if (scope === resolve.doc) {
+      console.log(resolve.doc);
+      throw new Error("Doc cannot be @memberof of itself");
+    }
+
     if (scope) {
+      console.log("Resolving @memberof for " + resolve.doc.name + " to " + scope.name);
       (0, _model.addChildDoc)(resolve.doc, scope);
     } else {
       backlog.push(resolve);
@@ -47,6 +58,7 @@ function memberofResolve(doc, root) {
 
   while (iqueue.length) {
     if (iqueue.length === lastQueueLength) {
+      console.log(iqueue);
       throw new Error("@memberof dependencies are circular; cannot resolve after " + lastQueueLength);
     }
 

@@ -5,10 +5,11 @@ export {tag} from "missionlog";
 
 export let parserLogger: Log = null;
 
-function initLogger(defaultLevel: string = "WARN") {
+function initLogger(defaultLevel: string = "INFO") {
   parserLogger = new Log().init(
     {
       TagParser: defaultLevel,
+      PartialParser: defaultLevel,
     },
     (level, tag, msg, params) => {
       tag = `[${tag}]:`;
