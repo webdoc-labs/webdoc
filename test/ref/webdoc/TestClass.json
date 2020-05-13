@@ -4,48 +4,78 @@
 		{
 			"name": "TestClass",
 			"type": "ClassDoc",
+			"access": "public",
+			"scope": "static",
+			"version": "public",
+			"brief": "",
 			"children": [
 				{
 					"name": "constructor",
 					"type": "MethodDoc",
-					"children": []
+					"access": "public",
+					"scope": "instance",
+					"version": "public",
+					"brief": ""
 				},
 				{
 					"name": "method0",
 					"type": "MethodDoc",
+					"access": "public",
+					"scope": "instance",
+					"version": "public",
+					"brief": " This is a method0.",
 					"children": [
 						{
 							"name": "MethodClass",
 							"type": "ClassDoc",
-							"children": []
+							"access": "public",
+							"scope": "static",
+							"version": "public",
+							"brief": " This is a class inside a method. It should have an inner scope."
 						}
 					]
 				},
 				{
 					"name": "TEST_PROPERTY",
 					"type": "PropertyDoc",
-					"children": []
+					"access": "public",
+					"scope": "static",
+					"version": "public",
+					"brief": ""
 				},
 				{
 					"name": "property0",
 					"type": "PropertyDoc",
-					"children": []
+					"access": "public",
+					"scope": "instance",
+					"version": "public",
+					"brief": ""
 				},
 				{
 					"name": "property1",
 					"type": "PropertyDoc",
-					"children": []
+					"access": "public",
+					"scope": "instance",
+					"version": "public",
+					"brief": ""
 				}
 			]
 		},
 		{
 			"name": "OtherClass",
 			"type": "ClassDoc",
+			"access": "public",
+			"scope": "static",
+			"version": "public",
+			"brief": " This class is used for testing how @member's are transferred.",
 			"children": [
 				{
 					"name": "AliasClass",
 					"type": "PropertyDoc",
-					"children": []
+					"access": "public",
+					"scope": "static",
+					"version": "public",
+					"brief": ""
 				}
 			]
 		}

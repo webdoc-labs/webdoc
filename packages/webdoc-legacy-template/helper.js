@@ -1,3 +1,4 @@
+// @flow
 // This API comes from [jsdoc/lib/]jsdoc/util/templateHelper.js
 
 const {SymbolLinks} = require("@webdoc/template-library");
@@ -55,6 +56,74 @@ exports.getMembers = (data) => {
   members.globals = members.globals.filter((doclet) => !isModuleExports(doclet));
 
   return members;
+};
+
+const toHtmlSafeString = exports.toHtmlSafeString = (str /*: string */) /*: string */ => {
+  if (typeof str !== "string") {
+    str = String(str);
+  }
+
+  return str.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+};
+
+/*::
+type Attribute = "async" | "generator" | "abstract" | "virtual" | "private" | "protected" |
+  "static" | "inner" | "readonly" | "constant" | "nullable" | "non-null"
+*/
+
+// This is not a constructor
+exports.Attributes = (doc /*: Doc */) => /*: Attribute[] */ {
+  const attribs /*: Attribute[] */ = [];
+
+  if (!doc) {
+    return attribs;
+  }
+
+  if (doc.async) {
+    attribs.push("async");
+  }
+
+  if (doc.generator) {
+    attribs.push("generator");
+  }
+
+  if (doc.virtual) {
+    attribs.push("abstract");
+  }
+
+  if (doc.access && doc.access !== "public") {
+    attribs.push(doc.access);
+  }
+
+  if (doc.scope && doc.scope !== "instance" && doc.scope !== "global") {
+    if (doc.type === "MethodDoc" || doc.type === "PropertyDoc") {
+      attribs.push(doc.scope);
+    }
+  }
+
+  if (doc.readonly) {
+    if (doc.type === "PropertyDoc") {
+      attribs.push("readonly");
+    }
+  }
+
+  if (doc.nullable === true) {
+    attribs.push("nullable");
+  } else if (doc.nullable === false) {
+    attribs.push("non-null");
+  }
+
+  return attribs;
+};
+
+exports.toAttributeString = (attribs /*: Attribute */) /*: string */ => {
+  const attribsString = "";
+
+  if (attribs && attribs.length) {
+    toHtmlSafeString(`(${attribs.join(", ")}) `);
+  }
+
+  return attribsString;
 };
 
 exports.buildLink = SymbolLinks.buildLink;

@@ -19,6 +19,7 @@ import {
   parseMember,
   parseEvent,
   parseFires,
+  parseProperty,
 } from "./tag-parsers";
 import {
   parseMethodDoc,
@@ -111,6 +112,7 @@ export const TAG_PARSERS = {
   "instance": parseInstance,
   "member": parseMember,
   "param": parseParam,
+  "property": parseProperty,
   "protected": parseProtected,
   "private": parsePrivate,
   "public": parsePublic,

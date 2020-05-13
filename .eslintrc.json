@@ -31,7 +31,8 @@
         "indent": [
             "error",
             2
-        ]
+        ],
+        "spaced-comment": "off"
     },
     "plugins": [
         "eslint-plugin-flow"

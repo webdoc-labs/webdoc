@@ -180,7 +180,8 @@
     <?js } ?>
 
     <?js
-        var events = doc.members.filter(child => child.type === "EventType");
+        var events = doc.members.filter(child => child.type === "EventDoc");
+
         if (events && events.length && events.forEach) {
     ?>
         <h3 class="subsection-title">Events</h3>

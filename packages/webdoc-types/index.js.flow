@@ -68,14 +68,14 @@ declare module "@webdoc/types" {
     declare type FunctionDoc = {
       ...Doc,
       params: Param[],
-      returns: Return,
+      returns: Return[],
       type: "FunctionDoc"
     };
 
     declare type MethodDoc = {
       ...Doc,
       params: Param[],
-      returns: Return,
+      returns: Return[],
       type: "MethodDoc"
     };
 
@@ -91,7 +91,7 @@ declare module "@webdoc/types" {
 
     declare type PropertyDoc = {
       ...Doc,
-      object: "this" | string,
+      object: "this" | ?string,
       dataType: DataType,
       type: "PropertyDoc"
     };
@@ -111,7 +111,7 @@ declare module "@webdoc/types" {
 
     declare type Tag = AccessTag | BaseTag | DeprecatedTag | ExampleTag | TypedTag |
         ParamTag | ReturnTag | MemberTag
-        | ThrowsTag | PrivateTag | ProtectedTag | PublicTag
+        | ThrowsTag | PrivateTag | PropertyTag | ProtectedTag | PublicTag
 
     declare type AccessTag = {
       ...BaseTag,
@@ -210,6 +210,13 @@ declare module "@webdoc/types" {
     declare type PrivateTag = {
       ...BaseTag,
       type: "PrivateTag"
+    };
+
+    declare type PropertyTag = {
+        ...BaseTag,
+        dataType: DataType,
+        description: string,
+        type: "PropertyTag"
     };
 
     declare type ProtectedTag = {

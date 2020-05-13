@@ -5,7 +5,7 @@ import path from "path";
 import {templateLogger, tag} from "./Logger";
 
 /**
- * The template generator uses lodash to parse .tmpl template files and renders HTML content. A
+ * The template renderer uses lodash to parse .tmpl template files and renders HTML content. A
  * template file contains {@code <?js js>} delimiters containing JavaScript code to control
  * what gets rendered. See {@npm @webdoc/template-library} for an example.
  *
@@ -43,6 +43,7 @@ export class TemplateRenderer {
 
   /**
    * Loads template from given file.
+   *
    * @param {string} filePath - Template filename.
    * @return {function} Returns template closure.
    */
@@ -72,7 +73,17 @@ export class TemplateRenderer {
 
     // keep template helper context
     templateLogger.info(tag.TemplateLibrary, `Partial() template ${filePath} ${data}`);
-    return this.cache[filePath].call(this, data);
+
+    let docHTML;
+
+    try {
+      docHTML = this.cache[filePath].call(this, data);
+    } catch (e) {
+      console.error(`Rendering template: ${filePath}`);
+      throw e;
+    }
+
+    return docHTML;
   }
 
   /**

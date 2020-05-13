@@ -9,7 +9,7 @@ var self = this;
 
     <?js if (data.type !== 'NSDoc') { ?>
         <h4 class="name" id="<?js= id ?>">
-            <?js= data.attribs + (data.name === "constructor" && data.parent 
+            <?js= data.attribs + (data.name === "constructor" && data.parent
                 ? `new ${data.parent.path}` : data.name) + (data.signature || '') ?>
         </h4>
     <?js } ?>
@@ -47,9 +47,9 @@ var self = this;
 <?js } ?>
 
 <?js
-    const params = data.tags.filter(tag => tag.type === 'ParamTag');
+    const params = data.params;
 
-    if (params.length && !data.hideconstructor) { ?>
+    if (params && params.length && !data.hideconstructor) { ?>
         <h5>Parameters:</h5>
         <?js= this.partial('params.tmpl', params) ?>
 <?js } ?>
@@ -109,21 +109,21 @@ var self = this;
 } } ?>
 
 <?js
-    const returnTags = data.tags.filter(tag => tag.type === "ReturnTag");
+    const returns = data.returns;
 
-    if (returnTags.length) { ?>
+    if (returns && returns.length) { ?>
 
     <h5>Returns:</h5>
 
-    <?js if (returnTags.length > 1) { ?>
+    <?js if (returns.length > 1) { ?>
         <ul>
         <?js
-            returnTags.forEach(function(r) { ?>
+            returns.forEach(function(r) { ?>
                 <li><?js= self.partial('returns.tmpl', r) ?></li>
             <?js }); ?>
         </ul>
         <?js } else {
-            returnTags.forEach(function(r) { ?>
+            returns.forEach(function(r) { ?>
             <?js= self.partial('returns.tmpl', r) ?>
     <?js });
 } } ?>
@@ -140,7 +140,7 @@ var self = this;
     <?js });
 } } ?>
 
-<?js 
+<?js
     const exampleTags = data.tags.filter(tag => tag.type === "ExampleTag");
 
     if (exampleTags.length) { ?>

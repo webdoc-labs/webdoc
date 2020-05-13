@@ -6,11 +6,11 @@ import {
   isAssignmentExpression,
   isClassProperty,
 } from "@babel/types";
-import type {PropertyDoc} from "@webdoc/types";
+import type {Doc, PropertyDoc} from "@webdoc/types";
 import {createDoc} from "@webdoc/model";
 
 // Parse this.member/Object.member = 'value' properties.
-function parseAssignedPropertyDoc(node: Node, options: any): PropertyDoc {
+function parseAssignedPropertyDoc(node: Node, options: $Shape<Doc>): PropertyDoc {
   options.object = isThisExpression(node.expression.left.object) ?
     "this" : node.expression.left.object.name;
 
@@ -26,7 +26,7 @@ function parseAssignedPropertyDoc(node: Node, options: any): PropertyDoc {
 }
 
 // Parse class className { prop = 'value'; } properties
-function parseClassPropertyDoc(node: Node, options: any): PropertyDoc {
+function parseClassPropertyDoc(node: Node, options: $Shape<Doc>): PropertyDoc {
   if (!options.scope) {
     if (node.static) {
       options.scope = "static";
@@ -41,7 +41,7 @@ function parseClassPropertyDoc(node: Node, options: any): PropertyDoc {
 // TODO: Getter/setter properties (refer from parseMethodDoc as they are "MethodDefinition"s)
 
 // Parses class/object properties
-export function parsePropertyDoc(node: Node, options: any): PropertyDoc {
+export function parsePropertyDoc(node: Node, options: $Shape<Doc>): PropertyDoc {
   if (!options.dataType) {
     options.dataType = ["any"];
   }

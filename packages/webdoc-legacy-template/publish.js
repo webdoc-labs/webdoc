@@ -1,3 +1,6 @@
+// @flow
+// @webdoc/legacy-template uses flow comment syntax for easier migration!
+
 const _ = require("lodash");
 const commonPathPrefix = require("common-path-prefix");
 const fs = require("fs");
@@ -8,7 +11,7 @@ const hasOwnProp = Object.prototype.hasOwnProperty;
 const {TemplateRenderer} = require("@webdoc/template-library");
 
 TemplateRenderer.prototype.linkto = helper.linkto;
-TemplateRenderer.prototype.htmlsafe = (str) => {
+const htmlsafe = TemplateRenderer.prototype.htmlsafe = (str) => {
   if (typeof str !== "string") {
     str = String(str);
   }
@@ -98,31 +101,36 @@ function hashToLink(doclet, hash) {
   return `<a href="${url}">${hash}</a>`;
 }
 
-function needsSignature({kind, type, meta}) {
-  let needsSig = false;
+/*::
+type Signature = {
+  params: [Param],
+  returns: [Return]
+}
+*/
 
-  // function and class definitions always get a signature
-  if (kind === "function" || kind === "class") {
-    needsSig = true;
+function needsSignature(doc /*: Doc */) /*: boolean */ {
+  // Functions, methods, and properties always have signatures.
+  if (doc.type === "FunctionDoc" || doc.type === "MethodDoc") {
+    return true;
   }
-  // typedefs that contain functions get a signature, too
-  else if (kind === "typedef" && type && type.names &&
+  // Class constructors documented as classes have signatures.
+  if (doc.type === "ClassDoc" && doc.params) {
+    return true;
+  }
+
+  // TODO: Need to resolve this one!
+  /*
+  // Typedefs containing functions have signatures.
+  if (doc.type === "TypedefDoc" && doc.of && type.names &&
         type.names.length) {
     for (let i = 0, l = type.names.length; i < l; i++) {
       if (type.names[i].toLowerCase() === "function") {
-        needsSig = true;
-        break;
+        return true;
       }
     }
-  }
-  // and namespaces that are functions get a signature (but finding them is a
-  // bit messy)
-  else if (kind === "namespace" && meta && meta.code &&
-        meta.code.type && meta.code.type.match(/[Ff]unction/)) {
-    needsSig = true;
-  }
+  }*/
 
-  return needsSig;
+  return false;
 }
 
 function getSignatureAttributes({optional, nullable}) {
@@ -141,31 +149,34 @@ function getSignatureAttributes({optional, nullable}) {
   return attributes;
 }
 
-function updateItemName(item) {
-  const attributes = getSignatureAttributes(item);
-  let itemName = item.name || "";
+const SignatureBuilder = {
+  appendParameters(params) {
+    return params
+      .filter((param) => param.identifer && !param.identifer.includes("."))
+      .map(
+        (item) => {
+          const attributes = getSignatureAttributes(item);
+          let itemName = item.identifer || "";
 
-  if (item.variable) {
-    itemName = `&hellip;${itemName}`;
-  }
+          if (item.variadic) {
+            itemName = `&hellip;${itemName}`;
+          }
 
-  if (attributes && attributes.length) {
-    itemName = `${itemName}<span class="signature-attributes">${attributes.join(", ")}</span>`;
-  }
+          if (attributes && attributes.length) {
+            itemName = `${itemName}<span class="signature-attributes">${attributes.join(", ")}</span>`;
+          }
 
-  return itemName;
-}
-
-function addParamAttributes(params) {
-  return params.filter(({name}) => name && !name.includes(".")).map(updateItemName);
-}
+          return itemName;
+        });
+  },
+};
 
 function buildItemTypeStrings(item) {
   const types = [];
 
-  if (item && item.type && item.type.names) {
-    item.type.names.forEach((name) => {
-      types.push( linkto(name, htmlsafe(name)) );
+  if (item && item.dataType && item.dataType.length) {
+    item.dataType.slice(1).forEach((name) => {
+      types.push(linkto(name, htmlsafe(name)) );
     });
   }
 
@@ -173,10 +184,10 @@ function buildItemTypeStrings(item) {
 }
 
 function buildAttribsString(attribs) {
-  const attribsString = "";
+  let attribsString = "";
 
   if (attribs && attribs.length) {
-    htmlsafe(`(${attribs.join(", ")}) `);
+    attribsString = htmlsafe(`(${attribs.join(", ")}) `);
   }
 
   return attribsString;
@@ -192,8 +203,8 @@ function addNonParamAttributes(items) {
   return types;
 }
 
-function addSignatureParams(f) {
-  const params = f.params ? addParamAttributes(f.params) : [];
+function addSignatureParams(f /*: Signature */) {
+  const params = f.params ? SignatureBuilder.appendParameters(f.params) : [];
 
   f.signature = `${f.signature || ""}(${params.join(", ")})`;
 }
@@ -210,7 +221,7 @@ function addSignatureReturns(f) {
   // who use multiple @return tags aren't using Closure Compiler type annotations, and vice-versa.
   if (source) {
     source.forEach((item) => {
-      helper.getAttribs(item).forEach((attrib) => {
+      helper.Attributes(item).forEach((attrib) => {
         if (!attribs.includes(attrib)) {
           attribs.push(attrib);
         }
@@ -239,7 +250,7 @@ function addSignatureTypes(f) {
 }
 
 function addAttribs(f) {
-  const attribs = helper.getAttribs(f);
+  const attribs = helper.Attributes(f);
   const attribsString = buildAttribsString(attribs);
 
   f.attribs = `<span class="type-signature">${attribsString}</span>`;
@@ -446,12 +457,13 @@ function sourceToDestination(parentDir, sourcePath, destDir) {
 }
 
 function initLogger() {
-  const defaultLevel = "WARN";
+  const defaultLevel = "INFO";
 
   publishLog = new Log().init(
     {
       TemplateGenerator: defaultLevel,
       ContentBar: defaultLevel,
+      Signature: defaultLevel,
     },
     (level, tag, msg, params) => {
       tag = `[${tag}]:`;
@@ -662,35 +674,30 @@ exports.publish = (options) => {
     }
   });
 
-  data().each((doclet) => {
-    const url = helper.pathToUrl[doclet.path];
+  data().each((doc) => {
+    const url = helper.pathToUrl[doc.path];
 
     if (url.includes("#")) {
-      doclet.id = helper.pathToUrl[doclet.path].split(/#/).pop();
+      doc.id = helper.pathToUrl[doc.path].split(/#/).pop();
     } else {
-      doclet.id = doclet.name;
+      doc.id = doc.name;
     }
 
-    if ( needsSignature(doclet) ) {
-      addSignatureParams(doclet);
-      addSignatureReturns(doclet);
-      addAttribs(doclet);
+    // Add signature information to the doc
+    if (needsSignature(doc)) {
+      addSignatureParams(doc);
+      addSignatureReturns(doc);
+      addAttribs(doc);
     }
   });
 
-  // do this after the urls have all been generated
-  data().each((doclet) => {
-    doclet.ancestors = getAncestorLinks(doclet);
+  // Link doc ancestors & finish up signatures! (after URL generation)
+  data().each((doc) => {
+    doc.ancestors = getAncestorLinks(doc);
 
-    if (doclet.kind === "member") {
-      addSignatureTypes(doclet);
-      addAttribs(doclet);
-    }
-
-    if (doclet.kind === "constant") {
-      addSignatureTypes(doclet);
-      addAttribs(doclet);
-      doclet.kind = "member";
+    if (doc.type === "PropertyDoc") {
+      addSignatureTypes(doc);
+      addAttribs(doc);
     }
   });
 

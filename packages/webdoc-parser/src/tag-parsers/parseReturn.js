@@ -1,9 +1,9 @@
 // @flow
-import type {TypedefTag} from "@webdoc/types";
+import type {Doc, ReturnTag} from "@webdoc/types";
 import {parserLogger, tag} from "../Logger";
 
-// Parse the "@typedef {ReturnType} description" tag
-export function parseReturn(value: string, options: any): TypedefTag {
+// Parse the "@return {ReturnType} description" tag
+export function parseReturn(value: string, doc: $Shape<Doc>): ReturnTag {
   // Get {ReferredType}
   const refClosure = /{([^{}])+}/.exec(value);
   let dataType = "any";
@@ -18,6 +18,15 @@ export function parseReturn(value: string, options: any): TypedefTag {
     description = value.replace(
       new RegExp(`(.{${refClosure.index}}).{${refClosure.index + refClosure[0].length}}`), "$1");
   }
+
+  if (!doc.returns) {
+    doc.returns = [];
+  }
+
+  doc.returns.push({
+    dataType: [dataType, dataType],
+    description,
+  });
 
   return {
     name: "return",

@@ -1,4 +1,6 @@
-import type {ParamTag} from "@webdoc/types";
+// @flow
+
+import type {Doc, ParamTag} from "@webdoc/types";
 
 // Extracts the parameter's identifer & related information that occurs after the type
 function extractIdentifer(from: string, index: number = 0): {
@@ -63,7 +65,7 @@ function extractIdentifer(from: string, index: number = 0): {
 }
 
 // Parses a ParamTag from a string
-export function parseParam(value: string, options: any): ParamTag {
+export function parseParam(value: string, options: $Shape<Doc>): ParamTag {
   // Finds the {Type} closure,
   const refClosure = /{([^{}])+}/.exec(value);
 
@@ -92,6 +94,19 @@ export function parseParam(value: string, options: any): ParamTag {
   } else if (extractable) {
     console.warn(`${identClosure.identifer} does not have a "-" token preceeding description`);
   }
+
+  if (!options.params) {
+    options.params = [];
+  }
+
+  options.params.push({
+    identifer: identClosure.identifer,
+    referred: ref,
+    description: extractable,
+    optional: identClosure.optional,
+    default: identClosure.default,
+    variadic: identClosure.variadic,
+  });
 
   return {
     name: "param",
