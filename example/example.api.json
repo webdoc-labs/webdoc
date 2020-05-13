@@ -18,6 +18,14 @@
 					"brief": "",
 					"children": [
 						{
+							"name": "CHAIN_KEY",
+							"type": "PropertyDoc",
+							"access": "public",
+							"scope": "static",
+							"version": "public",
+							"brief": ""
+						},
+						{
 							"name": "constructor",
 							"type": "MethodDoc",
 							"access": "public",
@@ -83,7 +91,17 @@
 					"access": "public",
 					"scope": "static",
 					"version": "public",
-					"brief": ""
+					"brief": "",
+					"children": [
+						{
+							"name": "bufferSize",
+							"type": "PropertyDoc",
+							"access": "public",
+							"scope": "static",
+							"version": "public",
+							"brief": ""
+						}
+					]
 				}
 			]
 		}

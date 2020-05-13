@@ -4,6 +4,8 @@
  *
  * @memberof EX
  * @public
+ *
+ * @property {string} CHAIN_KEY
  */
 class StreamBuilder {
   /**
