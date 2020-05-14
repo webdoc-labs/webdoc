@@ -9,8 +9,6 @@ export function parseProperty(value: string, doc: $Shape<Doc>): PropertyTag {
   const {identifer, referred, description} = o = parseParam(value, {});
   const dataType = [referred, referred];
 
-  console.log(o);
-
   if (!doc.children) {
     doc.children = [];
   }
@@ -19,6 +17,7 @@ export function parseProperty(value: string, doc: $Shape<Doc>): PropertyTag {
     object: null,
     dataType,
     description,
+    scope: "default", // related-resolution doctree-mod will resolve this
   }));
 
   return {

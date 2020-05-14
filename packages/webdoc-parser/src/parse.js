@@ -20,6 +20,9 @@ import {
   parseEvent,
   parseFires,
   parseProperty,
+  parseExtends,
+  parseImplements,
+  parseMixes,
 } from "./tag-parsers";
 import {
   parseMethodDoc,
@@ -34,7 +37,6 @@ import {
   type Tag,
   type RootDoc,
   type Doc,
-  type MemberTag,
   type NSDoc,
   type ExampleTag,
 } from "@webdoc/types";
@@ -49,7 +51,6 @@ import {
   isClassDeclaration,
   isClassMethod,
   isMemberExpression,
-  isThisExpression,
   isClassProperty,
   isClassExpression,
 } from "@babel/types";
@@ -92,9 +93,36 @@ function getNodeName(node: any): string {
   return "<Unknown>";
 }
 
+function createDocParser(nameHolderTag: string, docType: string) {
+  return function(node, options) {
+    let name = getNodeName(node);
+
+    if (!name) {
+      const tag = options.tags.find((tag) => tag.type === nameHolderTag);
+
+      if (tag) {
+        name = tag.value;
+      }
+    }
+
+    if (!name) {
+      const tag = options.tags.find((tag) => tag.type === "NameTag");
+
+      if (tag) {
+        name = tag.value;
+      }
+    }
+
+    console.log("Interface : " + name);
+
+    return createDoc(name, docType, options);
+  };
+}
+
 // These tags define what is being documented and override the actual code.
 const TAG_MAP = {
   "class": (node, options): ClassDoc => createDoc(getNodeName(node), "ClassDoc", options),
+  "interface": createDocParser("InterfaceTag", "InterfaceDoc"),
   "method": (node, options): MethodDoc => createDoc(getNodeName(node), "MethodDoc", options),
   "typedef": parseTypedefDoc,
   "namespace": (node, options): NSDoc => createDoc(
@@ -103,21 +131,37 @@ const TAG_MAP = {
   "event": parseEventDoc,
 };
 
+// This is used to generate a BaseTag parser with no special features.
+// @name, @class, @interface, @mixin
+function createTagParser(type: string) {
+  return function(value: string) {
+    return {
+      value,
+      type,
+    };
+  };
+}
+
 export const TAG_PARSERS = {
   "access": parseAccess,
+  "augments": parseExtends, // alias @extends
   "event": parseEvent,
   "example": (value: string): ExampleTag => ({name: "example", code: value, value, type: "ExampleTag"}),
+  "extends": parseExtends,
   "fires": parseFires,
   "inner": parseInner,
   "instance": parseInstance,
+  "interface": createTagParser("InterfaceTag"),
+  "implements": parseImplements,
   "member": parseMember,
+  "mixes": parseMixes,
   "param": parseParam,
   "property": parseProperty,
   "protected": parseProtected,
   "private": parsePrivate,
   "public": parsePublic,
   "return": parseReturn,
-  "returns": parseReturn,
+  "returns": parseReturn, // alias @return
   "scope": parseScope,
   "static": parseStatic,
   "tag": (name: string, value: string): Tag => ({name, value}),
@@ -197,7 +241,7 @@ function transform(partialDoc: PartialDoc): ?Doc {
   for (let i = 0; i < commentLines.length; i++) {
     if (commentLines[i].trimStart().startsWith("@")) {
       const tokens = commentLines[i].trim().split(" ");
-      const tag = tokens[0].replace("@", "");
+      const tagName = tokens[0].replace("@", "");
 
       let value = tokens.slice(1).join(" ");
 
@@ -210,11 +254,19 @@ function transform(partialDoc: PartialDoc): ?Doc {
         value += "\n" + commentLines[i];
       }
 
-      if (TAG_PARSERS[tag]) {
-        tags.push(TAG_PARSERS[tag](value, options));
+      let tag;
+
+      if (TAG_PARSERS.hasOwnProperty(tagName)) {
+        tag = (TAG_PARSERS[tagName](value, options));
       } else {
-        tags.push(TAG_PARSERS["tag"](tag, value));
+        tag = (TAG_PARSERS["tag"](tagName, value));
       }
+
+      if (tag && !tag.name) {
+        tag.name = tagName;
+      }
+
+      tags.push(tag);
     } else if (commentLines[i]) {
       if (!brief && !commentLines[i + 1] && !noBrief) {
         brief = `${commentLines[i]}`;
@@ -232,7 +284,7 @@ function transform(partialDoc: PartialDoc): ?Doc {
   options.node = null;
 
   for (let i = 0; i < tags.length; i++) {
-    if (TAG_MAP[tags[i].name]) {
+    if (TAG_MAP.hasOwnProperty(tags[i].name)) {
       const doc = TAG_MAP[tags[i].name](node, options);
 
       if (doc) {
@@ -246,11 +298,11 @@ function transform(partialDoc: PartialDoc): ?Doc {
     return null;
   }
 
-  if (isClassDeclaration(node) || isClassExpression(node)) {
-    return createDoc(partialDoc.name, "ClassDoc", options);
-  }
   if (isClassMethod(node)) {
     return parseMethodDoc(node, options);
+  }
+  if (isClassDeclaration(node) || isClassExpression(node)) {
+    return createDoc(partialDoc.name, "ClassDoc", options);
   }
   if (isClassProperty(node)) {
     return createDoc(partialDoc.name, "PropertyDoc", options);
@@ -283,6 +335,12 @@ function assemble(partialDoc: PartialDoc, root: RootDoc): void {
   }
 
   const parent = partialDoc.parent ? partialDoc.parent.doc : null;
+
+  console.log("assembling " + (doc ? doc.name : "<Unknown>"));
+
+  if (doc && doc.name === undefined) {
+    console.log(Object.assign({}, doc, {node: "removed"}));
+  }
 
   if (parent && !doc.constructor.noInferredScope) {
     addChildDoc(doc, parent);

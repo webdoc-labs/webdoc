@@ -24,6 +24,8 @@ declare module "@webdoc/types" {
       description: string,
     };
 
+    declare type DocLink = Doc | string;
+
     declare type Return = TypedDesc;
 
     declare type BaseDoc = {
@@ -37,7 +39,8 @@ declare module "@webdoc/types" {
       brief: string,
       description: string,
       access: "public" | "protected" | "private",
-      fires: [],
+      extends?: DocLink[],
+      fires?: [],
       scope: "static" | "instance" | "inner",
       version: "alpha" | "beta" | "internal" | "public" | "deprecated",
       type: "ClassDoc" | "FunctionDoc" | "MethodDoc" | "ObjectDoc" | "RootDoc" | "TypedefDoc",
@@ -55,6 +58,7 @@ declare module "@webdoc/types" {
     declare type ClassDoc = {
       ...Doc,
       params?: Param[],
+      implements?: DocLink[],
       type: "ClassDoc"
     };
 
@@ -76,6 +80,8 @@ declare module "@webdoc/types" {
       ...Doc,
       params: Param[],
       returns: Return[],
+      inherited: boolean,
+      overrides: boolean,
       type: "MethodDoc"
     };
 
@@ -86,6 +92,7 @@ declare module "@webdoc/types" {
 
     declare type ObjectDoc = {
       ...Doc,
+      implements?: DocLink[],
       type: "ObjectDoc"
     };
 
@@ -93,6 +100,7 @@ declare module "@webdoc/types" {
       ...Doc,
       object: "this" | ?string,
       dataType: DataType,
+      inherited: boolean,
       type: "PropertyDoc"
     };
 
@@ -101,6 +109,7 @@ declare module "@webdoc/types" {
       of: [string],
       alias: string,
       type: "TypedefDoc",
+      implements: DocLink[]
     };
 
     declare type BaseTag = {
@@ -109,9 +118,9 @@ declare module "@webdoc/types" {
       type: "link" | "param" | "return" | "throws"
     };
 
-    declare type Tag = AccessTag | BaseTag | DeprecatedTag | ExampleTag | TypedTag |
-        ParamTag | ReturnTag | MemberTag
-        | ThrowsTag | PrivateTag | PropertyTag | ProtectedTag | PublicTag
+    declare type Tag = AccessTag | BaseTag | DeprecatedTag | ExampleTag | ExtendsTag | TypedTag |
+        ParamTag | ReturnTag | MemberTag | ImplementsTag | MixesTag |
+        ThrowsTag | PrivateTag | PropertyTag | ProtectedTag | PublicTag
 
     declare type AccessTag = {
       ...BaseTag,
@@ -136,10 +145,20 @@ declare module "@webdoc/types" {
       type: "ExampleTag"
     };
 
+    declare type ExtendsTag = {
+      ...BaseTag,
+      type: "ExtendsTag"
+    };
+
     declare type FiresTag = {
       ...BaseTag,
       event: string,
       type: "FiresTag"
+    };
+
+    declare type ImplementsTag = {
+      ...BaseTag,
+      type: "ImplementsTag"
     };
 
     declare type InnerTag = {
@@ -150,6 +169,11 @@ declare module "@webdoc/types" {
     declare type InstanceTag = {
       ...BaseTag,
       type: "InstanceTag"
+    };
+
+    declare type MixesTag = {
+      ...BaseTag,
+      type: "MixesTag"
     };
 
     declare type TypedTag = {

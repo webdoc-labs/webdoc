@@ -1,6 +1,6 @@
 // @flow
 
-import type {BaseDoc, Doc} from "@webdoc/types";
+import type {BaseDoc, Doc, DocLink, ClassDoc, ObjectDoc, TypedefDoc} from "@webdoc/types";
 
 function updateScope(doc: Doc, scopeStack: string[], scopePath: string): void {
   if (scopePath) {
@@ -43,6 +43,11 @@ export const createDoc = (name?: string, type?: string = "BaseDoc", options: any
 
   doc.children = doc.children || [];
   doc.members = doc.children;
+
+  // Link any pre-existing members to their parent
+  for (let i = 0; i < doc.members.length; i++) {
+    doc.members[i].parent = doc;
+  }
 
   return doc;
 };
@@ -170,4 +175,79 @@ export function addDoc<T: BaseDoc>(doc: T, root: BaseDoc): ?T {
 
   addChildDoc(doc, scope);
   return doc;
+}
+
+/**
+ * Clones the doc without its children or parent.
+ *
+ * @template T
+ * @param {T} doc
+ * @return {T}
+ */
+export function cloneDoc<T: BaseDoc>(doc: T): T {
+  return Object.assign({}, doc, {children: [], members: [], parent: undefined});
+}
+
+// ------------------------------------------------------------------------------------------------
+// Functions to discover symbols with a specific relation to the given doc.
+// ------------------------------------------------------------------------------------------------
+
+// TODO: Modify findExtendedDocs & findImplementedDocs to do two passes so that parents
+// are in order of depth difference.
+
+/**
+ * Finds all the symbols that are extended by {@code doc}.
+ *
+ * @param {Doc} doc
+ * @param {Set<DocLink>}[extended] - the set to insert the extended symbols into
+ * @return {Set<DocLink>} the symbols that are extended
+ */
+export function findExtendedDocs(doc: Doc, extended?: Set<DocLink>): Set<DocLink> {
+  extended = extended ? extended : new Set<DocLink>();
+
+  if (!doc.extends) {
+    return extended;
+  }
+
+  for (let i = 0; i < doc.extends.length; i++) {
+    const extendedSymbol = doc.extends[i];
+
+    extended.add(extendedSymbol);
+
+    if (typeof extendedSymbol !== "string" && extendedSymbol.extends) {
+      findExtendedDocs(extendedSymbol, extended);
+    }
+  }
+
+  return extended;
+}
+
+/**
+ * Finds all the symbols that are implemented by {@code doc}.
+ *
+ * @param {Doc} doc
+ * @param {Set<DocLink>}[implemented] - the set to insert the implemented symbols into
+ * @return {Set<DocLink>} the symbols that are implemented by {@code doc}
+ */
+export function findImplementedDocs(
+  doc: ClassDoc | ObjectDoc | TypedefDoc,
+  implemented?: Set<DocLink>,
+): Set<DocLink> {
+  implemented = implemented ? implemented : new Set<DocLink>();
+
+  if (!doc.implements) {
+    return implemented;
+  }
+
+  for (let i = 0; i < doc.implements.length; i++) {
+    const implementedSymbol = doc.implements[i];
+
+    implemented.add(implementedSymbol);
+
+    if (typeof implementedSymbol !== "string" && implementedSymbol.implements) {
+      findImplementedDocs(implementedSymbol, implemented);
+    }
+  }
+
+  return implemented;
 }

@@ -2,7 +2,9 @@
     var self = this;
     var isGlobalPage;
 
-    docs.forEach(function(doc, i) {
+    docs.forEach((doc, i) => {
+      const currentDoc = doc;
+      const memberList = currentDoc.members;
 ?>
 
 <?js
@@ -68,10 +70,16 @@
         <?js } ?>
     </div>
 
-    <?js if (doc.augments && doc.augments.length) { ?>
+    <?js if (doc.extends && doc.extends.length) { ?>
         <h3 class="subsection-title">Extends</h3>
 
-        <?js= self.partial('augments.tmpl', doc) ?>
+        <?js= self.partial('augments.tmpl', doc.extends) ?>
+    <?js } ?>
+
+    <?js if (doc.implements && doc.implements.length) { ?>
+        <h3 class="subsection-title">Implements</h3>
+
+        <?js= self.partial('augments.tmpl', doc.implements) ?>
     <?js } ?>
 
     <?js if (doc.requires && doc.requires.length) { ?>
@@ -131,7 +139,7 @@
     <?js } ?>
 
     <?js
-        var members = doc.children.filter(child => child.type === 'PropertyDoc')
+        var members = memberList.filter(child => child.type === 'PropertyDoc')
 
         // symbols that are assigned to module.exports are not globals, even though they're not a memberof anything
         if (isGlobalPage && members && members.length && members.forEach) {
@@ -149,7 +157,7 @@
     <?js } ?>
 
     <?js
-        var methods = doc.children.filter(child => child.type === 'MethodDoc' && child.name !== 'constructor');
+        var methods = memberList.filter(child => child.type === 'MethodDoc' && child.name !== 'constructor');
         if (methods && methods.length && methods.forEach) {
     ?>
         <h3 class="subsection-title">Methods</h3>
@@ -180,7 +188,7 @@
     <?js } ?>
 
     <?js
-        var events = doc.members.filter(child => child.type === "EventDoc");
+        var events = memberList.filter(child => child.type === "EventDoc");
 
         if (events && events.length && events.forEach) {
     ?>

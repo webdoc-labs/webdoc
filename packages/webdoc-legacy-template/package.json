@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "@webdoc/template-library": "0.0.1-alpha.0",
+    "@webdoc/model": "0.0.1-alpha.0",
     "jsdoc": "3.6.4",
     "@jsdoc/cli": "^0.2.2",
     "@jsdoc/core": "^0.3.1",

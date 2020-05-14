@@ -1,23 +1,13 @@
-"use strict";
+// @flow
 
-Object.defineProperty(exports, "__esModule", {
-  value: true,
-});
-exports.default = mod;
+import memberResolution from "./member-resolution";
+import memberof from "./memberof";
+import prune from "./prune";
+import relatedResolution from "./related-resolution";
 
-const _memberResolution = _interopRequireDefault(require("./member-resolution"));
+const mods = [memberResolution, memberof, prune, relatedResolution];
 
-const _memberof = _interopRequireDefault(require("./memberof"));
-
-const _prune = _interopRequireDefault(require("./prune"));
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : {default: obj};
-}
-
-const mods = [_memberResolution.default, _memberof.default, _prune.default];
-
-function mod(doctree) {
+export default function mod(doctree) {
   for (let i = 0; i < mods.length; i++) {
     console.log("mod: " + i);
     mods[i](doctree, doctree);

@@ -163,13 +163,13 @@ function generateFileName(fileName: string, str: string): string {
   let key = fileName.toLowerCase();
   let nonUnique = true;
 
-  // don't allow filenames to begin with an underscore
+  // Don't allow filenames to begin with an underscore
   if (!fileName.length || fileName[0] === "_") {
     fileName = `-${fileName}`;
     key = fileName.toLowerCase();
   }
 
-  // append enough underscores to make the filename unique
+  // Append enough underscores to make the filename unique
   while (nonUnique) {
     if (hasOwnProp.call(usedFileNames, key) ) {
       fileName += "_";
@@ -303,6 +303,10 @@ const createLink = (doc: Doc) => {
  * @return {string} the HTML link, or the link text if the link is not available.
  */
 function buildLink(docPath: string, linkText: string, options: LinkOptions) {
+  if (typeof docPath !== "string") {
+    docPath = docPath.path;// BaseDoc
+  }
+
   const classString = options.cssClass ? ` class="${options.cssClass}"` : "";
   let fileUrl;
   const fragmentString = fragmentHash(options.fragmentId || "");
@@ -350,12 +354,11 @@ function buildLink(docPath: string, linkText: string, options: LinkOptions) {
  * replace `Array`, `MyClass`, and `YourClass` with links to the appropriate types. The link text
  * is ignored for type applications.
  *
- * @function
  * @param {string} docPath - The longname (or URL) that is the target of the link.
- * @param {string=} linkText - The text to display for the link, or `longname` if no text is
+ * @param {string} linkText - The text to display for the link, or `longname` if no text is
  * provided.
- * @param {string=} cssClass - The CSS class (or classes) to include in the link's `<a>` tag.
- * @param {string=} fragmentId - The fragment identifier (for example, `name` in `foo.html#name`)
+ * @param {string}[cssClass] - The CSS class (or classes) to include in the link's `<a>` tag.
+ * @param {string}[fragmentId] - The fragment identifier (for example, `name` in `foo.html#name`)
  *  to append to the link target.
  * @return {string} The HTML link, or a plain-text string if the link is not available.
  */

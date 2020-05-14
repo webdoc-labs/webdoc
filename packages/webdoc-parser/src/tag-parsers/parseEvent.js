@@ -1,3 +1,5 @@
+// @flow
+
 import type {EventTag} from "@webdoc/types";
 
 export function parseEvent(value: string, options: { [id: string]: any }): EventTag {

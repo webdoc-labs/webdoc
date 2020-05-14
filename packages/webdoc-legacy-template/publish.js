@@ -11,6 +11,8 @@ const hasOwnProp = Object.prototype.hasOwnProperty;
 const {TemplateRenderer} = require("@webdoc/template-library");
 
 TemplateRenderer.prototype.linkto = helper.linkto;
+TemplateRenderer.prototype.linkTo = helper.linkto;
+
 const htmlsafe = TemplateRenderer.prototype.htmlsafe = (str) => {
   if (typeof str !== "string") {
     str = String(str);
@@ -519,10 +521,10 @@ exports.publish = (options) => {
 
   // claim some special filenames in advance, so the All-Powerful Overseer of Filename Uniqueness
   // doesn't try to hand them out later
-  indexUrl = helper.getUniqueFilename("index");
+  indexUrl = helper.getUniqueFilename("index") + ".html";
   // don't call registerLink() on this one! 'index' is also a valid longname
 
-  globalUrl = helper.getUniqueFilename("global");
+  globalUrl = helper.getUniqueFilename("global") + ".html";
   // helper.registerLink("global", globalUrl);
 
   // set up templating
