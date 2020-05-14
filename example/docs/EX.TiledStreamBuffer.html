@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>webdoc: Class: StreamBuffer</title>
+    <title>webdoc: Class: TiledStreamBuffer</title>
 
     <script src="scripts/prettify.js"> </script>
     <script src="scripts/lang-css.js"> </script>
@@ -14,7 +14,7 @@
 </head>
 <body>
     <div id="main">
-        <h1 class="page-title">Class: StreamBuffer</h1>
+        <h1 class="page-title">Class: TiledStreamBuffer</h1>
         
 
 
@@ -26,9 +26,13 @@
     
         <h2>
             
-            EX.StreamBuffer
+            EX.TiledStreamBuffer
             
         </h2>
+        
+            <div class="class-description"> This buffer tiles the elements for faster 2D access to neighbouring elements. This is useful if
+ you are processing pixel data of an image.
+</div>
         
         
 </header>
@@ -41,18 +45,20 @@
     
 
     
-        <h4 class="name" id="StreamBuffer">
-            StreamBuffer
+        <h4 class="name" id="TiledStreamBuffer">
+            TiledStreamBuffer
         </h4>
     
 
 
 
+
+
     <div class="description">
-         Stream buffers store a portion of a stream's contents.
+         This buffer tiles the elements for faster 2D access to neighbouring elements. This is useful if
+ you are processing pixel data of an image.
+
     </div>
-
-
 
 
 
@@ -125,6 +131,17 @@
 
         
     </div>
+
+    
+        <h3 class="subsection-title">Extends</h3>
+
+        
+
+<ul>
+  
+    <li><a href="EX.AbstractFileBuffer.html">EX.AbstractFileBuffer</a></li>
+  
+</ul>
 
     
 
@@ -216,75 +233,6 @@
 
 
         
-            
-<h4 class="name" id="PropertyDocCHAIN_KEY_PROVIDER"><span class="type-signature">(static) </span>CHAIN_KEY_PROVIDER<span class="type-signature"> :Object</span></h4>
-
-
-    <p class="summary"> The stream class which holds the chain-key</p>
-
-
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-        <span class="param-type">Object</span>
-        
-
-
-        </li>
-    </ul>
-
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-version">Version:</dt>
-    <dd class="tag-version"><ul class="dummy"><li>public</li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
     
 
     
@@ -304,7 +252,7 @@
 
 
     <div class="description">
-         Update the buffer's contents.
+         Update the buffer's contents w.r.t the file.
     </div>
 
 

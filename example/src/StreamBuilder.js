@@ -59,11 +59,67 @@ class StreamBuilder {
  */
 
 /**
- * This is a clas.
+ * Stream buffers store a portion of a stream's contents.
  *
  * @memberof EX
  */
 class StreamBuffer {
+  constructor() {
+    /**
+     * The offset of the current buffer contents in the stream.
+     * @member {number}
+     */
+    this.offset = 0;
+  }
+
+  /**
+   * Update the buffer's contents.
+   */
+  update() {}
+
+  /**
+   * Shift the buffer-frame right
+   */
+  next() {}
+
+  /**
+   * Fired when the stream buffer frame is shifted, e.g. when {@code next} or {@code prev}
+   * is called.
+   * @event EX.StreamBuffer.shift
+   */
+}
+
+/**
+ * The stream class which holds the chain-key
+ *
+ * @static
+ * @member {Object}
+ */
+StreamBuffer.CHAIN_KEY_PROVIDER = StreamBuilder;
+
+/**
+ * Base class for file buffers
+ *
+ * @memberof EX
+ * @extends EX.StreamBuffer
+ * @implements EX.IFileBuffer
+ * @abstract
+ */
+class AbstractFileBuffer {
+  /**
+   * Update the buffer's contents w.r.t the file.
+   */
+  update() {}
+}
+
+/**
+ * This buffer tiles the elements for faster 2D access to neighbouring elements. This is useful if
+ * you are processing pixel data of an image.
+ *
+ * @memberof EX
+ * @extends EX.AbstractFileBuffer
+ */
+class TiledStreamBuffer {
 
 }
 
@@ -79,4 +135,11 @@ StreamBuffer.Reducer = class {
  * @memberof EX
  * @typedef {object} IStreamConfig
  * @property {number} bufferSize
+ */
+
+/**
+ * @memberof EX
+ * @interface IFileBuffer
+ * @property {number} dirtyID
+ * @property {number} flushID
  */

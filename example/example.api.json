@@ -21,7 +21,7 @@
 							"name": "CHAIN_KEY",
 							"type": "PropertyDoc",
 							"access": "public",
-							"scope": "static",
+							"scope": "instance",
 							"version": "public",
 							"brief": ""
 						},
@@ -73,8 +73,40 @@
 					"access": "public",
 					"scope": "static",
 					"version": "public",
-					"brief": " This is a clas.",
+					"brief": " Stream buffers store a portion of a stream's contents.",
 					"children": [
+						{
+							"name": "update",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"version": "public",
+							"brief": " Update the buffer's contents."
+						},
+						{
+							"name": "next",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"version": "public",
+							"brief": " Shift the buffer-frame right"
+						},
+						{
+							"name": "offset",
+							"type": "PropertyDoc",
+							"access": "public",
+							"scope": "instance",
+							"version": "public",
+							"brief": ""
+						},
+						{
+							"name": "CHAIN_KEY_PROVIDER",
+							"type": "PropertyDoc",
+							"access": "public",
+							"scope": "static",
+							"version": "public",
+							"brief": " The stream class which holds the chain-key"
+						},
 						{
 							"name": "Reducer",
 							"type": "ClassDoc",
@@ -82,6 +114,98 @@
 							"scope": "static",
 							"version": "public",
 							"brief": " Parallel reducer algorithm for running statistical summarization on a buffered stream."
+						},
+						{
+							"name": "shift",
+							"type": "EventDoc",
+							"access": "public",
+							"scope": "static",
+							"version": "public",
+							"brief": ""
+						}
+					]
+				},
+				{
+					"name": "AbstractFileBuffer",
+					"type": "ClassDoc",
+					"access": "public",
+					"scope": "static",
+					"version": "public",
+					"brief": " Base class for file buffers",
+					"children": [
+						{
+							"name": "update",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"version": "public",
+							"brief": " Update the buffer's contents w.r.t the file."
+						},
+						{
+							"name": "next",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"version": "public",
+							"brief": " Shift the buffer-frame right"
+						},
+						{
+							"name": "offset",
+							"type": "PropertyDoc",
+							"access": "public",
+							"scope": "instance",
+							"version": "public",
+							"brief": ""
+						},
+						{
+							"name": "shift",
+							"type": "EventDoc",
+							"access": "public",
+							"scope": "static",
+							"version": "public",
+							"brief": ""
+						}
+					]
+				},
+				{
+					"name": "TiledStreamBuffer",
+					"type": "ClassDoc",
+					"access": "public",
+					"scope": "static",
+					"version": "public",
+					"brief": "",
+					"children": [
+						{
+							"name": "update",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"version": "public",
+							"brief": " Update the buffer's contents w.r.t the file."
+						},
+						{
+							"name": "next",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"version": "public",
+							"brief": " Shift the buffer-frame right"
+						},
+						{
+							"name": "offset",
+							"type": "PropertyDoc",
+							"access": "public",
+							"scope": "instance",
+							"version": "public",
+							"brief": ""
+						},
+						{
+							"name": "shift",
+							"type": "EventDoc",
+							"access": "public",
+							"scope": "static",
+							"version": "public",
+							"brief": ""
 						}
 					]
 				},
@@ -98,6 +222,32 @@
 							"type": "PropertyDoc",
 							"access": "public",
 							"scope": "static",
+							"version": "public",
+							"brief": ""
+						}
+					]
+				},
+				{
+					"name": "IFileBuffer",
+					"type": "InterfaceDoc",
+					"access": "public",
+					"scope": "static",
+					"version": "public",
+					"brief": "",
+					"children": [
+						{
+							"name": "dirtyID",
+							"type": "PropertyDoc",
+							"access": "public",
+							"scope": "instance",
+							"version": "public",
+							"brief": ""
+						},
+						{
+							"name": "flushID",
+							"type": "PropertyDoc",
+							"access": "public",
+							"scope": "instance",
 							"version": "public",
 							"brief": ""
 						}

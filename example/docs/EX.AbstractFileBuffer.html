@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>webdoc: Class: StreamBuffer</title>
+    <title>webdoc: Class: AbstractFileBuffer</title>
 
     <script src="scripts/prettify.js"> </script>
     <script src="scripts/lang-css.js"> </script>
@@ -14,7 +14,7 @@
 </head>
 <body>
     <div id="main">
-        <h1 class="page-title">Class: StreamBuffer</h1>
+        <h1 class="page-title">Class: AbstractFileBuffer</h1>
         
 
 
@@ -26,7 +26,7 @@
     
         <h2>
             
-            EX.StreamBuffer
+            EX.AbstractFileBuffer
             
         </h2>
         
@@ -41,15 +41,15 @@
     
 
     
-        <h4 class="name" id="StreamBuffer">
-            StreamBuffer
+        <h4 class="name" id="AbstractFileBuffer">
+            AbstractFileBuffer
         </h4>
     
 
 
 
     <div class="description">
-         Stream buffers store a portion of a stream's contents.
+         Base class for file buffers
     </div>
 
 
@@ -81,6 +81,13 @@
 
     
 
+    
+    <dt class="implements">Implements:</dt>
+    <dd class="implements"><ul>
+        
+            <li><a href="EX.IFileBuffer.html">[object Object]</a></li>
+        
+    </ul></dd>
     
 
     
@@ -127,6 +134,28 @@
     </div>
 
     
+        <h3 class="subsection-title">Extends</h3>
+
+        
+
+<ul>
+  
+    <li><a href="EX.StreamBuffer.html">EX.StreamBuffer</a></li>
+  
+</ul>
+
+    
+
+    
+        <h3 class="subsection-title">Implements</h3>
+
+        
+
+<ul>
+  
+    <li><a href="EX.IFileBuffer.html">EX.IFileBuffer</a></li>
+  
+</ul>
 
     
 
@@ -216,75 +245,6 @@
 
 
         
-            
-<h4 class="name" id="PropertyDocCHAIN_KEY_PROVIDER"><span class="type-signature">(static) </span>CHAIN_KEY_PROVIDER<span class="type-signature"> :Object</span></h4>
-
-
-    <p class="summary"> The stream class which holds the chain-key</p>
-
-
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-        <span class="param-type">Object</span>
-        
-
-
-        </li>
-    </ul>
-
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-version">Version:</dt>
-    <dd class="tag-version"><ul class="dummy"><li>public</li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
     
 
     
@@ -304,7 +264,7 @@
 
 
     <div class="description">
-         Update the buffer's contents.
+         Update the buffer's contents w.r.t the file.
     </div>
 
 
@@ -332,6 +292,11 @@
 
     
 
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        true
+    </li></ul></dd>
     
 
     
