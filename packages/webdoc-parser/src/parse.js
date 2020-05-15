@@ -56,6 +56,7 @@ import {
   isClassExpression,
   isProperty,
   isObjectMethod,
+  isFunctionExpression,
   //  isExportAllDeclaration,
   isExportDefaultDeclaration,
   isExportNamedDeclaration,
