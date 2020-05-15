@@ -1,4 +1,8 @@
+// @flow
+
 "use strict";
+
+import type {Doc} from "@webdoc/types";
 
 Object.defineProperty(exports, "__esModule", {
   value: true,
@@ -58,11 +62,18 @@ function memberofResolve(doc, root) {
 
   while (iqueue.length) {
     if (iqueue.length === lastQueueLength) {
-      console.log(iqueue);
-      throw new Error("@memberof dependencies are circular; cannot resolve after " + lastQueueLength);
+      throwCircularDepsError(iqueue);
     }
 
     lastQueueLength = iqueue.length;
     iqueue = queueResolve(iqueue, root);
   }
+}
+
+function throwCircularDepsError(queue: Doc[]): void {
+  for (let i = 0; i < queue.length; i++) {
+    console.log(`[DepsChain]: ${queue[i].name} (@${queue[i].path})`);
+  }
+
+  throw new Error("@memberof dependencies are circular; cannot resolve after " + lastQueueLength);
 }
