@@ -1,0 +1,46 @@
+resources:
+  repositories:
+    - repository: ExampleDocs
+      type: github
+      endpoint: PalConnection
+      name: webdoc-js/example-documentation
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- checkout: self
+- checkout: ExampleDocs
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    ls | grep -v README.md | xargs rm -rf
+  displayName: "Clear example-documentation"
+  workingDirectory: example-documentation
+
+- script: |
+    npm install
+  displayName: "Install webdoc"
+  workingDirectory: webdoc
+
+- script: |
+    rm -rf ./docs
+    rm -rf ../../example-documentation/
+    cd .. && npm run build && cd example && node ./node_modules/.bin/webdoc
+    cp -r ./docs ../../example-documentation
+  displayName: "Generate example documentation & copy to webdoc-js/example-documentation"
+  workingDirectory: webdoc/example
+
+- script: |
+    git checkout master
+    git add .
+    git commit .
+    git push origin master
+  displayName: "Checkout example-documentation and push generated documentation"
+  workingDirectory: example-documentation
