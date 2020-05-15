@@ -10,6 +10,7 @@ function initLogger(defaultLevel: string = "INFO") {
     {
       TagParser: defaultLevel,
       PartialParser: defaultLevel,
+      DocParser: defaultLevel,
     },
     (level, tag, msg, params) => {
       tag = `[${tag}]:`;

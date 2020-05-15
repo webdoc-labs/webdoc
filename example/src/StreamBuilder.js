@@ -7,7 +7,7 @@
  *
  * @property {string} CHAIN_KEY
  */
-class StreamBuilder {
+export class StreamBuilder {
   /**
    * @constructor
    * @param {object} options

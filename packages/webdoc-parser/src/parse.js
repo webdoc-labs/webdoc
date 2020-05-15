@@ -4,6 +4,7 @@ import * as parser from "@babel/parser";
 import traverse, {type NodePath} from "@babel/traverse";
 import capture, {type PartialDoc, PD_VIRTUAL} from "./capture";
 import mod from "./doctree-mods";
+import {parserLogger} from "./Logger";
 import {
   parseParam,
   parsePrivate,
@@ -55,6 +56,10 @@ import {
   isClassExpression,
   isProperty,
   isObjectMethod,
+  //  isExportAllDeclaration,
+  isExportDefaultDeclaration,
+  isExportNamedDeclaration,
+//  isExportSpecifier,
 } from "@babel/types";
 
 const babelPlugins = [
@@ -185,7 +190,7 @@ function partial(file: string): PartialDoc {
   let ast;
 
   try {
-    ast = parser.parse(file, {plugins: [...babelPlugins], sourceType: "module"});
+    ast = parser.parse(file, {plugins: [...babelPlugins], sourceType: "module", errorRecovery: true});
   } catch (e) {
     console.error("Babel couldn't parse file in @webdoc/parser/parse.js#partial");
     throw e;
@@ -195,6 +200,21 @@ function partial(file: string): PartialDoc {
 
   traverse(ast, {
     enter(nodePath: NodePath) {
+      const node = nodePath.node;
+
+      // Make exports transparent
+      if (node.leadingComments &&
+          (isExportNamedDeclaration(node) || isExportDefaultDeclaration(node)) &&
+          node.declaration) {
+        const declaration = nodePath.node.declaration;
+
+        declaration.leadingComments = declaration.leadingComments || [];
+        declaration.leadingComments.push(...node.leadingComments);
+
+        // Prevent ghost docs
+        node.leadingComments = [];
+      }
+
       const scope = stack[stack.length - 1];
       const idoc = capture(nodePath.node, scope);
 
@@ -346,9 +366,9 @@ function assemble(partialDoc: PartialDoc, root: RootDoc): void {
 
   if (!doc && partialDoc.name !== "File") {
     partialDoc.parent = null;
-    console.log(partialDoc);
-    console.log(partialDoc.node);
-    console.log("^ failed");
+    parserLogger.error("DocParser",
+      `Couldn't parse doc for + ${partialDoc.name}(@${partialDoc.path.join(".")}) `);
+
     return;
   } else if (doc) {
     doc.members = doc.children;
