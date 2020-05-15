@@ -55,6 +55,15 @@ export class StreamBuilder {
 }
 
 /**
+ * Verify checksum
+ * @memberof EX.StreamBuilder~
+ * @method
+ */
+const verify = function verify() {
+
+};
+
+/**
  * @namespace EX
  */
 /**

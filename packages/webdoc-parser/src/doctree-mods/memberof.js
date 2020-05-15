@@ -3,7 +3,7 @@
 "use strict";
 
 import type {Doc} from "@webdoc/types";
-import {CANONICAL_SEPARATOR} from "../constants";
+import {CANONICAL_DELIMITER} from "../constants";
 
 Object.defineProperty(exports, "__esModule", {
   value: true,
@@ -11,6 +11,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = memberofResolve;
 
 const _model = require("@webdoc/model");
+import {doc as findDoc} from "@webdoc/model";
 
 function queueTargets(doc, into = []) {
   const memberofTag = doc.tags.find((tag) => tag.name === "memberof");
@@ -21,7 +22,7 @@ function queueTargets(doc, into = []) {
       destination: doc.parserOpts.memberof,
     });
   } else if (memberofTag) {
-    const memberof = memberofTag.value;
+    let memberof = memberofTag.value;
 
     if (memberof.endsWith("#")) {
       doc.scope = "instance";
@@ -36,7 +37,7 @@ function queueTargets(doc, into = []) {
 
     into.push({
       doc,
-      destination: memberof.split(CANONICAL_SEPARATOR),
+      destination: memberof.split(CANONICAL_DELIMITER).filter((ch) => ch !== "." && ch !== "~" && ch !== "#"),
     });
   }
 
@@ -52,7 +53,7 @@ function queueResolve(queue, root) {
 
   while (queue.length) {
     const resolve = queue.shift();
-    const scope = (0, _model.doc)(resolve.destination, root);
+    const scope = findDoc(resolve.destination, root);
 
     if (scope === resolve.doc) {
       console.log(resolve.doc);
@@ -75,7 +76,7 @@ function memberofResolve(doc, root) {
 
   while (iqueue.length) {
     if (iqueue.length === lastQueueLength) {
-      throwCircularDepsError(iqueue);
+      throwCircularDepsError(iqueue, root);
     }
 
     lastQueueLength = iqueue.length;
@@ -83,10 +84,14 @@ function memberofResolve(doc, root) {
   }
 }
 
-function throwCircularDepsError(queue: Doc[]): void {
+function throwCircularDepsError(queue: Doc[], root: RootDoc): void {
   for (let i = 0; i < queue.length; i++) {
     const doc = queue[i].doc;
-    const destination = queue[i].destination.join(".");
+    const destination = queue[i].destination;
+
+    console.log(destination);
+
+    console.log(findDoc(destination, root));
 
     console.error(`[DepsChain]: ${doc.name} (@${doc.path})[${doc.type}] is a member of ${destination}`);
   }
