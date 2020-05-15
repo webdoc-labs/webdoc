@@ -22,7 +22,6 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    ls -a
     ls -a | grep -Fv -e README.md -e .git -e . -e .. | xargs -r rm -r
   displayName: "Clear example-documentation"
   workingDirectory: example-documentation
@@ -37,9 +36,8 @@ steps:
 - script: |
     rm -rf ./docs
     cd .. && npm run build && cd example
-    cat ./node_modules/.bin/webdoc
     node ../packages/webdoc-cli/lib/index.js
-    cp -r ./docs ../../example-documentation/
+    cp -r ./docs/* ../../example-documentation/
   displayName: "Generate example documentation & copy to webdoc-js/example-documentation"
   workingDirectory: webdoc/example
 
