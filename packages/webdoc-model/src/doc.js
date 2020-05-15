@@ -41,6 +41,17 @@ export const createDoc = (name?: string, type?: string = "BaseDoc", options: any
     type,
   }, options || {});
 
+  // Soft error when @memberof is not used.
+  if (name.includes(".")) {
+    console.error(name + " is a local identifer and contains a separator. Use @memberof instead " +
+      "because this deprecated (legacy behaviour from JSDoc).");
+
+    const path = name.split(".");
+
+    doc.name = path[path.length - 1];
+    doc.parserOpts = {memberof: path.slice(0, -1)};
+  }
+
   doc.children = doc.children || [];
   doc.members = doc.children;
 

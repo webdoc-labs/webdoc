@@ -57,6 +57,9 @@ export class StreamBuilder {
 /**
  * @namespace EX
  */
+/**
+ * @namespace EX.filters
+ */
 
 /**
  * Stream buffers store a portion of a stream's contents.

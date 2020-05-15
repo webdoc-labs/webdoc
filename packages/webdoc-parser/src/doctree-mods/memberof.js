@@ -46,7 +46,6 @@ function queueResolve(queue, root) {
     }
 
     if (scope) {
-      console.log("Resolving @memberof for " + resolve.doc.name + " to " + scope.name);
       (0, _model.addChildDoc)(resolve.doc, scope);
     } else {
       backlog.push(resolve);
