@@ -75,7 +75,16 @@ async function main(argv: yargs.Arguments<>) {
     files[i] = fs.readFileSync(path.join(process.cwd(), sourceFiles[i]), "utf8");
   }
 
-  parse(files, doctree);
+  try {
+    parse(files, doctree);
+  } catch (e) {
+    // Make sure we get that API structure out so the user can debug the problem!
+    if (config.opts.export) {
+      fs.writeFileSync(config.opts.export, writeDoctree(doctree));
+    }
+
+    throw e;
+  }
   console.log("Parsed all");
 
   if (config.opts.export) {
