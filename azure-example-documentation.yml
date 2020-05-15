@@ -26,7 +26,7 @@ steps:
 
 - script: |
     npm install
-    lerna bootstrap
+    node node_modules/.bin/lerna bootstrap
   displayName: "Install webdoc"
   workingDirectory: webdoc
 
