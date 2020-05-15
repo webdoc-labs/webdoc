@@ -91,7 +91,7 @@ export function parseParam(value: string, options: $Shape<Doc>): ParamTag {
   if (extractable.startsWith("-") && extractable !== "") {
     extractable = extractable.slice(1);
     extractable = extractable.trimStart();
-  } else if (extractable) {
+  } else if (extractable.trim()) {
     console.warn(`${identClosure.identifer} does not have a "-" token preceeding description`);
   }
 

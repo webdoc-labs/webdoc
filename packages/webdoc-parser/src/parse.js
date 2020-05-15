@@ -122,7 +122,9 @@ function createDocParser(nameHolderTag: string, docType: string) {
       }
     }
 
-    name = "<Unknown>";
+    if (!name) {
+      name = "<Unknown>";
+    }
 
     return createDoc(name, docType, options);
   };

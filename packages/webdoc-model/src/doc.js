@@ -54,7 +54,7 @@ export const createDoc = (name?: string, type?: string = "BaseDoc", options: any
     if (doc.parserOpts.memberof) {
       doc.parserOpts.memberof.push(...path.slice(0, -1));
     } else {
-      doc.parserOpts = path.slice(0, -1);
+      doc.parserOpts.memberof = path.slice(0, -1);
     }
   }
 

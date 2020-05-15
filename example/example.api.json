@@ -10,6 +10,14 @@
 			"brief": "",
 			"children": [
 				{
+					"name": "filters",
+					"type": "NSDoc",
+					"access": "public",
+					"scope": "inner",
+					"version": "public",
+					"brief": ""
+				},
+				{
 					"name": "StreamBuffer",
 					"type": "ClassDoc",
 					"access": "public",
@@ -386,14 +394,6 @@
 					]
 				}
 			]
-		},
-		{
-			"name": "filters",
-			"type": "NSDoc",
-			"access": "public",
-			"scope": "inner",
-			"version": "public",
-			"brief": ""
 		}
 	]
 }
