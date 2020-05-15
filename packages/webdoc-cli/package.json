@@ -1,6 +1,6 @@
 {
   "name": "@webdoc/cli",
-  "version": "0.1.20-alpha.0",
+  "version": "0.1.21-alpha.0",
   "description": "CLI for @webdoc monorepo",
   "bin": {
     "webdoc": "./cli.js"
@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "@webdoc/externalize": "^0.1.17-alpha.0",
-    "@webdoc/legacy-template": "^0.1.17-alpha.0",
+    "@webdoc/legacy-template": "^0.1.21-alpha.0",
     "@webdoc/model": "^0.1.17-alpha.0",
     "@webdoc/parser": "^0.1.20-alpha.0",
     "@webdoc/types": "^0.1.4-alpha.0",
