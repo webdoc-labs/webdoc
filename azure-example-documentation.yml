@@ -48,7 +48,7 @@ steps:
     git config --global user.name "Shukant Pal"
     git checkout master
     git add .
-    git commit .
+    git commit . -m "Automatic documentation update"
     git push origin master
   displayName: "Checkout example-documentation and push generated documentation"
   workingDirectory: example-documentation
