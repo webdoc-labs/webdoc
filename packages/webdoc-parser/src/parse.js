@@ -105,21 +105,13 @@ function getNodeName(node: any): ?string {
 function createDocParser(nameHolderTag: string, docType: string) {
   return function(node, options) {
     let name = getNodeName(node);
+    const ntag = options.tags.find((tag) => tag.type === "NameTag");
+    const dtag = options.tags.find((tag) => tag.type === nameHolderTag);
 
-    if (!name) {
-      const tag = options.tags.find((tag) => tag.type === nameHolderTag);
-
-      if (tag) {
-        name = tag.value;
-      }
-    }
-
-    if (!name) {
-      const tag = options.tags.find((tag) => tag.type === "NameTag");
-
-      if (tag) {
-        name = tag.value;
-      }
+    if (dtag && dtag.value) {
+      name = dtag.value;
+    } else if (!name && ntag && ntag.value) {
+      name = ntag.value;
     }
 
     if (!name) {

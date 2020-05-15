@@ -71,6 +71,13 @@ const verify = function verify() {
  */
 
 /**
+ * @namespace EX.conditional
+ */
+export const conditionalX = {
+
+};
+
+/**
  * Stream buffers store a portion of a stream's contents.
  *
  * @memberof EX

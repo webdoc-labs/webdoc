@@ -84,6 +84,14 @@
 					"brief": ""
 				},
 				{
+					"name": "conditional",
+					"type": "NSDoc",
+					"access": "public",
+					"scope": "static",
+					"version": "public",
+					"brief": ""
+				},
+				{
 					"name": "StreamBuffer",
 					"type": "ClassDoc",
 					"access": "public",

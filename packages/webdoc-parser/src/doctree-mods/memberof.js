@@ -89,10 +89,6 @@ function throwCircularDepsError(queue: Doc[], root: RootDoc): void {
     const doc = queue[i].doc;
     const destination = queue[i].destination;
 
-    console.log(destination);
-
-    console.log(findDoc(destination, root));
-
     console.error(`[DepsChain]: ${doc.name} (@${doc.path})[${doc.type}] is a member of ${destination}`);
   }
 
