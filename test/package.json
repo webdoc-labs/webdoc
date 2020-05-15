@@ -1,6 +1,6 @@
 {
   "name": "@webdoc/tests",
-  "version": "0.1.4-alpha.0",
+  "version": "0.1.5-alpha.0",
   "description": "Tests for the webdoc monorepo",
   "keywords": [
     "tests",
@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "@webdoc/externalize": "^0.1.4-alpha.0",
-    "@webdoc/parser": "^0.1.4-alpha.0"
+    "@webdoc/parser": "^0.1.5-alpha.0"
   },
   "gitHead": "326306f477098182404f813337c0c67cc90263c6"
 }
