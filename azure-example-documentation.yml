@@ -20,7 +20,7 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    ls | grep -v README.md | xargs rm -rf
+    ls | grep -Fv -e README.md -e .git | xargs rm -rf
   displayName: "Clear example-documentation"
   workingDirectory: example-documentation
 
