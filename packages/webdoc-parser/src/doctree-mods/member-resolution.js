@@ -28,7 +28,6 @@ function memberResolve(doc, root) {
     const scope = doc.object === "this" ? bubbleThis(doc) : (0, _model.doc)(doc.object, root);
 
     if (scope) {
-      console.log(doc.name + " parent" + " " + scope.name);
       (0, _model.addChildDoc)(doc, scope);
       return;
     } else {

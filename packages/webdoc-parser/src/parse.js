@@ -377,8 +377,6 @@ function assemble(partialDoc: PartialDoc, root: RootDoc): void {
 
   const parent = partialDoc.parent ? partialDoc.parent.doc : null;
 
-  console.log("assembling " + (doc ? doc.name : "<Unknown>"));
-
   if (doc && doc.name === undefined) {
     console.log(Object.assign({}, doc, {node: "removed"}));
     console.log("^^^ ERR");
