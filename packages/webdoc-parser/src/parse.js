@@ -87,7 +87,7 @@ const babelPlugins = [
   "throwExpressions",
 ];
 
-function getNodeName(node: any): string {
+function getNodeName(node: any): ?string {
   if (!node) {
     return "";
   }
@@ -100,8 +100,6 @@ function getNodeName(node: any): string {
   if (node.declarations && node.declarations.length && node.declarations[0].id) {
     return node.declarations[0].id.name;
   }
-
-  return "<Unknown>";
 }
 
 function createDocParser(nameHolderTag: string, docType: string) {
@@ -124,9 +122,7 @@ function createDocParser(nameHolderTag: string, docType: string) {
       }
     }
 
-    if (docType === "NSDoc") {
-      console.log("Namespace: " + name);
-    }
+    name = "<Unknown>";
 
     return createDoc(name, docType, options);
   };
