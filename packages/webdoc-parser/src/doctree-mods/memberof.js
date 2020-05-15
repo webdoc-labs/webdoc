@@ -3,6 +3,7 @@
 "use strict";
 
 import type {Doc} from "@webdoc/types";
+import {CANONICAL_SEPARATOR} from "../constants";
 
 Object.defineProperty(exports, "__esModule", {
   value: true,
@@ -20,9 +21,22 @@ function queueTargets(doc, into = []) {
       destination: doc.parserOpts.memberof,
     });
   } else if (memberofTag) {
+    const memberof = memberofTag.value;
+
+    if (memberof.endsWith("#")) {
+      doc.scope = "instance";
+      memberof = memberof.slice(0, -1);
+    } else if (memberof.endsWith(".")) {
+      doc.scope = "static";
+      memberof = memberof.slice(0, -1);
+    } else if (memberof.endsWith("~")) {
+      doc.scope = "inner";
+      memberof = memberof.slice(0, -1);
+    }
+
     into.push({
       doc,
-      destination: memberofTag.value.split("."),
+      destination: memberof.split(CANONICAL_SEPARATOR),
     });
   }
 

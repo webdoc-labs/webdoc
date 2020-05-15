@@ -13,7 +13,7 @@
 					"name": "filters",
 					"type": "NSDoc",
 					"access": "public",
-					"scope": "inner",
+					"scope": "static",
 					"version": "public",
 					"brief": ""
 				},

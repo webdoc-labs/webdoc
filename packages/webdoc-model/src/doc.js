@@ -2,6 +2,8 @@
 
 import type {BaseDoc, Doc, DocLink, ClassDoc, ObjectDoc, TypedefDoc} from "@webdoc/types";
 
+const CANONICAL_SEPARATOR = /([.#~$])/;
+
 function updateScope(doc: Doc, scopeStack: string[], scopePath: string): void {
   if (scopePath) {
     doc.stack = [...scopeStack, doc.name];
@@ -41,12 +43,26 @@ export const createDoc = (name?: string, type?: string = "BaseDoc", options: any
     type,
   }, options || {});
 
+  const separators = name.match(CANONICAL_SEPARATOR);
+
   // Soft error when @memberof is not used.
-  if (name.includes(".")) {
+  if (separators) {
     console.error(name + " is a local identifer and contains a separator. Use @memberof instead " +
       "because this deprecated (legacy behaviour from JSDoc).");
 
-    const path = name.split(".");
+    const lastSeparator = separators[separators.length - 1];
+
+    if (lastSeparator === "#") {
+      doc.scope = "instance";
+    } else if (lastSeparator === "~") {
+      doc.scope = "inner";
+    } else {
+      doc.scope = "static";
+    }
+
+    // Sad: splitting will include the separators so filter them
+    const path = name.split(CANONICAL_SEPARATOR)
+      .filter((ch) => ch !== "." && ch !== "#" && ch !== "#");
 
     doc.name = path[path.length - 1];
     doc.parserOpts = doc.parserOpts || {};
