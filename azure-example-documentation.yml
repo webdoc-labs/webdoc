@@ -47,6 +47,6 @@ steps:
     git checkout master
     git add .
     git commit . -m "Automatic documentation update"
-    git push origin master
+    git push --force origin master
   displayName: "Checkout example-documentation and push generated documentation"
   workingDirectory: example-documentation
