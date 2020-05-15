@@ -122,7 +122,7 @@ function createDocParser(nameHolderTag: string, docType: string) {
   };
 }
 
-// These tags define what is being documented and override the actual code.
+// These tags define what is being documented and override the actual code..
 const TAG_MAP = {
   "class": createDocParser("ClassTag", "ClassDoc"),
   "interface": createDocParser("InterfaceTag", "InterfaceDoc"),
