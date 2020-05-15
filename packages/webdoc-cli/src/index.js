@@ -50,7 +50,13 @@ async function main(argv: yargs.Arguments<>) {
   const config = loadConfig(argv.config);
 
   // TODO: excludePattern
-  const sourceFiles = globby.sync(config.source.includePattern);
+  const includePattern = config.source.includePattern || config.source.include;
+
+  if (!includePattern) {
+    console.log("No source.include or source.includePattern found in config file");
+  }
+
+  const sourceFiles = globby.sync(includePattern);
 
   const doctree: RootDoc = {
     children: [],

@@ -55,5 +55,6 @@
     "strip-bom": "^4.0.0",
     "strip-json-comments": "^3.0.1",
     "taffydb": "2.6.2"
-  }
+  },
+  "gitHead": "1c583c93c8e5dcb9391376d00515972d9e6bfbd4"
 }

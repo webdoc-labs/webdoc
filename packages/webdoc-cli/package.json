@@ -3,7 +3,7 @@
   "version": "0.1.0-alpha.0",
   "description": "CLI for @webdoc monorepo",
   "bin": {
-    "webdoc": "./lib/index.js"
+    "webdoc": "./cli.js"
   },
   "keywords": [
     "webdoc",
@@ -43,5 +43,6 @@
     "missionlog": "1.6.0",
     "requizzle": "0.2.3",
     "yargs": "15.3.1"
-  }
+  },
+  "gitHead": "1c583c93c8e5dcb9391376d00515972d9e6bfbd4"
 }

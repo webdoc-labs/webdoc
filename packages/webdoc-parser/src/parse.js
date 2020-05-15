@@ -184,7 +184,16 @@ export const TAG_PARSERS = {
  */
 function partial(file: string): PartialDoc {
   const module: PartialDoc = capture.root();
-  const ast = parser.parse(file, {plugins: [...babelPlugins]});
+  let ast;
+
+  try {
+    console.log("Babel parser");
+    ast = parser.parse(file, {plugins: [...babelPlugins], sourceType: "module"});
+  } catch (e) {
+    console.error("Babel couldn't parse file in @webdoc/parser/parse.js#partial");
+    throw e;
+  }
+
   const stack: PartialDoc[] = [module];
 
   traverse(ast, {
@@ -402,6 +411,7 @@ export function parse(target: string | string[], root?: RootDoc = {
 
   // Capture all files
   for (let i = 0; i < files.length; i++) {
+    console.log("partial");
     partialDoctrees[i] = partial(files[i]);
   }
 
