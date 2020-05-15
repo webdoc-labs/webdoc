@@ -41,6 +41,7 @@ steps:
   workingDirectory: webdoc/example
 
 - script: |
+    ls -a
     git checkout master
     git add .
     git commit .
