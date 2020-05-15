@@ -3,7 +3,7 @@ resources:
     - repository: ExampleDocs
       type: github
       endpoint: PalConnection
-      name: example-documentation
+      name: webdoc-js/example-documentation
 
 trigger:
 - master
@@ -13,7 +13,7 @@ pool:
 
 steps:
 - checkout: self
-- checkout: git://example-documentation
+- checkout: git://webdoc-js/example-documentation
 - task: NodeTool@0
   inputs:
     versionSpec: '10.x'
