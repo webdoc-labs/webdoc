@@ -14,6 +14,8 @@ pool:
 steps:
 - checkout: self
 - checkout: ExampleDocs
+  persistCredentials: true
+
 - task: NodeTool@0
   inputs:
     versionSpec: '12.x'
@@ -22,7 +24,6 @@ steps:
 - script: |
     ls -a
   displayName: "Clear example-documentation"
-  workingDirectory: example-documentation
 
 - script: |
     ls -a
