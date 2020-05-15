@@ -2,8 +2,10 @@
 
 This package is a direct port of JSDoc's default template to webdoc. The `publish` script has significant changes
 due to the poor structure of the JSDoc project. Specifically, functions from `jsdoc/templateHelper.js` have been
-imported into the package and refactored to be compatible with webdoc. The template and static files have not
-changed.
+imported into the package and refactored to be compatible with webdoc. The template and static files have also
+been heavily refactored.
+
+A significant part of the JSDoc template code has been moved to @webdoc/template-library!
 
 ## Usage
 

@@ -1,11 +1,23 @@
-# `webdoc-types`
+# @webdoc/types
 
-> TODO: description
+This package contains all of the type definitions for docs (documentation blocks) and tags (@tag
+decorators in the documentation).
 
-## Usage
+The are the core @webdoc/types Docs:
 
-```
-const webdocTypes = require('webdoc-types');
+* BaseDoc
+* ClassDoc
+* FunctionDoc
+* MethodDoc
+* EventDoc
+* TypedefDoc
+* PropertyDoc
 
-// TODO: DEMONSTRATE API
-```
+These the core @webdoc/types Tags:
+
+* AccessTag
+* ParamTag
+* MemberTag
+* MethodTag
+
+TODO: Finish this
