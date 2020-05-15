@@ -19,7 +19,10 @@
     "test": "__tests__"
   },
   "files": [
-    "lib"
+    "static",
+    "tmpl",
+    "helper.js",
+    "publish.js"
   ],
   "repository": {
     "type": "git",
