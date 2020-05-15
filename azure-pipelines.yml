@@ -13,7 +13,7 @@ pool:
 
 steps:
 - checkout: self
-- checkout: git://webdoc-js/example-documentation
+- checkout: ExampleDocs
 - task: NodeTool@0
   inputs:
     versionSpec: '10.x'
