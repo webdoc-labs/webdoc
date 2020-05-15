@@ -11,7 +11,7 @@
 This project is the next generation documentation generator for JavaScript-based languages. Right now, it is work-in-progress
 and supports enough features to generate the PixiJS documentation.
 
-You can checkout the documentation for `example/` ![here](https://webdoc-js.github.io/example-documentation/index.html): 
+You can checkout the documentation for `example/` [here](https://webdoc-js.github.io/example-documentation/index.html): 
 
 
 | Packages                    | npm                                                              ||
