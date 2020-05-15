@@ -44,7 +44,8 @@ steps:
   workingDirectory: webdoc/example
 
 - script: |
-    ls -a
+    git config --global user.email "sukantk2002@outlook.com"
+    git config --global user.name "Shukant Pal"
     git checkout master
     git add .
     git commit .
