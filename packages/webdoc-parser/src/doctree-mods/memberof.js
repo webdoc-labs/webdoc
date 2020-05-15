@@ -14,15 +14,15 @@ const _model = require("@webdoc/model");
 function queueTargets(doc, into = []) {
   const memberofTag = doc.tags.find((tag) => tag.name === "memberof");
 
-  if (memberofTag) {
-    into.push({
-      doc,
-      destination: memberofTag.value.split("."),
-    });
-  } else if (doc.parserOpts && doc.parserOpts.memberof != null && typeof doc.parserOpts.memberof !== "undefined") {
+  if (doc.parserOpts && doc.parserOpts.memberof != null && typeof doc.parserOpts.memberof !== "undefined") {
     into.push({
       doc,
       destination: doc.parserOpts.memberof,
+    });
+  } else if (memberofTag) {
+    into.push({
+      doc,
+      destination: memberofTag.value.split("."),
     });
   }
 

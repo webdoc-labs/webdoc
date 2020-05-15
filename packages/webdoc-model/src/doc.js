@@ -49,7 +49,13 @@ export const createDoc = (name?: string, type?: string = "BaseDoc", options: any
     const path = name.split(".");
 
     doc.name = path[path.length - 1];
-    doc.parserOpts = {memberof: path.slice(0, -1)};
+    doc.parserOpts = doc.parserOpts || {};
+
+    if (doc.parserOpts.memberof) {
+      doc.parserOpts.memberof.push(...path.slice(0, -1));
+    } else {
+      doc.parserOpts = path.slice(0, -1);
+    }
   }
 
   doc.children = doc.children || [];

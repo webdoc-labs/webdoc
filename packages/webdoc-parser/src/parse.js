@@ -135,9 +135,7 @@ const TAG_MAP = {
   "method": createDocParser("MethodTag", "MethodDoc"),
   "mixin": createDocParser("MixinTag", "MixinDoc"),
   "typedef": parseTypedefDoc,
-  "namespace": (node, options): NSDoc => createDoc(
-    getNodeName(node) || options.tags.find((tag) => tag.name === "namespace").value,
-    "NSDoc", options),
+  "namespace": createDocParser("NSTag", "NSDoc"),
   "event": parseEventDoc,
 };
 
@@ -167,6 +165,7 @@ export const TAG_PARSERS = {
   "method": createTagParser("MethodTag"),
   "mixes": parseMixes,
   "mixin": createTagParser("MixinTag"),
+  "namespace": createTagParser("NSTag"),
   "param": parseParam,
   "property": parseProperty,
   "protected": parseProtected,
