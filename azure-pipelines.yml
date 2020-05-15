@@ -1,7 +1,9 @@
-# Node.js
-# Build a general Node.js project with npm.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+resources:
+  repositories:
+    - repository: ExampleDocs
+      type: github
+      endpoint: PalConnection
+      name: webdoc-js/example-documentation
 
 trigger:
 - master
@@ -10,6 +12,8 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+- checkout: self
+- checkout: git://webdoc-js/example-documentation
 - task: NodeTool@0
   inputs:
     versionSpec: '10.x'
@@ -19,7 +23,14 @@ steps:
     npm install
     npm run build
   displayName: "Install and build project"
+  workingDirectory: webdoc
 
 - script: |
     npm run test
   displayName: "Run unit tests"
+  workingDirectory: webdoc
+
+- script: |
+    ls .
+  displayName: "Test"
+  workingDirectory: example-documentation
