@@ -31,6 +31,7 @@ const STANDALONE_DOCS = [
   "NSDoc",
   "FunctionDoc",
   "InterfaceDoc",
+  "MixinDoc",
 ];
 
 const hasOwnProp = Object.prototype.hasOwnProperty;

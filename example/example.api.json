@@ -126,6 +126,64 @@
 					]
 				},
 				{
+					"name": "TiledStreamBuffer",
+					"type": "ClassDoc",
+					"access": "public",
+					"scope": "static",
+					"version": "public",
+					"brief": "",
+					"children": [
+						{
+							"name": "update",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"version": "public",
+							"brief": " Update the buffer's contents w.r.t the file."
+						},
+						{
+							"name": "next",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"version": "public",
+							"brief": " Shift the buffer-frame right"
+						},
+						{
+							"name": "offset",
+							"type": "PropertyDoc",
+							"access": "public",
+							"scope": "instance",
+							"version": "public",
+							"brief": ""
+						},
+						{
+							"name": "shift",
+							"type": "EventDoc",
+							"access": "public",
+							"scope": "static",
+							"version": "public",
+							"brief": ""
+						},
+						{
+							"name": "dirtyID",
+							"type": "PropertyDoc",
+							"access": "public",
+							"scope": "instance",
+							"version": "public",
+							"brief": ""
+						},
+						{
+							"name": "flushID",
+							"type": "PropertyDoc",
+							"access": "public",
+							"scope": "instance",
+							"version": "public",
+							"brief": ""
+						}
+					]
+				},
+				{
 					"name": "AbstractFileBuffer",
 					"type": "ClassDoc",
 					"access": "public",
@@ -164,35 +222,9 @@
 							"scope": "static",
 							"version": "public",
 							"brief": ""
-						}
-					]
-				},
-				{
-					"name": "TiledStreamBuffer",
-					"type": "ClassDoc",
-					"access": "public",
-					"scope": "static",
-					"version": "public",
-					"brief": "",
-					"children": [
-						{
-							"name": "update",
-							"type": "MethodDoc",
-							"access": "public",
-							"scope": "instance",
-							"version": "public",
-							"brief": " Update the buffer's contents w.r.t the file."
 						},
 						{
-							"name": "next",
-							"type": "MethodDoc",
-							"access": "public",
-							"scope": "instance",
-							"version": "public",
-							"brief": " Shift the buffer-frame right"
-						},
-						{
-							"name": "offset",
+							"name": "dirtyID",
 							"type": "PropertyDoc",
 							"access": "public",
 							"scope": "instance",
@@ -200,10 +232,36 @@
 							"brief": ""
 						},
 						{
-							"name": "shift",
-							"type": "EventDoc",
+							"name": "flushID",
+							"type": "PropertyDoc",
 							"access": "public",
-							"scope": "static",
+							"scope": "instance",
+							"version": "public",
+							"brief": ""
+						}
+					]
+				},
+				{
+					"name": "LowpassFilter",
+					"type": "MixinDoc",
+					"access": "public",
+					"scope": "static",
+					"version": "public",
+					"brief": "",
+					"children": [
+						{
+							"name": "setUpperCutoff",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"version": "public",
+							"brief": ""
+						},
+						{
+							"name": "currentThreshold",
+							"type": "PropertyDoc",
+							"access": "public",
+							"scope": "instance",
 							"version": "public",
 							"brief": ""
 						}
@@ -252,6 +310,80 @@
 							"brief": ""
 						}
 					]
+				}
+			]
+		},
+		{
+			"name": "MusicBuffer",
+			"type": "ClassDoc",
+			"access": "public",
+			"scope": "static",
+			"version": "public",
+			"brief": "",
+			"children": [
+				{
+					"name": "update",
+					"type": "MethodDoc",
+					"access": "public",
+					"scope": "instance",
+					"version": "public",
+					"brief": " Update the buffer's contents w.r.t the file."
+				},
+				{
+					"name": "next",
+					"type": "MethodDoc",
+					"access": "public",
+					"scope": "instance",
+					"version": "public",
+					"brief": " Shift the buffer-frame right"
+				},
+				{
+					"name": "offset",
+					"type": "PropertyDoc",
+					"access": "public",
+					"scope": "instance",
+					"version": "public",
+					"brief": ""
+				},
+				{
+					"name": "shift",
+					"type": "EventDoc",
+					"access": "public",
+					"scope": "static",
+					"version": "public",
+					"brief": ""
+				},
+				{
+					"name": "dirtyID",
+					"type": "PropertyDoc",
+					"access": "public",
+					"scope": "instance",
+					"version": "public",
+					"brief": ""
+				},
+				{
+					"name": "flushID",
+					"type": "PropertyDoc",
+					"access": "public",
+					"scope": "instance",
+					"version": "public",
+					"brief": ""
+				},
+				{
+					"name": "setUpperCutoff",
+					"type": "MethodDoc",
+					"access": "public",
+					"scope": "instance",
+					"version": "public",
+					"brief": ""
+				},
+				{
+					"name": "currentThreshold",
+					"type": "PropertyDoc",
+					"access": "public",
+					"scope": "instance",
+					"version": "public",
+					"brief": ""
 				}
 			]
 		}

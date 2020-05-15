@@ -22,67 +22,6 @@ function resolveArray(array: DocLink[], doc: Doc, tree: RootDoc) {
   }
 }
 
-// Finds all the members of doc, including those that are inherited, implemented, or mixed.
-export function discoverMembers(doc: Doc): void {
-  if (!doc.extends && !doc.implements) {
-    return;
-  }
-
-  const members = doc.members;
-  const memberMap: { [id: string]: string } = {};
-
-  for (let i = 0; i < doc.members.length; i++) {
-    const directMember = doc.members[i];
-
-    memberMap[directMember.name] = directMember;
-  }
-
-  const parents = [];
-
-  if (doc.extends) {
-    parents.push(...doc.extends);
-  }
-  if (doc.implements) {
-    parents.push(...doc.implements);
-  }
-
-  for (const parent of parents) {
-    if (typeof parent === "string") {
-      console.log("skip " + parent);
-      continue;
-    }
-
-    for (let i = 0; i < parent.members.length; i++) {
-      const member = parent.members[i];
-
-      // Only methods/properties/events are inheritable
-      if (member.type !== "MethodDoc" && member.type !== "PropertyDoc" && member.type !== "EventDoc") {
-        continue;
-      }
-
-      // Only instance methods/properties can be inherited/implemented/mixed
-      if (member.scope !== "instance" && member.type !== "EventDoc") {
-        continue;
-      }
-
-      // Parent symbols are hidden by inherited/implemented symbols
-      if (memberMap[member.name]) {
-        memberMap[member.name].overrides = true;
-        continue;
-      }
-
-      memberMap[member.name] = member;
-
-      const temp = cloneDoc(member);
-
-      temp.overrides = false;
-      temp.inherited = true;
-
-      addChildDoc(temp, doc);
-    }
-  }
-}
-
 /**
  * + Resolves all docs listed in the "extends", "implements", "mixes". This prevent redundant
  *    searches to extended/implemented/mixed symbols.
@@ -116,8 +55,6 @@ export default function resolveRelated(doc: Doc, tree: RootDoc) {
       doc.scope = "static";
     }
   }
-
-  discoverMembers(doc);
 
   for (let i = 0; i < doc.members.length; i++) {
     resolveRelated(doc.members[i], tree);

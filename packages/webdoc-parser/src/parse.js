@@ -53,6 +53,8 @@ import {
   isMemberExpression,
   isClassProperty,
   isClassExpression,
+  isProperty,
+  isObjectMethod,
 } from "@babel/types";
 
 const babelPlugins = [
@@ -89,6 +91,9 @@ function getNodeName(node: any): string {
   if (node.key) {
     return node.key.name;
   }
+  if (node.declarations && node.declarations.length && node.declarations[0].id) {
+    return node.declarations[0].id.name;
+  }
 
   return "<Unknown>";
 }
@@ -121,9 +126,10 @@ function createDocParser(nameHolderTag: string, docType: string) {
 
 // These tags define what is being documented and override the actual code.
 const TAG_MAP = {
-  "class": (node, options): ClassDoc => createDoc(getNodeName(node), "ClassDoc", options),
+  "class": createDocParser("ClassTag", "ClassDoc"),
   "interface": createDocParser("InterfaceTag", "InterfaceDoc"),
-  "method": (node, options): MethodDoc => createDoc(getNodeName(node), "MethodDoc", options),
+  "method": createDocParser("MethodTag", "MethodDoc"),
+  "mixin": createDocParser("MixinTag", "MixinDoc"),
   "typedef": parseTypedefDoc,
   "namespace": (node, options): NSDoc => createDoc(
     getNodeName(node) || options.tags.find((tag) => tag.name === "namespace").value,
@@ -154,7 +160,9 @@ export const TAG_PARSERS = {
   "interface": createTagParser("InterfaceTag"),
   "implements": parseImplements,
   "member": parseMember,
+  "method": createTagParser("MethodTag"),
   "mixes": parseMixes,
+  "mixin": createTagParser("MixinTag"),
   "param": parseParam,
   "property": parseProperty,
   "protected": parseProtected,
@@ -311,6 +319,12 @@ function transform(partialDoc: PartialDoc): ?Doc {
       isMemberExpression(node.expression.left)) {
     return parsePropertyDoc(node, options);
   }
+  if (isProperty(node) && isFunctionExpression(node.value)) {
+    return parseMethodDoc(node, options);
+  }
+  if (isObjectMethod(node)) {
+    return parseMethodDoc(node, options);
+  }
 
   return null;
 }
@@ -340,6 +354,7 @@ function assemble(partialDoc: PartialDoc, root: RootDoc): void {
 
   if (doc && doc.name === undefined) {
     console.log(Object.assign({}, doc, {node: "removed"}));
+    console.log("^^^ ERR");
   }
 
   if (parent && !doc.constructor.noInferredScope) {

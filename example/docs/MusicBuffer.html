@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>webdoc: Class: StreamBuffer</title>
+    <title>webdoc: Class: MusicBuffer</title>
 
     <script src="scripts/prettify.js"> </script>
     <script src="scripts/lang-css.js"> </script>
@@ -14,7 +14,7 @@
 </head>
 <body>
     <div id="main">
-        <h1 class="page-title">Class: StreamBuffer</h1>
+        <h1 class="page-title">Class: MusicBuffer</h1>
         
 
 
@@ -26,7 +26,7 @@
     
         <h2>
             
-            EX.StreamBuffer
+            MusicBuffer
             
         </h2>
         
@@ -41,16 +41,12 @@
     
 
     
-        <h4 class="name" id="StreamBuffer">
-            StreamBuffer
+        <h4 class="name" id="MusicBuffer">
+            MusicBuffer
         </h4>
     
 
 
-
-    <div class="description">
-         Stream buffers store a portion of a stream's contents.
-    </div>
 
 
 
@@ -83,6 +79,14 @@
 
     
 
+    
+        <dt class="mixes">Mixes In:</dt>
+
+        <dd class="mixes"><ul>
+        
+            <li><a href="EX.LowpassFilter.html">[object Object]</a></li>
+        
+        </ul></dd>
     
 
     
@@ -125,6 +129,17 @@
 
         
     </div>
+
+    
+        <h3 class="subsection-title">Extends</h3>
+
+        
+
+<ul>
+  
+    <li><a href="EX.AbstractFileBuffer.html">EX.AbstractFileBuffer</a></li>
+  
+</ul>
 
     
 
@@ -217,10 +232,8 @@
 
         
             
-<h4 class="name" id="PropertyDocCHAIN_KEY_PROVIDER"><span class="type-signature">(static) </span>CHAIN_KEY_PROVIDER<span class="type-signature"> :Object</span></h4>
+<h4 class="name" id="PropertyDocdirtyID"><span class="type-signature"></span>dirtyID<span class="type-signature"> :number</span></h4>
 
-
-    <p class="summary"> The stream class which holds the chain-key</p>
 
 
 
@@ -230,7 +243,146 @@
     <ul>
         <li>
             
-        <span class="param-type">Object</span>
+        <span class="param-type">number</span>
+        
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-version">Version:</dt>
+    <dd class="tag-version"><ul class="dummy"><li>public</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="PropertyDocflushID"><span class="type-signature"></span>flushID<span class="type-signature"> :number</span></h4>
+
+
+
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+        <span class="param-type">number</span>
+        
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-version">Version:</dt>
+    <dd class="tag-version"><ul class="dummy"><li>public</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="PropertyDoccurrentThreshold"><span class="type-signature"></span>currentThreshold<span class="type-signature"> :number</span></h4>
+
+
+
+
+    <div class="description">
+         The current frequency threshold
+
+    </div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+        <span class="param-type">number</span>
         
 
 
@@ -304,7 +456,7 @@
 
 
     <div class="description">
-         Update the buffer's contents.
+         Update the buffer's contents w.r.t the file.
     </div>
 
 
@@ -403,6 +555,140 @@
 
 
 
+
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-version">Version:</dt>
+    <dd class="tag-version"><ul class="dummy"><li>public</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+        <h4 class="name" id="MethodDocsetUpperCutoff">
+            <span class="type-signature"></span>setUpperCutoff<span class="signature">(threshold)</span><span class="type-signature"></span>
+        </h4>
+    
+
+
+
+
+
+    <div class="description">
+         The max. frequency to be allowed in the stream
+
+    </div>
+
+
+
+
+
+
+
+
+
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+
+            <td class="type">
+            
+                
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                t - threshold
+                
+            </td>
+        </tr>
+    
+    </tbody>
+</table>
 
 
 

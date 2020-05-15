@@ -97,6 +97,18 @@ class StreamBuffer {
  */
 StreamBuffer.CHAIN_KEY_PROVIDER = StreamBuilder;
 
+
+/**
+ * This buffer tiles the elements for faster 2D access to neighbouring elements. This is useful if
+ * you are processing pixel data of an image.
+ *
+ * @memberof EX
+ * @augments EX.AbstractFileBuffer
+ */
+class TiledStreamBuffer {
+
+}
+
 /**
  * Base class for file buffers
  *
@@ -113,13 +125,10 @@ class AbstractFileBuffer {
 }
 
 /**
- * This buffer tiles the elements for faster 2D access to neighbouring elements. This is useful if
- * you are processing pixel data of an image.
- *
- * @memberof EX
  * @extends EX.AbstractFileBuffer
+ * @mixes EX.LowpassFilter
  */
-class TiledStreamBuffer {
+class MusicBuffer {
 
 }
 
@@ -128,6 +137,25 @@ class TiledStreamBuffer {
  */
 StreamBuffer.Reducer = class {
 
+};
+
+/**
+ * Filters data points above a certain frequency threshold.
+ * @memberof EX
+ * @mixin
+ */
+const LowpassFilter = {
+  /**
+   * The max. frequency to be allowed in the stream
+   * @param {number} t - threshold
+   */
+  setUpperCutoff(t) {
+    /**
+     * The current frequency threshold
+     * @member {number}
+     */
+    this.currentThreshold = 0;
+  },
 };
 
 /**

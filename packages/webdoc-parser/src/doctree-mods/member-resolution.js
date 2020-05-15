@@ -8,7 +8,7 @@ exports.default = memberResolve;
 const _model = require("@webdoc/model");
 
 function bubbleThis(doc) {
-  if (doc.type === "ClassDoc" || doc.type === "ObjectDoc") {
+  if (doc.type === "ClassDoc" || doc.type === "ObjectDoc" || doc.type === "MixinDoc" || doc.type === "InterfaceDoc") {
     return doc;
   }
 

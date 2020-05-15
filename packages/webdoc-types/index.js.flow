@@ -59,30 +59,37 @@ declare module "@webdoc/types" {
       ...Doc,
       params?: Param[],
       implements?: DocLink[],
+      mixes?: [],
       type: "ClassDoc"
     };
 
     declare type EventDoc = {
-      ...Doc,
+      ...BaseDoc,
       eventType: string,
       params?: Param[],
       type: "EventDoc"
     };
 
     declare type FunctionDoc = {
-      ...Doc,
+      ...BaseDoc,
       params: Param[],
       returns: Return[],
       type: "FunctionDoc"
     };
 
     declare type MethodDoc = {
-      ...Doc,
+      ...BaseDoc,
       params: Param[],
       returns: Return[],
       inherited: boolean,
       overrides: boolean,
       type: "MethodDoc"
+    };
+
+    declare type MixinDoc = {
+      ...BaseDoc,
+      mixes?: [],
+      type: "MixinDoc"
     };
 
     declare type NSDoc = {
@@ -93,6 +100,7 @@ declare module "@webdoc/types" {
     declare type ObjectDoc = {
       ...Doc,
       implements?: DocLink[],
+      mixes?: [],
       type: "ObjectDoc"
     };
 
