@@ -124,7 +124,7 @@ function createDocParser(nameHolderTag: string, docType: string) {
       }
     }
 
-    if (doctype === "NSDoc") {
+    if (docType === "NSDoc") {
       console.log("Namespace: " + name);
     }
 
