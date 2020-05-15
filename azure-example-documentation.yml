@@ -23,7 +23,7 @@ steps:
 
 - script: |
     ls -a
-    ls -a | grep -Fv -e README.md -e .git | xargs rm -r
+    ls -a | grep -Fv -e README.md -e .git -e . -e .. | xargs rm -r
   displayName: "Clear example-documentation"
   workingDirectory: example-documentation
 
