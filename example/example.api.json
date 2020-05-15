@@ -5,7 +5,7 @@
 			"name": "EX",
 			"type": "NSDoc",
 			"access": "public",
-			"scope": "static",
+			"scope": "inner",
 			"version": "public",
 			"brief": "",
 			"children": [
@@ -13,7 +13,7 @@
 					"name": "StreamBuilder",
 					"type": "ClassDoc",
 					"access": "public",
-					"scope": "static",
+					"scope": "inner",
 					"version": "public",
 					"brief": "",
 					"children": [
@@ -61,7 +61,7 @@
 							"name": "built",
 							"type": "EventDoc",
 							"access": "public",
-							"scope": "static",
+							"scope": "inner",
 							"version": "public",
 							"brief": " This event is fired when a stream is built."
 						}
@@ -71,7 +71,7 @@
 					"name": "StreamBuffer",
 					"type": "ClassDoc",
 					"access": "public",
-					"scope": "static",
+					"scope": "inner",
 					"version": "public",
 					"brief": " Stream buffers store a portion of a stream's contents.",
 					"children": [
@@ -111,7 +111,7 @@
 							"name": "Reducer",
 							"type": "ClassDoc",
 							"access": "public",
-							"scope": "static",
+							"scope": "inner",
 							"version": "public",
 							"brief": " Parallel reducer algorithm for running statistical summarization on a buffered stream."
 						},
@@ -119,7 +119,7 @@
 							"name": "shift",
 							"type": "EventDoc",
 							"access": "public",
-							"scope": "static",
+							"scope": "inner",
 							"version": "public",
 							"brief": ""
 						}
@@ -129,7 +129,7 @@
 					"name": "TiledStreamBuffer",
 					"type": "ClassDoc",
 					"access": "public",
-					"scope": "static",
+					"scope": "inner",
 					"version": "public",
 					"brief": "",
 					"children": [
@@ -161,7 +161,7 @@
 							"name": "shift",
 							"type": "EventDoc",
 							"access": "public",
-							"scope": "static",
+							"scope": "inner",
 							"version": "public",
 							"brief": ""
 						},
@@ -187,7 +187,7 @@
 					"name": "AbstractFileBuffer",
 					"type": "ClassDoc",
 					"access": "public",
-					"scope": "static",
+					"scope": "inner",
 					"version": "public",
 					"brief": " Base class for file buffers",
 					"children": [
@@ -219,7 +219,7 @@
 							"name": "shift",
 							"type": "EventDoc",
 							"access": "public",
-							"scope": "static",
+							"scope": "inner",
 							"version": "public",
 							"brief": ""
 						},
@@ -242,10 +242,84 @@
 					]
 				},
 				{
+					"name": "MusicBuffer",
+					"type": "ClassDoc",
+					"access": "public",
+					"scope": "inner",
+					"version": "public",
+					"brief": "",
+					"children": [
+						{
+							"name": "update",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"version": "public",
+							"brief": " Update the buffer's contents w.r.t the file."
+						},
+						{
+							"name": "next",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"version": "public",
+							"brief": " Shift the buffer-frame right"
+						},
+						{
+							"name": "offset",
+							"type": "PropertyDoc",
+							"access": "public",
+							"scope": "instance",
+							"version": "public",
+							"brief": ""
+						},
+						{
+							"name": "shift",
+							"type": "EventDoc",
+							"access": "public",
+							"scope": "inner",
+							"version": "public",
+							"brief": ""
+						},
+						{
+							"name": "dirtyID",
+							"type": "PropertyDoc",
+							"access": "public",
+							"scope": "instance",
+							"version": "public",
+							"brief": ""
+						},
+						{
+							"name": "flushID",
+							"type": "PropertyDoc",
+							"access": "public",
+							"scope": "instance",
+							"version": "public",
+							"brief": ""
+						},
+						{
+							"name": "setUpperCutoff",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"version": "public",
+							"brief": ""
+						},
+						{
+							"name": "currentThreshold",
+							"type": "PropertyDoc",
+							"access": "public",
+							"scope": "instance",
+							"version": "public",
+							"brief": ""
+						}
+					]
+				},
+				{
 					"name": "LowpassFilter",
 					"type": "MixinDoc",
 					"access": "public",
-					"scope": "static",
+					"scope": "inner",
 					"version": "public",
 					"brief": "",
 					"children": [
@@ -271,7 +345,7 @@
 					"name": " IStreamConfig",
 					"type": "TypedefDoc",
 					"access": "public",
-					"scope": "static",
+					"scope": "inner",
 					"version": "public",
 					"brief": "",
 					"children": [
@@ -289,7 +363,7 @@
 					"name": "IFileBuffer",
 					"type": "InterfaceDoc",
 					"access": "public",
-					"scope": "static",
+					"scope": "inner",
 					"version": "public",
 					"brief": "",
 					"children": [
@@ -310,80 +384,6 @@
 							"brief": ""
 						}
 					]
-				}
-			]
-		},
-		{
-			"name": "MusicBuffer",
-			"type": "ClassDoc",
-			"access": "public",
-			"scope": "static",
-			"version": "public",
-			"brief": "",
-			"children": [
-				{
-					"name": "update",
-					"type": "MethodDoc",
-					"access": "public",
-					"scope": "instance",
-					"version": "public",
-					"brief": " Update the buffer's contents w.r.t the file."
-				},
-				{
-					"name": "next",
-					"type": "MethodDoc",
-					"access": "public",
-					"scope": "instance",
-					"version": "public",
-					"brief": " Shift the buffer-frame right"
-				},
-				{
-					"name": "offset",
-					"type": "PropertyDoc",
-					"access": "public",
-					"scope": "instance",
-					"version": "public",
-					"brief": ""
-				},
-				{
-					"name": "shift",
-					"type": "EventDoc",
-					"access": "public",
-					"scope": "static",
-					"version": "public",
-					"brief": ""
-				},
-				{
-					"name": "dirtyID",
-					"type": "PropertyDoc",
-					"access": "public",
-					"scope": "instance",
-					"version": "public",
-					"brief": ""
-				},
-				{
-					"name": "flushID",
-					"type": "PropertyDoc",
-					"access": "public",
-					"scope": "instance",
-					"version": "public",
-					"brief": ""
-				},
-				{
-					"name": "setUpperCutoff",
-					"type": "MethodDoc",
-					"access": "public",
-					"scope": "instance",
-					"version": "public",
-					"brief": ""
-				},
-				{
-					"name": "currentThreshold",
-					"type": "PropertyDoc",
-					"access": "public",
-					"scope": "instance",
-					"version": "public",
-					"brief": ""
 				}
 			]
 		}

@@ -36,7 +36,7 @@ export const createDoc = (name?: string, type?: string = "BaseDoc", options: any
     brief: "",
     description: "",
     access: "public",
-    scope: type === "MethodDoc" ? "instance" : "static",
+    scope: type === "MethodDoc" ? "instance" : "inner",
     version: "public",
     type,
   }, options || {});

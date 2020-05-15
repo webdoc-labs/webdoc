@@ -13,6 +13,14 @@ const {TemplateRenderer} = require("@webdoc/template-library");
 TemplateRenderer.prototype.linkto = helper.linkto;
 TemplateRenderer.prototype.linkTo = helper.linkto;
 
+TemplateRenderer.prototype.resolveDocLink = function(docLink) {
+  if (typeof docLink === "string") {
+    return this.linkTo(docLink, docLink);
+  }
+
+  return this.linkTo(docLink.path, docLink.path);
+};
+
 const htmlsafe = TemplateRenderer.prototype.htmlsafe = (str) => {
   if (typeof str !== "string") {
     str = String(str);

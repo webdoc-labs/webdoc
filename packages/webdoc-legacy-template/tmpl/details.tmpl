@@ -56,22 +56,27 @@ if (data.defaultvalue && (data.defaultvaluetype === 'object' || data.defaultvalu
     <?js } ?>
 
     <?js if (data.implements && data.implements.length) { ?>
-    <dt class="implements">Implements:</dt>
-    <dd class="implements"><ul>
-        <?js data.implements.forEach(function(impl) { ?>
-            <li><?js= self.linkto(impl, self.htmlsafe(impl)) ?></li>
-        <?js }); ?>
-    </ul></dd>
+      <dt class="implements">Implements:</dt>
+      <dd class="implements">
+        <ul>
+          <?js data.implements.forEach((interface) => { ?>
+              <li>
+                <?js= this.resolveDocLink(interface) ?>
+              </li>
+          <?js }); ?>
+        </ul>
+      </dd>
     <?js } ?>
 
     <?js if (data.mixes && data.mixes.length) { ?>
         <dt class="mixes">Mixes In:</dt>
-
-        <dd class="mixes"><ul>
-        <?js data.mixes.forEach(function(a) { ?>
-            <li><?js= self.linkto(a, a) ?></li>
-        <?js }); ?>
-        </ul></dd>
+        <dd class="mixes">
+          <ul>
+            <?js data.mixes.forEach((mixin) => { ?>
+                <li><?js= this.resolveDocLink(mixin) ?></li>
+                <?js }); ?>
+          </ul>
+      </dd>
     <?js } ?>
 
     <?js if (data.deprecated) { ?>
@@ -82,12 +87,14 @@ if (data.defaultvalue && (data.defaultvaluetype === 'object' || data.defaultvalu
     <?js } ?>
 
     <?js if (data.author && author.length) {?>
-    <dt class="tag-author">Author:</dt>
-    <dd class="tag-author">
-        <ul><?js author.forEach(function(a) { ?>
-            <li><?js= self.resolveAuthorLinks(a) ?></li>
-        <?js }); ?></ul>
-    </dd>
+      <dt class="tag-author">Author:</dt>
+      <dd class="tag-author">
+          <ul>
+            <?js author.forEach(function(a) { ?>
+              <li><?js= self.resolveAuthorLinks(a) ?></li>
+            <?js }); ?>
+          </ul>
+      </dd>
     <?js } ?>
 
     <?js if (data.copyright) {?>

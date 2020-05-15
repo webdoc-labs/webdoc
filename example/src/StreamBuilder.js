@@ -125,6 +125,7 @@ class AbstractFileBuffer {
 }
 
 /**
+ * @memberof EX
  * @extends EX.AbstractFileBuffer
  * @mixes EX.LowpassFilter
  */
