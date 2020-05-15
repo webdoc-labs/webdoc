@@ -68,10 +68,14 @@ async function main(argv: yargs.Arguments<>) {
 
   doctree.members = doctree.children;
 
+  const files = new Array(sourceFiles.length);
+
   for (let i = 0; i < sourceFiles.length; i++) {
     log.info(tag.Parser, `Parsing ${sourceFiles[i]}`);
-    parse(fs.readFileSync(path.join(process.cwd(), sourceFiles[i]), "utf8"), doctree);
+    files[i] = fs.readFileSync(path.join(process.cwd(), sourceFiles[i]), "utf8");
   }
+
+  parse(files, doctree);
   console.log("Parsed all");
 
   if (config.opts.export) {
