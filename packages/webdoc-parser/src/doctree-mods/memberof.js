@@ -72,7 +72,10 @@ function memberofResolve(doc, root) {
 
 function throwCircularDepsError(queue: Doc[]): void {
   for (let i = 0; i < queue.length; i++) {
-    console.log(`[DepsChain]: ${queue[i].name} (@${queue[i].path})[${queue[i].type}]`);
+    const doc = queue[i].doc;
+    const destination = queue[i].destination;
+
+    console.log(`[DepsChain]: ${doc.name} (@${doc.path})[${doc.type}] is a member of ${destination}`);
   }
 
   throw new Error("@memberof dependencies are circular; cannot resolve after " + queue.length + " deps are left");
