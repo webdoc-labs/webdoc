@@ -10,7 +10,7 @@ export type BaseDoc = {
   access: "public" | "protected" | "private",
   scope: "static" | "instance" | "inner",
   version: "alpha" | "beta" | "internal" | "public" | "deprecated",
-  type: "ClassDoc" | "FunctionDoc" | "MethodDoc" | "ObjectDoc" | "RootDoc" | "TypedefDoc"
+  type: "ClassDoc" | "FunctionDoc" | "MethodDoc" | "ObjectDoc" | "RootDoc" | "TypedefDoc" | "InterfaceDoc"
 };
 
 export type Doc = BaseDoc | ClassDoc | ObjectDoc | FunctionDoc | MethodDoc | PropertyDoc
@@ -52,7 +52,7 @@ export type BaseTag = {
   type: "link" | "param" | "return" | "throws"
 };
 
-export type Tag = BaseTag | AccessTag | DeprecatedTag | ExampleTag 
+export type Tag = BaseTag | AccessTag | DeprecatedTag | ExampleTag
   | TypedTag | ParamTag | ReturnTag | ThrowsTag
   | PrivateTag | ProtectedTag | PublicTag  | TypedefTag
 
