@@ -1,6 +1,6 @@
 {
   "name": "@webdoc/cli",
-  "version": "0.1.8-alpha.0",
+  "version": "0.1.9-alpha.0",
   "description": "CLI for @webdoc monorepo",
   "bin": {
     "webdoc": "./cli.js"
