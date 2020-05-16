@@ -3,15 +3,8 @@ const env = global.Webdoc.env;
 
 const config = env["plugin/markdown"] || {};
 const defaultTags = [
-  "author",
-  "classdesc",
   "description",
-  "exceptions",
-  "params",
-  "properties",
-  "returns",
-  "see",
-  "summary",
+  "brief",
 ];
 
 let tags = [];
