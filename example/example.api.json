@@ -6,7 +6,6 @@
 			"type": "NSDoc",
 			"access": "public",
 			"scope": "inner",
-			"version": "public",
 			"brief": "",
 			"children": [
 				{
@@ -14,7 +13,6 @@
 					"type": "ClassDoc",
 					"access": "public",
 					"scope": "inner",
-					"version": "public",
 					"brief": "",
 					"children": [
 						{
@@ -22,7 +20,6 @@
 							"type": "PropertyDoc",
 							"access": "public",
 							"scope": "instance",
-							"version": "public",
 							"brief": ""
 						},
 						{
@@ -30,7 +27,6 @@
 							"type": "MethodDoc",
 							"access": "public",
 							"scope": "instance",
-							"version": "public",
 							"brief": ""
 						},
 						{
@@ -38,7 +34,6 @@
 							"type": "MethodDoc",
 							"access": "protected",
 							"scope": "instance",
-							"version": "public",
 							"brief": ""
 						},
 						{
@@ -46,15 +41,13 @@
 							"type": "MethodDoc",
 							"access": "public",
 							"scope": "static",
-							"version": "public",
-							"brief": " Builds the stream object."
+							"brief": "<p>Builds the stream object.</p>"
 						},
 						{
 							"name": "entityLayout",
 							"type": "PropertyDoc",
 							"access": "public",
 							"scope": "instance",
-							"version": "public",
 							"brief": ""
 						},
 						{
@@ -62,15 +55,13 @@
 							"type": "EventDoc",
 							"access": "public",
 							"scope": "inner",
-							"version": "public",
-							"brief": " This event is fired when a stream is built."
+							"brief": "<p>This event is fired when a stream is built.</p>"
 						},
 						{
 							"name": "verify",
 							"type": "MethodDoc",
 							"access": "public",
 							"scope": "inner",
-							"version": "public",
 							"brief": ""
 						}
 					]
@@ -80,7 +71,6 @@
 					"type": "NSDoc",
 					"access": "public",
 					"scope": "static",
-					"version": "public",
 					"brief": ""
 				},
 				{
@@ -88,7 +78,6 @@
 					"type": "NSDoc",
 					"access": "public",
 					"scope": "static",
-					"version": "public",
 					"brief": ""
 				},
 				{
@@ -96,31 +85,27 @@
 					"type": "ClassDoc",
 					"access": "public",
 					"scope": "inner",
-					"version": "public",
-					"brief": " Stream buffers store a portion of a stream's contents.",
+					"brief": "<p>Stream buffers store a portion of a stream's contents.</p>",
 					"children": [
 						{
 							"name": "update",
 							"type": "MethodDoc",
 							"access": "public",
 							"scope": "instance",
-							"version": "public",
-							"brief": " Update the buffer's contents."
+							"brief": "<p>Update the buffer's contents.</p>"
 						},
 						{
 							"name": "next",
 							"type": "MethodDoc",
 							"access": "public",
 							"scope": "instance",
-							"version": "public",
-							"brief": " Shift the buffer-frame right"
+							"brief": "<p>Shift the buffer-frame right</p>"
 						},
 						{
 							"name": "offset",
 							"type": "PropertyDoc",
 							"access": "public",
 							"scope": "instance",
-							"version": "public",
 							"brief": ""
 						},
 						{
@@ -128,23 +113,20 @@
 							"type": "PropertyDoc",
 							"access": "public",
 							"scope": "static",
-							"version": "public",
-							"brief": " The stream class which holds the chain-key"
+							"brief": "<p>The stream class which holds the chain-key</p>"
 						},
 						{
 							"name": "Reducer",
 							"type": "ClassDoc",
 							"access": "public",
 							"scope": "inner",
-							"version": "public",
-							"brief": " Parallel reducer algorithm for running statistical summarization on a buffered stream."
+							"brief": "<p>Parallel reducer algorithm for running statistical summarization on a buffered stream.</p>"
 						},
 						{
 							"name": "shift",
 							"type": "EventDoc",
 							"access": "public",
 							"scope": "inner",
-							"version": "public",
 							"brief": ""
 						}
 					]
@@ -154,7 +136,6 @@
 					"type": "ClassDoc",
 					"access": "public",
 					"scope": "inner",
-					"version": "public",
 					"brief": "",
 					"children": [
 						{
@@ -162,23 +143,20 @@
 							"type": "MethodDoc",
 							"access": "public",
 							"scope": "instance",
-							"version": "public",
-							"brief": " Update the buffer's contents w.r.t the file."
+							"brief": "<p>Update the buffer's contents w.r.t the file.</p>"
 						},
 						{
 							"name": "next",
 							"type": "MethodDoc",
 							"access": "public",
 							"scope": "instance",
-							"version": "public",
-							"brief": " Shift the buffer-frame right"
+							"brief": "<p>Shift the buffer-frame right</p>"
 						},
 						{
 							"name": "offset",
 							"type": "PropertyDoc",
 							"access": "public",
 							"scope": "instance",
-							"version": "public",
 							"brief": ""
 						},
 						{
@@ -186,7 +164,6 @@
 							"type": "EventDoc",
 							"access": "public",
 							"scope": "inner",
-							"version": "public",
 							"brief": ""
 						},
 						{
@@ -194,7 +171,6 @@
 							"type": "PropertyDoc",
 							"access": "public",
 							"scope": "instance",
-							"version": "public",
 							"brief": ""
 						},
 						{
@@ -202,7 +178,6 @@
 							"type": "PropertyDoc",
 							"access": "public",
 							"scope": "instance",
-							"version": "public",
 							"brief": ""
 						}
 					]
@@ -212,31 +187,27 @@
 					"type": "ClassDoc",
 					"access": "public",
 					"scope": "inner",
-					"version": "public",
-					"brief": " Base class for file buffers",
+					"brief": "<p>Base class for file buffers</p>",
 					"children": [
 						{
 							"name": "update",
 							"type": "MethodDoc",
 							"access": "public",
 							"scope": "instance",
-							"version": "public",
-							"brief": " Update the buffer's contents w.r.t the file."
+							"brief": "<p>Update the buffer's contents w.r.t the file.</p>"
 						},
 						{
 							"name": "next",
 							"type": "MethodDoc",
 							"access": "public",
 							"scope": "instance",
-							"version": "public",
-							"brief": " Shift the buffer-frame right"
+							"brief": "<p>Shift the buffer-frame right</p>"
 						},
 						{
 							"name": "offset",
 							"type": "PropertyDoc",
 							"access": "public",
 							"scope": "instance",
-							"version": "public",
 							"brief": ""
 						},
 						{
@@ -244,7 +215,6 @@
 							"type": "EventDoc",
 							"access": "public",
 							"scope": "inner",
-							"version": "public",
 							"brief": ""
 						},
 						{
@@ -252,7 +222,6 @@
 							"type": "PropertyDoc",
 							"access": "public",
 							"scope": "instance",
-							"version": "public",
 							"brief": ""
 						},
 						{
@@ -260,7 +229,6 @@
 							"type": "PropertyDoc",
 							"access": "public",
 							"scope": "instance",
-							"version": "public",
 							"brief": ""
 						}
 					]
@@ -270,7 +238,6 @@
 					"type": "ClassDoc",
 					"access": "public",
 					"scope": "inner",
-					"version": "public",
 					"brief": "",
 					"children": [
 						{
@@ -278,23 +245,20 @@
 							"type": "MethodDoc",
 							"access": "public",
 							"scope": "instance",
-							"version": "public",
-							"brief": " Update the buffer's contents w.r.t the file."
+							"brief": "<p>Update the buffer's contents w.r.t the file.</p>"
 						},
 						{
 							"name": "next",
 							"type": "MethodDoc",
 							"access": "public",
 							"scope": "instance",
-							"version": "public",
-							"brief": " Shift the buffer-frame right"
+							"brief": "<p>Shift the buffer-frame right</p>"
 						},
 						{
 							"name": "offset",
 							"type": "PropertyDoc",
 							"access": "public",
 							"scope": "instance",
-							"version": "public",
 							"brief": ""
 						},
 						{
@@ -302,7 +266,6 @@
 							"type": "EventDoc",
 							"access": "public",
 							"scope": "inner",
-							"version": "public",
 							"brief": ""
 						},
 						{
@@ -310,7 +273,6 @@
 							"type": "PropertyDoc",
 							"access": "public",
 							"scope": "instance",
-							"version": "public",
 							"brief": ""
 						},
 						{
@@ -318,7 +280,6 @@
 							"type": "PropertyDoc",
 							"access": "public",
 							"scope": "instance",
-							"version": "public",
 							"brief": ""
 						},
 						{
@@ -326,7 +287,6 @@
 							"type": "MethodDoc",
 							"access": "public",
 							"scope": "instance",
-							"version": "public",
 							"brief": ""
 						},
 						{
@@ -334,7 +294,6 @@
 							"type": "PropertyDoc",
 							"access": "public",
 							"scope": "instance",
-							"version": "public",
 							"brief": ""
 						}
 					]
@@ -344,7 +303,6 @@
 					"type": "MixinDoc",
 					"access": "public",
 					"scope": "inner",
-					"version": "public",
 					"brief": "",
 					"children": [
 						{
@@ -352,7 +310,6 @@
 							"type": "MethodDoc",
 							"access": "public",
 							"scope": "instance",
-							"version": "public",
 							"brief": ""
 						},
 						{
@@ -360,7 +317,6 @@
 							"type": "PropertyDoc",
 							"access": "public",
 							"scope": "instance",
-							"version": "public",
 							"brief": ""
 						}
 					]
@@ -370,7 +326,6 @@
 					"type": "TypedefDoc",
 					"access": "public",
 					"scope": "inner",
-					"version": "public",
 					"brief": "",
 					"children": [
 						{
@@ -378,7 +333,6 @@
 							"type": "PropertyDoc",
 							"access": "public",
 							"scope": "static",
-							"version": "public",
 							"brief": ""
 						}
 					]
@@ -388,7 +342,6 @@
 					"type": "InterfaceDoc",
 					"access": "public",
 					"scope": "inner",
-					"version": "public",
 					"brief": "",
 					"children": [
 						{
@@ -396,7 +349,6 @@
 							"type": "PropertyDoc",
 							"access": "public",
 							"scope": "instance",
-							"version": "public",
 							"brief": ""
 						},
 						{
@@ -404,7 +356,6 @@
 							"type": "PropertyDoc",
 							"access": "public",
 							"scope": "instance",
-							"version": "public",
 							"brief": ""
 						}
 					]

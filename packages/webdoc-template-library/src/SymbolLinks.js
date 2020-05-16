@@ -74,7 +74,6 @@ function fragmentHash(fragmentId: string): string {
   return `#${fragmentId}`;
 }
 
-
 /**
  * Reserves the ID for the given doc-path.
  *
@@ -140,7 +139,7 @@ function getID(docPath: string, id?: string): string {
   return id || "";
 }
 
-function formatNameForLink(doclet: Doc) {
+function formatNameForLink(doclet: Doc): string {
   let newName = doclet.type + (doclet.name || "") + (doclet.variation || "");
   const scopePunc = SCOPE_TO_PUNC[doclet.scope] || "";
 
@@ -199,6 +198,10 @@ function generateFileName(fileName: string, str: string): string {
  * @return {string} The filename to use for the string.
  */
 function getFileName(str: string): string {
+  if (pathToUrl.has(str)) {
+    return pathToUrl.get(str);
+  }
+
   let basename = (str || "")
   // use - instead of : in namespace prefixes
   // replace characters that can cause problems on some filesystems
@@ -217,7 +220,12 @@ function getFileName(str: string): string {
   // in case we've now stripped the entire basename (uncommon, but possible):
   basename = basename.length ? basename : "_";
 
-  return generateFileName(basename, str) + ".html"; // exports.fileExtension;
+  const fileName = generateFileName(basename, str) + ".html"; // exports.fileExtension;
+
+  pathToUrl.set(str, fileName);
+  urlToPath.set(fileName, str);
+
+  return fileName;
 };
 
 const registerLink = (docPath: string, fileUrl: string) => {
@@ -266,8 +274,9 @@ const createLink = (doc: Doc) => {
       fragment = getID(docPath, fragment);
     }
   } else { // inside another HTML file
-    filename = getFileName(doc.memberof || exports.globalName);
-    if (true) {// (doc.name !== doc.path) || (doc.scope === SCOPE.NAMES.GLOBAL) ) {
+    filename = getFileName(doc.parent.path || exports.globalName);
+
+    if (doc.name !== doc.path) { // || doc.scope === "SCOPE.NAMES.GLOBAL") {
       fragment = formatNameForLink(doc);
       fragment = getID(docPath, fragment);
     }
