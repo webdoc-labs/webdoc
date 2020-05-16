@@ -8,7 +8,7 @@ const catharsis = require("catharsis");
 type LinkOptions = {
   cssClass?: string,
   fragmentId?: string,
-  linkMap: { [id: string]: string },
+  linkMap?: Map<string, string>,
   monospace?: boolean,
   shortenName?: boolean
 };
@@ -329,9 +329,10 @@ function buildLink(docPath: string, linkText: string, options: LinkOptions) {
         /^<[\s\S]+>/.test(docPath) === false) {
     parsedType = parseType(docPath);
 
-    return stringifyType(parsedType, options.cssClass, options.linkMap);
+    // Optimize Object.fromEntires, it's ugly
+    return stringifyType(parsedType, options.cssClass, Object.fromEntries(options.linkMap));
   } else {
-    fileUrl = hasOwnProp.call(options.linkMap, docPath) ? options.linkMap[docPath] : "";
+    fileUrl = options.linkMap.has(docPath) ? options.linkMap.get(docPath) : "";
     text = linkText || (options.shortenName ? getShortName(docPath) : docPath);
   }
 
@@ -367,9 +368,7 @@ const linkTo = (docPath: string, linkText: string, cssClass?: string, fragmentId
   buildLink(docPath, linkText, {
     cssClass: cssClass || "",
     fragmentId: fragmentId || "",
-    // TODO: Optimize this, we don't want to create an Object again
-    // (webdoc moved to Map, original JSDoc was object)
-    linkMap: Object.fromEntries(pathToUrl),
+    linkMap: pathToUrl,
   });
 
 /**
