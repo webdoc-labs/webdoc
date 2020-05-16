@@ -4,7 +4,7 @@ import * as yargs from "yargs";
 import {log, tag, LogLevel} from "missionlog";
 import globby from "globby";
 import type {RootDoc} from "@webdoc/types";
-import {parse} from "@webdoc/parser";
+import {parse, registerWebdocParser} from "@webdoc/parser";
 import {exportTaffy} from "@webdoc/model";
 import {writeDoctree} from "@webdoc/externalize";
 import fs from "fs";
@@ -44,16 +44,32 @@ async function main(argv: yargs.Arguments<>) {
     initLogger(true);
   }
 
+  global.Webdoc = {};
+  registerWebdocParser();// global.Webdoc.Parser
+
   console.log("@webdoc/cli ------------------ ");
 
   const {loadConfig} = require("./config");
   const config = loadConfig(argv.config);
+  global.Webdoc.env = config;
 
   // TODO: excludePattern
   const includePattern = config.source.includePattern || config.source.include;
 
   if (!includePattern) {
     console.log("No source.include or source.includePattern found in config file");
+  }
+
+  if (config.plugins) {
+    for (const pluginPath of config.plugins) {
+      if (pluginPath === "plugins/markdown") {
+        require("@webdoc/plugin-markdown");
+        continue;
+      }
+
+      // Plugin should invoke installPlugin to whatever APIs it uses.
+      require(pluginPath);
+    }
   }
 
   const sourceFiles = globby.sync(includePattern);

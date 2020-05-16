@@ -1,6 +1,6 @@
 /**
  * The stream builder can be used to generate an optimized memory channel for parallel
- * processing in Node.js applications.
+ * processing in **Node.js** applications.
  *
  * @memberof EX
  * @public

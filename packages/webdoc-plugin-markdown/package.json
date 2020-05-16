@@ -1,0 +1,34 @@
+{
+  "name": "@webdoc/plugin-markdown",
+  "version": "0.1.22-alpha.0",
+  "description": "Use markdown syntax in your documentation",
+  "keywords": [
+    "webdoc",
+    "markdown",
+    "plugin"
+  ],
+  "author": "Shukant Pal <shukantpal@outlook.com>",
+  "homepage": "https://github.com/SukantPal/webdoc/tree/master/webdoc-plugin-markdown#readme",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SukantPal/webdoc.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/SukantPal/webdoc/issues"
+  },
+  "dependencies": {
+    "markdown-it": "^10.0.0"
+  }
+}
