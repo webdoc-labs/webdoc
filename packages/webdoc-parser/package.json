@@ -1,6 +1,6 @@
 {
   "name": "@webdoc/parser",
-  "version": "0.1.24-alpha.0",
+  "version": "0.1.27-alpha.0",
   "description": "Doc-tree parser for JavaScript",
   "keywords": [
     "parser",
@@ -36,7 +36,7 @@
     "@babel/parser": "^7.9.4",
     "@babel/traverse": "7.9.5",
     "@babel/types": "7.9.5",
-    "@webdoc/model": "^0.1.22-alpha.0",
+    "@webdoc/model": "^0.1.27-alpha.0",
     "@webdoc/types": "^0.1.22-alpha.0",
     "missionlog": "1.6.0",
     "nanoid": "^3.1.3"
