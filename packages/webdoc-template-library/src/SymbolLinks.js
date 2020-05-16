@@ -392,7 +392,7 @@ const getAncestorLinks = (doc: Doc, cssClass: string): string[] => {
   const links = [];
 
   ancestors.forEach((ancestor) => {
-    links.push(linkTo(ancestor.path, ancestor.name, cssClass));
+    links.shift(linkTo(ancestor.path, ancestor.name, cssClass));
   });
 
   if (links.length) {
