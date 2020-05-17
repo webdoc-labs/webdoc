@@ -11,5 +11,5 @@ export function nodeIdentifer(node: any): string {
     return node.key.name;
   }
 
-  return "<Unknown>";
+  return "UnknownParsed" + node.loc.start.line;
 }
