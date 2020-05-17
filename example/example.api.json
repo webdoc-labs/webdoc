@@ -27,7 +27,16 @@
 							"type": "MethodDoc",
 							"access": "public",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"children": [
+								{
+									"name": "<Unknown>",
+									"type": "PropertyDoc",
+									"access": "public",
+									"scope": "inner",
+									"brief": ""
+								}
+							]
 						},
 						{
 							"name": "setupThreads",
@@ -42,13 +51,6 @@
 							"access": "public",
 							"scope": "static",
 							"brief": "<p>Builds the stream object.</p>"
-						},
-						{
-							"name": "entityLayout",
-							"type": "PropertyDoc",
-							"access": "public",
-							"scope": "instance",
-							"brief": ""
 						},
 						{
 							"name": "built",
@@ -102,20 +104,6 @@
 							"brief": "<p>Shift the buffer-frame right</p>"
 						},
 						{
-							"name": "offset",
-							"type": "PropertyDoc",
-							"access": "public",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "CHAIN_KEY_PROVIDER",
-							"type": "PropertyDoc",
-							"access": "public",
-							"scope": "static",
-							"brief": "<p>The stream class which holds the chain-key</p>"
-						},
-						{
 							"name": "Reducer",
 							"type": "ClassDoc",
 							"access": "public",
@@ -153,13 +141,6 @@
 							"brief": "<p>Shift the buffer-frame right</p>"
 						},
 						{
-							"name": "offset",
-							"type": "PropertyDoc",
-							"access": "public",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
 							"name": "shift",
 							"type": "EventDoc",
 							"access": "public",
@@ -176,6 +157,20 @@
 						{
 							"name": "flushID",
 							"type": "PropertyDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "pointer",
+							"type": "PropertyDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "sync",
+							"type": "MethodDoc",
 							"access": "public",
 							"scope": "instance",
 							"brief": ""
@@ -204,13 +199,6 @@
 							"brief": "<p>Shift the buffer-frame right</p>"
 						},
 						{
-							"name": "offset",
-							"type": "PropertyDoc",
-							"access": "public",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
 							"name": "shift",
 							"type": "EventDoc",
 							"access": "public",
@@ -227,6 +215,20 @@
 						{
 							"name": "flushID",
 							"type": "PropertyDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "pointer",
+							"type": "PropertyDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "sync",
+							"type": "MethodDoc",
 							"access": "public",
 							"scope": "instance",
 							"brief": ""
@@ -255,13 +257,6 @@
 							"brief": "<p>Shift the buffer-frame right</p>"
 						},
 						{
-							"name": "offset",
-							"type": "PropertyDoc",
-							"access": "public",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
 							"name": "shift",
 							"type": "EventDoc",
 							"access": "public",
@@ -283,15 +278,22 @@
 							"brief": ""
 						},
 						{
-							"name": "setUpperCutoff",
+							"name": "pointer",
+							"type": "PropertyDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "sync",
 							"type": "MethodDoc",
 							"access": "public",
 							"scope": "instance",
 							"brief": ""
 						},
 						{
-							"name": "currentThreshold",
-							"type": "PropertyDoc",
+							"name": "setUpperCutoff",
+							"type": "MethodDoc",
 							"access": "public",
 							"scope": "instance",
 							"brief": ""
@@ -310,14 +312,16 @@
 							"type": "MethodDoc",
 							"access": "public",
 							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "currentThreshold",
-							"type": "PropertyDoc",
-							"access": "public",
-							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"children": [
+								{
+									"name": "<Unknown>",
+									"type": "PropertyDoc",
+									"access": "public",
+									"scope": "inner",
+									"brief": ""
+								}
+							]
 						}
 					]
 				},
@@ -357,10 +361,31 @@
 							"access": "public",
 							"scope": "instance",
 							"brief": ""
+						},
+						{
+							"name": "pointer",
+							"type": "PropertyDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "sync",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": ""
 						}
 					]
 				}
 			]
+		},
+		{
+			"name": "<Unknown>",
+			"type": "PropertyDoc",
+			"access": "public",
+			"scope": "static",
+			"brief": "<p>The stream class which holds the chain-key</p>"
 		}
 	]
 }

@@ -191,3 +191,14 @@ const LowpassFilter = {
  * @property {number} dirtyID
  * @property {number} flushID
  */
+
+/**
+ * @memberof EX.IFileBuffer#
+ * @member {number} pointer
+ */
+
+/**
+ * @memberof EX.IFileBuffer#
+ * @method sync
+ * @param {boolean} forceFS
+ */

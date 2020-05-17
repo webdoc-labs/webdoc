@@ -126,6 +126,7 @@ function createDocParser(nameHolderTag: string, docType: string) {
 const TAG_MAP = {
   "class": createDocParser("ClassTag", "ClassDoc"),
   "interface": createDocParser("InterfaceTag", "InterfaceDoc"),
+  "member": createDocParser("MemberTag", "PropertyDoc"),
   "method": createDocParser("MethodTag", "MethodDoc"),
   "mixin": createDocParser("MixinTag", "MixinDoc"),
   "typedef": parseTypedefDoc,
