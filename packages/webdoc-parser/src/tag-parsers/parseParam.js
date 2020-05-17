@@ -12,7 +12,7 @@ function extractIdentifer(from: string, index: number = 0): {
   closureEnd: number
   } {
   // Extracts the [ident=defaultValue] group. The brackets & equal sign need not exist.
-  const identClosureMatch = /((\[)([^\]])+(\]))|(([^\s])([\[])?([^\s])+(\s)?)/.exec(from);
+  const identClosureMatch = /((\[)([^\]])+(\]))|(([^\s])([\[])?([^\s])+)?/.exec(from);
 
   if (!identClosureMatch) {
     return {

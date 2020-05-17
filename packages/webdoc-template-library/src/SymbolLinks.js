@@ -126,7 +126,7 @@ function generateID(fileName: string, id: string): string {
  * @return {string} - the unique DOM-id for that symbol
  */
 function getID(docPath: string, id?: string): string {
-  if (hasOwnProp.call(pathToID, docPath)) {
+  if (pathToID.has(docPath)) {
     id = pathToID.get(docPath);
   } else if (!id) {
     // no ID required
@@ -140,7 +140,7 @@ function getID(docPath: string, id?: string): string {
 }
 
 function formatNameForLink(doclet: Doc): string {
-  let newName = doclet.type + (doclet.name || "") + (doclet.variation || "");
+  let newName = (doclet.name || "") + (doclet.variation || "");
   const scopePunc = SCOPE_TO_PUNC[doclet.scope] || "";
 
   // Only prepend the scope punctuation if it's not the same character that marks the start of a

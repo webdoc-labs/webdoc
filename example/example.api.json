@@ -16,7 +16,7 @@
 					"brief": "",
 					"children": [
 						{
-							"name": "CHAIN_KEY",
+							"name": "",
 							"type": "PropertyDoc",
 							"access": "public",
 							"scope": "instance",
@@ -167,14 +167,7 @@
 							"brief": ""
 						},
 						{
-							"name": "dirtyID",
-							"type": "PropertyDoc",
-							"access": "public",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "flushID",
+							"name": "",
 							"type": "PropertyDoc",
 							"access": "public",
 							"scope": "instance",
@@ -218,14 +211,7 @@
 							"brief": ""
 						},
 						{
-							"name": "dirtyID",
-							"type": "PropertyDoc",
-							"access": "public",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "flushID",
+							"name": "",
 							"type": "PropertyDoc",
 							"access": "public",
 							"scope": "instance",
@@ -269,14 +255,7 @@
 							"brief": ""
 						},
 						{
-							"name": "dirtyID",
-							"type": "PropertyDoc",
-							"access": "public",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "flushID",
+							"name": "",
 							"type": "PropertyDoc",
 							"access": "public",
 							"scope": "instance",
@@ -329,7 +308,7 @@
 					"brief": "",
 					"children": [
 						{
-							"name": "bufferSize",
+							"name": "",
 							"type": "PropertyDoc",
 							"access": "public",
 							"scope": "static",
@@ -345,14 +324,14 @@
 					"brief": "",
 					"children": [
 						{
-							"name": "dirtyID",
+							"name": "",
 							"type": "PropertyDoc",
 							"access": "public",
 							"scope": "instance",
 							"brief": ""
 						},
 						{
-							"name": "flushID",
+							"name": "",
 							"type": "PropertyDoc",
 							"access": "public",
 							"scope": "instance",
