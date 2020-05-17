@@ -115,7 +115,7 @@ function createDocParser(nameHolderTag: string, docType: string) {
     }
 
     if (!name) {
-      name = "UnknownNode" + node.loc.start.line;
+      name = "UnknownNode" + nameHolderTag;
     }
 
     return createDoc(name, docType, options);
