@@ -104,6 +104,17 @@ function addChildPartialDoc(doc: PartialDoc, scope: PartialDoc): PartialDoc {
   return doc;
 }
 
+function captureDocComment(comments: CommentBlock) {
+  for (let i = comments.length - 1; i >= 0; i--) {
+    if (comments[i].value.startsWith("*") || comments[i].value.startsWith("!")) {
+      return i;
+    }
+  }
+
+  // Just try the leading comment
+  return comments.length - 1;
+}
+
 /**
  * Transforms the Babel AST node into a {@code PartialDoc}, if documentation has been added.
  *
@@ -132,9 +143,11 @@ export default function capture(node: Node, scope: PartialDoc): ?PartialDoc {
   }
 
   let mainPartialDoc: ?PartialDoc = null;
+  let nodeDocIndex;
 
   if (node.leadingComments && node.leadingComments.length > 0) {
-    const nodeDoc = node.leadingComments[node.leadingComments.length - 1];
+    nodeDocIndex = captureDocComment(node.leadingComments);
+    const nodeDoc = node.leadingComments[nodeDocIndex];
     const comment = extract(nodeDoc) || "";
 
     // Does user want to document as a property? Then remove PD_LIFTED_PROPERTY flag
@@ -185,7 +198,11 @@ export default function capture(node: Node, scope: PartialDoc): ?PartialDoc {
       mainPartialDoc = addChildPartialDoc(mainPartialDoc, scope);
     }
 
-    for (let i = 0; i < node.leadingComments.length - 1; i++) {
+    for (let i = 0; i < node.leadingComments.length; i++) {
+      if (i === nodeDocIndex) {
+        continue;
+      }
+
       const comment = extract(node.leadingComments[i]);
 
       if (!comment) {

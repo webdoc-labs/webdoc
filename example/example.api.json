@@ -30,7 +30,7 @@
 							"brief": "",
 							"children": [
 								{
-									"name": "<Unknown>",
+									"name": "UnknownNodeMemberTag",
 									"type": "PropertyDoc",
 									"access": "public",
 									"scope": "inner",
@@ -42,13 +42,13 @@
 							"name": "setupThreads",
 							"type": "MethodDoc",
 							"access": "protected",
-							"scope": "instance",
+							"scope": "static",
 							"brief": ""
 						},
 						{
 							"name": "build",
 							"type": "MethodDoc",
-							"access": "public",
+							"access": "private",
 							"scope": "static",
 							"brief": "<p>Builds the stream object.</p>"
 						},
@@ -134,6 +134,20 @@
 							"brief": "<p>Update the buffer's contents w.r.t the file.</p>"
 						},
 						{
+							"name": "createFileBuffer",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "cloneFile",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
 							"name": "next",
 							"type": "MethodDoc",
 							"access": "public",
@@ -192,6 +206,20 @@
 							"brief": "<p>Update the buffer's contents w.r.t the file.</p>"
 						},
 						{
+							"name": "createFileBuffer",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "cloneFile",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
 							"name": "next",
 							"type": "MethodDoc",
 							"access": "public",
@@ -248,6 +276,20 @@
 							"access": "public",
 							"scope": "instance",
 							"brief": "<p>Update the buffer's contents w.r.t the file.</p>"
+						},
+						{
+							"name": "createFileBuffer",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "cloneFile",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": ""
 						},
 						{
 							"name": "next",
@@ -315,7 +357,7 @@
 							"brief": "",
 							"children": [
 								{
-									"name": "<Unknown>",
+									"name": "UnknownNodeMemberTag",
 									"type": "PropertyDoc",
 									"access": "public",
 									"scope": "inner",
@@ -381,11 +423,41 @@
 			]
 		},
 		{
-			"name": "<Unknown>",
+			"name": "UnknownNodeMemberTag",
 			"type": "PropertyDoc",
 			"access": "public",
 			"scope": "static",
 			"brief": "<p>The stream class which holds the chain-key</p>"
+		},
+		{
+			"name": "ArcUtils",
+			"type": "ClassDoc",
+			"access": "private",
+			"scope": "inner",
+			"brief": "",
+			"children": [
+				{
+					"name": "curveTo",
+					"type": "MethodDoc",
+					"access": "private",
+					"scope": "instance",
+					"brief": "<p>The arcTo() method creates an arc/curve between two tangents on the canvas.</p>"
+				},
+				{
+					"name": "arc",
+					"type": "MethodDoc",
+					"access": "private",
+					"scope": "static",
+					"brief": "<p>The arc method creates an arc/curve (used to create circles, or parts of circles).</p>"
+				},
+				{
+					"name": "x",
+					"type": "MethodDoc",
+					"access": "public",
+					"scope": "instance",
+					"brief": "<p>Yo</p>"
+				}
+			]
 		}
 	]
 }

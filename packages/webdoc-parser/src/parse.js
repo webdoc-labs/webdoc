@@ -362,7 +362,7 @@ function assemble(partialDoc: PartialDoc, root: RootDoc): void {
   if (!doc && partialDoc.name !== "File") {
     partialDoc.parent = null;
     parserLogger.error("DocParser",
-      `Couldn't parse doc for + ${partialDoc.name}(@${partialDoc.path.join(".")}) `);
+      `Couldn't parse doc for + ${partialDoc.name}(@${partialDoc.path.join(".")})`);
 
     return;
   } else if (doc) {
