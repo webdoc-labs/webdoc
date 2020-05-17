@@ -401,7 +401,7 @@ const getAncestorLinks = (doc: Doc, cssClass: string): string[] => {
   const links = [];
 
   ancestors.forEach((ancestor) => {
-    if (ancestor.type === "RootDoc") {
+    if (ancestor.type === "RootDoc" || !ancestor.parent) {
       return;
     }
 

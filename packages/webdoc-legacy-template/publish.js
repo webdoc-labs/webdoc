@@ -382,7 +382,7 @@ function buildMemberNav(items, itemHeading, itemsSeen, linktoFn) {
       if ( !hasOwnProp.call(item, "path") ) {
         itemsNav += `<li>${linktoFn("", item.name)}</li>`;
       } else if ( !hasOwnProp.call(itemsSeen, item.path) ) {
-        if (env.conf.templates.default.useLongnameInNav) {
+        if (true) { //env.conf.templates.default.useLongnameInNav) {
           displayName = item.path;
         } else {
           displayName = item.name;

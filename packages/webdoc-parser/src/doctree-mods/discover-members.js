@@ -78,7 +78,7 @@ function discoverMembers(doc: Doc, depsChain = new Set<Doc>()): void {
 
       // Parent symbols are hidden by inherited/implemented symbols
       if (memberMap[member.name]) {
-        memberMap[member.name].overrides = true;
+        memberMap[member.name].overrides = member;
         continue;
       }
 
@@ -88,6 +88,7 @@ function discoverMembers(doc: Doc, depsChain = new Set<Doc>()): void {
 
       temp.overrides = false;
       temp.inherited = true;
+      temp.inherits = member;
 
       addChildDoc(temp, doc);
     }

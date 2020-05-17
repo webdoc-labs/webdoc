@@ -82,6 +82,7 @@ declare module "@webdoc/types" {
       params: Param[],
       returns: Return[],
       inherited: boolean,
+      inherits: MethodDoc,
       overrides: boolean,
       type: "MethodDoc"
     };
@@ -109,6 +110,7 @@ declare module "@webdoc/types" {
       object: "this" | ?string,
       dataType: DataType,
       inherited: boolean,
+      inherits: PropertyDoc,
       type: "PropertyDoc"
     };
 

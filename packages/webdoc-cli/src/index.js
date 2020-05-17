@@ -51,7 +51,10 @@ async function main(argv: yargs.Arguments<>) {
 
   const {loadConfig} = require("./config");
   const config = loadConfig(argv.config);
+
+  // TODO: Fix what env/conf is?
   global.Webdoc.env = config;
+  global.Webdoc.env.conf = config;
 
   // TODO: excludePattern
   const includePattern = config.source.includePattern || config.source.include;
