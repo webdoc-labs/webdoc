@@ -8,6 +8,7 @@ import {parse, registerWebdocParser} from "@webdoc/parser";
 import {exportTaffy} from "@webdoc/model";
 import {writeDoctree} from "@webdoc/externalize";
 import fs from "fs";
+import {performance} from "perf_hooks";
 
 export function initLogger(verbose: boolean = false) {
   const defaultLevel = verbose ? "INFO" : "WARN";
