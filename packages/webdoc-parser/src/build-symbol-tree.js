@@ -363,7 +363,7 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
     } else if (!isObjectExpression(init)) {
       flags |= OBLIGATE_LEAF;
     }
-  } else if (
+  } else if (parent && isVirtual(parent) &&
     isCallExpression(node) &&
     (isFunctionExpression(node.callee) || isArrowFunctionExpression(node.callee))) {
     flags |= VIRTUAL;
