@@ -1,323 +1,588 @@
+
+
 /**
- * The stream builder can be used to generate an optimized memory channel for parallel
- * processing in **Node.js** applications.
- *
- * @memberof EX
- * @public
- *
- * @property {string} CHAIN_KEY
+ * @namespace PIXI
  */
-export class StreamBuilder {
-  /**
-   * @constructor
-   * @param {object} options
-   * @param {number}[options.threads]
-   */
-  constructor(options) {
+
+/**
+ * Renderer dedicated to drawing and batching sprites.
+ *
+ * This is the default batch renderer. It buffers objects
+ * with texture-based geometries and renders them in
+ * batches. It uploads multiple textures to the GPU to
+ * reduce to the number of draw calls.
+ *
+ * @class
+ * @protected
+ * @memberof PIXI
+ * @extends PIXI.ObjectRenderer
+ */
+const AbstractBatchRenderer = /** @class */ (() => {
+  class AbstractBatchRenderer extends ObjectRenderer {
     /**
-     * The layout of stream entities in memory
-     * @member {object}
-     */
-    this.entityLayout = {};
-  }
-
-  /**
-   * Setup up stream processing threads.
-   * @protected
-   * @param {number}[threads=8]
-   * @return {StreamBuilder} - this
-   * @static
-   * @example
-   * new StreamBuilder({ threads: 16 })
-   *  .setupThreads();
-   *
-   * Here are some more details: (nothing)
-   */
-  static setupThreads(threads = 8) {
-    return this;
-  }
-
-  /**
-   * Builds the stream object.
-   *
-   * @param {string} [streamName='default'] - the stream's name
-   * @param {StreamBuffer} [buffer] - the buffer to use
-   * @static
-   * @private
-   */
-  static build(streamName = "default", buffer) {
-
-  }
-
-  /**
-   * This event is fired when a stream is built.
-   *
-   * @event EX.StreamBuilder.built
-   */
-}
-
-/**
- * Verify checksum
- * @memberof EX.StreamBuilder~
- * @method
- */
-const verify = function verify() {
-
-};
-
-/**
- * @namespace EX
- */
-/**
- * @namespace EX.filters
- */
-
-/**
- * @namespace EX.conditional
- */
-export const conditionalX = {
-
-};
-
-/**
- * Stream buffers store a portion of a stream's contents.
- *
- * @memberof EX
- */
-class StreamBuffer {
-  constructor() {
+         * This will hook onto the renderer's `contextChange`
+         * and `prerender` signals.
+         *
+         * @param {PIXI.Renderer} renderer - The renderer this works for.
+         */
+    constructor(renderer) {
+      super(renderer);
+      /**
+             * This is used to generate a shader that can
+             * color each vertex based on a `aTextureId`
+             * attribute that points to an texture in `uSampler`.
+             *
+             * This enables the objects with different textures
+             * to be drawn in the same draw call.
+             *
+             * You can customize your shader by creating your
+             * custom shader generator.
+             *
+             * @member {PIXI.BatchShaderGenerator}
+             * @protected
+             */
+      this.shaderGenerator = null;
+      /**
+             * The class that represents the geometry of objects
+             * that are going to be batched with this.
+             *
+             * @member {object}
+             * @default PIXI.BatchGeometry
+             * @protected
+             */
+      this.geometryClass = null;
+      /**
+             * Size of data being buffered per vertex in the
+             * attribute buffers (in floats). By default, the
+             * batch-renderer plugin uses 6:
+             *
+             * | aVertexPosition | 2 |
+             * |-----------------|---|
+             * | aTextureCoords  | 2 |
+             * | aColor          | 1 |
+             * | aTextureId      | 1 |
+             *
+             * @member {number}
+             * @readonly
+             */
+      this.vertexSize = null;
+      /**
+             * The WebGL state in which this renderer will work.
+             *
+             * @member {PIXI.State}
+             * @readonly
+             */
+      this.state = State.for2d();
+      /**
+             * The number of bufferable objects before a flush
+             * occurs automatically.
+             *
+             * @member {number}
+             * @default settings.SPRITE_BATCH_SIZE * 4
+             */
+      this.size = settings.SPRITE_BATCH_SIZE * 4;
+      /**
+             * Total count of all vertices used by the currently
+             * buffered objects.
+             *
+             * @member {number}
+             * @private
+             */
+      this._vertexCount = 0;
+      /**
+             * Total count of all indices used by the currently
+             * buffered objects.
+             *
+             * @member {number}
+             * @private
+             */
+      this._indexCount = 0;
+      /**
+             * Buffer of objects that are yet to be rendered.
+             *
+             * @member {PIXI.DisplayObject[]}
+             * @private
+             */
+      this._bufferedElements = [];
+      /**
+             * Data for texture batch builder, helps to save a bit of CPU on a pass
+             * @type {PIXI.BaseTexture[]}
+             * @private
+             */
+      this._bufferedTextures = [];
+      /**
+             * Number of elements that are buffered and are
+             * waiting to be flushed.
+             *
+             * @member {number}
+             * @private
+             */
+      this._bufferSize = 0;
+      /**
+             * This shader is generated by `this.shaderGenerator`.
+             *
+             * It is generated specifically to handle the required
+             * number of textures being batched together.
+             *
+             * @member {PIXI.Shader}
+             * @protected
+             */
+      this._shader = null;
+      /**
+             * Pool of `this.geometryClass` geometry objects
+             * that store buffers. They are used to pass data
+             * to the shader on each draw call.
+             *
+             * These are never re-allocated again, unless a
+             * context change occurs; however, the pool may
+             * be expanded if required.
+             *
+             * @member {PIXI.Geometry[]}
+             * @private
+             * @see PIXI.AbstractBatchRenderer.contextChange
+             */
+      this._packedGeometries = [];
+      /**
+             * Size of `this._packedGeometries`. It can be expanded
+             * if more than `this._packedGeometryPoolSize` flushes
+             * occur in a single frame.
+             *
+             * @member {number}
+             * @private
+             */
+      this._packedGeometryPoolSize = 2;
+      /**
+             * A flush may occur multiple times in a single
+             * frame. On iOS devices or when
+             * `settings.CAN_UPLOAD_SAME_BUFFER` is false, the
+             * batch renderer does not upload data to the same
+             * `WebGLBuffer` for performance reasons.
+             *
+             * This is the index into `packedGeometries` that points to
+             * geometry holding the most recent buffers.
+             *
+             * @member {number}
+             * @private
+             */
+      this._flushId = 0;
+      /**
+             * Pool of `ViewableBuffer` objects that are sorted in
+             * order of increasing size. The flush method uses
+             * the buffer with the least size above the amount
+             * it requires. These are used for passing attributes.
+             *
+             * The first buffer has a size of 8; each subsequent
+             * buffer has double capacity of its previous.
+             *
+             * @member {PIXI.ViewableBuffer[]}
+             * @private
+             * @see PIXI.AbstractBatchRenderer#getAttributeBuffer
+             */
+      this._aBuffers = {};
+      /**
+             * Pool of `Uint16Array` objects that are sorted in
+             * order of increasing size. The flush method uses
+             * the buffer with the least size above the amount
+             * it requires. These are used for passing indices.
+             *
+             * The first buffer has a size of 12; each subsequent
+             * buffer has double capacity of its previous.
+             *
+             * @member {Uint16Array[]}
+             * @private
+             * @see PIXI.AbstractBatchRenderer#getIndexBuffer
+             */
+      this._iBuffers = {};
+      /**
+             * Maximum number of textures that can be uploaded to
+             * the GPU under the current context. It is initialized
+             * properly in `this.contextChange`.
+             *
+             * @member {number}
+             * @see PIXI.AbstractBatchRenderer#contextChange
+             * @readonly
+             */
+      this.MAX_TEXTURES = 1;
+      this.renderer.on("prerender", this.onPrerender, this);
+      renderer.runners.contextChange.add(this);
+      this._dcIndex = 0;
+      this._aIndex = 0;
+      this._iIndex = 0;
+      this._attributeBuffer = null;
+      this._indexBuffer = null;
+      this._tempBoundTextures = [];
+    }
     /**
-     * The offset of the current buffer contents in the stream.
-     * @member {number}
-     */
-    this.offset = 0;
-  }
-
-  /**
-   * Update the buffer's contents.
-   */
-  update() {}
-
-  /**
-   * Shift the buffer-frame right
-   */
-  next() {}
-
-  /**
-   * Fired when the stream buffer frame is shifted, e.g. when {@code next} or {@code prev}
-   * is called.
-   * @event EX.StreamBuffer.shift
-   */
-}
-
-/**
- * The stream class which holds the chain-key
- *
- * @static
- * @member {Object}
- */
-StreamBuffer.CHAIN_KEY_PROVIDER = StreamBuilder;
-
-
-/**
- * This buffer tiles the elements for faster 2D access to neighbouring elements. This is useful if
- * you are processing pixel data of an image.
- *
- * @memberof EX
- * @augments EX.AbstractFileBuffer
- */
-class TiledStreamBuffer {
-
-}
-
-/**
- * Base class for file buffers
- *
- * @memberof EX
- * @extends EX.StreamBuffer
- * @implements EX.IFileBuffer
- * @abstract
- */
-class AbstractFileBuffer {
-  /**
-   * Update the buffer's contents w.r.t the file.
-   */
-  update() {}
-
-  /**
-   * @param {string} file
-   */
-  static createFileBuffer(file) {
-
-  }
-
-  /**
-   * @param {string} file
-   */
-  static cloneFile(file) {
-
-  }
-}
-
-/**
- * @memberof EX
- * @extends EX.AbstractFileBuffer
- * @mixes EX.LowpassFilter
- */
-class MusicBuffer {
-
-}
-
-/**
- * Parallel reducer algorithm for running statistical summarization on a buffered stream.
- */
-StreamBuffer.Reducer = class {
-
-};
-
-/**
- * Filters data points above a certain frequency threshold.
- * @memberof EX
- * @mixin
- */
-const LowpassFilter = {
-  /**
-   * The max. frequency to be allowed in the stream
-   * @param {number} t - threshold
-   */
-  setUpperCutoff(t) {
-    /**
-     * The current frequency threshold
-     * @member {number}
-     */
-    this.currentThreshold = 0;
-  },
-};
-
-/**
- * This can used to configure {@link StreamBuilder} post-instantiation.
- * @memberof EX
- * @typedef {object} IStreamConfig
- * @property {number} bufferSize
- */
-
-/**
- * @memberof EX
- * @interface IFileBuffer
- * @property {number} dirtyID
- * @property {number} flushID
- */
-
-/**
- * @memberof EX.IFileBuffer#
- * @member {number} pointer
- */
-
-/**
- * @memberof EX.IFileBuffer#
- * @method sync
- * @param {boolean} forceFS
- */
-
-/**
-  * Utilities for arc curves
-  * @class
-  * @private
-  */
-export class ArcUtils {
-  /**
-      * The arcTo() method creates an arc/curve between two tangents on the canvas.
-      *
-      * "borrowed" from https://code.google.com/p/fxcanvas/ - thanks google!
-      *
-      * @private
-      * @param {number} x1 - The x-coordinate of the beginning of the arc
-      * @param {number} y1 - The y-coordinate of the beginning of the arc
-      * @param {number} x2 - The x-coordinate of the end of the arc
-      * @param {number} y2 - The y-coordinate of the end of the arc
-      * @param {number} radius - The radius of the arc
-      * @return {object} If the arc length is valid, return center of circle, radius and other info otherwise `null`.
-      */
-  static curveTo(x1, y1, x2, y2, radius, points) {
-    const fromX = points[points.length - 2];
-    const fromY = points[points.length - 1];
-    const a1 = fromY - y1;
-    const b1 = fromX - x1;
-    const a2 = y2 - y1;
-    const b2 = x2 - x1;
-    const mm = Math.abs((a1 * b2) - (b1 * a2));
-    if (mm < 1.0e-8 || radius === 0) {
-      if (points[points.length - 2] !== x1 || points[points.length - 1] !== y1) {
-        points.push(x1, y1);
+         * Handles the `contextChange` signal.
+         *
+         * It calculates `this.MAX_TEXTURES` and allocating the
+         * packed-geometry object pool.
+         */
+    contextChange() {
+      const gl = this.renderer.gl;
+      if (settings.PREFER_ENV === ENV.WEBGL_LEGACY) {
+        this.MAX_TEXTURES = 1;
+      } else {
+        // step 1: first check max textures the GPU can handle.
+        this.MAX_TEXTURES = Math.min(gl.getParameter(gl.MAX_TEXTURE_IMAGE_UNITS), settings.SPRITE_MAX_TEXTURES);
+        // step 2: check the maximum number of if statements the shader can have too..
+        this.MAX_TEXTURES = checkMaxIfStatementsInShader(this.MAX_TEXTURES, gl);
       }
-      return null;
+      this._shader = this.shaderGenerator.generateShader(this.MAX_TEXTURES);
+      // we use the second shader as the first one depending on your browser
+      // may omit aTextureId as it is not used by the shader so is optimized out.
+      for (let i = 0; i < this._packedGeometryPoolSize; i++) {
+        /* eslint-disable max-len */
+        this._packedGeometries[i] = new (this.geometryClass)();
+      }
+      this.initFlushBuffers();
     }
-    const dd = (a1 * a1) + (b1 * b1);
-    const cc = (a2 * a2) + (b2 * b2);
-    const tt = (a1 * a2) + (b1 * b2);
-    const k1 = radius * Math.sqrt(dd) / mm;
-    const k2 = radius * Math.sqrt(cc) / mm;
-    const j1 = k1 * tt / dd;
-    const j2 = k2 * tt / cc;
-    const cx = (k1 * b2) + (k2 * b1);
-    const cy = (k1 * a2) + (k2 * a1);
-    const px = b1 * (k2 + j1);
-    const py = a1 * (k2 + j1);
-    const qx = b2 * (k1 + j2);
-    const qy = a2 * (k1 + j2);
-    const startAngle = Math.atan2(py - cy, px - cx);
-    const endAngle = Math.atan2(qy - cy, qx - cx);
-    return {
-      cx: (cx + x1),
-      cy: (cy + y1),
-      radius,
-      startAngle,
-      endAngle,
-      anticlockwise: (b1 * a2 > b2 * a1),
-    };
+    /**
+         * Makes sure that static and dynamic flush pooled objects have correct dimensions
+         */
+    initFlushBuffers() {
+      const {_drawCallPool, _textureArrayPool} = AbstractBatchRenderer;
+      // max draw calls
+      const MAX_SPRITES = this.size / 4;
+      // max texture arrays
+      const MAX_TA = Math.floor(MAX_SPRITES / this.MAX_TEXTURES) + 1;
+      while (_drawCallPool.length < MAX_SPRITES) {
+        _drawCallPool.push(new BatchDrawCall());
+      }
+      while (_textureArrayPool.length < MAX_TA) {
+        _textureArrayPool.push(new BatchTextureArray());
+      }
+      for (let i = 0; i < this.MAX_TEXTURES; i++) {
+        this._tempBoundTextures[i] = null;
+      }
+    }
+    /**
+         * Handles the `prerender` signal.
+         *
+         * It ensures that flushes start from the first geometry
+         * object again.
+         */
+    onPrerender() {
+      this._flushId = 0;
+    }
+    /**
+         * Buffers the "batchable" object. It need not be rendered
+         * immediately.
+         *
+         * @param {PIXI.DisplayObject} element - the element to render when
+         *    using this renderer
+         */
+    render(element) {
+      if (!element._texture.valid) {
+        return;
+      }
+      if (this._vertexCount + (element.vertexData.length / 2) > this.size) {
+        this.flush();
+      }
+      this._vertexCount += element.vertexData.length / 2;
+      this._indexCount += element.indices.length;
+      this._bufferedTextures[this._bufferSize] = element._texture.baseTexture;
+      this._bufferedElements[this._bufferSize++] = element;
+    }
+    buildTexturesAndDrawCalls() {
+      const {_bufferedTextures: textures, MAX_TEXTURES} = this;
+      const textureArrays = AbstractBatchRenderer._textureArrayPool;
+      const batch = this.renderer.batch;
+      const boundTextures = this._tempBoundTextures;
+      const touch = this.renderer.textureGC.count;
+      let TICK = ++BaseTexture._globalBatch;
+      let countTexArrays = 0;
+      let texArray = textureArrays[0];
+      let start = 0;
+      batch.copyBoundTextures(boundTextures, MAX_TEXTURES);
+      for (let i = 0; i < this._bufferSize; ++i) {
+        const tex = textures[i];
+        textures[i] = null;
+        if (tex._batchEnabled === TICK) {
+          continue;
+        }
+        if (texArray.count >= MAX_TEXTURES) {
+          batch.boundArray(texArray, boundTextures, TICK, MAX_TEXTURES);
+          this.buildDrawCalls(texArray, start, i);
+          start = i;
+          texArray = textureArrays[++countTexArrays];
+          ++TICK;
+        }
+        tex._batchEnabled = TICK;
+        tex.touched = touch;
+        texArray.elements[texArray.count++] = tex;
+      }
+      if (texArray.count > 0) {
+        batch.boundArray(texArray, boundTextures, TICK, MAX_TEXTURES);
+        this.buildDrawCalls(texArray, start, this._bufferSize);
+        ++countTexArrays;
+        ++TICK;
+      }
+      // Clean-up
+      for (let i = 0; i < boundTextures.length; i++) {
+        boundTextures[i] = null;
+      }
+      BaseTexture._globalBatch = TICK;
+    }
+    /**
+         * Populating drawcalls for rendering
+         *
+         * @param {PIXI.BatchTextureArray} texArray
+         * @param {number} start
+         * @param {number} finish
+         */
+    buildDrawCalls(texArray, start, finish) {
+      const {_bufferedElements: elements, _attributeBuffer, _indexBuffer, vertexSize} = this;
+      const drawCalls = AbstractBatchRenderer._drawCallPool;
+      let dcIndex = this._dcIndex;
+      let aIndex = this._aIndex;
+      let iIndex = this._iIndex;
+      let drawCall = drawCalls[dcIndex];
+      drawCall.start = this._iIndex;
+      drawCall.texArray = texArray;
+      for (let i = start; i < finish; ++i) {
+        const sprite = elements[i];
+        const tex = sprite._texture.baseTexture;
+        const spriteBlendMode = premultiplyBlendMode[tex.alphaMode ? 1 : 0][sprite.blendMode];
+        elements[i] = null;
+        if (start < i && drawCall.blend !== spriteBlendMode) {
+          drawCall.size = iIndex - drawCall.start;
+          start = i;
+          drawCall = drawCalls[++dcIndex];
+          drawCall.texArray = texArray;
+          drawCall.start = iIndex;
+        }
+        this.packInterleavedGeometry(sprite, _attributeBuffer, _indexBuffer, aIndex, iIndex);
+        aIndex += sprite.vertexData.length / 2 * vertexSize;
+        iIndex += sprite.indices.length;
+        drawCall.blend = spriteBlendMode;
+      }
+      if (start < finish) {
+        drawCall.size = iIndex - drawCall.start;
+        ++dcIndex;
+      }
+      this._dcIndex = dcIndex;
+      this._aIndex = aIndex;
+      this._iIndex = iIndex;
+    }
+    /**
+         * Bind textures for current rendering
+         *
+         * @param {PIXI.BatchTextureArray} texArray
+         */
+    bindAndClearTexArray(texArray) {
+      const textureSystem = this.renderer.texture;
+      for (let j = 0; j < texArray.count; j++) {
+        textureSystem.bind(texArray.elements[j], texArray.ids[j]);
+        texArray.elements[j] = null;
+      }
+      texArray.count = 0;
+    }
+    updateGeometry() {
+      const {_packedGeometries: packedGeometries, _attributeBuffer: attributeBuffer, _indexBuffer: indexBuffer} = this;
+      if (!settings.CAN_UPLOAD_SAME_BUFFER) {/* Usually on iOS devices, where the browser doesn't
+                like uploads to the same buffer in a single frame. */
+        if (this._packedGeometryPoolSize <= this._flushId) {
+          this._packedGeometryPoolSize++;
+          packedGeometries[this._flushId] = new (this.geometryClass)();
+        }
+        packedGeometries[this._flushId]._buffer.update(attributeBuffer.rawBinaryData);
+        packedGeometries[this._flushId]._indexBuffer.update(indexBuffer);
+        this.renderer.geometry.bind(packedGeometries[this._flushId]);
+        this.renderer.geometry.updateBuffers();
+        this._flushId++;
+      } else {
+        // lets use the faster option, always use buffer number 0
+        packedGeometries[this._flushId]._buffer.update(attributeBuffer.rawBinaryData);
+        packedGeometries[this._flushId]._indexBuffer.update(indexBuffer);
+        this.renderer.geometry.updateBuffers();
+      }
+    }
+    drawBatches() {
+      const dcCount = this._dcIndex;
+      const {gl, state: stateSystem} = this.renderer;
+      const drawCalls = AbstractBatchRenderer._drawCallPool;
+      let curTexArray = null;
+      // Upload textures and do the draw calls
+      for (let i = 0; i < dcCount; i++) {
+        const {texArray, type, size, start, blend} = drawCalls[i];
+        if (curTexArray !== texArray) {
+          curTexArray = texArray;
+          this.bindAndClearTexArray(texArray);
+        }
+        this.state.blendMode = blend;
+        stateSystem.set(this.state);
+        gl.drawElements(type, size, gl.UNSIGNED_SHORT, start * 2);
+      }
+    }
+    /**
+         * Renders the content _now_ and empties the current batch.
+         */
+    flush() {
+      if (this._vertexCount === 0) {
+        return;
+      }
+      this._attributeBuffer = this.getAttributeBuffer(this._vertexCount);
+      this._indexBuffer = this.getIndexBuffer(this._indexCount);
+      this._aIndex = 0;
+      this._iIndex = 0;
+      this._dcIndex = 0;
+      this.buildTexturesAndDrawCalls();
+      this.updateGeometry();
+      this.drawBatches();
+      // reset elements buffer for the next flush
+      this._bufferSize = 0;
+      this._vertexCount = 0;
+      this._indexCount = 0;
+    }
+    /**
+         * Starts a new sprite batch.
+         */
+    start() {
+      this.renderer.state.set(this.state);
+      this.renderer.shader.bind(this._shader);
+      if (settings.CAN_UPLOAD_SAME_BUFFER) {
+        // bind buffer #0, we don't need others
+        this.renderer.geometry.bind(this._packedGeometries[this._flushId]);
+      }
+    }
+    /**
+         * Stops and flushes the current batch.
+         */
+    stop() {
+      this.flush();
+    }
+    /**
+         * Destroys this `AbstractBatchRenderer`. It cannot be used again.
+         */
+    destroy() {
+      for (let i = 0; i < this._packedGeometryPoolSize; i++) {
+        if (this._packedGeometries[i]) {
+          this._packedGeometries[i].destroy();
+        }
+      }
+      this.renderer.off("prerender", this.onPrerender, this);
+      this._aBuffers = null;
+      this._iBuffers = null;
+      this._packedGeometries = null;
+      this._attributeBuffer = null;
+      this._indexBuffer = null;
+      if (this._shader) {
+        this._shader.destroy();
+        this._shader = null;
+      }
+      super.destroy();
+    }
+    /**
+         * Fetches an attribute buffer from `this._aBuffers` that
+         * can hold atleast `size` floats.
+         *
+         * @param {number} size - minimum capacity required
+         * @return {ViewableBuffer} - buffer than can hold atleast `size` floats
+         * @private
+         */
+    getAttributeBuffer(size) {
+      // 8 vertices is enough for 2 quads
+      const roundedP2 = nextPow2(Math.ceil(size / 8));
+      const roundedSizeIndex = log2(roundedP2);
+      const roundedSize = roundedP2 * 8;
+      if (this._aBuffers.length <= roundedSizeIndex) {
+        this._iBuffers.length = roundedSizeIndex + 1;
+      }
+      let buffer = this._aBuffers[roundedSize];
+      if (!buffer) {
+        this._aBuffers[roundedSize] = buffer = new ViewableBuffer(roundedSize * this.vertexSize * 4);
+      }
+      return buffer;
+    }
+    /**
+         * Fetches an index buffer from `this._iBuffers` that can
+         * has atleast `size` capacity.
+         *
+         * @param {number} size - minimum required capacity
+         * @return {Uint16Array} - buffer that can fit `size`
+         *    indices.
+         * @private
+         */
+    getIndexBuffer(size) {
+      // 12 indices is enough for 2 quads
+      const roundedP2 = nextPow2(Math.ceil(size / 12));
+      const roundedSizeIndex = log2(roundedP2);
+      const roundedSize = roundedP2 * 12;
+      if (this._iBuffers.length <= roundedSizeIndex) {
+        this._iBuffers.length = roundedSizeIndex + 1;
+      }
+      let buffer = this._iBuffers[roundedSizeIndex];
+      if (!buffer) {
+        this._iBuffers[roundedSizeIndex] = buffer = new Uint16Array(roundedSize);
+      }
+      return buffer;
+    }
+    /**
+         * Takes the four batching parameters of `element`, interleaves
+         * and pushes them into the batching attribute/index buffers given.
+         *
+         * It uses these properties: `vertexData` `uvs`, `textureId` and
+         * `indicies`. It also uses the "tint" of the base-texture, if
+         * present.
+         *
+         * @param {PIXI.Sprite} element - element being rendered
+         * @param {PIXI.ViewableBuffer} attributeBuffer - attribute buffer.
+         * @param {Uint16Array} indexBuffer - index buffer
+         * @param {number} aIndex - number of floats already in the attribute buffer
+         * @param {number} iIndex - number of indices already in `indexBuffer`
+         */
+    packInterleavedGeometry(element, attributeBuffer, indexBuffer, aIndex, iIndex) {
+      const {uint32View, float32View} = attributeBuffer;
+      const packedVertices = aIndex / this.vertexSize;
+      const uvs = element.uvs;
+      const indicies = element.indices;
+      const vertexData = element.vertexData;
+      const textureId = element._texture.baseTexture._batchLocation;
+      const alpha = Math.min(element.worldAlpha, 1.0);
+      const argb = (alpha < 1.0 &&
+                element._texture.baseTexture.alphaMode) ?
+        premultiplyTint(element._tintRGB, alpha) :
+        element._tintRGB + (alpha * 255 << 24);
+      // lets not worry about tint! for now..
+      for (let i = 0; i < vertexData.length; i += 2) {
+        float32View[aIndex++] = vertexData[i];
+        float32View[aIndex++] = vertexData[i + 1];
+        float32View[aIndex++] = uvs[i];
+        float32View[aIndex++] = uvs[i + 1];
+        uint32View[aIndex++] = argb;
+        float32View[aIndex++] = textureId;
+      }
+      for (let i = 0; i < indicies.length; i++) {
+        indexBuffer[iIndex++] = packedVertices + indicies[i];
+      }
+    }
   }
 
-  /**
-      * The arc method creates an arc/curve (used to create circles, or parts of circles).
-      *
-      * @private
-      * @param {number} startX - Start x location of arc
-      * @param {number} startY - Start y location of arc
-      * @param {number} cx - The x-coordinate of the center of the circle
-      * @param {number} cy - The y-coordinate of the center of the circle
-      * @param {number} radius - The radius of the circle
-      * @param {number} startAngle - The starting angle, in radians (0 is at the 3 o'clock position
-      *  of the arc's circle)
-      * @param {number} endAngle - The ending angle, in radians
-      * @param {boolean} anticlockwise - Specifies whether the drawing should be
-      *  counter-clockwise or clockwise. False is default, and indicates clockwise, while true
-      *  indicates counter-clockwise.
-      * @param {number} n - Number of segments
-      * @param {number[]} points - Collection of points to add to
-      * @static
-      */
-  /* eslint-disable max-len, @typescript-eslint/no-unused-vars, @typescript-eslint/ban-ts-ignore */
-  // @ts-ignore
-  static arc(startX, startY, cx, cy, radius, startAngle, endAngle, anticlockwise, points) {
-    const sweep = endAngle - startAngle;
-    const n = GRAPHICS_CURVES._segmentsCount(Math.abs(sweep) * radius, Math.ceil(Math.abs(sweep) / PI_2) * 40);
-    const theta = (sweep) / (n * 2);
-    const theta2 = theta * 2;
-    const cTheta = Math.cos(theta);
-    const sTheta = Math.sin(theta);
-    const segMinus = n - 1;
-    const remainder = (segMinus % 1) / segMinus;
-    for (let i = 0; i <= segMinus; ++i) {
-      const real = i + (remainder * i);
-      const angle = ((theta) + startAngle + (theta2 * real));
-      const c = Math.cos(angle);
-      const s = -Math.sin(angle);
-      points.push((((cTheta * c) + (sTheta * s)) * radius) + cx, (((cTheta * -s) + (sTheta * c)) * radius) + cy);
-    }
-  }
 
   /**
-   * Yo
-  */
-  x() {}
-}
+       * Pool of `BatchDrawCall` objects that `flush` used
+       * to create "batches" of the objects being rendered.
+       *
+       * These are never re-allocated again.
+       * Shared between all batch renderers because it can be only one "flush" working at the moment.
+       *
+       * @static
+       * @member {PIXI.BatchTextureArray[]}
+       */
+  AbstractBatchRenderer._textureArrayPool = [];
+
+  /**
+     * Pool of `BatchDrawCall` objects that `flush` used
+     * to create "batches" of the objects being rendered.
+     *
+     * These are never re-allocated again.s
+     * Shared between all batch renderers because it can be only one "flush" working at the moment.
+     *
+     * @static
+     * @member {PIXI.BatchDrawCall[]}
+     */
+  AbstractBatchRenderer._drawCallPool = [];
+
+  return AbstractBatchRenderer;
+})();

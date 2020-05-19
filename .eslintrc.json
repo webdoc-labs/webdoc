@@ -6,6 +6,7 @@
         "mocha": true
     },
     "extends": [
+        "eslint:recommended",
         "google"
     ],
     "globals": {

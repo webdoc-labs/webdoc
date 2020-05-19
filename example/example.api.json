@@ -2,420 +2,269 @@
 	"type": "RootDoc",
 	"children": [
 		{
-			"name": "EX",
+			"name": "PIXI",
 			"type": "NSDoc",
 			"access": "public",
 			"scope": "inner",
 			"brief": "",
 			"children": [
 				{
-					"name": "StreamBuilder",
+					"name": "AbstractBatchRenderer",
 					"type": "ClassDoc",
-					"access": "public",
+					"access": "protected",
 					"scope": "inner",
-					"brief": "",
+					"brief": "<p>Renderer dedicated to drawing and batching sprites.</p>",
 					"children": [
-						{
-							"name": "CHAIN_KEY",
-							"type": "PropertyDoc",
-							"access": "public",
-							"scope": "instance",
-							"brief": ""
-						},
 						{
 							"name": "constructor",
 							"type": "MethodDoc",
 							"access": "public",
 							"scope": "instance",
-							"brief": "",
-							"children": [
-								{
-									"name": "UnknownNodeMemberTag",
-									"type": "PropertyDoc",
-									"access": "public",
-									"scope": "inner",
-									"brief": ""
-								}
-							]
-						},
-						{
-							"name": "setupThreads",
-							"type": "MethodDoc",
-							"access": "protected",
-							"scope": "static",
 							"brief": ""
 						},
 						{
-							"name": "build",
+							"name": "contextChange",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": "<p>Handles the <code>contextChange</code> signal.</p>"
+						},
+						{
+							"name": "initFlushBuffers",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": "<p>Makes sure that static and dynamic flush pooled objects have correct dimensions</p>"
+						},
+						{
+							"name": "onPrerender",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": "<p>Handles the <code>prerender</code> signal.</p>"
+						},
+						{
+							"name": "render",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "buildTexturesAndDrawCalls",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "buildDrawCalls",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": "<p>Populating drawcalls for rendering</p>"
+						},
+						{
+							"name": "bindAndClearTexArray",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": "<p>Bind textures for current rendering</p>"
+						},
+						{
+							"name": "updateGeometry",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "drawBatches",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "flush",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": "<p>Renders the content <em>now</em> and empties the current batch.</p>"
+						},
+						{
+							"name": "start",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": "<p>Starts a new sprite batch.</p>"
+						},
+						{
+							"name": "stop",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": "<p>Stops and flushes the current batch.</p>"
+						},
+						{
+							"name": "destroy",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": "<p>Destroys this <code>AbstractBatchRenderer</code>. It cannot be used again.</p>"
+						},
+						{
+							"name": "getAttributeBuffer",
 							"type": "MethodDoc",
 							"access": "private",
-							"scope": "static",
-							"brief": "<p>Builds the stream object.</p>"
-						},
-						{
-							"name": "built",
-							"type": "EventDoc",
-							"access": "public",
-							"scope": "inner",
-							"brief": "<p>This event is fired when a stream is built.</p>"
-						},
-						{
-							"name": "verify",
-							"type": "MethodDoc",
-							"access": "public",
-							"scope": "inner",
+							"scope": "instance",
 							"brief": ""
-						}
-					]
-				},
-				{
-					"name": "filters",
-					"type": "NSDoc",
-					"access": "public",
-					"scope": "static",
-					"brief": ""
-				},
-				{
-					"name": "conditional",
-					"type": "NSDoc",
-					"access": "public",
-					"scope": "static",
-					"brief": ""
-				},
-				{
-					"name": "StreamBuffer",
-					"type": "ClassDoc",
-					"access": "public",
-					"scope": "inner",
-					"brief": "<p>Stream buffers store a portion of a stream's contents.</p>",
-					"children": [
+						},
 						{
-							"name": "update",
+							"name": "getIndexBuffer",
 							"type": "MethodDoc",
-							"access": "public",
+							"access": "private",
 							"scope": "instance",
-							"brief": "<p>Update the buffer's contents.</p>"
-						},
-						{
-							"name": "next",
-							"type": "MethodDoc",
-							"access": "public",
-							"scope": "instance",
-							"brief": "<p>Shift the buffer-frame right</p>"
-						},
-						{
-							"name": "Reducer",
-							"type": "ClassDoc",
-							"access": "public",
-							"scope": "inner",
-							"brief": "<p>Parallel reducer algorithm for running statistical summarization on a buffered stream.</p>"
-						},
-						{
-							"name": "shift",
-							"type": "EventDoc",
-							"access": "public",
-							"scope": "inner",
 							"brief": ""
-						}
-					]
-				},
-				{
-					"name": "TiledStreamBuffer",
-					"type": "ClassDoc",
-					"access": "public",
-					"scope": "inner",
-					"brief": "",
-					"children": [
-						{
-							"name": "update",
-							"type": "MethodDoc",
-							"access": "public",
-							"scope": "instance",
-							"brief": "<p>Update the buffer's contents w.r.t the file.</p>"
 						},
 						{
-							"name": "createFileBuffer",
+							"name": "packInterleavedGeometry",
 							"type": "MethodDoc",
 							"access": "public",
 							"scope": "instance",
 							"brief": ""
 						},
 						{
-							"name": "cloneFile",
-							"type": "MethodDoc",
-							"access": "public",
+							"name": "shaderGenerator",
+							"type": "PropertyDoc",
+							"access": "protected",
 							"scope": "instance",
 							"brief": ""
 						},
 						{
-							"name": "next",
-							"type": "MethodDoc",
-							"access": "public",
+							"name": "geometryClass",
+							"type": "PropertyDoc",
+							"access": "protected",
 							"scope": "instance",
-							"brief": "<p>Shift the buffer-frame right</p>"
-						},
-						{
-							"name": "shift",
-							"type": "EventDoc",
-							"access": "public",
-							"scope": "inner",
 							"brief": ""
 						},
 						{
-							"name": "dirtyID",
+							"name": "vertexSize",
 							"type": "PropertyDoc",
 							"access": "public",
 							"scope": "instance",
 							"brief": ""
 						},
 						{
-							"name": "flushID",
+							"name": "state",
+							"type": "PropertyDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": "<p>The WebGL state in which this renderer will work.</p>"
+						},
+						{
+							"name": "size",
 							"type": "PropertyDoc",
 							"access": "public",
 							"scope": "instance",
 							"brief": ""
 						},
 						{
-							"name": "pointer",
+							"name": "_vertexCount",
+							"type": "PropertyDoc",
+							"access": "private",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "_indexCount",
+							"type": "PropertyDoc",
+							"access": "private",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "_bufferedElements",
+							"type": "PropertyDoc",
+							"access": "private",
+							"scope": "instance",
+							"brief": "<p>Buffer of objects that are yet to be rendered.</p>"
+						},
+						{
+							"name": "_bufferedTextures",
+							"type": "PropertyDoc",
+							"access": "private",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "_bufferSize",
+							"type": "PropertyDoc",
+							"access": "private",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "_shader",
+							"type": "PropertyDoc",
+							"access": "protected",
+							"scope": "instance",
+							"brief": "<p>This shader is generated by <code>this.shaderGenerator</code>.</p>"
+						},
+						{
+							"name": "_packedGeometries",
+							"type": "PropertyDoc",
+							"access": "private",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "_packedGeometryPoolSize",
+							"type": "PropertyDoc",
+							"access": "private",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "_flushId",
+							"type": "PropertyDoc",
+							"access": "private",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "_aBuffers",
+							"type": "PropertyDoc",
+							"access": "private",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "_iBuffers",
+							"type": "PropertyDoc",
+							"access": "private",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "MAX_TEXTURES",
 							"type": "PropertyDoc",
 							"access": "public",
 							"scope": "instance",
 							"brief": ""
 						},
 						{
-							"name": "sync",
-							"type": "MethodDoc",
-							"access": "public",
-							"scope": "instance",
-							"brief": ""
-						}
-					]
-				},
-				{
-					"name": "AbstractFileBuffer",
-					"type": "ClassDoc",
-					"access": "public",
-					"scope": "inner",
-					"brief": "<p>Base class for file buffers</p>",
-					"children": [
-						{
-							"name": "update",
-							"type": "MethodDoc",
-							"access": "public",
-							"scope": "instance",
-							"brief": "<p>Update the buffer's contents w.r.t the file.</p>"
-						},
-						{
-							"name": "createFileBuffer",
-							"type": "MethodDoc",
-							"access": "public",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "cloneFile",
-							"type": "MethodDoc",
-							"access": "public",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "next",
-							"type": "MethodDoc",
-							"access": "public",
-							"scope": "instance",
-							"brief": "<p>Shift the buffer-frame right</p>"
-						},
-						{
-							"name": "shift",
-							"type": "EventDoc",
-							"access": "public",
-							"scope": "inner",
-							"brief": ""
-						},
-						{
-							"name": "dirtyID",
-							"type": "PropertyDoc",
-							"access": "public",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "flushID",
-							"type": "PropertyDoc",
-							"access": "public",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "pointer",
-							"type": "PropertyDoc",
-							"access": "public",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "sync",
-							"type": "MethodDoc",
-							"access": "public",
-							"scope": "instance",
-							"brief": ""
-						}
-					]
-				},
-				{
-					"name": "MusicBuffer",
-					"type": "ClassDoc",
-					"access": "public",
-					"scope": "inner",
-					"brief": "",
-					"children": [
-						{
-							"name": "update",
-							"type": "MethodDoc",
-							"access": "public",
-							"scope": "instance",
-							"brief": "<p>Update the buffer's contents w.r.t the file.</p>"
-						},
-						{
-							"name": "createFileBuffer",
-							"type": "MethodDoc",
-							"access": "public",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "cloneFile",
-							"type": "MethodDoc",
-							"access": "public",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "next",
-							"type": "MethodDoc",
-							"access": "public",
-							"scope": "instance",
-							"brief": "<p>Shift the buffer-frame right</p>"
-						},
-						{
-							"name": "shift",
-							"type": "EventDoc",
-							"access": "public",
-							"scope": "inner",
-							"brief": ""
-						},
-						{
-							"name": "dirtyID",
-							"type": "PropertyDoc",
-							"access": "public",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "flushID",
-							"type": "PropertyDoc",
-							"access": "public",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "pointer",
-							"type": "PropertyDoc",
-							"access": "public",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "sync",
-							"type": "MethodDoc",
-							"access": "public",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "setUpperCutoff",
-							"type": "MethodDoc",
-							"access": "public",
-							"scope": "instance",
-							"brief": ""
-						}
-					]
-				},
-				{
-					"name": "LowpassFilter",
-					"type": "MixinDoc",
-					"access": "public",
-					"scope": "inner",
-					"brief": "",
-					"children": [
-						{
-							"name": "setUpperCutoff",
-							"type": "MethodDoc",
-							"access": "public",
-							"scope": "instance",
-							"brief": "",
-							"children": [
-								{
-									"name": "UnknownNodeMemberTag",
-									"type": "PropertyDoc",
-									"access": "public",
-									"scope": "inner",
-									"brief": ""
-								}
-							]
-						}
-					]
-				},
-				{
-					"name": " IStreamConfig",
-					"type": "TypedefDoc",
-					"access": "public",
-					"scope": "inner",
-					"brief": "",
-					"children": [
-						{
-							"name": "bufferSize",
+							"name": "_textureArrayPool",
 							"type": "PropertyDoc",
 							"access": "public",
 							"scope": "static",
 							"brief": ""
-						}
-					]
-				},
-				{
-					"name": "IFileBuffer",
-					"type": "InterfaceDoc",
-					"access": "public",
-					"scope": "inner",
-					"brief": "",
-					"children": [
-						{
-							"name": "dirtyID",
-							"type": "PropertyDoc",
-							"access": "public",
-							"scope": "instance",
-							"brief": ""
 						},
 						{
-							"name": "flushID",
+							"name": "_drawCallPool",
 							"type": "PropertyDoc",
 							"access": "public",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "pointer",
-							"type": "PropertyDoc",
-							"access": "public",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "sync",
-							"type": "MethodDoc",
-							"access": "public",
-							"scope": "instance",
+							"scope": "static",
 							"brief": ""
 						}
 					]
@@ -423,41 +272,11 @@
 			]
 		},
 		{
-			"name": "UnknownNodeMemberTag",
-			"type": "PropertyDoc",
-			"access": "public",
-			"scope": "static",
-			"brief": "<p>The stream class which holds the chain-key</p>"
-		},
-		{
-			"name": "ArcUtils",
+			"name": "",
 			"type": "ClassDoc",
-			"access": "private",
+			"access": "public",
 			"scope": "inner",
-			"brief": "",
-			"children": [
-				{
-					"name": "curveTo",
-					"type": "MethodDoc",
-					"access": "private",
-					"scope": "instance",
-					"brief": "<p>The arcTo() method creates an arc/curve between two tangents on the canvas.</p>"
-				},
-				{
-					"name": "arc",
-					"type": "MethodDoc",
-					"access": "private",
-					"scope": "static",
-					"brief": "<p>The arc method creates an arc/curve (used to create circles, or parts of circles).</p>"
-				},
-				{
-					"name": "x",
-					"type": "MethodDoc",
-					"access": "public",
-					"scope": "instance",
-					"brief": "<p>Yo</p>"
-				}
-			]
+			"brief": ""
 		}
 	]
 }
