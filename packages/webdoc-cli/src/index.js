@@ -44,6 +44,8 @@ async function main(argv: yargs.Arguments<>) {
     initLogger(true);
   }
 
+  const start = performance.now();
+
   global.Webdoc = {};
   registerWebdocParser();// global.Webdoc.Parser
 
@@ -119,8 +121,8 @@ async function main(argv: yargs.Arguments<>) {
 
   const publishOptions = {
     config,
-    docDatabase: db,
     doctree,
+    docDatabase: db,
     opts: config.opts,
     tutorials: [],
   };
@@ -130,6 +132,8 @@ async function main(argv: yargs.Arguments<>) {
   } else {
     console.error("[Config]: ", `${config.opts.template} not found.`);
   }
+
+  console.log(`@webdoc took ${Math.ceil(performance.now() - start)}ms to run!`);
 }
 
 console.log("initializing ----------");
