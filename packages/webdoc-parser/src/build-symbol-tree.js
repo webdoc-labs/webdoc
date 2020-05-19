@@ -26,8 +26,6 @@ import {
   isObjectExpression,
   isAssignmentExpression,
   isReturnStatement,
-//  isReturnDeclaration,
-//  isIdentifer,
 } from "@babel/types";
 import * as parser from "@babel/parser";
 import traverse, {type NodePath} from "@babel/traverse";

@@ -335,6 +335,13 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "",
+			"type": "ClassDoc",
+			"access": "public",
+			"scope": "inner",
+			"brief": ""
 		}
 	]
 }
