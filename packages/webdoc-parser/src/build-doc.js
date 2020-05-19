@@ -196,7 +196,7 @@ export default function buildDoc(symbol: Symbol): ?Doc {
         return doc;
       } else {
         console.log(tags[i].name + " couldn't parse doc for ");
-        console.log(symbol.node);
+        // console.log(symbol.node);
       }
     }
   }
