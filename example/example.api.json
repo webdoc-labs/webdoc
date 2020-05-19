@@ -9,11 +9,330 @@
 			"brief": "",
 			"children": [
 				{
-					"name": "resources",
-					"type": "NSDoc",
+					"name": "AbstractBatchRenderer",
+					"type": "ClassDoc",
+					"access": "protected",
+					"scope": "inner",
+					"brief": "<p>Renderer dedicated to drawing and batching sprites.</p>",
+					"children": [
+						{
+							"name": "constructor",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "contextChange",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": "<p>Handles the <code>contextChange</code> signal.</p>"
+						},
+						{
+							"name": "initFlushBuffers",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": "<p>Makes sure that static and dynamic flush pooled objects have correct dimensions</p>"
+						},
+						{
+							"name": "onPrerender",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": "<p>Handles the <code>prerender</code> signal.</p>"
+						},
+						{
+							"name": "render",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "buildTexturesAndDrawCalls",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "buildDrawCalls",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": "<p>Populating drawcalls for rendering</p>"
+						},
+						{
+							"name": "bindAndClearTexArray",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": "<p>Bind textures for current rendering</p>"
+						},
+						{
+							"name": "updateGeometry",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "drawBatches",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "flush",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": "<p>Renders the content <em>now</em> and empties the current batch.</p>"
+						},
+						{
+							"name": "start",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": "<p>Starts a new sprite batch.</p>"
+						},
+						{
+							"name": "stop",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": "<p>Stops and flushes the current batch.</p>"
+						},
+						{
+							"name": "destroy",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": "<p>Destroys this <code>AbstractBatchRenderer</code>. It cannot be used again.</p>"
+						},
+						{
+							"name": "getAttributeBuffer",
+							"type": "MethodDoc",
+							"access": "private",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "getIndexBuffer",
+							"type": "MethodDoc",
+							"access": "private",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "packInterleavedGeometry",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "shaderGenerator",
+							"type": "PropertyDoc",
+							"access": "protected",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "geometryClass",
+							"type": "PropertyDoc",
+							"access": "protected",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "vertexSize",
+							"type": "PropertyDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "state",
+							"type": "PropertyDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": "<p>The WebGL state in which this renderer will work.</p>"
+						},
+						{
+							"name": "size",
+							"type": "PropertyDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "_vertexCount",
+							"type": "PropertyDoc",
+							"access": "private",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "_indexCount",
+							"type": "PropertyDoc",
+							"access": "private",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "_bufferedElements",
+							"type": "PropertyDoc",
+							"access": "private",
+							"scope": "instance",
+							"brief": "<p>Buffer of objects that are yet to be rendered.</p>"
+						},
+						{
+							"name": "_bufferedTextures",
+							"type": "PropertyDoc",
+							"access": "private",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "_bufferSize",
+							"type": "PropertyDoc",
+							"access": "private",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "_shader",
+							"type": "PropertyDoc",
+							"access": "protected",
+							"scope": "instance",
+							"brief": "<p>This shader is generated by <code>this.shaderGenerator</code>.</p>"
+						},
+						{
+							"name": "_packedGeometries",
+							"type": "PropertyDoc",
+							"access": "private",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "_packedGeometryPoolSize",
+							"type": "PropertyDoc",
+							"access": "private",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "_flushId",
+							"type": "PropertyDoc",
+							"access": "private",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "_aBuffers",
+							"type": "PropertyDoc",
+							"access": "private",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "_iBuffers",
+							"type": "PropertyDoc",
+							"access": "private",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "MAX_TEXTURES",
+							"type": "PropertyDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "_drawCallPool",
+							"type": "PropertyDoc",
+							"access": "public",
+							"scope": "static",
+							"brief": ""
+						},
+						{
+							"name": "_textureArrayPool",
+							"type": "PropertyDoc",
+							"access": "public",
+							"scope": "static",
+							"brief": ""
+						},
+						{
+							"name": "renderer",
+							"type": "PropertyDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": "<p>The renderer this manager works for.</p>"
+						}
+					]
+				},
+				{
+					"name": "ObjectRenderer",
+					"type": "ClassDoc",
 					"access": "public",
-					"scope": "static",
-					"brief": "<p>Collection of base resource types supported by PixiJS.</p>"
+					"scope": "inner",
+					"brief": "",
+					"children": [
+						{
+							"name": "constructor",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "flush",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "destroy",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "start",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "stop",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "render",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "renderer",
+							"type": "PropertyDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": "<p>The renderer this manager works for.</p>"
+						}
+					]
 				}
 			]
 		}

@@ -3,7 +3,9 @@
 // This file builds a "symbol"-tree from a JavaScript file.
 
 import {
+  type ArrowFunctionExpression,
   type CommentBlock,
+  type FunctionExpression,
   type Node,
   type VariableDeclaration,
   type VariableDeclarator,
@@ -23,6 +25,7 @@ import {
   isVariableDeclarator,
   isObjectExpression,
   isAssignmentExpression,
+  isReturnStatement,
 //  isReturnDeclaration,
 //  isIdentifer,
 } from "@babel/types";
@@ -33,12 +36,27 @@ import extract from "./extract";
 import {type Doc} from "@webdoc/types";
 import {parserLogger, tag} from "./Logger";
 
+// Resolve the initialization literal for the variable
 function resolveInit(node: VariableDeclarator): Node {
+  // Example: const ClassName = exports.ClassName = class ClassName {}
   if (isAssignmentExpression(node.init)) {
     return resolveInit(node.init);
   }
 
   return node.init;
+}
+
+// Resolve the returned symbol for a function expression with a body
+function resolveReturn(callee: FunctionExpression | ArrowFunctionExpression): ?string {
+  // Example: function () { const Symbol = class {}; return Symbol; }
+  if (callee.body && callee.body.body) {
+    const body = callee.body.body;
+    const lastStatement = body[body.length - 1];
+
+    if (isReturnStatement(lastStatement) && lastStatement.argument && lastStatement.argument.name) {
+      return lastStatement.argument.name;
+    }
+  }
 }
 
 // Ignore symbol when building doc-tree
@@ -78,10 +96,8 @@ function isVirtual(symbol: Symbol): boolean {
   return symbol.flags & VIRTUAL;
 }
 
-// TODO: Merge children. If property=value & value is documented leading the property
-// then property's partial-doc will have children[] with partial-doc ready for the value.
-
-const SymbolUtils = {
+// Exported for testing in test/build-symbol-tree.test.js
+export const SymbolUtils = {
   // Adds "symbol" as a child to "parent", possibly merging it with an existing symbol. The
   // returned symbol need not be the same as "symbol".
   addChild(doc: Symbol, scope: Symbol): Symbol {
@@ -99,24 +115,11 @@ const SymbolUtils = {
         break;
       }
       if (child.name && child.name === doc.name) {
-        const children = child.children;
-        child.children.push(...doc.children);
-        const comment = child.comment;
-
-        Object.assign(child, doc);
-        child.comment = comment || doc.comment;
-        child.children = children;
-
-        for (let i = 0; i < doc.children.length; i++) {
-          doc.children[i].parent = child;
-        }
-        doc = child;
-        index = i;
-        return doc;
+        return SymbolUtils.coalescePair(child, doc);
       }
     }
 
-    // Coalesce Symbols when they refer to the same Node
+    // Coalesce Symbols when they refer to the same Node with different names
     if (index === -1 && doc.node && !isVirtual(doc)) {
       for (let i = 0; i < scope.children.length; i++) {
         const child = children[i];
@@ -147,8 +150,31 @@ const SymbolUtils = {
 
     return doc;
   },
+  // Coalesce "pair" into "symbol" because they refer to the same symbol (by name)
+  coalescePair(symbol: Symbol, pair: Symbol): Symbol {
+    const children = symbol.children;
+    const comment = symbol.comment;
+    const flags = symbol.flags;
+
+    symbol.children.push(...pair.children);
+
+    Object.assign(symbol, pair);
+    symbol.comment = comment || pair.comment;
+    symbol.children = children;
+    symbol.flags = symbol.flags ? symbol.flags | pair.flags : pair.flags;
+
+    // Horizontal transfer of children
+    for (let i = 0; i < pair.children.length; i++) {
+      pair.children[i].parent = symbol;
+    }
+
+    return symbol;
+  },
   areEqualLoc(doc1: Symbol, doc2: Symbol): boolean {
     return doc1.loc.start && doc2.loc.start && doc1.loc.start.line === doc2.loc.start.line;
+  },
+  hasLoc(sym: Symbol): boolean {
+    return typeof sym.loc.start !== "undefined" && sym.loc.start !== null;
   },
   commentIndex(comments: CommentBlock): number {
     for (let i = comments.length - 1; i >= 0; i--) {
@@ -369,15 +395,12 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
     (isFunctionExpression(node.callee) || isArrowFunctionExpression(node.callee))) {
     flags |= VIRTUAL;
     const callee = node.callee;
+    const returnedSymbol = resolveReturn(callee);
 
-    if (callee.body && callee.body.body) {
-      const body = callee.body.body;
-
-      if ((body[body.length - 1].argument.name)) {
-        isInit = true;
-        initComment = parent.comment || " ";
-        name = body[body.length - 1].argument.name;
-      }
+    if (returnedSymbol) {
+      isInit = true;
+      initComment = parent.comment || " ";
+      name = returnedSymbol;
     }
   }
 
