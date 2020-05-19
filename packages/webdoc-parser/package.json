@@ -1,6 +1,6 @@
 {
   "name": "@webdoc/parser",
-  "version": "0.1.39-alpha.0",
+  "version": "0.1.40-alpha.0",
   "description": "Doc-tree parser for JavaScript",
   "keywords": [
     "parser",
