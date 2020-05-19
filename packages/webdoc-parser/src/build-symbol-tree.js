@@ -276,6 +276,7 @@ export default function buildSymbolTree(file: string, fileName?: string): Symbol
         idoc = captureSymbols(nodePath.node, scope);
       } catch (e) {
         console.error(ancestorStack);
+        console.log(node);
         console.error(ancestorStack.map((symbol) =>
           symbol.name +
           `@{${symbol.comment}}[${symbol.node ? symbol.node.type : "Headless"}]`));
