@@ -39,6 +39,7 @@
     "@webdoc/parser": "^0.1.43-alpha.0",
     "@webdoc/plugin-markdown": "^0.1.25-alpha.0",
     "@webdoc/types": "^0.1.29-alpha.0",
+    "fs-extra": "^9.0.0",
     "globby": "11.0.0",
     "jsdoc": "3.6.4",
     "missionlog": "1.6.0",

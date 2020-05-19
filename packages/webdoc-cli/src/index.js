@@ -9,6 +9,7 @@ import {exportTaffy} from "@webdoc/model";
 import {writeDoctree} from "@webdoc/externalize";
 import fs from "fs";
 import {performance} from "perf_hooks";
+import fse from "fs-extra";
 
 export function initLogger(verbose: boolean = false) {
   const defaultLevel = verbose ? "INFO" : "WARN";
@@ -95,6 +96,10 @@ async function main(argv: yargs.Arguments<>) {
   for (let i = 0; i < sourceFiles.length; i++) {
     log.info(tag.Parser, `Parsing ${sourceFiles[i]}`);
     files[i] = fs.readFileSync(path.join(process.cwd(), sourceFiles[i]), "utf8");
+  }
+
+  if (conf.opts.export) {
+    fse.ensureFileSync(config.opts.export);
   }
 
   try {
