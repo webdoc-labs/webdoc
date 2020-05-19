@@ -98,7 +98,7 @@ async function main(argv: yargs.Arguments<>) {
     files[i] = fs.readFileSync(path.join(process.cwd(), sourceFiles[i]), "utf8");
   }
 
-  if (conf.opts.export) {
+  if (config.opts.export) {
     fse.ensureFileSync(config.opts.export);
   }
 
