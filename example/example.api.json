@@ -39,6 +39,13 @@
 							"brief": ""
 						},
 						{
+							"name": "bufferSize",
+							"type": "PropertyDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
 							"name": "contextChange",
 							"type": "MethodDoc",
 							"access": "public",

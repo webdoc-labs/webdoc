@@ -8,3 +8,4 @@ export {parseEvent} from "./parseEvent";
 export {parseFires} from "./parseFires";
 export {parseProperty} from "./parseProperty";
 export {parseExtends, parseImplements, parseMixes} from "./parseExtendsImplementsMixes";
+export {parseDeprecated} from "./parseSimple";

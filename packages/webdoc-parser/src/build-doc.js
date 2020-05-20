@@ -34,6 +34,7 @@ import {
   parseExtends,
   parseImplements,
   parseMixes,
+  parseDeprecated,
 } from "./tag-parsers";
 
 import {
@@ -62,6 +63,7 @@ function createTagParser(type: string) {
 const TAG_PARSERS: { [id: string]: TagParser } = {
   "access": parseAccess,
   "augments": parseExtends, // alias @extends
+  "deprecated": parseDeprecated,
   "event": parseEvent,
   "example": (value: string): ExampleTag =>
     ({name: "example", code: value, value, type: "ExampleTag"}),
@@ -93,6 +95,7 @@ const TAG_PARSERS: { [id: string]: TagParser } = {
 const TAG_OVERRIDES: { [id: string]: string | any } = { // replace any, no lazy
   "class": "ClassDoc",
   "interface": "InterfaceDoc",
+  "enum": parsePropertyDoc,
   "member": parsePropertyDoc,
   "method": parseMethodDoc,
   "mixin": "MixinDoc",

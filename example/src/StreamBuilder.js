@@ -238,6 +238,14 @@ const AbstractBatchRenderer = /** @class */ (() => {
       this._indexBuffer = null;
       this._tempBoundTextures = [];
     }
+
+    /**
+     * @member {number}
+     */
+    get bufferSize() {
+
+    }
+
     /**
          * Handles the `contextChange` signal.
          *

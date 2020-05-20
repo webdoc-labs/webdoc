@@ -5,6 +5,7 @@ import {
   isThisExpression,
   isAssignmentExpression,
   isClassProperty,
+  isClassMethod,
 } from "@babel/types";
 import type {Doc, PropertyDoc} from "@webdoc/types";
 import {createDoc} from "@webdoc/model";
@@ -49,7 +50,7 @@ export function parsePropertyDoc(node: Node, options: $Shape<Doc>): PropertyDoc 
   if (isExpressionStatement(node) && isAssignmentExpression(node.expression)) {
     return parseAssignedPropertyDoc(node, options);
   }
-  if (isClassProperty(node)) {
+  if (isClassProperty(node) || (isClassMethod(node) && (node.kind === "get" || node.kind === "set"))) {
     return parseClassPropertyDoc(node, options);
   }
 
