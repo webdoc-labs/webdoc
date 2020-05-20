@@ -1,6 +1,6 @@
 {
   "name": "@webdoc/model",
-  "version": "0.1.46-alpha.0",
+  "version": "0.1.50-alpha.0",
   "description": "Doclet API for JavaScript",
   "keywords": [
     "doclet",

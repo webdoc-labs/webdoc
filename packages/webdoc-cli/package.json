@@ -1,6 +1,6 @@
 {
   "name": "@webdoc/cli",
-  "version": "0.1.49-alpha.0",
+  "version": "0.1.50-alpha.0",
   "description": "CLI for @webdoc monorepo",
   "bin": {
     "webdoc": "./cli.js"
@@ -33,10 +33,10 @@
     "url": "https://github.com/SukantPal/webdoc/issues"
   },
   "dependencies": {
-    "@webdoc/externalize": "^0.1.46-alpha.0",
-    "@webdoc/legacy-template": "^0.1.48-alpha.0",
-    "@webdoc/model": "^0.1.46-alpha.0",
-    "@webdoc/parser": "^0.1.49-alpha.0",
+    "@webdoc/externalize": "^0.1.50-alpha.0",
+    "@webdoc/legacy-template": "^0.1.50-alpha.0",
+    "@webdoc/model": "^0.1.50-alpha.0",
+    "@webdoc/parser": "^0.1.50-alpha.0",
     "@webdoc/plugin-markdown": "^0.1.25-alpha.0",
     "@webdoc/types": "^0.1.29-alpha.0",
     "fs-extra": "^9.0.0",
