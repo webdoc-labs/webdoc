@@ -22,7 +22,7 @@
     "url": "git+https://github.com/SukantPal/webdoc.git"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "generate": "cd .. && npm run build && cd example && node node_modules/.bin/webdoc"
   },
   "bugs": {
     "url": "https://github.com/SukantPal/webdoc/issues"

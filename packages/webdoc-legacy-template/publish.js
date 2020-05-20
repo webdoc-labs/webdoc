@@ -8,7 +8,8 @@ const path = require("path");
 const {taffy} = require("taffydb");
 const helper = require("./helper");
 const hasOwnProp = Object.prototype.hasOwnProperty;
-const {TemplateRenderer} = require("@webdoc/template-library");
+const {TemplateRenderer, SymbolLinks} = require("@webdoc/template-library");
+const {doc: findDoc, isClass, isInterface, isNamespace, isMixin, isModule, isExternal} = require("@webdoc/model");
 
 TemplateRenderer.prototype.linkto = helper.linkto;
 TemplateRenderer.prototype.linkTo = helper.linkto;
@@ -499,6 +500,7 @@ exports.publish = (options) => {
 
   docDatabase = options.docDatabase;
   const opts = options.opts;
+  const docTree = options.doctree;
   const tutorials = options.tutorials;
   env = options.config;
   outdir = path.normalize(env.opts.destination);
@@ -755,46 +757,42 @@ exports.publish = (options) => {
       }],
     ).concat(files), indexUrl);
 
-  // set up the lists that we'll use to generate pages
-  const classes = taffy(members.classes);
-  const modules = taffy(members.modules);
-  const namespaces = taffy(members.namespaces);
-  const mixins = taffy(members.mixins);
-  const externals = taffy(members.externals);
-  const interfaces = taffy(members.interfaces);
+  const docPaths = SymbolLinks.pathToUrl.keys();
+  let docPathEntry = docPaths.next();
+  let docPath = docPaths.next().value;
 
-  Object.keys(helper.pathToUrl).forEach((docPath) => {
-    const myClasses = classes({path: docPath}).get();
-    const myExternals = externals({path: docPath}).get();
-    const myInterfaces = interfaces({path: docPath}).get();
-    const myMixins = mixins({path: docPath}).get();
-    const myModules = modules({path: docPath}).get();
-    const myNamespaces = namespaces({path: docPath}).get();
+  while (!docPathEntry.done) {
+    let doc;
 
-    if (myModules.length) {
-      generate(`Module: ${myModules[0].name}`, myModules, helper.pathToUrl[docPath]);
+    // Sometimes docPath is undefined!
+    if (docPath) {
+      doc = findDoc(docPath, docTree);
     }
 
-    if (myClasses.length) {
-      generate(`Class: ${myClasses[0].name}`, myClasses, helper.pathToUrl[docPath]);
+    if (!doc) {
+      console.log(docPath + " doesn't point to a doc");
+    } else {
+      const docUrl = SymbolLinks.pathToUrl.get(docPath);
+
+      if (isClass(doc)) {
+        generate(`Class: ${doc.name}`, [doc], docUrl);
+      } else if (isInterface(doc)) {
+        generate(`Interface: ${doc.name}`, [doc], docUrl);
+      } else if (isNamespace(doc)) {
+        generate(`Namespace: ${doc.name}`, [doc], docUrl);
+      } else if (isMixin(doc)) {
+        generate(`Mixin: ${doc.name}`, [doc], docUrl);
+      } else if (isModule(doc)) {
+        generate(`Module: ${doc.name}`, [doc], docUrl);
+      } else if (isExternal(doc)) {
+        generate(`External: ${doc.name}`, [doc], docUrl);
+      }
     }
 
-    if (myNamespaces.length) {
-      generate(`Namespace: ${myNamespaces[0].name}`, myNamespaces, helper.pathToUrl[docPath]);
-    }
+    docPathEntry = docPaths.next();
+    docPath = docPathEntry.value;
+  }
 
-    if (myMixins.length) {
-      generate(`Mixin: ${myMixins[0].name}`, myMixins, helper.pathToUrl[docPath]);
-    }
-
-    if (myExternals.length) {
-      generate(`External: ${myExternals[0].name}`, myExternals, helper.pathToUrl[docPath]);
-    }
-
-    if (myInterfaces.length) {
-      generate(`Interface: ${myInterfaces[0].name}`, myInterfaces, helper.pathToUrl[docPath]);
-    }
-  });
   /*
 
   // TODO: move the tutorial functions to templateHelper.js

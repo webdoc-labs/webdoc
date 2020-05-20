@@ -3,6 +3,7 @@ import type {Doc} from "@webdoc/types";
 
 export * from "./tag";
 export * from "./doc";
+export * from "./types";
 
 /**
  * Exports a doc-tree in a TaffyDB database. The docs are inserted in a depth-first order.

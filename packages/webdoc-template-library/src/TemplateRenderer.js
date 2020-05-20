@@ -3,14 +3,30 @@ import * as _ from "lodash";
 import fs from "fs";
 import path from "path";
 import {templateLogger, tag} from "./Logger";
+import type {
+  Doc,
+  ClassDoc,
+  FunctionDoc,
+  MethodDoc,
+  NSDoc,
+  EventDoc,
+  TypedefDoc,
+  MixinDoc,
+  InterfaceDoc,
+  PropertyDoc,
+} from "@webdoc/types";
 
 /**
  * The template renderer uses lodash to parse .tmpl template files and renders HTML content. A
  * template file contains {@code <?js js>} delimiters containing JavaScript code to control
  * what gets rendered. See {@npm @webdoc/template-library} for an example.
  *
- * The {@code this} context for template code is always the template generator. This allows you
- * to access the API provided by the generator in your template files.
+ * The {@code this} context for template code is always the {@code TemplateRenderer}. This allows
+ * you to access the API provided by the generator in your template files.
+ *
+ * The {@code getNamespaces}, {@code getClasses}, {@code getProperties}, {@code getMethods},
+ * {@code getFunctions}, {@code getConstructor}, {@code getEvents}, {@code getTypedefs},
+ * {@code getMixins}, {@code getInterfaces} methods were made for use in templates!
  */
 export class TemplateRenderer {
   templateDir: string;
@@ -113,5 +129,172 @@ export class TemplateRenderer {
     templateLogger.info(tag.TemplateLibrary, `Rendering2 template ${filePath} ${data}`);
 
     return content;
+  }
+
+  /**
+   * Finds all the members namespaces of {@code doc}.
+   *
+   * @param {Doc} doc
+   * @param {boolean}[recursive=false] - whether to find namespaces recursively
+   * @param {Doc[]}[out] - optional array to output the namespace-docs into
+   * @return {NSDoc[]}
+   */
+  getNamespaces(doc: Doc, recursive = false, out: Doc[]): NSDoc[] {
+    return this.findMembers(doc, "NSDoc", recursive, out);
+  }
+
+  /**
+   * Finds all the member classes of {@code doc}.
+   *
+   * @param {Doc} doc
+   * @param {boolean}[recursive=false] - whether to find classes recursively
+   * @param {Doc[]}[out] - optional array to output the classes-docs into
+   * @return {ClassDoc[]}
+   */
+  getClasses(doc: Doc, recursive = false, out: Doc[]): ClassDoc[] {
+    return this.findMembers(doc, "ClassDoc", recursive, out);
+  }
+
+  /**
+   * Finds all the member properites of {@code doc}.
+   *
+   * @param {Doc} doc
+   * @param {boolean}[recursive=false] - whether to find properties recursively
+   * @param {Doc[]}[out] - optional array to output the property-docs into
+   * @return {PropertyDoc[]}
+   */
+  getProperties(doc: Doc, recursive = false, out: Doc[]): PropertyDoc[] {
+    return this.findMembers(doc, "PropertyDoc", recursive, out);
+  }
+
+  /**
+   * Finds all the member methods of {@code doc}.
+   *
+   * @param {Doc} doc
+   * @param {boolean}[recursive=false] - whether to find methods recursively
+   * @param {Doc[]}[out] - optional array to output the method-docs into
+   * @return {MethodDoc[]}
+   */
+  getMethods(doc: Doc, recursive = false, out: Doc[]): MethodDoc[] {
+    // Can't use getMembers because "constructor" is a special MethodDoc that isn't included!
+
+    if (!out) {
+      out = [];
+    }
+
+    for (let i = 0; i < doc.members.length; i++) {
+      if (doc.members[i].type === "MethodDoc" && doc.name !== "constructor") {
+        out.push(doc.members[i]);
+      }
+    }
+
+    if (recursive) {
+      for (let i = 0; i < doc.members.length; i++) {
+        this.getMethods(doc, true, out);
+      }
+    }
+
+    return out;
+  }
+
+  /**
+   * Finds all the member functions of {@code doc}.
+   *
+   * @param {Doc} doc
+   * @param {boolean}[recursive=false] - whether to find classes recursively
+   * @param {Doc[]}[out] - optional array to output the classes-docs into
+   * @return {FunctionDoc[]}
+   */
+  getFunctions(doc: Doc, recursive = false, out: Doc[]): FunctionDoc[] {
+    return this.findMembers(doc, "FunctionDoc", recursive, out);
+  }
+
+  /**
+   * Finds a (member) constructor for {@code doc}. This should be used only on a {@code ClassDoc}.
+   *
+   * @param {Doc} doc
+   * @return {MethodDoc}
+   */
+  getConstructor(doc: Doc): ?MethodDoc {
+    return doc.members.find(
+      (member) => member.type === "MethodDoc" && member.name === "constructor");
+  }
+
+  /**
+   * Finds all the events of {@code doc}.
+   *
+   * @param {Doc} doc
+   * @param {boolean}[recursive=false] - whether to find events recursively
+   * @param {Doc[]}[out] - optional array to output the event-docs into
+   * @return {EventDoc[]}
+   */
+  getEvents(doc: Doc, recursive = false, out: Doc[]): EventDoc[] {
+    return this.findMembers(doc, "EventDoc", recursive, out);
+  }
+
+  /**
+   * Finds all the member typedefs of {@code doc}.
+   *
+   * @param {Doc} doc
+   * @param {boolean}[recursive=false] - whether to find typedefs recursively
+   * @param {Doc[]}[out] - optional array to output the typedef-docs into
+   * @return {Typedef[]}
+   */
+  getTypedefs(doc: Doc, recursive = false, out: Doc[]): TypedefDoc[] {
+    return this.findMembers(doc, "TypedefDoc", recursive, out);
+  }
+
+  /**
+   * Finds all the member classes of {@code doc}.
+   *
+   * @param {Doc} doc
+   * @param {boolean}[recursive=false] - whether to find mixins recursively
+   * @param {Doc[]}[out] - optional array to output the mixin-docs into
+   * @return {MixinDoc[]}
+   */
+  getMixins(doc: Doc, recursive = false, out: Doc[]): MixinDoc[] {
+    return this.findMembers(doc, "MixinDoc", recursive, out);
+  }
+
+  /**
+   * Finds all the member interfaces of {@code doc}.
+   *
+   * @param {Doc} doc
+   * @param {boolean}[recursive=false] - whether to find interfaces recursively
+   * @param {Doc[]}[out] - optional array to output the interface-docs into
+   * @return {InterfaceDoc[]}
+   */
+  getInterfaces(doc: Doc, recursive = false, out: Doc[]): InterfaceDoc[] {
+    return this.findMembers(doc, "InterfaceDoc", recursive, out);
+  }
+
+  /**
+   * Finds all the members of {@code doc} of the type {@code type}.
+   *
+   * @private
+   * @param {Doc} doc - the doc to find members of
+   * @param {string} type - the type of member to find
+   * @param {boolean}[recursive=false] - whether to recursively find members of members and so on
+   * @param {Doc[]}[out] - optional array to push the members into
+   * @return {Doc[]}
+   */
+  getMembers(doc: Doc, type: string, recursive = false, out?: Doc[]): Doc[] {
+    if (!out) {
+      out = [];
+    }
+
+    for (let i = 0; i < doc.members.length; i++) {
+      if (doc.members[i].type === type) {
+        out.push(doc.members[i]);
+      }
+    }
+
+    if (recursive) {
+      for (let i = 0; i < doc.members.length; i++) {
+        this.getMembers(doc, type, true, out);
+      }
+    }
+
+    return out;
   }
 }
