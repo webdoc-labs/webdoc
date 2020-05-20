@@ -23,7 +23,7 @@ const VERSION = "__VERSION__";
   *
   * @function skipHello
   * @memberof PIXI.utils
-  *
+  * @deprecated
   * @param {string} x
   */
 export function skipHello(): void {
