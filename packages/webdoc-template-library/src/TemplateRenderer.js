@@ -4,6 +4,7 @@ import fs from "fs";
 import path from "path";
 import {templateLogger, tag} from "./Logger";
 import type {
+  RootDoc,
   Doc,
   ClassDoc,
   FunctionDoc,
@@ -31,19 +32,24 @@ import type {
 export class TemplateRenderer {
   templateDir: string;
   docDatabase: any;
+  docTree: RootDoc;
   layout: any;
   cache: { [id: string]: any };
   settings: { evaluate: RegExp, interpolate: RegExp, escape: RegExp };
+  plugins: { [id: string]: Object };
 
   /**
    * @param {string} templateDir - Templates directory.
    * @param {any} docDatabase - database of documented symbols ({@code Doc}s)
+   * @param {RootDoc} [docTree]
    */
-  constructor(templateDir: string, docDatabase: any) {
+  constructor(templateDir: string, docDatabase: any, docTree: RootDoc) {
     this.templateDir = templateDir;
     this.docDatabase = docDatabase;
+    this.docTree = docTree;
     this.layout = null;
     this.cache = {};
+    this.plugins = {};
 
     // override default template tag settings
     this.settings = {
@@ -51,6 +57,19 @@ export class TemplateRenderer {
       interpolate: /<\?js=([\s\S]+?)\?>/g,
       escape: /<\?js~([\s\S]+?)\?>/g,
     };
+  }
+
+  /**
+   * Install a plugin to this renderer. It can be accessed at `renderer.plugins[name]`.
+   *
+   * @param {string} name
+   * @param {Object} plugin
+   */
+  installPlugin(name: string, plugin: Object): void {
+    this.plugins[name] = this.plugins[name] || {};
+
+    Object.assign(this.plugins[name], plugin);
+    this.plugins[name].renderer = this;
   }
 
   find(spec: any) {

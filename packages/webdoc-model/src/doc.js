@@ -220,6 +220,20 @@ export function cloneDoc<T: BaseDoc>(doc: T): T {
   return Object.assign({}, doc, {children: [], members: [], parent: undefined});
 }
 
+/**
+ * In-order traversal of all the docs
+ *
+ * @param {Doc} doc
+ * @param {Function} callback
+ */
+export function traverse(doc: Doc, callback: (doc: Doc) => void) {
+  callback(doc);
+
+  for (let i = 0; i < doc.members.length; i++) {
+    traverse(doc.members[i], callback);
+  }
+}
+
 // ------------------------------------------------------------------------------------------------
 // Functions to discover symbols with a specific relation to the given doc.
 // ------------------------------------------------------------------------------------------------
@@ -234,7 +248,7 @@ export function cloneDoc<T: BaseDoc>(doc: T): T {
  * @param {Set<DocLink>}[extended] - the set to insert the extended symbols into
  * @return {Set<DocLink>} the symbols that are extended
  */
-export function findExtendedDocs(doc: Doc, extended?: Set<DocLink>): Set<DocLink> {
+export function searchExtendedClasses(doc: Doc, extended?: Set<DocLink>): Set<DocLink> {
   extended = extended ? extended : new Set<DocLink>();
 
   if (!doc.extends) {
@@ -247,7 +261,7 @@ export function findExtendedDocs(doc: Doc, extended?: Set<DocLink>): Set<DocLink
     extended.add(extendedSymbol);
 
     if (typeof extendedSymbol !== "string" && extendedSymbol.extends) {
-      findExtendedDocs(extendedSymbol, extended);
+      searchExtendedClasses(extendedSymbol, extended);
     }
   }
 
@@ -261,7 +275,7 @@ export function findExtendedDocs(doc: Doc, extended?: Set<DocLink>): Set<DocLink
  * @param {Set<DocLink>}[implemented] - the set to insert the implemented symbols into
  * @return {Set<DocLink>} the symbols that are implemented by {@code doc}
  */
-export function findImplementedDocs(
+export function searchImplementedInterfaces(
   doc: ClassDoc | ObjectDoc | TypedefDoc,
   implemented?: Set<DocLink>,
 ): Set<DocLink> {
@@ -277,7 +291,7 @@ export function findImplementedDocs(
     implemented.add(implementedSymbol);
 
     if (typeof implementedSymbol !== "string" && implementedSymbol.implements) {
-      findImplementedDocs(implementedSymbol, implemented);
+      searchImplementedInterfaces(implementedSymbol, implemented);
     }
   }
 

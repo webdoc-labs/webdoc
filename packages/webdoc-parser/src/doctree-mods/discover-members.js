@@ -21,6 +21,22 @@ function ensureDiscovered(doc: Doc, depsChain: Set<Doc>): void {
   discoverMembers(doc, depsChain);
 }
 
+function findInherited(member: Doc): Doc {
+  let counter = 0;
+  let doc = member;
+
+  while (doc.inherits) {
+    doc = doc.inherits;
+    ++counter;
+
+    if (counter > 100) {
+      throw new Error("Inheritance chain can't be more than 100 classes");
+    }
+  }
+
+  return doc;
+}
+
 // Finds all the members of doc, including those that are inherited, implemented, or mixed.
 function discoverMembers(doc: Doc, depsChain = new Set<Doc>()): void {
   depsChain.add(doc);
@@ -88,7 +104,7 @@ function discoverMembers(doc: Doc, depsChain = new Set<Doc>()): void {
 
       temp.overrides = false;
       temp.inherited = true;
-      temp.inherits = member;
+      temp.inherits = findInherited(member);
 
       addChildDoc(temp, doc);
     }

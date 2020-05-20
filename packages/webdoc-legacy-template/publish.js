@@ -8,8 +8,10 @@ const path = require("path");
 const {taffy} = require("taffydb");
 const helper = require("./helper");
 const hasOwnProp = Object.prototype.hasOwnProperty;
-const {TemplateRenderer, SymbolLinks} = require("@webdoc/template-library");
+const {TemplateRenderer, SymbolLinks, RelationsPlugin} = require("@webdoc/template-library");
 const {doc: findDoc, isClass, isInterface, isNamespace, isMixin, isModule, isExternal} = require("@webdoc/model");
+
+let view;
 
 TemplateRenderer.prototype.linkto = helper.linkto;
 TemplateRenderer.prototype.linkTo = helper.linkto;
@@ -75,7 +77,6 @@ const PRETTIFIER_SCRIPT_FILES = [
 ];
 
 let data;
-let view;
 
 let outdir;
 
@@ -527,7 +528,11 @@ exports.publish = (options) => {
 
   templatePath = __dirname;
 
-  view = new TemplateRenderer(path.join(templatePath, "tmpl"), docDatabase);
+  view = new TemplateRenderer(path.join(templatePath, "tmpl"), docDatabase, docTree);
+
+  // Might use this
+  view.installPlugin("relations", RelationsPlugin);
+  view.plugins.relations.buildRelations();
 
   // claim some special filenames in advance, so the All-Powerful Overseer of Filename Uniqueness
   // doesn't try to hand them out later

@@ -39,8 +39,6 @@ function parseClassPropertyDoc(node: Node, options: $Shape<Doc>): PropertyDoc {
   return createDoc(node.key.name, "PropertyDoc", options);
 }
 
-// TODO: Getter/setter properties (refer from parseMethodDoc as they are "MethodDefinition"s)
-
 // Parses class/object properties
 export function parsePropertyDoc(node: Node, options: $Shape<Doc>): PropertyDoc {
   if (!options.dataType) {
