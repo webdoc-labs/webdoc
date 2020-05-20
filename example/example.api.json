@@ -25,6 +25,36 @@
 					]
 				},
 				{
+					"name": "System",
+					"type": "ClassDoc",
+					"access": "public",
+					"scope": "inner",
+					"brief": "<p>System is a base class used for extending systems used by the {@link PIXI.Renderer}</p>",
+					"children": [
+						{
+							"name": "constructor",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "destroy",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": "<p>Generic destroy methods to be overridden by the subclass</p>"
+						},
+						{
+							"name": "renderer",
+							"type": "PropertyDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": "<p>The renderer this manager works for.</p>"
+						}
+					]
+				},
+				{
 					"name": "AbstractBatchRenderer",
 					"type": "ClassDoc",
 					"access": "protected",

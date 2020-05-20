@@ -1,11 +1,7 @@
-# `example`
+# @webdoc/example
 
-> TODO: description
+Example documented package.
 
 ## Usage
 
-```
-const example = require('example');
-
-// TODO: DEMONSTRATE API
-```
+* `npm run generate` will rebuild webdoc & then run it in this package. The docs are outputted into `docs`.
