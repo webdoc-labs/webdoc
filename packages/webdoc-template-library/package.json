@@ -1,6 +1,6 @@
 {
   "name": "@webdoc/template-library",
-  "version": "0.1.46-alpha.0",
+  "version": "0.1.48-alpha.0",
   "description": "Goodies for @webdoc template packages! See @webdoc/legacy-template for an example!",
   "keywords": [
     "webdoc",
