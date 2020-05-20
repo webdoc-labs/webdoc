@@ -140,7 +140,7 @@ export class TemplateRenderer {
    * @return {NSDoc[]}
    */
   getNamespaces(doc: Doc, recursive = false, out: Doc[]): NSDoc[] {
-    return this.findMembers(doc, "NSDoc", recursive, out);
+    return this.getMembers(doc, "NSDoc", recursive, out);
   }
 
   /**
@@ -152,7 +152,7 @@ export class TemplateRenderer {
    * @return {ClassDoc[]}
    */
   getClasses(doc: Doc, recursive = false, out: Doc[]): ClassDoc[] {
-    return this.findMembers(doc, "ClassDoc", recursive, out);
+    return this.getMembers(doc, "ClassDoc", recursive, out);
   }
 
   /**
@@ -164,7 +164,7 @@ export class TemplateRenderer {
    * @return {PropertyDoc[]}
    */
   getProperties(doc: Doc, recursive = false, out: Doc[]): PropertyDoc[] {
-    return this.findMembers(doc, "PropertyDoc", recursive, out);
+    return this.getMembers(doc, "PropertyDoc", recursive, out);
   }
 
   /**
@@ -183,14 +183,17 @@ export class TemplateRenderer {
     }
 
     for (let i = 0; i < doc.members.length; i++) {
-      if (doc.members[i].type === "MethodDoc" && doc.name !== "constructor") {
+      if (doc.members[i].type === "MethodDoc" && doc.members[i].name !== "constructor" &&
+          doc.members[i].access !== "private") {
         out.push(doc.members[i]);
       }
     }
 
     if (recursive) {
       for (let i = 0; i < doc.members.length; i++) {
-        this.getMethods(doc, true, out);
+        if (this.members[i].access !== "private") {
+          this.getMethods(doc, true, out);
+        }
       }
     }
 
@@ -206,7 +209,7 @@ export class TemplateRenderer {
    * @return {FunctionDoc[]}
    */
   getFunctions(doc: Doc, recursive = false, out: Doc[]): FunctionDoc[] {
-    return this.findMembers(doc, "FunctionDoc", recursive, out);
+    return this.getMembers(doc, "FunctionDoc", recursive, out);
   }
 
   /**
@@ -229,7 +232,19 @@ export class TemplateRenderer {
    * @return {EventDoc[]}
    */
   getEvents(doc: Doc, recursive = false, out: Doc[]): EventDoc[] {
-    return this.findMembers(doc, "EventDoc", recursive, out);
+    return this.getMembers(doc, "EventDoc", recursive, out);
+  }
+
+  /**
+   * Finds all the properties of {@code doc}.
+   *
+   * @param {Doc} doc
+   * @param {boolean}[recursive=false] - whether to find events recursively
+   * @param {Doc[]}[out] - optional array to output the event-docs into
+   * @return {PropertyDoc[]}
+   */
+  getProperties(doc: Doc, recursive = false, out: Doc[]): PropertyDoc[] {
+    return this.getMembers(doc, "PropertyDoc", recursive, out);
   }
 
   /**
@@ -241,7 +256,7 @@ export class TemplateRenderer {
    * @return {Typedef[]}
    */
   getTypedefs(doc: Doc, recursive = false, out: Doc[]): TypedefDoc[] {
-    return this.findMembers(doc, "TypedefDoc", recursive, out);
+    return this.getMembers(doc, "TypedefDoc", recursive, out);
   }
 
   /**
@@ -253,7 +268,7 @@ export class TemplateRenderer {
    * @return {MixinDoc[]}
    */
   getMixins(doc: Doc, recursive = false, out: Doc[]): MixinDoc[] {
-    return this.findMembers(doc, "MixinDoc", recursive, out);
+    return this.getMembers(doc, "MixinDoc", recursive, out);
   }
 
   /**
@@ -265,7 +280,7 @@ export class TemplateRenderer {
    * @return {InterfaceDoc[]}
    */
   getInterfaces(doc: Doc, recursive = false, out: Doc[]): InterfaceDoc[] {
-    return this.findMembers(doc, "InterfaceDoc", recursive, out);
+    return this.getMembers(doc, "InterfaceDoc", recursive, out);
   }
 
   /**
@@ -284,14 +299,17 @@ export class TemplateRenderer {
     }
 
     for (let i = 0; i < doc.members.length; i++) {
-      if (doc.members[i].type === type) {
+      if (doc.members[i].type === type && doc.members[i].access !== "private") {
         out.push(doc.members[i]);
       }
     }
 
     if (recursive) {
       for (let i = 0; i < doc.members.length; i++) {
-        this.getMembers(doc, type, true, out);
+        // Don't search inside private docs
+        if (doc.members[i].access !== "private") {
+          this.getMembers(doc, type, true, out);
+        }
       }
     }
 
