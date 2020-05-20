@@ -54,7 +54,7 @@ export function parsePropertyDoc(node: Node, options: $Shape<Doc>): PropertyDoc 
     return parseClassPropertyDoc(node, options);
   }
 
-  if (!node) {
+  if (options.name) {
     return createDoc(options.name || "Unknown", "PropertyDoc", options);
   }
 }
