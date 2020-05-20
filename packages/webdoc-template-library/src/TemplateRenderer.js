@@ -229,7 +229,8 @@ export class TemplateRenderer {
       const member = doc.members[i];
 
       if ((member.type === "FunctionDoc" || member.type === "MethodDoc") &&
-          doc.members[i].access !== "private") {
+          doc.members[i].access !== "private" &&
+          doc.members[i].name !== "constructor") {
         out.push(doc.members[i]);
       }
     }
