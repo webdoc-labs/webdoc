@@ -15,6 +15,7 @@ import {
   isClassExpression,
   isClassMethod,
   isMemberExpression,
+  isFunctionDeclaration,
   SourceLocation,
   isScope,
   isClassProperty,
@@ -366,6 +367,8 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
   } else if (isClassDeclaration(node)) {
     name = node.id.name;
   } else if (isClassExpression(node) && node.id) {
+    name = node.id ? node.id.name : "";
+  } else if (isFunctionDeclaration(node)) {
     name = node.id ? node.id.name : "";
   } else if (
     isVariableDeclarator(node) ||

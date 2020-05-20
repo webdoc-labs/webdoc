@@ -9,6 +9,22 @@
 			"brief": "",
 			"children": [
 				{
+					"name": "utils",
+					"type": "NSDoc",
+					"access": "public",
+					"scope": "static",
+					"brief": "",
+					"children": [
+						{
+							"name": "skipHello",
+							"type": "FunctionDoc",
+							"access": "public",
+							"scope": "inner",
+							"brief": "<p>Skips the hello message of renderers that are created after this is run.</p>"
+						}
+					]
+				},
+				{
 					"name": "AbstractBatchRenderer",
 					"type": "ClassDoc",
 					"access": "protected",

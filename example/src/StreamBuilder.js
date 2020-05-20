@@ -12,6 +12,25 @@ import {ENV} from "@pixi/constants";
  * @namespace PIXI
  */
 /**
+ * @namespace PIXI.utils
+ */
+
+let saidHello = false;
+const VERSION = "__VERSION__";
+
+/**
+  * Skips the hello message of renderers that are created after this is run.
+  *
+  * @function skipHello
+  * @memberof PIXI.utils
+  *
+  * @param {string} x
+  */
+export function skipHello(): void {
+  saidHello = true;
+}
+
+/**
  * Renderer dedicated to drawing and batching sprites.
  *
  * This is the default batch renderer. It buffers objects

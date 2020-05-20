@@ -12,6 +12,7 @@ import {
   isProperty,
   isObjectMethod,
   isFunctionExpression,
+  isFunctionDeclaration,
 } from "@babel/types";
 
 import {
@@ -212,6 +213,9 @@ export default function buildDoc(symbol: Symbol): ?Doc {
   }
   if (isClassProperty(node)) {
     return createDoc(symbol.name, "PropertyDoc", options);
+  }
+  if (isFunctionDeclaration(node)) {
+    return createDoc(symbol.name, "FunctionDoc", options);
   }
   if (isProperty(node) && isFunctionExpression(node.value)) {
     return parseMethodDoc(node, options);

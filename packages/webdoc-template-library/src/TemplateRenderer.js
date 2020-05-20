@@ -213,6 +213,40 @@ export class TemplateRenderer {
   }
 
   /**
+   * Finds all the member functions & methods of {@code doc}.
+   *
+   * @param {Doc} doc
+   * @param {boolean}[recursive=false] - whether to find classes recursively
+   * @param {Doc[]}[out] - optional array to output the classes-docs into
+   * @return {(MethodDoc | FunctionDoc)[]}
+   */
+  getMethodLikes(doc: Doc, recursive = false, out: Doc[]): (MethodDoc | FunctionDoc)[] {
+    if (!out) {
+      out = [];
+    }
+
+    for (let i = 0; i < doc.members.length; i++) {
+      const member = doc.members[i];
+
+      if ((member.type === "FunctionDoc" || member.type === "MethodDoc") &&
+          doc.members[i].access !== "private") {
+        out.push(doc.members[i]);
+      }
+    }
+
+    if (recursive) {
+      for (let i = 0; i < doc.members.length; i++) {
+        // Don't search inside private docs
+        if (doc.members[i].access !== "private") {
+          this.getMembers(doc, type, true, out);
+        }
+      }
+    }
+
+    return out;
+  }
+
+  /**
    * Finds a (member) constructor for {@code doc}. This should be used only on a {@code ClassDoc}.
    *
    * @param {Doc} doc

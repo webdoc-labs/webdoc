@@ -47,6 +47,10 @@ export function isObject(doc: Doc): boolean {
   return doc.type === "ObjectDoc";
 }
 
+export function isProperty(doc: Doc): boolean {
+  return doc.type === "PropertyDoc";
+}
+
 export function isTypedef(doc: Doc): boolean {
   return doc.type === "TypedefDoc";
 }
