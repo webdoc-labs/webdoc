@@ -17,6 +17,31 @@ and supports enough features to generate the PixiJS documentation.
 
 You can checkout the documentation for `example/` [here](https://webdoc-js.github.io/example-documentation/index.html)! 
 
+## Usage
+
+```shell
+npm install -g @webdoc/cli
+```
+
+To get started, create a `webdoc.conf.json` file in your project directory. 
+
+```json
+{
+  "includePattern": "src/**/*.js",
+  "plugins": [
+  
+  ],
+  "opts": {
+    "destination": "docs" 
+  }
+}
+```
+
+The only required field is `includePattern` which tells webdoc where the documented code is located at.
+
+You can now run `webdoc` in your terminal and documentation will be generated.
+
+## Packages
 
 | Packages                    | npm                                                              ||
 |-----------------------------|------------------------------------------------------------------|-|
