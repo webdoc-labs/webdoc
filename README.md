@@ -15,7 +15,7 @@
 This project is the next generation documentation generator for JavaScript-based languages. Right now, it is work-in-progress
 and supports enough features to generate the PixiJS documentation.
 
-You can checkout the documentation for `example/` [here](https://webdoc-js.github.io/example-documentation/index.html): 
+You can checkout the documentation for `example/` [here](https://webdoc-js.github.io/example-documentation/index.html)! 
 
 
 | Packages                    | npm                                                              ||
@@ -28,3 +28,24 @@ You can checkout the documentation for `example/` [here](https://webdoc-js.githu
 | @webdoc/template-library    | ![npm](https://img.shields.io/npm/v/@webdoc/template-library)    |![David (path)](https://img.shields.io/david/webdoc-js/webdoc?path=packages%2Fwebdoc-template-library)|
 | @webdoc/legacy-template     | ![npm](https://img.shields.io/npm/v/@webdoc/legacy-template)     |![David (path)](https://img.shields.io/david/webdoc-js/webdoc?path=packages%2Fwebdoc-legacy-template)|
 | @webdoc/default-template    | Coming soon!                                                     | Coming soon! |
+
+## Features
+
+* Support for JavaScript, Flow, and TypeScript. The modular structure of @webdoc/parser allows you to integrate it with other languages as well.
+
+* High-performance document tree that enforces proper relationships between symbols.
+
+* Importing external APIs to integrate your documentation
+
+Coming soon:
+
+* Documentation coverage analysis
+
+* Powerful default template that:
+  * integrates with JSFiddle & CodePen for live examples of your API
+  * provides a neat and clean navigation for users
+  * makes it easy to write tutorials
+  
+## Contribute
+
+Glad you asked! Open an issue and I'll get you something to work on! webdoc has an amazing potential to disrupt the stagnated documentation process!
