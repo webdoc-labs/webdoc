@@ -6,7 +6,16 @@
 			"type": "ClassDoc",
 			"access": "public",
 			"scope": "inner",
-			"brief": ""
+			"brief": "",
+			"children": [
+				{
+					"name": "onCrash",
+					"type": "MethodDoc",
+					"access": "public",
+					"scope": "instance",
+					"brief": ""
+				}
+			]
 		},
 		{
 			"name": "PIXI",

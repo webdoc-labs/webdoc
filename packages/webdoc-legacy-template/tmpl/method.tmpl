@@ -1,91 +1,91 @@
 <?js
 const currentDoc = obj;
-var data = obj;
+var doc = obj;
 var self = this;
 ?>
-<?js if (data.type !== 'ModuleDoc' && !data.hideconstructor) { ?>
-    <?js if (data.name === "constructor" && data.parent && data.parent.type === "ClassDoc") { ?>
+<?js if (doc.type !== 'ModuleDoc' && !doc.hideconstructor) { ?>
+    <?js if (doc.name === "constructor" && doc.parent && doc.parent.type === "ClassDoc") { ?>
         <h2>Constructor</h2>
     <?js } ?>
 
-    <?js if (data.type !== 'NSDoc') { ?>
+    <?js if (doc.type !== 'NSDoc') { ?>
         <h4 class="name" id="<?js= id ?>">
-            <?js= data.attribs + (data.name === "constructor" && data.parent
-                ? `new ${data.parent.path}` : data.name) + (data.signature || '') ?>
+            <?js= doc.attribs + (doc.name === "constructor" && doc.parent
+                ? `new ${doc.parent.path}` : doc.name) + (doc.signature || '') ?>
         </h4>
     <?js } ?>
 <?js } ?>
 
-<?js if (data.brief && !data.hideconstructor) { ?>
+<?js if (doc.brief && !doc.hideconstructor) { ?>
     <div class="description">
-        <?js= data.brief ?>
+        <?js= doc.brief ?>
     </div>
 <?js } ?>
 
-<?js if (data.type !== 'ModuleDoc' && data.description && !data.hideconstructor) { ?>
+<?js if (doc.type !== 'ModuleDoc' && doc.description && !doc.hideconstructor) { ?>
     <div class="description">
-        <?js= data.description ?>
+        <?js= doc.description ?>
     </div>
 <?js } ?>
 
-<?js if (currentDoc.type !== "ClassDoc" && data.augments && data.alias && data.alias.indexOf('module:') === 0) { ?>
+<?js if (currentDoc.type !== "ClassDoc" && doc.augments && doc.alias && doc.alias.indexOf('module:') === 0) { ?>
     <h5>Extends:</h5>
-    <?js= self.partial('augments.tmpl', data) ?>
+    <?js= self.partial('augments.tmpl', doc) ?>
 <?js } ?>
 
-<?js if (type === 'EventDoc' && data.type && data.type.names) {?>
+<?js if (type === 'EventDoc' && doc.type && doc.type.names) {?>
     <h5>Type:</h5>
     <ul>
         <li>
-            <?js= self.partial('type.tmpl', data.type.names) ?>
+            <?js= self.partial('type.tmpl', doc.type.names) ?>
         </li>
     </ul>
 <?js } ?>
 
-<?js if (data['this']) { ?>
+<?js if (doc['this']) { ?>
     <h5>This:</h5>
-    <ul><li><?js= this.linkto(data['this'], data['this']) ?></li></ul>
+    <ul><li><?js= this.linkto(doc['this'], doc['this']) ?></li></ul>
 <?js } ?>
 
 <?js
-    const params = data.params;
+    const params = doc.params;
 
-    if (params && params.length && !data.hideconstructor) { ?>
+    if (params && params.length && !doc.hideconstructor) { ?>
         <h5>Parameters:</h5>
         <?js= this.partial('params.tmpl', params) ?>
 <?js } ?>
 
-<?js= this.partial('details.tmpl', data) ?>
+<?js= this.partial('details.tmpl', doc) ?>
 
-<?js if (data.type !== 'module' && data.requires && data.requires.length) { ?>
+<?js if (doc.type !== 'module' && doc.requires && doc.requires.length) { ?>
 <h5>Requires:</h5>
-<ul><?js data.requires.forEach(function(r) { ?>
+<ul><?js doc.requires.forEach(function(r) { ?>
     <li><?js= self.linkto(r) ?></li>
 <?js }); ?></ul>
 <?js } ?>
 
-<?js if (data.fires && fires.length) { ?>
+<?js if (doc.fires && fires.length) { ?>
 <h5>Fires:</h5>
 <ul><?js fires.forEach(function(f) { ?>
     <li><?js= self.linkto(f) ?></li>
 <?js }); ?></ul>
 <?js } ?>
 
-<?js if (data.listens && listens.length) { ?>
+<?js if (doc.listens && listens.length) { ?>
 <h5>Listens to Events:</h5>
 <ul><?js listens.forEach(function(f) { ?>
     <li><?js= self.linkto(f) ?></li>
 <?js }); ?></ul>
 <?js } ?>
 
-<?js if (data.listeners && listeners.length) { ?>
+<?js if (doc.listeners && listeners.length) { ?>
 <h5>Listeners of This Event:</h5>
 <ul><?js listeners.forEach(function(f) { ?>
     <li><?js= self.linkto(f) ?></li>
 <?js }); ?></ul>
 <?js } ?>
 
-<?js if (data.modifies && modifies.length) {?>
+<?js if (doc.modifies && modifies.length) {?>
 <h5>Modifies:</h5>
 <?js if (modifies.length > 1) { ?><ul><?js
     modifies.forEach(function(m) { ?>
@@ -97,7 +97,7 @@ var self = this;
     <?js });
 } } ?>
 
-<?js if (data.exceptions && exceptions.length) { ?>
+<?js if (doc.exceptions && exceptions.length) { ?>
 <h5>Throws:</h5>
 <?js if (exceptions.length > 1) { ?><ul><?js
     exceptions.forEach(function(r) { ?>
@@ -110,7 +110,7 @@ var self = this;
 } } ?>
 
 <?js
-    const returns = data.returns;
+    const returns = doc.returns;
 
     if (returns && returns.length) { ?>
 
@@ -129,7 +129,7 @@ var self = this;
     <?js });
 } } ?>
 
-<?js if (data.yields && yields.length) { ?>
+<?js if (doc.yields && yields.length) { ?>
 <h5>Yields:</h5>
 <?js if (yields.length > 1) { ?><ul><?js
     yields.forEach(function(r) { ?>
@@ -142,9 +142,7 @@ var self = this;
 } } ?>
 
 <?js
-    const exampleTags = data.tags.filter(tag => tag.type === "ExampleTag");
-
-    if (exampleTags.length) { ?>
-        <h5>Example<?js= exampleTags.length > 1 ? 's':'' ?></h5>
-        <?js= this.partial('examples.tmpl', exampleTags) ?>
-    <?js } ?>
+    if (doc.examples && doc.examples.length) { ?>
+        <h5>Example<?js= doc.examples.length > 1 ? 's':'' ?></h5>
+        <?js= this.partial('examples.tmpl', doc.examples) ?>
+<?js } ?>

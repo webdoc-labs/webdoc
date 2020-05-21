@@ -14,6 +14,11 @@ declare module "@webdoc/types" {
       variadic?: boolean,
     };
 
+    declare type Example = {
+      caption: string,
+      code: string
+    };
+
     declare type Typedef = {
       of: string[],
       alias: String,
@@ -40,6 +45,7 @@ declare module "@webdoc/types" {
       description: string,
       access: "public" | "protected" | "private",
       extends?: DocLink[],
+      examples?: Example[],
       fires?: [],
       scope: "static" | "instance" | "inner",
       version: "alpha" | "beta" | "internal" | "public" | "deprecated",

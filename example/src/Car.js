@@ -10,9 +10,16 @@
  * car.gear("D");
  * car.accelerate(2).until(65).then(0);
  *
- * car.onCrash(() => Services.Insurance.initiateClaim("abcdefghi-ticke"));
+ * car.onCrash(() => Services.Insurance.initiateClaim("abcdefghi-ticket"));
  * ```
  */
 export class Car {
+  /**
+   * @param {Function} callback
+   * @example
+   * car.onCrash((car) => console.log(car.id + " crashed!"))
+   */
+  onCrash(callback) {
 
+  }
 }

@@ -35,6 +35,7 @@ import {
   parseImplements,
   parseMixes,
   parseDeprecated,
+  parseExample,
 } from "./tag-parsers";
 
 import {
@@ -65,8 +66,7 @@ const TAG_PARSERS: { [id: string]: TagParser } = {
   "augments": parseExtends, // alias @extends
   "deprecated": parseDeprecated,
   "event": parseEvent,
-  "example": (value: string): ExampleTag =>
-    ({name: "example", code: value, value, type: "ExampleTag"}),
+  "example": parseExample,
   "extends": parseExtends,
   "fires": parseFires,
   "inner": parseInner,

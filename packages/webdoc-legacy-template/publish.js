@@ -559,22 +559,6 @@ exports.publish = (options) => {
 
     doclet.attribs = "";
 
-    if (doclet.examples) {
-      doclet.examples = doclet.examples.map((example) => {
-        let caption;
-        let code;
-
-        if (example.match(/^\s*<caption>([\s\S]+?)<\/caption>(\s*[\n\r])([\s\S]+)$/i)) {
-          caption = RegExp.$1;
-          code = RegExp.$3;
-        }
-
-        return {
-          caption: caption || "",
-          code: code || example,
-        };
-      });
-    }
     if (doclet.see) {
       doclet.see.forEach((seeItem, i) => {
         doclet.see[i] = hashToLink(doclet, seeItem);

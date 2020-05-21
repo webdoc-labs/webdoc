@@ -15,3 +15,17 @@ export function parseDeprecated(value: string, options: $Shape<Doc>): Tag {
     value: "",
   };
 }
+
+export function parseExample(value: string, options: $Shape<Doc>): Tag {
+  if (!options.examples) {
+    options.examples = [];
+  }
+
+  options.examples.push({caption: "", code: value});
+
+  return {
+    name: "example",
+    type: "ExampleTag",
+    value: "",
+  };
+}
