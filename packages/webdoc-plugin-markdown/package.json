@@ -29,7 +29,8 @@
     "url": "https://github.com/SukantPal/webdoc/issues"
   },
   "dependencies": {
-    "markdown-it": "^10.0.0"
+    "markdown-it": "^10.0.0",
+    "markdown-it-highlightjs": "^3.1.0"
   },
   "gitHead": "a2866c1a42f60180a74add7bc1b0f42d8bb16330"
 }

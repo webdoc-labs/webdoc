@@ -26,12 +26,10 @@ const renderer = new MarkdownIt({
   html: true,
 });
 
-/**
- * Process the markdown source in a doc. The properties that should be processed are
- * configurable, but always include "author", "classdesc", "description", "exceptions", "params",
- * "properties",  "returns", and "see".  Handled properties can be bare strings, objects, or arrays
- * of objects.
- */
+// Process the markdown source in a doc. The properties that should be processed are
+// configurable, but always include "author", "classdesc", "description", "exceptions", "params",
+// "properties",  "returns", and "see".  Handled properties can be bare strings, objects, or arrays
+// of objects.
 function process(doclet) {
   tags.forEach((tag) => {
     if (!doclet[tag]) {

@@ -2,6 +2,13 @@
 	"type": "RootDoc",
 	"children": [
 		{
+			"name": "Car",
+			"type": "ClassDoc",
+			"access": "public",
+			"scope": "inner",
+			"brief": "<p>Simulation for a automobile that can drive on a manifold surface.</p>"
+		},
+		{
 			"name": "PIXI",
 			"type": "NSDoc",
 			"access": "public",

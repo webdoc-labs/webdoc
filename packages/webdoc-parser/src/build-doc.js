@@ -104,6 +104,9 @@ const TAG_OVERRIDES: { [id: string]: string | any } = { // replace any, no lazy
   "event": parseEventDoc,
 };
 
+// Tags that end only when another tag is found or two lines are blank for consecutively
+const TAG_BLOCKS = new Set(["example", "classdesc"]);
+
 export default function buildDoc(symbol: Symbol): ?Doc {
   const {comment, node} = symbol;
 
@@ -120,15 +123,28 @@ export default function buildDoc(symbol: Symbol): ?Doc {
   let description = "";
   let noBrief = false;
 
+  // Extract all the tags in the documentation
   for (let i = 0; i < commentLines.length; i++) {
     if (commentLines[i].trimStart().startsWith("@")) {
       const tokens = commentLines[i].trim().split(" ");
       const tagName = tokens[0].replace("@", "");
+      const isBlock = TAG_BLOCKS.has(tagName);
 
       let value = tokens.slice(1).join(" ");
+      let blankLines = 0;
+      const blankLimit = isBlock ? 2 : 1;
 
       for (let j = i + 1; j < commentLines.length; j++) {
-        if (commentLines[j].trim().startsWith("@") || !commentLines[j]) {
+        if (commentLines[j].trim().startsWith("@")) {
+          break;
+        }
+        if (!commentLines[j]) {
+          ++blankLines;
+        } else {
+          blankLines = 0;
+        }
+
+        if (blankLines >= blankLimit) {
           break;
         }
 

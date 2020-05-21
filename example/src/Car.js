@@ -1,0 +1,17 @@
+/**
+ * Simulation for a automobile that can drive on a manifold surface.
+ *
+ * @example
+ * const car = new Car({ make: "Ferrari" });
+ *
+ * car.installComponent("interior", new AirConditioner());
+ * car.installComponent("exterior", new Bumper());
+ * car.drop("1234 Virtual Street, OH, Virtual US", "Universe-Default");
+ * car.gear("D");
+ * car.accelerate(2).until(65).then(0);
+ *
+ * car.onCrash(() => Services.Insurance.initiateClaim("abcdefghi-ticke"));
+ */
+export class Car {
+
+}
