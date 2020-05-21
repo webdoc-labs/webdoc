@@ -1,4 +1,3 @@
-const MarkdownIt = require("markdown-it");
 const env = global.Webdoc.env;
 
 const config = env["plugin/markdown"] || {};
@@ -21,10 +20,11 @@ function shouldProcessString(tagName, text) {
   return shouldProcess;
 }
 
-const renderer = new MarkdownIt({
+const renderer = require("markdown-it")({
   breaks: !!config.hardwrap,
   html: true,
-});
+})
+  .use(require("markdown-it-highlightjs"));
 
 // Process the markdown source in a doc. The properties that should be processed are
 // configurable, but always include "author", "classdesc", "description", "exceptions", "params",

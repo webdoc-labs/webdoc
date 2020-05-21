@@ -1,7 +1,7 @@
 /**
- * Simulation for a automobile that can drive on a manifold surface.
+ * _Simulation_ for a automobile that can drive on a manifold surface.
  *
- * @example
+ * ```js
  * const car = new Car({ make: "Ferrari" });
  *
  * car.installComponent("interior", new AirConditioner());
@@ -11,6 +11,7 @@
  * car.accelerate(2).until(65).then(0);
  *
  * car.onCrash(() => Services.Insurance.initiateClaim("abcdefghi-ticke"));
+ * ```
  */
 export class Car {
 

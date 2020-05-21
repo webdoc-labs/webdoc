@@ -165,7 +165,7 @@ export default function buildDoc(symbol: Symbol): ?Doc {
       }
 
       tags.push(tag);
-    } else if (commentLines[i]) {
+    } else {
       if (!brief && !commentLines[i + 1] && !noBrief) {
         brief = `${commentLines[i]}`;
       } else {
