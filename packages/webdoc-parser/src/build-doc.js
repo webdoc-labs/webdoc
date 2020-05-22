@@ -224,26 +224,19 @@ export default function buildDoc(symbol: Symbol): ?Doc {
     return null;
   }
 
-  if (isClassMethod(node)) {
-    return parseMethodDoc(node, options);
-  }
-  if (isClassDeclaration(node) || isClassExpression(node)) {
-    return createDoc(symbol.name, "ClassDoc", options);
-  }
   if (isClassProperty(node)) {
     return createDoc(symbol.name, "PropertyDoc", options);
-  }
-  if (isFunctionDeclaration(node)) {
-    return createDoc(symbol.name, "FunctionDoc", options);
   }
   if (isProperty(node) && isFunctionExpression(node.value)) {
     return parseMethodDoc(node, options);
   }
-  if (isObjectMethod(node)) {
-    return parseMethodDoc(node, options);
+
+  Object.assign(options, symbol.meta);
+
+  if (symbol.name && symbol.meta && symbol.meta.type) {
+    return createDoc(symbol.name, symbol.meta.type, options);
+  } else {
+    console.log(symbol.name + " -<");
   }
-
-  console.log(symbol.name + " couldn't be resolved");
-
   return null;
 }

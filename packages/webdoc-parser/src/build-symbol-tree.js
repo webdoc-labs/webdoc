@@ -5,15 +5,20 @@
 import {
   type ArrowFunctionExpression,
   type CommentBlock,
+  type ClassMethod,
   type FunctionExpression,
+  type FunctionDeclaration,
+  type InterfaceDeclaration,
   type Node,
   type VariableDeclaration,
   type VariableDeclarator,
   isArrowFunctionExpression,
+  isAssignmentPattern,
   isExpressionStatement,
   isClassDeclaration,
   isClassExpression,
   isClassMethod,
+  isIdentifer,
   isMemberExpression,
   isFunctionDeclaration,
   SourceLocation,
@@ -23,6 +28,7 @@ import {
   isExportDefaultDeclaration,
   isExportNamedDeclaration,
   isCallExpression,
+  isRestElement,
   isVariableDeclarator,
   isObjectExpression,
   isAssignmentExpression,
@@ -30,6 +36,12 @@ import {
 } from "@babel/types";
 import * as parser from "@babel/parser";
 import traverse, {type NodePath} from "@babel/traverse";
+
+import type {
+  DocType,
+  Param,
+  Return,
+} from "@webdoc/types";
 
 import extract from "./extract";
 import {type Doc} from "@webdoc/types";
@@ -80,7 +92,17 @@ export type Symbol = {
   children: Symbol[],
   loc: SourceLocation,
   doc?: ?Doc,
-  options?: any
+  options?: any,
+  meta: {
+    access?: string,
+    dataType?: string,
+    extends?: string,
+    implements?: string,
+    params?: Param[],
+    returns?: Return[],
+    scope?: string,
+    type?: DocType
+  }
 };
 
 function isPassThrough(symbol: Symbol): boolean {
@@ -161,6 +183,7 @@ export const SymbolUtils = {
     symbol.comment = comment || pair.comment;
     symbol.children = children;
     symbol.flags = symbol.flags ? symbol.flags | pair.flags : pair.flags;
+    symbol.meta = Object.assign(symbol.meta, pair.meta);
 
     // Horizontal transfer of children
     for (let i = 0; i < pair.children.length; i++) {
@@ -359,17 +382,38 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
   let initComment;
   let isInit = false;
 
-  let nodeSymbol: ?Symbol = {};
+  let nodeSymbol: ?Symbol = {meta: {}};
   let nodeDocIndex;
 
-  if (isClassMethod(node) || isClassProperty(node)) {
+  if (isClassMethod(node) && node.kind === "method") {
+    // classMethod() {}
     name = node.key.name;
-  } else if (isClassDeclaration(node)) {
-    name = node.id.name;
-  } else if (isClassExpression(node) && node.id) {
+
+    nodeSymbol.meta.access = node.access;
+    nodeSymbol.meta.scope = node.static ? "static" : "instance";
+    nodeSymbol.meta.type = "MethodDoc";
+  } else if (isClassProperty(node) ||
+      (isClassMethod(node) && (node.kind === "get" || node.kind === "set"))) {
+    // classProperty = "value";
+    // get classProperty() { return "value"; }
+
+    name = node.key.name;
+
+    nodeSymbol.meta.access = node.access;
+    nodeSymbol.meta.scope = node.static ? "static" : "instance";
+    nodeSymbol.meta.type = "PropertyDoc";
+  } else if (isClassDeclaration(node) || isClassExpression(node)) {
+    // class ClassName {}
+
     name = node.id ? node.id.name : "";
+
+    nodeSymbol.meta.type = "ClassDoc";
   } else if (isFunctionDeclaration(node)) {
+    // function functionName()
+
     name = node.id ? node.id.name : "";
+
+    nodeSymbol.meta.type = "FunctionDoc";
   } else if (
     isVariableDeclarator(node) ||
     (isExpressionStatement(node) && isMemberExpression(node.expression.left))
@@ -409,8 +453,10 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
     if (!initComment) {
       nodeDocIndex = SymbolUtils.commentIndex(node.leadingComments);
     }
-    const nodeDoc = node.leadingComments[nodeDocIndex];
+    const nodeDoc = typeof nodeDocIndex === "number" ? node.leadingComments[nodeDocIndex] : null;
     const comment = initComment || extract(nodeDoc) || "";
+
+    const leadingComments = node.leadingComments || [];
 
     // Does user want to document as a property? Then remove PASS_THROUGH flag
     if ((flags & VIRTUAL) && comment.indexOf("@property") !== -1) {
@@ -450,6 +496,7 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
           options: {
             object: node.expression ? node.expression.left.object.name : undefined,
           },
+          meta: {},
         }],
         loc: nodeDoc ? nodeDoc.loc : {},
         virtual: true,
@@ -460,25 +507,25 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
       nodeSymbol = null;
     }
 
-    for (let i = 0; i < node.leadingComments.length; i++) {
+    for (let i = 0; i < leadingComments.length; i++) {
       if (i === nodeDocIndex) {
         continue;
       }
 
-      const comment = extract(node.leadingComments[i]);
+      const comment = extract(leadingComments[i]);
 
       if (!comment) {
         continue;
       }
 
       SymbolUtils.addChild(
-        SymbolUtils.createHeadlessSymbol(comment, node.leadingComments[i].loc, parent),
+        SymbolUtils.createHeadlessSymbol(comment, leadingComments[i].loc, parent),
         parent);
     }
   } else if (isScope(node) && name) {
     // Create a "virtual" doc so that documented children can be added. @prune will delete it
     // in the prune doctree-mod.
-    nodeSymbol = {
+    nodeSymbol = Object.assign({
       node,
       name,
       flags,
@@ -487,7 +534,7 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
       parent: parent,
       children: [],
       loc: node.loc,
-    };
+    }, nodeSymbol);
 
     nodeSymbol = SymbolUtils.addChild(nodeSymbol, parent);
   } else {
@@ -523,4 +570,46 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
   }
 
   return nodeSymbol;
+}
+
+// Extract all the parameter-data from the method/function AST node
+function extractParams(node: ClassMethod | FunctionDeclaration | FunctionExpression): Param[] {
+  if (!node.params) {
+    return [];
+  }
+
+  const params: Param[] = [];
+
+  for (let i = 0; i < node.params.length; i++) {
+    const paramNode = node.params[i];
+
+    // TODO: Infer types
+    if (isIdentifer(paramNode)) {
+      params.push({
+        identifer: paramNode.name,
+        optional: paramNode.optional || false,
+      });
+    } else if (isRestElement(paramNode)) {
+      params.push({
+        identifer: paramNode.argument.name,
+        optional: paramNode.optional || false,
+        variadic: true,
+      });
+    } else if (isAssignmentPattern(paramNode)) {
+      params.push({
+        identifer: paramNode.left.name,
+        optional: paramNode.optional || false,
+        default: paramNode.right.raw,
+      });
+    } else if (isObjectExpression(paramNode)) {
+      // TODO: Find a way to document {x, y, z} parameters
+      // e.g. function ({x, y, z}), you would need to give the object pattern an anonymous like
+      // "", " ", "  ",  "    " or using &zwnj; because it is truly invisible
+      console.error("Object patterns as parameters can't be documented");
+    } else {
+      console.error("Parameter node couldn't be parsed");
+    }
+  }
+
+  return params;
 }

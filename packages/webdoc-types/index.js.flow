@@ -33,6 +33,9 @@ declare module "@webdoc/types" {
 
     declare type Return = TypedDesc;
 
+    declare type DocType = "ClassDoc" | "FunctionDoc" | "MethodDoc" | "PropertyDoc" | "TypedefDoc" |
+        "NSDoc" | "EventDoc" | "EnumDoc"
+
     declare type BaseDoc = {
       name: string,
       path: string,
@@ -54,7 +57,7 @@ declare module "@webdoc/types" {
     };
 
     declare type Doc = BaseDoc | ClassDoc | ObjectDoc | FunctionDoc | MethodDoc | PropertyDoc
-        | TypedefDoc | NSDoc | ReturnTag | EventDoc;
+        | TypedefDoc | NSDoc | EventDoc;
 
     declare type RootDoc = {
       ...Doc,
