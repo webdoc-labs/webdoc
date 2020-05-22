@@ -1,3 +1,5 @@
+import {PhysicalObject} from "./PhysicalObject";
+
 /**
  * _Simulation_ for a automobile that can drive on a manifold surface.
  *
@@ -13,7 +15,7 @@
  * car.onCrash(() => Services.Insurance.initiateClaim("abcdefghi-ticket"));
  * ```
  */
-export class Car {
+export class Car extends PhysicalObject {
   /**
    * @param {Function} callback
    * @example

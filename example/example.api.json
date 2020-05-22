@@ -18,6 +18,96 @@
 			]
 		},
 		{
+			"name": "PhysicalInteraction",
+			"type": "ClassDoc",
+			"access": "public",
+			"scope": "inner",
+			"brief": "",
+			"children": [
+				{
+					"name": "force",
+					"type": "MethodDoc",
+					"access": "public",
+					"scope": "instance",
+					"brief": ""
+				},
+				{
+					"name": "GRAVITATIONAL_CONSTANT",
+					"type": "PropertyDoc",
+					"access": "public",
+					"scope": "static",
+					"brief": ""
+				},
+				{
+					"name": "createGravity",
+					"type": "MethodDoc",
+					"access": "public",
+					"scope": "static",
+					"brief": ""
+				}
+			]
+		},
+		{
+			"name": "Gravity",
+			"type": "ClassDoc",
+			"access": "public",
+			"scope": "inner",
+			"brief": "<p>This class shouldn't be documented!</p>",
+			"children": [
+				{
+					"name": "force",
+					"type": "MethodDoc",
+					"access": "public",
+					"scope": "instance",
+					"brief": ""
+				}
+			]
+		},
+		{
+			"name": "PhysicalObject",
+			"type": "ClassDoc",
+			"access": "public",
+			"scope": "inner",
+			"brief": "",
+			"children": [
+				{
+					"name": "mass",
+					"type": "PropertyDoc",
+					"access": "public",
+					"scope": "instance",
+					"brief": ""
+				},
+				{
+					"name": "position",
+					"type": "PropertyDoc",
+					"access": "public",
+					"scope": "instance",
+					"brief": ""
+				},
+				{
+					"name": "velocity",
+					"type": "PropertyDoc",
+					"access": "public",
+					"scope": "instance",
+					"brief": ""
+				},
+				{
+					"name": "bounds",
+					"type": "PropertyDoc",
+					"access": "public",
+					"scope": "instance",
+					"brief": ""
+				},
+				{
+					"name": "interactions",
+					"type": "PropertyDoc",
+					"access": "public",
+					"scope": "instance",
+					"brief": ""
+				}
+			]
+		},
+		{
 			"name": "PIXI",
 			"type": "NSDoc",
 			"access": "public",
@@ -48,22 +138,8 @@
 					"brief": "",
 					"children": [
 						{
-							"name": "constructor",
-							"type": "MethodDoc",
-							"access": "public",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
 							"name": "destroy",
 							"type": "MethodDoc",
-							"access": "public",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "renderer",
-							"type": "PropertyDoc",
 							"access": "public",
 							"scope": "instance",
 							"brief": ""
@@ -77,13 +153,6 @@
 					"scope": "inner",
 					"brief": "",
 					"children": [
-						{
-							"name": "constructor",
-							"type": "MethodDoc",
-							"access": "public",
-							"scope": "instance",
-							"brief": ""
-						},
 						{
 							"name": "bufferSize",
 							"type": "PropertyDoc",
@@ -204,125 +273,6 @@
 							"brief": ""
 						},
 						{
-							"name": "shaderGenerator",
-							"type": "PropertyDoc",
-							"access": "protected",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "geometryClass",
-							"type": "PropertyDoc",
-							"access": "protected",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "vertexSize",
-							"type": "PropertyDoc",
-							"access": "public",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "state",
-							"type": "PropertyDoc",
-							"access": "public",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "size",
-							"type": "PropertyDoc",
-							"access": "public",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "_vertexCount",
-							"type": "PropertyDoc",
-							"access": "private",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "_indexCount",
-							"type": "PropertyDoc",
-							"access": "private",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "_bufferedElements",
-							"type": "PropertyDoc",
-							"access": "private",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "_bufferedTextures",
-							"type": "PropertyDoc",
-							"access": "private",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "_bufferSize",
-							"type": "PropertyDoc",
-							"access": "private",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "_shader",
-							"type": "PropertyDoc",
-							"access": "protected",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "_packedGeometries",
-							"type": "PropertyDoc",
-							"access": "private",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "_packedGeometryPoolSize",
-							"type": "PropertyDoc",
-							"access": "private",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "_flushId",
-							"type": "PropertyDoc",
-							"access": "private",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "_aBuffers",
-							"type": "PropertyDoc",
-							"access": "private",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "_iBuffers",
-							"type": "PropertyDoc",
-							"access": "private",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "MAX_TEXTURES",
-							"type": "PropertyDoc",
-							"access": "public",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
 							"name": "_drawCallPool",
 							"type": "PropertyDoc",
 							"access": "public",
@@ -335,13 +285,6 @@
 							"access": "public",
 							"scope": "static",
 							"brief": ""
-						},
-						{
-							"name": "renderer",
-							"type": "PropertyDoc",
-							"access": "public",
-							"scope": "instance",
-							"brief": ""
 						}
 					]
 				},
@@ -352,13 +295,6 @@
 					"scope": "inner",
 					"brief": "",
 					"children": [
-						{
-							"name": "constructor",
-							"type": "MethodDoc",
-							"access": "public",
-							"scope": "instance",
-							"brief": ""
-						},
 						{
 							"name": "flush",
 							"type": "MethodDoc",
@@ -393,13 +329,6 @@
 							"access": "public",
 							"scope": "instance",
 							"brief": ""
-						},
-						{
-							"name": "renderer",
-							"type": "PropertyDoc",
-							"access": "public",
-							"scope": "instance",
-							"brief": ""
 						}
 					]
 				}
@@ -411,6 +340,50 @@
 			"access": "public",
 			"scope": "inner",
 			"brief": ""
+		},
+		{
+			"name": "Vector",
+			"type": "ClassDoc",
+			"access": "public",
+			"scope": "inner",
+			"brief": "",
+			"children": [
+				{
+					"name": "dimensions",
+					"type": "PropertyDoc",
+					"access": "public",
+					"scope": "instance",
+					"brief": ""
+				},
+				{
+					"name": "isCompat",
+					"type": "MethodDoc",
+					"access": "public",
+					"scope": "instance",
+					"brief": ""
+				},
+				{
+					"name": "equalTo",
+					"type": "MethodDoc",
+					"access": "public",
+					"scope": "instance",
+					"brief": ""
+				},
+				{
+					"name": "add",
+					"type": "MethodDoc",
+					"access": "public",
+					"scope": "instance",
+					"brief": ""
+				},
+				{
+					"name": "create3D",
+					"type": "MethodDoc",
+					"access": "public",
+					"scope": "static",
+					"brief": ""
+				}
+			]
 		}
 	]
 }
