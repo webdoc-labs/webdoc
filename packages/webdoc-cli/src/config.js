@@ -1,7 +1,7 @@
 // @flow
 import fs from "fs";
 import {log, tags} from "missionlog";
-
+import merge from "lodash/merge";
 const defaultConfig = {
   source: {
     includePattern: "./**/*.js",
@@ -33,7 +33,8 @@ export function loadConfig(file: string) {
     log.warn(tags.Config, `Configuration file not found at: ${file}`);
     config = defaultConfig;
   } else {
-    config = Object.assign(defaultConfig, JSON.parse(fs.readFileSync(file, "utf8")));
+    const userConfig = JSON.parse(fs.readFileSync(file, "utf8"));
+    config = merge(defaultConfig, userConfig);
   }
 
   return config;
