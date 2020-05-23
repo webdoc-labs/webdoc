@@ -6,7 +6,7 @@ declare module "@webdoc/types" {
     };
 
     declare type Param = {
-      identifer: string,
+      identifier: string,
       referred: string,
       description: string,
       optional?: Boolean,
@@ -214,7 +214,7 @@ declare module "@webdoc/types" {
 
     declare type ParamTag = {
       ...TypedTag,
-      identifer: string,
+      identifier: string,
       referred: string,
       description: string,
       optional?: Boolean,

@@ -3,19 +3,6 @@
 // of symbol)
 
 import {
-  isExpressionStatement,
-  isClassDeclaration,
-  isClassMethod,
-  isMemberExpression,
-  isClassProperty,
-  isClassExpression,
-  isProperty,
-  isObjectMethod,
-  isFunctionExpression,
-  isFunctionDeclaration,
-} from "@babel/types";
-
-import {
   parseParam,
   parsePrivate,
   parseProtected,
@@ -46,6 +33,10 @@ import {
 
 import type {Tag, Doc, ExampleTag} from "@webdoc/types";
 import {createDoc} from "@webdoc/model";
+
+import type {Symbol, SymbolSignature} from "./build-symbol-tree";
+
+import mergeWith from "lodash/mergeWith";
 
 type TagParser = (value: string, options: Object) => void;
 
@@ -95,13 +86,13 @@ const TAG_PARSERS: { [id: string]: TagParser } = {
 const TAG_OVERRIDES: { [id: string]: string | any } = { // replace any, no lazy
   "class": "ClassDoc",
   "interface": "InterfaceDoc",
-  "enum": parsePropertyDoc,
-  "member": parsePropertyDoc,
-  "method": parseMethodDoc,
+  "enum": "PropertyDoc",
+  "member": "PropertyDoc",
+  "method": "MethodDoc",
   "mixin": "MixinDoc",
   "typedef": "TypedefDoc",
   "namespace": "NSDoc",
-  "event": parseEventDoc,
+  "event": "EventDoc",
 };
 
 // Tags that end only when another tag is found or two lines are blank for consecutively
@@ -112,11 +103,14 @@ export default function buildDoc(symbol: Symbol): ?Doc {
 
   const commentLines = comment.split("\n");
 
-  let options: any = {node};
+  const options: any = {node};
 
-  if (symbol.options) {
-    options = {...options, ...symbol.options};
-  }
+  options.access = symbol.meta.access;
+  options.scope = symbol.meta.scope;
+
+  options.parserOpts = {
+    object: symbol.meta.object,
+  };
 
   const tags: Tag[] = [];
   let brief = "";
@@ -181,6 +175,8 @@ export default function buildDoc(symbol: Symbol): ?Doc {
   options.description = description;
   options.node = null;
 
+  // if (symbol.meta.object)
+
   // @name might come handy
   if (!symbol.name) {
     const nameTag = tags.find((tag) => tag.name === "name");
@@ -190,27 +186,22 @@ export default function buildDoc(symbol: Symbol): ?Doc {
     }
   }
 
-  if (isExpressionStatement(node) && isMemberExpression(node.expression.left)) {
-    return parsePropertyDoc(node, options);
-  }
-
   for (let i = 0; i < tags.length; i++) {
     if (TAG_OVERRIDES.hasOwnProperty(tags[i].name)) {// eslint-disable-line no-prototype-builtins
       const name = tags[i].name;
       const override = TAG_OVERRIDES[name];
       let doc;
 
-      if (typeof override === "string") {
-        doc = createDoc(tags[i].value || symbol.name, TAG_OVERRIDES[name], options);
-      } else {
-        symbol.name = symbol.name || tags[i].value;
+      // if (typeof override === "string") {
+      doc = createDoc(tags[i].value || symbol.name, TAG_OVERRIDES[name], options, symbol);
+      delete doc.comment;
+      delete doc.flags;
+      delete doc.node;
+      delete doc.meta;
+      delete doc.options;
+      delete doc.parent;
 
-        if (symbol.name) {
-          options.name = symbol.name;
-        }
-
-        doc = override(node, options);
-      }
+      // }
 
       if (doc) {
         return doc;
@@ -224,19 +215,62 @@ export default function buildDoc(symbol: Symbol): ?Doc {
     return null;
   }
 
-  if (isClassProperty(node)) {
-    return createDoc(symbol.name, "PropertyDoc", options);
-  }
-  if (isProperty(node) && isFunctionExpression(node.value)) {
-    return parseMethodDoc(node, options);
-  }
+  verifyParameters(options, symbol.meta);
 
-  Object.assign(options, symbol.meta);
+  mergeWith(options, symbol.meta, (optVal, metaVal) => optVal === undefined ? metaVal : optVal);
 
   if (symbol.name && symbol.meta && symbol.meta.type) {
-    return createDoc(symbol.name, symbol.meta.type, options);
+    // This will transform "symbol" into "doc" (a new object is not created)
+    const doc = createDoc(symbol.name, symbol.meta.type, options, symbol);
+
+    // Remove properties from Symbol form
+    delete doc.comment;
+    delete doc.flags;
+    delete doc.node;
+    delete doc.meta;
+    delete doc.options;
+    delete doc.parent;
+
+    return doc;
   } else {
     console.log(symbol.name + " -<");
   }
   return null;
+}
+
+function verifyParameters(doc: $Shape<Doc>, meta: SymbolSignature): void {
+  if (!meta.params || !doc.params) {
+    return;
+  }
+
+  let lastParam = null;
+
+  for (let i = 0, j = 0; i < doc.params.length; i++) {
+    const param = doc.params[i];
+    const name = param.identifier;
+
+    const dotIndex = name.indexOf(".");
+
+    if (dotIndex >= 0) {
+      const firstId = name.slice(0, dotIndex);
+
+      // The following order is illegal. options.title must come right after options.
+      // @param {object} options
+      // @param {string} string
+      // @param {string} options.title
+      if (firstId !== lastParam) {
+        throw new Error(`Object property ${name} parameter must be placed` +
+              `directly after object parameter ${firstId}`);
+      }
+
+      continue;
+    }
+    if (j >= meta.params.length) {
+      throw new Error(`"${name}" is not a parameter & cannot` +
+            ` come after the last parameter "${lastParam}"`);
+    }
+
+    ++j;
+    lastParam = name;
+  }
 }

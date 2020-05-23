@@ -164,11 +164,11 @@ function getSignatureAttributes({optional, nullable}) {
 const SignatureBuilder = {
   appendParameters(params) {
     return params
-      .filter((param) => param.identifer && !param.identifer.includes("."))
+      .filter((param) => param.identifier && !param.identifier.includes("."))
       .map(
         (item) => {
           const attributes = getSignatureAttributes(item);
-          let itemName = item.identifer || "";
+          let itemName = item.identifier || "";
 
           if (item.variadic) {
             itemName = `&hellip;${itemName}`;

@@ -17,11 +17,30 @@ import {PhysicalObject} from "./PhysicalObject";
  */
 export class Car extends PhysicalObject {
   /**
+   * @member {string} DEFAULT_DRIVE_SHIFT
+   */
+  static DEFAULT_DRIVE_SHIFT = "manual"
+
+  /**
+   * @member {number}
+   */
+  vin = 0
+
+  /**
    * @param {Function} callback
+   * @param {string} callback.name
    * @example
    * car.onCrash((car) => console.log(car.id + " crashed!"))
    */
   onCrash(callback) {
 
+  }
+
+  /**
+   * Register a retail dealer for buying a car from
+   *
+   * @param {string} name
+   */
+  static registerRetail(name) {
   }
 }

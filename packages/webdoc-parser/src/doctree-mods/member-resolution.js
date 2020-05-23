@@ -1,14 +1,11 @@
-"use strict";
+// @flow
 
-Object.defineProperty(exports, "__esModule", {
-  value: true,
-});
-exports.default = memberResolve;
+import {doc as findDoc, addChildDoc} from "@webdoc/model";
+import type {Doc, RootDoc} from "@webdoc/types";
 
-const _model = require("@webdoc/model");
-
-function bubbleThis(doc) {
-  if (doc.type === "ClassDoc" || doc.type === "ObjectDoc" || doc.type === "MixinDoc" || doc.type === "InterfaceDoc") {
+function bubbleThis(doc: Doc): Doc {
+  if (doc.type === "ClassDoc" || doc.type === "ObjectDoc" ||
+        doc.type === "MixinDoc" || doc.type === "InterfaceDoc") {
     return doc;
   }
 
@@ -19,19 +16,30 @@ function bubbleThis(doc) {
   return bubbleThis(doc.parent);
 }
 
-function resolvedThis(doc) {
-  return doc.scope === "this" && (doc.parent.type === "ClassDoc" || doc.parent.type === "ObjectDoc");
+function resolvedThis(doc: Doc, object: string): boolean {
+  return object === "this" &&
+      (!doc.parent || doc.parent.type === "ClassDoc" || doc.parent.type === "ObjectDoc");
 }
 
-function memberResolve(doc, root) {
-  if (doc.path !== (doc.parent ? `${doc.parent.name}.${doc.name}` : doc.name) && !resolvedThis(doc) && doc.object) {
-    const scope = doc.object === "this" ? bubbleThis(doc) : (0, _model.doc)(doc.object, root);
+export default function memberResolve(doc: Doc, root: RootDoc) {
+  if (doc.parserOpts && doc.parserOpts.object) {
+    const objectPath = doc.parserOpts.object;
 
-    if (scope) {
-      (0, _model.addChildDoc)(doc, scope);
-      return true;
-    } else {
-      console.warn(`Member ${doc.path} could not be resolved to ${doc.object}`);
+    // Check if "doc" isn't inside its parent
+    if (doc.path !== (doc.parent ? `${doc.parent.name}.${doc.name}` : doc.name) &&
+          !resolvedThis(doc, objectPath)) {
+      // Find the object doc
+      const scope = objectPath === "this" ? bubbleThis(doc) : findDoc(objectPath, root);
+
+      if (scope) {
+        if (scope !== doc.parent) {
+          addChildDoc(doc, scope);
+        }
+
+        return true;
+      } else {
+        console.warn(`Member ${doc.path} could not be resolved to ${doc.object}`);
+      }
     }
   }
 

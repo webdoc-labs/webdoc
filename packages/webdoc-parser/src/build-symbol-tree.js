@@ -9,16 +9,18 @@ import {
   type FunctionExpression,
   type FunctionDeclaration,
   type InterfaceDeclaration,
+  type MemberExpression,
   type Node,
   type VariableDeclaration,
   type VariableDeclarator,
   isArrowFunctionExpression,
   isAssignmentPattern,
+  isBlockStatement,
   isExpressionStatement,
   isClassDeclaration,
   isClassExpression,
   isClassMethod,
-  isIdentifer,
+  isIdentifier,
   isMemberExpression,
   isFunctionDeclaration,
   SourceLocation,
@@ -29,6 +31,7 @@ import {
   isExportNamedDeclaration,
   isCallExpression,
   isRestElement,
+  isThisExpression,
   isVariableDeclarator,
   isObjectExpression,
   isAssignmentExpression,
@@ -70,6 +73,39 @@ function resolveReturn(callee: FunctionExpression | ArrowFunctionExpression): ?s
   }
 }
 
+// Helper to resolve assignment to object chain, e.g. [Class.prototype].property
+function resolveObject(expression: MemberExpression): void {
+  if (isThisExpression(expression.object)) {
+    return "this";
+  }
+
+  let longname = "";
+  expression = expression.object;
+
+  while (expression.object) {
+    longname = expression.property.name + "." + longname;
+    expression = expression.object;
+  }
+
+  longname = expression.name + (longname ? "." : "") + longname;
+
+  return longname;
+}
+
+// Whether the member expression assigns to this, e.g.
+// this.member.inside.deep -> true
+// top.inside -> false
+function isInstancePropertyAssignment(expr: MemberExpression): boolean {
+  if (isThisExpression(expr.object)) {
+    return true;
+  }
+  if (isMemberExpression(expr.object)) {
+    return isInstancePropertyAssignment(expr.object);
+  }
+
+  return false;
+}
+
 // Ignore symbol when building doc-tree
 export const PASS_THROUGH = 1 << 0;
 
@@ -80,6 +116,17 @@ export const OBLIGATE_LEAF = 1 << 1;
 // Symbol is "virtual" & created by the generator for its own purpose. These symbols are not
 // reported to the SymbolParser!
 export const VIRTUAL = 1 << 2;
+
+export type SymbolSignature = {
+  access?: string,
+  dataType?: string,
+  extends?: string[],
+  implements?: string[],
+  params?: Param[],
+  returns?: Return[],
+  scope?: string,
+  type?: DocType
+}
 
 // Symbol is a interim format that holds the context+comment of a documentation.
 export type Symbol = {
@@ -93,16 +140,7 @@ export type Symbol = {
   loc: SourceLocation,
   doc?: ?Doc,
   options?: any,
-  meta: {
-    access?: string,
-    dataType?: string,
-    extends?: string,
-    implements?: string,
-    params?: Param[],
-    returns?: Return[],
-    scope?: string,
-    type?: DocType
-  }
+  meta: SymbolSignature
 };
 
 function isPassThrough(symbol: Symbol): boolean {
@@ -208,6 +246,14 @@ export const SymbolUtils = {
     // Just try the leading comment
     return comments.length - 1;
   },
+  logRecursive(sym: Symbol, prefix = ""): void {
+    parserLogger.info("Debug", prefix + (sym.name || "-no-name-") + " " + sym.flags +
+      ` [${sym.meta ? sym.meta.type : "-no-meta-"}]`);
+
+    for (let i = 0; i < sym.children.length; i++) {
+      SymbolUtils.logRecursive(sym.children[i], prefix + "\t");
+    }
+  },
   createModuleSymbol(): Symbol {
     return {
       node: null,
@@ -218,6 +264,7 @@ export const SymbolUtils = {
       parent: null,
       children: [],
       loc: {start: 0, end: 0},
+      meta: {},
     };
   },
   createHeadlessSymbol(comment: string, loc: SourceLocation, scope: Symbol): Symbol {
@@ -230,6 +277,7 @@ export const SymbolUtils = {
       parent: scope,
       children: [],
       loc: loc || {},
+      meta: {},
     };
   },
 
@@ -262,7 +310,7 @@ const babelPlugins = [
 // These vistiors kind of "fix" the leadingComments by moving them in front of the intended
 // AST node.
 const extraVistors = {
-  // Move comments before variable-declaration to infront of the declared identifer if
+  // Move comments before variable-declaration to infront of the declared identifier if
   // there are no inline comments.
   VariableDeclaration(nodePath: NodePath): void {
     const node: VariableDeclaration = (nodePath.node : any);
@@ -371,6 +419,8 @@ export default function buildSymbolTree(file: string, fileName?: string): Symbol
     throw new Error("@webdoc/parser failed to correctly finish the symbol-tree.");
   }
 
+  // SymbolUtils.logRecursive(module);
+
   return module;
 }
 
@@ -385,13 +435,18 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
   let nodeSymbol: ?Symbol = {meta: {}};
   let nodeDocIndex;
 
-  if (isClassMethod(node) && node.kind === "method") {
+  //
+  // Collect symbol meta-data & detect its name, type
+  //
+  if (isClassMethod(node) && (node.kind === "method" || node.kind === "constructor")) {
     // classMethod() {}
     name = node.key.name;
 
     nodeSymbol.meta.access = node.access;
     nodeSymbol.meta.scope = node.static ? "static" : "instance";
     nodeSymbol.meta.type = "MethodDoc";
+
+    nodeSymbol.meta.params = extractParams(node);
   } else if (isClassProperty(node) ||
       (isClassMethod(node) && (node.kind === "get" || node.kind === "set"))) {
     // classProperty = "value";
@@ -414,6 +469,8 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
     name = node.id ? node.id.name : "";
 
     nodeSymbol.meta.type = "FunctionDoc";
+
+    nodeSymbol.meta.params = extractParams(node);
   } else if (
     isVariableDeclarator(node) ||
     (isExpressionStatement(node) && isMemberExpression(node.expression.left))
@@ -434,6 +491,17 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
       isInit = true;
     } else if (!isObjectExpression(init)) {
       flags |= OBLIGATE_LEAF;
+      nodeSymbol.meta.type = "PropertyDoc";
+    } else {
+      nodeSymbol.meta.type = "PropertyDoc";
+    }
+
+    if (isExpressionStatement(node)) {
+      // Literal property
+
+      nodeSymbol.meta.object = resolveObject(node.expression.left);
+      nodeSymbol.meta.scope = isInstancePropertyAssignment(node.expression.left) ?
+        "instance" : "static";
     }
   } else if (parent && isVirtual(parent) &&
     isCallExpression(node) &&
@@ -459,7 +527,8 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
     const leadingComments = node.leadingComments || [];
 
     // Does user want to document as a property? Then remove PASS_THROUGH flag
-    if ((flags & VIRTUAL) && comment.indexOf("@property") !== -1) {
+    // "@member " with the space is required b/c of @memberof tag
+    if ((flags & VIRTUAL) && comment.indexOf("@member ") >= 0) {
       flags &= ~VIRTUAL;
     }
 
@@ -559,12 +628,25 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
   if (trailingComments) {
     // trailing comments re-occur if they "lead" a node afterward. SymbolUtils.addChild will
     // replace.
+
+    // If node is a BlockStatement with no code inside it, then its trailing comments also contain
+    // the trailing comments of the parent (not of the block-statement). This is bug in Babel
+    // reported by SukantPal.
+    //
+    // Also, the inner comments are part of the trailingComments as well.
+    //
+    // https://github.com/babel/babel/issues/11469
+    const is11469 = isBlockStatement(node) && node.body.length === 0;
+    const isTrailing = (n: Node) => n.loc.end.line >= node.loc.end.line;
+
     trailingComments.forEach((comment) => {
       const doc = extract(comment);
 
       if (doc) {
-        const tsym = SymbolUtils.createHeadlessSymbol(doc, comment.loc, parent);
-        SymbolUtils.addChild(tsym, parent);
+        const actualParent = is11469 && isTrailing(comment) ? parent.parent : parent;
+
+        const tsym = SymbolUtils.createHeadlessSymbol(doc, comment.loc, actualParent);
+        SymbolUtils.addChild(tsym, actualParent);
       }
     });
   }
@@ -584,20 +666,20 @@ function extractParams(node: ClassMethod | FunctionDeclaration | FunctionExpress
     const paramNode = node.params[i];
 
     // TODO: Infer types
-    if (isIdentifer(paramNode)) {
+    if (isIdentifier(paramNode)) {
       params.push({
-        identifer: paramNode.name,
+        identifier: paramNode.name,
         optional: paramNode.optional || false,
       });
     } else if (isRestElement(paramNode)) {
       params.push({
-        identifer: paramNode.argument.name,
+        identifier: paramNode.argument.name,
         optional: paramNode.optional || false,
         variadic: true,
       });
     } else if (isAssignmentPattern(paramNode)) {
       params.push({
-        identifer: paramNode.left.name,
+        identifier: paramNode.left.name,
         optional: paramNode.optional || false,
         default: paramNode.right.raw,
       });

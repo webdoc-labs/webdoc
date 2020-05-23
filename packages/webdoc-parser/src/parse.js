@@ -8,40 +8,33 @@ import type {RootDoc, Doc} from "@webdoc/types";
 import {addChildDoc} from "@webdoc/model";
 
 function assemble(symbol: Symbol, root: RootDoc): void {
+  // buildDoc will *destroy* everything in symbol, so store things needed beforehand
+  const name = symbol.name;
+  const children = symbol.children;
+  const parent = symbol.parent;// :Doc (not a symbol because assemble() was called on parent!!!)
+
   const doc: Doc = buildDoc(symbol);
 
-  if (!doc && symbol.name !== "File") {
-    symbol.parent = null;
+  if (!doc && name !== "File") {
     parserLogger.error("DocParser",
       `Couldn't parse doc for + ${symbol.name}(@${symbol.path.join(".")})`);
-
-    if (!symbol.node) {
-      console.log(symbol.comment);
-    }
-
     return;
   } else if (doc) {
     doc.members = doc.children;
   }
-
-  const parent = symbol.parent ? symbol.parent.doc : null;
 
   if (doc && doc.name === undefined) {
     console.log(Object.assign({}, doc, {node: "removed"}));
     console.log("^^^ ERR");
   }
 
-  if (parent && !doc.constructor.noInferredScope) {
+  if (parent && parent.name !== "File") {
     addChildDoc(doc, parent);
   } else if (symbol.name !== "File") {
     addChildDoc(doc, root);
   }
 
-  symbol.doc = doc;
-
-  if (symbol.children) {
-    const children = symbol.children;
-
+  if (children) {
     for (let i = 0; i < children.length; i++) {
       assemble(children[i], root);
     }

@@ -1,6 +1,6 @@
 // @flow
 
-export function nodeIdentifer(node: any): string {
+export function nodeIdentifier(node: any): string {
   if (!node) {
     return "";
   }
