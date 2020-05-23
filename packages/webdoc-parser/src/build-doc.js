@@ -25,12 +25,6 @@ import {
   parseExample,
 } from "./tag-parsers";
 
-import {
-  parseMethodDoc,
-  parsePropertyDoc,
-  parseEventDoc,
-} from "./doc-parsers";
-
 import type {Tag, Doc, ExampleTag} from "@webdoc/types";
 import {createDoc} from "@webdoc/model";
 
