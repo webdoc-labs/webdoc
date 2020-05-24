@@ -3,106 +3,25 @@
 // This file implements the construction of a symbol-tree for JavaScript/Flow/TypeScript code.
 
 import {
-  type ArrowFunctionExpression,
   type CommentBlock,
-  type FunctionExpression,
-  type MemberExpression,
   type Node,
   type VariableDeclaration,
-  type VariableDeclarator,
-  isArrowFunctionExpression,
   isBlockStatement,
-  isExpressionStatement,
-  isClassDeclaration,
-  isClassExpression,
-  isClassMethod,
-  isInterfaceDeclaration,
-  isMemberExpression,
-  isFunctionDeclaration,
   SourceLocation,
   isScope,
-  isClassProperty,
-  isFunctionExpression,
   isExportDefaultDeclaration,
   isExportNamedDeclaration,
-  isCallExpression,
-  isThisExpression,
-  isVariableDeclarator,
-  isObjectExpression,
-  isAssignmentExpression,
-  isReturnStatement,
-  isTSInterfaceDeclaration,
 } from "@babel/types";
 
 import traverse, {type NodePath} from "@babel/traverse";
 import extract from "../extract";
 import {parserLogger, tag} from "../Logger";
-import {extractExtends, extractImplements, extractParams} from "./extract-metadata";
-import parseBabel from "./parse-babel";
 import extractSymbol from "./extract-symbol";
+import * as parser from "@babel/parser";
 
 import {
-  type Symbol, PASS_THROUGH, VIRTUAL, OBLIGATE_LEAF, isVirtual, isObligateLeaf} from "./symbol";
-
-// ------------------------------------------------------------------------------------------------
-// Helpers for resolving information related to Babel AST nodes
-// ------------------------------------------------------------------------------------------------
-
-// Resolve the initialization literal for the variable
-function resolveInit(node: VariableDeclarator): Node {
-  // Example: const ClassName = exports.ClassName = class ClassName {}
-  if (isAssignmentExpression(node.init)) {
-    return resolveInit(node.init);
-  }
-
-  return node.init;
-}
-
-// Resolve the returned symbol for a function expression with a body
-function resolveReturn(callee: FunctionExpression | ArrowFunctionExpression): ?string {
-  // Example: function () { const Symbol = class {}; return Symbol; }
-  if (callee.body && callee.body.body) {
-    const body = callee.body.body;
-    const lastStatement = body[body.length - 1];
-
-    if (isReturnStatement(lastStatement) && lastStatement.argument && lastStatement.argument.name) {
-      return lastStatement.argument.name;
-    }
-  }
-}
-
-// Helper to resolve assignment to object chain, e.g. [Class.prototype].property
-function resolveObject(expression: MemberExpression): void {
-  if (isThisExpression(expression.object)) {
-    return "this";
-  }
-
-  let longname = "";
-  expression = expression.object;
-
-  while (expression.object) {
-    longname = expression.property.name + "." + longname;
-    expression = expression.object;
-  }
-
-  longname = expression.name + (longname ? "." : "") + longname;
-
-  return longname;
-}
-
-// Whether the member expression assigns to this, e.g.
-// this.member.inside.deep -> true
-// top.inside -> false
-function isInstancePropertyAssignment(expr: MemberExpression): boolean {
-  if (isThisExpression(expr.object)) {
-    return true;
-  }
-  if (isMemberExpression(expr.object)) {
-    return isInstancePropertyAssignment(expr.object);
-  }
-
-  return false;
-}
+  type Symbol, VIRTUAL, isVirtual, isObligateLeaf,
+} from "../types/Symbol";
 
 // Exported for testing in test/build-symbol-tree.test.js
 export const SymbolUtils = {
@@ -252,9 +171,21 @@ const extraVistors = {
 };
 
 // Parses the file and returns a tree of symbols
-export default function buildSymbolTree(file: string, fileName?: string = ""): Symbol {
+export default function buildSymbolTree(file: string, plugins: string[]): Symbol {
   const moduleSymbol = SymbolUtils.createModuleSymbol();
-  const ast = parseBabel(file, fileName);
+  let ast;
+
+  try {
+    ast = parser.parse(file, {
+      plugins,
+      sourceType: "module",
+      errorRecovery: true,
+    });
+  } catch (e) {
+    console.error("Babel couldn't parse file in @webdoc/parser");
+    throw e;
+  }
+
   const ancestorStack = [moduleSymbol];
 
   traverse(ast, {

@@ -32,7 +32,6 @@ export type SymbolSignature = {
 //
 // + Symbols with no associated AST node are said to be "headless". They are back solely by
 // documentation comments.
-//
 export type Symbol = {
   node: ?Node,
   name: string,

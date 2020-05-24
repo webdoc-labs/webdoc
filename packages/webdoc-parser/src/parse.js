@@ -1,11 +1,44 @@
 // @flow
 
-import buildSymbolTree, {type Symbol} from "./build-symbol-tree";
 import buildDoc from "./build-doc";
 import mod from "./doctree-mods";
 import {parserLogger} from "./Logger";
 import type {RootDoc, Doc} from "@webdoc/types";
 import {addChildDoc} from "@webdoc/model";
+
+import {langJS, langTS} from "./symbols-babel";
+
+import type {Symbol} from "./types/Symbol";
+import type {LanguageIntegration} from "./types/LanguageIntegration";
+
+const languages: { [id: string]: LanguageIntegration } = {};
+
+// Register a language-integration that will be used to generate a symbol-tree for files with its
+// file-extensions.
+export function registerLanguage(lang: LanguageIntegration): void {
+  for (const ext of lang.extensions) {
+    if (languages[ext]) {
+      parserLogger.warn("LanguageIntegration",
+        `.${ext} file extension has already been registered`);
+    }
+
+    languages[ext] = lang;
+  }
+}
+
+// Register built-in languages
+registerLanguage(langJS);
+registerLanguage(langTS);
+
+function buildSymbolTree(file: string, fileName ?: string = ".js"): Symbol {
+  const lang = languages[fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length)];
+
+  if (!lang) {
+    throw new Error(`.${lang} file language is not registered`);
+  }
+
+  return lang.parse(file);
+}
 
 function assemble(symbol: Symbol, root: RootDoc): void {
   // buildDoc will *destroy* everything in symbol, so store things needed beforehand

@@ -29,7 +29,7 @@ import {
   isTSTypeElement,
 } from "@babel/types";
 
-import {type Symbol, OBLIGATE_LEAF, PASS_THROUGH, VIRTUAL, isVirtual} from "./symbol";
+import {type Symbol, OBLIGATE_LEAF, PASS_THROUGH, VIRTUAL, isVirtual} from "../types/Symbol";
 import {extractExtends, extractImplements, extractParams} from "./extract-metadata";
 
 // + Extract the symbol name, type from the Node
