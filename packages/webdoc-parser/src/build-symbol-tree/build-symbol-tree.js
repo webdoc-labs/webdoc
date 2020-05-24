@@ -1,26 +1,22 @@
 // @flow
 
-// This file builds a "symbol"-tree from a JavaScript file.
+// This file implements the construction of a symbol-tree for JavaScript/Flow/TypeScript code.
 
 import {
   type ArrowFunctionExpression,
   type CommentBlock,
-  type ClassMethod,
   type FunctionExpression,
-  type FunctionDeclaration,
-  type InterfaceDeclaration,
   type MemberExpression,
   type Node,
   type VariableDeclaration,
   type VariableDeclarator,
   isArrowFunctionExpression,
-  isAssignmentPattern,
   isBlockStatement,
   isExpressionStatement,
   isClassDeclaration,
   isClassExpression,
   isClassMethod,
-  isIdentifier,
+  isInterfaceDeclaration,
   isMemberExpression,
   isFunctionDeclaration,
   SourceLocation,
@@ -30,25 +26,27 @@ import {
   isExportDefaultDeclaration,
   isExportNamedDeclaration,
   isCallExpression,
-  isRestElement,
   isThisExpression,
   isVariableDeclarator,
   isObjectExpression,
   isAssignmentExpression,
   isReturnStatement,
+  isTSInterfaceDeclaration,
 } from "@babel/types";
-import * as parser from "@babel/parser";
+
 import traverse, {type NodePath} from "@babel/traverse";
+import extract from "../extract";
+import {parserLogger, tag} from "../Logger";
+import {extractExtends, extractImplements, extractParams} from "./extract-metadata";
+import parseBabel from "./parse-babel";
+import extractSymbol from "./extract-symbol";
 
-import type {
-  DocType,
-  Param,
-  Return,
-} from "@webdoc/types";
+import {
+  type Symbol, PASS_THROUGH, VIRTUAL, OBLIGATE_LEAF, isVirtual, isObligateLeaf} from "./symbol";
 
-import extract from "./extract";
-import {type Doc} from "@webdoc/types";
-import {parserLogger, tag} from "./Logger";
+// ------------------------------------------------------------------------------------------------
+// Helpers for resolving information related to Babel AST nodes
+// ------------------------------------------------------------------------------------------------
 
 // Resolve the initialization literal for the variable
 function resolveInit(node: VariableDeclarator): Node {
@@ -104,55 +102,6 @@ function isInstancePropertyAssignment(expr: MemberExpression): boolean {
   }
 
   return false;
-}
-
-// Ignore symbol when building doc-tree
-export const PASS_THROUGH = 1 << 0;
-
-// Any members must be ignored and not be included in the doc-tree. These are usually skipped
-// in the AST as well. (For example, properties/variables initialized to some value)
-export const OBLIGATE_LEAF = 1 << 1;
-
-// Symbol is "virtual" & created by the generator for its own purpose. These symbols are not
-// reported to the SymbolParser!
-export const VIRTUAL = 1 << 2;
-
-export type SymbolSignature = {
-  access?: string,
-  dataType?: string,
-  extends?: string[],
-  implements?: string[],
-  params?: Param[],
-  returns?: Return[],
-  scope?: string,
-  type?: DocType
-}
-
-// Symbol is a interim format that holds the context+comment of a documentation.
-export type Symbol = {
-  node: ?Node,
-  name: string,
-  flags: number,
-  path: string[],
-  comment: string,
-  parent: ?Symbol,
-  children: Symbol[],
-  loc: SourceLocation,
-  doc?: ?Doc,
-  options?: any,
-  meta: SymbolSignature
-};
-
-function isPassThrough(symbol: Symbol): boolean {
-  return symbol.flags & PASS_THROUGH;
-}
-
-function isObligateLeaf(symbol: Symbol): boolean {
-  return symbol.flags & OBLIGATE_LEAF;
-}
-
-function isVirtual(symbol: Symbol): boolean {
-  return symbol.flags & VIRTUAL;
 }
 
 // Exported for testing in test/build-symbol-tree.test.js
@@ -220,7 +169,7 @@ export const SymbolUtils = {
     Object.assign(symbol, pair);
     symbol.comment = comment || pair.comment;
     symbol.children = children;
-    symbol.flags = symbol.flags ? symbol.flags | pair.flags : pair.flags;
+    symbol.flags = flags ? flags | pair.flags : pair.flags;
     symbol.meta = Object.assign(symbol.meta, pair.meta);
 
     // Horizontal transfer of children
@@ -283,30 +232,6 @@ export const SymbolUtils = {
 
 };
 
-const babelPlugins = [
-  "asyncGenerators",
-  "bigInt",
-  "classPrivateMethods",
-  "classPrivateProperties",
-  "classProperties",
-  "doExpressions",
-  "dynamicImport",
-  "exportDefaultFrom",
-  "flow",
-  "flowComments",
-  "functionBind",
-  "functionSent",
-  "importMeta",
-  "jsx",
-  "logicalAssignment",
-  "nullishCoalescingOperator",
-  "numericSeparator",
-  "objectRestSpread",
-  "optionalCatchBinding",
-  "optionalChaining",
-  "throwExpressions",
-];
-
 // These vistiors kind of "fix" the leadingComments by moving them in front of the intended
 // AST node.
 const extraVistors = {
@@ -327,22 +252,10 @@ const extraVistors = {
 };
 
 // Parses the file and returns a tree of symbols
-export default function buildSymbolTree(file: string, fileName?: string): Symbol {
-  const module: Symbol = SymbolUtils.createModuleSymbol();
-  let ast;
-
-  try {
-    ast = parser.parse(file, {
-      plugins: [...babelPlugins],
-      sourceType: "module",
-      errorRecovery: true,
-    });
-  } catch (e) {
-    console.error("Babel couldn't parse file in @webdoc/parser/parse.js#partial");
-    throw e;
-  }
-
-  const ancestorStack: Symbol[] = [module];
+export default function buildSymbolTree(file: string, fileName?: string = ""): Symbol {
+  const moduleSymbol = SymbolUtils.createModuleSymbol();
+  const ast = parseBabel(file, fileName);
+  const ancestorStack = [moduleSymbol];
 
   traverse(ast, {
     enter(nodePath: NodePath) {
@@ -379,6 +292,12 @@ export default function buildSymbolTree(file: string, fileName?: string): Symbol
         throw e;
       }
 
+      // Don't waste time traversing in leaf symbols
+      if (idoc && isObligateLeaf(idoc)) {
+        nodePath.skip(node);
+        return;
+      }
+
       if (idoc) {
         if (!isVirtual(idoc) && !idoc.node) {
           console.log(node);
@@ -410,7 +329,7 @@ export default function buildSymbolTree(file: string, fileName?: string): Symbol
     },
   });
 
-  // The only ancestor left should be the module-symbol.
+  // The only ancestor left should be the moduleSymbol-symbol.
   if (ancestorStack.length > 1) {
     console.error(ancestorStack);
     console.error(ancestorStack.map((symbol) =>
@@ -419,103 +338,35 @@ export default function buildSymbolTree(file: string, fileName?: string): Symbol
     throw new Error("@webdoc/parser failed to correctly finish the symbol-tree.");
   }
 
-  // SymbolUtils.logRecursive(module);
+  // SymbolUtils.logRecursive(moduleSymbol);
 
-  return module;
+  return moduleSymbol;
 }
 
-// Finds all the documented symbols (including headless documentation blocks) near this node.
+// Captures all the symbols documented near the given AST node, including itself. This includes
+// leading, inner, and trailing comments. This symbols are attached to the symbol-tree by adding
+// them as a child of parent.
+//
+// The returned symbol is the one backed by the AST node.
 function captureSymbols(node: Node, parent: Symbol): ?Symbol {
-  let name = "";
-  let flags = 0;
-  let init;
-  let initComment;
-  let isInit = false;
+  const symbolInfo = {};
 
-  let nodeSymbol: ?Symbol = {meta: {}};
+  extractSymbol(node, parent, symbolInfo);
+
+  let {
+    name,
+    flags,
+    init,
+    initComment,
+    isInit,
+    nodeSymbol,
+  } = symbolInfo;
+
   let nodeDocIndex;
 
   //
-  // Collect symbol meta-data & detect its name, type
+  // Create the nodeSymbol & add it as a child to parent
   //
-  if (isClassMethod(node) && (node.kind === "method" || node.kind === "constructor")) {
-    // classMethod() {}
-    name = node.key.name;
-
-    nodeSymbol.meta.access = node.access;
-    nodeSymbol.meta.scope = node.static ? "static" : "instance";
-    nodeSymbol.meta.type = "MethodDoc";
-
-    nodeSymbol.meta.params = extractParams(node);
-  } else if (isClassProperty(node) ||
-      (isClassMethod(node) && (node.kind === "get" || node.kind === "set"))) {
-    // classProperty = "value";
-    // get classProperty() { return "value"; }
-
-    name = node.key.name;
-
-    nodeSymbol.meta.access = node.access;
-    nodeSymbol.meta.scope = node.static ? "static" : "instance";
-    nodeSymbol.meta.type = "PropertyDoc";
-  } else if (isClassDeclaration(node) || isClassExpression(node)) {
-    // class ClassName {}
-
-    name = node.id ? node.id.name : "";
-
-    nodeSymbol.meta.type = "ClassDoc";
-  } else if (isFunctionDeclaration(node)) {
-    // function functionName()
-
-    name = node.id ? node.id.name : "";
-
-    nodeSymbol.meta.type = "FunctionDoc";
-
-    nodeSymbol.meta.params = extractParams(node);
-  } else if (
-    isVariableDeclarator(node) ||
-    (isExpressionStatement(node) && isMemberExpression(node.expression.left))
-  ) {
-    if (isExpressionStatement(node)) {
-      name = node.expression.left.property.name;
-    } else if (isVariableDeclarator(node)) {
-      name = node.id.name;
-    }
-
-    init = isExpressionStatement(node) && isMemberExpression(node.expression.left) ?
-      node.expression.right : resolveInit(node);
-
-    if (isClassExpression(init) || isFunctionExpression(init) ||
-        (isCallExpression(init) &&
-        (isFunctionExpression(init.callee) || isArrowFunctionExpression(init.callee)))) {
-      flags |= PASS_THROUGH | VIRTUAL;
-      isInit = true;
-    } else if (!isObjectExpression(init)) {
-      flags |= OBLIGATE_LEAF;
-      nodeSymbol.meta.type = "PropertyDoc";
-    } else {
-      nodeSymbol.meta.type = "PropertyDoc";
-    }
-
-    if (isExpressionStatement(node)) {
-      // Literal property
-
-      nodeSymbol.meta.object = resolveObject(node.expression.left);
-      nodeSymbol.meta.scope = isInstancePropertyAssignment(node.expression.left) ?
-        "instance" : "static";
-    }
-  } else if (parent && isVirtual(parent) &&
-    isCallExpression(node) &&
-    (isFunctionExpression(node.callee) || isArrowFunctionExpression(node.callee))) {
-    flags |= VIRTUAL;
-    const callee = node.callee;
-    const returnedSymbol = resolveReturn(callee);
-
-    if (returnedSymbol) {
-      isInit = true;
-      initComment = parent.comment || " ";
-      name = returnedSymbol;
-    }
-  }
 
   if (initComment || (node.leadingComments && node.leadingComments.length > 0)) {
     if (!initComment) {
@@ -576,6 +427,7 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
       nodeSymbol = null;
     }
 
+    // All other leading comments are considered headless
     for (let i = 0; i < leadingComments.length; i++) {
       if (i === nodeDocIndex) {
         continue;
@@ -610,10 +462,17 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
     nodeSymbol = undefined;
   }
 
+  //
+  // Inner & trailing comments are also added as headless symbols
+  //
+
   const innerComments = node.innerComments;
   const trailingComments = node.trailingComments;
 
   if (nodeSymbol && innerComments) {
+    // Inner comments are treated as a child of the created nodeSymbol. It is expected that the
+    // node is a scope & nodeSymbol will always exist if innerComments also exists.
+
     innerComments.forEach((comment) => {
       const doc = extract(comment);
 
@@ -625,8 +484,9 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
       }
     });
   }
+
   if (trailingComments) {
-    // trailing comments re-occur if they "lead" a node afterward. SymbolUtils.addChild will
+    // Trailing comments re-occur if they "lead" a node afterward. SymbolUtils.addChild will
     // replace.
 
     // If node is a BlockStatement with no code inside it, then its trailing comments also contain
@@ -652,46 +512,4 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
   }
 
   return nodeSymbol;
-}
-
-// Extract all the parameter-data from the method/function AST node
-function extractParams(node: ClassMethod | FunctionDeclaration | FunctionExpression): Param[] {
-  if (!node.params) {
-    return [];
-  }
-
-  const params: Param[] = [];
-
-  for (let i = 0; i < node.params.length; i++) {
-    const paramNode = node.params[i];
-
-    // TODO: Infer types
-    if (isIdentifier(paramNode)) {
-      params.push({
-        identifier: paramNode.name,
-        optional: paramNode.optional || false,
-      });
-    } else if (isRestElement(paramNode)) {
-      params.push({
-        identifier: paramNode.argument.name,
-        optional: paramNode.optional || false,
-        variadic: true,
-      });
-    } else if (isAssignmentPattern(paramNode)) {
-      params.push({
-        identifier: paramNode.left.name,
-        optional: paramNode.optional || false,
-        default: paramNode.right.raw,
-      });
-    } else if (isObjectExpression(paramNode)) {
-      // TODO: Find a way to document {x, y, z} parameters
-      // e.g. function ({x, y, z}), you would need to give the object pattern an anonymous like
-      // "", " ", "  ",  "    " or using &zwnj; because it is truly invisible
-      console.error("Object patterns as parameters can't be documented");
-    } else {
-      console.error("Parameter node couldn't be parsed");
-    }
-  }
-
-  return params;
 }

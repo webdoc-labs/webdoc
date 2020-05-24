@@ -2,6 +2,33 @@
 	"type": "RootDoc",
 	"children": [
 		{
+			"name": "CarDealer",
+			"type": "InterfaceDoc",
+			"brief": "",
+			"children": [
+				{
+					"name": "initiateTransaction",
+					"type": "MethodDoc",
+					"brief": ""
+				},
+				{
+					"name": "offerBid",
+					"type": "MethodDoc",
+					"brief": ""
+				},
+				{
+					"name": "offerAsk",
+					"type": "MethodDoc",
+					"brief": ""
+				},
+				{
+					"name": "closeTransaction",
+					"type": "MethodDoc",
+					"brief": ""
+				}
+			]
+		},
+		{
 			"name": "Car",
 			"type": "ClassDoc",
 			"brief": "",
@@ -28,6 +55,36 @@
 					"name": "registerRetail",
 					"type": "MethodDoc",
 					"scope": "static",
+					"brief": ""
+				},
+				{
+					"name": "mass",
+					"type": "PropertyDoc",
+					"scope": "instance",
+					"brief": ""
+				},
+				{
+					"name": "position",
+					"type": "PropertyDoc",
+					"scope": "instance",
+					"brief": ""
+				},
+				{
+					"name": "velocity",
+					"type": "PropertyDoc",
+					"scope": "instance",
+					"brief": ""
+				},
+				{
+					"name": "bounds",
+					"type": "PropertyDoc",
+					"scope": "instance",
+					"brief": ""
+				},
+				{
+					"name": "interactions",
+					"type": "PropertyDoc",
+					"scope": "instance",
 					"brief": ""
 				}
 			]
@@ -465,7 +522,7 @@
 			]
 		},
 		{
-			"name": "",
+			"name": "Anonymous",
 			"type": "ClassDoc",
 			"brief": ""
 		},

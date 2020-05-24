@@ -80,7 +80,7 @@ const TAG_PARSERS: { [id: string]: TagParser } = {
 const TAG_OVERRIDES: { [id: string]: string | any } = { // replace any, no lazy
   "class": "ClassDoc",
   "interface": "InterfaceDoc",
-  "enum": "PropertyDoc",
+  //  "enum": "PropertyDoc",
   "member": "PropertyDoc",
   "method": "MethodDoc",
   "mixin": "MixinDoc",
@@ -183,19 +183,19 @@ export default function buildDoc(symbol: Symbol): ?Doc {
   for (let i = 0; i < tags.length; i++) {
     if (TAG_OVERRIDES.hasOwnProperty(tags[i].name)) {// eslint-disable-line no-prototype-builtins
       const name = tags[i].name;
-      const override = TAG_OVERRIDES[name];
-      let doc;
 
-      // if (typeof override === "string") {
-      doc = createDoc(tags[i].value || symbol.name, TAG_OVERRIDES[name], options, symbol);
+      const doc = createDoc(
+        tags[i].value || symbol.name || "Anonymous",
+        TAG_OVERRIDES[name],
+        options,
+        symbol);
+
       delete doc.comment;
       delete doc.flags;
       delete doc.node;
       delete doc.meta;
       delete doc.options;
       delete doc.parent;
-
-      // }
 
       if (doc) {
         return doc;

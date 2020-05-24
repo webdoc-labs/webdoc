@@ -1,6 +1,6 @@
 // @flow
 
-import buildSymbolTree from "./build-symbol-tree";
+import buildSymbolTree, {type Symbol} from "./build-symbol-tree";
 import buildDoc from "./build-doc";
 import mod from "./doctree-mods";
 import {parserLogger} from "./Logger";
@@ -57,21 +57,33 @@ function assemble(symbol: Symbol, root: RootDoc): void {
  * @param {RootDoc} root
  * @return {RootDoc}
  */
-export function parse(target: string | string[], root?: RootDoc = {
+export function parse(target: string | string[] | Map<string, string>, root?: RootDoc = {
   children: [],
   path: "",
   stack: [""],
   type: "RootDoc",
   tags: [],
 }): RootDoc {
-  const files = Array.isArray(target) ? target : [target];
-  const partialDoctrees = new Array(files.length);
+  if (typeof target === "string") {
+    target = [target];
+  }
+
+  const partialDoctrees = new Array(Array.isArray(target) ? target.length : target.size);
 
   // TODO: Don't do two loops, it sucks for performance
 
-  // Capture all files
-  for (let i = 0; i < files.length; i++) {
-    partialDoctrees[i] = buildSymbolTree(files[i]);
+  // Build a symbol-tree for all the files
+  if (Array.isArray(target)) {
+    for (let i = 0; i < target.length; i++) {
+      partialDoctrees[i] = buildSymbolTree(target[i]);
+    }
+  } else {
+    let i = 0;
+
+    for (const [fileName, file] of target) {
+      partialDoctrees[i] = buildSymbolTree(file, fileName);
+      ++i;
+    }
   }
 
   // Recursively transform & assemble into the doc-tree (root).
