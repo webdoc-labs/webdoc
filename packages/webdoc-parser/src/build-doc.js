@@ -1,6 +1,7 @@
 // @flow
-// This file converts Symbols into Docs (i.e. parses the documentation comments and infers the type
-// of symbol)
+// This file converts Symbols into Docs (i.e. parses the documentation comments)
+
+// TODO: Give some sympathy to the code here & organize it out
 
 import {
   parseParam,
@@ -25,12 +26,13 @@ import {
   parseExample,
 } from "./tag-parsers";
 
-import type {Tag, Doc, ExampleTag} from "@webdoc/types";
+import type {Tag, Doc} from "@webdoc/types";
 import {createDoc} from "@webdoc/model";
 
-import type {Symbol, SymbolSignature} from "./build-symbol-tree";
+import type {Symbol} from "./build-symbol-tree";
 
 import mergeWith from "lodash/mergeWith";
+import validate from "./validators";
 
 type TagParser = (value: string, options: Object) => void;
 
@@ -209,7 +211,7 @@ export default function buildDoc(symbol: Symbol): ?Doc {
     return null;
   }
 
-  verifyParameters(options, symbol.meta);
+  validate(options, symbol.meta);
 
   mergeWith(options, symbol.meta, (optVal, metaVal) => optVal === undefined ? metaVal : optVal);
 
@@ -230,41 +232,4 @@ export default function buildDoc(symbol: Symbol): ?Doc {
     console.log(symbol.name + " -<");
   }
   return null;
-}
-
-function verifyParameters(doc: $Shape<Doc>, meta: SymbolSignature): void {
-  if (!meta.params || !doc.params) {
-    return;
-  }
-
-  let lastParam = null;
-
-  for (let i = 0, j = 0; i < doc.params.length; i++) {
-    const param = doc.params[i];
-    const name = param.identifier;
-
-    const dotIndex = name.indexOf(".");
-
-    if (dotIndex >= 0) {
-      const firstId = name.slice(0, dotIndex);
-
-      // The following order is illegal. options.title must come right after options.
-      // @param {object} options
-      // @param {string} string
-      // @param {string} options.title
-      if (firstId !== lastParam) {
-        throw new Error(`Object property ${name} parameter must be placed` +
-              `directly after object parameter ${firstId}`);
-      }
-
-      continue;
-    }
-    if (j >= meta.params.length) {
-      throw new Error(`"${name}" is not a parameter & cannot` +
-            ` come after the last parameter "${lastParam}"`);
-    }
-
-    ++j;
-    lastParam = name;
-  }
 }

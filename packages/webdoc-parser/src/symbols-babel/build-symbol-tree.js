@@ -23,6 +23,8 @@ import {
   type Symbol, VIRTUAL, isVirtual, isObligateLeaf,
 } from "../types/Symbol";
 
+// TODO: This shouldn't really be a part of symbols-babel but rather should live with Symbol.js
+// in SymbolUtils.js
 // Exported for testing in test/build-symbol-tree.test.js
 export const SymbolUtils = {
   // Adds "symbol" as a child to "parent", possibly merging it with an existing symbol. The
