@@ -11,6 +11,7 @@ import {langJS, langTS} from "./symbols-babel";
 import type {Symbol} from "./types/Symbol";
 import type {LanguageIntegration} from "./types/LanguageIntegration";
 
+// File-extension -> LanguageIntegration mapping
 const languages: { [id: string]: LanguageIntegration } = {};
 
 // Register a language-integration that will be used to generate a symbol-tree for files with its
@@ -43,7 +44,7 @@ function buildSymbolTree(file: string, fileName ?: string = ".js"): Symbol {
 function assemble(symbol: Symbol, root: RootDoc): void {
   // buildDoc will *destroy* everything in symbol, so store things needed beforehand
   const name = symbol.name;
-  const children = symbol.children;
+  const members = symbol.members;
   const parent = symbol.parent;// :Doc (not a symbol because assemble() was called on parent!!!)
 
   const doc: Doc = buildDoc(symbol);
@@ -52,8 +53,6 @@ function assemble(symbol: Symbol, root: RootDoc): void {
     parserLogger.error("DocParser",
       `Couldn't parse doc for + ${symbol.name}(@${symbol.path.join(".")})`);
     return;
-  } else if (doc) {
-    doc.members = doc.children;
   }
 
   if (doc && doc.name === undefined) {
@@ -67,9 +66,9 @@ function assemble(symbol: Symbol, root: RootDoc): void {
     addChildDoc(doc, root);
   }
 
-  if (children) {
-    for (let i = 0; i < children.length; i++) {
-      assemble(children[i], root);
+  if (members) {
+    for (let i = 0; i < members.length; i++) {
+      assemble(members[i], root);
     }
   }
 }
@@ -91,7 +90,7 @@ function assemble(symbol: Symbol, root: RootDoc): void {
  * @return {RootDoc}
  */
 export function parse(target: string | string[] | Map<string, string>, root?: RootDoc = {
-  children: [],
+  members: [],
   path: "",
   stack: [""],
   type: "RootDoc",

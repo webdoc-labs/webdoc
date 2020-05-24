@@ -39,7 +39,7 @@ export type Symbol = {
   path: string[],
   comment: string,
   parent: ?Symbol,
-  children: Symbol[],
+  members: Symbol[],
   loc: SourceLocation,
   meta: SymbolSignature
 };

@@ -28,16 +28,16 @@ export const SymbolUtils = {
   // Adds "symbol" as a child to "parent", possibly merging it with an existing symbol. The
   // returned symbol need not be the same as "symbol".
   addChild(doc: Symbol, scope: Symbol): Symbol {
-    const {children} = scope;
+    const {members} = scope;
     let index = -1;
 
     // Replace symbols when it has the same location but a different node. This occurs
     // when the Node for a comment is found (the symbol being replaced was headless).
-    for (let i = 0; i < scope.children.length; i++) {
-      const child = children[i];
+    for (let i = 0; i < scope.members.length; i++) {
+      const child = members[i];
 
       if (SymbolUtils.areEqualLoc(child, doc)) {
-        children[i] = doc;
+        members[i] = doc;
         index = i;
         break;
       }
@@ -48,15 +48,15 @@ export const SymbolUtils = {
 
     // Coalesce Symbols when they refer to the same Node with different names
     if (index === -1 && doc.node && !isVirtual(doc)) {
-      for (let i = 0; i < scope.children.length; i++) {
-        const child = children[i];
+      for (let i = 0; i < scope.members.length; i++) {
+        const child = members[i];
 
         if (child === doc) {
           parserLogger.error(tag.PartialParser, "Same partial doc being added twice");
         }
         if (child.node === doc.node) {
           child.comment += `\n\n${doc.comment}`;
-          child.children.push(...doc.children);
+          child.members.push(...doc.members);
           return child;
         }
       }
@@ -64,7 +64,7 @@ export const SymbolUtils = {
 
     // Append if new child symbol
     if (index === -1) {
-      children.push(doc);
+      members.push(doc);
     }
 
     //  if (!isVirtual(doc)) {
@@ -79,21 +79,21 @@ export const SymbolUtils = {
   },
   // Coalesce "pair" into "symbol" because they refer to the same symbol (by name)
   coalescePair(symbol: Symbol, pair: Symbol): Symbol {
-    const children = symbol.children;
+    const members = symbol.members;
     const comment = symbol.comment;
     const flags = symbol.flags;
 
-    symbol.children.push(...pair.children);
+    symbol.members.push(...pair.members);
 
     Object.assign(symbol, pair);
     symbol.comment = comment || pair.comment;
-    symbol.children = children;
+    symbol.members = members;
     symbol.flags = flags ? flags | pair.flags : pair.flags;
     symbol.meta = Object.assign(symbol.meta, pair.meta);
 
-    // Horizontal transfer of children
-    for (let i = 0; i < pair.children.length; i++) {
-      pair.children[i].parent = symbol;
+    // Horizontal transfer of members
+    for (let i = 0; i < pair.members.length; i++) {
+      pair.members[i].parent = symbol;
     }
 
     return symbol;
@@ -118,8 +118,8 @@ export const SymbolUtils = {
     parserLogger.info("Debug", prefix + (sym.name || "-no-name-") + " " + sym.flags +
       ` [${sym.meta ? sym.meta.type : "-no-meta-"}]`);
 
-    for (let i = 0; i < sym.children.length; i++) {
-      SymbolUtils.logRecursive(sym.children[i], prefix + "\t");
+    for (let i = 0; i < sym.members.length; i++) {
+      SymbolUtils.logRecursive(sym.members[i], prefix + "\t");
     }
   },
   createModuleSymbol(): Symbol {
@@ -130,7 +130,7 @@ export const SymbolUtils = {
       path: [],
       comment: "",
       parent: null,
-      children: [],
+      members: [],
       loc: {start: 0, end: 0},
       meta: {},
     };
@@ -143,7 +143,7 @@ export const SymbolUtils = {
       path: [...scope.path, ""],
       comment,
       parent: scope,
-      children: [],
+      members: [],
       loc: loc || {},
       meta: {},
     };
@@ -244,16 +244,16 @@ export default function buildSymbolTree(file: string, plugins: string[]): Symbol
       if (currentPardoc && currentPardoc.node === nodePath.node) {
         ancestorStack.pop();
 
-        // Delete PASS_THROUGH flagged partial-docs & lift up their children.
+        // Delete PASS_THROUGH flagged partial-docs & lift up their members.
         if (isVirtual(currentPardoc)) {
           const parentPardoc: Symbol = (currentPardoc.parent: any);
 
-          parentPardoc.children.splice(parentPardoc.children.indexOf(currentPardoc), 1);
-          // parentPardoc.children.push(...currentPardoc.children);
+          parentPardoc.members.splice(parentPardoc.members.indexOf(currentPardoc), 1);
+          // parentPardoc.members.push(...currentPardoc.members);
 
-          for (let i = 0; i < currentPardoc.children.length; i++) {
-            SymbolUtils.addChild(currentPardoc.children[i], parentPardoc);
-            // currentPardoc.children[i].parent = parentPardoc;
+          for (let i = 0; i < currentPardoc.members.length; i++) {
+            SymbolUtils.addChild(currentPardoc.members[i], parentPardoc);
+            // currentPardoc.members[i].parent = parentPardoc;
           }
         }
       }
@@ -322,7 +322,7 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
         path: [...parent.path, name],
         comment,
         parent: parent,
-        children: [],
+        members: [],
         loc: nodeDoc ? nodeDoc.loc : {},
       }, nodeSymbol);
 
@@ -335,13 +335,13 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
         comment: "",
         path: [...parent.path],
         parent: parent,
-        children: [{
+        members: [{
           node: init,
           name,
           flags: 0,
           comment,
           parent: parent,
-          children: [],
+          members: [],
           path: [...parent.path, name],
           loc: nodeDoc ? nodeDoc.loc : {},
           options: {
@@ -375,7 +375,7 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
         parent);
     }
   } else if (isScope(node) && name) {
-    // Create a "virtual" doc so that documented children can be added. @prune will delete it
+    // Create a "virtual" doc so that documented members can be added. @prune will delete it
     // in the prune doctree-mod.
     nodeSymbol = Object.assign({
       node,
@@ -384,7 +384,7 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
       path: [...parent.path, name],
       comment: "",
       parent: parent,
-      children: [],
+      members: [],
       loc: node.loc,
     }, nodeSymbol);
 
