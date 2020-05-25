@@ -1,6 +1,6 @@
 {
   "name": "@webdoc/externalize",
-  "version": "0.1.53-alpha.0",
+  "version": "0.1.54-alpha.0",
   "description": "Links your documentation to external APIs and vice versa!",
   "keywords": [
     "json",
@@ -31,8 +31,8 @@
     "url": "https://github.com/SukantPal/webdoc/issues"
   },
   "dependencies": {
-    "@webdoc/model": "^0.1.53-alpha.0",
-    "@webdoc/types": "^0.1.53-alpha.0"
+    "@webdoc/model": "^0.1.54-alpha.0",
+    "@webdoc/types": "^0.1.54-alpha.0"
   },
   "gitHead": "326306f477098182404f813337c0c67cc90263c6"
 }
