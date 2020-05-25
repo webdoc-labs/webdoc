@@ -44,6 +44,7 @@ export const SymbolUtils = {
       }
       if (SymbolUtils.areEqualLoc(child, doc)) {
         SymbolUtils.coalescePair(child, doc);
+        doc = child;
         index = i;
         break;
       }
@@ -87,11 +88,6 @@ export const SymbolUtils = {
     const flags = symbol.flags;
 
     symbol.members.push(...pair.members);
-
-    if (symbol.name === "createGravity" || pair.meta === "createGravity") {
-      console.log(symbol.meta);
-      console.log(pair.meta);
-    }
 
     symbol.comment = comment || pair.comment;
     symbol.members = members;
@@ -201,6 +197,7 @@ export default function buildSymbolTree(file: string, plugins: string[]): Symbol
   }
 
   const ancestorStack = [moduleSymbol];
+  let test;
 
   traverse(ast, {
     enter(nodePath: NodePath) {
@@ -257,6 +254,10 @@ export default function buildSymbolTree(file: string, plugins: string[]): Symbol
 
       if (currentPardoc && currentPardoc.node === nodePath.node) {
         ancestorStack.pop();
+
+        if (currentPardoc.name === "CarDealer") {
+          test = currentPardoc;
+        }
 
         // Delete PASS_THROUGH flagged partial-docs & lift up their members.
         if (isVirtual(currentPardoc)) {

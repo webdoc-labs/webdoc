@@ -38,8 +38,11 @@ interface CarDealer {
    * Offer a price to buy the car.
    *
    * NOTE: This is invalid behaviour if you are the seller in the transaction.
+   *
+   * @param {Transaction}[on]
+   * @param {Function}[counteroffer]
    */
-  offerBid(on: Transaction, counteroffer: (t: Transaction) => void): boolean;
+  offerBid(on?: Transaction, counteroffer?: (t: Transaction) => void): boolean;
 
   /**
    * Offer a price to sell the car.

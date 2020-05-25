@@ -215,7 +215,12 @@ export default function buildDoc(symbol: Symbol): ?Doc {
     return null;
   }
 
-  validate(options, symbol.meta);
+  try {
+    validate(options, symbol.meta);
+  } catch (e) {
+    console.error(`Validation for ${symbol.name} [${symbol.path.join(".")}] failed!`);
+    throw e;
+  }
 
   mergeWith(options, symbol.meta, (optVal, metaVal) => optVal === undefined ? metaVal : optVal);
 
