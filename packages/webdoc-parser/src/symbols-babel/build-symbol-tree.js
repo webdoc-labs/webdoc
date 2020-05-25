@@ -99,8 +99,11 @@ export const SymbolUtils = {
     symbol.meta = _.assignWith(symbol.meta, pair.meta, (objValue, srcValue) =>
       _.isUndefined(srcValue) ? objValue : srcValue);
     symbol.loc = symbol.loc || pair.loc;
-    symbol.node = symbol.node || pair.node;
     symbol.name = symbol.name || pair.name;
+
+    // It is **important** give the second pair high precedence. Otherwise, the AST traversal
+    // may fail to exit the pair's node.
+    symbol.node = pair.node || symbol.node;
 
     // Horizontal transfer of members
     for (let i = 0; i < pair.members.length; i++) {

@@ -29,6 +29,23 @@ export function skipHello(): void {
   saidHello = true;
 }
 
+/** @memberof PIXI */
+export class AbstractRenderer {
+  /**
+   * The background color to fill if not transparent
+   *
+   * @member {number}
+   */
+  get backgroundColor() {
+    return this._backgroundColor;
+  }
+  set backgroundColor(value) {
+    this._backgroundColor = value;
+    this._backgroundColorString = hex2string(value);
+    //  hex2rgb(value, this._backgroundColorRgba);
+  }
+}
+
 /**
  * System is a base class used for extending systems used by the {@link PIXI.Renderer}
  *

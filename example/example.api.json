@@ -140,6 +140,11 @@
 					]
 				},
 				{
+					"name": "AbstractRenderer",
+					"type": "ClassDoc",
+					"brief": ""
+				},
+				{
 					"name": "System",
 					"type": "ClassDoc",
 					"brief": ""
