@@ -91,11 +91,11 @@ async function main(argv: yargs.Arguments<>) {
 
   doctree.members = doctree.children;
 
-  const files = new Array(sourceFiles.length);
+  const files = new Map();
 
   for (let i = 0; i < sourceFiles.length; i++) {
     log.info(tag.Parser, `Parsing ${sourceFiles[i]}`);
-    files[i] = fs.readFileSync(path.join(process.cwd(), sourceFiles[i]), "utf8");
+    files.set(sourceFiles[i], fs.readFileSync(path.join(process.cwd(), sourceFiles[i]), "utf8"));
   }
 
   if (config.opts.export) {

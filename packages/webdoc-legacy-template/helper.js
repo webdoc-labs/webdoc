@@ -32,7 +32,7 @@ exports.getMembers = (data) => {
     externals: data({type: "external"}).get(),
     events: data({type: "EventDoc"}).get(),
     globals: data({
-      type: ["member", "function", "constant", "typedef"],
+      type: ["MemberDoc", "FunctionDoc", "PropertyDoc", "TypedefDoc"],
       memberof: {type: "RootDoc"},
     }).get(),
     mixins: data({type: "MixinDoc"}).get(),

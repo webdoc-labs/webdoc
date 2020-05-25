@@ -25,10 +25,11 @@ function updateScope(doc: Doc, scopeStack: string[], scopePath: string): void {
  * @param {string}[name]
  * @param {string}[type="BaseDoc"]
  * @param {*}[options]
+ * @param {*}[instance] - the doc object to assign properties (if not provided, a new object is created)
  * @return {BaseDoc}
  */
-export const createDoc = (name?: string, type?: string = "BaseDoc", options: any) => {
-  const doc = Object.assign({
+export const createDoc = (name?: string, type?: string = "BaseDoc", options: any, instance: any) => {
+  const doc = Object.assign(instance || {}, {
     name,
     path: "",
     stack: [""],
@@ -46,7 +47,7 @@ export const createDoc = (name?: string, type?: string = "BaseDoc", options: any
 
   // Soft error when @memberof is not used.
   if (separators) {
-    console.error(name + " is a local identifer and contains a separator. Use @memberof instead " +
+    console.error(name + " is a local identifier and contains a separator. Use @memberof instead " +
       "because this deprecated (legacy behaviour from JSDoc).");
 
     const lastSeparator = separators[separators.length - 1];

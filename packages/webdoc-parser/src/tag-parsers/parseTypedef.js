@@ -21,6 +21,7 @@ export function parseTypedef(value: string, options: any): TypedefTag {
 
   options.of = [of];
   options.alias = alias;
+  options.name = alias;
 
   return {
     name: "typedef",

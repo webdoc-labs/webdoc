@@ -46,3 +46,12 @@ export class PhysicalObject {
     this.interactions = [];
   }
 }
+
+/**
+ * Checks whether the object is an instance of {@code PhysicalObject}.
+ * @param {Object} object
+ * @return {boolean}
+ */
+export function isPhysicalObject(object) {
+  return true;
+}

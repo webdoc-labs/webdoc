@@ -1,19 +1,7 @@
 // @flow
-// This file converts Symbols into Docs (i.e. parses the documentation comments and infers the type
-// of symbol)
+// This file converts Symbols into Docs (i.e. parses the documentation comments)
 
-import {
-  isExpressionStatement,
-  isClassDeclaration,
-  isClassMethod,
-  isMemberExpression,
-  isClassProperty,
-  isClassExpression,
-  isProperty,
-  isObjectMethod,
-  isFunctionExpression,
-  isFunctionDeclaration,
-} from "@babel/types";
+// TODO: Give some sympathy to the code here & organize it out
 
 import {
   parseParam,
@@ -38,14 +26,13 @@ import {
   parseExample,
 } from "./tag-parsers";
 
-import {
-  parseMethodDoc,
-  parsePropertyDoc,
-  parseEventDoc,
-} from "./doc-parsers";
-
-import type {Tag, Doc, ExampleTag} from "@webdoc/types";
+import type {Tag, Doc} from "@webdoc/types";
 import {createDoc} from "@webdoc/model";
+
+import type {Symbol} from "./build-symbol-tree";
+
+import mergeWith from "lodash/mergeWith";
+import validate from "./validators";
 
 type TagParser = (value: string, options: Object) => void;
 
@@ -95,13 +82,13 @@ const TAG_PARSERS: { [id: string]: TagParser } = {
 const TAG_OVERRIDES: { [id: string]: string | any } = { // replace any, no lazy
   "class": "ClassDoc",
   "interface": "InterfaceDoc",
-  "enum": parsePropertyDoc,
-  "member": parsePropertyDoc,
-  "method": parseMethodDoc,
+  //  "enum": "PropertyDoc",
+  "member": "PropertyDoc",
+  "method": "MethodDoc",
   "mixin": "MixinDoc",
   "typedef": "TypedefDoc",
   "namespace": "NSDoc",
-  "event": parseEventDoc,
+  "event": "EventDoc",
 };
 
 // Tags that end only when another tag is found or two lines are blank for consecutively
@@ -112,11 +99,14 @@ export default function buildDoc(symbol: Symbol): ?Doc {
 
   const commentLines = comment.split("\n");
 
-  let options: any = {node};
+  const options: any = {node};
 
-  if (symbol.options) {
-    options = {...options, ...symbol.options};
-  }
+  options.access = symbol.meta.access;
+  options.scope = symbol.meta.scope;
+
+  options.parserOpts = {
+    object: symbol.meta.object,
+  };
 
   const tags: Tag[] = [];
   let brief = "";
@@ -181,6 +171,8 @@ export default function buildDoc(symbol: Symbol): ?Doc {
   options.description = description;
   options.node = null;
 
+  // if (symbol.meta.object)
+
   // @name might come handy
   if (!symbol.name) {
     const nameTag = tags.find((tag) => tag.name === "name");
@@ -190,27 +182,26 @@ export default function buildDoc(symbol: Symbol): ?Doc {
     }
   }
 
-  if (isExpressionStatement(node) && isMemberExpression(node.expression.left)) {
-    return parsePropertyDoc(node, options);
-  }
-
   for (let i = 0; i < tags.length; i++) {
     if (TAG_OVERRIDES.hasOwnProperty(tags[i].name)) {// eslint-disable-line no-prototype-builtins
       const name = tags[i].name;
-      const override = TAG_OVERRIDES[name];
-      let doc;
 
-      if (typeof override === "string") {
-        doc = createDoc(tags[i].value || symbol.name, TAG_OVERRIDES[name], options);
-      } else {
-        symbol.name = symbol.name || tags[i].value;
-
-        if (symbol.name) {
-          options.name = symbol.name;
-        }
-
-        doc = override(node, options);
+      if (!options.name && !tags[i].value && !symbol.name) {
+        continue;
       }
+
+      const doc = createDoc(
+        options.name || tags[i].value || symbol.name,
+        TAG_OVERRIDES[name],
+        options,
+        symbol);
+
+      delete doc.comment;
+      delete doc.flags;
+      delete doc.node;
+      delete doc.meta;
+      delete doc.options;
+      delete doc.parent;
 
       if (doc) {
         return doc;
@@ -224,17 +215,23 @@ export default function buildDoc(symbol: Symbol): ?Doc {
     return null;
   }
 
-  if (isClassProperty(node)) {
-    return createDoc(symbol.name, "PropertyDoc", options);
-  }
-  if (isProperty(node) && isFunctionExpression(node.value)) {
-    return parseMethodDoc(node, options);
-  }
+  validate(options, symbol.meta);
 
-  Object.assign(options, symbol.meta);
+  mergeWith(options, symbol.meta, (optVal, metaVal) => optVal === undefined ? metaVal : optVal);
 
   if (symbol.name && symbol.meta && symbol.meta.type) {
-    return createDoc(symbol.name, symbol.meta.type, options);
+    // This will transform "symbol" into "doc" (a new object is not created)
+    const doc = createDoc(symbol.name, symbol.meta.type, options, symbol);
+
+    // Remove properties from Symbol form
+    delete doc.comment;
+    delete doc.flags;
+    delete doc.node;
+    delete doc.meta;
+    delete doc.options;
+    delete doc.parent;
+
+    return doc;
   } else {
     console.log(symbol.name + " -<");
   }

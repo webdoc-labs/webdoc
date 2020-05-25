@@ -1,6 +1,6 @@
 {
     "source": {
-        "includePattern": "./src/**/*.js"
+        "includePattern": "./src/**/*"
     },
     "plugins": [
       "plugins/markdown"

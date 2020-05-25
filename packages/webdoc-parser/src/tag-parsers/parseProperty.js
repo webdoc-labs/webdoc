@@ -6,14 +6,14 @@ import {createDoc} from "@webdoc/model";
 export function parseProperty(value: string, doc: $Shape<Doc>): PropertyTag {
   // Nice little hack, need to separate out this one!
   let o;
-  const {identifer, referred, description} = o = parseParam(value, {});
+  const {identifier, referred, description} = o = parseParam(value, {});
   const dataType = [referred, referred];
 
   if (!doc.children) {
     doc.children = [];
   }
 
-  doc.children.push(createDoc(identifer, "PropertyDoc", {
+  doc.children.push(createDoc(identifier, "PropertyDoc", {
     object: null,
     dataType,
     description,

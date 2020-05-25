@@ -1,49 +1,74 @@
 // @flow
 
-import buildSymbolTree from "./build-symbol-tree";
 import buildDoc from "./build-doc";
 import mod from "./doctree-mods";
 import {parserLogger} from "./Logger";
 import type {RootDoc, Doc} from "@webdoc/types";
 import {addChildDoc} from "@webdoc/model";
 
-function assemble(symbol: Symbol, root: RootDoc): void {
-  const doc: Doc = buildDoc(symbol);
+import {langJS, langTS} from "./symbols-babel";
 
-  if (!doc && symbol.name !== "File") {
-    symbol.parent = null;
-    parserLogger.error("DocParser",
-      `Couldn't parse doc for + ${symbol.name}(@${symbol.path.join(".")})`);
+import type {Symbol} from "./types/Symbol";
+import type {LanguageIntegration} from "./types/LanguageIntegration";
 
-    if (!symbol.node) {
-      console.log(symbol.comment);
+// File-extension -> LanguageIntegration mapping
+const languages: { [id: string]: LanguageIntegration } = {};
+
+// Register a language-integration that will be used to generate a symbol-tree for files with its
+// file-extensions.
+export function registerLanguage(lang: LanguageIntegration): void {
+  for (const ext of lang.extensions) {
+    if (languages[ext]) {
+      parserLogger.warn("LanguageIntegration",
+        `.${ext} file extension has already been registered`);
     }
 
-    return;
-  } else if (doc) {
-    doc.members = doc.children;
+    languages[ext] = lang;
+  }
+}
+
+// Register built-in languages
+registerLanguage(langJS);
+registerLanguage(langTS);
+
+function buildSymbolTree(file: string, fileName ?: string = ".js"): Symbol {
+  const lang = languages[fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length)];
+
+  if (!lang) {
+    throw new Error(`.${lang} file language is not registered`);
   }
 
-  const parent = symbol.parent ? symbol.parent.doc : null;
+  return lang.parse(file);
+}
+
+function assemble(symbol: Symbol, root: RootDoc): void {
+  // buildDoc will *destroy* everything in symbol, so store things needed beforehand
+  const name = symbol.name;
+  const members = symbol.members;
+  const parent = symbol.parent;// :Doc (not a symbol because assemble() was called on parent!!!)
+
+  const doc: Doc = buildDoc(symbol);
+
+  if (!doc && name !== "File") {
+    parserLogger.error("DocParser",
+      `Couldn't parse doc for + ${symbol.name}(@${symbol.path.join(".")})`);
+    return;
+  }
 
   if (doc && doc.name === undefined) {
     console.log(Object.assign({}, doc, {node: "removed"}));
     console.log("^^^ ERR");
   }
 
-  if (parent && !doc.constructor.noInferredScope) {
+  if (parent && parent.name !== "File") {
     addChildDoc(doc, parent);
   } else if (symbol.name !== "File") {
     addChildDoc(doc, root);
   }
 
-  symbol.doc = doc;
-
-  if (symbol.children) {
-    const children = symbol.children;
-
-    for (let i = 0; i < children.length; i++) {
-      assemble(children[i], root);
+  if (members) {
+    for (let i = 0; i < members.length; i++) {
+      assemble(members[i], root);
     }
   }
 }
@@ -64,21 +89,33 @@ function assemble(symbol: Symbol, root: RootDoc): void {
  * @param {RootDoc} root
  * @return {RootDoc}
  */
-export function parse(target: string | string[], root?: RootDoc = {
-  children: [],
+export function parse(target: string | string[] | Map<string, string>, root?: RootDoc = {
+  members: [],
   path: "",
   stack: [""],
   type: "RootDoc",
   tags: [],
 }): RootDoc {
-  const files = Array.isArray(target) ? target : [target];
-  const partialDoctrees = new Array(files.length);
+  if (typeof target === "string") {
+    target = [target];
+  }
+
+  const partialDoctrees = new Array(Array.isArray(target) ? target.length : target.size);
 
   // TODO: Don't do two loops, it sucks for performance
 
-  // Capture all files
-  for (let i = 0; i < files.length; i++) {
-    partialDoctrees[i] = buildSymbolTree(files[i]);
+  // Build a symbol-tree for all the files
+  if (Array.isArray(target)) {
+    for (let i = 0; i < target.length; i++) {
+      partialDoctrees[i] = buildSymbolTree(target[i]);
+    }
+  } else {
+    let i = 0;
+
+    for (const [fileName, file] of target) {
+      partialDoctrees[i] = buildSymbolTree(file, fileName);
+      ++i;
+    }
   }
 
   // Recursively transform & assemble into the doc-tree (root).

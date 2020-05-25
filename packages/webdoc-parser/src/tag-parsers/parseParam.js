@@ -2,9 +2,9 @@
 
 import type {Doc, ParamTag} from "@webdoc/types";
 
-// Extracts the parameter's identifer & related information that occurs after the type
-function extractIdentifer(from: string, index: number = 0): {
-  identifer: string,
+// Extracts the parameter's identifier & related information that occurs after the type
+function extractidentifier(from: string, index: number = 0): {
+  identifier: string,
   optional: boolean,
   default?: string,
   variadic?: boolean,
@@ -16,7 +16,7 @@ function extractIdentifer(from: string, index: number = 0): {
 
   if (!identClosureMatch) {
     return {
-      identifer: `arg${index}`,
+      identifier: `arg${index}`,
       optional: false,
       closureStart: 0,
       closureEnd: 0,
@@ -38,14 +38,14 @@ function extractIdentifer(from: string, index: number = 0): {
     if (splitIndex === -1) {// No "=" sign implies no default value
       return {
         ...extracted,
-        identifer: closureContent,
+        identifier: closureContent,
         optional: true,
         variadic,
       };
     } else {
       return {
         ...extracted,
-        identifer: closureContent.slice(0, splitIndex),
+        identifier: closureContent.slice(0, splitIndex),
         optional: true,
         default: closureContent.slice(splitIndex + 1),
         variadic,
@@ -58,7 +58,7 @@ function extractIdentifer(from: string, index: number = 0): {
 
   return {
     ...extracted,
-    identifer: identClosure,
+    identifier: identClosure,
     optional: false,
     variadic: identClosure.startsWith("..."),
   };
@@ -82,7 +82,7 @@ export function parseParam(value: string, options: $Shape<Doc>): ParamTag {
     ref = "any";
   }
 
-  const identClosure = extractIdentifer(extractable);
+  const identClosure = extractidentifier(extractable);
 
   extractable = extractable.replace(
     new RegExp(`(.{${identClosure.closureStart}}).{${identClosure.closureEnd}}`), "$1");
@@ -92,7 +92,7 @@ export function parseParam(value: string, options: $Shape<Doc>): ParamTag {
     extractable = extractable.slice(1);
     extractable = extractable.trimStart();
   } else if (extractable) {
-    console.warn(`[TagParser]: ${identClosure.identifer} does not have a "-" token preceeding description`);
+    console.warn(`[TagParser]: ${identClosure.identifier} does not have a "-" token preceeding description`);
   }
 
   if (!options.params) {
@@ -100,7 +100,7 @@ export function parseParam(value: string, options: $Shape<Doc>): ParamTag {
   }
 
   options.params.push({
-    identifer: identClosure.identifer,
+    identifier: identClosure.identifier,
     referred: ref,
     description: extractable,
     optional: identClosure.optional,
@@ -114,7 +114,7 @@ export function parseParam(value: string, options: $Shape<Doc>): ParamTag {
     type: "ParamTag",
     referred: ref,
     description: extractable,
-    identifer: identClosure.identifer,
+    identifier: identClosure.identifier,
     optional: identClosure.optional,
     default: identClosure.default,
     variadic: identClosure.variadic,

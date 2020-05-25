@@ -24,7 +24,6 @@ const VERSION = "__VERSION__";
   * @function skipHello
   * @memberof PIXI.utils
   * @deprecated
-  * @param {string} x
   */
 export function skipHello(): void {
   saidHello = true;
@@ -699,7 +698,7 @@ export class ObjectRenderer {
      * @param {PIXI.DisplayObject} object - The object to render.
      */
   /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
-  render(_object) {
+  render(object) {
     // render the object
   }
 }

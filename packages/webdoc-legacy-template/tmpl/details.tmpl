@@ -10,13 +10,13 @@ if (data.defaultvalue && (data.defaultvaluetype === 'object' || data.defaultvalu
 }
 ?>
 <?js
-    var properties = data.properties;
+    var properties = this.getProperties(data);
     if (properties && properties.length && properties.forEach && !data.hideconstructor) {
 ?>
 
     <h5 class="subsection-title">Properties:</h5>
 
-    <?js= this.partial('properties.tmpl', data) ?>
+    <?js= this.partial('components/property-table.tmpl', properties) ?>
 
 <?js } ?>
 
