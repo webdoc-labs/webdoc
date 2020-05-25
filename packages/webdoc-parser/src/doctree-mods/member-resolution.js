@@ -35,8 +35,6 @@ export default function memberResolve(doc: Doc, root: RootDoc) {
         if (scope !== doc.parent) {
           addChildDoc(doc, scope);
         }
-
-        return true;
       } else {
         console.warn(`Member ${doc.path} could not be resolved to ${doc.object}`);
       }
@@ -45,6 +43,7 @@ export default function memberResolve(doc: Doc, root: RootDoc) {
 
   for (let i = 0; i < doc.children.length; i++) {
     const child = doc.children[i];
+
     memberResolve(doc.children[i], root);
 
     if (child !== doc.children[i]) {

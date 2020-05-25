@@ -1,5 +1,8 @@
 // @flow
 
+// This file extracts all the symbol information from an AST node. It relies on extract-metadata
+// as a helper.
+
 import {
   type ArrowFunctionExpression,
   type FunctionExpression,
@@ -8,7 +11,6 @@ import {
   type VariableDeclarator,
   isArrowFunctionExpression,
   isAssignmentExpression,
-  isEnumDeclaration,
   isExpressionStatement,
   isClassDeclaration,
   isClassExpression,
@@ -20,9 +22,12 @@ import {
   isFunctionExpression,
   isCallExpression,
   isVariableDeclarator,
+  isLiteral,
   isObjectExpression,
   isReturnStatement,
   isThisExpression,
+  isTSEnumDeclaration,
+  isTSEnumMember,
   isTSInterfaceDeclaration,
   isTSMethodSignature,
   isTSPropertySignature,
@@ -157,14 +162,32 @@ export default function extractSymbol(
 
     nodeSymbol.meta.extends = extractExtends(node);
     nodeSymbol.meta.type = "InterfaceDoc";
-  } else if (isEnumDeclaration(node)) {
+  } else if (isTSEnumDeclaration(node)) {
     // Example:
-    // enum EnumName{}
+    // enum EnumName {}
     //
     // Enumerations are compile-time only
     // TODO: Support EnumDoc in @webdoc/legacy-template
 
+    name = node.id.name;
+
     nodeSymbol.meta.type = "EnumDoc";
+  } else if (isTSEnumMember(node)) {
+    // Example:
+    // ENUM_MEMBER,
+    // ENUM_MEMBER = 100,
+
+    name = node.id.name ? node.id.name : node.id.value;
+
+    // TODO: Extract the value of the enum member if it isn't a literal. This would occur
+    // by taking it out of the file contents
+
+    nodeSymbol.meta.constant = true;
+    nodeSymbol.meta.value = isLiteral(node) ? node.value : null;
+    nodeSymbol.meta.type = "PropertyDoc";
+
+    // Don't traverse through the initializer even if it isn't a literal
+    flags |= OBLIGATE_LEAF;
   } else if (isTSTypeElement(node)) {
     // This type of node occurs when declaring interface members.
     // Example:

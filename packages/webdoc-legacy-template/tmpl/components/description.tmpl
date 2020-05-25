@@ -1,0 +1,12 @@
+<?js /** This component renders the brief+description of all types of documents. */ ?>
+<?js const doc = obj ?>
+
+<?js if (doc.brief) { ?>
+    <p class="summary"><?js= doc.brief ?></p>
+<?js } ?>
+
+<?js if (doc.description) { ?>
+    <div class="description">
+        <?js= doc.description ?>
+    </div>
+<?js } ?>

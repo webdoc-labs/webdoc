@@ -187,6 +187,18 @@
     <?js } ?>
 
     <?js
+        const enums = this.getEnums(currentDoc);
+
+        if (enums.length) {
+    ?>
+        <h3 class="subsection-title">Enums</h3>
+
+        <?js enums.forEach((enumDoc) => { ?>
+            <?js= self.partial("doc/enum.tmpl", enumDoc) ?>
+        <?js }); ?>
+    <?js } ?>
+
+    <?js
         const events = this.getEvents(currentDoc);
 
         if (events && events.length && events.forEach) {

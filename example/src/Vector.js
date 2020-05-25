@@ -56,3 +56,15 @@ export class Vector extends Array {
     return vector;
   }
 }
+
+/**
+ * A 3D vector
+ * @typedef {Vector[]} VectorArray
+ * @property {object} meta
+ */
+// TODO: Support the following as we these are resolved to Docs
+/*
+ @property {boolean} meta.isPlanar
+ * @property {boolean} meta.isLinear
+ * @property {boolean} meta.isDegenerate
+ */

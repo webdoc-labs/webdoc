@@ -2,92 +2,70 @@
 	"type": "RootDoc",
 	"children": [
 		{
-			"name": "CarDealer",
-			"type": "InterfaceDoc",
+			"name": "CAR_MAKES",
+			"type": "EnumDoc",
 			"brief": "",
 			"children": [
 				{
-					"name": "initiateTransaction",
-					"type": "MethodDoc",
+					"name": "TOYOTA",
+					"type": "PropertyDoc",
+					"access": "public",
+					"scope": "static",
 					"brief": ""
 				},
 				{
-					"name": "offerBid",
-					"type": "MethodDoc",
+					"name": "FERRARI",
+					"type": "PropertyDoc",
+					"access": "public",
+					"scope": "static",
 					"brief": ""
 				},
 				{
-					"name": "offerAsk",
-					"type": "MethodDoc",
+					"name": "FORD",
+					"type": "PropertyDoc",
+					"access": "public",
+					"scope": "static",
 					"brief": ""
 				},
 				{
-					"name": "closeTransaction",
-					"type": "MethodDoc",
+					"name": "GENERAL_MOTORS",
+					"type": "PropertyDoc",
+					"access": "public",
+					"scope": "static",
+					"brief": ""
+				},
+				{
+					"name": "KIA",
+					"type": "PropertyDoc",
+					"access": "public",
+					"scope": "static",
+					"brief": ""
+				},
+				{
+					"name": "JAGUAR",
+					"type": "PropertyDoc",
+					"access": "public",
+					"scope": "static",
+					"brief": ""
+				},
+				{
+					"name": "LAMBORGHINI",
+					"type": "PropertyDoc",
+					"access": "public",
+					"scope": "static",
 					"brief": ""
 				}
 			]
 		},
 		{
+			"name": "CarDealer",
+			"type": "InterfaceDoc",
+			"brief": ""
+		},
+		{
 			"name": "Car",
 			"type": "ClassDoc",
-			"brief": "",
-			"children": [
-				{
-					"name": "DEFAULT_DRIVE_SHIFT",
-					"type": "PropertyDoc",
-					"scope": "static",
-					"brief": ""
-				},
-				{
-					"name": "vin",
-					"type": "PropertyDoc",
-					"scope": "instance",
-					"brief": ""
-				},
-				{
-					"name": "onCrash",
-					"type": "MethodDoc",
-					"scope": "instance",
-					"brief": ""
-				},
-				{
-					"name": "registerRetail",
-					"type": "MethodDoc",
-					"scope": "static",
-					"brief": ""
-				},
-				{
-					"name": "mass",
-					"type": "PropertyDoc",
-					"scope": "instance",
-					"brief": ""
-				},
-				{
-					"name": "position",
-					"type": "PropertyDoc",
-					"scope": "instance",
-					"brief": ""
-				},
-				{
-					"name": "velocity",
-					"type": "PropertyDoc",
-					"scope": "instance",
-					"brief": ""
-				},
-				{
-					"name": "bounds",
-					"type": "PropertyDoc",
-					"scope": "instance",
-					"brief": ""
-				},
-				{
-					"name": "interactions",
-					"type": "PropertyDoc",
-					"scope": "instance",
-					"brief": ""
-				}
-			]
+			"brief": ""
 		},
 		{
 			"name": "PhysicalInteraction",
@@ -111,6 +89,12 @@
 					"type": "PropertyDoc",
 					"scope": "static",
 					"brief": ""
+				},
+				{
+					"name": "createGravity",
+					"type": "MethodDoc",
+					"scope": "static",
+					"brief": ""
 				}
 			]
 		},
@@ -128,53 +112,14 @@
 			]
 		},
 		{
-			"name": "createGravity",
-			"type": "MethodDoc",
-			"scope": "static",
+			"name": "PhysicalObject",
+			"type": "ClassDoc",
 			"brief": ""
 		},
 		{
-			"name": "PhysicalObject",
-			"type": "ClassDoc",
-			"brief": "",
-			"children": [
-				{
-					"name": "constructor",
-					"type": "MethodDoc",
-					"scope": "instance",
-					"brief": ""
-				},
-				{
-					"name": "mass",
-					"type": "PropertyDoc",
-					"scope": "instance",
-					"brief": ""
-				},
-				{
-					"name": "position",
-					"type": "PropertyDoc",
-					"scope": "instance",
-					"brief": ""
-				},
-				{
-					"name": "velocity",
-					"type": "PropertyDoc",
-					"scope": "instance",
-					"brief": ""
-				},
-				{
-					"name": "bounds",
-					"type": "PropertyDoc",
-					"scope": "instance",
-					"brief": ""
-				},
-				{
-					"name": "interactions",
-					"type": "PropertyDoc",
-					"scope": "instance",
-					"brief": ""
-				}
-			]
+			"name": "isPhysicalObject",
+			"type": "FunctionDoc",
+			"brief": ""
 		},
 		{
 			"name": "PIXI",
@@ -197,27 +142,7 @@
 				{
 					"name": "System",
 					"type": "ClassDoc",
-					"brief": "",
-					"children": [
-						{
-							"name": "constructor",
-							"type": "MethodDoc",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "destroy",
-							"type": "MethodDoc",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "renderer",
-							"type": "PropertyDoc",
-							"scope": "instance",
-							"brief": ""
-						}
-					]
+					"brief": ""
 				},
 				{
 					"name": "AbstractBatchRenderer",
@@ -461,70 +386,29 @@
 							"type": "PropertyDoc",
 							"scope": "static",
 							"brief": ""
-						},
-						{
-							"name": "renderer",
-							"type": "PropertyDoc",
-							"scope": "instance",
-							"brief": ""
 						}
 					]
 				},
 				{
 					"name": "ObjectRenderer",
 					"type": "ClassDoc",
-					"brief": "",
-					"children": [
-						{
-							"name": "constructor",
-							"type": "MethodDoc",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "flush",
-							"type": "MethodDoc",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "destroy",
-							"type": "MethodDoc",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "start",
-							"type": "MethodDoc",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "stop",
-							"type": "MethodDoc",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "render",
-							"type": "MethodDoc",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "renderer",
-							"type": "PropertyDoc",
-							"scope": "instance",
-							"brief": ""
-						}
-					]
+					"brief": ""
 				}
 			]
 		},
 		{
-			"name": "Anonymous",
-			"type": "ClassDoc",
-			"brief": ""
+			"name": " VectorArray",
+			"type": "TypedefDoc",
+			"brief": "",
+			"children": [
+				{
+					"name": "meta",
+					"type": "PropertyDoc",
+					"access": "public",
+					"scope": "static",
+					"brief": ""
+				}
+			]
 		},
 		{
 			"name": "Vector",

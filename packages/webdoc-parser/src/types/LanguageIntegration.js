@@ -1,3 +1,5 @@
+// @flow
+
 import type {Symbol} from "./Symbol";
 
 // Language-integration definition - used for parsing code into a symbol-tree

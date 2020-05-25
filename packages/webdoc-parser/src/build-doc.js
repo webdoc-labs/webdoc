@@ -186,8 +186,12 @@ export default function buildDoc(symbol: Symbol): ?Doc {
     if (TAG_OVERRIDES.hasOwnProperty(tags[i].name)) {// eslint-disable-line no-prototype-builtins
       const name = tags[i].name;
 
+      if (!options.name && !tags[i].value && !symbol.name) {
+        continue;
+      }
+
       const doc = createDoc(
-        tags[i].value || symbol.name || "Anonymous",
+        options.name || tags[i].value || symbol.name,
         TAG_OVERRIDES[name],
         options,
         symbol);

@@ -175,6 +175,18 @@ export class TemplateRenderer {
   }
 
   /**
+   * Finds all the member enums of {@code doc}.
+   *
+   * @param {Doc} doc
+   * @param {boolean}[recursive=false] - whether to find classes recursively
+   * @param {Doc[]}[out] - optional array to output the classes-docs into
+   * @return {EnumDoc[]}
+   */
+  getEnums(doc: Doc, recursive = false, out: Doc[]): EnumDoc[] {
+    return this.getMembers(doc, "EnumDoc", recursive, out);
+  }
+
+  /**
    * Finds all the member properites of {@code doc}.
    *
    * @param {Doc} doc

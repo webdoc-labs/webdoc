@@ -18,6 +18,7 @@ import extract from "../extract";
 import {parserLogger, tag} from "../Logger";
 import extractSymbol from "./extract-symbol";
 import * as parser from "@babel/parser";
+import _ from "lodash";
 
 import {
   type Symbol, VIRTUAL, isVirtual, isObligateLeaf,
@@ -38,13 +39,13 @@ export const SymbolUtils = {
     for (let i = 0; i < scope.members.length; i++) {
       const child = members[i];
 
-      if (SymbolUtils.areEqualLoc(child, doc)) {
-        members[i] = doc;
-        index = i;
-        break;
-      }
       if (child.name && child.name === doc.name) {
         return SymbolUtils.coalescePair(child, doc);
+      }
+      if (SymbolUtils.areEqualLoc(child, doc)) {
+        SymbolUtils.coalescePair(child, doc);
+        index = i;
+        break;
       }
     }
 
@@ -87,11 +88,19 @@ export const SymbolUtils = {
 
     symbol.members.push(...pair.members);
 
-    Object.assign(symbol, pair);
+    if (symbol.name === "createGravity" || pair.meta === "createGravity") {
+      console.log(symbol.meta);
+      console.log(pair.meta);
+    }
+
     symbol.comment = comment || pair.comment;
     symbol.members = members;
     symbol.flags = flags ? flags | pair.flags : pair.flags;
-    symbol.meta = Object.assign(symbol.meta, pair.meta);
+    symbol.meta = _.assignWith(symbol.meta, pair.meta, (objValue, srcValue) =>
+      _.isUndefined(srcValue) ? objValue : srcValue);
+    symbol.loc = symbol.loc || pair.loc;
+    symbol.node = symbol.node || pair.node;
+    symbol.name = symbol.name || pair.name;
 
     // Horizontal transfer of members
     for (let i = 0; i < pair.members.length; i++) {
@@ -349,7 +358,9 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
           options: {
             object: node.expression ? node.expression.left.object.name : undefined,
           },
-          meta: {},
+          meta: {
+            ...nodeSymbol.meta,
+          },
         }],
         loc: nodeDoc ? nodeDoc.loc : {},
         virtual: true,

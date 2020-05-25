@@ -502,6 +502,8 @@ exports.publish = (options) => {
   docDatabase = options.docDatabase;
   const opts = options.opts;
   const docTree = options.doctree;
+  const rootDoc = docTree;// nice alias
+
   const tutorials = options.tutorials;
   env = options.config;
   outdir = path.normalize(env.opts.destination);
@@ -734,7 +736,13 @@ exports.publish = (options) => {
   const files = docDatabase({kind: "file"}).get();
   const packages = docDatabase({kind: "package"}).get();
 
-  const arr = [];
+  const arr = rootDoc.members.filter((doc) =>
+    doc.type === "FunctionDoc" ||
+      doc.type === "EnumDoc" ||
+      doc.type === "MethodDoc" ||
+      doc.type === "PropertyDoc" ||
+      doc.type === "TypedefDoc");
+
   generate("Home",
     packages.concat(
       [{
