@@ -1,14 +1,20 @@
 <?js
-var data = obj;
-var self = this;
+  /* This component renders the main-page & the description page for packages! */
+
+  const mainPage /*: {
+      type: "mainPage",
+      readme?: string,
+      name ?: string,
+      version ?: string
+  } */ = obj;
 ?>
 
-<?js if (data.kind === 'package') { ?>
-    <h3><?js= data.name ?> <?js= data.version ?></h3>
+<?js if (mainPage.type === 'PackageDoc') { ?>
+    <h3><?js= mainPage.name ?> <?js= mainPage.version ?></h3>
 <?js } ?>
 
-<?js if (data.readme) { ?>
+<?js if (mainPage.readme) { ?>
     <section>
-        <article><?js= data.readme ?></article>
+        <article><?js= mainPage.readme ?></article>
     </section>
 <?js } ?>
