@@ -13,9 +13,11 @@ import {
   isAssignmentPattern,
   isClassDeclaration,
   isClassExpression,
+  isClassImplements,
   isIdentifier,
   isRestElement,
   isObjectExpression,
+  isTSExpressionWithTypeArguments,
 } from "@babel/types";
 
 import type {Param} from "@webdoc/types";
@@ -37,7 +39,19 @@ export function extractExtends(
 
 // Extracts all the implemented interface names
 export function extractImplements(node: ClassDeclaration | ClassExpression): ?(string[]) {
-  return node.implements ? node.implements.map((classImplements) => classImplements.id.name) : null;
+  return node.implements ? node.implements.map((impls) => {
+    if (isClassImplements(impls)) {
+      return impls.id.name;
+    }
+    if (isTSExpressionWithTypeArguments(impls)) {
+      if (isIdentifier(impls.expression)) {
+        return impls.expression.name;
+      } else {
+        // TODO: TSQualifiedName
+        return "";
+      }
+    }
+  }) : null;
 }
 
 // Extract all the parameter-data from the method/function AST node
