@@ -4,5 +4,8 @@
     },
     "plugins": [
       "plugins/markdown"
-    ]
+    ],
+    "template": {
+      "readme": "./README.md"
+    }
 }

@@ -2,6 +2,7 @@
 import fs from "fs";
 import {log, tags} from "missionlog";
 import merge from "lodash/merge";
+
 const defaultConfig = {
   source: {
     includePattern: "./**/*.js",
@@ -20,6 +21,11 @@ const defaultConfig = {
     destination: "docs",
     export: "example.api.json",
     template: "@webdoc/legacy-template",
+  },
+  template: {
+    mainPage: {
+      title: "Main Page",
+    },
   },
   version: {
     number: 1,

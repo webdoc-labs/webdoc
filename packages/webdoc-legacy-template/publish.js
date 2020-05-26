@@ -1,6 +1,8 @@
 // @flow
 // @webdoc/legacy-template uses flow comment syntax for easier migration!
 
+/* global Webdoc, process */
+
 const _ = require("lodash");
 const commonPathPrefix = require("common-path-prefix");
 const fs = require("fs");
@@ -10,6 +12,7 @@ const helper = require("./helper");
 const hasOwnProp = Object.prototype.hasOwnProperty;
 const {TemplateRenderer, SymbolLinks, RelationsPlugin} = require("@webdoc/template-library");
 const {doc: findDoc, isClass, isInterface, isNamespace, isMixin, isModule, isExternal} = require("@webdoc/model");
+const fsp = require("fs").promises;
 
 let view;
 
@@ -288,29 +291,6 @@ function getPathFromDoclet({meta}) {
     meta.filename;
 }
 
-function generate(title, docs, filename, resolveLinks) {
-  let docData;
-  let html;
-  let outpath;
-
-  resolveLinks = resolveLinks !== false;
-
-  docData = {
-    env: env,
-    title: title,
-    docs: docs,
-  };
-
-  outpath = path.join(outdir, filename);
-  html = view.render("container.tmpl", docData);
-
-  if (resolveLinks) {
-    html = helper.resolveLinks(html); // turn {@link foo} into <a href="foodoc.html">foo</a>
-  }
-
-  fs.writeFileSync(outpath, html, "utf8");
-}
-
 function generateSourceFiles(sourceFiles, encoding = "utf8") {
   Object.keys(sourceFiles).forEach((file) => {
     let source;
@@ -505,6 +485,7 @@ exports.publish = (options) => {
   const rootDoc = docTree;// nice alias
 
   const tutorials = options.tutorials;
+  const userConfig = global.Webdoc.userConfig;
   env = options.config;
   outdir = path.normalize(env.opts.destination);
 
@@ -732,27 +713,7 @@ exports.publish = (options) => {
     generate("Global", [{kind: "globalobj"}], globalUrl);
   }
 
-  // index page displays information from package.json and lists files
-  const files = docDatabase({kind: "file"}).get();
-  const packages = docDatabase({kind: "package"}).get();
-
-  const arr = rootDoc.members.filter((doc) =>
-    doc.type === "FunctionDoc" ||
-      doc.type === "EnumDoc" ||
-      doc.type === "MethodDoc" ||
-      doc.type === "PropertyDoc" ||
-      doc.type === "TypedefDoc");
-
-  generate("Home",
-    packages.concat(
-      [{
-        kind: "mainpage",
-        readme: opts.readme,
-        longname: (opts.mainpagetitle) ? opts.mainpagetitle : "Main Page",
-        children: arr,
-        members: arr,
-      }],
-    ).concat(files), indexUrl);
+  generateHomePage(indexUrl, docTree);
 
   const docPaths = SymbolLinks.pathToUrl.keys();
   let docPathEntry = docPaths.next();
@@ -819,3 +780,75 @@ exports.publish = (options) => {
 
   saveChildren(tutorials);*/
 };
+
+// Generate a HTML page that contains the documentation for the given docs.
+function generate(title, docs, filename, resolveLinks) {
+  resolveLinks = resolveLinks !== false;
+
+  const docData = {
+    env: env,
+    title: title,
+    docs: docs,
+  };
+
+  const outpath = path.join(outdir, filename);
+  let html = view.render("container.tmpl", docData);
+
+  if (resolveLinks) {
+    html = helper.resolveLinks(html); // turn {@link foo} into <a href="foodoc.html">foo</a>
+  }
+
+  fs.writeFile(outpath, html, "utf8", (err) => {
+    if (!err) {
+      return;
+    }
+
+    console.error("@webdoc/<template>: Couldn't write file " + outpath);
+
+    throw err;
+  });
+}
+
+// Generate the home page, this loads the top-level members, packages, and README
+async function generateHomePage(pagePath /*: string */, rootDoc /*: RootDoc */) /*: void */ {
+  const userConfig = Webdoc.userConfig;
+
+  // index page displays information from package.json and lists files
+  const files = docDatabase({kind: "file"}).get();
+  const packages = docDatabase({kind: "package"}).get();
+
+  const arr = rootDoc.members.filter((doc) =>
+    doc.type === "FunctionDoc" ||
+      doc.type === "EnumDoc" ||
+      doc.type === "MethodDoc" ||
+      doc.type === "PropertyDoc" ||
+      doc.type === "TypedefDoc");
+
+  const readme = userConfig.template.readme;
+  let readmeContent = "";
+
+  if (readme) {
+    const readmePath = path.join(process.cwd(), readme);
+
+    readmeContent = await fsp.readFile(readmePath, "utf8");
+
+    const markdownRenderer = require("markdown-it")({
+      breaks: false,
+      html: true,
+    })
+      .use(require("markdown-it-highlightjs"));
+
+    readmeContent = markdownRenderer.render(readmeContent);
+  }
+
+  generate("Home",
+    packages.concat(
+      [{
+        type: "mainPage",
+        readme: readmeContent,
+        path: userConfig.template.mainPage.title,
+        children: arr,
+        members: arr,
+      }],
+    ).concat(files), pagePath);
+}

@@ -13,9 +13,11 @@
         isGlobalPage = (doc.type === 'globalobj');
     }
 ?>
-<?js if (doc.type === 'mainpage' || (doc.type === 'package')) { ?>
-    <?js= self.partial('mainpage.tmpl', doc) ?>
-<?js } else if (doc.type === 'source') { ?>
+<?js if (doc.type === 'mainPage' || (doc.type === 'package')) { ?>
+    <?js= this.partial('components/main-page.tmpl', doc) ?>
+<?js }
+
+    if (doc.type === 'source') { ?>
 <?js } else { ?>
 
 <section>

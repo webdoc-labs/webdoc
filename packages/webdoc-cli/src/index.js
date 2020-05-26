@@ -59,6 +59,7 @@ async function main(argv: yargs.Arguments<>) {
   // TODO: Fix what env/conf is?
   global.Webdoc.env = config;
   global.Webdoc.env.conf = config;
+  global.Webdoc.userConfig = config;
 
   // TODO: excludePattern
   const includePattern = config.source.includePattern || config.source.include;
