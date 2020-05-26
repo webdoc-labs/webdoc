@@ -72,6 +72,10 @@ function discoverMembers(doc: Doc, depsChain = new Set<Doc>()): void {
   }
 
   for (const parent of parents) {
+    if (!parent) {
+      console.log("Parent of " + doc.path + " includes undefined");
+      continue;
+    }
     if (typeof parent === "string") {
       console.log("skip " + parent);
       continue;
