@@ -9,6 +9,7 @@ import {
   type FunctionExpression,
   type FunctionDeclaration,
   type InterfaceDeclaration,
+  type TSInterfaceDeclaration,
   type TSMethodSignature,
   isAssignmentPattern,
   isClassDeclaration,
@@ -24,7 +25,7 @@ import type {Param} from "@webdoc/types";
 
 // Extracts all the extended class/interface names
 export function extractExtends(
-  node: ClassDeclaration | ClassExpression | InterfaceDeclaration,
+  node: ClassDeclaration | ClassExpression | InterfaceDeclaration | TSInterfaceDeclaration,
 ): ?(string[]) {
   if (isClassDeclaration(node) || isClassExpression(node)) {
     if (isIdentifier(node.superClass)) {
@@ -33,8 +34,18 @@ export function extractExtends(
 
     return null;
   }
+  if (!node.extends) {
+    return;
+  }
 
-  return node.extends ? node.extends.map((identifier) => identifier.name) : null;
+  return node.extends.map((exs) => {
+    if (isIdentifer(exs.id)) {
+      return exs.id.name;
+    }
+
+    // TODO: QualifiedTypeIdentifier
+    return "";
+  });
 }
 
 // Extracts all the implemented interface names
