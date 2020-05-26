@@ -39,7 +39,7 @@ export function extractExtends(
   }
 
   return node.extends.map((exs) => {
-    if (isIdentifer(exs.id)) {
+    if (isIdentifier(exs.id)) {
       return exs.id.name;
     }
 
