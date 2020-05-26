@@ -194,7 +194,7 @@ export default function extractSymbol(
     // memberName: memberType;
     // methodName(param: ParamType): ReturnType;
 
-    name = node.key.name;
+    name = node.key ? node.key.name : "";
 
     if (isTSMethodSignature(node)) {
       nodeSymbol.meta.params = extractParams(node);
