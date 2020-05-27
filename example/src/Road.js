@@ -22,4 +22,9 @@ const R = {
   buildRoad(address) {
     return null;
   },
+
+  /**
+   * The default no. of lanes per one side of road
+   */
+  DEFAULT_LANES: 4,
 };

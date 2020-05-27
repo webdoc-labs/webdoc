@@ -13,6 +13,12 @@
 					"brief": ""
 				},
 				{
+					"name": "DEFAULT_LANES",
+					"type": "PropertyDoc",
+					"scope": "static",
+					"brief": ""
+				},
+				{
 					"name": "Road",
 					"type": "ClassDoc",
 					"brief": ""
