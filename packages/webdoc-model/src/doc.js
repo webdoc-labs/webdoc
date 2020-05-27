@@ -120,17 +120,7 @@ export function addChildDoc<T: BaseDoc>(doc: T, scope: BaseDoc): T {
   }
 
   const {children} = scope;
-  let index = -1;
-
-  for (let i = 0; i < scope.children.length; i++) {
-    const child = children[i];
-
-    if (child.name === doc.name) {
-      children[i] = doc;
-      index = i;
-      break;
-    }
-  }
+  const index = -1;
 
   if (index === -1) {
     children.push(doc);

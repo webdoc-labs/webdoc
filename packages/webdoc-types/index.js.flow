@@ -65,11 +65,16 @@ declare module "@webdoc/types" {
     };
 
     declare type ClassDoc = {
-      ...Doc,
+      ...BaseDoc,
       params?: Param[],
       implements?: DocLink[],
       mixes?: [],
       type: "ClassDoc"
+    };
+
+    declare type EnumDoc = {
+      ...BaseDoc,
+      type: "EnumDoc"
     };
 
     declare type EventDoc = {

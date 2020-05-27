@@ -403,6 +403,7 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
       parent: parent,
       members: [],
       loc: node.loc,
+      metadata: {undocumented: true},
     }, nodeSymbol);
 
     nodeSymbol = SymbolUtils.addChild(nodeSymbol, parent);

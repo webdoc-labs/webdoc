@@ -48,6 +48,15 @@ export class PhysicalObject {
 }
 
 /**
+ * This is another road class.
+ *
+ * @memberof R
+ */
+class Road {
+
+}
+
+/**
  * Checks whether the object is an instance of {@code PhysicalObject}.
  * @param {Object} object
  * @return {boolean}

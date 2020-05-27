@@ -106,6 +106,7 @@ export default function buildDoc(symbol: Symbol): ?Doc {
 
   options.parserOpts = {
     object: symbol.meta.object,
+    undocumented: symbol.meta.undocumented,
   };
 
   const tags: Tag[] = [];

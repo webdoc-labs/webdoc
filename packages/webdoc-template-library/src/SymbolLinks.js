@@ -171,9 +171,9 @@ function generateFileName(fileName: string, str: string): string {
 
   // Append enough underscores to make the filename unique
   while (nonUnique) {
-    if (hasOwnProp.call(usedFileNames, key) ) {
+    if (hasOwnProp.call(usedFileNames, key)) {
       fileName += "_";
-      key = fileName.toLowerCase();
+      key += "_";
     } else {
       nonUnique = false;
     }
@@ -226,7 +226,7 @@ function getFileName(str: string): string {
   urlToPath.set(fileName, str);
 
   return fileName;
-};
+}
 
 const registerLink = (docPath: string, fileUrl: string) => {
   pathToUrl.set(docPath, fileUrl);

@@ -138,7 +138,6 @@ export default function extractSymbol(
       init = resolveInit(node);
     } else {// ObjectProperty
       name = node.key.name;
-      console.log(name);
       init = node.value;
     }
 
