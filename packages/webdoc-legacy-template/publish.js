@@ -717,7 +717,7 @@ exports.publish = (options) => {
 
   const docPaths = SymbolLinks.pathToUrl.keys();
   let docPathEntry = docPaths.next();
-  let docPath = docPaths.next().value;
+  let docPath = docPathEntry.value;
 
   while (!docPathEntry.done) {
     let doc;

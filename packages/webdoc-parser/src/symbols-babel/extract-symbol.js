@@ -24,6 +24,8 @@ import {
   isVariableDeclarator,
   isLiteral,
   isObjectExpression,
+  isObjectProperty,
+  isObjectMethod,
   isReturnStatement,
   isThisExpression,
   isTSEnumDeclaration,
@@ -59,7 +61,8 @@ export default function extractSymbol(
   let init;
   const nodeSymbol = out.nodeSymbol || {meta: {}};
 
-  if (isClassMethod(node) && (node.kind === "method" || node.kind === "constructor")) {
+  if ((isClassMethod(node) && (node.kind === "method" || node.kind === "constructor")) ||
+        isObjectMethod(node)) {
     // Example:
     // constructor() {}
     // classMethod() {}
@@ -102,6 +105,7 @@ export default function extractSymbol(
     nodeSymbol.meta.params = extractParams(node);
   } else if (
     isVariableDeclarator(node) ||
+    isObjectProperty(node) ||
     (isExpressionStatement(node) && isMemberExpression(node.expression.left))
   ) {
     // Examples:
@@ -113,6 +117,7 @@ export default function extractSymbol(
     // ObjectName.memberName = <Literal> | <ClassExpression> | <FunctionExpression>;
     // let symbolName = (() => <ClassExpression> | <FunctionExpression)();
     // let symbolName = (function() { class symbolName {}; return symbolName; })();
+    // propertyName:           <Literal> | <ClassExpression> | <FunctionExpression>,
 
     // NOTE: If this type of symbol is initialized to a <ClassExpression> or <FunctionExpression>,
     // it treated as a virtual symbol so that the assigned class/function (i.e. initially a child
@@ -122,14 +127,20 @@ export default function extractSymbol(
     // which is also treated as above. However, the call-expression itself is also becomes a virtual
     // symbol.
 
+
+    let init;
+
     if (isExpressionStatement(node)) {
       name = node.expression.left.property.name;
+      init = node.expression.right;
     } else if (isVariableDeclarator(node)) {
       name = node.id.name;
+      init = resolveInit(node);
+    } else {// ObjectProperty
+      name = node.key.name;
+      console.log(name);
+      init = node.value;
     }
-
-    init = isExpressionStatement(node) && isMemberExpression(node.expression.left) ?
-      node.expression.right : resolveInit(node);
 
     if (isClassExpression(init) || isFunctionExpression(init) ||
         (isCallExpression(init) &&
@@ -151,6 +162,8 @@ export default function extractSymbol(
       nodeSymbol.meta.object = resolveObject(node.expression.left);
       nodeSymbol.meta.scope = isInstancePropertyAssignment(node.expression.left) ?
         "instance" : "static";
+    } else if (isObjectProperty(node)) {
+      nodeSymbol.meta.scope = "static";
     }
   } else if (isInterfaceDeclaration(node) || isTSInterfaceDeclaration(node)) {
     // Example:
