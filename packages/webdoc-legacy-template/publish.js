@@ -689,6 +689,13 @@ exports.publish = (options) => {
   members = helper.getMembers(data);
   members.tutorials = tutorials;
 
+  function tutorialLinkGen(tut) {
+    SymbolLinks.createLink(tut);
+    tut.members.forEach((c) => tutorialLinkGen(c));
+  }
+
+  tutorials.forEach((t) => tutorialLinkGen(t));
+
   // output pretty-printed source files by default
   outputSourceFiles = conf.default && conf.default.outputSourceFiles !== false;
 
