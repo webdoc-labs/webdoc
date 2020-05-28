@@ -155,4 +155,4 @@ const argv = yargs.scriptName("@webdoc/cli")
   .command("$0", "Run webdoc", () => {})
   .argv;
 
-main(argv);
+main(argv).catch((e) => throw e);
