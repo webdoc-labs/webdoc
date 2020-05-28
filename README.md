@@ -9,22 +9,24 @@
 </p>
 
 <table align="center">
-  <th>
-  <td>webdoc</td>
-  <td>Example documentation</td>
-  </th>
   <tr>
-    <td>
-      <a href="https://dev.azure.com/webdoc-js/webdoc/_build/latest?definitionId=2&branchName=master">
-        <img src="https://dev.azure.com/webdoc-js/webdoc/_apis/build/status/webdoc-js.webdoc?branchName=master"></img>
-      </a>
-    </td>
-    <td>
-      <a href="https://dev.azure.com/webdoc-js/webdoc/_build/latest?definitionId=3&branchName=master">
-        <img src="https://dev.azure.com/webdoc-js/webdoc/_apis/build/status/webdoc-js.webdoc%20(1)?branchName=master"></img>
-      </a>
-    </td>
+  <th align="center">webdoc</th>
+  <th align="center">Example documentation</th>
   </tr>
+  <tbody align="center">
+    <tr>
+      <td>
+        <a href="https://dev.azure.com/webdoc-js/webdoc/_build/latest?definitionId=2&branchName=master">
+          <img src="https://dev.azure.com/webdoc-js/webdoc/_apis/build/status/webdoc-js.webdoc?branchName=master"></img>
+        </a>
+      </td>
+      <td>
+        <a href="https://dev.azure.com/webdoc-js/webdoc/_build/latest?definitionId=3&branchName=master">
+          <img src="https://dev.azure.com/webdoc-js/webdoc/_apis/build/status/webdoc-js.webdoc%20(1)?branchName=master"></img>
+        </a>
+      </td>
+    </tr>
+  </tbody>
 </table>
 
 This project is the next generation documentation generator for JavaScript-based languages. Right now, it is work-in-progress
