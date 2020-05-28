@@ -1,13 +1,12 @@
 // @flow
 // @webdoc/legacy-template uses flow comment syntax for easier migration!
 
-/* global Webdoc, process */
+/* global Webdoc */
 
 const _ = require("lodash");
 const commonPathPrefix = require("common-path-prefix");
 const fs = require("fs");
 const path = require("path");
-const {taffy} = require("taffydb");
 const helper = require("./helper");
 const hasOwnProp = Object.prototype.hasOwnProperty;
 const {TemplateRenderer, SymbolLinks, RelationsPlugin} = require("@webdoc/template-library");
@@ -412,6 +411,7 @@ function buildNav(members) {
   const seen = {};
   const seenTutorials = {};
 
+  nav += buildMemberNav(members.tutorials, "Tutorials", seen, linkto);
   nav += buildMemberNav(members.modules, "Modules", {}, linkto);
   nav += buildMemberNav(members.externals, "Externals", seen, linktoExternal);
   nav += buildMemberNav(members.namespaces, "Namespaces", seen, linkto);
@@ -419,7 +419,6 @@ function buildNav(members) {
   nav += buildMemberNav(members.interfaces, "Interfaces", seen, linkto);
   nav += buildMemberNav(members.events, "Events", seen, linkto);
   nav += buildMemberNav(members.mixins, "Mixins", seen, linkto);
-  nav += buildMemberNav(members.tutorials, "Tutorials", seenTutorials, linktoTutorial);
 
   if (members.globals.length) {
     globalNav = "";
@@ -536,6 +535,8 @@ exports.publish = (options) => {
   // data = helper.prune(data);
   data.sort("path, version, since");
   // helper.addEventListeners(data);
+
+  tutorials.forEach((t) => SymbolLinks.createLink(t));
 
   data().each((doclet) => {
     let sourcePath;
@@ -686,7 +687,7 @@ exports.publish = (options) => {
   });
 
   members = helper.getMembers(data);
-  // members.tutorials = tutorials.children;
+  members.tutorials = tutorials;
 
   // output pretty-printed source files by default
   outputSourceFiles = conf.default && conf.default.outputSourceFiles !== false;
@@ -751,34 +752,23 @@ exports.publish = (options) => {
     docPath = docPathEntry.value;
   }
 
-  /*
-
-  // TODO: move the tutorial functions to templateHelper.js
-  function generateTutorial(title, tutorial, filename) {
-    const tutorialData = {
-      title: title,
-      header: tutorial.title,
-      content: tutorial.parse(),
-      children: tutorial.children,
-    };
-    const tutorialPath = path.join(outdir, filename);
-    let html = view.render("tutorial.tmpl", tutorialData);
-
-    // yes, you can use {@link} in tutorials too!
-    html = helper.resolveLinks(html); // turn {@link foo} into <a href="foodoc.html">foo</a>
-
-    fs.writeFileSync(tutorialPath, html, "utf8");
-  }
+  const generatedTutorials = new Set/*: <string> */();
 
   // tutorials can have only one parent so there is no risk for loops
-  function saveChildren({children}) {
-    children.forEach((child) => {
-      generateTutorial(`Tutorial: ${child.title}`, child, helper.tutorialToUrl(child.name));
-      saveChildren(child);
+  function generateTutorialRecursive({members}) {
+    members.forEach((child) => {
+      if (generatedTutorials.has(child.name)) {
+        return;
+      }
+
+      generateTutorial(`Tutorial: ${child.title}`, child, SymbolLinks.pathToUrl.get(child.path));
+      generateTutorialRecursive(child);
+
+      generatedTutorials.add(child.name);
     });
   }
 
-  saveChildren(tutorials);*/
+  generateTutorialRecursive({members: tutorials});
 };
 
 // Generate a HTML page that contains the documentation for the given docs.
@@ -851,4 +841,22 @@ async function generateHomePage(pagePath /*: string */, rootDoc /*: RootDoc */) 
         members: arr,
       }],
     ).concat(files), pagePath);
+}
+
+// Generate a tutorial page
+function generateTutorial(title /*: string */, tutorial /*: Tutorial */, filename /*: string */) {
+  const tutorialData = {
+    title: title,
+    header: tutorial.title,
+    content: tutorial.content,
+    children: tutorial.members,
+  };
+
+  const tutorialPath = path.join(outdir, filename);
+  const html = view.render("tutorial.tmpl", tutorialData);
+
+  // yes, you can use {@link} in tutorials too!
+  // html = helper.resolveLinks(html); // turn {@link foo} into <a href="foodoc.html">foo</a>
+
+  fs.writeFileSync(tutorialPath, html, "utf8");
 }

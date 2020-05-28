@@ -6,6 +6,7 @@
   "scripts": {
     "build": "gulp build",
     "test": "",
+    "unit-test": "mocha ./packages/**/test/*",
     "prepublishOnly": "npm run build"
   },
   "repository": {

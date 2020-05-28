@@ -32,6 +32,7 @@ const STANDALONE_DOCS = [
   "FunctionDoc",
   "InterfaceDoc",
   "MixinDoc",
+  "TutorialDoc",
 ];
 
 const hasOwnProp = Object.prototype.hasOwnProperty;
@@ -316,6 +317,8 @@ function buildLink(docPath: string, linkText: string, options: LinkOptions) {
   if (typeof docPath !== "string") {
     docPath = docPath.path;// BaseDoc
   }
+
+  options.linkMap = options.linkMap || pathToUrl;
 
   const classString = options.cssClass ? ` class="${options.cssClass}"` : "";
   let fileUrl;

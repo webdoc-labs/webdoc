@@ -10,6 +10,7 @@ import {writeDoctree} from "@webdoc/externalize";
 import fs from "fs";
 import {performance} from "perf_hooks";
 import fse from "fs-extra";
+import {loadTutorials} from "./load-tutorials";
 
 export function initLogger(verbose: boolean = false) {
   const defaultLevel = verbose ? "INFO" : "WARN";
@@ -55,6 +56,7 @@ async function main(argv: yargs.Arguments<>) {
 
   const {loadConfig} = require("./config");
   const config = loadConfig(argv.config);
+  const tutorials = loadTutorials(argv.tutorials);
 
   // TODO: Fix what env/conf is?
   global.Webdoc.env = config;
@@ -131,7 +133,7 @@ async function main(argv: yargs.Arguments<>) {
     doctree,
     docDatabase: db,
     opts: config.opts,
-    tutorials: [],
+    tutorials,
   };
 
   if (template.publish && typeof template.publish === "function") {
@@ -146,9 +148,10 @@ async function main(argv: yargs.Arguments<>) {
 console.log("initializing ----------");
 
 const argv = yargs.scriptName("@webdoc/cli")
-  .usage("$0 -c webdoc.conf.json")
+  .usage("$0 -c <configFile> -u <tutorialDir>")
   .default("config", path.join(process.cwd(), "webdoc.conf.json"), "webdoc config file")
   .alias("c", "config")
+  .alias("u", "tutorials")
   .command("$0", "Run webdoc", () => {})
   .argv;
 

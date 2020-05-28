@@ -128,6 +128,13 @@ declare module "@webdoc/types" {
       type: "PropertyDoc"
     };
 
+    export type Tutorial = {
+      ...BaseDoc,
+      title: string,
+      contents: string,
+      type: "TutorialDoc"
+    };
+
     declare type TypedefDoc = {
       ...Doc,
       of: [string],
