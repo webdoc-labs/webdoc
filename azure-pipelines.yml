@@ -26,11 +26,6 @@ steps:
   workingDirectory: webdoc
 
 - script: |
-    npm run test
+    npm run unit-test
   displayName: "Run unit tests"
   workingDirectory: webdoc
-
-- script: |
-    ls .
-  displayName: "Test"
-  workingDirectory: example-documentation
