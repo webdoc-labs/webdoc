@@ -36,7 +36,7 @@ steps:
 - script: |
     rm -rf ./docs
     cd .. && npm run build && cd example
-    node ../packages/webdoc-cli/lib/index.js
+    npm run generate
     cp -r ./docs/* ../../example-documentation/
   displayName: "Generate example documentation & copy to webdoc-js/example-documentation"
   workingDirectory: webdoc/example
