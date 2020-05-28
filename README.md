@@ -4,13 +4,28 @@
 <h1 align="center">webdoc</h1>
 
 <p align="center">
-  
-<a href="https://dev.azure.com/webdoc-js/webdoc/_build/latest?definitionId=2&branchName=master">
-  <img src="https://dev.azure.com/webdoc-js/webdoc/_apis/build/status/webdoc-js.webdoc?branchName=master"></img>
-</a>
-<a href="(https://lerna.js.org/)"><img src="https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg"></img></a>
-<a href="https://www.codetriage.com/webdoc-js/webdoc"><img src="https://www.codetriage.com/webdoc-js/webdoc/badges/users.svg" /></a>
+  <a href="(https://lerna.js.org/)"><img src="https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg"></img></a>
+  <a href="https://www.codetriage.com/webdoc-js/webdoc"><img src="https://www.codetriage.com/webdoc-js/webdoc/badges/users.svg" /></a>
 </p>
+
+<table align="center">
+  <th>
+  <td>webdoc</td>
+  <td>Example documentation</td>
+  </th>
+  <tr>
+    <td>
+      <a href="https://dev.azure.com/webdoc-js/webdoc/_build/latest?definitionId=2&branchName=master">
+        <img src="https://dev.azure.com/webdoc-js/webdoc/_apis/build/status/webdoc-js.webdoc?branchName=master"></img>
+      </a>
+    </td>
+    <td>
+      <a href="https://dev.azure.com/webdoc-js/webdoc/_build/latest?definitionId=3&branchName=master">
+        <img src="https://dev.azure.com/webdoc-js/webdoc/_apis/build/status/webdoc-js.webdoc%20(1)?branchName=master"></img>
+      </a>
+    </td>
+  </tr>
+</table>
 
 This project is the next generation documentation generator for JavaScript-based languages. Right now, it is work-in-progress
 and supports enough features to generate the PixiJS documentation.
