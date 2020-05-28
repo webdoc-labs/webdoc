@@ -26,6 +26,14 @@ const defaultConfig = {
     mainPage: {
       title: "Main Page",
     },
+    default: {
+      includeDate: true,
+    },
+  },
+  templates: {
+    mainPage: {
+      title: "Main Page",
+    },
   },
   version: {
     number: 1,
