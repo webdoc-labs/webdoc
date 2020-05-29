@@ -5,6 +5,7 @@ import memberof from "./memberof";
 import prune from "./prune";
 import relatedResolution from "./related-resolution";
 import discoverMembers from "./discover-members";
+import sort from "./sort-members";
 import type {Doc, RootDoc} from "@webdoc/types";
 
 type DoctreeModRecord = {
@@ -127,6 +128,7 @@ registerDoctreeMod("MemberOfResolution", STAGE_SYMBOLS_RESOLVED, memberof);
 registerDoctreeMod("ExtendsImplementsMixesResolution", STAGE_SYMBOLS_RESOLVED, relatedResolution);
 registerDoctreeMod("ClassMemberDiscovery", STAGE_SYMBOLS_DISCOVERED, discoverMembers);
 registerDoctreeMod("Prune", STAGE_FINISHED, prune);
+registerDoctreeMod("Sort", STAGE_FINISHED, sort);
 
 export default function mod(doctree) {
   for (let i = 0; i < installedMods.length; i++) {

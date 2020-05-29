@@ -3,9 +3,13 @@ import fs from "fs";
 import {log, tags} from "missionlog";
 import merge from "lodash/merge";
 
+/* eslint-disable no-multi-spaces */
 const defaultConfig = {
+  docs: {
+    sort: "type, scope, access, name",                    // @webdoc/parser{mod:sort}
+  },
   source: {
-    includePattern: "./**/*.js",
+    includePattern: "./**/*.js",                          // @webdoc/cli{main}
   },
   conf: {
     tags: {
@@ -39,6 +43,7 @@ const defaultConfig = {
     number: 1,
   },
 };
+/* eslint-enable no-multi-spaces */
 
 export function loadConfig(file: string) {
   let config;

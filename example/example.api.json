@@ -2,271 +2,6 @@
 	"type": "RootDoc",
 	"children": [
 		{
-			"name": "CAR_MAKES",
-			"type": "EnumDoc",
-			"brief": "",
-			"children": [
-				{
-					"name": "TOYOTA",
-					"type": "PropertyDoc",
-					"access": "public",
-					"scope": "static",
-					"brief": ""
-				},
-				{
-					"name": "FERRARI",
-					"type": "PropertyDoc",
-					"access": "public",
-					"scope": "static",
-					"brief": ""
-				},
-				{
-					"name": "FORD",
-					"type": "PropertyDoc",
-					"access": "public",
-					"scope": "static",
-					"brief": ""
-				},
-				{
-					"name": "GENERAL_MOTORS",
-					"type": "PropertyDoc",
-					"access": "public",
-					"scope": "static",
-					"brief": ""
-				},
-				{
-					"name": "KIA",
-					"type": "PropertyDoc",
-					"access": "public",
-					"scope": "static",
-					"brief": ""
-				},
-				{
-					"name": "JAGUAR",
-					"type": "PropertyDoc",
-					"access": "public",
-					"scope": "static",
-					"brief": ""
-				},
-				{
-					"name": "LAMBORGHINI",
-					"type": "PropertyDoc",
-					"access": "public",
-					"scope": "static",
-					"brief": ""
-				}
-			]
-		},
-		{
-			"name": "CarDealer",
-			"type": "InterfaceDoc",
-			"brief": "",
-			"children": [
-				{
-					"name": "initiateTransaction",
-					"type": "MethodDoc",
-					"brief": ""
-				},
-				{
-					"name": "offerBid",
-					"type": "MethodDoc",
-					"brief": ""
-				},
-				{
-					"name": "offerAsk",
-					"type": "MethodDoc",
-					"brief": ""
-				},
-				{
-					"name": "closeTransaction",
-					"type": "MethodDoc",
-					"brief": ""
-				}
-			]
-		},
-		{
-			"name": "Car",
-			"type": "ClassDoc",
-			"brief": "",
-			"children": [
-				{
-					"name": "DEFAULT_DRIVE_SHIFT",
-					"type": "PropertyDoc",
-					"scope": "static",
-					"brief": ""
-				},
-				{
-					"name": "vin",
-					"type": "PropertyDoc",
-					"scope": "instance",
-					"brief": ""
-				},
-				{
-					"name": "onCrash",
-					"type": "MethodDoc",
-					"scope": "instance",
-					"brief": ""
-				},
-				{
-					"name": "registerRetail",
-					"type": "MethodDoc",
-					"scope": "static",
-					"brief": ""
-				},
-				{
-					"name": "mass",
-					"type": "PropertyDoc",
-					"scope": "instance",
-					"brief": ""
-				},
-				{
-					"name": "position",
-					"type": "PropertyDoc",
-					"scope": "instance",
-					"brief": ""
-				},
-				{
-					"name": "velocity",
-					"type": "PropertyDoc",
-					"scope": "instance",
-					"brief": ""
-				},
-				{
-					"name": "bounds",
-					"type": "PropertyDoc",
-					"scope": "instance",
-					"brief": ""
-				},
-				{
-					"name": "interactions",
-					"type": "PropertyDoc",
-					"scope": "instance",
-					"brief": ""
-				}
-			]
-		},
-		{
-			"name": "PhysicalInteraction",
-			"type": "ClassDoc",
-			"brief": "",
-			"children": [
-				{
-					"name": "constructor",
-					"type": "MethodDoc",
-					"scope": "instance",
-					"brief": ""
-				},
-				{
-					"name": "force",
-					"type": "MethodDoc",
-					"scope": "instance",
-					"brief": ""
-				},
-				{
-					"name": "GRAVITATIONAL_CONSTANT",
-					"type": "PropertyDoc",
-					"scope": "static",
-					"brief": ""
-				},
-				{
-					"name": "createGravity",
-					"type": "MethodDoc",
-					"scope": "static",
-					"brief": ""
-				}
-			]
-		},
-		{
-			"name": "Gravity",
-			"type": "ClassDoc",
-			"brief": "<p>This class shouldn't be documented!</p>",
-			"children": [
-				{
-					"name": "force",
-					"type": "MethodDoc",
-					"scope": "instance",
-					"brief": ""
-				}
-			]
-		},
-		{
-			"name": "PhysicalObject",
-			"type": "ClassDoc",
-			"brief": "",
-			"children": [
-				{
-					"name": "constructor",
-					"type": "MethodDoc",
-					"scope": "instance",
-					"brief": ""
-				},
-				{
-					"name": "mass",
-					"type": "PropertyDoc",
-					"scope": "instance",
-					"brief": ""
-				},
-				{
-					"name": "position",
-					"type": "PropertyDoc",
-					"scope": "instance",
-					"brief": ""
-				},
-				{
-					"name": "velocity",
-					"type": "PropertyDoc",
-					"scope": "instance",
-					"brief": ""
-				},
-				{
-					"name": "bounds",
-					"type": "PropertyDoc",
-					"scope": "instance",
-					"brief": ""
-				},
-				{
-					"name": "interactions",
-					"type": "PropertyDoc",
-					"scope": "instance",
-					"brief": ""
-				}
-			]
-		},
-		{
-			"name": "isPhysicalObject",
-			"type": "FunctionDoc",
-			"brief": ""
-		},
-		{
-			"name": "R",
-			"type": "NSDoc",
-			"brief": "",
-			"children": [
-				{
-					"name": "buildRoad",
-					"type": "MethodDoc",
-					"scope": "instance",
-					"brief": ""
-				},
-				{
-					"name": "DEFAULT_LANES",
-					"type": "PropertyDoc",
-					"scope": "static",
-					"brief": ""
-				},
-				{
-					"name": "Road",
-					"type": "ClassDoc",
-					"brief": ""
-				},
-				{
-					"name": "Road",
-					"type": "ClassDoc",
-					"brief": ""
-				}
-			]
-		},
-		{
 			"name": "PIXI",
 			"type": "NSDoc",
 			"brief": "",
@@ -298,10 +33,16 @@
 					]
 				},
 				{
-					"name": "System",
+					"name": "ObjectRenderer",
 					"type": "ClassDoc",
 					"brief": "",
 					"children": [
+						{
+							"name": "renderer",
+							"type": "PropertyDoc",
+							"scope": "instance",
+							"brief": ""
+						},
 						{
 							"name": "constructor",
 							"type": "MethodDoc",
@@ -315,87 +56,13 @@
 							"brief": ""
 						},
 						{
-							"name": "renderer",
-							"type": "PropertyDoc",
-							"scope": "instance",
-							"brief": ""
-						}
-					]
-				},
-				{
-					"name": "AbstractBatchRenderer",
-					"type": "ClassDoc",
-					"access": "protected",
-					"brief": "",
-					"children": [
-						{
-							"name": "constructor",
-							"type": "MethodDoc",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "bufferSize",
-							"type": "PropertyDoc",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "contextChange",
-							"type": "MethodDoc",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "initFlushBuffers",
-							"type": "MethodDoc",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "onPrerender",
+							"name": "flush",
 							"type": "MethodDoc",
 							"scope": "instance",
 							"brief": ""
 						},
 						{
 							"name": "render",
-							"type": "MethodDoc",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "buildTexturesAndDrawCalls",
-							"type": "MethodDoc",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "buildDrawCalls",
-							"type": "MethodDoc",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "bindAndClearTexArray",
-							"type": "MethodDoc",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "updateGeometry",
-							"type": "MethodDoc",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "drawBatches",
-							"type": "MethodDoc",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "flush",
 							"type": "MethodDoc",
 							"scope": "instance",
 							"brief": ""
@@ -411,35 +78,90 @@
 							"type": "MethodDoc",
 							"scope": "instance",
 							"brief": ""
+						}
+					]
+				},
+				{
+					"name": "System",
+					"type": "ClassDoc",
+					"brief": "",
+					"children": [
+						{
+							"name": "renderer",
+							"type": "PropertyDoc",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "constructor",
+							"type": "MethodDoc",
+							"scope": "instance",
+							"brief": ""
 						},
 						{
 							"name": "destroy",
 							"type": "MethodDoc",
 							"scope": "instance",
 							"brief": ""
+						}
+					]
+				},
+				{
+					"name": "AbstractBatchRenderer",
+					"type": "ClassDoc",
+					"access": "protected",
+					"brief": "",
+					"children": [
+						{
+							"name": "_drawCallPool",
+							"type": "PropertyDoc",
+							"scope": "static",
+							"brief": ""
 						},
 						{
-							"name": "getAttributeBuffer",
-							"type": "MethodDoc",
-							"access": "private",
+							"name": "_textureArrayPool",
+							"type": "PropertyDoc",
+							"scope": "static",
+							"brief": ""
+						},
+						{
+							"name": "bufferSize",
+							"type": "PropertyDoc",
 							"scope": "instance",
 							"brief": ""
 						},
 						{
-							"name": "getIndexBuffer",
-							"type": "MethodDoc",
-							"access": "private",
+							"name": "MAX_TEXTURES",
+							"type": "PropertyDoc",
 							"scope": "instance",
 							"brief": ""
 						},
 						{
-							"name": "packInterleavedGeometry",
-							"type": "MethodDoc",
+							"name": "renderer",
+							"type": "PropertyDoc",
 							"scope": "instance",
 							"brief": ""
 						},
 						{
-							"name": "shaderGenerator",
+							"name": "size",
+							"type": "PropertyDoc",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "state",
+							"type": "PropertyDoc",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "vertexSize",
+							"type": "PropertyDoc",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "_shader",
 							"type": "PropertyDoc",
 							"access": "protected",
 							"scope": "instance",
@@ -453,32 +175,14 @@
 							"brief": ""
 						},
 						{
-							"name": "vertexSize",
+							"name": "shaderGenerator",
 							"type": "PropertyDoc",
+							"access": "protected",
 							"scope": "instance",
 							"brief": ""
 						},
 						{
-							"name": "state",
-							"type": "PropertyDoc",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "size",
-							"type": "PropertyDoc",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "_vertexCount",
-							"type": "PropertyDoc",
-							"access": "private",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
-							"name": "_indexCount",
+							"name": "_aBuffers",
 							"type": "PropertyDoc",
 							"access": "private",
 							"scope": "instance",
@@ -506,9 +210,23 @@
 							"brief": ""
 						},
 						{
-							"name": "_shader",
+							"name": "_flushId",
 							"type": "PropertyDoc",
-							"access": "protected",
+							"access": "private",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "_iBuffers",
+							"type": "PropertyDoc",
+							"access": "private",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "_indexCount",
+							"type": "PropertyDoc",
+							"access": "private",
 							"scope": "instance",
 							"brief": ""
 						},
@@ -527,59 +245,50 @@
 							"brief": ""
 						},
 						{
-							"name": "_flushId",
+							"name": "_vertexCount",
 							"type": "PropertyDoc",
 							"access": "private",
 							"scope": "instance",
 							"brief": ""
 						},
 						{
-							"name": "_aBuffers",
-							"type": "PropertyDoc",
-							"access": "private",
+							"name": "bindAndClearTexArray",
+							"type": "MethodDoc",
 							"scope": "instance",
 							"brief": ""
 						},
 						{
-							"name": "_iBuffers",
-							"type": "PropertyDoc",
-							"access": "private",
+							"name": "buildDrawCalls",
+							"type": "MethodDoc",
 							"scope": "instance",
 							"brief": ""
 						},
 						{
-							"name": "MAX_TEXTURES",
-							"type": "PropertyDoc",
+							"name": "buildTexturesAndDrawCalls",
+							"type": "MethodDoc",
 							"scope": "instance",
 							"brief": ""
 						},
-						{
-							"name": "_drawCallPool",
-							"type": "PropertyDoc",
-							"scope": "static",
-							"brief": ""
-						},
-						{
-							"name": "_textureArrayPool",
-							"type": "PropertyDoc",
-							"scope": "static",
-							"brief": ""
-						},
-						{
-							"name": "renderer",
-							"type": "PropertyDoc",
-							"scope": "instance",
-							"brief": ""
-						}
-					]
-				},
-				{
-					"name": "ObjectRenderer",
-					"type": "ClassDoc",
-					"brief": "",
-					"children": [
 						{
 							"name": "constructor",
+							"type": "MethodDoc",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "contextChange",
+							"type": "MethodDoc",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "destroy",
+							"type": "MethodDoc",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "drawBatches",
 							"type": "MethodDoc",
 							"scope": "instance",
 							"brief": ""
@@ -591,7 +300,25 @@
 							"brief": ""
 						},
 						{
-							"name": "destroy",
+							"name": "initFlushBuffers",
+							"type": "MethodDoc",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "onPrerender",
+							"type": "MethodDoc",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "packInterleavedGeometry",
+							"type": "MethodDoc",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "render",
 							"type": "MethodDoc",
 							"scope": "instance",
 							"brief": ""
@@ -609,18 +336,302 @@
 							"brief": ""
 						},
 						{
-							"name": "render",
+							"name": "updateGeometry",
 							"type": "MethodDoc",
 							"scope": "instance",
 							"brief": ""
 						},
 						{
-							"name": "renderer",
-							"type": "PropertyDoc",
+							"name": "getAttributeBuffer",
+							"type": "MethodDoc",
+							"access": "private",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "getIndexBuffer",
+							"type": "MethodDoc",
+							"access": "private",
 							"scope": "instance",
 							"brief": ""
 						}
 					]
+				}
+			]
+		},
+		{
+			"name": "R",
+			"type": "NSDoc",
+			"brief": "",
+			"children": [
+				{
+					"name": "Road",
+					"type": "ClassDoc",
+					"brief": ""
+				},
+				{
+					"name": "Road",
+					"type": "ClassDoc",
+					"brief": ""
+				},
+				{
+					"name": "DEFAULT_LANES",
+					"type": "PropertyDoc",
+					"scope": "static",
+					"brief": ""
+				},
+				{
+					"name": "buildRoad",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": ""
+				}
+			]
+		},
+		{
+			"name": "Car",
+			"type": "ClassDoc",
+			"brief": "",
+			"children": [
+				{
+					"name": "DEFAULT_DRIVE_SHIFT",
+					"type": "PropertyDoc",
+					"scope": "static",
+					"brief": ""
+				},
+				{
+					"name": "bounds",
+					"type": "PropertyDoc",
+					"scope": "instance",
+					"brief": ""
+				},
+				{
+					"name": "interactions",
+					"type": "PropertyDoc",
+					"scope": "instance",
+					"brief": ""
+				},
+				{
+					"name": "mass",
+					"type": "PropertyDoc",
+					"scope": "instance",
+					"brief": ""
+				},
+				{
+					"name": "position",
+					"type": "PropertyDoc",
+					"scope": "instance",
+					"brief": ""
+				},
+				{
+					"name": "velocity",
+					"type": "PropertyDoc",
+					"scope": "instance",
+					"brief": ""
+				},
+				{
+					"name": "vin",
+					"type": "PropertyDoc",
+					"scope": "instance",
+					"brief": ""
+				},
+				{
+					"name": "registerRetail",
+					"type": "MethodDoc",
+					"scope": "static",
+					"brief": ""
+				},
+				{
+					"name": "onCrash",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": ""
+				}
+			]
+		},
+		{
+			"name": "Gravity",
+			"type": "ClassDoc",
+			"brief": "<p>This class shouldn't be documented!</p>",
+			"children": [
+				{
+					"name": "force",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": ""
+				}
+			]
+		},
+		{
+			"name": "PhysicalInteraction",
+			"type": "ClassDoc",
+			"brief": "",
+			"children": [
+				{
+					"name": "GRAVITATIONAL_CONSTANT",
+					"type": "PropertyDoc",
+					"scope": "static",
+					"brief": ""
+				},
+				{
+					"name": "createGravity",
+					"type": "MethodDoc",
+					"scope": "static",
+					"brief": ""
+				},
+				{
+					"name": "constructor",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": ""
+				},
+				{
+					"name": "force",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": ""
+				}
+			]
+		},
+		{
+			"name": "PhysicalObject",
+			"type": "ClassDoc",
+			"brief": "",
+			"children": [
+				{
+					"name": "bounds",
+					"type": "PropertyDoc",
+					"scope": "instance",
+					"brief": ""
+				},
+				{
+					"name": "interactions",
+					"type": "PropertyDoc",
+					"scope": "instance",
+					"brief": ""
+				},
+				{
+					"name": "mass",
+					"type": "PropertyDoc",
+					"scope": "instance",
+					"brief": ""
+				},
+				{
+					"name": "position",
+					"type": "PropertyDoc",
+					"scope": "instance",
+					"brief": ""
+				},
+				{
+					"name": "velocity",
+					"type": "PropertyDoc",
+					"scope": "instance",
+					"brief": ""
+				},
+				{
+					"name": "constructor",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": ""
+				}
+			]
+		},
+		{
+			"name": "Vector",
+			"type": "ClassDoc",
+			"brief": "",
+			"children": [
+				{
+					"name": "dimensions",
+					"type": "PropertyDoc",
+					"scope": "instance",
+					"brief": ""
+				},
+				{
+					"name": "create3D",
+					"type": "MethodDoc",
+					"scope": "static",
+					"brief": ""
+				},
+				{
+					"name": "add",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": ""
+				},
+				{
+					"name": "constructor",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": ""
+				},
+				{
+					"name": "equalTo",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": ""
+				},
+				{
+					"name": "isCompat",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": ""
+				}
+			]
+		},
+		{
+			"name": "CAR_MAKES",
+			"type": "EnumDoc",
+			"brief": "",
+			"children": [
+				{
+					"name": "FERRARI",
+					"type": "PropertyDoc",
+					"access": "public",
+					"scope": "static",
+					"brief": ""
+				},
+				{
+					"name": "FORD",
+					"type": "PropertyDoc",
+					"access": "public",
+					"scope": "static",
+					"brief": ""
+				},
+				{
+					"name": "GENERAL_MOTORS",
+					"type": "PropertyDoc",
+					"access": "public",
+					"scope": "static",
+					"brief": ""
+				},
+				{
+					"name": "JAGUAR",
+					"type": "PropertyDoc",
+					"access": "public",
+					"scope": "static",
+					"brief": ""
+				},
+				{
+					"name": "KIA",
+					"type": "PropertyDoc",
+					"access": "public",
+					"scope": "static",
+					"brief": ""
+				},
+				{
+					"name": "LAMBORGHINI",
+					"type": "PropertyDoc",
+					"access": "public",
+					"scope": "static",
+					"brief": ""
+				},
+				{
+					"name": "TOYOTA",
+					"type": "PropertyDoc",
+					"access": "public",
+					"scope": "static",
+					"brief": ""
 				}
 			]
 		},
@@ -639,47 +650,36 @@
 			]
 		},
 		{
-			"name": "Vector",
-			"type": "ClassDoc",
+			"name": "CarDealer",
+			"type": "InterfaceDoc",
 			"brief": "",
 			"children": [
 				{
-					"name": "constructor",
+					"name": "closeTransaction",
 					"type": "MethodDoc",
-					"scope": "instance",
 					"brief": ""
 				},
 				{
-					"name": "dimensions",
-					"type": "PropertyDoc",
-					"scope": "instance",
+					"name": "initiateTransaction",
+					"type": "MethodDoc",
 					"brief": ""
 				},
 				{
-					"name": "isCompat",
+					"name": "offerAsk",
 					"type": "MethodDoc",
-					"scope": "instance",
 					"brief": ""
 				},
 				{
-					"name": "equalTo",
+					"name": "offerBid",
 					"type": "MethodDoc",
-					"scope": "instance",
-					"brief": ""
-				},
-				{
-					"name": "add",
-					"type": "MethodDoc",
-					"scope": "instance",
-					"brief": ""
-				},
-				{
-					"name": "create3D",
-					"type": "MethodDoc",
-					"scope": "static",
 					"brief": ""
 				}
 			]
+		},
+		{
+			"name": "isPhysicalObject",
+			"type": "FunctionDoc",
+			"brief": ""
 		}
 	]
 }
