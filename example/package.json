@@ -1,6 +1,6 @@
 {
   "name": "@webdoc/example",
-  "version": "0.1.66-alpha.0",
+  "version": "0.1.67-alpha.0",
   "description": "Example documented repository using webdoc",
   "keywords": [
     "example",
@@ -28,7 +28,7 @@
     "url": "https://github.com/SukantPal/webdoc/issues"
   },
   "dependencies": {
-    "@webdoc/cli": "^0.1.66-alpha.0"
+    "@webdoc/cli": "^0.1.67-alpha.0"
   },
   "gitHead": "a2866c1a42f60180a74add7bc1b0f42d8bb16330"
 }
