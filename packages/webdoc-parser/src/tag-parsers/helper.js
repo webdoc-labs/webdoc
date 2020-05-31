@@ -1,5 +1,15 @@
 // @flow
 import type {DataType} from "@webdoc/types";
+import {IDENTIFIER} from "../constants";
+
+// Matches the first word as identifier
+export function matchIdentifier(value: string): any {
+  return IDENTIFIER.exec(value);
+}
+
+export function matchDataTypeClosure(value: string): any {
+  return /{([^{}])+}/.exec(value);
+}
 
 // This is a helper to parse "{Type} [-] description"
 export function parseTypedDescription(value: string): { dataType: DataType, description: string } {
@@ -34,5 +44,8 @@ export const StringUtils = {
     }
 
     return str.slice(0, index) + (add || "") + str.slice(index + count);
+  },
+  del(str: string, match: any): string {
+    return StringUtils.splice(str, match.index, match[0].length);
   },
 };

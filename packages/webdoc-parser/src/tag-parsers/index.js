@@ -9,3 +9,4 @@ export {parseFires} from "./parseFires";
 export {parseProperty} from "./parseProperty";
 export {parseExtends, parseImplements, parseMixes} from "./parseExtendsImplementsMixes";
 export {parseDeprecated, parseExample} from "./parseSimple";
+export {parseEnum} from "./parseEnum";

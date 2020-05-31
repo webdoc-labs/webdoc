@@ -50,7 +50,7 @@ declare module "@webdoc/types" {
       extends?: DocLink[],
       examples?: Example[],
       fires?: [],
-      scope: "static" | "instance" | "inner",
+      scope: "static" | "instance" | "inner" | "default", // default doesn't exist after the doc-tree is fully built
       version: "alpha" | "beta" | "internal" | "public" | "deprecated",
       type: "ClassDoc" | "FunctionDoc" | "MethodDoc" | "ObjectDoc" | "RootDoc" | "TypedefDoc",
       parserOpts?: ParserOpts
@@ -121,10 +121,14 @@ declare module "@webdoc/types" {
 
     declare type PropertyDoc = {
       ...Doc,
-      object: "this" | ?string,
-      dataType: DataType,
-      inherited: boolean,
-      inherits: PropertyDoc,
+      constant?: boolean,
+      dataType?: DataType,
+      dataValue?: string,     // Enumerations/constants
+      defaultValue?: string,
+      inherited?: boolean,
+      inherits?: PropertyDoc,
+      optional?: boolean,
+      readonly?: boolean,
       type: "PropertyDoc"
     };
 

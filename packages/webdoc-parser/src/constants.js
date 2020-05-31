@@ -1,6 +1,5 @@
-/**
- * The regex that can be used to split a canonical name into its constituent scope names.
- *
- * @const {string}
- */
+// This RegExp can be used to find simple-name delimiters in a canonical-name.
 export const CANONICAL_DELIMITER = /([.#~$])/;
+
+// This RegExp matches an ECMAScript identifier
+export const IDENTIFIER = /([\w$])+/;

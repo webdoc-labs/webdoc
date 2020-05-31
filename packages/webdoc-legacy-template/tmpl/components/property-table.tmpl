@@ -1,26 +1,47 @@
 <?js
     /* This component renders an array of properties (PropertyDoc) in a tabular format. */
 
-    const properties /*: PropertyDoc */ = obj;
+    /*::
+        declare obj = PropertyDoc[] | {
+          properties: PropertyDoc[],
+          noAttributes: boolean,
+          noType: boolean
+        }
+     */
+
+    let properties /*: PropertyDoc */;
+    let noAttributes = false;
+    let noType = false;
+
+    if (Array.isArray(obj)) {
+      properties = obj;
+    } else {
+      properties = obj.properties;
+      noAttributes = !!obj.noAttributes;
+      noType = !!obj.noType;
+    }
 
     /* Determine if we need these extra columns - "attributes", "default" */
-    let hasAttributes = false;
-    let hasDefault = false;
     let hasName = false;
+    let hasType = !noType;
+    let hasAttributes = false;
+    let hasDefaultValue = false;
+    let hasDataValue = false;
 
     properties.forEach((prop) => {
         if (!prop) { return; }
 
-        if (prop.optional || prop.nullable || prop.constant) {
-            hasAttributes = true;
-        }
-
         if (prop.name) {
             hasName = true;
         }
-
-        if (typeof prop.defaultValue !== 'undefined') {
-            hasDefault = true;
+        if (!noAttributes && (prop.optional || prop.nullable || prop.constant)) {
+            hasAttributes = true;
+        }
+        if (typeof prop.defaultValue !== "undefined") {
+            hasDefaultValue = true;
+        }
+        if (typeof prop.dataValue !== "undefined") {
+            hasDataValue = true;
         }
     });
 ?>
@@ -28,18 +49,22 @@
 <table class="properties">
     <thead>
     <tr>
-        <?js if (hasName) {?>
+        <?js if (hasName) { ?>
             <th>Name</th>
         <?js } ?>
 
-        <th>Type</th>
-
-        <?js if (hasAttributes) {?>
-            <th>Attributes</th>
+        <?js if (hasType) { ?>
+          <th>Type</th>
         <?js } ?>
 
-        <?js if (hasDefault) {?>
+        <?js if (hasAttributes) { ?>
+            <th>Attributes</th>
+        <?js } ?>
+        <?js if (hasDefaultValue) { ?>
             <th>Default</th>
+        <?js } ?>
+        <?js if (hasDataValue) { ?>
+            <th>Value</th>
         <?js } ?>
 
         <th class="last">Description</th>
@@ -53,17 +78,19 @@
     ?>
 
         <tr>
-            <?js if (hasName) {?>
+            <?js if (hasName) { ?>
                 <td class="name"><code><?js= prop.name ?></code></td>
             <?js } ?>
 
-            <td class="type">
-            <?js if (prop.type && prop.type.names) {?>
-                <?js= self.partial('type.tmpl', prop.type.names) ?>
+            <?js if (hasType) { ?>
+                <td class="type">
+                <?js if (prop.dataType && prop.dataType.length) {?>
+                    <?js= this.partial('type.tmpl', prop.dataType) ?>
+                <?js } ?>
+                </td>
             <?js } ?>
-            </td>
 
-            <?js if (hasAttributes) {?>
+            <?js if (hasAttributes) { ?>
                 <td class="attributes">
                     <?js if (prop.optional) { ?>
                         &lt;optional><br>
@@ -79,11 +106,19 @@
                 </td>
             <?js } ?>
 
-            <?js if (hasDefault) {?>
+            <?js if (hasDefaultValue) { ?>
                 <td class="default">
                 <?js if (typeof prop.defaultValue !== 'undefined') { ?>
                     <?js= self.htmlsafe(prop.defaultValue) ?>
                 <?js } ?>
+                </td>
+            <?js } ?>
+
+            <?js if (hasDataValue) { ?>
+                <td class="default">
+                <?js if (typeof prop.dataValue !== 'undefined') { ?>
+                    <?js= self.htmlsafe(prop.dataValue) ?>
+                <?js }?>
                 </td>
             <?js } ?>
 

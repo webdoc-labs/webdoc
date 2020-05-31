@@ -24,6 +24,7 @@ import {
   parseMixes,
   parseDeprecated,
   parseExample,
+  parseEnum,
 } from "./tag-parsers";
 
 import type {Tag, Doc} from "@webdoc/types";
@@ -52,6 +53,7 @@ const TAG_PARSERS: { [id: string]: TagParser } = {
   "access": parseAccess,
   "augments": parseExtends, // alias @extends
   "deprecated": parseDeprecated,
+  "enum": parseEnum,
   "event": parseEvent,
   "example": parseExample,
   "extends": parseExtends,

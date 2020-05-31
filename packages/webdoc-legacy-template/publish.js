@@ -257,7 +257,7 @@ function addSignatureReturns(f) {
 }
 
 function addSignatureTypes(f) {
-  const types = f.type ? buildItemTypeStrings(f) : [];
+  const types = f.dataType ? buildItemTypeStrings(f) : [];
 
   f.signature = `${f.signature || ""}<span class="type-signature">` +
         `${types.length ? ` :${types.join("|")}` : ""}</span>`;
@@ -680,7 +680,7 @@ exports.publish = (options) => {
   data().each((doc) => {
     doc.ancestors = getAncestorLinks(doc);
 
-    if (doc.type === "PropertyDoc") {
+    if (doc.type === "PropertyDoc" || doc.type === "EnumDoc") {
       addSignatureTypes(doc);
       addAttribs(doc);
     }

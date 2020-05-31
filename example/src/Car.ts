@@ -2,14 +2,14 @@ import {PhysicalObject} from "./PhysicalObject";
 
 /**
  * These are the possible types of car makes.
- * @enum
- * @property {number} TOYOTA - toyota make
- * @property {number} FERRARI
- * @property {number} FORD
- * @property {number} GENERAL_MOTORS
- * @property {number} KIA
- * @property {number} JAGUAR
- * @property {number} LAMBORGHINI
+ * @enum {number}
+ * @property {number} TOYOTA=a - toyota make
+ * @property {number} FERRARI=2
+ * @property {number} FORD=3
+ * @property {number} GENERAL_MOTORS=4
+ * @property {number} KIA=5
+ * @property {number} JAGUAR=6
+ * @property {number} LAMBORGHINI=7
  */
 enum CAR_MAKES {
   TOYOTA,

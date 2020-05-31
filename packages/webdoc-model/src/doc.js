@@ -34,7 +34,7 @@ export const createDoc = (name?: string, type?: string = "BaseDoc", options: any
     path: "",
     stack: [""],
     parent: null,
-    children: [],
+    members: [],
     tags: [],
     brief: "",
     description: "",
@@ -74,8 +74,8 @@ export const createDoc = (name?: string, type?: string = "BaseDoc", options: any
     }
   }
 
-  doc.children = doc.children || [];
-  doc.members = doc.children;
+  doc.members = doc.members || [];
+  doc.children = doc.members;
 
   // Link any pre-existing members to their parent
   for (let i = 0; i < doc.members.length; i++) {
