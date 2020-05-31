@@ -21,9 +21,22 @@ steps:
 
 - script: |
     npm install
+    npm install -g 
     npm run build
   displayName: "Install and build project"
   workingDirectory: webdoc
+
+- script: |
+    npx flow
+  displayName: "Type check"
+  workingDirectory: webdoc
+  continueOnError: true
+
+- script: |
+    npx eslint ./packages/*/src/**/*.js
+  displayName: "Lint"
+  workingDirectory: webdoc
+  continueOnError: true
 
 - script: |
     npm run unit-test
