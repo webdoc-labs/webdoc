@@ -15,6 +15,10 @@ export function extractDataValue(value: string): any {
     // Match everything until ending quote
     return /"([^"])*"/.exec(value);
   }
+  if (value.startsWith("'")) {
+    // Match everything until ending quote
+    return /'([^'])*'/.exec(value);
+  }
 
   return /(\w)+/.exec(value);
 }

@@ -45,6 +45,22 @@ describe("@webdoc/parser.parseProperty", function() {
     expect(propertyDoc.description).to.equal("<description>");
   });
 
+  it("@property {DataType} propertyName='DATA VALUE' <description>", function() {
+    const doc = {};
+
+    parseProperty("{DataType} propertyName='DATA VALUE' <description>", doc);
+
+    const propertyDoc = doc.members[0];
+
+    expect(propertyDoc.name).to.equal("propertyName");
+    expect(propertyDoc.dataType).to.not.equal(undefined);
+    expect(propertyDoc.dataType[0]).to.equal("DataType");
+    expect(propertyDoc.constant).to.equal(true);
+    expect(propertyDoc.dataValue).to.equal("'DATA VALUE'");
+    expect(propertyDoc.description).to.equal("<description>");
+  });
+
+
   it("@property {DataType}[propertyName] <description>", function() {
     const doc = {};
 
