@@ -1,6 +1,6 @@
 {
   "name": "@webdoc/tests",
-  "version": "0.1.68-alpha.0",
+  "version": "0.1.69-alpha.0",
   "description": "Tests for the webdoc monorepo",
   "keywords": [
     "tests",
@@ -30,8 +30,8 @@
     "url": "https://github.com/SukantPal/webdoc/issues"
   },
   "dependencies": {
-    "@webdoc/externalize": "^0.1.67-alpha.0",
-    "@webdoc/parser": "^0.1.68-alpha.0"
+    "@webdoc/externalize": "^0.1.69-alpha.0",
+    "@webdoc/parser": "^0.1.69-alpha.0"
   },
   "gitHead": "a2866c1a42f60180a74add7bc1b0f42d8bb16330"
 }
