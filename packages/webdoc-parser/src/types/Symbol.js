@@ -25,7 +25,8 @@ export type SymbolSignature = {
   params?: Param[],
   returns?: Return[],
   scope?: string,
-  type?: DocType
+  type?: DocType,
+  undocumented?: boolean
 }
 
 // This is a preliminary data-format that represents a documentable symbol.

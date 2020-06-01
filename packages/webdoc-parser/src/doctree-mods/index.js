@@ -72,6 +72,7 @@ export const STAGE_AST_LIKE = 100;
  */
 export const STAGE_SYMBOLS_RESOLVED = 200;
 
+// REMOVED
 /**
  * This stage is where additional symbols are "discovered" or "inferred". This include symbols that
  * are inherited and mixed in. Also, the `overrides` flag is also resolved for class members.
@@ -80,7 +81,7 @@ export const STAGE_SYMBOLS_RESOLVED = 200;
  *
  * @const {number}
  */
-export const STAGE_SYMBOLS_DISCOVERED = 300;
+// export const STAGE_SYMBOLS_DISCOVERED = 300;
 
 /**
  * This stage occurs after all symbol-hierarchy operations are done. This is the best place for
@@ -126,8 +127,8 @@ export function registerDoctreeMod(
 registerDoctreeMod("ASTMemberResolution", STAGE_AST_LIKE, memberResolution);
 registerDoctreeMod("MemberOfResolution", STAGE_SYMBOLS_RESOLVED, memberof);
 registerDoctreeMod("ExtendsImplementsMixesResolution", STAGE_SYMBOLS_RESOLVED, relatedResolution);
-registerDoctreeMod("ClassMemberDiscovery", STAGE_SYMBOLS_DISCOVERED, discoverMembers);
 registerDoctreeMod("Prune", STAGE_FINISHED, prune);
+registerDoctreeMod("ClassMemberDiscovery", STAGE_FINISHED, discoverMembers);
 registerDoctreeMod("Sort", STAGE_FINISHED, sort);
 
 export default function mod(doctree) {

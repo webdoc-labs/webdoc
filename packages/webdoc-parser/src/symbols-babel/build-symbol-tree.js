@@ -97,6 +97,8 @@ export const SymbolUtils = {
     symbol.loc = symbol.loc || pair.loc;
     symbol.name = symbol.name || pair.name;
 
+    symbol.meta.undocumented = !symbol.comment;
+
     // It is **important** give the second pair high precedence. Otherwise, the AST traversal
     // may fail to exit the pair's node.
     symbol.node = pair.node || symbol.node;
@@ -403,10 +405,10 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
       parent: parent,
       members: [],
       loc: node.loc,
-      metadata: {undocumented: true},
     }, nodeSymbol);
 
     nodeSymbol = SymbolUtils.addChild(nodeSymbol, parent);
+    nodeSymbol.meta.undocumented = true;
   } else {
     nodeSymbol = undefined;
   }

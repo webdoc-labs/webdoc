@@ -29,6 +29,53 @@ export function skipHello(): void {
   saidHello = true;
 }
 
+Object.defineProperties(PIXI, {
+  /**
+     * @constant {RegExp|string} SVG_SIZE
+     * @memberof PIXI
+     * @see PIXI.resources.SVGResource.SVG_SIZE
+     * @deprecated since 5.0.0
+     */
+  SVG_SIZE: {
+    get() {
+      deprecation(v5, "PIXI.utils.SVG_SIZE property has moved to PIXI.resources.SVGResource.SVG_SIZE");
+
+      return PIXI.SVGResource.SVG_SIZE;
+    },
+  },
+  /**
+   * @class PIXI.TilingSprite
+   * @see PIXI.TilingSprite
+   * @deprecated since 5.0.0
+   */
+  TilingSprite: {
+    get() {
+      deprecation(v5, "PIXI.extras.TilingSprite class has moved to PIXI.TilingSprite");
+
+      return PIXI.TilingSprite;
+    },
+  },
+  /**
+   * Constants that specify the transform type.
+   *
+   * @static
+   * @constant
+   * @name TRANSFORM_MODE
+   * @memberof PIXI
+   * @enum {number}
+   * @deprecated since 5.0.0
+   * @property {number} STATIC
+   * @property {number} DYNAMIC
+   */
+  TRANSFORM_MODE: {
+    get() {
+      deprecation(v5, "PIXI.TRANSFORM_MODE property has been removed");
+
+      return {STATIC: 0, DYNAMIC: 1};
+    },
+  },
+});
+
 /** @memberof PIXI */
 export class AbstractRenderer {
   /**

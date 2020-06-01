@@ -20,17 +20,15 @@
 					]
 				},
 				{
+					"name": "TilingSprite",
+					"type": "ClassDoc",
+					"scope": "static",
+					"brief": ""
+				},
+				{
 					"name": "AbstractRenderer",
 					"type": "ClassDoc",
-					"brief": "",
-					"children": [
-						{
-							"name": "backgroundColor",
-							"type": "PropertyDoc",
-							"scope": "instance",
-							"brief": ""
-						}
-					]
+					"brief": ""
 				},
 				{
 					"name": "ObjectRenderer",
@@ -264,12 +262,6 @@
 							"brief": ""
 						},
 						{
-							"name": "buildTexturesAndDrawCalls",
-							"type": "MethodDoc",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
 							"name": "constructor",
 							"type": "MethodDoc",
 							"scope": "instance",
@@ -336,12 +328,6 @@
 							"brief": ""
 						},
 						{
-							"name": "updateGeometry",
-							"type": "MethodDoc",
-							"scope": "instance",
-							"brief": ""
-						},
-						{
 							"name": "getAttributeBuffer",
 							"type": "MethodDoc",
 							"access": "private",
@@ -353,6 +339,34 @@
 							"type": "MethodDoc",
 							"access": "private",
 							"scope": "instance",
+							"brief": ""
+						}
+					]
+				},
+				{
+					"name": "SVG_SIZE",
+					"type": "PropertyDoc",
+					"scope": "static",
+					"brief": ""
+				},
+				{
+					"name": "TRANSFORM_MODE",
+					"type": "PropertyDoc",
+					"scope": "static",
+					"brief": "",
+					"children": [
+						{
+							"name": "DYNAMIC",
+							"type": "PropertyDoc",
+							"access": "public",
+							"scope": "static",
+							"brief": ""
+						},
+						{
+							"name": "STATIC",
+							"type": "PropertyDoc",
+							"access": "public",
+							"scope": "static",
 							"brief": ""
 						}
 					]
@@ -480,12 +494,6 @@
 					"brief": ""
 				},
 				{
-					"name": "constructor",
-					"type": "MethodDoc",
-					"scope": "instance",
-					"brief": ""
-				},
-				{
 					"name": "force",
 					"type": "MethodDoc",
 					"scope": "instance",
@@ -527,12 +535,6 @@
 					"type": "PropertyDoc",
 					"scope": "instance",
 					"brief": ""
-				},
-				{
-					"name": "constructor",
-					"type": "MethodDoc",
-					"scope": "instance",
-					"brief": ""
 				}
 			]
 		},
@@ -548,19 +550,7 @@
 					"brief": ""
 				},
 				{
-					"name": "create3D",
-					"type": "MethodDoc",
-					"scope": "static",
-					"brief": ""
-				},
-				{
 					"name": "add",
-					"type": "MethodDoc",
-					"scope": "instance",
-					"brief": ""
-				},
-				{
-					"name": "constructor",
 					"type": "MethodDoc",
 					"scope": "instance",
 					"brief": ""

@@ -5,6 +5,7 @@ import {removeChildDoc} from "@webdoc/model";
 export default function prune(doc: Doc, root: RootDoc) {
   if (doc.tags.find((tag) => tag.name === "ignore")) {
     removeChildDoc(doc);
+    return;
   } else {
     for (let i = 0; i < doc.children.length; i++) {
       prune(doc.children[i], root);
