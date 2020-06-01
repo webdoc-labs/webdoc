@@ -53,7 +53,5 @@
     "minimist": "^1.2.5",
     "mocha": "^7.1.1"
   },
-  "dependencies": {
-    "@webdoc/cli": "^0.1.58-alpha.0"
-  }
+  "dependencies": {}
 }
