@@ -1,7 +1,7 @@
 // @flow
 
 import type {TemplatePipelineElement} from "../TemplatePipelineElement";
-import {SymbolLinks} from "./SymbolLinks";
+import {SymbolLinks} from "../SymbolLinks";
 
 const LINK_PATTERN = /{@link ([^}]*)}/g;
 
@@ -43,7 +43,10 @@ export class TemplateTagsResolver implements TemplatePipelineElement<{}> {
         replaced = SymbolLinks.linkTo(link, link);
       }
 
-      input = input.slice(0, linkMatch.index) + replaced + input.slice(linkMatch.index);
+      input =
+        input.slice(0, linkMatch.index) +
+        replaced +
+        input.slice(linkMatch.index + linkMatch[0].length);
     }
 
     return input;

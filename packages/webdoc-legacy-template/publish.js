@@ -9,10 +9,17 @@ const fs = require("fs");
 const path = require("path");
 const helper = require("./helper");
 const hasOwnProp = Object.prototype.hasOwnProperty;
-const {TemplateRenderer, SymbolLinks, RelationsPlugin} = require("@webdoc/template-library");
+const {
+  TemplateRenderer,
+  TemplatePipeline,
+  TemplateTagsResolver, // <<TemplatePipelineElement>>
+  SymbolLinks,
+  RelationsPlugin,
+} = require("@webdoc/template-library");
 const {doc: findDoc, isClass, isInterface, isNamespace, isMixin, isModule, isExternal} = require("@webdoc/model");
 const fsp = require("fs").promises;
 
+let pipeline;
 let view;
 
 TemplateRenderer.prototype.linkto = helper.linkto;
@@ -511,10 +518,11 @@ exports.publish = (options) => {
   templatePath = __dirname;
 
   view = new TemplateRenderer(path.join(templatePath, "tmpl"), docDatabase, docTree);
-
-  // Might use this
   view.installPlugin("relations", RelationsPlugin);
   view.plugins.relations.buildRelations();
+
+  pipeline = new TemplatePipeline(view);
+  pipeline.pipe(new TemplateTagsResolver());
 
   // claim some special filenames in advance, so the All-Powerful Overseer of Filename Uniqueness
   // doesn't try to hand them out later
@@ -779,9 +787,7 @@ exports.publish = (options) => {
 };
 
 // Generate a HTML page that contains the documentation for the given docs.
-function generate(title, docs, filename, resolveLinks) {
-  resolveLinks = resolveLinks !== false;
-
+function generate(title, docs, filename) {
   const docData = {
     env: env,
     title: title,
@@ -789,11 +795,7 @@ function generate(title, docs, filename, resolveLinks) {
   };
 
   const outpath = path.join(outdir, filename);
-  let html = view.render("container.tmpl", docData);
-
-  if (resolveLinks) {
-    html = helper.resolveLinks(html); // turn {@link foo} into <a href="foodoc.html">foo</a>
-  }
+  const html = pipeline.render("container.tmpl", docData);
 
   fs.writeFile(outpath, html, "utf8", (err) => {
     if (!err) {

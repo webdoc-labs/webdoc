@@ -94,7 +94,9 @@ export class AbstractRenderer {
 }
 
 /**
- * System is a base class used for extending systems used by the {@link PIXI.Renderer}
+ * System is a base class used for extending systems used by the {@link PIXI.AbstractRenderer}.
+ *
+ * Search more here: {@link https://www.google.com/}
  *
  * @see PIXI.Renderer#addSystem
  * @class
