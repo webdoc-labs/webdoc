@@ -2,6 +2,8 @@ import {parserLogger, tag} from "../Logger";
 import type {MemberTag} from "@webdoc/types";
 import {StringUtils} from "./helper";
 
+// @member {<DATA_TYPE>}
+
 // Parses @member {DataType} tags (no description)
 export function parseMember(value: string, options: any): MemberTag {
   // Extract {DataType}

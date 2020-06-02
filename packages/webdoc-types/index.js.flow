@@ -47,10 +47,17 @@ declare module "@webdoc/types" {
       brief: string,
       description: string,
       access: "public" | "protected" | "private",
+      authors: string[],
+      deprecated?: string,
       extends?: DocLink[],
       examples?: Example[],
       fires?: [],
+      license?: string,
       scope: "static" | "instance" | "inner" | "default", // default doesn't exist after the doc-tree is fully built
+      see?: DocLink[],
+      since?: string,
+      todo?: string[],
+      throws?: DocLink[],
       version: "alpha" | "beta" | "internal" | "public" | "deprecated",
       type: "ClassDoc" | "FunctionDoc" | "MethodDoc" | "ObjectDoc" | "RootDoc" | "TypedefDoc",
       parserOpts?: ParserOpts

@@ -25,6 +25,13 @@ import {
   parseDeprecated,
   parseExample,
   parseEnum,
+  parseAuthor,
+  parseCopyright,
+  parseDefault,
+  parseLicense,
+  parseTodo,
+  parseThrows,
+  parseSince,
 } from "./tag-parsers";
 
 import type {Tag, Doc} from "@webdoc/types";
@@ -52,6 +59,9 @@ function createTagParser(type: string) {
 const TAG_PARSERS: { [id: string]: TagParser } = {
   "access": parseAccess,
   "augments": parseExtends, // alias @extends
+  "author": parseAuthor,
+  "copyright": parseCopyright,
+  "default": parseDefault,
   "deprecated": parseDeprecated,
   "enum": parseEnum,
   "event": parseEvent,
@@ -62,6 +72,7 @@ const TAG_PARSERS: { [id: string]: TagParser } = {
   "instance": parseInstance,
   "interface": createTagParser("InterfaceTag"),
   "implements": parseImplements,
+  "license": parseLicense,
   "member": parseMember,
   "method": createTagParser("MethodTag"),
   "mixes": parseMixes,
@@ -75,8 +86,11 @@ const TAG_PARSERS: { [id: string]: TagParser } = {
   "return": parseReturn,
   "returns": parseReturn, // alias @return
   "scope": parseScope,
+  "since": parseSince,
   "static": parseStatic,
   "tag": (name: string, value: string): Tag => ({name, value}),
+  "todo": parseTodo,
+  "throws": parseThrows,
   "typedef": parseTypedef,
 };
 

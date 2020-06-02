@@ -2,6 +2,10 @@
 
 import type {ExtendsTag, ImplementsTag, MixesTag} from "@webdoc/types";
 
+// @extends     <SUPER_CLASS>
+// @implements  <INTERFACE>
+// @mixes       <MIXIN>
+
 // Parses "@extends ExtendedClass" tags
 export function parseExtends(value: string, options: $Shape<Doc>): ExtendsTag {
   if (!options.extends) {

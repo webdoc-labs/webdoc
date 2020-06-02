@@ -1,6 +1,11 @@
 import {parserLogger, tag} from "../Logger";
 import type {PublicTag, ProtectedTag, PrivateTag, AccessTag} from "@webdoc/types";
 
+// @access <"public" | "private" | "protected">
+// @public
+// @protected
+// @private
+
 // Parse the @access [public, private, protected] tag
 export function parseAccess(value: string, options: any): AccessTag {
   value = value.trim();
