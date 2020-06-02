@@ -2,6 +2,8 @@
 import type {TypedefTag} from "@webdoc/types";
 import {parserLogger, tag} from "../Logger";
 
+// @typedef {<DATA_TYPE>} <NAME>
+
 // Parse the "@typedef {of} alias" tag
 export function parseTypedef(value: string, options: any): TypedefTag {
   // Get {ReferredType}

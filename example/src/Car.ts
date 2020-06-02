@@ -10,6 +10,8 @@ import {PhysicalObject} from "./PhysicalObject";
  * @property {number} KIA=5
  * @property {number} JAGUAR=6
  * @property {number} LAMBORGHINI=7
+ *
+ * @see CarDealer
  */
 enum CAR_MAKES {
   TOYOTA,

@@ -60,6 +60,11 @@ class Road {
  * Checks whether the object is an instance of {@code PhysicalObject}.
  * @param {Object} object
  * @return {boolean}
+ * @author Shukant K. Pal &lt;shukantpal@outlook.com&gt;
+ * @see PhysicalObject
+ * @license MIT
+ * @since 2020
+ * @copyright Shukant K. Pal (C) 2020
  */
 export function isPhysicalObject(object) {
   return true;

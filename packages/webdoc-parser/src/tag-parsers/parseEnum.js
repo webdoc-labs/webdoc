@@ -2,6 +2,8 @@
 import type {Doc, EnumTag} from "@webdoc/types";
 import {matchDataTypeClosure, StringUtils} from "./helper";
 
+// @enum [{<DATA_TYPE>}] [<NAME>]
+
 export function parseEnum(value: string, doc: $Shape<Doc>): EnumTag {
   const dataTypeClosure = matchDataTypeClosure(value);
 

@@ -3,10 +3,10 @@ import type {Doc, PropertyTag} from "@webdoc/types";
 import {createDoc} from "@webdoc/model";
 import {matchDataTypeClosure, StringUtils} from "./helper";
 
-// @property {DataType} simpleName - description
-// @property {DataType} simpleName=dataValue - description
-// @property {DataType} simpleName="data value" - description
-// @property {DataType} [simpleName=defaultValue] - description
+// @property {<DATA_TYPE>} <NAME>                      - <DESC>
+// @property {<DATA_TYPE>} <NAME>=<DATA_VALUE>         - <DESC>
+// @property {<DATA_TYPE>} <NAME>="<DATA STRING>"      - <DESC>
+// @property {<DATA_TYPE>} [<NAME>=<DEFAULT_VALUE>]    - <DESC>
 
 // Extract the data-value from the given string. It is expected that preceeding tokens are removed
 // & the data-value is the first thing in the string.

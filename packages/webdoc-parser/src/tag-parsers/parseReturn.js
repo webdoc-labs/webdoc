@@ -2,6 +2,8 @@
 import type {Doc, ReturnTag} from "@webdoc/types";
 import {parserLogger, tag} from "../Logger";
 
+// @return {<DATA_TYPE>} [-] <DESC>
+
 // Parse the "@return {ReturnType} description" tag
 export function parseReturn(value: string, doc: $Shape<Doc>): ReturnTag {
   // Get {ReferredType}

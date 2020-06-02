@@ -55,7 +55,7 @@ var self = this;
         <?js= this.partial('params.tmpl', params) ?>
 <?js } ?>
 
-<?js= this.partial('details.tmpl', doc) ?>
+<?js= this.partial('components/details.tmpl', doc) ?>
 
 <?js if (doc.type !== 'module' && doc.requires && doc.requires.length) { ?>
 <h5>Requires:</h5>
@@ -97,14 +97,14 @@ var self = this;
     <?js });
 } } ?>
 
-<?js if (doc.exceptions && exceptions.length) { ?>
+<?js if (doc.throws && throws.length) { ?>
 <h5>Throws:</h5>
-<?js if (exceptions.length > 1) { ?><ul><?js
-    exceptions.forEach(function(r) { ?>
+<?js if (throws.length > 1) { ?><ul><?js
+    throws.forEach((r) => { ?>
         <li><?js= self.partial('exceptions.tmpl', r) ?></li>
     <?js });
 ?></ul><?js } else {
-    exceptions.forEach(function(r) { ?>
+    throws.forEach(function(r) { ?>
         <?js= self.partial('exceptions.tmpl', r) ?>
     <?js });
 } } ?>

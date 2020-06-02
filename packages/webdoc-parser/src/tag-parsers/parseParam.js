@@ -2,6 +2,10 @@
 
 import type {Doc, ParamTag} from "@webdoc/types";
 
+// @param {<DATA_TYPE>} <NAME>                      - <DESC>
+// @param {<DATA_TYPE>} [<NAME>]                    - <DESC>
+// @param {<DATA_TYPE>} [<NAME>=<DEFAULT_VALUE>]    - <DESC>
+
 // Extracts the parameter's identifier & related information that occurs after the type
 function extractidentifier(from: string, index: number = 0): {
   identifier: string,
@@ -74,7 +78,7 @@ export function parseParam(value: string, options: $Shape<Doc>): ParamTag {
 
   let ref;
 
-  if (!!refClosure) {
+  if (refClosure) {
     ref = refClosure[0].slice(1, -1);
     extractable = extractable.replace(
       new RegExp(`(.{${refClosure.index}}).{${refClosure.index + refClosure[0].length}}`), "$1");
