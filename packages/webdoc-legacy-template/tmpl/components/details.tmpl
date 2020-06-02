@@ -1,0 +1,166 @@
+<?js /* This component renders the bullet-point details of a document. */
+
+const doc = obj;
+var self = this;
+var defaultObjectClass = '';
+
+// TODO: JSDoc legacy, fix this:
+// Check if the default value is an object or array; if so, apply code highlighting
+if (doc.defaultValue && (doc.defaultvaluetype === 'object' || doc.defaultvaluetype === 'array')) {
+    doc.defaultvalue = "<pre class=\"prettyprint\"><code>" + doc.defaultvalue + "</code></pre>";
+    defaultObjectClass = ' class="object-value"';
+}
+?>
+<?js
+    const properties = this.getProperties(doc);
+
+    if (properties && properties.length && properties.forEach && !doc.hideconstructor) {
+?>
+    <h5 class="subsection-title">Properties:</h5>
+
+    <?js // Don't render property types for Enums ?>
+    <?js= this.partial('components/property-table.tmpl', { properties, noType: doc.type === "EnumDoc" }) ?>
+<?js } ?>
+
+<dl class="details">
+    <?js if (doc.version) {?>
+        <dt class="tag-version">Version:</dt>
+        <dd class="tag-version"><ul class="dummy"><li><?js= version ?></li></ul></dd>
+    <?js } ?>
+
+    <?js if (doc.since) {?>
+        <dt class="tag-since">Since:</dt>
+        <dd class="tag-since"><ul class="dummy"><li><?js= since ?></li></ul></dd>
+    <?js } ?>
+
+    <?js if (doc.inherited && doc.inherits && !doc.overrides) { ?>
+        <dt class="inherited-from">Inherited From:</dt>
+        <dd class="inherited-from"><ul class="dummy"><li>
+            <?js= this.linkto(doc.inherits, this.htmlsafe(doc.inherits)) ?>
+        </li></ul></dd>
+    <?js } ?>
+
+    <?js if (doc.overrides) { ?>
+        <dt class="tag-overrides">Overrides:</dt>
+        <dd class="tag-overrides"><ul class="dummy"><li>
+            <?js= this.linkto(doc.overrides, this.htmlsafe(doc.overrides)) ?>
+        </li></ul></dd>
+    <?js } ?>
+
+    <?js if (doc.implementations && doc.implementations.length) { ?>
+        <dt class="implementations">Implementations:</dt>
+        <dd class="implementations"><ul>
+            <?js doc.implementations.forEach(function(impl) { ?>
+                <li><?js= self.linkto(impl, self.htmlsafe(impl)) ?></li>
+            <?js }); ?>
+        </ul></dd>
+    <?js } ?>
+
+    <?js if (doc.implements && doc.implements.length) { ?>
+        <dt class="implements">Implements:</dt>
+        <dd class="implements">
+            <ul>
+                <?js doc.implements.forEach((interface) => { ?>
+                    <li>
+                          <?js= this.resolveDocLink(interface) ?>
+                    </li>
+                <?js }); ?>
+            </ul>
+        </dd>
+    <?js } ?>
+
+    <?js if (doc.mixes && doc.mixes.length) { ?>
+        <dt class="mixes">Mixes In:</dt>
+        <dd class="mixes">
+            <ul>
+                <?js doc.mixes.forEach((mixin) => { ?>
+                    <li><?js= this.resolveDocLink(mixin) ?></li>
+                <?js }); ?>
+            </ul>
+      </dd>
+    <?js } ?>
+
+    <?js if (doc.deprecated) { ?>
+        <dt class="important tag-deprecated">Deprecated:</dt>
+        <?js
+            if (doc.deprecated === true) { ?>
+                <dd class="yes-def tag-deprecated"><ul class="dummy"><li>Yes</li></ul></dd><?js }
+            else { ?>
+                <dd><ul class="dummy"><li><?js= doc.deprecated ?></li></ul></dd>
+        <?js } ?>
+    <?js } ?>
+
+    <?js if (doc.authors) {?>
+        <dt class="tag-author">Author:</dt>
+        <dd class="tag-author">
+            <ul>
+                <?js doc.authors.forEach((authorName) => { ?>
+                    <li><?js= authorName ?></li>
+                <?js }); ?>
+            </ul>
+        </dd>
+    <?js } ?>
+
+    <?js if (doc.copyright) {?>
+        <dt class="tag-copyright">Copyright:</dt>
+        <dd class="tag-copyright"><ul class="dummy"><li><?js= copyright ?></li></ul></dd>
+    <?js } ?>
+
+    <?js if (doc.license) {?>
+        <dt class="tag-license">License:</dt>
+        <dd class="tag-license"><ul class="dummy"><li><?js= license ?></li></ul></dd>
+    <?js } ?>
+
+    <?js if (doc.defaultValue) {?>
+        <dt class="tag-default">Default Value:</dt>
+        <dd class="tag-default">
+            <ul class="dummy">
+                <li<?js= defaultObjectClass ?>><?js= doc.defaultValue ?></li>
+            </ul>
+        </dd>
+    <?js } ?>
+
+    <?js if (doc.meta && self.outputSourceFiles) {?>
+        <dt class="tag-source">Source:</dt>
+        <dd class="tag-source">
+            <ul class="dummy">
+                <li>
+                    <?js= self.linkto(meta.shortpath) ?>, <?js= self.linkto(meta.shortpath, 'line ' + meta.lineno, null, 'line' + meta.lineno) ?>
+                </li>
+            </ul>
+        </dd>
+    <?js } ?>
+
+    <?js if (doc.tutorials && tutorials.length) {?>
+        <dt class="tag-tutorial">Tutorials:</dt>
+        <dd class="tag-tutorial">
+            <ul>
+                <?js tutorials.forEach(function(t) { ?>
+                    <li><?js= self.tutoriallink(t) ?></li>
+                <?js }); ?>
+            </ul>
+        </dd>
+    <?js } ?>
+
+    <?js if (doc.see && see.length) {?>
+        <dt class="tag-see">See:</dt>
+        <dd class="tag-see">
+            <ul>
+                <?js see.forEach((s) => { ?>
+                    <li><?js= self.linkTo(s) ?></li>
+                <?js }); ?>
+            </ul>
+        </dd>
+    <?js } ?>
+
+    <?js if (doc.todo && todo.length) {?>
+        <dt class="tag-todo">To Do:</dt>
+        <dd class="tag-todo">
+            <ul>
+                <?js todo.forEach((t) => { ?>
+                    <li><?js= t ?></li>
+                <?js }); ?>
+            </ul>
+        </dd>
+    <?js } ?>
+</dl>
