@@ -3,7 +3,7 @@
 import type {Node, SourceLocation} from "@babel/types";
 import type {DocType, Param, Return} from "@webdoc/types";
 
-// Ignore symbol when building doc-tree
+// Ignore symbol when building document-tree
 export const PASS_THROUGH = 1 << 0;
 
 // Any members must be ignored and not be included in the doc-tree. These are usually skipped

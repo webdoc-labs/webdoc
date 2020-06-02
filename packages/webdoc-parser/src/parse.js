@@ -31,7 +31,7 @@ export function registerLanguage(lang: LanguageIntegration): void {
 registerLanguage(langJS);
 registerLanguage(langTS);
 
-function buildSymbolTree(file: string, fileName ?: string = ".js"): Symbol {
+export function buildSymbolTree(file: string, fileName ?: string = ".js"): Symbol {
   const lang = languages[fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length)];
 
   if (!lang) {
