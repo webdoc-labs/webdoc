@@ -39,7 +39,7 @@ export const SymbolUtils = {
     for (let i = 0; i < scope.members.length; i++) {
       const child = members[i];
 
-      if (child.name && child.name === doc.name) {
+      if (child.simpleName && child.simpleName === doc.simpleName) {
         return SymbolUtils.coalescePair(child, doc);
       }
       if (SymbolUtils.areEqualLoc(child, doc)) {
@@ -73,7 +73,8 @@ export const SymbolUtils = {
 
     //  if (!isVirtual(doc)) {
     doc.parent = scope;
-    doc.path = [...scope.path, doc.name];
+    doc.canonicalName = parent.canonicalName + "." + doc.simpleName;
+    doc.path = [...scope.path, doc.simpleName];
     //  } else {
     //    doc.parent = scope;
     //    doc.path = [...scope.path];
@@ -95,7 +96,7 @@ export const SymbolUtils = {
     symbol.meta = _.assignWith(symbol.meta, pair.meta, (objValue, srcValue) =>
       _.isUndefined(srcValue) ? objValue : srcValue);
     symbol.loc = symbol.loc || pair.loc;
-    symbol.name = symbol.name || pair.name;
+    symbol.simpleName = symbol.simpleName || pair.simpleName;
 
     symbol.meta.undocumented = !symbol.comment;
 
@@ -127,7 +128,7 @@ export const SymbolUtils = {
     return comments.length - 1;
   },
   logRecursive(sym: Symbol, prefix = ""): void {
-    parserLogger.info("Debug", prefix + (sym.name || "-no-name-") + " " + sym.flags +
+    parserLogger.info("Debug", prefix + (sym.simpleName || "-no-name-") + " " + sym.flags +
       ` [${sym.meta ? sym.meta.type : "-no-meta-"}]`);
 
     for (let i = 0; i < sym.members.length; i++) {
@@ -137,7 +138,7 @@ export const SymbolUtils = {
   createModuleSymbol(): Symbol {
     return {
       node: null,
-      name: "File",
+      simpleName: "File",
       flags: 0,
       path: [],
       comment: "",
@@ -150,7 +151,7 @@ export const SymbolUtils = {
   createHeadlessSymbol(comment: string, loc: SourceLocation, scope: Symbol): Symbol {
     return {
       node: null,
-      name: "",
+      simpleName: "",
       flags: 0,
       path: [...scope.path, ""],
       comment,
@@ -231,7 +232,7 @@ export default function buildSymbolTree(file: string, plugins: string[]): Symbol
         console.error(ancestorStack);
         console.log(node);
         console.error(ancestorStack.map((symbol) =>
-          symbol.name +
+          symbol.simpleName +
           `@{${symbol.comment}}[${symbol.node ? symbol.node.type : "Headless"}]`));
         throw e;
       }
@@ -257,10 +258,6 @@ export default function buildSymbolTree(file: string, plugins: string[]): Symbol
       if (currentPardoc && currentPardoc.node === nodePath.node) {
         ancestorStack.pop();
 
-        if (currentPardoc.name === "CarDealer") {
-          test = currentPardoc;
-        }
-
         // Delete PASS_THROUGH flagged partial-docs & lift up their members.
         if (isVirtual(currentPardoc)) {
           const parentPardoc: Symbol = (currentPardoc.parent: any);
@@ -281,7 +278,7 @@ export default function buildSymbolTree(file: string, plugins: string[]): Symbol
   if (ancestorStack.length > 1) {
     console.error(ancestorStack);
     console.error(ancestorStack.map((symbol) =>
-      symbol.name +
+      symbol.simpleName +
       `@{${symbol.comment}}[${symbol.node ? symbol.node.type : "Headless"}]`));
     throw new Error("@webdoc/parser failed to correctly finish the symbol-tree.");
   }
@@ -302,7 +299,7 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
   extractSymbol(node, parent, symbolInfo);
 
   let {
-    name,
+    name: simpleName,
     flags,
     init,
     initComment,
@@ -334,9 +331,9 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
     if (comment && ((flags & VIRTUAL) === 0)) {
       nodeSymbol = Object.assign({
         node,
-        name,
+        simpleName,
         flags,
-        path: [...parent.path, name],
+        path: [...parent.path, simpleName],
         comment,
         parent: parent,
         members: [],
@@ -347,19 +344,19 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
     } else if (comment && isInit) {
       nodeSymbol = Object.assign({
         node,
-        name: "",
+        simpleName: "",
         flags,
         comment: "",
         path: [...parent.path],
         parent: parent,
         members: [{
           node: init,
-          name,
+          simpleName,
           flags: 0,
           comment,
           parent: parent,
           members: [],
-          path: [...parent.path, name],
+          path: [...parent.path, simpleName],
           loc: nodeDoc ? nodeDoc.loc : {},
           options: {
             object: node.expression ? node.expression.left.object.name : undefined,
@@ -393,14 +390,14 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
         SymbolUtils.createHeadlessSymbol(comment, leadingComments[i].loc, parent),
         parent);
     }
-  } else if (isScope(node) && name) {
+  } else if (isScope(node) && simpleName) {
     // Create a "virtual" doc so that documented members can be added. @prune will delete it
     // in the prune doctree-mod.
     nodeSymbol = Object.assign({
       node,
-      name,
+      simpleName,
       flags,
-      path: [...parent.path, name],
+      path: [...parent.path, simpleName],
       comment: "",
       parent: parent,
       members: [],
