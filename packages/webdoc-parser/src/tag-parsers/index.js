@@ -17,6 +17,7 @@ export {
   parseLicense,
   parseTodo,
   parseThrows,
+  parseSee,
   parseSince,
 } from "./parseSimple";
 export {parseEnum} from "./parseEnum";

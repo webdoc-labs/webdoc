@@ -22,6 +22,7 @@ import {parserLogger} from "../Logger";
 // @license <LICENSE>
 // @todo <TODO>
 // @throws <ERROR_TYPE>
+// @see <URL | DOC_PATH>
 // @since <WHEN>
 
 export function parseAuthor(value: string, doc: $Shape<Doc>): $Shape<AuthorTag> {
@@ -115,6 +116,15 @@ export function parseThrows(value: string, doc: $Shape<Doc>): ThrowsTag {
   return {
     value,
     type: "ThrowsTag",
+  };
+}
+
+export function parseSee(value: string, doc: $Shape<Doc>): SeeTag {
+  doc.see = value;
+
+  return {
+    value,
+    type: "SeeTag",
   };
 }
 
