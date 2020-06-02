@@ -142,12 +142,12 @@ if (doc.defaultValue && (doc.defaultvaluetype === 'object' || doc.defaultvaluety
         </dd>
     <?js } ?>
 
-    <?js if (doc.see && see.length) {?>
+    <?js if (doc.see) {?>
         <dt class="tag-see">See:</dt>
         <dd class="tag-see">
             <ul>
-                <?js see.forEach((s) => { ?>
-                    <li><?js= self.linkTo(s) ?></li>
+                <?js doc.see.forEach((s) => { ?>
+                    <li><?js= this.linkTo(s) ?></li>
                 <?js }); ?>
             </ul>
         </dd>

@@ -6,6 +6,7 @@ import type {
   LicenseTag,
   TodoTag,
   ThrowsTag,
+  SeeTag,
   SinceTag,
   Doc,
   Tag,
@@ -120,7 +121,11 @@ export function parseThrows(value: string, doc: $Shape<Doc>): ThrowsTag {
 }
 
 export function parseSee(value: string, doc: $Shape<Doc>): SeeTag {
-  doc.see = value;
+  if (!doc.see) {
+    doc.see = [];
+  }
+
+  doc.see.push(value);
 
   return {
     value,

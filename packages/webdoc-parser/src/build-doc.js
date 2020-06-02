@@ -31,6 +31,7 @@ import {
   parseLicense,
   parseTodo,
   parseThrows,
+  parseSee,
   parseSince,
 } from "./tag-parsers";
 
@@ -86,6 +87,7 @@ const TAG_PARSERS: { [id: string]: TagParser } = {
   "return": parseReturn,
   "returns": parseReturn, // alias @return
   "scope": parseScope,
+  "see": parseSee,
   "since": parseSince,
   "static": parseStatic,
   "tag": (name: string, value: string): Tag => ({name, value}),
