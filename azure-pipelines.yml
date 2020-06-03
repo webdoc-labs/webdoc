@@ -7,6 +7,12 @@ resources:
 
 trigger:
 - master
+- feature/*
+- refactor/*
+- parser/*
+- template/*
+- cli/*
+- model/*
 
 pool:
   vmImage: 'ubuntu-latest'
