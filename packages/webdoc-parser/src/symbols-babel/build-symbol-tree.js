@@ -73,7 +73,7 @@ export const SymbolUtils = {
 
     //  if (!isVirtual(doc)) {
     doc.parent = scope;
-    doc.canonicalName = parent.canonicalName + "." + doc.simpleName;
+    doc.canonicalName = scope.canonicalName ? scope.canonicalName + "." + doc.simpleName : doc.simpleName;
     doc.path = [...scope.path, doc.simpleName];
     //  } else {
     //    doc.parent = scope;
@@ -142,6 +142,7 @@ export const SymbolUtils = {
       flags: 0,
       path: [],
       comment: "",
+      canonicalName: "",
       parent: null,
       members: [],
       loc: {start: 0, end: 0},
@@ -154,6 +155,7 @@ export const SymbolUtils = {
       simpleName: "",
       flags: 0,
       path: [...scope.path, ""],
+      canonicalName: scope.canonicalName + ".",
       comment,
       parent: scope,
       members: [],
@@ -200,7 +202,6 @@ export default function buildSymbolTree(file: string, plugins: string[]): Symbol
   }
 
   const ancestorStack = [moduleSymbol];
-  let test;
 
   traverse(ast, {
     enter(nodePath: NodePath) {
@@ -345,6 +346,7 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
       nodeSymbol = Object.assign({
         node,
         simpleName: "",
+        canonicalName: parent.canonicalName,
         flags,
         comment: "",
         path: [...parent.path],
@@ -356,6 +358,7 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
           comment,
           parent: parent,
           members: [],
+          canonicalName: parent.canonicalName + "." + simpleName,
           path: [...parent.path, simpleName],
           loc: nodeDoc ? nodeDoc.loc : {},
           options: {
