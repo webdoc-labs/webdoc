@@ -31,7 +31,7 @@ export function registerLanguage(lang: LanguageIntegration): void {
 registerLanguage(langJS);
 registerLanguage(langTS);
 
-function buildSymbolTree(file: string, fileName ?: string = ".js"): Symbol {
+export function buildSymbolTree(file: string, fileName ?: string = ".js"): Symbol {
   const lang = languages[fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length)];
 
   if (!lang) {
@@ -43,7 +43,7 @@ function buildSymbolTree(file: string, fileName ?: string = ".js"): Symbol {
 
 function assemble(symbol: Symbol, root: RootDoc): void {
   // buildDoc will *destroy* everything in symbol, so store things needed beforehand
-  const name = symbol.name;
+  const name = symbol.simpleName;
   const members = symbol.members;
   const parent = symbol.parent;// :Doc (not a symbol because assemble() was called on parent!!!)
 
@@ -60,9 +60,9 @@ function assemble(symbol: Symbol, root: RootDoc): void {
     console.log("^^^ ERR");
   }
 
-  if (parent && parent.name !== "File") {
+  if (parent && parent.simpleName !== "File") {
     addChildDoc(doc, parent);
-  } else if (symbol.name !== "File") {
+  } else if (symbol.simpleName !== "File") {
     addChildDoc(doc, root);
   }
 
