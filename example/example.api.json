@@ -28,7 +28,21 @@
 				{
 					"name": "AbstractRenderer",
 					"type": "ClassDoc",
-					"brief": ""
+					"brief": "",
+					"children": [
+						{
+							"name": "_backgroundColorString",
+							"type": "PropertyDoc",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "backgroundColor",
+							"type": "PropertyDoc",
+							"scope": "instance",
+							"brief": ""
+						}
+					]
 				},
 				{
 					"name": "ObjectRenderer",
@@ -120,6 +134,90 @@
 							"name": "_textureArrayPool",
 							"type": "PropertyDoc",
 							"scope": "static",
+							"brief": ""
+						},
+						{
+							"name": "_aIndex",
+							"type": "PropertyDoc",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "_attributeBuffer",
+							"type": "PropertyDoc",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "_attributeBuffer",
+							"type": "PropertyDoc",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "_bufferSize",
+							"type": "PropertyDoc",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "_dcIndex",
+							"type": "PropertyDoc",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "_iBuffers",
+							"type": "PropertyDoc",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "_iIndex",
+							"type": "PropertyDoc",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "_iIndex",
+							"type": "PropertyDoc",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "_indexBuffer",
+							"type": "PropertyDoc",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "_indexCount",
+							"type": "PropertyDoc",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "_shader",
+							"type": "PropertyDoc",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "_shader",
+							"type": "PropertyDoc",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "_tempBoundTextures",
+							"type": "PropertyDoc",
+							"scope": "instance",
+							"brief": ""
+						},
+						{
+							"name": "_vertexCount",
+							"type": "PropertyDoc",
+							"scope": "instance",
 							"brief": ""
 						},
 						{
@@ -253,13 +351,113 @@
 							"name": "bindAndClearTexArray",
 							"type": "MethodDoc",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"children": [
+								{
+									"name": "j",
+									"type": "PropertyDoc",
+									"scope": "static",
+									"brief": ""
+								}
+							]
 						},
 						{
 							"name": "buildDrawCalls",
 							"type": "MethodDoc",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"children": [
+								{
+									"name": "_attributeBuffer",
+									"type": "PropertyDoc",
+									"scope": "static",
+									"brief": ""
+								},
+								{
+									"name": "i",
+									"type": "PropertyDoc",
+									"scope": "static",
+									"brief": ""
+								},
+								{
+									"name": "size",
+									"type": "PropertyDoc",
+									"scope": "static",
+									"brief": ""
+								},
+								{
+									"name": "start",
+									"type": "PropertyDoc",
+									"scope": "static",
+									"brief": ""
+								},
+								{
+									"name": "vertexSize",
+									"type": "PropertyDoc",
+									"scope": "static",
+									"brief": ""
+								},
+								{
+									"name": "dcIndex",
+									"type": "PropertyDoc",
+									"brief": ""
+								},
+								{
+									"name": "iIndex",
+									"type": "PropertyDoc",
+									"brief": ""
+								},
+								{
+									"name": "tex",
+									"type": "PropertyDoc",
+									"brief": ""
+								}
+							]
+						},
+						{
+							"name": "buildTexturesAndDrawCalls",
+							"type": "MethodDoc",
+							"scope": "instance",
+							"brief": "",
+							"children": [
+								{
+									"name": "MAX_TEXTURES",
+									"type": "PropertyDoc",
+									"scope": "static",
+									"brief": ""
+								},
+								{
+									"name": "touched",
+									"type": "PropertyDoc",
+									"scope": "static",
+									"brief": ""
+								},
+								{
+									"name": "batch",
+									"type": "PropertyDoc",
+									"brief": ""
+								},
+								{
+									"name": "countTexArrays",
+									"type": "PropertyDoc",
+									"brief": ""
+								},
+								{
+									"name": "start",
+									"type": "PropertyDoc",
+									"brief": ""
+								},
+								{
+									"name": "tex",
+									"type": "PropertyDoc",
+									"brief": ""
+								},
+								{
+									"name": "touch",
+									"type": "PropertyDoc",
+									"brief": ""
+								}
+							]
 						},
 						{
 							"name": "constructor",
@@ -271,7 +469,15 @@
 							"name": "contextChange",
 							"type": "MethodDoc",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"children": [
+								{
+									"name": "i",
+									"type": "PropertyDoc",
+									"scope": "instance",
+									"brief": ""
+								}
+							]
 						},
 						{
 							"name": "destroy",
@@ -283,7 +489,43 @@
 							"name": "drawBatches",
 							"type": "MethodDoc",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"children": [
+								{
+									"name": "gl",
+									"type": "PropertyDoc",
+									"scope": "static",
+									"brief": ""
+								},
+								{
+									"name": "start",
+									"type": "PropertyDoc",
+									"scope": "static",
+									"brief": ""
+								},
+								{
+									"name": "type",
+									"type": "PropertyDoc",
+									"scope": "static",
+									"brief": ""
+								},
+								{
+									"name": "blendMode",
+									"type": "PropertyDoc",
+									"scope": "instance",
+									"brief": ""
+								},
+								{
+									"name": "drawCalls",
+									"type": "PropertyDoc",
+									"brief": ""
+								},
+								{
+									"name": "i",
+									"type": "PropertyDoc",
+									"brief": ""
+								}
+							]
 						},
 						{
 							"name": "flush",
@@ -295,7 +537,20 @@
 							"name": "initFlushBuffers",
 							"type": "MethodDoc",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"children": [
+								{
+									"name": "_textureArrayPool",
+									"type": "PropertyDoc",
+									"scope": "static",
+									"brief": ""
+								},
+								{
+									"name": "MAX_TA",
+									"type": "PropertyDoc",
+									"brief": ""
+								}
+							]
 						},
 						{
 							"name": "onPrerender",
@@ -307,7 +562,35 @@
 							"name": "packInterleavedGeometry",
 							"type": "MethodDoc",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"children": [
+								{
+									"name": "float32View",
+									"type": "PropertyDoc",
+									"scope": "static",
+									"brief": ""
+								},
+								{
+									"name": "alpha",
+									"type": "PropertyDoc",
+									"brief": ""
+								},
+								{
+									"name": "i",
+									"type": "PropertyDoc",
+									"brief": ""
+								},
+								{
+									"name": "uvs",
+									"type": "PropertyDoc",
+									"brief": ""
+								},
+								{
+									"name": "vertexData",
+									"type": "PropertyDoc",
+									"brief": ""
+								}
+							]
 						},
 						{
 							"name": "render",
@@ -328,18 +611,59 @@
 							"brief": ""
 						},
 						{
+							"name": "updateGeometry",
+							"type": "MethodDoc",
+							"scope": "instance",
+							"brief": "",
+							"children": [
+								{
+									"name": "_attributeBuffer",
+									"type": "PropertyDoc",
+									"scope": "static",
+									"brief": ""
+								}
+							]
+						},
+						{
 							"name": "getAttributeBuffer",
 							"type": "MethodDoc",
 							"access": "private",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"children": [
+								{
+									"name": "length",
+									"type": "PropertyDoc",
+									"scope": "instance",
+									"brief": ""
+								},
+								{
+									"name": "roundedSizeIndex",
+									"type": "PropertyDoc",
+									"brief": ""
+								}
+							]
 						},
 						{
 							"name": "getIndexBuffer",
 							"type": "MethodDoc",
 							"access": "private",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"children": [
+								{
+									"name": "length",
+									"type": "PropertyDoc",
+									"scope": "instance",
+									"brief": ""
+								},
+								{
+									"name": "roundedSizeIndex",
+									"type": "PropertyDoc",
+									"scope": "instance",
+									"brief": ""
+								}
+							]
 						}
 					]
 				},
@@ -368,6 +692,20 @@
 							"access": "public",
 							"scope": "static",
 							"brief": ""
+						},
+						{
+							"name": "get",
+							"type": "MethodDoc",
+							"scope": "instance",
+							"brief": "",
+							"children": [
+								{
+									"name": "DYNAMIC",
+									"type": "PropertyDoc",
+									"scope": "static",
+									"brief": ""
+								}
+							]
 						}
 					]
 				}
@@ -472,7 +810,19 @@
 					"name": "force",
 					"type": "MethodDoc",
 					"scope": "instance",
-					"brief": ""
+					"brief": "",
+					"children": [
+						{
+							"name": "massProduct",
+							"type": "PropertyDoc",
+							"brief": ""
+						},
+						{
+							"name": "radialDistance",
+							"type": "PropertyDoc",
+							"brief": ""
+						}
+					]
 				}
 			]
 		},
@@ -550,6 +900,12 @@
 					"brief": ""
 				},
 				{
+					"name": "i",
+					"type": "PropertyDoc",
+					"scope": "instance",
+					"brief": ""
+				},
+				{
 					"name": "add",
 					"type": "MethodDoc",
 					"scope": "instance",
@@ -621,6 +977,21 @@
 					"type": "PropertyDoc",
 					"access": "public",
 					"scope": "static",
+					"brief": ""
+				},
+				{
+					"name": "FERRARI",
+					"type": "PropertyDoc",
+					"brief": ""
+				},
+				{
+					"name": "GENERAL_MOTORS",
+					"type": "PropertyDoc",
+					"brief": ""
+				},
+				{
+					"name": "JAGUAR",
+					"type": "PropertyDoc",
 					"brief": ""
 				}
 			]
