@@ -3,6 +3,10 @@
 This package is useful for webdoc template authors and largely brings the functionality of JSDoc's template
 helpers.
 
+## UML
+
+https://drive.google.com/file/d/1Ah7UyQ0AqnedxLsvMYm8agy0rxKuicrU/view?usp=sharing
+
 ### Features
 
 * .tmpl Template files: You can use `<?js ?>` delimiters in HTML code to control what data gets rendered into

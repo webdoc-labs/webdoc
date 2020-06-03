@@ -25,6 +25,14 @@ import {
   parseDeprecated,
   parseExample,
   parseEnum,
+  parseAuthor,
+  parseCopyright,
+  parseDefault,
+  parseLicense,
+  parseTodo,
+  parseThrows,
+  parseSee,
+  parseSince,
 } from "./tag-parsers";
 
 import type {Tag, Doc} from "@webdoc/types";
@@ -52,6 +60,9 @@ function createTagParser(type: string) {
 const TAG_PARSERS: { [id: string]: TagParser } = {
   "access": parseAccess,
   "augments": parseExtends, // alias @extends
+  "author": parseAuthor,
+  "copyright": parseCopyright,
+  "default": parseDefault,
   "deprecated": parseDeprecated,
   "enum": parseEnum,
   "event": parseEvent,
@@ -62,6 +73,7 @@ const TAG_PARSERS: { [id: string]: TagParser } = {
   "instance": parseInstance,
   "interface": createTagParser("InterfaceTag"),
   "implements": parseImplements,
+  "license": parseLicense,
   "member": parseMember,
   "method": createTagParser("MethodTag"),
   "mixes": parseMixes,
@@ -75,8 +87,12 @@ const TAG_PARSERS: { [id: string]: TagParser } = {
   "return": parseReturn,
   "returns": parseReturn, // alias @return
   "scope": parseScope,
+  "see": parseSee,
+  "since": parseSince,
   "static": parseStatic,
   "tag": (name: string, value: string): Tag => ({name, value}),
+  "todo": parseTodo,
+  "throws": parseThrows,
   "typedef": parseTypedef,
 };
 
@@ -177,11 +193,11 @@ export default function buildDoc(symbol: Symbol): ?Doc {
   // if (symbol.meta.object)
 
   // @name might come handy
-  if (!symbol.name) {
+  if (!symbol.simpleName) {
     const nameTag = tags.find((tag) => tag.name === "name");
 
     if (nameTag) {
-      symbol.name = nameTag.value;
+      symbol.simpleName = nameTag.value;
     }
   }
 
@@ -189,12 +205,12 @@ export default function buildDoc(symbol: Symbol): ?Doc {
     if (TAG_OVERRIDES.hasOwnProperty(tags[i].name)) {// eslint-disable-line no-prototype-builtins
       const name = tags[i].name;
 
-      if (!options.name && !tags[i].value && !symbol.name) {
+      if (!options.name && !tags[i].value && !symbol.simpleName) {
         continue;
       }
 
       const doc = createDoc(
-        options.name || tags[i].value || symbol.name,
+        options.name || tags[i].value || symbol.simpleName,
         TAG_OVERRIDES[name],
         options,
         symbol);
@@ -221,15 +237,15 @@ export default function buildDoc(symbol: Symbol): ?Doc {
   try {
     validate(options, symbol.meta);
   } catch (e) {
-    console.error(`Validation for ${symbol.name} [${symbol.path.join(".")}] failed!`);
+    console.error(`Validation for ${symbol.simpleName} [${symbol.canonicalName}] failed!`);
     throw e;
   }
 
   mergeWith(options, symbol.meta, (optVal, metaVal) => optVal === undefined ? metaVal : optVal);
 
-  if (symbol.name && symbol.meta && symbol.meta.type) {
+  if (symbol.simpleName && symbol.meta && symbol.meta.type) {
     // This will transform "symbol" into "doc" (a new object is not created)
-    const doc = createDoc(symbol.name, symbol.meta.type, options, symbol);
+    const doc = createDoc(symbol.simpleName, symbol.meta.type, options, symbol);
 
     // Remove properties from Symbol form
     delete doc.comment;
@@ -241,7 +257,8 @@ export default function buildDoc(symbol: Symbol): ?Doc {
 
     return doc;
   } else {
-    console.log(symbol.name + " -<");
+    console.log(symbol.simpleName + " -<");
   }
+
   return null;
 }

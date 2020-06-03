@@ -1,5 +1,10 @@
 import type {StaticTag, InstanceTag, InnerTag} from "@webdoc/types";
 
+// @scope <"static" | "instance" | "inner">
+// @static
+// @instance
+// @inner
+
 // Parse the @scope [static, instance, inner] tag
 export function parseScope(value: string, options: any): AccessTag {
   value = value.trim();

@@ -35,7 +35,8 @@ export type SymbolSignature = {
 // documentation comments.
 export type Symbol = {
   node: ?Node,
-  name: string,
+  simpleName: string,
+  canonicalName: string,
   flags: number,
   path: string[],
   comment: string,

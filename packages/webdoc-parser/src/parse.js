@@ -43,7 +43,7 @@ export function buildSymbolTree(file: string, fileName ?: string = ".js"): Symbo
 
 function assemble(symbol: Symbol, root: RootDoc): void {
   // buildDoc will *destroy* everything in symbol, so store things needed beforehand
-  const name = symbol.name;
+  const name = symbol.simpleName;
   const members = symbol.members;
   const parent = symbol.parent;// :Doc (not a symbol because assemble() was called on parent!!!)
 
@@ -60,9 +60,9 @@ function assemble(symbol: Symbol, root: RootDoc): void {
     console.log("^^^ ERR");
   }
 
-  if (parent && parent.name !== "File") {
+  if (parent && parent.simpleName !== "File") {
     addChildDoc(doc, parent);
-  } else if (symbol.name !== "File") {
+  } else if (symbol.simpleName !== "File") {
     addChildDoc(doc, root);
   }
 
