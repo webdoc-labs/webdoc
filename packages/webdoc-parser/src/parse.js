@@ -1,15 +1,15 @@
 // @flow
+/* global Webdoc */
 
-import buildDoc from "./build-doc";
 import mod from "./doctree-mods";
 import {parserLogger} from "./Logger";
-import type {RootDoc, Doc} from "@webdoc/types";
-import {addChildDoc} from "@webdoc/model";
-
+import type {RootDoc} from "@webdoc/types";
 import {langJS, langTS} from "./symbols-babel";
-
 import type {Symbol} from "./types/Symbol";
-import type {LanguageIntegration} from "./types/LanguageIntegration";
+import type {LanguageIntegration, LanguageConfig} from "./types/LanguageIntegration";
+
+import assemble from "./assembler";
+import transform from "./transformer";
 
 // File-extension -> LanguageIntegration mapping
 const languages: { [id: string]: LanguageIntegration } = {};
@@ -31,46 +31,34 @@ export function registerLanguage(lang: LanguageIntegration): void {
 registerLanguage(langJS);
 registerLanguage(langTS);
 
-export function buildSymbolTree(file: string, fileName ?: string = ".js"): Symbol {
+// Default language-config for parsing documentation
+const DEFAULT_LANG_CONFIG: LanguageIntegration = {
+  reportUndocumented: false,
+};
+
+if (!global.Webdoc) {
+  global.Webdoc = {};
+}
+
+global.Webdoc.DEFAULT_LANG_CONFIG = DEFAULT_LANG_CONFIG;
+
+// Used when you want to parse all the symbols in the code. This includes unit-testing.
+export function applyDefaultLangConfig(cfg: LanguageConfig) {
+  global.Webdoc.DEFAULT_LANG_CONFIG = cfg;
+}
+
+export function buildSymbolTree(
+  file: string,
+  fileName ?: string = ".js",
+  config: LanguageConfig = Webdoc.DEFAULT_LANG_CONFIG,
+): Symbol {
   const lang = languages[fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length)];
 
   if (!lang) {
     throw new Error(`.${lang} file language is not registered`);
   }
 
-  return lang.parse(file);
-}
-
-function assemble(symbol: Symbol, root: RootDoc): void {
-  // buildDoc will *destroy* everything in symbol, so store things needed beforehand
-  const name = symbol.simpleName;
-  const members = symbol.members;
-  const parent = symbol.parent;// :Doc (not a symbol because assemble() was called on parent!!!)
-
-  const doc: Doc = buildDoc(symbol);
-
-  if (!doc && name !== "File") {
-    parserLogger.error("DocParser",
-      `Couldn't parse doc for + ${symbol.name}(@${symbol.path.join(".")})`);
-    return;
-  }
-
-  if (doc && doc.name === undefined) {
-    console.log(Object.assign({}, doc, {node: "removed"}));
-    console.log("^^^ ERR");
-  }
-
-  if (parent && parent.simpleName !== "File") {
-    addChildDoc(doc, parent);
-  } else if (symbol.simpleName !== "File") {
-    addChildDoc(doc, root);
-  }
-
-  if (members) {
-    for (let i = 0; i < members.length; i++) {
-      assemble(members[i], root);
-    }
-  }
+  return lang.parse(file, config);
 }
 
 /**
@@ -118,10 +106,10 @@ export function parse(target: string | string[] | Map<string, string>, root?: Ro
     }
   }
 
-  // Recursively transform & assemble into the doc-tree (root).
-  for (let i = 0; i < partialDoctrees.length; i++) {
-    assemble(partialDoctrees[i], root);
-  }
+  const rsym = assemble(partialDoctrees);
+
+  root.children = root.members;
+  transform(rsym, root);
 
   mod(root);
 

@@ -127,7 +127,6 @@ export default function extractSymbol(
     // which is also treated as above. However, the call-expression itself is also becomes a virtual
     // symbol.
 
-
     let init;
 
     if (isExpressionStatement(node)) {
@@ -278,7 +277,7 @@ function resolveObject(expression: MemberExpression): void {
   expression = expression.object;
 
   while (expression.object) {
-    longname = expression.property.name + "." + longname;
+    longname = expression.property.name + (longname ? "." + longname : "");
     expression = expression.object;
   }
 

@@ -28,7 +28,15 @@
 				{
 					"name": "AbstractRenderer",
 					"type": "ClassDoc",
-					"brief": ""
+					"brief": "",
+					"children": [
+						{
+							"name": "backgroundColor",
+							"type": "PropertyDoc",
+							"scope": "instance",
+							"brief": ""
+						}
+					]
 				},
 				{
 					"name": "ObjectRenderer",
@@ -295,7 +303,14 @@
 							"name": "initFlushBuffers",
 							"type": "MethodDoc",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"children": [
+								{
+									"name": "MAX_TA",
+									"type": "PropertyDoc",
+									"brief": ""
+								}
+							]
 						},
 						{
 							"name": "onPrerender",

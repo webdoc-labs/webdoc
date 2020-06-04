@@ -7,8 +7,8 @@ import {
   type Node,
   type VariableDeclaration,
   isBlockStatement,
-  SourceLocation,
   isScope,
+  SourceLocation,
   isExportDefaultDeclaration,
   isExportNamedDeclaration,
 } from "@babel/types";
@@ -23,6 +23,8 @@ import _ from "lodash";
 import {
   type Symbol, VIRTUAL, isVirtual, isObligateLeaf,
 } from "../types/Symbol";
+
+import {LanguageConfig} from "../types/LanguageIntegration";
 
 // TODO: This shouldn't really be a part of symbols-babel but rather should live with Symbol.js
 // in SymbolUtils.js
@@ -71,14 +73,11 @@ export const SymbolUtils = {
       members.push(doc);
     }
 
-    //  if (!isVirtual(doc)) {
     doc.parent = scope;
-    doc.canonicalName = scope.canonicalName ? scope.canonicalName + "." + doc.simpleName : doc.simpleName;
+    doc.canonicalName = scope.canonicalName ?
+      scope.canonicalName + "." + doc.simpleName :
+      doc.simpleName;
     doc.path = [...scope.path, doc.simpleName];
-    //  } else {
-    //    doc.parent = scope;
-    //    doc.path = [...scope.path];
-    //  }
 
     return doc;
   },
@@ -185,10 +184,18 @@ const extraVistors = {
   },
 };
 
+let reportUndocumented = false;
+
 // Parses the file and returns a tree of symbols
-export default function buildSymbolTree(file: string, plugins: string[]): Symbol {
+export default function buildSymbolTree(
+  file: string,
+  config: LanguageConfig,
+  plugins: string[],
+): Symbol {
   const moduleSymbol = SymbolUtils.createModuleSymbol();
   let ast;
+
+  reportUndocumented = config.reportUndocumented;
 
   try {
     ast = parser.parse(file, {
@@ -314,12 +321,18 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
   // Create the nodeSymbol & add it as a child to parent
   //
 
-  if (initComment || (node.leadingComments && node.leadingComments.length > 0)) {
-    if (!initComment) {
+  // leadingComments -> documented
+  // isScope -> children may be documented even if node is not
+  if (node.leadingComments || isScope(node) || reportUndocumented) {
+    if (!initComment && node.leadingComments) {
       nodeDocIndex = SymbolUtils.commentIndex(node.leadingComments);
     }
     const nodeDoc = typeof nodeDocIndex === "number" ? node.leadingComments[nodeDocIndex] : null;
-    const comment = initComment || extract(nodeDoc) || "";
+    const comment = (initComment ? initComment : (nodeDoc ? extract(nodeDoc) : "")) || "";
+
+    if (!comment) {
+      nodeSymbol.meta.undocumented = true;
+    }
 
     const leadingComments = node.leadingComments || [];
 
@@ -329,7 +342,7 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
       flags &= ~VIRTUAL;
     }
 
-    if (comment && ((flags & VIRTUAL) === 0)) {
+    if (simpleName && ((flags & VIRTUAL) === 0)) {
       nodeSymbol = Object.assign({
         node,
         simpleName,
@@ -342,7 +355,7 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
       }, nodeSymbol);
 
       nodeSymbol = SymbolUtils.addChild(nodeSymbol, parent);
-    } else if (comment && isInit) {
+    } else if (simpleName && isInit) {
       nodeSymbol = Object.assign({
         node,
         simpleName: "",
@@ -393,22 +406,6 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
         SymbolUtils.createHeadlessSymbol(comment, leadingComments[i].loc, parent),
         parent);
     }
-  } else if (isScope(node) && simpleName) {
-    // Create a "virtual" doc so that documented members can be added. @prune will delete it
-    // in the prune doctree-mod.
-    nodeSymbol = Object.assign({
-      node,
-      simpleName,
-      flags,
-      path: [...parent.path, simpleName],
-      comment: "",
-      parent: parent,
-      members: [],
-      loc: node.loc,
-    }, nodeSymbol);
-
-    nodeSymbol = SymbolUtils.addChild(nodeSymbol, parent);
-    nodeSymbol.meta.undocumented = true;
   } else {
     nodeSymbol = undefined;
   }

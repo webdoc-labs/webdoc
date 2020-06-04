@@ -49,7 +49,7 @@ async function main(argv: yargs.Arguments<>) {
 
   const start = performance.now();
 
-  global.Webdoc = {};
+  global.Webdoc = global.Webdoc || {};
   registerWebdocParser();// global.Webdoc.Parser
 
   console.log("@webdoc/cli ------------------ ");

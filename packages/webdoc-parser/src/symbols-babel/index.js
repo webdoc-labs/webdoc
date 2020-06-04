@@ -4,6 +4,7 @@
 // symbols trees. These are registered in parse.js!
 
 import buildSymbolTree from "./build-symbol-tree";
+import type {LanguageConfig} from "../types/LanguageIntegration";
 
 // Plugins for plain JavaScript files
 const defaultPreset = [
@@ -43,15 +44,15 @@ const tsPreset = [
 
 export const langJS = {
   extensions: ["js", "jsx", "jsdoc"],
-  parse(file: string): Symbol {
+  parse(file: string, config: LanguageConfig): Symbol {
     // Flow is automatically handled!
-    return buildSymbolTree(file, flowPreset);
+    return buildSymbolTree(file, config, flowPreset);
   },
 };
 
 export const langTS = {
   extensions: ["ts", "tsx"],
-  parse(file: string): Symbol {
-    return buildSymbolTree(file, tsPreset);
+  parse(file: string, config: LanguageConfig): Symbol {
+    return buildSymbolTree(file, config, tsPreset);
   },
 };
