@@ -61,8 +61,7 @@ export function isVirtual(symbol: Symbol): boolean {
   return symbol.flags & VIRTUAL;
 }
 
-// Find the symbol with the given canonicalName. The root symbol is the top-level symbol with no
-// parent.
+// Find the symbol with the given canonicalName w.r.t the rootSymbol.
 //
 // depth is an internal parameter, and not intended for external use.
 export function findSymbol(
@@ -85,6 +84,52 @@ export function findSymbol(
 
       return findSymbol(canonicalName, searchSymbols[i], depth + 1);
     }
+  }
+
+  return null;
+}
+
+// Finds the symbol accessed at a given location (at refereeSymbol) by the given name. This may be
+// different than the symbol whose canonicalName is referredName. For example,
+//
+// function doSomething() {}
+//
+// function makeClass() {
+//   class doSomething {}
+//
+//   doSomething.staticProperty = "dataValue";
+//   ^^^^^^^^^^^
+//   return doSomething
+// }
+//
+// The underlined doSomething's canonicalName is actually makeClass~doSomething, while it is
+// referred to by doSomething (by staticProperty symbol's metadata.object field).
+export function findAccessedSymbol(
+  referredName: string | string[],
+  refereeSymbol: Symbol,
+) {
+  if (typeof referredName === "string") {
+    referredName = referredName.split(CANONICAL_DELIMITER);
+  }
+
+  const searchName = referredName[0];
+
+  if (refereeSymbol.parent) {
+    const parent = refereeSymbol.parent;
+
+    for (let i = 0; i < parent.members.length; i++) {
+      if (parent.members[i].simpleName === searchName) {
+        if (referredName.length > 1) {
+          // Go down this symbol to get the referred symbol
+          return findSymbol(referredName.slice(1), parent.members[i]);
+        } else {
+          return parent.members[i];
+        }
+      }
+    }
+
+    // Search upward if nothing is found inside parent
+    return findAccessedSymbol(referredName, parent);
   }
 
   return null;

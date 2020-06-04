@@ -1,7 +1,7 @@
 // @flow
 
-import {type AssemblyModifier} from "../types/AssemblyModifier";
 import {type Symbol} from "../types/Symbol";
+import modAssembly from "./assembly-modifiers";
 
 /**
  * Assembles the symbol-metadata trees of each source-file into one, monolithic tree.
@@ -14,10 +14,18 @@ export function assemble(modules: Symbol[]): Symbol {
     name: "",
     flags: 0,
     path: [""],
-    members: modules,
+    members: [],
     loc: {start: {}, end: {}},
     meta: {
       type: "RootDoc",
     },
   };
+
+  modules.forEach((modl) => {
+    rootSymbol.members.push(...modl.members);
+  });
+
+  modAssembly(rootSymbol);
+
+  return rootSymbol;
 }

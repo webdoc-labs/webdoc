@@ -1,6 +1,6 @@
 // @flow
 
-import {type Symbol, findSymbol, addChildSymbol} from "../types/Symbol";
+import {type Symbol, findAccessedSymbol, addChildSymbol} from "../types/Symbol";
 
 // This mod resolves symbols were "assigned" to another symbol parent in source code. For example,
 
@@ -87,7 +87,7 @@ function resolveToObject(symbol: Symbol, tree: Symbol = symbol): void {
       // Search for the object symbol
       const objectSymbol = (objectPath === "this") ?
         bubbleThis(symbol) :
-        findSymbol(objectPath, tree);
+        findAccessedSymbol(objectPath, symbol);
 
       if (objectSymbol) {
         if (objectSymbol !== symbol.parent) {
