@@ -3,12 +3,10 @@
 import {type Symbol} from "../types/Symbol";
 import {type Doc, type RootDoc} from "@webdoc/types";
 import {addChildDoc} from "@webdoc/model";
-import {buildDoc as transform} from "../build-doc";
+import transform from "../build-doc";
 import {parserLogger} from "../Logger";
 
 // This file provides the transformation from a symbol-metadata tree into a documentation tree.
-
-// TODO: Make the simpleName="File" case clearer
 
 export function transformRecursive(symbol: Symbol, root: RootDoc): Doc {
   // transform will *destroy* everything in symbol, so store things needed beforehand
@@ -18,21 +16,22 @@ export function transformRecursive(symbol: Symbol, root: RootDoc): Doc {
 
   const doc: Doc = transform(symbol);
 
-  if (!doc && name !== "File") {
+  if (!doc && !symbol.isRoot) {
     parserLogger.error("DocParser",
-      `Couldn't parse doc for + ${symbol.name}(@${symbol.path.join(".")})`);
+      `Couldn't parse doc for + ${symbol.simpleName}(@${symbol.canonicalName})`);
     return;
   }
 
-  if (parent && parent.simpleName !== "File") {
+  // TODO: Maybe we don't want to ignore file symbols
+  if (parent && !parent.isRoot) {
     addChildDoc(doc, parent);
-  } else if (symbol.simpleName !== "File") {
+  } else if (!symbol.isRoot) {
     addChildDoc(doc, root);
   }
 
   if (members) {
     for (let i = 0; i < members.length; i++) {
-      transform(members[i], root);
+      transformRecursive(members[i], root);
     }
   }
 }

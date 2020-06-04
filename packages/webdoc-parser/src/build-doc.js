@@ -115,7 +115,7 @@ const TAG_BLOCKS = new Set(["example", "classdesc"]);
 export default function buildDoc(symbol: Symbol): ?Doc {
   const {comment, node} = symbol;
 
-  const commentLines = comment.split("\n");
+  const commentLines = (comment || "").split("\n");
 
   const options: any = {node};
 

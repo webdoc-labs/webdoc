@@ -7,6 +7,7 @@ import {
   type Node,
   type VariableDeclaration,
   isBlockStatement,
+  isScope,
   SourceLocation,
   isExportDefaultDeclaration,
   isExportNamedDeclaration,
@@ -310,7 +311,9 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
   // Create the nodeSymbol & add it as a child to parent
   //
 
-  if (simpleName) {
+  // leadingComments -> documented
+  // isScope -> children may be documented even if node is not
+  if (node.leadingComments || isScope(node)) {
     if (!initComment && node.leadingComments) {
       nodeDocIndex = SymbolUtils.commentIndex(node.leadingComments);
     }

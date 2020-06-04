@@ -11,7 +11,9 @@ import modAssembly from "./assembly-modifiers";
  */
 export function assemble(modules: Symbol[]): Symbol {
   const rootSymbol = {
-    name: "",
+    simpleName: "",
+    canonicalName: "",
+    isRoot: true,
     flags: 0,
     path: [""],
     members: [],
@@ -23,6 +25,10 @@ export function assemble(modules: Symbol[]): Symbol {
 
   modules.forEach((modl) => {
     rootSymbol.members.push(...modl.members);
+
+    modl.members.forEach((mem) => {
+      mem.parent = rootSymbol;
+    });
   });
 
   modAssembly(rootSymbol);
