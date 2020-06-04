@@ -324,7 +324,7 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
   // leadingComments -> documented
   // isScope -> children may be documented even if node is not
   if (node.leadingComments || isScope(node) || reportUndocumented) {
-    if (!initComment && node.leadingComments) {
+    if (!initComment && node.leadingComments && simpleName) {
       nodeDocIndex = SymbolUtils.commentIndex(node.leadingComments);
     }
     const nodeDoc = typeof nodeDocIndex === "number" ? node.leadingComments[nodeDocIndex] : null;

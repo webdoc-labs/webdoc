@@ -3,6 +3,7 @@
 
 import type {Doc} from "@webdoc/types";
 import {traverse} from "@webdoc/model";
+import {parserLogger} from "../Logger";
 
 const ACCESS_ORDER = {
   "public": 0,
@@ -44,7 +45,14 @@ const PROP_COMPARATORS = {
 //
 // You can also use "source" on its own (no other properties).
 export default function sort(rootDoc: Doc): void {
-  const sortBasis = global.Webdoc.userConfig.docs.sort;
+  let sortBasis;
+
+  try {
+    sortBasis = global.Webdoc.userConfig.docs.sort;
+  } catch (e) {
+    parserLogger.info("DocumentTreeModifier", "Couldn't find sorting basis");
+    return;
+  }
 
   // The doc-tree is sorted by source already
   if (!sortBasis || sortBasis.startsWith("source")) {
