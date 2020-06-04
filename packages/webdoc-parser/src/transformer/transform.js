@@ -10,7 +10,6 @@ import {parserLogger} from "../Logger";
 
 export function transformRecursive(symbol: Symbol, root: RootDoc): Doc {
   // transform will *destroy* everything in symbol, so store things needed beforehand
-  const name = symbol.simpleName;
   const members = symbol.members;
   const parent = symbol.parent;// :Doc (not a symbol because assemble() was called on parent!!!)
 
