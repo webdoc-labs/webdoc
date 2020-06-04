@@ -24,6 +24,8 @@ import {
   type Symbol, VIRTUAL, isVirtual, isObligateLeaf,
 } from "../types/Symbol";
 
+import {LanguageConfig} from "../types/LanguageIntegration";
+
 // TODO: This shouldn't really be a part of symbols-babel but rather should live with Symbol.js
 // in SymbolUtils.js
 // Exported for testing in test/build-symbol-tree.test.js
@@ -182,10 +184,18 @@ const extraVistors = {
   },
 };
 
+let reportUndocumented = false;
+
 // Parses the file and returns a tree of symbols
-export default function buildSymbolTree(file: string, plugins: string[]): Symbol {
+export default function buildSymbolTree(
+  file: string,
+  config: LanguageConfig,
+  plugins: string[],
+): Symbol {
   const moduleSymbol = SymbolUtils.createModuleSymbol();
   let ast;
+
+  reportUndocumented = config.reportUndocumented;
 
   try {
     ast = parser.parse(file, {
@@ -313,7 +323,7 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
 
   // leadingComments -> documented
   // isScope -> children may be documented even if node is not
-  if (node.leadingComments || isScope(node)) {
+  if (node.leadingComments || isScope(node) || reportUndocumented) {
     if (!initComment && node.leadingComments) {
       nodeDocIndex = SymbolUtils.commentIndex(node.leadingComments);
     }

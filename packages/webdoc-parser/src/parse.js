@@ -1,11 +1,12 @@
 // @flow
+/* global Webdoc */
 
 import mod from "./doctree-mods";
 import {parserLogger} from "./Logger";
 import type {RootDoc} from "@webdoc/types";
 import {langJS, langTS} from "./symbols-babel";
 import type {Symbol} from "./types/Symbol";
-import type {LanguageIntegration} from "./types/LanguageIntegration";
+import type {LanguageIntegration, LanguageConfig} from "./types/LanguageIntegration";
 
 import assemble from "./assembler";
 import transform from "./transformer";
@@ -30,14 +31,34 @@ export function registerLanguage(lang: LanguageIntegration): void {
 registerLanguage(langJS);
 registerLanguage(langTS);
 
-export function buildSymbolTree(file: string, fileName ?: string = ".js"): Symbol {
+// Default language-config for parsing documentation
+const DEFAULT_LANG_CONFIG: LanguageIntegration = {
+  reportUndocumented: false,
+};
+
+if (!global.Webdoc) {
+  global.Webdoc = {};
+}
+
+global.Webdoc.DEFAULT_LANG_CONFIG = DEFAULT_LANG_CONFIG;
+
+// Used when you want to parse all the symbols in the code. This includes unit-testing.
+export function applyDefaultLangConfig(cfg: LanguageConfig) {
+  global.Webdoc.DEFAULT_LANG_CONFIG = cfg;
+}
+
+export function buildSymbolTree(
+  file: string,
+  fileName ?: string = ".js",
+  config: LanguageConfig = Webdoc.DEFAULT_LANG_CONFIG,
+): Symbol {
   const lang = languages[fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length)];
 
   if (!lang) {
     throw new Error(`.${lang} file language is not registered`);
   }
 
-  return lang.parse(file);
+  return lang.parse(file, config);
 }
 
 /**

@@ -8,7 +8,7 @@
     "bootstrap": "lerna bootstrap --hoist",
     "build": "gulp build",
     "test": "",
-    "unit-test": "mocha ./packages/**/test/*",
+    "unit-test": "mocha ./packages/**/test/* --require ./scripts/configureWebdocTesting",
     "prepublishOnly": "npm run build"
   },
   "repository": {
