@@ -61,6 +61,8 @@ export function buildSymbolTree(
   return lang.parse(file, config);
 }
 
+// TODO: Asynchronous API for parsing
+
 /**
  * Parses the file(s) into a doc-tree. This consists of the following phases:
  *
@@ -89,8 +91,6 @@ export function parse(target: string | string[] | Map<string, string>, root?: Ro
   }
 
   const partialDoctrees = new Array(Array.isArray(target) ? target.length : target.size);
-
-  // TODO: Don't do two loops, it sucks for performance
 
   // Build a symbol-tree for all the files
   if (Array.isArray(target)) {

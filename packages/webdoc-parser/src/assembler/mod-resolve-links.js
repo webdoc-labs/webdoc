@@ -12,6 +12,10 @@ export default function resolveLinksRecursive(
   resolveLinkArray(symbol.meta.extends, symbol);
   resolveLinkArray(symbol.meta.implements, symbol);
 
+  for (let i = 0; i < symbol.members.length; i++) {
+    resolveLinksRecursive(symbol.members[i], tree);
+  }
+
   // TODO: param, returns data-types - not high priority however
 }
 
@@ -22,6 +26,6 @@ function resolveLinkArray(links: any[], referee: Symbol): void {
   }
 
   for (let i = 0; i < links.length; i++) {
-    links[i] = findAccessedSymbol(links[i], referee);
+    links[i] = findAccessedSymbol(links[i], referee) || links[i];
   }
 }

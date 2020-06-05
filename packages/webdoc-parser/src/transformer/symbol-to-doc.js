@@ -33,15 +33,15 @@ import {
   parseThrows,
   parseSee,
   parseSince,
-} from "./tag-parsers";
+} from "../tag-parsers";
 
 import type {Tag, Doc} from "@webdoc/types";
 import {createDoc} from "@webdoc/model";
 
-import type {Symbol} from "./build-symbol-tree";
+import type {Symbol} from "../types/Symbol";
 
 import mergeWith from "lodash/mergeWith";
-import validate from "./validators";
+import validate from "../validators";
 
 type TagParser = (value: string, options: Object) => void;
 
@@ -112,7 +112,7 @@ const TAG_OVERRIDES: { [id: string]: string | any } = { // replace any, no lazy
 // Tags that end only when another tag is found or two lines are blank for consecutively
 const TAG_BLOCKS = new Set(["example", "classdesc"]);
 
-export default function buildDoc(symbol: Symbol): ?Doc {
+export default function symbolToDoc(symbol: Symbol): ?Doc {
   const {comment, node} = symbol;
 
   const commentLines = (comment || "").split("\n");
@@ -190,7 +190,11 @@ export default function buildDoc(symbol: Symbol): ?Doc {
   options.description = description;
   options.node = null;
 
-  // if (symbol.meta.object)
+  options.params = options.params || symbol.meta.params;
+  options.returns = options.returns || symbol.meta.returns;
+  options.extends = options.extends || symbol.meta.extends;
+  options.implements = options.implements || symbol.meta.implements;
+  options.typeParameters = options.typeParameters || symbol.meta.typeParameters;
 
   // @name might come handy
   if (!symbol.simpleName) {
