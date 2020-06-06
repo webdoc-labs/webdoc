@@ -15,7 +15,7 @@
                 Type
             </dt>
             <dd>
-                <?js= this.partial('type.tmpl', data.type.names) ?>
+                <?js= data.dataType ? this.linkTo(data.dataType) : "" ?>
             </dd>
         </dl>
     </dt>
@@ -26,7 +26,7 @@
     <?js if (data.description) { ?>
         <?js= data.description ?>
     <?js } else if (data.type && data.type.names) { ?>
-        <?js= this.partial('type.tmpl', data.type.names) ?>
+        <?js= this.linkTo(data.type) ?>
     <?js } ?>
     </div>
 <?js } ?>

@@ -21,7 +21,9 @@ export default function resolveLinksRecursive(
       resolveLinkArray(dataType, symbol, 1);
     }
   }
-  if (symbol.returns) {
+  if (symbol.meta.returns) {
+    const returns = symbol.meta.returns;
+
     for (let i = 0; i < returns.length; i++) {
       const dataType = returns[i].dataType;
 

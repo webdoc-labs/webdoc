@@ -268,10 +268,10 @@ function addSignatureReturns(f) {
 }
 
 function addSignatureTypes(f) {
-  const types = f.dataType ? buildItemTypeStrings(f) : [];
+  const types = f.dataType ? SymbolLinks.linkTo(f.dataType) : "";
 
   f.signature = `${f.signature || ""}<span class="type-signature">` +
-        `${types.length ? ` :${types.join("|")}` : ""}</span>`;
+        `${types ? "   :" + types : ""}</span>`;
 }
 
 function addAttribs(f) {

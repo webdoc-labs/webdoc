@@ -195,10 +195,6 @@ export function parseDataType(exp: string | any): DataType {
     return dataType;
   }
 
-  if (exp.type === "TypeUnion") {
-    return createComplexType(" | ", ...exp.elements.map((elem) => parseDataType(elem)));
-  }
-
   if (exp.type === "TypeApplication") {
     const typeParameters = createComplexType(", ", ...exp.applications.map((appl) => {
       return parseDataType(appl);
@@ -211,6 +207,10 @@ export function parseDataType(exp: string | any): DataType {
 
     // Join name & <typeParameters>
     return createComplexType("", name, typeParameters);
+  }
+
+  if (exp.type === "TypeUnion") {
+    return createComplexType(" | ", ...exp.elements.map((elem) => parseDataType(elem)));
   }
 
   if (exp.type === "FunctionType") {

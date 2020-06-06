@@ -2,6 +2,7 @@
 import type {Doc, PropertyTag} from "@webdoc/types";
 import {createDoc} from "@webdoc/model";
 import {matchDataTypeClosure, StringUtils} from "./helper";
+import {parseDataType} from "@webdoc/model";
 
 // @property {<DATA_TYPE>} <NAME>                      - <DESC>
 // @property {<DATA_TYPE>} <NAME>=<DATA_VALUE>         - <DESC>
@@ -104,7 +105,7 @@ export function parseProperty(value: string, doc: $Shape<Doc>): PropertyTag {
   doc.members.push(createDoc(name, "PropertyDoc", {
     object: null,
     constant: !!dataValue,
-    dataType: [dataType, dataType],
+    dataType: dataType ? parseDataType(dataType) : undefined,
     dataValue,
     defaultValue,
     description,
@@ -114,7 +115,7 @@ export function parseProperty(value: string, doc: $Shape<Doc>): PropertyTag {
 
   return {
     name: "property",
-    dataType: [dataType, dataType],
+    dataType,
     description,
     type: "PropertyTag",
   };

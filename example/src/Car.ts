@@ -48,13 +48,15 @@ interface CarDealer {
    * Offer a price to sell the car.
    *
    * NOTE: This is invalid behaviour if you are the buyer in the transaction.
+   *
+   * @return type inference is working
    */
   offerAsk(on: Transaction, counteroffer?: (t: Car) => void): boolean;
 
   /**
    * Close transaction. If you respond to the counteroffer, then it won't be closed.
    */
-  closeTransaction(trans: Transaction, counteroffer: (t: Transaction) => void): void;
+  closeTransaction(trans: Transaction, counteroffer: (t: Transaction) => void): Transaction;
 }
 
 /**

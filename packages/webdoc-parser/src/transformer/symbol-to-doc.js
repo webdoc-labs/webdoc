@@ -40,8 +40,8 @@ import {createDoc} from "@webdoc/model";
 
 import type {Symbol, SymbolSignature} from "../types/Symbol";
 
-import mergeWith from "lodash/mergeWith";
 import mergeParams from "./merge-params";
+import mergeReturns from "./merge-returns";
 import validate from "../validators";
 
 type TagParser = (value: string, options: Object) => void;
@@ -191,8 +191,6 @@ export default function symbolToDoc(symbol: Symbol): ?Doc {
   options.description = description;
   options.node = null;
 
-  options.params = options.params || symbol.meta.params;
-  options.returns = options.returns || symbol.meta.returns;
   options.extends = options.extends || symbol.meta.extends;
   options.implements = options.implements || symbol.meta.implements;
   options.typeParameters = options.typeParameters || symbol.meta.typeParameters;
@@ -273,7 +271,7 @@ export default function symbolToDoc(symbol: Symbol): ?Doc {
 // Infer everything we can from the metadata
 function infer(doc: Doc, meta: SymbolSignature) {
   doc.params = mergeParams(doc.params, meta.params);
-  doc.returns = doc.returns || meta.returns;
+  doc.returns = mergeReturns(doc.returns, meta.returns);
   doc.extends = doc.extends || meta.extends;
   doc.implements = doc.implements || meta.implements;
   doc.typeParameters = doc.typeParameters || meta.typeParameters;

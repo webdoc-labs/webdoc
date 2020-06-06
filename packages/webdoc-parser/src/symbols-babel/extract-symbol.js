@@ -37,7 +37,12 @@ import {
 } from "@babel/types";
 
 import {type Symbol, OBLIGATE_LEAF, PASS_THROUGH, VIRTUAL, isVirtual} from "../types/Symbol";
-import {extractExtends, extractImplements, extractParams} from "./extract-metadata";
+import {
+  extractExtends,
+  extractImplements,
+  extractParams,
+  extractReturns,
+} from "./extract-metadata";
 
 // + Extract the symbol name, type from the Node
 // + Set the appopriate flags
@@ -73,6 +78,7 @@ export default function extractSymbol(
     nodeSymbol.meta.type = "MethodDoc";
 
     nodeSymbol.meta.params = extractParams(node);
+    nodeSymbol.meta.returns = extractReturns(node);
   } else if (isClassProperty(node) ||
       (isClassMethod(node) && (node.kind === "get" || node.kind === "set"))) {
     // Examples:
@@ -103,6 +109,7 @@ export default function extractSymbol(
     nodeSymbol.meta.type = "FunctionDoc";
 
     nodeSymbol.meta.params = extractParams(node);
+    nodeSymbol.meta.returns = extractReturns(node);
   } else if (
     isVariableDeclarator(node) ||
     isObjectProperty(node) ||
@@ -209,6 +216,7 @@ export default function extractSymbol(
 
     if (isTSMethodSignature(node)) {
       nodeSymbol.meta.params = extractParams(node);
+      nodeSymbol.meta.returns = extractReturns(node);
       nodeSymbol.meta.type = "MethodDoc";
     } else if (isTSPropertySignature(node)) {
       // TODO: dataType

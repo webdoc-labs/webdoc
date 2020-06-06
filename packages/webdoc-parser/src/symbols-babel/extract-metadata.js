@@ -9,6 +9,7 @@ import {
   type FunctionExpression,
   type FunctionDeclaration,
   type InterfaceDeclaration,
+  type ObjectMethod,
   type TSInterfaceDeclaration,
   type TSMethodSignature,
   type TSType,
@@ -44,6 +45,8 @@ import {
   isTSTypeReference,
   isTSTupleType,
   isTSUnionType,
+  isTypeAnnotation,
+  isVoidTypeAnnotation,
 } from "@babel/types";
 
 import {
@@ -54,7 +57,7 @@ import {
   createRestDataType,
   cloneType,
 } from "@webdoc/model";
-import type {DataType, Param} from "@webdoc/types";
+import type {DataType, Param, Return} from "@webdoc/types";
 
 // Extracts all the extended class/interface names
 export function extractExtends(
@@ -154,9 +157,23 @@ export function extractParams(
   return params;
 }
 
+// Extract the returns for the method/function
+export function extractReturns(
+  node: ClassMethod | ObjectMethod | FunctionDeclaration | FunctionExpression,
+): ?(Return[]) {
+  if (node.returnType) {
+    return [{dataType: resolveDataType(node.returnType)}];
+  }
+  if (node.typeAnnotation) {
+    return [{dataType: resolveDataType(node.typeAnnotation)}];
+  }
+
+  return null;
+}
+
 // Resolve a type-annotation into a parsed DataType
 function resolveDataType(type: TSTypeAnnotation | TSType): DataType {
-  if (isTSTypeAnnotation(type)) {
+  if (isTypeAnnotation(type) || isTSTypeAnnotation(type)) {
     return resolveDataType(type.typeAnnotation);
   }
   if (isIdentifier(type) && type.typeAnnotation) {
@@ -263,9 +280,13 @@ function resolveDataType(type: TSTypeAnnotation | TSType): DataType {
     }
   }
 
+  if (isVoidTypeAnnotation(type)) {
+    return createSimpleKeywordType("void");
+  }
 
   console.log(type);
+  console.log("***unknown data-type node***");
 
   // webdoc says ^sorry^
-  return createSimpleKeywordType("unkown");
+  return createSimpleKeywordType("unknown");
 }

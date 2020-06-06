@@ -1,6 +1,7 @@
 // @flow
 import type {DataType} from "@webdoc/types";
 import {IDENTIFIER} from "../constants";
+import {parseDataType} from "@webdoc/model";
 
 // Matches the first word as identifier
 export function matchIdentifier(value: string): any {
@@ -14,7 +15,7 @@ export function matchDataTypeClosure(value: string): any {
 // This is a helper to parse "{Type} [-] description"
 export function parseTypedDescription(value: string): { dataType: DataType, description: string } {
   const refClosure = /{([^{}])+}/.exec(value);
-  let dataType = "any";
+  let dataType;
   let description;
 
   if (!refClosure) {
@@ -28,7 +29,7 @@ export function parseTypedDescription(value: string): { dataType: DataType, desc
   }
 
   return {
-    dataType: [dataType, dataType],
+    dataType: dataType ? parseDataType(dataType) : undefined,
     description,
   };
 }
