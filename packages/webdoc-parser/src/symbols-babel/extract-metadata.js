@@ -27,10 +27,12 @@ import {
   isTSBooleanKeyword,
   isTSBigIntKeyword,
   isTSConstructorType,
+  isTSConstructSignatureDeclaration,
   isTSExpressionWithTypeArguments,
   isTSFunctionType,
   isTSIndexSignature,
   isTSIntersectionType,
+  isTSIndexedAccessType,
   isTSLiteralType,
   isTSNeverKeyword,
   isTSNullKeyword,
@@ -327,10 +329,19 @@ function resolveDataType(type: TSTypeAnnotation | TSType): DataType {
 
     return dataType;
   }
+  if (isTSIndexedAccessType(type)) {
+    const index = resolveDataType(type.indexType);
+
+    index[0] = `[${index[0]}]`;
+    index.template = `[${index.template}]`;
+
+    const object = resolveDataType(type.objectType);
+
+    return createComplexType("", object, index);
+  }
   if (isTSPropertySignature(type)) {
     const dataType = resolveDataType(type.typeAnnotation);
-
-    const key = type.key.name + (type.optional ? "?" : "");
+    const key = (type.key.name || `[${type.key.value}]`) + (type.optional ? "?" : "");
 
     dataType[0] = `${key} : ${dataType[0]}`;
     dataType.template = `${key} : ${dataType.template}`;
@@ -348,6 +359,20 @@ function resolveDataType(type: TSTypeAnnotation | TSType): DataType {
     const dataType = createComplexType(": ", params, resolveDataType(type.typeAnnotation));
 
     return dataType;
+  }
+  if (isTSConstructSignatureDeclaration(type)) {
+    const params = createComplexType(", ", ...type.parameters.map((param) => {
+      return resolveDataType(param);
+    }));
+
+    params[0] = `new (${params[0]})`;
+    params.template = `new (${params[0]})`;
+
+    if (type.typeAnnotation) {
+      return createComplexType(": ", params, resolveDataType(type.typeAnnotation));
+    } else {
+      return params;
+    }
   }
 
   if (isVoidTypeAnnotation(type)) {
