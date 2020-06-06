@@ -10,7 +10,7 @@
             return;
         }
 
-        if (parentParam && parentParam.name && param.name) {
+        if (parentParam && parentParam.identifier && param.identifier) {
             try {
                 paramRegExp = new RegExp('^(?:' + parentParam.name + '(?:\\[\\])*)\\.(.+)$');
             }
@@ -47,7 +47,7 @@
             params.hasAttributes = true;
         }
 
-        if (param.name) {
+        if (param.identifier) {
             params.hasName = true;
         }
 
@@ -81,7 +81,7 @@
     <tbody>
     <?js
         var self = this;
-        params.forEach(function(param) {
+        params.forEach((param) => {
             if (!param) { return; }
     ?>
 
@@ -91,8 +91,8 @@
             <?js } ?>
 
             <td class="type">
-            <?js if (param.referred) {?>
-                <?js= self.partial('type.tmpl', [param.referred]) ?>
+            <?js if (param.dataType) {?>
+                <?js= this.linkTo(param.dataType) ?>
             <?js } ?>
             </td>
 
@@ -124,7 +124,7 @@
                 <?js= param.description ?>
                 <?js if (param.subparams) { ?>
                     <h6>Properties</h6>
-                    <?js= self.partial('params.tmpl', param.subparams) ?>
+                    <?js= self.partial('components/params-table.tmpl', param.subparams) ?>
                 <?js } ?>
             </td>
         </tr>

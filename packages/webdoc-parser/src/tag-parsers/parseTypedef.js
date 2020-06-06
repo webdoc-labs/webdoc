@@ -1,6 +1,7 @@
 // @flow
 import type {TypedefTag} from "@webdoc/types";
 import {parserLogger, tag} from "../Logger";
+import {parseDataType} from "@webdoc/model";
 
 // @typedef {<DATA_TYPE>} <NAME>
 
@@ -8,7 +9,7 @@ import {parserLogger, tag} from "../Logger";
 export function parseTypedef(value: string, options: any): TypedefTag {
   // Get {ReferredType}
   const refClosure = /{([^{}])+}/.exec(value);
-  let of = "any";
+  let of;
   let alias;
 
   if (!refClosure) {
@@ -21,13 +22,13 @@ export function parseTypedef(value: string, options: any): TypedefTag {
       new RegExp(`(.{${refClosure.index}}).{${refClosure.index + refClosure[0].length}}`), "$1");
   }
 
-  options.of = [of];
+  options.dataType = of ? parseDataType(of) : undefined;
   options.alias = alias;
   options.name = alias;
 
   return {
     name: "typedef",
-    of: [of],
+    dataType: [of],
     alias,
     type: "TypedefTag",
   };

@@ -33,15 +33,16 @@ import {
   parseThrows,
   parseSee,
   parseSince,
-} from "./tag-parsers";
+} from "../tag-parsers";
 
 import type {Tag, Doc} from "@webdoc/types";
 import {createDoc} from "@webdoc/model";
 
-import type {Symbol} from "./build-symbol-tree";
+import type {Symbol, SymbolSignature} from "../types/Symbol";
 
-import mergeWith from "lodash/mergeWith";
-import validate from "./validators";
+import mergeParams from "./merge-params";
+import mergeReturns from "./merge-returns";
+import validate from "../validators";
 
 type TagParser = (value: string, options: Object) => void;
 
@@ -112,7 +113,7 @@ const TAG_OVERRIDES: { [id: string]: string | any } = { // replace any, no lazy
 // Tags that end only when another tag is found or two lines are blank for consecutively
 const TAG_BLOCKS = new Set(["example", "classdesc"]);
 
-export default function buildDoc(symbol: Symbol): ?Doc {
+export default function symbolToDoc(symbol: Symbol): ?Doc {
   const {comment, node} = symbol;
 
   const commentLines = (comment || "").split("\n");
@@ -190,7 +191,9 @@ export default function buildDoc(symbol: Symbol): ?Doc {
   options.description = description;
   options.node = null;
 
-  // if (symbol.meta.object)
+  options.extends = options.extends || symbol.meta.extends;
+  options.implements = options.implements || symbol.meta.implements;
+  options.typeParameters = options.typeParameters || symbol.meta.typeParameters;
 
   // @name might come handy
   if (!symbol.simpleName) {
@@ -214,6 +217,8 @@ export default function buildDoc(symbol: Symbol): ?Doc {
         TAG_OVERRIDES[name],
         options,
         symbol);
+
+      infer(doc, symbol.meta);
 
       delete doc.comment;
       delete doc.flags;
@@ -241,11 +246,11 @@ export default function buildDoc(symbol: Symbol): ?Doc {
     throw e;
   }
 
-  mergeWith(options, symbol.meta, (optVal, metaVal) => optVal === undefined ? metaVal : optVal);
-
   if (symbol.simpleName && symbol.meta && symbol.meta.type) {
     // This will transform "symbol" into "doc" (a new object is not created)
     const doc = createDoc(symbol.simpleName, symbol.meta.type, options, symbol);
+
+    infer(doc, symbol.meta);
 
     // Remove properties from Symbol form
     delete doc.comment;
@@ -261,4 +266,13 @@ export default function buildDoc(symbol: Symbol): ?Doc {
   }
 
   return null;
+}
+
+// Infer everything we can from the metadata
+function infer(doc: Doc, meta: SymbolSignature) {
+  doc.params = mergeParams(doc.params, meta.params);
+  doc.returns = mergeReturns(doc.returns, meta.returns);
+  doc.extends = doc.extends || meta.extends;
+  doc.implements = doc.implements || meta.implements;
+  doc.typeParameters = doc.typeParameters || meta.typeParameters;
 }

@@ -4,8 +4,8 @@ import type {Doc, RootDoc, DocLink} from "@webdoc/types";
 import {doc as findDoc, cloneDoc, addChildDoc} from "@webdoc/model";
 
 // Resolve all string symbol-paths in array to the actual Doc from the tree.
-function resolveArray(array: DocLink[], doc: Doc, tree: RootDoc) {
-  for (let i = 0; i < array.length; i++) {
+function resolveArray(array: DocLink[], doc: Doc, tree: RootDoc, start: number = 0) {
+  for (let i = start; i < array.length; i++) {
     const symbolPath = array[i];
 
     if (typeof symbolPath !== "string") {
@@ -46,6 +46,22 @@ export default function resolveRelated(doc: Doc, tree: RootDoc) {
 
   if (doc.mixes) {
     resolveArray(doc.mixes, doc, tree);
+  }
+
+  if (doc.params) {
+    for (let i = 0; i < doc.params.length; i++) {
+      if (doc.params[i].dataType) {
+        resolveArray(doc.params[i].dataType, doc, tree, 1);
+      }
+    }
+  }
+
+  if (doc.returns) {
+    for (let i = 0; i < doc.returns.length; i++) {
+      if (doc.returns[i].dataType) {
+        resolveArray(doc.returns[i].dataType, doc, tree, 1);
+      }
+    }
   }
 
   if (doc.type === "PropertyDoc" && doc.scope === "default") {

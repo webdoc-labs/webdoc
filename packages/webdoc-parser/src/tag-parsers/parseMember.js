@@ -1,6 +1,7 @@
 import {parserLogger, tag} from "../Logger";
 import type {MemberTag} from "@webdoc/types";
 import {StringUtils} from "./helper";
+import {parseDataType} from "@webdoc/model";
 
 // @member {<DATA_TYPE>}
 
@@ -18,7 +19,7 @@ export function parseMember(value: string, options: any): MemberTag {
     parserLogger.warn(tag.TagParser, "@member tag should have a {DataType}");
   }
 
-  options.dataType = [dataType, dataType];
+  options.dataType = parseDataType(dataType);
 
   return {
     name: "member",

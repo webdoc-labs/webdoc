@@ -1,6 +1,7 @@
 // @flow
 import type {Doc, ReturnTag} from "@webdoc/types";
 import {parserLogger, tag} from "../Logger";
+import {parseDataType} from "@webdoc/model";
 
 // @return {<DATA_TYPE>} [-] <DESC>
 
@@ -8,7 +9,7 @@ import {parserLogger, tag} from "../Logger";
 export function parseReturn(value: string, doc: $Shape<Doc>): ReturnTag {
   // Get {ReferredType}
   const refClosure = /{([^{}])+}/.exec(value);
-  let dataType = "any";
+  let dataType;
   let description;
 
   if (!refClosure) {
@@ -26,13 +27,13 @@ export function parseReturn(value: string, doc: $Shape<Doc>): ReturnTag {
   }
 
   doc.returns.push({
-    dataType: [dataType, dataType],
+    dataType: dataType ? parseDataType(dataType) : undefined,
     description,
   });
 
   return {
     name: "return",
-    dataType: [dataType, dataType],
+    dataType,
     description,
     type: "ReturnTag",
   };

@@ -1,6 +1,7 @@
 // @flow
 import {templateLogger} from "./Logger";
 import type {Doc} from "@webdoc/types";
+import {isDataType} from "@webdoc/model";
 
 // TODO: Replace catharsis with a in-built @webdoc/data-type-parser
 const catharsis = require("catharsis");
@@ -313,9 +314,21 @@ const createLink = (doc: Doc) => {
  * longname and display the short name in the link text. Ignored if `linkText` is specified.
  * @return {string} the HTML link, or the link text if the link is not available.
  */
-function buildLink(docPath: string, linkText: string, options: LinkOptions) {
-  if (typeof docPath !== "string") {
+function buildLink(docPath: string, linkText: string = docPath, options: LinkOptions) {
+  if (isDataType(docPath)) {
+    let link = docPath.template;
+
+    for (let i = 1; i < docPath.length; i++) {
+      link = link.replace(`%${i}`, buildLink(docPath[i], docPath[i], options));
+    }
+
+    return link;
+  } else if (typeof docPath !== "string") {
     docPath = docPath.path;// BaseDoc
+  }
+
+  if (linkText && typeof linkText !== "string") {
+    linkText = linkText.path;
   }
 
   options.linkMap = options.linkMap || pathToUrl;

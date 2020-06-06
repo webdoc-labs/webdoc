@@ -33,7 +33,8 @@
   },
   "dependencies": {
     "@webdoc/types": "^0.1.71-alpha.0",
-    "taffydb": "2.7.3"
+    "taffydb": "2.7.3",
+    "catharsis": "0.8.11"
   },
   "gitHead": "326306f477098182404f813337c0c67cc90263c6"
 }

@@ -3,7 +3,7 @@
 import {type Symbol} from "../types/Symbol";
 import {type Doc, type RootDoc} from "@webdoc/types";
 import {addChildDoc} from "@webdoc/model";
-import transform from "../build-doc";
+import symbolToDoc from "./symbol-to-doc";
 import {parserLogger} from "../Logger";
 
 // This file provides the transformation from a symbol-metadata tree into a documentation tree.
@@ -13,7 +13,7 @@ export function transformRecursive(symbol: Symbol, root: RootDoc): Doc {
   const members = symbol.members;
   const parent = symbol.parent;// :Doc (not a symbol because assemble() was called on parent!!!)
 
-  const doc: Doc = transform(symbol);
+  const doc: Doc = symbolToDoc(symbol);
 
   if (!doc && !symbol.isRoot) {
     parserLogger.error("DocParser",

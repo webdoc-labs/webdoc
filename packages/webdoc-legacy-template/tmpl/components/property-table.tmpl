@@ -85,7 +85,7 @@
             <?js if (hasType) { ?>
                 <td class="type">
                 <?js if (prop.dataType && prop.dataType.length) {?>
-                    <?js= this.partial('type.tmpl', prop.dataType) ?>
+                    <?js= this.linkTo(prop.dataType) ?>
                 <?js } ?>
                 </td>
             <?js } ?>

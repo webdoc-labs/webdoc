@@ -23,8 +23,6 @@ enum CAR_MAKES {
   LAMBORGHINI,
 };
 
-type Transaction = {};
-
 /**
  * This is the interface for dealing with car dealers.
  */
@@ -41,8 +39,8 @@ interface CarDealer {
    *
    * NOTE: This is invalid behaviour if you are the seller in the transaction.
    *
-   * @param {Transaction}[on]
-   * @param {Function}[counteroffer]
+   * @param on
+   * @param {Car | Vector} [counteroffer] -
    */
   offerBid(on?: Transaction, counteroffer?: (t: Transaction) => void): boolean;
 
@@ -50,13 +48,15 @@ interface CarDealer {
    * Offer a price to sell the car.
    *
    * NOTE: This is invalid behaviour if you are the buyer in the transaction.
+   *
+   * @return type inference is working
    */
-  offerAsk(on: Transaction, counteroffer: (t: Transaction) => void): boolean;
+  offerAsk(on: Transaction, counteroffer?: (t: Car) => void): boolean;
 
   /**
    * Close transaction. If you respond to the counteroffer, then it won't be closed.
    */
-  closeTransaction(trans: Transaction, counteroffer: (t: Transaction) => void): void;
+  closeTransaction(trans: Transaction, counteroffer: (t: Transaction) => void): Transaction;
 }
 
 /**
@@ -102,4 +102,13 @@ export class Car extends PhysicalObject {
    */
   static registerRetail(name) {
   }
+}
+
+/** @namespace Ts */
+
+/**
+ * @memberof Ts
+ */
+class Transaction {
+
 }

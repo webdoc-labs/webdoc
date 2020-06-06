@@ -1,8 +1,0 @@
-<?js
-    var data = obj;
-    var self = this;
-
-    data.slice(1).forEach(function(name, i) { ?>
-        <span class="param-type"><?js= self.linkto(name, self.htmlsafe(name)) ?></span>
-        <?js if (i < data.length - 2) { ?>|<?js } ?>
-<?js }); ?>

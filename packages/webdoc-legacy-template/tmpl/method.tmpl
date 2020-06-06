@@ -33,11 +33,11 @@ var self = this;
     <?js= self.partial('augments.tmpl', doc) ?>
 <?js } ?>
 
-<?js if (type === 'EventDoc' && doc.type && doc.type.names) {?>
+<?js if (type === 'EventDoc' && doc.dataType) {?>
     <h5>Type:</h5>
     <ul>
         <li>
-            <?js= self.partial('type.tmpl', doc.type.names) ?>
+            <?js= this.linkTo(doc.dataType) ?>
         </li>
     </ul>
 <?js } ?>
@@ -52,7 +52,7 @@ var self = this;
 
     if (params && params.length && !doc.hideconstructor) { ?>
         <h5>Parameters:</h5>
-        <?js= this.partial('params.tmpl', params) ?>
+        <?js= this.partial('components/params-table.tmpl', params) ?>
 <?js } ?>
 
 <?js= this.partial('components/details.tmpl', doc) ?>

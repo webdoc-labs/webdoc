@@ -1,5 +1,5 @@
 declare module "@webdoc/types" {
-    declare type DataType = [string];
+    declare type DataType = (string|DocLink)[] & { template: string };
 
     declare type ParserOpts = {
       memberof?: string
@@ -7,7 +7,7 @@ declare module "@webdoc/types" {
 
     declare type Param = {
       identifier: string,
-      referred: string,
+      dataType: DataType,
       description: string,
       optional?: Boolean,
       default?: string,

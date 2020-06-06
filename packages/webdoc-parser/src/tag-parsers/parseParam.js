@@ -1,6 +1,7 @@
 // @flow
 
 import type {Doc, ParamTag} from "@webdoc/types";
+import {parseDataType} from "@webdoc/model";
 
 // @param {<DATA_TYPE>} <NAME>                      - <DESC>
 // @param {<DATA_TYPE>} [<NAME>]                    - <DESC>
@@ -63,7 +64,6 @@ function extractidentifier(from: string, index: number = 0): {
   return {
     ...extracted,
     identifier: identClosure,
-    optional: false,
     variadic: identClosure.startsWith("..."),
   };
 }
@@ -82,8 +82,6 @@ export function parseParam(value: string, options: $Shape<Doc>): ParamTag {
     ref = refClosure[0].slice(1, -1);
     extractable = extractable.replace(
       new RegExp(`(.{${refClosure.index}}).{${refClosure.index + refClosure[0].length}}`), "$1");
-  } else {
-    ref = "any";
   }
 
   const identClosure = extractidentifier(extractable);
@@ -105,7 +103,7 @@ export function parseParam(value: string, options: $Shape<Doc>): ParamTag {
 
   options.params.push({
     identifier: identClosure.identifier,
-    referred: ref,
+    dataType: ref ? parseDataType(ref) : undefined,
     description: extractable,
     optional: identClosure.optional,
     default: identClosure.default,
@@ -116,7 +114,7 @@ export function parseParam(value: string, options: $Shape<Doc>): ParamTag {
     name: "param",
     value,
     type: "ParamTag",
-    referred: ref,
+    dataType: ref,
     description: extractable,
     identifier: identClosure.identifier,
     optional: identClosure.optional,
