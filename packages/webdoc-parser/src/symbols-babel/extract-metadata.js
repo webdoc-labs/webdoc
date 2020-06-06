@@ -22,6 +22,7 @@ import {
   isRestElement,
   isObjectExpression,
   isTSAnyKeyword,
+  isTSArrayType,
   isTSBooleanKeyword,
   isTSBigIntKeyword,
   isTSConstructorType,
@@ -42,6 +43,7 @@ import {
   isTSThisType,
   isTSType,
   isTSTypeAnnotation,
+  isTSTypeLiteral,
   isTSTypeReference,
   isTSTupleType,
   isTSUnionType,
@@ -210,6 +212,14 @@ function resolveDataType(type: TSTypeAnnotation | TSType): DataType {
     if (isTSAnyKeyword(type)) {
       return createSimpleKeywordType("any");
     }
+    if (isTSArrayType(type)) {
+      const dataType = resolveDataType(type.elementType);
+
+      dataType[0] += "[]";
+      dataType.template += "[]";
+
+      return dataType;
+    }
     if (isTSBooleanKeyword(type)) {
       return createSimpleKeywordType("boolean");
     }
@@ -245,6 +255,9 @@ function resolveDataType(type: TSTypeAnnotation | TSType): DataType {
     }
     if (isTSThisType(type)) {
       return createSimpleDocumentedType("this");
+    }
+    if (isTSTypeLiteral(type)) {
+      return createSimpleKeywordType(type.literal.value);
     }
     if (isTSFunctionType(type) || isTSConstructorType(type)) {
       return createFunctionType(
