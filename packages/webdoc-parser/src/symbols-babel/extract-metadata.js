@@ -21,6 +21,7 @@ import {
   isIdentifier,
   isRestElement,
   isObjectExpression,
+  isStringLiteral,
   isTSAnyKeyword,
   isTSArrayType,
   isTSBooleanKeyword,
@@ -28,12 +29,15 @@ import {
   isTSConstructorType,
   isTSExpressionWithTypeArguments,
   isTSFunctionType,
+  isTSIndexSignature,
   isTSIntersectionType,
+  isTSLiteralType,
   isTSNeverKeyword,
   isTSNullKeyword,
   isTSNumberKeyword,
   isTSObjectKeyword,
   isTSParenthesizedType,
+  isTSPropertySignature,
   isTSQualifiedName,
   isTSStringKeyword,
   isTSSymbolKeyword,
@@ -256,7 +260,11 @@ function resolveDataType(type: TSTypeAnnotation | TSType): DataType {
     if (isTSThisType(type)) {
       return createSimpleDocumentedType("this");
     }
-    if (isTSTypeLiteral(type)) {
+    if (isTSLiteralType(type)) {
+      if (isStringLiteral(type.literal)) {
+        return createSimpleKeywordType(`"${type.literal.value}"`);
+      }
+
       return createSimpleKeywordType(type.literal.value);
     }
     if (isTSFunctionType(type) || isTSConstructorType(type)) {
@@ -291,6 +299,37 @@ function resolveDataType(type: TSTypeAnnotation | TSType): DataType {
 
       return dataType;
     }
+  }
+
+  if (isTSTypeLiteral(type)) {
+    const dataType = createComplexType(", ", ...type.members.map((mem) => resolveDataType(mem)));
+
+    dataType[0] = "{ " + dataType[0] + " }";
+    dataType.template = `{ ${dataType.template} }`;
+
+    return dataType;
+  }
+  if (isTSPropertySignature(type)) {
+    const dataType = resolveDataType(type.typeAnnotation);
+
+    const key = type.key.name + (type.optional ? "?" : "");
+
+    dataType[0] = `${key} : ${dataType[0]}`;
+    dataType.template = `${key} : ${dataType.template}`;
+
+    return dataType;
+  }
+  if (isTSIndexSignature(type)) {
+    const params = createComplexType(", ", ...type.parameters.map((param) => {
+      return resolveDataType(param);
+    }));
+
+    params[0] = `[${params[0]}]`;
+    params.template = `[${params.template}]`;
+
+    const dataType = createComplexType(": ", params, resolveDataType(type.typeAnnotation));
+
+    return dataType;
   }
 
   if (isVoidTypeAnnotation(type)) {

@@ -42,7 +42,7 @@ interface CarDealer {
    * @param on
    * @param {Car | Vector} [counteroffer] -
    */
-  offerBid(on?: Transaction, counteroffer?: (t: Transaction) => void): boolean;
+  offerBid(on?: { t: Transaction, [id: string]: Transaction[]}, counteroffer?: (t: Transaction) => void): boolean;
 
   /**
    * Offer a price to sell the car.
