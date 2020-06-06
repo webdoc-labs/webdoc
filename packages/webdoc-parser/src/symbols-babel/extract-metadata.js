@@ -256,14 +256,14 @@ function resolveDataType(type: TSTypeAnnotation | TSType): DataType {
       return createRestDataType(resolveDataType(type.typeAnnotation));
     }
     if (isTSUnionType(type)) {
-      return createComplexType(" | ", type.types.map((subtype) => resolveDataType(subtype)));
+      return createComplexType(" | ", ...type.types.map((subtype) => resolveDataType(subtype)));
     }
     if (isTSIntersectionType(type)) {
-      return createComplexType(" & ", type.types.map((subtype) => resolveDataType(subtype)));
+      return createComplexType(" & ", ...type.types.map((subtype) => resolveDataType(subtype)));
     }
     if (isTSTupleType(type)) {
       const dataType = createComplexType(", ",
-        type.elementTypes.map((subtype) => resolveDataType(subtype)));
+        ...type.elementTypes.map((subtype) => resolveDataType(subtype)));
 
       dataType[0] = `[${dataType[0]}]`;
       dataType.template = `[${dataType.template}]`;
