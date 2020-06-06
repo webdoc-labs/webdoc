@@ -42,10 +42,10 @@ export default function mergeParams(docParams: Param[], metaParams: Param[]): Pa
       continue;
     }
 
-    // This can't happen - it means that the user documents a subparamter that doesn't exist
+    // It means that the user documents a subparamter that doesn't exist explicity
     if (metaParamDepth < paramDepth) {
-      throw new Error(`${name}[${i}th] found instead of ${metaName}[${m}th]. ` +
-          "Cannot document non-existent subparameters");
+      ++i;
+      continue;
     }
 
     // Merge metaParam into param

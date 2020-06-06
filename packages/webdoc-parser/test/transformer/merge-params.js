@@ -29,4 +29,21 @@ describe("@webdoc/parser.Transformer{@merger params}", function() {
 
     expect(documented[3].variadic).to.equal(true);
   });
+
+  it("should allow documented subparameters that aren't in the code", function() {
+    const documented = [
+      {identifier: "opts"},
+      {identifier: "opts.subopts"},
+      {identifier: "opts2"},
+    ];
+
+    const meta = [
+      {identifier: "opts", dataType: ["object"]},
+      {identifier: "opts2", dataType: ["string"]},
+    ];
+
+    mergeParams(documented, meta);
+
+    expect(documented[2].dataType).to.not.equal(undefined);
+  });
 });
