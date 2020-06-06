@@ -48,6 +48,7 @@ import {
   isTSType,
   isTSTypeAnnotation,
   isTSTypeLiteral,
+  isTSTypePredicate,
   isTSTypeReference,
   isTSTupleType,
   isTSUnionType,
@@ -296,6 +297,14 @@ function resolveDataType(type: TSTypeAnnotation | TSType): DataType {
 
       dataType[0] = `(${dataType[0]})`;
       dataType.template = `(${dataType.template})`;
+
+      return dataType;
+    }
+    if (isTSTypePredicate(type)) {
+      const dataType = cloneType(resolveDataType(type.typeAnnotation));
+
+      dataType[0] = `${type.parameterName.name} is ${dataType[0]}`;
+      dataType.template = `${type.parameterName.name} is ${dataType.template}`;
 
       return dataType;
     }

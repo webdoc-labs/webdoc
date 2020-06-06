@@ -56,7 +56,7 @@ interface CarDealer {
   /**
    * Close transaction. If you respond to the counteroffer, then it won't be closed.
    */
-  closeTransaction(trans: Transaction, counteroffer: (t: Transaction) => void): Transaction;
+  closeTransaction(trans: Transaction, counteroffer: (t: Transaction) => void): trans is Transaction;
 }
 
 /**

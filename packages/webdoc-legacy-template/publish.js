@@ -222,7 +222,7 @@ function addNonParamAttributes(items) {
   let types = [];
 
   items.forEach((item) => {
-    types = types.concat( buildItemTypeStrings(item) );
+    types = types.concat( SymbolLinks.linkTo(item.dataType) );
   });
 
   return types;
@@ -260,11 +260,11 @@ function addSignatureReturns(f) {
     returnTypes = addNonParamAttributes(source);
   }
   if (returnTypes.length) {
-    returnTypesString = ` &rarr; ${attribsString}{${returnTypes.join("|")}}`;
+    returnTypesString = returnTypes.join(" | ");
   }
 
   f.signature = `<span class="signature">${f.signature || ""}</span>` +
-        `<span class="type-signature">${returnTypesString}</span>`;
+        `<span class="type-signature">  →  {${returnTypesString}}</span>`;
 }
 
 function addSignatureTypes(f) {
