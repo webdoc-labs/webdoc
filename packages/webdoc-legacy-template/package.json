@@ -1,6 +1,6 @@
 {
   "name": "@webdoc/legacy-template",
-  "version": "0.1.71-alpha.0",
+  "version": "0.1.73-alpha.0",
   "description": "Port of the JSDoc default template to webdoc!",
   "keywords": [
     "webdoc",
@@ -38,8 +38,8 @@
     "@jsdoc/cli": "^0.2.2",
     "@jsdoc/core": "^0.3.1",
     "@jsdoc/util": "^0.2.1",
-    "@webdoc/model": "^0.1.71-alpha.0",
-    "@webdoc/template-library": "^0.1.71-alpha.0",
+    "@webdoc/model": "^0.1.73-alpha.0",
+    "@webdoc/template-library": "^0.1.73-alpha.0",
     "bluebird": "^3.7.2",
     "catharsis": "^0.8.11",
     "code-prettify": "^0.1.0",
