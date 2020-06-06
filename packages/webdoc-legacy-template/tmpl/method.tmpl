@@ -52,7 +52,7 @@ var self = this;
 
     if (params && params.length && !doc.hideconstructor) { ?>
         <h5>Parameters:</h5>
-        <?js= this.partial('params.tmpl', params) ?>
+        <?js= this.partial('components/params-table.tmpl', params) ?>
 <?js } ?>
 
 <?js= this.partial('components/details.tmpl', doc) ?>

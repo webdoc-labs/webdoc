@@ -418,6 +418,18 @@
 			]
 		},
 		{
+			"name": "Ts",
+			"type": "NSDoc",
+			"brief": "",
+			"children": [
+				{
+					"name": "Transaction",
+					"type": "ClassDoc",
+					"brief": ""
+				}
+			]
+		},
+		{
 			"name": "Car",
 			"type": "ClassDoc",
 			"brief": "",

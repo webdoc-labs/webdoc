@@ -35,7 +35,11 @@ TemplateRenderer.prototype.resolveDocLink = function(docLink) {
 
 const htmlsafe = TemplateRenderer.prototype.htmlsafe = (str) => {
   if (typeof str !== "string") {
-    str = String(str);
+    if (str.path) {
+      str = str.path;
+    } else {
+      str = String(str);
+    }
   }
 
   return str.replace(/&/g, "&amp;")

@@ -38,9 +38,10 @@ import {
 import type {Tag, Doc} from "@webdoc/types";
 import {createDoc} from "@webdoc/model";
 
-import type {Symbol} from "../types/Symbol";
+import type {Symbol, SymbolSignature} from "../types/Symbol";
 
 import mergeWith from "lodash/mergeWith";
+import mergeParams from "./merge-params";
 import validate from "../validators";
 
 type TagParser = (value: string, options: Object) => void;
@@ -219,6 +220,8 @@ export default function symbolToDoc(symbol: Symbol): ?Doc {
         options,
         symbol);
 
+      infer(doc, symbol.meta);
+
       delete doc.comment;
       delete doc.flags;
       delete doc.node;
@@ -245,11 +248,11 @@ export default function symbolToDoc(symbol: Symbol): ?Doc {
     throw e;
   }
 
-  mergeWith(options, symbol.meta, (optVal, metaVal) => optVal === undefined ? metaVal : optVal);
-
   if (symbol.simpleName && symbol.meta && symbol.meta.type) {
     // This will transform "symbol" into "doc" (a new object is not created)
     const doc = createDoc(symbol.simpleName, symbol.meta.type, options, symbol);
+
+    infer(doc, symbol.meta);
 
     // Remove properties from Symbol form
     delete doc.comment;
@@ -265,4 +268,13 @@ export default function symbolToDoc(symbol: Symbol): ?Doc {
   }
 
   return null;
+}
+
+// Infer everything we can from the metadata
+function infer(doc: Doc, meta: SymbolSignature) {
+  doc.params = mergeParams(doc.params, meta.params);
+  doc.returns = doc.returns || meta.returns;
+  doc.extends = doc.extends || meta.extends;
+  doc.implements = doc.implements || meta.implements;
+  doc.typeParameters = doc.typeParameters || meta.typeParameters;
 }

@@ -17,6 +17,10 @@ function validateParameters(doc: $Shape<Doc>, meta: SymbolSignature): void {
     const param = doc.params[i];
     const name = param.identifier;
 
+    if (!name) {
+      throw new Error("Anonymous documented parameters are not supported");
+    }
+
     const dotIndex = name.indexOf(".");
 
     if (dotIndex >= 0) {
