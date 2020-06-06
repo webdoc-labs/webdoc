@@ -22,7 +22,6 @@ function extractidentifier(from: string, index: number = 0): {
   if (!identClosureMatch) {
     return {
       identifier: `arg${index}`,
-      optional: false,
       closureStart: 0,
       closureEnd: 0,
     };
@@ -38,7 +37,7 @@ function extractidentifier(from: string, index: number = 0): {
   if (identClosure.startsWith("[") && identClosure.endsWith("]")) {// [...] block exists
     const closureContent = identClosure.slice(1, -1).trim();
     const splitIndex = closureContent.indexOf("=");
-    const variadic = closureContent.startsWith("...");
+    const variadic = closureContent.startsWith("...") ? true : undefined;
 
     if (splitIndex === -1) {// No "=" sign implies no default value
       return {
@@ -64,7 +63,7 @@ function extractidentifier(from: string, index: number = 0): {
   return {
     ...extracted,
     identifier: identClosure,
-    variadic: identClosure.startsWith("..."),
+    variadic: identClosure.startsWith("...") ? true : undefined,
   };
 }
 

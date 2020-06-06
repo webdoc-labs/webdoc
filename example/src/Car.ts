@@ -32,7 +32,7 @@ interface CarDealer {
   /**
    * Initiate a transaction/negotiation with a car dealer
    */
-  initiateTransaction(): Transaction;
+  initiateTransaction(): typeof Transaction;
 
   /**
    * Offer a price to buy the car.
@@ -42,7 +42,7 @@ interface CarDealer {
    * @param on
    * @param {Car | Vector} [counteroffer] -
    */
-  offerBid(on?: { t: Transaction, [id: string]: Transaction[]}, counteroffer?: (t: Transaction) => void): boolean;
+  offerBid(on?: { t: Transaction,[id: string]: Transaction[]}, ...counteroffer?: (t: Transaction) => void): boolean;
 
   /**
    * Offer a price to sell the car.
@@ -56,7 +56,7 @@ interface CarDealer {
   /**
    * Close transaction. If you respond to the counteroffer, then it won't be closed.
    */
-  closeTransaction(trans: Transaction, counteroffer: (t: Transaction) => void): trans is Transaction;
+  closeTransaction(trans: Transaction, counteroffer: (...t: Transaction) => void): trans is Transaction;
 }
 
 /**

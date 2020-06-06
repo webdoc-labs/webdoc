@@ -49,6 +49,7 @@ import {
   isTSTypeAnnotation,
   isTSTypeLiteral,
   isTSTypePredicate,
+  isTSTypeQuery,
   isTSTypeReference,
   isTSTupleType,
   isTSUnionType,
@@ -308,6 +309,14 @@ function resolveDataType(type: TSTypeAnnotation | TSType): DataType {
 
       return dataType;
     }
+    if (isTSTypeQuery(type)) {
+      const dataType = createSimpleDocumentedType(type.exprName.name);
+
+      dataType[0] = `typeof ${dataType[0]}`;
+      dataType.template = `typeof ${dataType.template}`;
+
+      return dataType;
+    }
   }
 
   if (isTSTypeLiteral(type)) {
@@ -343,6 +352,14 @@ function resolveDataType(type: TSTypeAnnotation | TSType): DataType {
 
   if (isVoidTypeAnnotation(type)) {
     return createSimpleKeywordType("void");
+  }
+  if (isRestElement(type)) {
+    const dataType = resolveDataType(type.typeAnnotation);
+
+    dataType[0] = `...${type.argument.name}: ${dataType[0]}`;
+    dataType.template = `...${type.argument.name}: ${dataType.template}`;
+
+    return dataType;
   }
 
   console.log(type);
