@@ -58,7 +58,7 @@ export function buildSymbolTree(
     throw new Error(`.${lang} file language is not registered`);
   }
 
-  return lang.parse(file, config);
+  return lang.parse(file, fileName, config);
 }
 
 // TODO: Asynchronous API for parsing

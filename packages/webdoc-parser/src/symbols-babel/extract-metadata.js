@@ -67,6 +67,7 @@ import {
   createRestDataType,
   cloneType,
 } from "@webdoc/model";
+
 import type {DataType, Param, Return} from "@webdoc/types";
 
 // Extracts all the extended class/interface names
@@ -182,7 +183,7 @@ export function extractReturns(
 }
 
 // Resolve a type-annotation into a parsed DataType
-function resolveDataType(type: TSTypeAnnotation | TSType): DataType {
+function resolveDataType(type: TSTypeAnnotation | TSType | any): DataType {
   if (isTypeAnnotation(type) || isTSTypeAnnotation(type)) {
     return resolveDataType(type.typeAnnotation);
   }

@@ -75,4 +75,31 @@ describe("@webdoc/parser.parse", function() {
     expect(docClassName.implements).to.not.equal(undefined);
     expect(docClassName.implements[0]).to.equal(docInterfaceName);
   });
+
+  it("should not coalesce assigned symbols at the same line,column in different files", function() {
+    const file1 = `
+      /** This is class1 */
+      settings.Class1 = {}
+    `;
+
+    const file2 = `
+      /** This is class2 */
+      settings.Class2 = {}
+    `;
+
+    const main = `
+      const settings = {};
+    `;
+
+    const symtree = parse(new Map(Object.entries({
+      "file1.js": file1,
+      "file2.js": file2,
+      "main.js": main,
+    })));
+
+    expect(symtree.members.length).to.equal(1);
+    expect(symtree.members[0].members.length).to.equal(2);
+    expect(symtree.members[0].members[0].name).to.equal("Class1");
+    expect(symtree.members[0].members[1].name).to.equal("Class2");
+  });
 });

@@ -1,7 +1,7 @@
 // @flow
 
 import {CANONICAL_DELIMITER} from "../constants";
-import type {Node, SourceLocation} from "@babel/types";
+import type {Node} from "@babel/types";
 import type {DocType, Param, Return} from "@webdoc/types";
 import {parserLogger, tag} from "../Logger";
 import _ from "lodash";
@@ -32,6 +32,13 @@ export type SymbolSignature = {
   undocumented?: boolean
 }
 
+// The location of a symbol
+export type SymbolLocation = {
+  start: { line: number, column: number },
+  end: { line: number, column: number },
+  fileName: string
+}
+
 // This is a preliminary data-format that represents a documentable symbol.
 //
 // + Symbols with no associated AST node are said to be "headless". They are back solely by
@@ -45,7 +52,7 @@ export type Symbol = {
   comment: string,
   parent: ?Symbol,
   members: Symbol[],
-  loc: SourceLocation,
+  loc: SymbolLocation,
   meta: SymbolSignature
 };
 
@@ -254,5 +261,8 @@ export function coalescePair(symbol: Symbol, pair: Symbol): Symbol {
 }
 
 function areEqualLoc(doc1: Symbol, doc2: Symbol): boolean {
-  return doc1.loc.start && doc2.loc.start && doc1.loc.start.line === doc2.loc.start.line;
+  return doc1.loc.fileName === doc2.loc.fileName &&
+    doc1.loc.start && doc2.loc.start &&
+    doc1.loc.start.line === doc2.loc.start.line &&
+    doc1.loc.start.column === doc2.loc.start.column;
 }

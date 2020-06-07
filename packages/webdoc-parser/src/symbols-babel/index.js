@@ -44,15 +44,15 @@ const tsPreset = [
 
 export const langJS = {
   extensions: ["js", "jsx", "jsdoc"],
-  parse(file: string, config: LanguageConfig): Symbol {
+  parse(file: string, fileName: string, config: LanguageConfig): Symbol {
     // Flow is automatically handled!
-    return buildSymbolTree(file, config, flowPreset);
+    return buildSymbolTree(file, fileName, config, flowPreset);
   },
 };
 
 export const langTS = {
   extensions: ["ts", "tsx"],
-  parse(file: string, config: LanguageConfig): Symbol {
-    return buildSymbolTree(file, config, tsPreset);
+  parse(file: string, fileName: string, config: LanguageConfig): Symbol {
+    return buildSymbolTree(file, fileName, config, tsPreset);
   },
 };

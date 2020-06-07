@@ -22,6 +22,7 @@ import _ from "lodash";
 
 import {
   type Symbol, VIRTUAL, isVirtual, isObligateLeaf,
+  type SymbolLocation,
 } from "../types/Symbol";
 
 import {LanguageConfig} from "../types/LanguageIntegration";
@@ -144,7 +145,7 @@ export const SymbolUtils = {
       canonicalName: "",
       parent: null,
       members: [],
-      loc: {start: 0, end: 0},
+      loc: _createLoc(),
       meta: {},
     };
   },
@@ -158,7 +159,7 @@ export const SymbolUtils = {
       comment,
       parent: scope,
       members: [],
-      loc: loc || {},
+      loc: _createLoc(loc),
       meta: {},
     };
   },
@@ -184,17 +185,20 @@ const extraVistors = {
   },
 };
 
+let fileName = "";
 let reportUndocumented = false;
 
 // Parses the file and returns a tree of symbols
 export default function buildSymbolTree(
   file: string,
+  _fileName: string,
   config: LanguageConfig,
   plugins: string[],
 ): Symbol {
   const moduleSymbol = SymbolUtils.createModuleSymbol();
   let ast;
 
+  fileName = _fileName;
   reportUndocumented = config.reportUndocumented;
 
   try {
@@ -351,7 +355,7 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
         comment,
         parent: parent,
         members: [],
-        loc: nodeDoc ? nodeDoc.loc : {},
+        loc: _createLoc(nodeDoc ? nodeDoc.loc : null),
       }, nodeSymbol);
 
       nodeSymbol = SymbolUtils.addChild(nodeSymbol, parent);
@@ -373,7 +377,7 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
           members: [],
           canonicalName: parent.canonicalName + "." + simpleName,
           path: [...parent.path, simpleName],
-          loc: nodeDoc ? nodeDoc.loc : {},
+          loc: _createLoc(nodeDoc ? nodeDoc.loc : null),
           options: {
             object: node.expression ? node.expression.left.object.name : undefined,
           },
@@ -381,7 +385,7 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
             ...nodeSymbol.meta,
           },
         }],
-        loc: nodeDoc ? nodeDoc.loc : {},
+        loc: _createLoc(nodeDoc ? nodeDoc.loc : null),
         virtual: true,
       }, nodeSymbol);
 
@@ -460,4 +464,26 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
   }
 
   return nodeSymbol;
+}
+
+function _createLoc(loc?: SourceLocation): SymbolLocation {
+  if (!loc) {
+    return {
+      fileName,
+      start: {
+        line: NaN,
+        column: NaN,
+      },
+      end: {
+        line: NaN,
+        column: NaN,
+      },
+    };
+  }
+
+  return {
+    fileName,
+    start: {line: loc.start.line, column: loc.start.column},
+    end: {line: loc.end.line, column: loc.end.column},
+  };
 }

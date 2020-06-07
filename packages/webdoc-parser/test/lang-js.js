@@ -53,4 +53,24 @@ describe("@webdoc/parser.LanguageIntegration{@lang js}", function() {
     expect(symbolPropertyName).to.not.equal(undefined);
     expect(symbolPropertyName.meta.object).to.equal("ObjectName");
   });
+
+  it("should parsed separate symbols with the same name", function() {
+    const symtree = buildSymbolTree(`
+      /** @namespace NSName */
+
+      {
+        /**
+         * @memberof NSName
+         */
+        const constantName = "dataValue";
+      }
+
+      /** This is a constant */
+      const constantName = "someOtherValue";
+    `);
+
+    expect(symtree.members.length).to.equal(3);
+    expect(symtree.members[1].simpleName).to.equal("constantName");
+    expect(symtree.members[2].simpleName).to.equal("constantName");
+  });
 });
