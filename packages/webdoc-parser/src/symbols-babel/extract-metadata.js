@@ -182,6 +182,13 @@ export function extractReturns(
   return null;
 }
 
+// Extract the data-type for a property
+export function extractType(node: any): ?DataType {
+  if (node.typeAnnotation) {
+    return resolveDataType(node.typeAnnotation);
+  }
+}
+
 // Resolve a type-annotation into a parsed DataType
 function resolveDataType(type: TSTypeAnnotation | TSType | any): DataType {
   if (isTypeAnnotation(type) || isTSTypeAnnotation(type)) {

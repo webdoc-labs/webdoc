@@ -163,7 +163,13 @@ export function addChildSymbol(doc: Symbol, scope: Symbol): Symbol {
     const child = members[i];
 
     if (child.simpleName && child.simpleName === doc.simpleName) {
-      return coalescePair(child, doc);
+      if (child.meta.undocumented || doc.meta.undocumented) {
+        // Merge undocumented symbol into documented one. This is helpful for
+        // inference.
+        //
+        // However, if both symbols are documented, they may be overloads.
+        return coalescePair(child, doc);
+      }
     }
     if (areEqualLoc(child, doc)) {
       coalescePair(child, doc);

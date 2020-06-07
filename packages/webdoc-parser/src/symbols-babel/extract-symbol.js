@@ -27,6 +27,7 @@ import {
   isObjectProperty,
   isObjectMethod,
   isReturnStatement,
+  isStringLiteral,
   isThisExpression,
   isTSEnumDeclaration,
   isTSEnumMember,
@@ -42,6 +43,7 @@ import {
   extractImplements,
   extractParams,
   extractReturns,
+  extractType,
 } from "./extract-metadata";
 
 // + Extract the symbol name, type from the Node
@@ -88,9 +90,19 @@ export default function extractSymbol(
 
     name = node.key.name;
 
-    nodeSymbol.meta.access = node.access;
+    nodeSymbol.meta.access = node.access || node.accessibility;
+    nodeSymbol.meta.dataType = extractType(node);
     nodeSymbol.meta.scope = node.static ? "static" : "instance";
     nodeSymbol.meta.type = "PropertyDoc";
+
+    if (isLiteral(node.value)) {
+      if (isStringLiteral(node.value)) {
+        // Quotes for strings
+        nodeSymbol.meta.defaultValue = `"${node.value.value}"`;
+      } else {
+        nodeSymbol.meta.defaultValue = node.value.value;
+      }
+    }
   } else if (isClassDeclaration(node) || isClassExpression(node)) {
     // Example:
     // class ClassName {}

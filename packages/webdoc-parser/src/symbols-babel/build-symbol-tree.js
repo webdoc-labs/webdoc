@@ -23,6 +23,7 @@ import _ from "lodash";
 import {
   type Symbol, VIRTUAL, isVirtual, isObligateLeaf,
   type SymbolLocation,
+  addChildSymbol,
 } from "../types/Symbol";
 
 import {LanguageConfig} from "../types/LanguageIntegration";
@@ -31,92 +32,7 @@ import {LanguageConfig} from "../types/LanguageIntegration";
 // in SymbolUtils.js
 // Exported for testing in test/build-symbol-tree.test.js
 export const SymbolUtils = {
-  // Adds "symbol" as a child to "parent", possibly merging it with an existing symbol. The
-  // returned symbol need not be the same as "symbol".
-  addChild(doc: Symbol, scope: Symbol): Symbol {
-    const {members} = scope;
-    let index = -1;
-
-    // Replace symbols when it has the same location but a different node. This occurs
-    // when the Node for a comment is found (the symbol being replaced was headless).
-    for (let i = 0; i < scope.members.length; i++) {
-      const child = members[i];
-
-      if (child.simpleName && child.simpleName === doc.simpleName) {
-        return SymbolUtils.coalescePair(child, doc);
-      }
-      if (SymbolUtils.areEqualLoc(child, doc)) {
-        SymbolUtils.coalescePair(child, doc);
-        doc = child;
-        index = i;
-        break;
-      }
-    }
-
-    // Coalesce Symbols when they refer to the same Node with different names
-    if (index === -1 && doc.node && !isVirtual(doc)) {
-      for (let i = 0; i < scope.members.length; i++) {
-        const child = members[i];
-
-        if (child === doc) {
-          parserLogger.error(tag.PartialParser, "Same partial doc being added twice");
-        }
-        if (child.node === doc.node) {
-          child.comment += `\n\n${doc.comment}`;
-          child.members.push(...doc.members);
-          return child;
-        }
-      }
-    }
-
-    // Append if new child symbol
-    if (index === -1) {
-      members.push(doc);
-    }
-
-    doc.parent = scope;
-    doc.canonicalName = scope.canonicalName ?
-      scope.canonicalName + "." + doc.simpleName :
-      doc.simpleName;
-    doc.path = [...scope.path, doc.simpleName];
-
-    return doc;
-  },
-  // Coalesce "pair" into "symbol" because they refer to the same symbol (by name)
-  coalescePair(symbol: Symbol, pair: Symbol): Symbol {
-    const members = symbol.members;
-    const comment = symbol.comment;
-    const flags = symbol.flags;
-
-    symbol.members.push(...pair.members);
-
-    symbol.comment = comment || pair.comment;
-    symbol.members = members;
-    symbol.flags = flags ? flags | pair.flags : pair.flags;
-    symbol.meta = _.assignWith(symbol.meta, pair.meta, (objValue, srcValue) =>
-      _.isUndefined(srcValue) ? objValue : srcValue);
-    symbol.loc = symbol.loc || pair.loc;
-    symbol.simpleName = symbol.simpleName || pair.simpleName;
-
-    symbol.meta.undocumented = !symbol.comment;
-
-    // It is **important** give the second pair high precedence. Otherwise, the AST traversal
-    // may fail to exit the pair's node.
-    symbol.node = pair.node || symbol.node;
-
-    // Horizontal transfer of members
-    for (let i = 0; i < pair.members.length; i++) {
-      pair.members[i].parent = symbol;
-    }
-
-    return symbol;
-  },
-  areEqualLoc(doc1: Symbol, doc2: Symbol): boolean {
-    return doc1.loc.start && doc2.loc.start && doc1.loc.start.line === doc2.loc.start.line;
-  },
-  hasLoc(sym: Symbol): boolean {
-    return typeof sym.loc.start !== "undefined" && sym.loc.start !== null;
-  },
+  addChild: addChildSymbol,
   commentIndex(comments: CommentBlock): number {
     for (let i = comments.length - 1; i >= 0; i--) {
       if (comments[i].value.startsWith("*") || comments[i].value.startsWith("!")) {
@@ -149,15 +65,12 @@ export const SymbolUtils = {
       meta: {},
     };
   },
-  createHeadlessSymbol(comment: string, loc: SourceLocation, scope: Symbol): Symbol {
+  createHeadlessSymbol(comment: string, loc: SourceLocation): Symbol {
     return {
       node: null,
       simpleName: "",
       flags: 0,
-      path: [...scope.path, ""],
-      canonicalName: scope.canonicalName + ".",
       comment,
-      parent: scope,
       members: [],
       loc: _createLoc(loc),
       meta: {},
@@ -278,6 +191,7 @@ export default function buildSymbolTree(
           // parentPardoc.members.push(...currentPardoc.members);
 
           for (let i = 0; i < currentPardoc.members.length; i++) {
+            currentPardoc.members[i].parent = null;
             SymbolUtils.addChild(currentPardoc.members[i], parentPardoc);
             // currentPardoc.members[i].parent = parentPardoc;
           }
@@ -353,7 +267,6 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
         flags,
         path: [...parent.path, simpleName],
         comment,
-        parent: parent,
         members: [],
         loc: _createLoc(nodeDoc ? nodeDoc.loc : null),
       }, nodeSymbol);
@@ -367,7 +280,6 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
         flags,
         comment: "",
         path: [...parent.path],
-        parent: parent,
         members: [{
           node: init,
           simpleName,
@@ -407,7 +319,7 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
       }
 
       SymbolUtils.addChild(
-        SymbolUtils.createHeadlessSymbol(comment, leadingComments[i].loc, parent),
+        SymbolUtils.createHeadlessSymbol(comment, leadingComments[i].loc),
         parent);
     }
   } else {
@@ -431,7 +343,7 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
       if (doc) {
         // $FlowFixMe
         SymbolUtils.addChild(
-          SymbolUtils.createHeadlessSymbol(doc, comment.loc, nodeSymbol),
+          SymbolUtils.createHeadlessSymbol(doc, comment.loc),
           nodeSymbol);
       }
     });
@@ -457,7 +369,7 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
       if (doc) {
         const actualParent = is11469 && isTrailing(comment) ? parent.parent : parent;
 
-        const tsym = SymbolUtils.createHeadlessSymbol(doc, comment.loc, actualParent);
+        const tsym = SymbolUtils.createHeadlessSymbol(doc, comment.loc);
         SymbolUtils.addChild(tsym, actualParent);
       }
     });

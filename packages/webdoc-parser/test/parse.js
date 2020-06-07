@@ -1,4 +1,4 @@
-const {parse} = require("../lib/parse");
+const {parse, buildSymbolTree} = require("../lib/parse");
 const {doc: findDoc} = require("@webdoc/model");
 
 const expect = require("chai").expect;
@@ -101,5 +101,43 @@ describe("@webdoc/parser.parse", function() {
     expect(symtree.members[0].members.length).to.equal(2);
     expect(symtree.members[0].members[0].name).to.equal("Class1");
     expect(symtree.members[0].members[1].name).to.equal("Class2");
+  });
+
+  it("should not coalesce symbols at different locations with the same name", function() {
+    const docs = parse(`
+      /** @namespace NS1 */
+      const NS1 = {};
+
+      /** @namespace NS2 */
+      const NS2 = {};
+
+      Object.defineProperties(NS1, {
+        /**
+         * @memberof NS1
+         * @member {string}
+         */
+        PROP_NAME: {}
+      })
+
+      Object.defineProperties(NS2, {
+        /**
+         * @memberof NS2
+         * @member {string}
+         */
+        PROP_NAME: {}
+      })
+    `);
+
+    expect(docs.members.length).to.equal(2);
+
+    const docNS2 = docs.members[1];
+
+    expect(docNS2.members.length).to.equal(1);
+    expect(docNS2.members[0].name).to.equal("PROP_NAME");
+
+    const docNS1 = docs.members[0];
+
+    expect(docNS1.members.length).to.equal(1);
+    expect(docNS1.members[0].name).to.equal("PROP_NAME");
   });
 });

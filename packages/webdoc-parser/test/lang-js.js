@@ -7,6 +7,8 @@ describe("@webdoc/parser.LanguageIntegration{@lang js}", function() {
   it("should parse classes correctly", function() {
     const symtree = buildSymbolTree(`
       class ClassName {
+        initProperty = 9
+
         constructor() { }
 
         classMethod() { }
@@ -23,11 +25,12 @@ describe("@webdoc/parser.LanguageIntegration{@lang js}", function() {
 
     const symClassName = symtree.members[0];
 
-    expect(symClassName.members.length).to.equal(5);
+    expect(symClassName.members.length).to.equal(6);
 
     expect(findSymbol("ClassName.constructor", symtree)).to.not.equal(undefined);
     expect(findSymbol("ClassName.classProperty", symtree)).to.not.equal(undefined);
     expect(findSymbol("ClassName.classMethod", symtree)).to.not.equal(undefined);
+    expect(findSymbol("ClassName.initProperty", symtree)).to.not.equal(undefined);
   });
 
   it("should parse assigned members properly", function() {
