@@ -37,7 +37,6 @@
     "@lerna/batch-packages": "^3.16.0",
     "@lerna/filter-packages": "^3.18.0",
     "@lerna/project": "^3.18.0",
-    "@webdoc/legacy-template": "^0.1.17-alpha.0",
     "babel-eslint": "^10.1.0",
     "chai": "^4.2.0",
     "del": "^5.1.0",
