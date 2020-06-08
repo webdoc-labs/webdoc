@@ -37,7 +37,11 @@ export function createSimpleDocumentedType(name: string): DataType {
 
 // Create a complex data-type with an operator on two sub data-types. You should add
 // spaces around the operator as well.
-export function createComplexType(operator: string, ...subtypes: DataType) {
+export function createComplexType(operator: string, ...subtypes: DataType): DataType {
+  if (subtypes.length === 0) {
+    return createSimpleKeywordType("");
+  }
+
   let len = subtypes[0].length;
 
   for (let i = 1; i < subtypes.length; i++) {

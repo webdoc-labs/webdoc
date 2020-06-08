@@ -21,19 +21,23 @@
 <?js } else { ?>
 
 <section>
-
 <header>
     <?js if (!doc.path || doc.type !== 'module') { ?>
         <h2>
-            <?js if (doc.attribs) { ?><span class="attribs"><?js= doc.attribs ?></span><?js } ?>
+            <?js if (doc.attribs) { ?>
+                <span class="attribs"><?js= doc.attribs ?></span>
+            <?js } ?>
             <?js= doc.path ?>
             <?js if (doc.variation) { ?>
                 <sup class="variation"><?js= doc.variation ?></sup>
             <?js }
-            if (doc.signature && !doc.hideconstructor) { ?>
-                <?js= doc.signature ?><?js } ?>
+                if (doc.signature && !doc.hideconstructor) { ?>
+                    <?js= doc.signature ?>
+            <?js } ?>
         </h2>
-        <?js if (doc.description) { ?>
+        <?js
+
+          if (doc.description) { ?>
             <div class="class-description"><?js= doc.description ?></div>
         <?js } ?>
         <?js } else if (doc.type === 'module' && doc.modules) { ?>
@@ -57,6 +61,10 @@
             <?js }) ?>
         <?js } else if (doc.type === "ClassDoc" || (doc.type === 'NSDoc' && doc.signature)) { ?>
             <?js= self.partial('method.tmpl', this.getConstructor(currentDoc) || doc) ?>
+
+            <?js if (doc.description) { ?>
+                <div class="description"><?js= doc.description ?></div>
+            <?js } ?>
         <?js } else { ?>
             <?js if (doc.description) { ?>
                 <div class="description"><?js= doc.description ?></div>

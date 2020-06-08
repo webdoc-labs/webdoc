@@ -10,6 +10,7 @@ function sanitizeDoc(doc: Doc): SanitizedDoc {
     scope: doc.scope,
     version: doc.version,
     brief: doc.brief,
+    description: doc.description,
   };
 
   if (doc.children.length) {

@@ -254,7 +254,7 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
 
     const leadingComments = node.leadingComments || [];
 
-    // Does user want to document as a property? Then remove PASS_THROUGH flag
+    // Does user want to document as a property? Then remove VIRTUAL flag
     // "@member " with the space is required b/c of @memberof tag
     if ((flags & VIRTUAL) && comment.indexOf("@member ") >= 0) {
       flags &= ~VIRTUAL;
@@ -285,7 +285,6 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
           simpleName,
           flags: 0,
           comment,
-          parent: parent,
           members: [],
           canonicalName: parent.canonicalName + "." + simpleName,
           path: [...parent.path, simpleName],
@@ -296,12 +295,14 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
           meta: {
             ...nodeSymbol.meta,
           },
+          __INITOR__: true,
         }],
         loc: _createLoc(nodeDoc ? nodeDoc.loc : null),
         virtual: true,
       }, nodeSymbol);
 
       nodeSymbol = SymbolUtils.addChild(nodeSymbol, parent);
+      nodeSymbol.__INIT__ = true;
     } else {
       nodeSymbol = null;
     }

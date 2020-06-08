@@ -32,7 +32,7 @@ interface CarDealer {
   /**
    * Initiate a transaction/negotiation with a car dealer
    */
-  initiateTransaction(x: { subopt: Transaction[0] }): typeof Transaction;
+  initiateTransaction(x: { subopt: Transaction[0], anotheropt: Vector<3> }): typeof Transaction;
 
   /**
    * Offer a price to buy the car.

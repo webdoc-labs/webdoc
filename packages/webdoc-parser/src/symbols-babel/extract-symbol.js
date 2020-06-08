@@ -146,8 +146,6 @@ export default function extractSymbol(
     // which is also treated as above. However, the call-expression itself is also becomes a virtual
     // symbol.
 
-    let init;
-
     if (isExpressionStatement(node)) {
       name = node.expression.left.property.name;
       init = node.expression.right;
@@ -251,7 +249,7 @@ export default function extractSymbol(
 
     if (returnedSymbol) {
       isInit = true;
-      initComment = parent.comment || " ";
+      initComment = "";
       name = returnedSymbol;
     }
   }

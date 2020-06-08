@@ -5,17 +5,20 @@
 			"name": "PIXI",
 			"type": "NSDoc",
 			"brief": "",
+			"description": "",
 			"children": [
 				{
 					"name": "utils",
 					"type": "NSDoc",
 					"scope": "static",
 					"brief": "",
+					"description": "",
 					"children": [
 						{
 							"name": "skipHello",
 							"type": "FunctionDoc",
-							"brief": ""
+							"brief": "",
+							"description": "<p>Skips the hello message of renderers that are created after this is run.</p>"
 						}
 					]
 				},
@@ -23,18 +26,21 @@
 					"name": "TilingSprite",
 					"type": "ClassDoc",
 					"scope": "static",
-					"brief": ""
+					"brief": "",
+					"description": ""
 				},
 				{
 					"name": "AbstractRenderer",
 					"type": "ClassDoc",
 					"brief": "",
+					"description": "",
 					"children": [
 						{
 							"name": "backgroundColor",
 							"type": "PropertyDoc",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"description": "<p>The background color to fill if not transparent</p>"
 						}
 					]
 				},
@@ -42,48 +48,56 @@
 					"name": "ObjectRenderer",
 					"type": "ClassDoc",
 					"brief": "",
+					"description": "<p>Base for a common object renderer that can be used as a\nsystem renderer plugin.</p>",
 					"children": [
 						{
 							"name": "renderer",
 							"type": "PropertyDoc",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"description": "<p>The renderer this manager works for.</p>"
 						},
 						{
 							"name": "constructor",
 							"type": "MethodDoc",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"description": ""
 						},
 						{
 							"name": "destroy",
 							"type": "MethodDoc",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"description": "<p>Generic destruction method that frees all resources. This\nshould be called by subclasses.</p>"
 						},
 						{
 							"name": "flush",
 							"type": "MethodDoc",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"description": "<p>Stub method that should be used to empty the current\nbatch by rendering objects now.</p>"
 						},
 						{
 							"name": "render",
 							"type": "MethodDoc",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"description": "<p>Keeps the object to render. It doesn't have to be\nrendered immediately.</p>"
 						},
 						{
 							"name": "start",
 							"type": "MethodDoc",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"description": "<p>Stub method that initializes any state required before\nrendering starts. It is different from the <code>prerender</code>\nsignal, which occurs every frame, in that it is called\nwhenever an object requests <em>this</em> renderer specifically.</p>"
 						},
 						{
 							"name": "stop",
 							"type": "MethodDoc",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"description": "<p>Stops the renderer. It should free up any state and\nbecome dormant.</p>"
 						}
 					]
 				},
@@ -91,24 +105,28 @@
 					"name": "System",
 					"type": "ClassDoc",
 					"brief": "",
+					"description": "<p>System is a base class used for extending systems used by the {@link PIXI.AbstractRenderer}.</p>\n<p>Search more here: {@link https://www.google.com/}</p>",
 					"children": [
 						{
 							"name": "renderer",
 							"type": "PropertyDoc",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"description": "<p>The renderer this manager works for.</p>"
 						},
 						{
 							"name": "constructor",
 							"type": "MethodDoc",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"description": ""
 						},
 						{
 							"name": "destroy",
 							"type": "MethodDoc",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"description": "<p>Generic destroy methods to be overridden by the subclass</p>"
 						}
 					]
 				},
@@ -117,198 +135,229 @@
 					"type": "ClassDoc",
 					"access": "protected",
 					"brief": "",
+					"description": "<p>Renderer dedicated to drawing and batching sprites.</p>\n<p>This is the default batch renderer. It buffers objects\nwith texture-based geometries and renders them in\nbatches. It uploads multiple textures to the GPU to\nreduce to the number of draw calls.</p>",
 					"children": [
 						{
 							"name": "_drawCallPool",
 							"type": "PropertyDoc",
 							"scope": "static",
-							"brief": ""
+							"brief": "",
+							"description": "<p>Pool of <code>BatchDrawCall</code> objects that <code>flush</code> used\nto create &quot;batches&quot; of the objects being rendered.</p>\n<p>These are never re-allocated again.\nShared between all batch renderers because it can be only one &quot;flush&quot; working at the moment.</p>"
 						},
 						{
 							"name": "_textureArrayPool",
 							"type": "PropertyDoc",
 							"scope": "static",
-							"brief": ""
+							"brief": "",
+							"description": "<p>Pool of <code>BatchDrawCall</code> objects that <code>flush</code> used\nto create &quot;batches&quot; of the objects being rendered.</p>\n<p>These are never re-allocated again.\nShared between all batch renderers because it can be only one &quot;flush&quot; working at the moment.</p>"
 						},
 						{
 							"name": "bufferSize",
 							"type": "PropertyDoc",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"description": ""
 						},
 						{
 							"name": "MAX_TEXTURES",
 							"type": "PropertyDoc",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"description": "<p>Maximum number of textures that can be uploaded to\nthe GPU under the current context. It is initialized\nproperly in <code>this.contextChange</code>.</p>"
 						},
 						{
 							"name": "renderer",
 							"type": "PropertyDoc",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"description": "<p>The renderer this manager works for.</p>"
 						},
 						{
 							"name": "size",
 							"type": "PropertyDoc",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"description": "<p>The number of bufferable objects before a flush\noccurs automatically.</p>"
 						},
 						{
 							"name": "state",
 							"type": "PropertyDoc",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"description": "<p>The WebGL state in which this renderer will work.</p>"
 						},
 						{
 							"name": "vertexSize",
 							"type": "PropertyDoc",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"description": "<p>Size of data being buffered per vertex in the\nattribute buffers (in floats). By default, the\nbatch-renderer plugin uses 6:</p>\n<table>\n<thead>\n<tr>\n<th>aVertexPosition</th>\n<th>2</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>aTextureCoords</td>\n<td>2</td>\n</tr>\n<tr>\n<td>aColor</td>\n<td>1</td>\n</tr>\n<tr>\n<td>aTextureId</td>\n<td>1</td>\n</tr>\n</tbody>\n</table>"
 						},
 						{
 							"name": "_shader",
 							"type": "PropertyDoc",
 							"access": "protected",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"description": "<p>This shader is generated by <code>this.shaderGenerator</code>.</p>\n<p>It is generated specifically to handle the required\nnumber of textures being batched together.</p>"
 						},
 						{
 							"name": "geometryClass",
 							"type": "PropertyDoc",
 							"access": "protected",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"description": "<p>The class that represents the geometry of objects\nthat are going to be batched with this.</p>"
 						},
 						{
 							"name": "shaderGenerator",
 							"type": "PropertyDoc",
 							"access": "protected",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"description": "<p>This is used to generate a shader that can\ncolor each vertex based on a <code>aTextureId</code>\nattribute that points to an texture in <code>uSampler</code>.</p>\n<p>This enables the objects with different textures\nto be drawn in the same draw call.</p>\n<p>You can customize your shader by creating your\ncustom shader generator.</p>"
 						},
 						{
 							"name": "_aBuffers",
 							"type": "PropertyDoc",
 							"access": "private",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"description": "<p>Pool of <code>ViewableBuffer</code> objects that are sorted in\norder of increasing size. The flush method uses\nthe buffer with the least size above the amount\nit requires. These are used for passing attributes.</p>\n<p>The first buffer has a size of 8; each subsequent\nbuffer has double capacity of its previous.</p>"
 						},
 						{
 							"name": "_bufferedElements",
 							"type": "PropertyDoc",
 							"access": "private",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"description": "<p>Buffer of objects that are yet to be rendered.</p>"
 						},
 						{
 							"name": "_bufferedTextures",
 							"type": "PropertyDoc",
 							"access": "private",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"description": "<p>Data for texture batch builder, helps to save a bit of CPU on a pass</p>"
 						},
 						{
 							"name": "_bufferSize",
 							"type": "PropertyDoc",
 							"access": "private",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"description": "<p>Number of elements that are buffered and are\nwaiting to be flushed.</p>"
 						},
 						{
 							"name": "_flushId",
 							"type": "PropertyDoc",
 							"access": "private",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"description": "<p>A flush may occur multiple times in a single\nframe. On iOS devices or when\n<code>settings.CAN_UPLOAD_SAME_BUFFER</code> is false, the\nbatch renderer does not upload data to the same\n<code>WebGLBuffer</code> for performance reasons.</p>\n<p>This is the index into <code>packedGeometries</code> that points to\ngeometry holding the most recent buffers.</p>"
 						},
 						{
 							"name": "_iBuffers",
 							"type": "PropertyDoc",
 							"access": "private",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"description": "<p>Pool of <code>Uint16Array</code> objects that are sorted in\norder of increasing size. The flush method uses\nthe buffer with the least size above the amount\nit requires. These are used for passing indices.</p>\n<p>The first buffer has a size of 12; each subsequent\nbuffer has double capacity of its previous.</p>"
 						},
 						{
 							"name": "_indexCount",
 							"type": "PropertyDoc",
 							"access": "private",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"description": "<p>Total count of all indices used by the currently\nbuffered objects.</p>"
 						},
 						{
 							"name": "_packedGeometries",
 							"type": "PropertyDoc",
 							"access": "private",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"description": "<p>Pool of <code>this.geometryClass</code> geometry objects\nthat store buffers. They are used to pass data\nto the shader on each draw call.</p>\n<p>These are never re-allocated again, unless a\ncontext change occurs; however, the pool may\nbe expanded if required.</p>"
 						},
 						{
 							"name": "_packedGeometryPoolSize",
 							"type": "PropertyDoc",
 							"access": "private",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"description": "<p>Size of <code>this._packedGeometries</code>. It can be expanded\nif more than <code>this._packedGeometryPoolSize</code> flushes\noccur in a single frame.</p>"
 						},
 						{
 							"name": "_vertexCount",
 							"type": "PropertyDoc",
 							"access": "private",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"description": "<p>Total count of all vertices used by the currently\nbuffered objects.</p>"
 						},
 						{
 							"name": "bindAndClearTexArray",
 							"type": "MethodDoc",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"description": "<p>Bind textures for current rendering</p>"
 						},
 						{
 							"name": "buildDrawCalls",
 							"type": "MethodDoc",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"description": "<p>Populating drawcalls for rendering</p>"
 						},
 						{
 							"name": "constructor",
 							"type": "MethodDoc",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"description": "<p>This will hook onto the renderer's <code>contextChange</code>\nand <code>prerender</code> signals.</p>"
 						},
 						{
 							"name": "contextChange",
 							"type": "MethodDoc",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"description": "<p>Handles the <code>contextChange</code> signal.</p>\n<p>It calculates <code>this.MAX_TEXTURES</code> and allocating the\npacked-geometry object pool.</p>"
 						},
 						{
 							"name": "destroy",
 							"type": "MethodDoc",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"description": "<p>Destroys this <code>AbstractBatchRenderer</code>. It cannot be used again.</p>"
 						},
 						{
 							"name": "drawBatches",
 							"type": "MethodDoc",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"description": ""
 						},
 						{
 							"name": "flush",
 							"type": "MethodDoc",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"description": "<p>Renders the content <em>now</em> and empties the current batch.</p>"
 						},
 						{
 							"name": "initFlushBuffers",
 							"type": "MethodDoc",
 							"scope": "instance",
 							"brief": "",
+							"description": "<p>Makes sure that static and dynamic flush pooled objects have correct dimensions</p>",
 							"children": [
 								{
 									"name": "MAX_TA",
 									"type": "PropertyDoc",
-									"brief": ""
+									"brief": "",
+									"description": ""
 								}
 							]
 						},
@@ -316,45 +365,52 @@
 							"name": "onPrerender",
 							"type": "MethodDoc",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"description": "<p>Handles the <code>prerender</code> signal.</p>\n<p>It ensures that flushes start from the first geometry\nobject again.</p>"
 						},
 						{
 							"name": "packInterleavedGeometry",
 							"type": "MethodDoc",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"description": "<p>Takes the four batching parameters of <code>element</code>, interleaves\nand pushes them into the batching attribute/index buffers given.</p>\n<p>It uses these properties: <code>vertexData</code> <code>uvs</code>, <code>textureId</code> and\n<code>indicies</code>. It also uses the &quot;tint&quot; of the base-texture, if\npresent.</p>"
 						},
 						{
 							"name": "render",
 							"type": "MethodDoc",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"description": "<p>Buffers the &quot;batchable&quot; object. It need not be rendered\nimmediately.</p>"
 						},
 						{
 							"name": "start",
 							"type": "MethodDoc",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"description": "<p>Starts a new sprite batch.</p>"
 						},
 						{
 							"name": "stop",
 							"type": "MethodDoc",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"description": "<p>Stops and flushes the current batch.</p>"
 						},
 						{
 							"name": "getAttributeBuffer",
 							"type": "MethodDoc",
 							"access": "private",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"description": "<p>Fetches an attribute buffer from <code>this._aBuffers</code> that\ncan hold atleast <code>size</code> floats.</p>"
 						},
 						{
 							"name": "getIndexBuffer",
 							"type": "MethodDoc",
 							"access": "private",
 							"scope": "instance",
-							"brief": ""
+							"brief": "",
+							"description": "<p>Fetches an index buffer from <code>this._iBuffers</code> that can\nhas atleast <code>size</code> capacity.</p>"
 						}
 					]
 				},
@@ -362,27 +418,31 @@
 					"name": "SVG_SIZE",
 					"type": "PropertyDoc",
 					"scope": "static",
-					"brief": ""
+					"brief": "",
+					"description": ""
 				},
 				{
 					"name": "TRANSFORM_MODE",
 					"type": "PropertyDoc",
 					"scope": "static",
 					"brief": "",
+					"description": "<p>Constants that specify the transform type.</p>",
 					"children": [
 						{
 							"name": "DYNAMIC",
 							"type": "PropertyDoc",
 							"access": "public",
 							"scope": "static",
-							"brief": ""
+							"brief": "",
+							"description": ""
 						},
 						{
 							"name": "STATIC",
 							"type": "PropertyDoc",
 							"access": "public",
 							"scope": "static",
-							"brief": ""
+							"brief": "",
+							"description": ""
 						}
 					]
 				}
@@ -392,28 +452,33 @@
 			"name": "R",
 			"type": "NSDoc",
 			"brief": "",
+			"description": "<p>A namespace dedicated to road manipulation utilites.</p>",
 			"children": [
 				{
 					"name": "Road",
 					"type": "ClassDoc",
-					"brief": ""
+					"brief": "",
+					"description": "<p>This is another road class.</p>"
 				},
 				{
 					"name": "Road",
 					"type": "ClassDoc",
-					"brief": ""
+					"brief": "",
+					"description": "<p>Road represents a drivable 2D path for vehicles.</p>"
 				},
 				{
 					"name": "DEFAULT_LANES",
 					"type": "PropertyDoc",
 					"scope": "static",
-					"brief": ""
+					"brief": "",
+					"description": "<p>The default no. of lanes per one side of road</p>"
 				},
 				{
 					"name": "buildRoad",
 					"type": "MethodDoc",
 					"scope": "instance",
-					"brief": ""
+					"brief": "",
+					"description": "<p>Builds a road</p>"
 				}
 			]
 		},
@@ -421,11 +486,13 @@
 			"name": "Ts",
 			"type": "NSDoc",
 			"brief": "",
+			"description": "",
 			"children": [
 				{
 					"name": "Transaction",
 					"type": "ClassDoc",
-					"brief": ""
+					"brief": "",
+					"description": ""
 				}
 			]
 		},
@@ -433,60 +500,70 @@
 			"name": "Car",
 			"type": "ClassDoc",
 			"brief": "",
+			"description": "<p><em>Simulation</em> for a automobile that can drive on a manifold surface.</p>\n<pre><code class=\"hljs language-js\"><span class=\"hljs-keyword\">const</span> car = <span class=\"hljs-keyword\">new</span> Car({ <span class=\"hljs-attr\">make</span>: <span class=\"hljs-string\">\"Ferrari\"</span> });\n\ncar.installComponent(<span class=\"hljs-string\">\"interior\"</span>, <span class=\"hljs-keyword\">new</span> AirConditioner());\ncar.installComponent(<span class=\"hljs-string\">\"exterior\"</span>, <span class=\"hljs-keyword\">new</span> Bumper());\ncar.drop(<span class=\"hljs-string\">\"1234 Virtual Street, OH, Virtual US\"</span>, <span class=\"hljs-string\">\"Universe-Default\"</span>);\ncar.gear(<span class=\"hljs-string\">\"D\"</span>);\ncar.accelerate(<span class=\"hljs-number\">2</span>).until(<span class=\"hljs-number\">65</span>).then(<span class=\"hljs-number\">0</span>);\n\ncar.onCrash(<span class=\"hljs-function\"><span class=\"hljs-params\">()</span> =&gt;</span> Services.Insurance.initiateClaim(<span class=\"hljs-string\">\"abcdefghi-ticket\"</span>));\n</code></pre>",
 			"children": [
 				{
 					"name": "DEFAULT_DRIVE_SHIFT",
 					"type": "PropertyDoc",
 					"scope": "static",
-					"brief": ""
+					"brief": "",
+					"description": ""
 				},
 				{
 					"name": "bounds",
 					"type": "PropertyDoc",
 					"scope": "instance",
-					"brief": ""
+					"brief": "",
+					"description": "<p>The mesh enclosing this object. By default, it is a &quot;point&quot; object at the its own\nposition.</p>"
 				},
 				{
 					"name": "interactions",
 					"type": "PropertyDoc",
 					"scope": "instance",
-					"brief": ""
+					"brief": "",
+					"description": "<p>All causal interactions with other objects</p>"
 				},
 				{
 					"name": "mass",
 					"type": "PropertyDoc",
 					"scope": "instance",
-					"brief": ""
+					"brief": "",
+					"description": "<p>The mass of this object in kilograms.</p>"
 				},
 				{
 					"name": "position",
 					"type": "PropertyDoc",
 					"scope": "instance",
-					"brief": ""
+					"brief": "",
+					"description": "<p>The absolute position of this object's center of mass (in the universal reference frame)</p>"
 				},
 				{
 					"name": "velocity",
 					"type": "PropertyDoc",
 					"scope": "instance",
-					"brief": ""
+					"brief": "",
+					"description": "<p>The absolute velocity of this object (in the universal reference frame)</p>"
 				},
 				{
 					"name": "vin",
 					"type": "PropertyDoc",
 					"scope": "instance",
-					"brief": ""
+					"brief": "",
+					"description": ""
 				},
 				{
 					"name": "registerRetail",
 					"type": "MethodDoc",
 					"scope": "static",
-					"brief": ""
+					"brief": "",
+					"description": "<p>Register a retail dealer for buying a car from</p>"
 				},
 				{
 					"name": "onCrash",
 					"type": "MethodDoc",
 					"scope": "instance",
-					"brief": ""
+					"brief": "",
+					"description": ""
 				}
 			]
 		},
@@ -494,12 +571,14 @@
 			"name": "Gravity",
 			"type": "ClassDoc",
 			"brief": "<p>This class shouldn't be documented!</p>",
+			"description": "",
 			"children": [
 				{
 					"name": "force",
 					"type": "MethodDoc",
 					"scope": "instance",
-					"brief": ""
+					"brief": "",
+					"description": "<p>This method should be overriden to calculate the force at the given instant.</p>"
 				}
 			]
 		},
@@ -507,24 +586,28 @@
 			"name": "PhysicalInteraction",
 			"type": "ClassDoc",
 			"brief": "",
+			"description": "<p>A physical interaction is a force causes object positions to be re-evaulated each frame based on\nforce's magnitude.</p>",
 			"children": [
 				{
 					"name": "GRAVITATIONAL_CONSTANT",
 					"type": "PropertyDoc",
 					"scope": "static",
-					"brief": ""
+					"brief": "",
+					"description": ""
 				},
 				{
 					"name": "createGravity",
 					"type": "MethodDoc",
 					"scope": "static",
-					"brief": ""
+					"brief": "",
+					"description": "<p>Creates a graviational force</p>"
 				},
 				{
 					"name": "force",
 					"type": "MethodDoc",
 					"scope": "instance",
-					"brief": ""
+					"brief": "",
+					"description": "<p>This method should be overriden to calculate the force at the given instant.</p>"
 				}
 			]
 		},
@@ -532,36 +615,42 @@
 			"name": "PhysicalObject",
 			"type": "ClassDoc",
 			"brief": "",
+			"description": "<p>Represents a physical-object and its intrinsic properties. This is useful for approximating\nextended objects as a uniform, continous body mass (ignoring its particulate composition).</p>",
 			"children": [
 				{
 					"name": "bounds",
 					"type": "PropertyDoc",
 					"scope": "instance",
-					"brief": ""
+					"brief": "",
+					"description": "<p>The mesh enclosing this object. By default, it is a &quot;point&quot; object at the its own\nposition.</p>"
 				},
 				{
 					"name": "interactions",
 					"type": "PropertyDoc",
 					"scope": "instance",
-					"brief": ""
+					"brief": "",
+					"description": "<p>All causal interactions with other objects</p>"
 				},
 				{
 					"name": "mass",
 					"type": "PropertyDoc",
 					"scope": "instance",
-					"brief": ""
+					"brief": "",
+					"description": "<p>The mass of this object in kilograms.</p>"
 				},
 				{
 					"name": "position",
 					"type": "PropertyDoc",
 					"scope": "instance",
-					"brief": ""
+					"brief": "",
+					"description": "<p>The absolute position of this object's center of mass (in the universal reference frame)</p>"
 				},
 				{
 					"name": "velocity",
 					"type": "PropertyDoc",
 					"scope": "instance",
-					"brief": ""
+					"brief": "",
+					"description": "<p>The absolute velocity of this object (in the universal reference frame)</p>"
 				}
 			]
 		},
@@ -569,30 +658,35 @@
 			"name": "Vector",
 			"type": "ClassDoc",
 			"brief": "",
+			"description": "",
 			"children": [
 				{
 					"name": "dimensions",
 					"type": "PropertyDoc",
 					"scope": "instance",
-					"brief": ""
+					"brief": "",
+					"description": "<p>The no. of components of this vector</p>"
 				},
 				{
 					"name": "add",
 					"type": "MethodDoc",
 					"scope": "instance",
-					"brief": ""
+					"brief": "",
+					"description": "<p>Add <code>vec</code> to this</p>"
 				},
 				{
 					"name": "equalTo",
 					"type": "MethodDoc",
 					"scope": "instance",
-					"brief": ""
+					"brief": "",
+					"description": "<p>Whether this and <code>vec</code> are equal vectors</p>"
 				},
 				{
 					"name": "isCompat",
 					"type": "MethodDoc",
 					"scope": "instance",
-					"brief": ""
+					"brief": "",
+					"description": "<p>Whether this and <code>vec</code> are compatible vectors (same dimensions)</p>"
 				}
 			]
 		},
@@ -600,55 +694,63 @@
 			"name": "CAR_MAKES",
 			"type": "EnumDoc",
 			"brief": "",
+			"description": "<p>These are the possible types of car makes.</p>",
 			"children": [
 				{
 					"name": "FERRARI",
 					"type": "PropertyDoc",
 					"access": "public",
 					"scope": "static",
-					"brief": ""
+					"brief": "",
+					"description": ""
 				},
 				{
 					"name": "FORD",
 					"type": "PropertyDoc",
 					"access": "public",
 					"scope": "static",
-					"brief": ""
+					"brief": "",
+					"description": ""
 				},
 				{
 					"name": "GENERAL_MOTORS",
 					"type": "PropertyDoc",
 					"access": "public",
 					"scope": "static",
-					"brief": ""
+					"brief": "",
+					"description": ""
 				},
 				{
 					"name": "JAGUAR",
 					"type": "PropertyDoc",
 					"access": "public",
 					"scope": "static",
-					"brief": ""
+					"brief": "",
+					"description": ""
 				},
 				{
 					"name": "KIA",
 					"type": "PropertyDoc",
 					"access": "public",
 					"scope": "static",
-					"brief": ""
+					"brief": "",
+					"description": ""
 				},
 				{
 					"name": "LAMBORGHINI",
 					"type": "PropertyDoc",
 					"access": "public",
 					"scope": "static",
-					"brief": ""
+					"brief": "",
+					"description": ""
 				},
 				{
 					"name": "TOYOTA",
 					"type": "PropertyDoc",
 					"access": "public",
 					"scope": "static",
-					"brief": ""
+					"brief": "",
+					"description": "<p>toyota make</p>"
 				}
 			]
 		},
@@ -656,13 +758,15 @@
 			"name": " VectorArray",
 			"type": "TypedefDoc",
 			"brief": "",
+			"description": "<p>A 3D vector</p>",
 			"children": [
 				{
 					"name": "meta",
 					"type": "PropertyDoc",
 					"access": "public",
 					"scope": "static",
-					"brief": ""
+					"brief": "",
+					"description": ""
 				}
 			]
 		},
@@ -670,33 +774,39 @@
 			"name": "CarDealer",
 			"type": "InterfaceDoc",
 			"brief": "",
+			"description": "<p>This is the interface for dealing with car dealers.</p>",
 			"children": [
 				{
 					"name": "closeTransaction",
 					"type": "MethodDoc",
-					"brief": ""
+					"brief": "",
+					"description": "<p>Close transaction. If you respond to the counteroffer, then it won't be closed.</p>"
 				},
 				{
 					"name": "initiateTransaction",
 					"type": "MethodDoc",
-					"brief": ""
+					"brief": "",
+					"description": "<p>Initiate a transaction/negotiation with a car dealer</p>"
 				},
 				{
 					"name": "offerAsk",
 					"type": "MethodDoc",
-					"brief": ""
+					"brief": "",
+					"description": "<p>Offer a price to sell the car.</p>\n<p>NOTE: This is invalid behaviour if you are the buyer in the transaction.</p>"
 				},
 				{
 					"name": "offerBid",
 					"type": "MethodDoc",
-					"brief": ""
+					"brief": "",
+					"description": "<p>Offer a price to buy the car.</p>\n<p>NOTE: This is invalid behaviour if you are the seller in the transaction.</p>"
 				}
 			]
 		},
 		{
 			"name": "isPhysicalObject",
 			"type": "FunctionDoc",
-			"brief": ""
+			"brief": "",
+			"description": "<p>Checks whether the object is an instance of {@code PhysicalObject}.</p>"
 		}
 	]
 }

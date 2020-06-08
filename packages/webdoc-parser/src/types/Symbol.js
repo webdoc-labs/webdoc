@@ -53,7 +53,12 @@ export type Symbol = {
   parent: ?Symbol,
   members: Symbol[],
   loc: SymbolLocation,
-  meta: SymbolSignature
+  meta: SymbolSignature,
+
+  // This flags symbols that are the initializer of a parent. They are merged when another symbol
+  // with the same name is found.
+  __INITOR__: ?boolean,
+  __INIT__: ?boolean
 };
 
 export function isPassThrough(symbol: Symbol): boolean {
@@ -163,7 +168,8 @@ export function addChildSymbol(doc: Symbol, scope: Symbol): Symbol {
     const child = members[i];
 
     if (child.simpleName && child.simpleName === doc.simpleName) {
-      if (child.meta.undocumented || doc.meta.undocumented) {
+      // __INITOR__ means that a merging was actually expected
+      if (child.meta.undocumented || doc.meta.undocumented || child.__INITOR__ || doc.__INITOR__) {
         // Merge undocumented symbol into documented one. This is helpful for
         // inference.
         //
