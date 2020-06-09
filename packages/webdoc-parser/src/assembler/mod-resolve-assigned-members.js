@@ -63,11 +63,11 @@ export default function resolveAssignedMembersRecursive(
       retryQueue = [];
     }
 
-    if (retryQueue.length) {
+    if (tryQueue.length) {
       console.error("{@assembly-mod resolve-assigned-members} failed to resolve these symbols: ");
 
-      retryQueue.forEach((sym) => {
-        console.error(`\t ${symbol.canonicalName} [to ${symbol.meta.object}]`);
+      tryQueue.forEach((sym) => {
+        console.error(`\t ${sym.canonicalName} [to ${sym.meta.object}]`);
       });
 
       // Error code for unit-testing

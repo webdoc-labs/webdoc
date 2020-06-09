@@ -55,4 +55,16 @@ describe("@webdoc/parser.assemble{@assembly-mod resolve-assigned-members}", func
     expect(symtree.members[0].members[0].members.length).to.equal(1);
     expect(symtree.members[0].members[0].members[0].simpleName).to.equal("propertyName");
   });
+
+  it("should return -1 when an assigned member's object doesn't exist", function() {
+    const symtree = buildSymbolTree(`
+      objectName.propertyName = "dataValue";
+    `);
+
+    //    console.log(symtree.members[0]);
+
+    const err = resolveAssignedMembersRecursive(symtree);
+
+    expect(err).to.equal(-1);
+  });
 });
