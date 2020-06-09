@@ -38,7 +38,13 @@ export function createBlock(): void {
   ++registryBlocks;
 
   if (variableRegistry.length < registryBlocks) {
+    let i = variableRegistry.length;
+
     variableRegistry.length = registryBlocks;
+
+    for (; i < registryBlocks; i++) {
+      variableRegistry[i] = {};
+    }
   } else {
     variableRegistry[registryBlocks - 1] = {};
   }
