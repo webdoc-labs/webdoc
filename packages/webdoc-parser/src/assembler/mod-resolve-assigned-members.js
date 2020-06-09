@@ -93,6 +93,8 @@ function resolveToObject(symbol: Symbol, tree: Symbol = symbol): void {
         if (objectSymbol !== symbol.parent) {
           addChildSymbol(symbol, objectSymbol);
         }
+
+        delete objectSymbol.meta.object;
       } else {
         // Push symbols whose object may not exist yet, because they themselves are assigned
         // properties. For example, "propertyName"'s object "nestedObject" is itself a property of

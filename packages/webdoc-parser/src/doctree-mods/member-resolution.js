@@ -36,7 +36,7 @@ export default function memberResolve(doc: Doc, root: RootDoc) {
           addChildDoc(doc, scope);
         }
       } else {
-        console.warn(`Member ${doc.path} could not be resolved to ${doc.object}`);
+        console.warn(`Member ${doc.path} could not be resolved to ${objectPath}`);
       }
     }
   }
