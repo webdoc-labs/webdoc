@@ -190,6 +190,15 @@ export default function extractSymbol(
         nodeSymbol.meta.object = resolveObject(node.expression.left);
         nodeSymbol.meta.scope = isInstancePropertyAssignment(node.expression.left) ?
           "instance" : "static";
+
+        if (nodeSymbol.meta.scope === "instance" &&
+              nodeSymbol.meta.object.includes(".prototype")) {
+          // webdoc doesn't really support .prototype.prototype (multiple prototypes)
+          // Should we?
+          // It would probably be implemented as a document-tree mod that climbs the
+          // inheritance/super-class chain.
+          nodeSymbol.meta.object = nodeSymbol.meta.object.replace(".prototype", "");
+        }
       } else if (isObjectProperty(node)) {
         nodeSymbol.meta.scope = "static";
       }
@@ -347,6 +356,10 @@ function isInstancePropertyAssignment(expr: MemberExpression): boolean {
     return true;
   }
   if (isMemberExpression(expr.object)) {
+    if (expr.object.property.name === "prototype") {
+      return true;
+    }
+
     return isInstancePropertyAssignment(expr.object);
   }
 
