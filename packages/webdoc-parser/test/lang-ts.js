@@ -41,8 +41,6 @@ describe("@webdoc/parser.LanguageIntegration{@lang ts}", function() {
     expect(findSymbol("ClassName.classMethod", symtree)).to.not.equal(undefined);
     expect(findSymbol("ClassName.initProperty", symtree)).to.not.equal(undefined);
 
-    console.log(symtree.members[0].members[1].members[0]);
-
     // Inference test
 
     const symbolInitProperty = findSymbol("ClassName.initProperty", symtree);
@@ -51,5 +49,17 @@ describe("@webdoc/parser.LanguageIntegration{@lang ts}", function() {
     expect(symbolInitProperty.meta.dataType[0]).to.equal("number");
     expect(symbolInitProperty.meta.access).to.equal("private");
     expect(symbolInitProperty.comment).to.not.equal("");
+  });
+
+  it("should be able to parse type-casted objects for property symbols", function() {
+    const symtree = buildSymbolTree(`
+      (objectName as ObjectType).propertyName = "dataValue";
+    `, ".ts");
+
+    expect(symtree.members.length).to.equal(1);
+
+    const symbolPropertyName = symtree.members[0];
+
+    expect(symbolPropertyName.meta.object).to.equal("objectName");
   });
 });

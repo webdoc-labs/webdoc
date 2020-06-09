@@ -29,6 +29,7 @@ import {
   isReturnStatement,
   isStringLiteral,
   isThisExpression,
+  isTSAsExpression,
   isTSEnumDeclaration,
   isTSEnumMember,
   isTSInterfaceDeclaration,
@@ -154,14 +155,7 @@ export default function extractSymbol(
       name = node.expression.left.property.name;
       init = node.expression.right;
 
-      let objectNode = node.expression.left;
-      let rootName = "";
-
-      while (objectNode.object) {
-        objectNode = objectNode.object;
-      }
-
-      rootName = objectNode.name;
+      const rootName = resolveRootObject(node.expression.left);
 
       if (queryType(rootName) === PARAMETER) {
         shouldSkip = true;
@@ -314,6 +308,10 @@ function resolveObject(expression: MemberExpression): void {
   let longname = "";
   expression = expression.object;
 
+  if (isTSAsExpression(expression)) {
+    expression = expression.expression;
+  }
+
   while (expression.object) {
     longname = expression.property.name + (longname ? "." + longname : "");
     expression = expression.object;
@@ -322,6 +320,24 @@ function resolveObject(expression: MemberExpression): void {
   longname = expression.name + (longname ? "." : "") + longname;
 
   return longname;
+}
+
+function resolveRootObject(expression: MemberExpression): void {
+  if (isThisExpression(expression.object)) {
+    return "this";
+  }
+
+  expression = expression.object;
+
+  if (isTSAsExpression(expression)) {
+    expression = expression.expression;
+  }
+
+  while (expression.object) {
+    expression = expression.object;
+  }
+
+  return expression.name;
 }
 
 // Whether the member expression assigns to this, e.g.
