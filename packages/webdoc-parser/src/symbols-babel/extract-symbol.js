@@ -46,6 +46,8 @@ import {
   extractType,
 } from "./extract-metadata";
 
+import {queryType, PARAMETER} from "../types/VariableRegistry";
+
 // + Extract the symbol name, type from the Node
 // + Set the appopriate flags
 // + Set isInit & initComment if the symbol has a initializer child
@@ -146,9 +148,25 @@ export default function extractSymbol(
     // which is also treated as above. However, the call-expression itself is also becomes a virtual
     // symbol.
 
+    let shouldSkip = false;
+
     if (isExpressionStatement(node)) {
       name = node.expression.left.property.name;
       init = node.expression.right;
+
+      let objectNode = node.expression.left;
+      let rootName = "";
+
+      while (objectNode.object) {
+        objectNode = objectNode.object;
+      }
+
+      rootName = objectNode.name;
+
+      if (queryType(rootName) === PARAMETER) {
+        shouldSkip = true;
+        name = null;
+      }
     } else if (isVariableDeclarator(node)) {
       name = node.id.name;
       init = resolveInit(node);
@@ -157,28 +175,30 @@ export default function extractSymbol(
       init = node.value;
     }
 
-    if (isClassExpression(init) || isFunctionExpression(init) ||
-        (isCallExpression(init) &&
-        (isFunctionExpression(init.callee) || isArrowFunctionExpression(init.callee)))) {
-      flags |= PASS_THROUGH | VIRTUAL;
-      isInit = true;
+    if (!shouldSkip) {
+      if (isClassExpression(init) || isFunctionExpression(init) ||
+          (isCallExpression(init) &&
+          (isFunctionExpression(init.callee) || isArrowFunctionExpression(init.callee)))) {
+        flags |= PASS_THROUGH | VIRTUAL;
+        isInit = true;
 
-      // nodeSymbol is virtual & has no DocType
-    } else if (!isObjectExpression(init)) {
-      flags |= OBLIGATE_LEAF;
-      nodeSymbol.meta.type = "PropertyDoc";
-    } else {
-      nodeSymbol.meta.type = "PropertyDoc";
-    }
+        // nodeSymbol is virtual & has no DocType
+      } else if (!isObjectExpression(init)) {
+        flags |= OBLIGATE_LEAF;
+        nodeSymbol.meta.type = "PropertyDoc";
+      } else {
+        nodeSymbol.meta.type = "PropertyDoc";
+      }
 
-    if (isExpressionStatement(node)) {
-      // Literal property
+      if (isExpressionStatement(node)) {
+        // Literal property
 
-      nodeSymbol.meta.object = resolveObject(node.expression.left);
-      nodeSymbol.meta.scope = isInstancePropertyAssignment(node.expression.left) ?
-        "instance" : "static";
-    } else if (isObjectProperty(node)) {
-      nodeSymbol.meta.scope = "static";
+        nodeSymbol.meta.object = resolveObject(node.expression.left);
+        nodeSymbol.meta.scope = isInstancePropertyAssignment(node.expression.left) ?
+          "instance" : "static";
+      } else if (isObjectProperty(node)) {
+        nodeSymbol.meta.scope = "static";
+      }
     }
   } else if (isInterfaceDeclaration(node) || isTSInterfaceDeclaration(node)) {
     // Example:

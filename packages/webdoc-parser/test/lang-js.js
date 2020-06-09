@@ -57,7 +57,7 @@ describe("@webdoc/parser.LanguageIntegration{@lang js}", function() {
     expect(symbolPropertyName.meta.object).to.equal("ObjectName");
   });
 
-  it("should parsed separate symbols with the same name", function() {
+  it("should parse separate symbols with the same name", function() {
     const symtree = buildSymbolTree(`
       /** @namespace NSName */
 
@@ -75,5 +75,30 @@ describe("@webdoc/parser.LanguageIntegration{@lang js}", function() {
     expect(symtree.members.length).to.equal(3);
     expect(symtree.members[1].simpleName).to.equal("constantName");
     expect(symtree.members[2].simpleName).to.equal("constantName");
+  });
+
+  it("should parse initializer functions correctly", function() {
+    const symtree = buildSymbolTree(`
+      /** This is a class */
+      const ClassName = (() => {
+        class ClassName {
+          constructor() {}
+        }
+
+        return ClassName;
+      })();
+    `);
+
+    expect(symtree.members.length).to.equal(1);
+
+    const symbolClassName = symtree.members[0];
+
+    expect(symbolClassName.simpleName).to.equal("ClassName");
+    expect(symbolClassName.meta.type).to.equal("ClassDoc");
+    expect(symbolClassName.comment).to.equal(" This is a class");
+
+    expect(symbolClassName.members.length).to.equal(1);
+    expect(symbolClassName.members[0].simpleName).to.equal("constructor");
+    expect(symbolClassName.members[0].members.length).to.equal(0);
   });
 });

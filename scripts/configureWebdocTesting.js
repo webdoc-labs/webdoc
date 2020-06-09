@@ -1,7 +1,7 @@
 // This file configures @webdoc/* packages for unit-testing purposes.
 
 const {applyDefaultLangConfig} = require("../packages/webdoc-parser/lib/parse.js");
-const {initLogger} = require("../packages/webdoc-parser/lib/Logger");
+const {initLogger: initParserLogger} = require("../packages/webdoc-parser/lib/Logger");
 
 // Don't need to write a documentation comment above each symbol in unit-tests now
 applyDefaultLangConfig({
@@ -9,4 +9,4 @@ applyDefaultLangConfig({
 });
 
 // No INFO, please :-)
-initLogger("WARN");
+initParserLogger("WARN");

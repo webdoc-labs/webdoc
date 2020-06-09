@@ -1,6 +1,7 @@
 // @flow
 import type {
   AuthorTag,
+  CopyrightTag,
   DefaultTag,
   DeprecatedTag,
   LicenseTag,
@@ -11,7 +12,6 @@ import type {
   Doc,
   Tag,
 } from "@webdoc/types";
-import {parserLogger} from "../Logger";
 
 // @author <AUTHOR>
 // @copyright <COPYRIGHT>
@@ -58,11 +58,7 @@ export function parseDefault(value: string, doc: $Shape<Doc>): $Shape<DefaultTag
 }
 
 export function parseDeprecated(value: string, options: $Shape<Doc>): DeprecatedTag {
-  if (value.trim() !== "") {
-    parserLogger.warn("TagParser", "@deprecated does not accept any value");
-  }
-
-  options.deprecated = true;
+  options.deprecated = value;
 
   return {
     name: "deprecated",

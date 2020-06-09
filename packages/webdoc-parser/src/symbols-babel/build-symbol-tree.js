@@ -3,10 +3,16 @@
 // This file implements the construction of a symbol-tree for JavaScript/Flow/TypeScript code.
 
 import {
+  type ArrayPattern,
   type CommentBlock,
   type Node,
+  type ObjectPattern,
   type VariableDeclaration,
+  isArrayPattern,
   isBlockStatement,
+  isIdentifier,
+  isObjectPattern,
+  isVariableDeclaration,
   isScope,
   SourceLocation,
   isExportDefaultDeclaration,
@@ -25,6 +31,15 @@ import {
   type SymbolLocation,
   addChildSymbol,
 } from "../types/Symbol";
+
+import {
+  declareParameter,
+  declareVariable,
+  createBlock,
+  removeBlock,
+  clearRegistry,
+  queryType,
+} from "../types/VariableRegistry";
 
 import {LanguageConfig} from "../types/LanguageIntegration";
 
@@ -113,6 +128,7 @@ export default function buildSymbolTree(
 
   fileName = _fileName;
   reportUndocumented = config.reportUndocumented;
+  clearRegistry();
 
   try {
     ast = parser.parse(file, {
@@ -127,8 +143,13 @@ export default function buildSymbolTree(
 
   const ancestorStack = [moduleSymbol];
 
+  // File-level scope
+  createBlock();
+
   traverse(ast, {
     enter(nodePath: NodePath) {
+      createBlock();
+
       const node = nodePath.node;
 
       if (extraVistors.hasOwnProperty(node.type)) { // eslint-disable-line no-prototype-builtins
@@ -178,6 +199,8 @@ export default function buildSymbolTree(
       }
     },
     exit(nodePath: NodePath) {
+      removeBlock();
+
       const currentPardoc = ancestorStack[ancestorStack.length - 1];
 
       if (currentPardoc && currentPardoc.node === nodePath.node) {
@@ -232,6 +255,17 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
     isInit,
     nodeSymbol,
   } = symbolInfo;
+
+  if (nodeSymbol.meta.params) {
+    const params = nodeSymbol.meta.params;
+
+    for (let i = 0, j = params.length; i < j; i++) {
+      declareParameter(params[i].identifier);
+    }
+  }
+  if (isVariableDeclaration(node)) {
+    registerDeclaredVariables(node);
+  }
 
   let nodeDocIndex;
 
@@ -377,6 +411,54 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
   }
 
   return nodeSymbol;
+}
+
+function registerDeclaredVariables(node: VariableDeclaration): void {
+  const declarations = node.declarations;
+
+  for (let i = 0, j = declarations.length; i < j; i++) {
+    const decl = declarations[i];
+
+    if (isIdentifier(decl.id)) {
+      declareVariable(declarations[i].id.name);
+    } else if (isObjectPattern(decl.id)) {
+      registerObjectPropertyVariables(decl.id);
+    } else if (isArrayPattern(decl.id)) {
+      registerArrayElementVariables(decl.id);
+    }
+  }
+}
+
+function registerObjectPropertyVariables(node: ObjectPattern): void {
+  const props = node.properties;
+
+  for (let i = 0, j = props.length; i < j; i++) {
+    const prop = props[i];
+
+    declareVariable(prop.key.name);
+
+    if (isObjectPattern(prop.value)) {
+      registerObjectPropertyVariables(prop.value);
+    } else if (isArrayPattern(prop.value)) {
+      registerArrayElementVariables(prop.value);
+    }
+  }
+}
+
+function registerArrayElementVariables(node: ArrayPattern): void {
+  const elems = node.elements;
+
+  for (let i = 0, j = elems.length; i < j; i++) {
+    const elem = elems[i];
+
+    if (isIdentifier(elem)) {
+      declareVariable(elem.name);
+    } else if (isObjectPattern(elem)) {
+      registerObjectPropertyVariables(elem);
+    } else if (isArrayPattern(elem)) {
+      registerArrayElementVariables(elem);
+    }
+  }
 }
 
 function _createLoc(loc?: SourceLocation): SymbolLocation {
