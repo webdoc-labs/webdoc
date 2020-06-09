@@ -301,15 +301,14 @@ function resolveReturn(callee: FunctionExpression | ArrowFunctionExpression): ?s
 
 // Helper to resolve assignment to object chain, e.g. [Class.prototype].property
 function resolveObject(expression: MemberExpression): void {
-  if (isThisExpression(expression.object)) {
-    return "this";
-  }
-
   let longname = "";
   expression = expression.object;
 
   if (isTSAsExpression(expression)) {
     expression = expression.expression;
+  }
+  if (isThisExpression(expression)) {
+    return "this";
   }
 
   while (expression.object) {
@@ -317,27 +316,27 @@ function resolveObject(expression: MemberExpression): void {
     expression = expression.object;
   }
 
-  longname = expression.name + (longname ? "." : "") + longname;
+  longname = (isThisExpression(expression) ? "this" : expression.name) +
+    (longname ? "." : "") + longname;
 
   return longname;
 }
 
 function resolveRootObject(expression: MemberExpression): void {
-  if (isThisExpression(expression.object)) {
-    return "this";
-  }
-
   expression = expression.object;
 
   if (isTSAsExpression(expression)) {
     expression = expression.expression;
+  }
+  if (isThisExpression(expression)) {
+    return "this";
   }
 
   while (expression.object) {
     expression = expression.object;
   }
 
-  return expression.name;
+  return isThisExpression(expression) ? "this" : expression.name;
 }
 
 // Whether the member expression assigns to this, e.g.

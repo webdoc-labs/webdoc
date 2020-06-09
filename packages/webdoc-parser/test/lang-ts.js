@@ -62,4 +62,48 @@ describe("@webdoc/parser.LanguageIntegration{@lang ts}", function() {
 
     expect(symbolPropertyName.meta.object).to.equal("objectName");
   });
+
+  it("should not output parameter property symbols even with type-cast", function() {
+    const symtree = buildSymbolTree(`
+      function functionName(paramName: object): void {
+        (paramName as any).propertyName = "dataValue";
+      }
+    `, ".ts");
+
+    expect(symtree.members.length).to.equal(1);
+
+    const symbolFunctionName = symtree.members[0];
+
+    expect(symbolFunctionName.members.length).to.equal(0);
+  });
+
+  it("should parse (this as Type) type-cast object properties correctly", function() {
+    const symtree = buildSymbolTree(`
+      class ClassName {
+        constructor() {
+          (this as any).propertyName = "dataValue";
+        }
+      }
+    `, ".ts");
+
+    expect(symtree.members.length).to.equal(1);
+    expect(symtree.members[0].members.length).to.equal(1);
+    expect(symtree.members[0].members[0].members.length).to.equal(1);
+
+    expect(symtree.members[0].members[0].members[0].meta.object).to.equal("this");
+  });
+
+  it("should parse (this.object as Type) type-cast object properties correctly", function() {
+    const symtree = buildSymbolTree(`
+      class ClassName {
+        constructor() {
+          (this.objectName as any).propertyName = "dataValue";
+        }
+      }
+    `, "*.ts");
+
+    const symbolObjectName = symtree.members[0].members[0].members[0];
+
+    expect(symbolObjectName.meta.object).to.equal("this.objectName");
+  });
 });
