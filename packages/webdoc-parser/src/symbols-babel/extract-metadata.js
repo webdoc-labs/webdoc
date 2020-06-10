@@ -211,7 +211,7 @@ function resolveDataType(type: TSTypeAnnotation | TSType | any): DataType {
     let name = "";
 
     while (type && !isIdentifier(type)) {
-      name = type.right + (name ? "." : "") + name;
+      name = type.right.name + (name ? "." : "") + name;
       type = type.left;
     }
 
@@ -322,7 +322,7 @@ function resolveDataType(type: TSTypeAnnotation | TSType | any): DataType {
       return dataType;
     }
     if (isTSTypeQuery(type)) {
-      const dataType = createSimpleDocumentedType(type.exprName.name);
+      const dataType = resolveDataType(type.exprName);
 
       dataType[0] = `typeof ${dataType[0]}`;
       dataType.template = `typeof ${dataType.template}`;
@@ -333,7 +333,7 @@ function resolveDataType(type: TSTypeAnnotation | TSType | any): DataType {
       const dataType = resolveDataType(type.typeAnnotation);
       const name = type.typeParameter.name;
       const operator = type.typeParameter.constraint.operator;
-      const constraintType = resolveDataType(type.typeParameter.constraint.typeAnnotation);
+      const constraintType = resolveDataType(type.typeParameter.constraint);
 
       const attribs = `${type.readonly ? "readonly " : ""}${type.static ? "static " : ""}`;
 
