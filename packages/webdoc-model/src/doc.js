@@ -174,6 +174,40 @@ export function doc(path: string | string[], root: BaseDoc): ?Doc {
   return doc;
 }
 
+// Sometimes findDoc is a better name
+export const findDoc = doc;
+
+// Find the accessed-symbol's documentation at the symbol backing "refereeDoc"
+export function findAccessedDoc(
+  referredName: string | string[],
+  refereeDoc: Doc,
+): ?Doc {
+  if (typeof referredName === "string") {
+    referredName = referredName.split(CANONICAL_SEPARATOR);
+  }
+
+  const searchName = referredName[0];
+
+  if (refereeDoc.parent) {
+    const parent = refereeDoc.parent;
+    const siblings = parent.members;
+
+    for (let i = 0, j = siblings.length; i < j; i++) {
+      if (siblings[i].name === searchName) {
+        if (referredName.length > 1) {
+          return findDoc(referredName.slice(1), parent.members[i]);
+        } else {
+          return siblings[i];
+        }
+      }
+    }
+
+    return findAccessedDoc(referredName, parent);
+  }
+
+  return null;
+}
+
 /**
  * Adds a doc at its path in the doc-tree.
  *

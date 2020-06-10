@@ -11,9 +11,14 @@ import {
   type Node,
   type ObjectPattern,
   type VariableDeclaration,
+  isArrowFunctionExpression,
   isArrayPattern,
   isBlockStatement,
+  isClassMethod,
   isIdentifier,
+  isFunctionDeclaration,
+  isFunctionExpression,
+  isObjectMethod,
   isObjectPattern,
   isVariableDeclaration,
   isScope,
@@ -467,7 +472,17 @@ function registerArrayElementVariables(node: ArrayPattern): void {
   }
 }
 
-function registerParameters(node: FunctionDeclaration | FunctionExpression | ArrowFunctionExpression): void {
+function registerParameters(
+  node: FunctionDeclaration | FunctionExpression | ArrowFunctionExpression,
+): void {
+  if (!isFunctionExpression(node) &&
+      !isArrowFunctionExpression(node) &&
+      !isFunctionDeclaration(node) &&
+      !isClassMethod(node) &&
+      !isObjectMethod(node)) {
+    return;
+  }
+
   const params = extractParams(node);
 
   for (let i = 0, j = params.length; i < j; i++) {

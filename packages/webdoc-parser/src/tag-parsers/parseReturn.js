@@ -1,6 +1,5 @@
 // @flow
 import type {Doc, ReturnTag} from "@webdoc/types";
-import {parserLogger, tag} from "../Logger";
 import {parseDataType} from "@webdoc/model";
 
 // @return {<DATA_TYPE>} [-] <DESC>
@@ -14,7 +13,6 @@ export function parseReturn(value: string, doc: $Shape<Doc>): ReturnTag {
 
   if (!refClosure) {
     // eslint-disable-next-line max-len
-    parserLogger.warn(tag.TagParser, "@return has not defined the {OriginalType}; defaulting to {any}");
     description = value;
   } else {
     dataType = refClosure[0].slice(1, -1);

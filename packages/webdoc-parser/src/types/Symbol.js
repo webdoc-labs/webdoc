@@ -119,7 +119,7 @@ export function findSymbol(
 export function findAccessedSymbol(
   referredName: string | string[],
   refereeSymbol: Symbol,
-) {
+): ?Symbol {
   if (typeof referredName === "string") {
     referredName = referredName.split(CANONICAL_DELIMITER);
   }
