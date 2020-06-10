@@ -45,11 +45,8 @@ export const createDoc = (name?: string, type?: string = "BaseDoc", options: any
 
   const separators = name.match(CANONICAL_SEPARATOR);
 
-  // Soft error when @memberof is not used.
+  // @memberof is not used, rather the user directly used the longname
   if (separators) {
-    console.error(name + " is a local identifier and contains a separator. Use @memberof instead " +
-      "because this deprecated (legacy behaviour from JSDoc).");
-
     const lastSeparator = separators[separators.length - 1];
 
     if (lastSeparator === "#") {
