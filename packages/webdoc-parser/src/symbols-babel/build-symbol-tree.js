@@ -137,7 +137,7 @@ export default function buildSymbolTree(
       errorRecovery: true,
     });
   } catch (e) {
-    console.error("Babel couldn't parse file in @webdoc/parser");
+    console.error(`Babel couldn't parse file in @webdoc/parser (${fileName})`);
     throw e;
   }
 

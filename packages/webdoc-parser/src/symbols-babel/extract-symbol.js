@@ -128,7 +128,9 @@ export default function extractSymbol(
   } else if (
     isVariableDeclarator(node) ||
     isObjectProperty(node) ||
-    (isExpressionStatement(node) && isMemberExpression(node.expression.left))
+    (isExpressionStatement(node) &&
+        isMemberExpression(node.expression.left) &&
+        !node.expression.left.computed) // don't generate symbols for "objectName[variableName]"
   ) {
     // Examples:
     // const symbolName;
@@ -171,12 +173,13 @@ export default function extractSymbol(
 
     if (!shouldSkip) {
       if (isClassExpression(init) || isFunctionExpression(init) ||
+          isArrowFunctionExpression(init) ||
           (isCallExpression(init) &&
           (isFunctionExpression(init.callee) || isArrowFunctionExpression(init.callee)))) {
         flags |= PASS_THROUGH | VIRTUAL;
         isInit = true;
 
-        // nodeSymbol is virtual & has no DocType
+        // Handled later
       } else if (!isObjectExpression(init)) {
         flags |= OBLIGATE_LEAF;
         nodeSymbol.meta.type = "PropertyDoc";
@@ -201,6 +204,15 @@ export default function extractSymbol(
         }
       } else if (isObjectProperty(node)) {
         nodeSymbol.meta.scope = "static";
+      }
+
+      if (isFunctionExpression(init) || isArrowFunctionExpression(init)) {
+        nodeSymbol.meta.type = isObjectProperty(node) ? "MethodDoc" : "FunctionDoc";
+
+        nodeSymbol.meta.params = extractParams(init);
+        nodeSymbol.meta.returns = extractReturns(init);
+      } else if (isClassExpression(init)) {
+        nodeSymbol.meta.type = "ClassDoc";
       }
     }
   } else if (isInterfaceDeclaration(node) || isTSInterfaceDeclaration(node)) {

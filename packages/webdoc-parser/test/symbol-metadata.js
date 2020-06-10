@@ -25,4 +25,24 @@ describe("@webdoc.parser.buildSymbolTree", function() {
     expect(symtree.members[0].meta.scope).to.equal("instance");
     expect(symtree.members[0].meta.object).to.equal("ClassName");
   });
+
+  it("should parse assigned function expressions correctly", function() {
+    const symtree = buildSymbolTree("const functionName = function(param1, param2) {}");
+
+    expect(symtree.members.length).to.equal(1);
+
+    const symbolFunctionName = symtree.members[0];
+
+    expect(symbolFunctionName.meta.params.length).to.equal(2);
+  });
+
+  it("should parse assigned arrow-function expressions correctly", function() {
+    const symtree = buildSymbolTree("const functionName = (param1, param2) => {}");
+
+    expect(symtree.members.length).to.equal(1);
+
+    const symbolFunctionName = symtree.members[0];
+
+    expect(symbolFunctionName.meta.params.length).to.equal(2);
+  });
 });

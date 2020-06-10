@@ -34,6 +34,7 @@ import {
   isTSIntersectionType,
   isTSIndexedAccessType,
   isTSLiteralType,
+  isTSMappedType,
   isTSNeverKeyword,
   isTSNullKeyword,
   isTSNumberKeyword,
@@ -53,6 +54,7 @@ import {
   isTSTypePredicate,
   isTSTypeQuery,
   isTSTypeReference,
+  isTSTypeOperator,
   isTSTupleType,
   isTSUnionType,
   isTypeAnnotation,
@@ -327,6 +329,19 @@ function resolveDataType(type: TSTypeAnnotation | TSType | any): DataType {
 
       return dataType;
     }
+    if (isTSMappedType(type)) {
+      const dataType = resolveDataType(type.typeAnnotation);
+      const name = type.typeParameter.name;
+      const operator = type.typeParameter.constraint.operator;
+      const constraintType = resolveDataType(type.typeParameter.constraint.typeAnnotation);
+
+      const attribs = `${type.readonly ? "readonly " : ""}${type.static ? "static " : ""}`;
+
+      constraintType[0] = `{ ${attribs}[${name} in ${operator} ${constraintType[0]}] }`;
+      constraintType.template = `{ ${attribs}[${name} in ${operator} ${constraintType.template}] }`;
+
+      return createComplexType(": ", constraintType, dataType);
+    }
   }
 
   if (isTSTypeLiteral(type)) {
@@ -351,8 +366,10 @@ function resolveDataType(type: TSTypeAnnotation | TSType | any): DataType {
     const dataType = resolveDataType(type.typeAnnotation);
     const key = (type.key.name || `[${type.key.value}]`) + (type.optional ? "?" : "");
 
-    dataType[0] = `${key} : ${dataType[0]}`;
-    dataType.template = `${key} : ${dataType.template}`;
+    const attribs = `${type.readonly ? "readonly " : ""}${type.static ? "static " : ""}`;
+
+    dataType[0] = `${attribs}${key} : ${dataType[0]}`;
+    dataType.template = `${attribs}${key} : ${dataType.template}`;
 
     return dataType;
   }
@@ -380,6 +397,11 @@ function resolveDataType(type: TSTypeAnnotation | TSType | any): DataType {
       return createComplexType(": ", params, resolveDataType(type.typeAnnotation));
     } else {
       return params;
+    }
+  }
+  if (isTSTypeOperator(type)) {
+    if (type.operator) {
+      return createSimpleKeywordType(type.operator);
     }
   }
 

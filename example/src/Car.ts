@@ -51,7 +51,7 @@ interface CarDealer {
    *
    * @return type inference is working
    */
-  offerAsk(on: Transaction, counteroffer?: (t: Car) => void): boolean;
+  offerAsk(on: Transaction, counteroffer?: (t: Car) => void, test: { [testProperty in keyof CAR_MAKES]: number }): boolean;
 
   /**
    * Close transaction. If you respond to the counteroffer, then it won't be closed.
