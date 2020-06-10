@@ -5,6 +5,7 @@
 import {
   type ArrowFunctionExpression,
   type ArrayPattern,
+  type Comment,
   type CommentBlock,
   type FunctionDeclaration,
   type FunctionExpression,
@@ -56,7 +57,7 @@ import {extractParams} from "./extract-metadata";
 // Exported for testing in test/build-symbol-tree.test.js
 export const SymbolUtils = {
   addChild: addChildSymbol,
-  commentIndex(comments: CommentBlock): number {
+  commentIndex(comments: CommentBlock[]): number {
     for (let i = comments.length - 1; i >= 0; i--) {
       if (comments[i].value.startsWith("*") || comments[i].value.startsWith("!")) {
         return i;
@@ -284,20 +285,20 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
   // Create the nodeSymbol & add it as a child to parent
   //
 
+  const leadingComments = filterComments(node.leadingComments);
+
   // leadingComments -> documented
   // isScope -> children may be documented even if node is not
-  if (node.leadingComments || isScope(node) || reportUndocumented) {
-    if (!initComment && node.leadingComments && simpleName) {
-      nodeDocIndex = SymbolUtils.commentIndex(node.leadingComments);
+  if (leadingComments.length || isScope(node) || reportUndocumented) {
+    if (!initComment && leadingComments.length && simpleName) {
+      nodeDocIndex = SymbolUtils.commentIndex(leadingComments);
     }
-    const nodeDoc = typeof nodeDocIndex === "number" ? node.leadingComments[nodeDocIndex] : null;
+    const nodeDoc = typeof nodeDocIndex === "number" ? leadingComments[nodeDocIndex] : null;
     const comment = (initComment ? initComment : (nodeDoc ? extract(nodeDoc) : "")) || "";
 
     if (!comment) {
       nodeSymbol.meta.undocumented = true;
     }
-
-    const leadingComments = node.leadingComments || [];
 
     // Does user want to document as a property? Then remove VIRTUAL flag
     // "@member " with the space is required b/c of @memberof tag
@@ -422,6 +423,15 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
   }
 
   return nodeSymbol;
+}
+
+const EMPTY_ARRAY = [];
+
+function filterComments(comments: (CommentBlock | Comment)[]): void {
+  return comments ? comments.filter((cnode) => {
+    return (cnode.type === "CommentBlock") &&
+     (cnode.value.startsWith("*") || cnode.value.startsWith("!"));
+  }) : EMPTY_ARRAY;
 }
 
 function registerDeclaredVariables(node: VariableDeclaration): void {

@@ -351,15 +351,7 @@
 							"type": "MethodDoc",
 							"scope": "instance",
 							"brief": "",
-							"description": "<p>Makes sure that static and dynamic flush pooled objects have correct dimensions</p>",
-							"children": [
-								{
-									"name": "MAX_TA",
-									"type": "PropertyDoc",
-									"brief": "",
-									"description": ""
-								}
-							]
+							"description": "<p>Makes sure that static and dynamic flush pooled objects have correct dimensions</p>"
 						},
 						{
 							"name": "onPrerender",
