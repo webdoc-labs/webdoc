@@ -1,5 +1,10 @@
 import {PhysicalObject} from "./PhysicalObject";
 
+callFunction((char) => {
+  /** @type {number} */
+  char.x = 10;
+})
+
 /**
  * These are the possible types of car makes.
  * @enum {number}

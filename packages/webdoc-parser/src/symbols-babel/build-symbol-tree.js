@@ -3,8 +3,11 @@
 // This file implements the construction of a symbol-tree for JavaScript/Flow/TypeScript code.
 
 import {
+  type ArrowFunctionExpression,
   type ArrayPattern,
   type CommentBlock,
+  type FunctionDeclaration,
+  type FunctionExpression,
   type Node,
   type ObjectPattern,
   type VariableDeclaration,
@@ -21,10 +24,9 @@ import {
 
 import traverse, {type NodePath} from "@babel/traverse";
 import extract from "../extract";
-import {parserLogger, tag} from "../Logger";
+import {parserLogger} from "../Logger";
 import extractSymbol from "./extract-symbol";
 import * as parser from "@babel/parser";
-import _ from "lodash";
 
 import {
   type Symbol, VIRTUAL, isVirtual, isObligateLeaf,
@@ -38,10 +40,11 @@ import {
   createBlock,
   removeBlock,
   clearRegistry,
-  queryType,
 } from "../types/VariableRegistry";
 
 import {LanguageConfig} from "../types/LanguageIntegration";
+
+import {extractParams} from "./extract-metadata";
 
 // TODO: This shouldn't really be a part of symbols-babel but rather should live with Symbol.js
 // in SymbolUtils.js
@@ -262,7 +265,10 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
     for (let i = 0, j = params.length; i < j; i++) {
       declareParameter(params[i].identifier);
     }
+  } else if (node.params) {
+    registerParameters(node);
   }
+
   if (isVariableDeclaration(node)) {
     registerDeclaredVariables(node);
   }
@@ -458,6 +464,14 @@ function registerArrayElementVariables(node: ArrayPattern): void {
     } else if (isArrayPattern(elem)) {
       registerArrayElementVariables(elem);
     }
+  }
+}
+
+function registerParameters(node: FunctionDeclaration | FunctionExpression | ArrowFunctionExpression): void {
+  const params = extractParams(node);
+
+  for (let i = 0, j = params.length; i < j; i++) {
+    declareParameter(params[i].identifier);
   }
 }
 

@@ -8,13 +8,22 @@ describe("@webdoc.parser.buildSymbolTree", function() {
       function functionName(paramName) {
         paramName.propertyName = "dataValue";
       }
+
+      const assignedFunctionName = (param1, param2) => {
+        param1.prop1 = "dataValue";
+        param2.prop2 = "dataValue";
+      }
     `);
 
-    expect(symtree.members.length).to.equal(1);
+    expect(symtree.members.length).to.equal(2);
 
     const symbolFunctionName = symtree.members[0];
 
     expect(symbolFunctionName.members.length).to.equal(0);
+
+    const symbolAssignedFunctionName = symtree.members[1];
+
+    expect(symbolAssignedFunctionName.members.length).to.equal(0);
   });
 
   it("should redirect prototype-assigned properties as instance properties", function() {
