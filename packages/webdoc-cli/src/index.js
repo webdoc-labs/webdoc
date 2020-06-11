@@ -1,16 +1,17 @@
 // @flow
-import path from "path";
+
 import * as yargs from "yargs";
-import {log, tag, LogLevel} from "missionlog";
-import globby from "globby";
-import type {RootDoc} from "@webdoc/types";
+import {LogLevel, log, tag} from "missionlog";
 import {parse, registerWebdocParser} from "@webdoc/parser";
+import type {RootDoc} from "@webdoc/types";
 import {exportTaffy} from "@webdoc/model";
-import {writeDoctree} from "@webdoc/externalize";
 import fs from "fs";
-import {performance} from "perf_hooks";
 import fse from "fs-extra";
+import globby from "globby";
 import {loadTutorials} from "./load-tutorials";
+import path from "path";
+import {performance} from "perf_hooks";
+import {writeDoctree} from "@webdoc/externalize";
 
 export function initLogger(verbose: boolean = false) {
   const defaultLevel = verbose ? "INFO" : "WARN";
@@ -41,18 +42,12 @@ export function initLogger(verbose: boolean = false) {
 
 // main() is the default command.
 async function main(argv: yargs.Arguments<>) {
-  if (argv.verbose) {
-    initLogger(true);
-  } else {
-    initLogger(true);
-  }
+  initLogger(!!argv.verbose);
 
   const start = performance.now();
 
   global.Webdoc = global.Webdoc || {};
   registerWebdocParser();// global.Webdoc.Parser
-
-  console.log("@webdoc/cli ------------------ ");
 
   const {loadConfig} = require("./config");
   const config = loadConfig(argv.config);
@@ -84,7 +79,7 @@ async function main(argv: yargs.Arguments<>) {
 
   const sourceFiles = globby.sync(includePattern);
 
-  const doctree: RootDoc = {
+  const documentTree: RootDoc = {
     children: [],
     path: "",
     stack: [""],
@@ -92,7 +87,7 @@ async function main(argv: yargs.Arguments<>) {
     tags: [],
   };
 
-  doctree.members = doctree.children;
+  documentTree.members = documentTree.children;
 
   const files = new Map();
 
@@ -106,11 +101,11 @@ async function main(argv: yargs.Arguments<>) {
   }
 
   try {
-    parse(files, doctree);
+    parse(files, documentTree);
   } catch (e) {
     // Make sure we get that API structure out so the user can debug the problem!
     if (config.opts.export) {
-      fs.writeFileSync(config.opts.export, writeDoctree(doctree));
+      fs.writeFileSync(config.opts.export, writeDoctree(documentTree));
     }
 
     throw e;
@@ -118,10 +113,10 @@ async function main(argv: yargs.Arguments<>) {
   console.log("Parsed all");
 
   if (config.opts.export) {
-    fs.writeFileSync(config.opts.export, writeDoctree(doctree));
+    fs.writeFileSync(config.opts.export, writeDoctree(documentTree));
   }
 
-  const db = exportTaffy(doctree);
+  const db = exportTaffy(documentTree);
 
   const _path = `${config.opts.template}/publish`;
   // $FlowFixMe
@@ -130,7 +125,8 @@ async function main(argv: yargs.Arguments<>) {
 
   const publishOptions = {
     config,
-    doctree,
+    doctree: documentTree,
+    documentTree,
     docDatabase: db,
     opts: config.opts,
     tutorials,
@@ -145,13 +141,12 @@ async function main(argv: yargs.Arguments<>) {
   console.log(`@webdoc took ${Math.ceil(performance.now() - start)}ms to run!`);
 }
 
-console.log("initializing ----------");
-
 const argv = yargs.scriptName("@webdoc/cli")
-  .usage("$0 -c <configFile> -u <tutorialDir>")
+  .usage("$0 -c <configFile> -u <tutorialDir> --verbose")
   .default("config", path.join(process.cwd(), "webdoc.conf.json"), "webdoc config file")
   .alias("c", "config")
   .alias("u", "tutorials")
+  .alias("v", "verbose")
   .command("$0", "Run webdoc", () => {})
   .argv;
 
