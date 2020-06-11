@@ -53,7 +53,7 @@ declare module "@webdoc/types" {
       examples?: Example[],
       fires?: [],
       license?: string,
-      scope: "static" | "instance" | "inner" | "default", // default doesn't exist after the doc-tree is fully built
+      scope: "static" | "instance" | "inner" | "default",
       see?: DocLink[],
       since?: string,
       todo?: string[],
@@ -130,7 +130,7 @@ declare module "@webdoc/types" {
       ...Doc,
       constant?: boolean,
       dataType?: DataType,
-      dataValue?: string,     // Enumerations/constants
+      dataValue?: string, // Enumerations/constants
       defaultValue?: string,
       inherited?: boolean,
       inherits?: PropertyDoc,
@@ -139,7 +139,7 @@ declare module "@webdoc/types" {
       type: "PropertyDoc"
     };
 
-    export type Tutorial = {
+    declare type Tutorial = {
       ...BaseDoc,
       title: string,
       contents: string,
@@ -172,6 +172,7 @@ declare module "@webdoc/types" {
 
     declare type DeprecatedTag = {
       ...BaseTag,
+      deprecated: string | boolean,
       type: "DeprecatedTag"
     };
 
@@ -218,12 +219,6 @@ declare module "@webdoc/types" {
       type: "MixesTag"
     };
 
-    declare type TypedTag = {
-      ...BaseTag,
-      dataType: DataType,
-      description: string,
-    };
-
     declare type MemberTag = {
       ...BaseTag,
       dataType: DataType
@@ -233,6 +228,12 @@ declare module "@webdoc/types" {
       ...BaseTag,
       scope: string,
       type: "MemberofTag"
+    };
+
+    declare type NameTag = {
+      ...BaseTag,
+      alias: string,
+      type: "NameTag"
     };
 
     declare type ParamTag = {
@@ -265,6 +266,18 @@ declare module "@webdoc/types" {
     declare type ThrowsTag = {
       ...TypedTag,
       type: "ThrowsTag"
+    };
+
+    declare type TypeTag = {
+      ...BaseTag,
+      dataType: DataType,
+      type: "TypeTag"
+    };
+
+    declare type TypedTag = {
+      ...BaseTag,
+      dataType: DataType,
+      description: string,
     };
 
     declare type TypedefTag = {

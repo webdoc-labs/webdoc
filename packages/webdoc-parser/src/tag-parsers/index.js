@@ -15,8 +15,10 @@ export {
   parseDeprecated,
   parseExample,
   parseLicense,
+  parseName,
   parseTodo,
   parseThrows,
+  parseType,
   parseSee,
   parseSince,
 } from "./parseSimple";

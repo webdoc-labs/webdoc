@@ -560,6 +560,42 @@
 			]
 		},
 		{
+			"name": "CoffeeBean",
+			"type": "ClassDoc",
+			"brief": "",
+			"description": "<p>This class illustrates how you can create a Java-bean like component in JavaScript</p>",
+			"children": [
+				{
+					"name": "maturity",
+					"type": "PropertyDoc",
+					"scope": "instance",
+					"brief": "",
+					"description": ""
+				},
+				{
+					"name": "roasted",
+					"type": "PropertyDoc",
+					"scope": "instance",
+					"brief": "",
+					"description": ""
+				},
+				{
+					"name": "constructor",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": "",
+					"description": ""
+				},
+				{
+					"name": "roast",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": "",
+					"description": "<p>Roast this coffee bean.</p>\n<p>NOTE: You cannot re-roast coffee beans and an error will be thrown if you try to\nroast a roasted coffee bean.</p>"
+				}
+			]
+		},
+		{
 			"name": "Gravity",
 			"type": "ClassDoc",
 			"brief": "<p>This class shouldn't be documented!</p>",

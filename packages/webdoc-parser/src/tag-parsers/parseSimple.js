@@ -1,17 +1,22 @@
 // @flow
+
 import type {
   AuthorTag,
   CopyrightTag,
   DefaultTag,
   DeprecatedTag,
+  Doc,
   LicenseTag,
-  TodoTag,
-  ThrowsTag,
+  NameTag,
   SeeTag,
   SinceTag,
-  Doc,
   Tag,
+  ThrowsTag,
+  TodoTag,
+  TypeTag,
 } from "@webdoc/types";
+
+import {parseTypedDescription} from "./helper";
 
 // @author <AUTHOR>
 // @copyright <COPYRIGHT>
@@ -21,8 +26,10 @@ import type {
 //   EXAMPLE
 // >
 // @license <LICENSE>
+// @name <NAME>
 // @todo <TODO>
 // @throws <ERROR_TYPE>
+// @type {TYPE}
 // @see <URL | DOC_PATH>
 // @since <WHEN>
 
@@ -58,7 +65,7 @@ export function parseDefault(value: string, doc: $Shape<Doc>): $Shape<DefaultTag
 }
 
 export function parseDeprecated(value: string, options: $Shape<Doc>): DeprecatedTag {
-  options.deprecated = value;
+  options.deprecated = value || true;
 
   return {
     name: "deprecated",
@@ -90,6 +97,15 @@ export function parseLicense(value: string, doc: $Shape<Doc>): LicenseTag {
   };
 }
 
+export function parseName(value: string, doc: $Shape<Doc>): NameTag {
+  doc.name = value;
+
+  return {
+    alias: value,
+    type: "NameTag",
+  };
+}
+
 export function parseTodo(value: string, doc: $Shape<Doc>): TodoTag {
   if (!doc.todo) {
     doc.todo = [];
@@ -113,6 +129,18 @@ export function parseThrows(value: string, doc: $Shape<Doc>): ThrowsTag {
   return {
     value,
     type: "ThrowsTag",
+  };
+}
+
+export function parseType(value: string, doc: $Shape<Doc>): TypeTag {
+  const dataType = parseTypedDescription(value).dataType;
+
+  doc.dataType = dataType;
+
+  return {
+    dataType,
+    value,
+    type: "TypeTag",
   };
 }
 

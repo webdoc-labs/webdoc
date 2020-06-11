@@ -3,43 +3,42 @@
 
 // TODO: Give some sympathy to the code here & organize it out
 
+import type {Doc, Tag} from "@webdoc/types";
+import type {Symbol, SymbolSignature} from "../types/Symbol";
 import {
-  parseParam,
-  parsePrivate,
-  parseProtected,
-  parsePublic,
-  parseTypedef,
   parseAccess,
-  parseStatic,
-  parseInner,
-  parseInstance,
-  parseScope,
-  parseReturn,
-  parseMember,
-  parseEvent,
-  parseFires,
-  parseProperty,
-  parseExtends,
-  parseImplements,
-  parseMixes,
-  parseDeprecated,
-  parseExample,
-  parseEnum,
   parseAuthor,
   parseCopyright,
   parseDefault,
+  parseDeprecated,
+  parseEnum,
+  parseEvent,
+  parseExample,
+  parseExtends,
+  parseFires,
+  parseImplements,
+  parseInner,
+  parseInstance,
   parseLicense,
-  parseTodo,
-  parseThrows,
+  parseMember,
+  parseMixes,
+  parseName,
+  parseParam,
+  parsePrivate,
+  parseProperty,
+  parseProtected,
+  parsePublic,
+  parseReturn,
+  parseScope,
   parseSee,
   parseSince,
+  parseStatic,
+  parseThrows,
+  parseTodo,
+  parseType,
+  parseTypedef,
 } from "../tag-parsers";
-
-import type {Tag, Doc} from "@webdoc/types";
 import {createDoc} from "@webdoc/model";
-
-import type {Symbol, SymbolSignature} from "../types/Symbol";
-
 import mergeParams from "./merge-params";
 import mergeReturns from "./merge-returns";
 import validate from "../validators";
@@ -79,6 +78,7 @@ const TAG_PARSERS: { [id: string]: TagParser } = {
   "method": createTagParser("MethodTag"),
   "mixes": parseMixes,
   "mixin": createTagParser("MixinTag"),
+  "name": parseName,
   "namespace": createTagParser("NSTag"),
   "param": parseParam,
   "property": parseProperty,
@@ -94,6 +94,7 @@ const TAG_PARSERS: { [id: string]: TagParser } = {
   "tag": (name: string, value: string): Tag => ({name, value}),
   "todo": parseTodo,
   "throws": parseThrows,
+  "type": parseType,
   "typedef": parseTypedef,
 };
 
