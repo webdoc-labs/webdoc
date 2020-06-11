@@ -1,6 +1,6 @@
 {
   "name": "@webdoc/model",
-  "version": "0.1.93-alpha.0",
+  "version": "0.1.95-alpha.0",
   "description": "Doclet API for JavaScript",
   "keywords": [
     "doclet",
@@ -32,7 +32,7 @@
     "url": "https://github.com/SukantPal/webdoc/issues"
   },
   "dependencies": {
-    "@webdoc/types": "^0.1.73-alpha.0",
+    "@webdoc/types": "^0.1.95-alpha.0",
     "catharsis": "0.8.11",
     "taffydb": "2.7.3"
   },
