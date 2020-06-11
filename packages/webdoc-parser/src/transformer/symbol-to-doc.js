@@ -38,6 +38,7 @@ import {
   parseType,
   parseTypedef,
 } from "../tag-parsers";
+import {parserLogger, updateDocument} from "../Logger";
 import {createDoc} from "@webdoc/model";
 import mergeParams from "./merge-params";
 import mergeReturns from "./merge-returns";
@@ -115,6 +116,8 @@ const TAG_OVERRIDES: { [id: string]: string | any } = { // replace any, no lazy
 const TAG_BLOCKS = new Set(["example", "classdesc"]);
 
 export default function symbolToDoc(symbol: Symbol): ?Doc {
+  updateDocument(symbol.canonicalName);
+
   const {comment, node} = symbol;
 
   const commentLines = (comment || "").split("\n");

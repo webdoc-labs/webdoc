@@ -1,14 +1,16 @@
 // @flow
 
 import type {Doc, ParamTag} from "@webdoc/types";
+import {parserLogger, tag} from "../Logger";
 import {parseDataType} from "@webdoc/model";
+import {StringUtils} from "./helper";
 
 // @param {<DATA_TYPE>} <NAME>                      - <DESC>
 // @param {<DATA_TYPE>} [<NAME>]                    - <DESC>
 // @param {<DATA_TYPE>} [<NAME>=<DEFAULT_VALUE>]    - <DESC>
 
 // Extracts the parameter's identifier & related information that occurs after the type
-function extractidentifier(from: string, index: number = 0): {
+function extractIdentifier(from: string, index: number = 0): {
   identifier: string,
   optional: boolean,
   default?: string,
@@ -83,17 +85,19 @@ export function parseParam(value: string, options: $Shape<Doc>): ParamTag {
       new RegExp(`(.{${refClosure.index}}).{${refClosure.index + refClosure[0].length}}`), "$1");
   }
 
-  const identClosure = extractidentifier(extractable);
+  const identClosure = extractIdentifier(extractable);
 
-  extractable = extractable.replace(
-    new RegExp(`(.{${identClosure.closureStart}}).{${identClosure.closureEnd}}`), "$1");
+  extractable = StringUtils.splice(extractable,
+    identClosure.closureStart,
+    identClosure.closureEnd + 1);
   extractable = extractable.trim();
 
   if (extractable.startsWith("-") && extractable !== "") {
     extractable = extractable.slice(1);
     extractable = extractable.trimStart();
   } else if (extractable) {
-    console.warn(`[TagParser]: ${identClosure.identifier} does not have a "-" token preceeding description`);
+    parserLogger.warn(tag.TagParser, `Parameter "${identClosure.identifier}" ` +
+        `does not have a "-" token preceeding description <${extractable}>`);
   }
 
   if (!options.params) {
