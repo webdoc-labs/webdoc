@@ -3,8 +3,8 @@
 // The discover-members mod imports member symbols from extended classes, implemented interfaces,
 // and mixed mixins.
 
-import type {Doc} from "@webdoc/types";
 import {addChildDoc, cloneDoc} from "@webdoc/model";
+import type {Doc} from "@webdoc/types";
 
 // The set of docs that discoverMembers has run on
 const discovered = new Set<Doc>();

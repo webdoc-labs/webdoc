@@ -1,12 +1,13 @@
 // @flow
-// This file essentially exposes a @webdoc/parser API so that plugins & templates don't have a dependency on it.
 
-import type {RootDoc} from "@webdoc/types";
-import {registerDoctreeMod} from "./doctree-mods";
+// This file essentially exposes a @webdoc/parser API so that plugins & templates don't have a
+// dependency on it.
+
+import {registerDoctreeMod} from "./transformer/document-tree-modifiers";
 
 export type ParserPlugin = {
   id: string,
-  onLoad: (parser: Parser) => void;
+  onLoad: (parser: Object) => void;
 }
 
 const installedPlugins: { [id: string]: ParserPlugin } = {};

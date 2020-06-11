@@ -1,7 +1,7 @@
 // @flow
 
-import type {Doc, RootDoc, DocLink} from "@webdoc/types";
-import {doc as findDoc, cloneDoc, addChildDoc} from "@webdoc/model";
+import type {Doc, DocLink, RootDoc} from "@webdoc/types";
+import {doc as findDoc} from "@webdoc/model";
 
 // Resolve all string symbol-paths in array to the actual Doc from the tree.
 function resolveArray(array: DocLink[], doc: Doc, tree: RootDoc, start: number = 0) {

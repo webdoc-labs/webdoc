@@ -1,4 +1,5 @@
 // @flow
+
 import type {Doc, RootDoc} from "@webdoc/types";
 import {removeChildDoc} from "@webdoc/model";
 

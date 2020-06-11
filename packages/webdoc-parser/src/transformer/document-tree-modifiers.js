@@ -1,12 +1,12 @@
 // @flow
 
-import memberResolution from "./member-resolution";
-import memberof from "./memberof";
-import prune from "./prune";
-import relatedResolution from "./related-resolution";
-import discoverMembers from "./discover-members";
-import sort from "./sort-members";
 import type {Doc, RootDoc} from "@webdoc/types";
+import modDiscoverMembers from "./mod-discover-members";
+import modPrune from "./mod-prune";
+import modResolveMembers from "./mod-resolve-members";
+import modResolveMemberof from "./mod-resolve-memberof";
+import modResolveRelated from "./mod-resolve-related";
+import modSort from "./mod-sort-members";
 
 type DoctreeModRecord = {
   name: string,
@@ -50,8 +50,8 @@ export const STAGE_BLANK = 0;
 export const STAGE_AST_LIKE = 100;
 
 /**
- * The doctree-mod should run when symbols are placed in their documented parents. The `@memberof`
- * tag is resolved in this stage. This occurs after {@code STAGE_AST_LIKE}.
+ * The doctree-mod should run when symbols are placed in their documented parents. The
+ * `@modResolveMemberof` tag is resolved in this stage. This occurs after {@code STAGE_AST_LIKE}.
  *
  * Example:
  * ```js
@@ -60,7 +60,7 @@ export const STAGE_AST_LIKE = 100;
  *  *\/
  *
  * /**
- *  * @memberof NS
+ *  * @modResolveMemberof NS
  *  *\/
  * class API {}
  * ```
@@ -124,12 +124,12 @@ export function registerDoctreeMod(
 }
 
 // These are the in-built doctree-mods.
-registerDoctreeMod("ASTMemberResolution", STAGE_AST_LIKE, memberResolution);
-registerDoctreeMod("MemberOfResolution", STAGE_SYMBOLS_RESOLVED, memberof);
-registerDoctreeMod("ExtendsImplementsMixesResolution", STAGE_SYMBOLS_RESOLVED, relatedResolution);
-registerDoctreeMod("Prune", STAGE_FINISHED, prune);
-registerDoctreeMod("ClassMemberDiscovery", STAGE_FINISHED, discoverMembers);
-registerDoctreeMod("Sort", STAGE_FINISHED, sort);
+registerDoctreeMod("ASTMemberResolution", STAGE_AST_LIKE, modResolveMembers);
+registerDoctreeMod("MemberOfResolution", STAGE_SYMBOLS_RESOLVED, modResolveMemberof);
+registerDoctreeMod("ExtendsImplementsMixesResolution", STAGE_SYMBOLS_RESOLVED, modResolveRelated);
+registerDoctreeMod("Prune", STAGE_FINISHED, modPrune);
+registerDoctreeMod("ClassMemberDiscovery", STAGE_FINISHED, modDiscoverMembers);
+registerDoctreeMod("Sort", STAGE_FINISHED, modSort);
 
 export default function mod(doctree) {
   for (let i = 0; i < installedMods.length; i++) {

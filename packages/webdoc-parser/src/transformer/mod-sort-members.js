@@ -2,8 +2,8 @@
 /** global Webdoc */
 
 import type {Doc} from "@webdoc/types";
-import {traverse} from "@webdoc/model";
 import {parserLogger} from "../Logger";
+import {traverse} from "@webdoc/model";
 
 const ACCESS_ORDER = {
   "public": 0,

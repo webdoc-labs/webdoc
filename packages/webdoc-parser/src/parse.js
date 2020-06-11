@@ -1,14 +1,13 @@
 // @flow
 /* global Webdoc */
 
-import mod from "./doctree-mods";
-import {parserLogger} from "./Logger";
-import type {RootDoc} from "@webdoc/types";
+import type {LanguageConfig, LanguageIntegration} from "./types/LanguageIntegration";
 import {langJS, langTS} from "./symbols-babel";
+import type {RootDoc} from "@webdoc/types";
 import type {Symbol} from "./types/Symbol";
-import type {LanguageIntegration, LanguageConfig} from "./types/LanguageIntegration";
-
 import assemble from "./assembler";
+import mod from "./transformer/document-tree-modifiers";
+import {parserLogger} from "./Logger";
 import transform from "./transformer";
 
 // File-extension -> LanguageIntegration mapping

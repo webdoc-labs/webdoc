@@ -1,10 +1,10 @@
 // @flow
 
-import {type Symbol} from "../types/Symbol";
 import {type Doc, type RootDoc} from "@webdoc/types";
+import {type Symbol} from "../types/Symbol";
 import {addChildDoc} from "@webdoc/model";
-import symbolToDoc from "./symbol-to-doc";
 import {parserLogger} from "../Logger";
+import symbolToDoc from "./symbol-to-doc";
 
 // This file provides the transformation from a symbol-metadata tree into a documentation tree.
 

@@ -1,7 +1,7 @@
 // @flow
 
-import {findAccessedDoc, addChildDoc} from "@webdoc/model";
 import type {Doc, RootDoc} from "@webdoc/types";
+import {addChildDoc, findAccessedDoc} from "@webdoc/model";
 
 export default function resolveAssignedMembersRecursive(doc: Doc, root: RootDoc) {
   if (doc.parserOpts && doc.parserOpts.object) {

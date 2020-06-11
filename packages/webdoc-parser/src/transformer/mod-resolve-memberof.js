@@ -2,8 +2,8 @@
 
 "use strict";
 
-import type {Doc} from "@webdoc/types";
 import {CANONICAL_DELIMITER} from "../constants";
+import type {Doc} from "@webdoc/types";
 
 Object.defineProperty(exports, "__esModule", {
   value: true,
