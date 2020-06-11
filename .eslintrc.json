@@ -8,7 +8,8 @@
     },
     "extends": [
         "eslint:recommended",
-        "google"
+        "google",
+        "plugin:import/errors"
     ],
     "globals": {
         "Atomics": "readonly",
@@ -38,6 +39,7 @@
         "spaced-comment": "off"
     },
     "plugins": [
-        "eslint-plugin-flow"
+        "eslint-plugin-flow",
+        "eslint-plugin-import"
     ]
 }

@@ -96,8 +96,8 @@ export const STAGE_FINISHED = 400;
 /**
  * Registers the doctree-mod so that it will run when {@code parse} is invoked.
  *
- * NOTE: This is an internal API. If you're writing a plugin, use the {@code Parser#installDoctreeMod}
- * API instead.
+ * NOTE: This is an internal API. If you're writing a plugin, use the
+ * {@code Parser#installDoctreeMod} API instead.
  *
  * HINT: If your doctree-mod isn't affected by the relations b/w different symbols, then you should
  * pick {@code STAGE_FINISHED}.
