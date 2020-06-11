@@ -57,4 +57,4 @@ export function initLogger(defaultLevel: string = "INFO") {
     });
 }
 
-initLogger();
+initLogger("WARN");

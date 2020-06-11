@@ -379,7 +379,7 @@ function buildMemberNav(items, itemHeading, itemsSeen, linktoFn) {
         } else {
           displayName = item.name;
         }
-        publishLog.warn(tag.ContentBar, "Linking " + item.path);
+        publishLog.info(tag.ContentBar, "Linking " + item.path);
         itemsNav += `<li>${linktoFn(item.path, displayName.replace(/\b(module|event):/g, ""))}</li>`;// eslint-disable-line max-len
 
         itemsSeen[item.path] = true;
@@ -458,8 +458,8 @@ function sourceToDestination(parentDir, sourcePath, destDir) {
   return path.resolve(path.join(destDir, relativeSource));
 }
 
-function initLogger() {
-  const defaultLevel = "INFO";
+function initLogger(verbose = false) {
+  const defaultLevel = verbose ? "INFO" : "WARN";
 
   publishLog = new Log().init(
     {
@@ -487,7 +487,7 @@ function initLogger() {
 }
 
 exports.publish = (options) => {
-  initLogger();
+  initLogger(!!options.verbose);
 
   docDatabase = options.docDatabase;
   const opts = options.opts;

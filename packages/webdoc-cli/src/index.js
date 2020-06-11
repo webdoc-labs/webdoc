@@ -8,6 +8,7 @@ import {exportTaffy} from "@webdoc/model";
 import fs from "fs";
 import fse from "fs-extra";
 import globby from "globby";
+import {initLogger as initParserLogger} from "@webdoc/parser";
 import {loadTutorials} from "./load-tutorials";
 import path from "path";
 import {performance} from "perf_hooks";
@@ -20,6 +21,7 @@ export function initLogger(verbose: boolean = false) {
     {
       Parser: defaultLevel,
       Config: defaultLevel,
+      CLI: defaultLevel,
     },
     (level, tag, msg, params) => {
       tag = `[${tag}]:`;
@@ -43,6 +45,10 @@ export function initLogger(verbose: boolean = false) {
 // main() is the default command.
 async function main(argv: yargs.Arguments<>) {
   initLogger(!!argv.verbose);
+
+  if (argv.verbose) {
+    initParserLogger("INFO");
+  }
 
   const start = performance.now();
 
@@ -110,7 +116,8 @@ async function main(argv: yargs.Arguments<>) {
 
     throw e;
   }
-  console.log("Parsed all");
+
+  log.info(tag.Parser, "Parsing stage finished!");
 
   if (config.opts.export) {
     fs.writeFileSync(config.opts.export, writeDoctree(documentTree));
@@ -121,7 +128,8 @@ async function main(argv: yargs.Arguments<>) {
   const _path = `${config.opts.template}/publish`;
   // $FlowFixMe
   const template = require(_path);
-  console.log("__TEMPLTE");
+
+  log.info(tag.CLI, "Executing template");
 
   const publishOptions = {
     config,
@@ -130,6 +138,7 @@ async function main(argv: yargs.Arguments<>) {
     docDatabase: db,
     opts: config.opts,
     tutorials,
+    verbose: !!argv.verbose,
   };
 
   if (template.publish && typeof template.publish === "function") {

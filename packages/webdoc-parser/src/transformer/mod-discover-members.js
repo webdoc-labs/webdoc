@@ -77,7 +77,7 @@ function discoverMembers(doc: Doc, depsChain = new Set<Doc>()): void {
       continue;
     }
     if (typeof parent === "string") {
-      console.log("skip " + parent);
+      // Unresolved parent (mod-resolve-related & mod-resolve-links couldn't find it, so skip)
       continue;
     }
 

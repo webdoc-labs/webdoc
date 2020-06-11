@@ -1,9 +1,9 @@
 // @flow
 
 import {type Doc, type RootDoc} from "@webdoc/types";
+import {parserLogger, tag} from "../Logger";
 import {type Symbol} from "../types/Symbol";
 import {addChildDoc} from "@webdoc/model";
-import {parserLogger} from "../Logger";
 import symbolToDoc from "./symbol-to-doc";
 
 // This file provides the transformation from a symbol-metadata tree into a documentation tree.
@@ -16,8 +16,11 @@ export function transformRecursive(symbol: Symbol, root: RootDoc): Doc {
   const doc: Doc = symbolToDoc(symbol);
 
   if (!doc && !symbol.isRoot) {
-    parserLogger.error("DocParser",
-      `Couldn't parse doc for + ${symbol.simpleName}(@${symbol.canonicalName})`);
+    parserLogger.error(tag.DocParser,
+      `Failed to parse doc for ${symbol.simpleName}(@${symbol.canonicalName || "Unnamed"})` +
+      `{@${symbol.loc.fileName}` +
+      `<${symbol.start ? symbol.start.line : "NaN"},` +
+      ` ${symbol.start ? symbol.start.column : "NaN"}>}`);
     return;
   }
 
