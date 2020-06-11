@@ -89,10 +89,10 @@ export function parseParam(value: string, options: $Shape<Doc>): ParamTag {
 
   extractable = StringUtils.splice(extractable,
     identClosure.closureStart,
-    identClosure.closureEnd + 1);
+    identClosure.closureEnd + 1 - identClosure.closureStart);
   extractable = extractable.trim();
 
-  if (extractable.startsWith("-") && extractable !== "") {
+  if (extractable.startsWith("-")) {
     extractable = extractable.slice(1);
     extractable = extractable.trimStart();
   } else if (extractable) {
