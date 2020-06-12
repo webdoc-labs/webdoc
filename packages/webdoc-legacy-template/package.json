@@ -1,6 +1,6 @@
 {
   "name": "@webdoc/legacy-template",
-  "version": "0.1.95-alpha.0",
+  "version": "0.1.97-alpha.0",
   "description": "Port of the JSDoc default template to webdoc!",
   "keywords": [
     "webdoc",
