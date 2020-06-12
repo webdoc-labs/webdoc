@@ -9,14 +9,14 @@ const ACCESS_ORDER = {
   "public": 0,
   "protected": 1,
   "private": 2,
-  [undefined]: 3,
+  [undefined]: 0,
 };
 
 const SCOPE_ORDER = {
   "static": 0,
   "instance": 1,
   "inner": 2,
-  [undefined]: 3,
+  [undefined]: 0,
 };
 
 const TYPE_ORDER = {
@@ -26,6 +26,7 @@ const TYPE_ORDER = {
   "TypedefDoc": 4,
   "PropertyDoc": 5,
   "MethodDoc": 6,
+  "EventDoc": 7,
   [undefined]: 10,
 };
 

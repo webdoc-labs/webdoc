@@ -1,5 +1,7 @@
 /**
  * This class illustrates how you can create a Java-bean like component in JavaScript
+ *
+ * @extends Bean
  */
 export class CoffeeBean {
   /**

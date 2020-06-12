@@ -6,6 +6,7 @@
 import type {Doc, Tag} from "@webdoc/types";
 import type {Symbol, SymbolSignature} from "../types/Symbol";
 import {
+  parseAbstract,
   parseAccess,
   parseAuthor,
   parseCopyright,
@@ -59,6 +60,7 @@ function createTagParser(type: string) {
 
 // @tag parsers
 const TAG_PARSERS: { [id: string]: TagParser } = {
+  "abstract": parseAbstract,
   "access": parseAccess,
   "augments": parseExtends, // alias @extends
   "author": parseAuthor,
@@ -124,6 +126,7 @@ export default function symbolToDoc(symbol: Symbol): ?Doc {
 
   const options: any = {node};
 
+  options.abstract = symbol.meta.abstract;
   options.access = symbol.meta.access;
   options.scope = symbol.meta.scope;
 

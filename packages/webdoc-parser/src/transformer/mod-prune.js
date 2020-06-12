@@ -17,4 +17,10 @@ export default function prune(doc: Doc, root: RootDoc) {
   if (doc.parserOpts && doc.parserOpts.undocumented && doc.children.length === 0) {
     removeChildDoc(doc);
   }
+  if (doc.type !== "PropertyDoc" && doc.type !== "MethodDoc" && doc.type !== "FunctionDoc") {
+    // only class members could be "instance"
+    if (doc.scope === "instance") {
+      delete doc.scope;
+    }
+  }
 }

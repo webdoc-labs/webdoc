@@ -158,55 +158,47 @@ function needsSignature(doc /*: Doc */) /*: boolean */ {
   return false;
 }
 
-function getSignatureAttributes({optional, nullable}) {
-  const attributes = [];
-
-  if (optional) {
-    attributes.push("opt");
-  }
-
-  if (nullable === true) {
-    attributes.push("nullable");
-  } else if (nullable === false) {
-    attributes.push("non-null");
-  }
-
-  return attributes;
-}
-
 const SignatureBuilder = {
-  appendParameters(params) {
-    return params
+  appendParameters(doc /*: Doc */) {
+    if (!doc.params) {
+      return;
+    }
+
+    const paramTypes = doc.params
       .filter((param) => param.identifier && !param.identifier.includes("."))
       .map(
         (item) => {
-          const attributes = getSignatureAttributes(item);
+          let attributes = [];
           let itemName = item.identifier || "";
+
+          if (item.optional) {
+            attributes.push("opt");
+          }
+
+          if (item.nullable === true) {
+            attributes.push("nullable");
+          } else if (item.nullable === false) {
+            attributes.push("non-null");
+          }
+
+          attributes = attributes.join(", ");
 
           if (item.variadic) {
             itemName = `&hellip;${itemName}`;
           }
 
           if (attributes && attributes.length) {
-            itemName = `${itemName}<span class="signature-attributes">${attributes.join(", ")}</span>`;
+            itemName = `${itemName}<span class="signature-attributes">${attributes}</span>`;
           }
 
           return itemName;
         });
+
+    const paramTypesString = paramTypes.join(", ");
+
+    doc.signature = `${doc.signature || ""}(${paramTypesString})`;
   },
 };
-
-function buildItemTypeStrings(item) {
-  const types = [];
-
-  if (item && item.dataType && item.dataType.length) {
-    item.dataType.slice(1).forEach((name) => {
-      types.push(linkto(name, htmlsafe(name)) );
-    });
-  }
-
-  return types;
-}
 
 function buildAttribsString(attribs) {
   let attribsString = "";
@@ -226,12 +218,6 @@ function addNonParamAttributes(items) {
   });
 
   return types;
-}
-
-function addSignatureParams(f /*: Signature */) {
-  const params = f.params ? SignatureBuilder.appendParameters(f.params) : [];
-
-  f.signature = `${f.signature || ""}(${params.join(", ")})`;
 }
 
 function addSignatureReturns(f) {
@@ -682,7 +668,7 @@ exports.publish = (options) => {
 
     // Add signature information to the doc
     if (needsSignature(doc)) {
-      addSignatureParams(doc);
+      SignatureBuilder.appendParameters(doc);
       addSignatureReturns(doc);
       addAttribs(doc);
     }

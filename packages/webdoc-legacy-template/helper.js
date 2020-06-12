@@ -67,8 +67,8 @@ const toHtmlSafeString = exports.toHtmlSafeString = (str /*: string */) /*: stri
 };
 
 /*::
-type Attribute = "async" | "generator" | "abstract" | "virtual" | "private" | "protected" |
-  "static" | "inner" | "readonly" | "constant" | "nullable" | "non-null"
+type Attribute = "abstract" | "async" | "generator" | "abstract" | "virtual" | "private" |
+  "protected" | "static" | "inner" | "readonly" | "constant" | "nullable" | "non-null"
 */
 
 // This is not a constructor
@@ -77,6 +77,10 @@ exports.Attributes = (doc /*: Doc */) => /*: Attribute[] */ {
 
   if (!doc) {
     return attribs;
+  }
+
+  if (doc.abstract) {
+    attribs.push("abstract");
   }
 
   if (doc.async) {

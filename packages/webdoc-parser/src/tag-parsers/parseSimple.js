@@ -18,6 +18,7 @@ import type {
 
 import {parseTypedDescription} from "./helper";
 
+// @abstract
 // @author <AUTHOR>
 // @copyright <COPYRIGHT>
 // @default <DEFAULT_VALUE>
@@ -32,6 +33,12 @@ import {parseTypedDescription} from "./helper";
 // @type {TYPE}
 // @see <URL | DOC_PATH>
 // @since <WHEN>
+
+export function parseAbstract(value: string, doc: $Shape<Doc>): Tag {
+  doc.abstract = true;
+
+  return {value, type: "AbstractTag"};
+}
 
 export function parseAuthor(value: string, doc: $Shape<Doc>): $Shape<AuthorTag> {
   if (!doc.authors) {

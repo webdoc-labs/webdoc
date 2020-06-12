@@ -6,8 +6,8 @@ import {
   type ClassDeclaration,
   type ClassExpression,
   type ClassMethod,
-  type FunctionExpression,
   type FunctionDeclaration,
+  type FunctionExpression,
   type InterfaceDeclaration,
   type ObjectMethod,
   type TSInterfaceDeclaration,
@@ -19,20 +19,20 @@ import {
   isClassExpression,
   isClassImplements,
   isIdentifier,
-  isRestElement,
   isObjectExpression,
+  isRestElement,
   isStringLiteral,
   isTSAnyKeyword,
   isTSArrayType,
-  isTSBooleanKeyword,
   isTSBigIntKeyword,
-  isTSConstructorType,
+  isTSBooleanKeyword,
   isTSConstructSignatureDeclaration,
+  isTSConstructorType,
   isTSExpressionWithTypeArguments,
   isTSFunctionType,
   isTSIndexSignature,
-  isTSIntersectionType,
   isTSIndexedAccessType,
+  isTSIntersectionType,
   isTSLiteralType,
   isTSMappedType,
   isTSNeverKeyword,
@@ -42,32 +42,32 @@ import {
   isTSParenthesizedType,
   isTSPropertySignature,
   isTSQualifiedName,
+  isTSRestType,
   isTSStringKeyword,
   isTSSymbolKeyword,
-  isTSUndefinedKeyword,
-  isTSVoidKeyword,
-  isTSRestType,
   isTSThisType,
+  isTSTupleType,
   isTSType,
   isTSTypeAnnotation,
   isTSTypeLiteral,
+  isTSTypeOperator,
   isTSTypePredicate,
   isTSTypeQuery,
   isTSTypeReference,
-  isTSTypeOperator,
-  isTSTupleType,
+  isTSUndefinedKeyword,
   isTSUnionType,
+  isTSVoidKeyword,
   isTypeAnnotation,
   isVoidTypeAnnotation,
 } from "@babel/types";
 
 import {
-  createSimpleKeywordType,
-  createSimpleDocumentedType,
+  cloneType,
   createComplexType,
   createFunctionType,
   createRestDataType,
-  cloneType,
+  createSimpleDocumentedType,
+  createSimpleKeywordType,
 } from "@webdoc/model";
 
 import type {DataType, Param, Return} from "@webdoc/types";
@@ -391,7 +391,7 @@ function resolveDataType(type: TSTypeAnnotation | TSType | any): DataType {
     }));
 
     params[0] = `new (${params[0]})`;
-    params.template = `new (${params[0]})`;
+    params.template = `new (${params.template})`;
 
     if (type.typeAnnotation) {
       return createComplexType(": ", params, resolveDataType(type.typeAnnotation));

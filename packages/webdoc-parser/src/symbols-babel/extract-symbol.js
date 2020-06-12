@@ -11,34 +11,37 @@ import {
   type VariableDeclarator,
   isArrowFunctionExpression,
   isAssignmentExpression,
-  isExpressionStatement,
+  isCallExpression,
   isClassDeclaration,
   isClassExpression,
   isClassMethod,
-  isInterfaceDeclaration,
-  isMemberExpression,
-  isFunctionDeclaration,
   isClassProperty,
+  isExpressionStatement,
+  isFunctionDeclaration,
   isFunctionExpression,
-  isCallExpression,
-  isVariableDeclarator,
+  isInterfaceDeclaration,
   isLiteral,
+  isMemberExpression,
   isObjectExpression,
-  isObjectProperty,
   isObjectMethod,
+  isObjectProperty,
   isReturnStatement,
   isStringLiteral,
-  isThisExpression,
   isTSAsExpression,
+  isTSDeclareFunction,
+  isTSDeclareMethod,
   isTSEnumDeclaration,
   isTSEnumMember,
   isTSInterfaceDeclaration,
   isTSMethodSignature,
   isTSPropertySignature,
   isTSTypeElement,
+  isThisExpression,
+  isVariableDeclarator,
 } from "@babel/types";
 
-import {type Symbol, OBLIGATE_LEAF, PASS_THROUGH, VIRTUAL, isVirtual} from "../types/Symbol";
+import {OBLIGATE_LEAF, PASS_THROUGH, type Symbol, VIRTUAL, isVirtual} from "../types/Symbol";
+import {PARAMETER, queryType} from "../types/VariableRegistry";
 import {
   extractExtends,
   extractImplements,
@@ -46,8 +49,6 @@ import {
   extractReturns,
   extractType,
 } from "./extract-metadata";
-
-import {queryType, PARAMETER} from "../types/VariableRegistry";
 
 // + Extract the symbol name, type from the Node
 // + Set the appopriate flags
@@ -72,11 +73,17 @@ export default function extractSymbol(
   const nodeSymbol = out.nodeSymbol || {meta: {}};
 
   if ((isClassMethod(node) && (node.kind === "method" || node.kind === "constructor")) ||
-        isObjectMethod(node)) {
+        isObjectMethod(node) ||
+        (isTSDeclareMethod(node) && (node.kind === "method" || node.kind === "constructor"))) {
     // Example:
     // constructor() {}
     // classMethod() {}
+    // abstract classMethod() {}
     name = node.key.name;
+
+    if (node.abstract) {
+      nodeSymbol.meta.abstract = true;
+    }
 
     nodeSymbol.meta.access = node.access;
     nodeSymbol.meta.scope = node.static ? "static" : "instance";
@@ -115,7 +122,7 @@ export default function extractSymbol(
     nodeSymbol.meta.extends = extractExtends(node);
     nodeSymbol.meta.implements = extractImplements(node);
     nodeSymbol.meta.type = "ClassDoc";
-  } else if (isFunctionDeclaration(node)) {
+  } else if (isFunctionDeclaration(node) || isTSDeclareFunction(node)) {
     // Example:
     // function functionName()
 

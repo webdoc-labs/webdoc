@@ -489,6 +489,21 @@
 			]
 		},
 		{
+			"name": "Bean",
+			"type": "ClassDoc",
+			"brief": "",
+			"description": "<p>Bean class</p>",
+			"children": [
+				{
+					"name": "roast",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": "",
+					"description": "<p>(optional) roasting method</p>"
+				}
+			]
+		},
+		{
 			"name": "Car",
 			"type": "ClassDoc",
 			"brief": "",
@@ -829,6 +844,12 @@
 					"description": "<p>Offer a price to buy the car.</p>\n<p>NOTE: This is invalid behaviour if you are the seller in the transaction.</p>"
 				}
 			]
+		},
+		{
+			"name": "installBean",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": "<p>Install a bean class</p>"
 		},
 		{
 			"name": "isPhysicalObject",
