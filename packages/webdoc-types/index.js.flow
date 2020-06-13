@@ -19,6 +19,12 @@ declare module "@webdoc/types" {
       code: string
     };
 
+    declare type SymbolLocation = {
+      start: { line: number, column: number },
+      end: { line: number, column: number },
+      fileName: string
+    }
+
     declare type Typedef = {
       of: string[],
       alias: String,
@@ -53,6 +59,7 @@ declare module "@webdoc/types" {
       examples?: Example[],
       fires?: [],
       license?: string,
+      loc?: SourceLocation,
       scope: "static" | "instance" | "inner" | "default",
       see?: DocLink[],
       since?: string,

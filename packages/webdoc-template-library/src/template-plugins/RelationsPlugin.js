@@ -1,11 +1,11 @@
 // @flow
 
 import {
-  type RootDoc,
   type Doc,
-  traverse,
+  type RootDoc,
   searchExtendedClasses,
   searchImplementedInterfaces,
+  traverse,
 } from "@webdoc/model";
 
 type Relations = {

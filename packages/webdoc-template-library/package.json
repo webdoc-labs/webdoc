@@ -36,7 +36,9 @@
     "@webdoc/model": "^0.1.95-alpha.0",
     "@webdoc/types": "^0.1.95-alpha.0",
     "catharsis": "0.8.11",
-    "missionlog": "1.6.0"
+    "missionlog": "1.6.0",
+    "parse-github-url": "1.0.2",
+    "git-branch": "2.0.1"
   },
   "gitHead": "326306f477098182404f813337c0c67cc90263c6"
 }

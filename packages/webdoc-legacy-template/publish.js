@@ -15,6 +15,7 @@ const {
   TemplateTagsResolver, // <<TemplatePipelineElement>>
   SymbolLinks,
   RelationsPlugin,
+  RepositoryPlugin,
 } = require("@webdoc/template-library");
 const {doc: findDoc, isClass, isInterface, isNamespace, isMixin, isModule, isExternal} = require("@webdoc/model");
 const fsp = require("fs").promises;
@@ -510,6 +511,11 @@ exports.publish = (options) => {
   view = new TemplateRenderer(path.join(templatePath, "tmpl"), docDatabase, docTree);
   view.installPlugin("relations", RelationsPlugin);
   view.plugins.relations.buildRelations();
+
+  if (userConfig.template.repository) {
+    view.installPlugin("repository", RepositoryPlugin);
+    view.plugins.repository.buildRepository(userConfig.template.repository);
+  }
 
   pipeline = new TemplatePipeline(view);
   pipeline.pipe(new TemplateTagsResolver());

@@ -1,21 +1,21 @@
 // @flow
 import * as _ from "lodash";
+import type {
+  ClassDoc,
+  Doc,
+  EventDoc,
+  FunctionDoc,
+  InterfaceDoc,
+  MethodDoc,
+  MixinDoc,
+  NSDoc,
+  PropertyDoc,
+  RootDoc,
+  TypedefDoc,
+} from "@webdoc/types";
+import {tag, templateLogger} from "./Logger";
 import fs from "fs";
 import path from "path";
-import {templateLogger, tag} from "./Logger";
-import type {
-  RootDoc,
-  Doc,
-  ClassDoc,
-  FunctionDoc,
-  MethodDoc,
-  NSDoc,
-  EventDoc,
-  TypedefDoc,
-  MixinDoc,
-  InterfaceDoc,
-  PropertyDoc,
-} from "@webdoc/types";
 
 /**
  * The template renderer uses lodash to parse .tmpl template files and renders HTML content. A
@@ -35,6 +35,7 @@ export class TemplateRenderer {
   docTree: RootDoc;
   layout: any;
   cache: { [id: string]: any };
+  data: any;
   settings: { evaluate: RegExp, interpolate: RegExp, escape: RegExp };
   plugins: { [id: string]: Object };
 
@@ -48,6 +49,13 @@ export class TemplateRenderer {
     this.docDatabase = docDatabase;
     this.docTree = docTree;
     this.layout = null;
+
+    /**
+     * Extra data you can provide so that template files can access it
+     * @type {object}
+     */
+    this.data = {};
+
     this.cache = {};
     this.plugins = {};
 

@@ -129,6 +129,7 @@ export default function symbolToDoc(symbol: Symbol): ?Doc {
   options.abstract = symbol.meta.abstract;
   options.access = symbol.meta.access;
   options.scope = symbol.meta.scope;
+  options.loc = symbol.loc;
 
   options.parserOpts = {
     object: symbol.meta.object,
