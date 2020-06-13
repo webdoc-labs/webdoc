@@ -33,20 +33,26 @@ export class TemplateTagsResolver implements TemplatePipelineElement<{}> {
     let linkMatch;
 
     while ((linkMatch = linkPattern.exec(input)) !== null) {
+      const linkTextMatch = matchTextPrefix(input, linkMatch.index);
+
       const link = linkMatch[1];
+      const linkText = linkTextMatch ? linkTextMatch[0].slice(1, -1) : link;
       let replaced;
 
       if (isValidUrl(link)) {
-        replaced = `<a ${this.linkClass ? "class=\"" + this.linkClass + "\"" : ""}
-          href="${link}">${link}</a>`;
+        replaced = `<a ${this.linkClass ? "class=\"" + this.linkClass + "\"" : ""}` +
+        `href="${link}">${linkText}</a>`;
       } else {
-        replaced = SymbolLinks.linkTo(link, link);
+        replaced = SymbolLinks.linkTo(link, linkText);
       }
 
+      const startIndex = linkTextMatch ? linkTextMatch.index : linkMatch.index;
+      const endIndex = linkMatch.index + linkMatch[0].length;
+
       input =
-        input.slice(0, linkMatch.index) +
+        input.slice(0, startIndex) +
         replaced +
-        input.slice(linkMatch.index + linkMatch[0].length);
+        input.slice(endIndex);
     }
 
     return input;
@@ -68,4 +74,47 @@ function isValidUrl(string) {
   }
 
   return true;
+}
+
+// Match the [TEXT_PREFIX] before a {@inline-tag ...}
+function matchTextPrefix(content: string, tagStart: number): ?([string] & {index: number}) {
+  const index = tagStart - 1;
+
+  if (content.charAt(index) !== "]") {
+    return;
+  }
+
+  // Allow nested bracket closures in the TEXT_PREFIX, e.g. TEXT_PREFIX[] is valid
+  // This is the no. of closing brackets we are in
+  // _] = 1
+  // _[]] = 1
+  let bracketDepth = 1; // (1 because we include the "]" at "index")
+
+  // Index at which last opening bracket is found
+  let openIndex = -1;
+
+  for (let i = index - 1; i >= 0; i--) {
+    const char = content.charAt(i);
+
+    if (char === "[") {
+      --bracketDepth;
+
+      if (bracketDepth === 0) {
+        openIndex = i;
+        break;
+      }
+    } else if (char === "]") {
+      ++bracketDepth;
+    }
+  }
+
+  if (openIndex === -1) {
+    return;
+  }
+
+  const result = [content.slice(openIndex, index + 1)];
+
+  result.index = openIndex;
+
+  return result;
 }

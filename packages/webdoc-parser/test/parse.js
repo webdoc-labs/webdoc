@@ -1,4 +1,4 @@
-const {parse, buildSymbolTree} = require("../lib/parse");
+const {parse} = require("../lib/parse");
 const {doc: findDoc} = require("@webdoc/model");
 
 const expect = require("chai").expect;
