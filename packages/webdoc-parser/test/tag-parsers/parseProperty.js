@@ -1,4 +1,5 @@
 const {parseProperty} = require("../../lib/tag-parsers/parseProperty");
+
 const expect = require("chai").expect;
 
 describe("@webdoc/parser.parseProperty", function() {
@@ -87,6 +88,20 @@ describe("@webdoc/parser.parseProperty", function() {
     expect(propertyDoc.dataType[0]).to.equal("DataType");
     expect(propertyDoc.optional).to.equal(true);
     expect(propertyDoc.defaultValue).to.equal("defaultValue");
+    expect(propertyDoc.description).to.equal("<description>");
+  });
+
+  it("@property {DataType}[propertyName=defaultValue[]] <description>", function() {
+    const doc = {};
+
+    parseProperty("{DataType}[propertyName=defaultValue[]] <description>", doc);
+
+    const propertyDoc = doc.members[0];
+
+    expect(propertyDoc.name).to.equal("propertyName");
+    expect(propertyDoc.dataType[0]).to.equal("DataType");
+    expect(propertyDoc.optional).to.equal(true);
+    expect(propertyDoc.defaultValue).to.equal("defaultValue[]");
     expect(propertyDoc.description).to.equal("<description>");
   });
 });

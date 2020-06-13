@@ -1,9 +1,9 @@
 // @flow
 
 import type {Doc, ParamTag} from "@webdoc/types";
+import {StringUtils, matchDefaultValueClosure} from "./helper";
 import {parserLogger, tag} from "../Logger";
 import {parseDataType} from "@webdoc/model";
-import {StringUtils} from "./helper";
 
 // @param {<DATA_TYPE>} <NAME>                      - <DESC>
 // @param {<DATA_TYPE>} [<NAME>]                    - <DESC>
@@ -17,9 +17,17 @@ function extractIdentifier(from: string, index: number = 0): {
   variadic?: boolean,
   closureStart: number,
   closureEnd: number
-  } {
+} {
+  let identClosureMatch;
+
+  if (from.startsWith("[")) {
+    identClosureMatch = matchDefaultValueClosure(from);
+  }
+
   // Extracts the [ident=defaultValue] group. The brackets & equal sign need not exist.
-  const identClosureMatch = /((\[)([^\]])+(\]))|(\S)+/.exec(from);
+  if (!identClosureMatch) {
+    identClosureMatch = /((\[)([^\]])+(\]))|(\S)+/.exec(from);
+  }
 
   if (!identClosureMatch) {
     return {
@@ -85,6 +93,7 @@ export function parseParam(value: string, options: $Shape<Doc>): ParamTag {
       new RegExp(`(.{${refClosure.index}}).{${refClosure.index + refClosure[0].length}}`), "$1");
   }
 
+  extractable = extractable.trimStart();
   const identClosure = extractIdentifier(extractable);
 
   extractable = StringUtils.splice(extractable,

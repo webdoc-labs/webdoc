@@ -1,7 +1,7 @@
 // @flow
 import type {Doc, PropertyTag} from "@webdoc/types";
+import {StringUtils, matchDataTypeClosure, matchDefaultValueClosure} from "./helper";
 import {createDoc} from "@webdoc/model";
-import {matchDataTypeClosure, StringUtils} from "./helper";
 import {parseDataType} from "@webdoc/model";
 
 // @property {<DATA_TYPE>} <NAME>                      - <DESC>
@@ -67,7 +67,7 @@ export function parseProperty(value: string, doc: $Shape<Doc>): PropertyTag {
 
   // propertyName is inside "[propertyName = defaultValue]"
   if (!name && value.startsWith("[")) {
-    const defaultValueClosure = /\[([^\]])*\]/.exec(value);
+    const defaultValueClosure = matchDefaultValueClosure(value);
 
     if (defaultValueClosure) {
       const closureData = extractDefaultValueClosureData(defaultValueClosure[0].slice(1, -1));

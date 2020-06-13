@@ -3,6 +3,9 @@ import type {DataType} from "@webdoc/types";
 import {IDENTIFIER} from "../constants";
 import {parseDataType} from "@webdoc/model";
 
+// Alias for RegEx matches & our own match function results
+type MatchResult = string[] & { index: number }
+
 // Matches the first word as identifier
 export function matchIdentifier(value: string): any {
   return IDENTIFIER.exec(value);
@@ -10,6 +13,53 @@ export function matchIdentifier(value: string): any {
 
 export function matchDataTypeClosure(value: string): any {
   return /{([^{}])+}/.exec(value);
+}
+
+// Find the RegEx match for "[defaultValueClosureContent]" inside "value", starting at "start",
+// and stopping before the "-" token (description prefix) if "beforeDesc" is true
+export function matchDefaultValueClosure(
+  value: string,
+  start: number = 0,
+  beforeDesc: boolean = true,
+): ?MatchResult {
+  // Tracks how many opening brackets we are inside of
+  // [_ = 1
+  // [[_ = 2
+  // [[]_ = 1
+  let bracketDepth = 0;
+
+  // Index at which first opening bracket was found
+  let openIndex = -1;
+
+  // Index at which last closing bracket was found
+  let closeIndex;
+
+  for (let i = start, j = value.length; i < j; i++) {
+    const char = value.charAt(i);
+
+    if (char === "[") {
+      ++bracketDepth;
+
+      if (openIndex < 0) {
+        openIndex = i;
+      }
+    } else if (char === "]") {
+      --bracketDepth;
+
+      if (bracketDepth === 0) {
+        closeIndex = i;
+        break;
+      }
+    } else if (beforeDesc && char === "-" && bracketDepth === 0) {
+      return;
+    }
+  }
+
+  const result = [value.slice(openIndex, closeIndex + 1)];
+
+  result.index = openIndex;
+
+  return result;
 }
 
 // This is a helper to parse "{Type} [-] description"
