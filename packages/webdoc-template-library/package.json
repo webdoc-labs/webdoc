@@ -1,6 +1,6 @@
 {
   "name": "@webdoc/template-library",
-  "version": "0.1.95-alpha.0",
+  "version": "0.1.98-alpha.0",
   "description": "Goodies for @webdoc template packages! See @webdoc/legacy-template for an example!",
   "keywords": [
     "webdoc",
@@ -33,12 +33,12 @@
     "url": "https://github.com/SukantPal/webdoc/issues"
   },
   "dependencies": {
-    "@webdoc/model": "^0.1.95-alpha.0",
-    "@webdoc/types": "^0.1.95-alpha.0",
+    "@webdoc/model": "^0.1.98-alpha.0",
+    "@webdoc/types": "^0.1.98-alpha.0",
     "catharsis": "0.8.11",
+    "git-branch": "2.0.1",
     "missionlog": "1.6.0",
-    "parse-github-url": "1.0.2",
-    "git-branch": "2.0.1"
+    "parse-github-url": "1.0.2"
   },
   "gitHead": "326306f477098182404f813337c0c67cc90263c6"
 }
