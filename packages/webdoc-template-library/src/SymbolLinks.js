@@ -30,7 +30,6 @@ const SCOPE_TO_PUNC = {};
 const STANDALONE_DOCS = [
   "ClassDoc",
   "NSDoc",
-  "FunctionDoc",
   "InterfaceDoc",
   "MixinDoc",
   "TutorialDoc",
