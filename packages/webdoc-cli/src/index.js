@@ -14,6 +14,8 @@ import path from "path";
 import {performance} from "perf_hooks";
 import {writeDoctree} from "@webdoc/externalize";
 
+require("./shims");// Node v10 support
+
 export function initLogger(verbose: boolean = false) {
   const defaultLevel = verbose ? "INFO" : "WARN";
 
