@@ -6,7 +6,7 @@
 export class CoffeeBean {
   /**
    * @param {object}[options]
-   * @param {boolean}[options.roasted]
+   * @param {boolean}[options.roasted] - whether the bean is `roasted`
    * @param {number}[options.maturity]
    */
   constructor(options = {}) {

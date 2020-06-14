@@ -2,8 +2,11 @@ const env = global.Webdoc.env;
 
 const config = env["plugin/markdown"] || {};
 const defaultTags = [
-  "description",
+  "author",
   "brief",
+  "description",
+  "params",
+  "returns",
 ];
 
 let tags = [];
@@ -40,8 +43,13 @@ function process(doclet) {
       doclet[tag] = renderer.render(doclet[tag])
         .replace(/\s+$/, "")
         .replace(/&#39;/g, "'");
-    } else if ( Array.isArray(doclet[tag]) ) {
+    } else if (Array.isArray(doclet[tag])) {
       doclet[tag].forEach((value, index, original) => {
+        if (typeof value === "object") {
+          process(value);
+          return;
+        }
+
         const inner = {};
 
         inner[tag] = value;
