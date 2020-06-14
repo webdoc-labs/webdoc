@@ -288,7 +288,7 @@ declare module "@webdoc/types" {
     };
 
     declare type TypedefTag = {
-      of: string[],
+      dataType: DataType,
       alias: String,
       type: "TypedefTag"
     };

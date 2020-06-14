@@ -6,26 +6,51 @@
 const _ = require("lodash");
 const commonPathPrefix = require("common-path-prefix");
 const fs = require("fs");
+const fse = require("fs-extra");
 const path = require("path");
 const helper = require("./helper");
 const hasOwnProp = Object.prototype.hasOwnProperty;
+
 const {
   TemplateRenderer,
   TemplatePipeline,
   TemplateTagsResolver, // <<TemplatePipelineElement>>
   SymbolLinks,
-  RelationsPlugin,
-  RepositoryPlugin,
+  RelationsPlugin, // <<TemplateRendererPlugin>>
+  RepositoryPlugin, // <<TemplateRendererPlugin>>
 } = require("@webdoc/template-library");
-const {doc: findDoc, isClass, isInterface, isNamespace, isMixin, isModule, isExternal} = require("@webdoc/model");
+
+const {
+  doc: findDoc,
+  isClass,
+  isInterface,
+  isNamespace,
+  isMixin,
+  isModule,
+  isExternal,
+  traverse,
+} = require("@webdoc/model");
+
 const fsp = require("fs").promises;
 
-let pipeline;
-let view;
+const AttributesBuilder = require("./src/AttributesBuilder").AttributesBuilder;
+const SignatureBuilder = require("./src/SignatureBuilder").SignatureBuilder;
 
-TemplateRenderer.prototype.linkto = helper.linkto;
-TemplateRenderer.prototype.linkTo = helper.linkto;
+/*::
+import type {TypedMembers} from './helper';
+import {TemplateRenderer, TemplatePipeline} from "@webdoc/template-library";
+*/
 
+let pipeline/*: TemplatePipeline */;
+let view/*: TemplateRenderer */;
+
+// linkto will be deprecated in favor of linkTo.
+TemplateRenderer.prototype.linkto = SymbolLinks.linkTo;
+
+// TODO: @webdoc/template-library should define linkTo on TemplateRenderer instead of us!
+TemplateRenderer.prototype.linkTo = SymbolLinks.linkTo;
+
+// Mixed-in method on TemplateRenderer for resolving the link to a Doc
 TemplateRenderer.prototype.resolveDocLink = function(docLink) {
   if (typeof docLink === "string") {
     return this.linkTo(docLink, docLink);
@@ -34,7 +59,8 @@ TemplateRenderer.prototype.resolveDocLink = function(docLink) {
   return this.linkTo(docLink.path, docLink.path);
 };
 
-const htmlsafe = TemplateRenderer.prototype.htmlsafe = (str) => {
+// Mixed-in method on TemplateRenderer for converting strings, Docs into HTML-safe strings
+TemplateRenderer.prototype.htmlsafe = (str /*: string | Doc */) /*: string */ => {
   if (typeof str !== "string") {
     if (str.path) {
       str = str.path;
@@ -49,13 +75,12 @@ const htmlsafe = TemplateRenderer.prototype.htmlsafe = (str) => {
 
 const {Log, LogLevel, tag} = require("missionlog");
 
-const linkto = helper.linkto;
 const klawSync = require("klaw-sync");
 
 let publishLog;
 let docDatabase;
 
-lsSync = ((dir, opts = {}) => {
+const lsSync = ((dir, opts = {}) => {
   const depth = _.has(opts, "depth") ? opts.depth : -1;
 
   const files = klawSync(dir, {
@@ -66,11 +91,6 @@ lsSync = ((dir, opts = {}) => {
 
   return files.map((f) => f.path);
 });
-
-
-const log = (s) => {
-  console.log(s);
-};
 
 let env;
 
@@ -90,28 +110,10 @@ const PRETTIFIER_SCRIPT_FILES = [
   "prettify.js",
 ];
 
-let data;
-
-let outdir;
+let outDir;
 
 function mkdirpSync(filepath) {
   return fs.mkdirSync(filepath, {recursive: true});
-}
-
-function find(spec) {
-  return data(spec).get();
-}
-
-function tutoriallink(tutorial) {
-  return helper.toTutorial(tutorial, null, {
-    tag: "em",
-    classname: "disabled",
-    prefix: "Tutorial: ",
-  });
-}
-
-function getAncestorLinks(doclet) {
-  return helper.getAncestorLinks(data, doclet);
 }
 
 function hashToLink(doclet, hash) {
@@ -121,152 +123,15 @@ function hashToLink(doclet, hash) {
     return hash;
   }
 
-  url = helper.createLink(doclet);
+  url = SymbolLinks.createLink(doclet);
   url = url.replace(/(#.+|$)/, hash);
 
   return `<a href="${url}">${hash}</a>`;
 }
 
 /*::
-type Signature = {
-  params: [Param],
-  returns: [Return]
-}
+type Signature = string
 */
-
-function needsSignature(doc /*: Doc */) /*: boolean */ {
-  // Functions, methods, and properties always have signatures.
-  if (doc.type === "FunctionDoc" || doc.type === "MethodDoc") {
-    return true;
-  }
-  // Class constructors documented as classes have signatures.
-  if (doc.type === "ClassDoc" && doc.params) {
-    return true;
-  }
-
-  // TODO: Need to resolve this one!
-  /*
-  // Typedefs containing functions have signatures.
-  if (doc.type === "TypedefDoc" && doc.of && type.names &&
-        type.names.length) {
-    for (let i = 0, l = type.names.length; i < l; i++) {
-      if (type.names[i].toLowerCase() === "function") {
-        return true;
-      }
-    }
-  }*/
-
-  return false;
-}
-
-const SignatureBuilder = {
-  appendParameters(doc /*: Doc */) {
-    if (!doc.params) {
-      return;
-    }
-
-    const paramTypes = doc.params
-      .filter((param) => param.identifier && !param.identifier.includes("."))
-      .map(
-        (item) => {
-          let attributes = [];
-          let itemName = item.identifier || "";
-
-          if (item.optional) {
-            attributes.push("opt");
-          }
-
-          if (item.nullable === true) {
-            attributes.push("nullable");
-          } else if (item.nullable === false) {
-            attributes.push("non-null");
-          }
-
-          attributes = attributes.join(", ");
-
-          if (item.variadic) {
-            itemName = `&hellip;${itemName}`;
-          }
-
-          if (attributes && attributes.length) {
-            itemName = `${itemName}<span class="signature-attributes">${attributes}</span>`;
-          }
-
-          return itemName;
-        });
-
-    const paramTypesString = paramTypes.join(", ");
-
-    doc.signature = `${doc.signature || ""}(${paramTypesString})`;
-  },
-};
-
-function buildAttribsString(attribs) {
-  let attribsString = "";
-
-  if (attribs && attribs.length) {
-    attribsString = htmlsafe(`(${attribs.join(", ")}) `);
-  }
-
-  return attribsString;
-}
-
-function addNonParamAttributes(items) {
-  let types = [];
-
-  items.forEach((item) => {
-    types = types.concat( SymbolLinks.linkTo(item.dataType) );
-  });
-
-  return types;
-}
-
-function addSignatureReturns(f) {
-  const attribs = [];
-  let attribsString = "";
-  let returnTypes = [];
-  let returnTypesString = "";
-  const source = f.yields || f.returns;
-
-  // jam all the return-type attributes into an array. this could create odd results (for example,
-  // if there are both nullable and non-nullable return types), but let's assume that most people
-  // who use multiple @return tags aren't using Closure Compiler type annotations, and vice-versa.
-  if (source) {
-    source.forEach((item) => {
-      helper.Attributes(item).forEach((attrib) => {
-        if (!attribs.includes(attrib)) {
-          attribs.push(attrib);
-        }
-      });
-    });
-
-    attribsString = buildAttribsString(attribs);
-  }
-
-  if (source) {
-    returnTypes = addNonParamAttributes(source);
-  }
-  if (returnTypes.length) {
-    returnTypesString = returnTypes.join(" | ");
-  }
-
-  f.signature = `<span class="signature">${f.signature || ""}</span>` +
-        `<span class="type-signature">  →  {${returnTypesString}}</span>`;
-}
-
-function addSignatureTypes(f) {
-  const types = f.dataType ? SymbolLinks.linkTo(f.dataType) : "";
-
-  f.signature = `${f.signature || ""}<span class="type-signature">` +
-        `${types ? "   :" + types : ""}</span>`;
-}
-
-function addAttribs(f) {
-  const attribs = helper.Attributes(f);
-  const attribsString = buildAttribsString(attribs);
-
-  f.attribs = `<span class="type-signature">${attribsString}</span>`;
-}
 
 function shortenPaths(files, commonPrefix) {
   Object.keys(files).forEach((file) => {
@@ -276,77 +141,6 @@ function shortenPaths(files, commonPrefix) {
   });
 
   return files;
-}
-
-function getPathFromDoclet({meta}) {
-  if (!meta) {
-    return null;
-  }
-
-  return meta.path && meta.path !== "null" ?
-    path.join(meta.path, meta.filename) :
-    meta.filename;
-}
-
-function generateSourceFiles(sourceFiles, encoding = "utf8") {
-  Object.keys(sourceFiles).forEach((file) => {
-    let source;
-    // links are keyed to the shortened path in each doclet's `meta.shortpath` property
-    const sourceOutfile = helper.getUniqueFilename(sourceFiles[file].shortened);
-
-    helper.registerLink(sourceFiles[file].shortened, sourceOutfile);
-
-    try {
-      source = {
-        kind: "source",
-        code: helper.htmlsafe( fs.readFileSync(sourceFiles[file].resolved, encoding) ),
-      };
-    } catch (e) {
-      log.error(`Error while generating source file ${file}: ${e.message}`);
-    }
-
-    generate(`Source: ${sourceFiles[file].shortened}`, [source], sourceOutfile,
-      false);
-  });
-}
-
-/**
- * Look for classes or functions with the same name as modules (which indicates that the module
- * exports only that class or function), then attach the classes or functions to the `module`
- * property of the appropriate module doclets. The name of each class or function is also updated
- * for display purposes. This function mutates the original arrays.
- *
- * @private
- * @param {Array.<module:jsdoc/doclet.Doclet>} doclets - The array of classes and functions to
- * check.
- * @param {Array.<module:jsdoc/doclet.Doclet>} modules - The array of module doclets to search.
- */
-function attachModuleSymbols(doclets, modules) {
-  const symbols = {};
-
-  // build a lookup table
-  doclets.forEach((symbol) => {
-    symbols[symbol.longname] = symbols[symbol.longname] || [];
-    symbols[symbol.longname].push(symbol);
-  });
-
-  modules.forEach((module) => {
-    if (symbols[module.longname]) {
-      module.modules = symbols[module.longname]
-      // Only show symbols that have a description. Make an exception for classes, because
-      // we want to show the constructor-signature heading no matter what.
-        .filter(({description, kind}) => description || kind === "class")
-        .map((symbol) => {
-          symbol = _.cloneDeep(symbol);
-
-          if (symbol.kind === "class" || symbol.kind === "function") {
-            symbol.name = `${symbol.name.replace("module:", "(require(\"")}"))`;
-          }
-
-          return symbol;
-        });
-    }
-  });
 }
 
 function buildMemberNav(items, itemHeading, itemsSeen, linktoFn) {
@@ -361,7 +155,7 @@ function buildMemberNav(items, itemHeading, itemsSeen, linktoFn) {
       if ( !hasOwnProp.call(item, "path") ) {
         itemsNav += `<li>${linktoFn("", item.name)}</li>`;
       } else if ( !hasOwnProp.call(itemsSeen, item.path) ) {
-        if (true) { //env.conf.templates.default.useLongnameInNav) {
+        if (Webdoc.userConfig.template.useLongnameInNav) {
           displayName = item.path;
         } else {
           displayName = item.name;
@@ -381,68 +175,44 @@ function buildMemberNav(items, itemHeading, itemsSeen, linktoFn) {
   return nav;
 }
 
-function linktoTutorial(longName, name) {
-  return tutoriallink(name);
-}
-
 function linktoExternal(longName, name) {
-  return linkto(longName, name.replace(/(^"|"$)/g, ""));
+  return SymbolLinks.linkTo(longName, name.replace(/(^"|"$)/g, ""));
 }
 
-/**
- * Create the navigation sidebar.
- * @param {object} members The members that will be used to create the sidebar.
- * @param {array<object>} members.classes
- * @param {array<object>} members.externals
- * @param {array<object>} members.globals
- * @param {array<object>} members.mixins
- * @param {array<object>} members.modules
- * @param {array<object>} members.namespaces
- * @param {array<object>} members.tutorials
- * @param {array<object>} members.events
- * @param {array<object>} members.interfaces
- * @return {string} The HTML for the navigation sidebar.
- */
-function buildNav(members) {
+// Builds the navigation sidebar's HTML content
+function buildNav(members /*: TypedMembers */) /*: string */ {
   let globalNav;
   let nav = "<h2><a href=\"index.html\">Home</a></h2>";
   const seen = {};
-  const seenTutorials = {};
 
-  nav += buildMemberNav(members.tutorials, "Tutorials", seen, linkto);
-  nav += buildMemberNav(members.modules, "Modules", {}, linkto);
+  nav += buildMemberNav(members.tutorials, "Tutorials", seen, SymbolLinks.linkTo);
+  nav += buildMemberNav(members.modules, "Modules", {}, SymbolLinks.linkTo);
   nav += buildMemberNav(members.externals, "Externals", seen, linktoExternal);
-  nav += buildMemberNav(members.namespaces, "Namespaces", seen, linkto);
-  nav += buildMemberNav(members.classes, "Classes", seen, linkto);
-  nav += buildMemberNav(members.interfaces, "Interfaces", seen, linkto);
-  nav += buildMemberNav(members.events, "Events", seen, linkto);
-  nav += buildMemberNav(members.mixins, "Mixins", seen, linkto);
+  nav += buildMemberNav(members.namespaces, "Namespaces", seen, SymbolLinks.linkTo);
+  nav += buildMemberNav(members.classes, "Classes", seen, SymbolLinks.linkTo);
+  nav += buildMemberNav(members.interfaces, "Interfaces", seen, SymbolLinks.linkTo);
+  nav += buildMemberNav(members.events, "Events", seen, SymbolLinks.linkTo);
+  nav += buildMemberNav(members.mixins, "Mixins", seen, SymbolLinks.linkTo);
 
   if (members.globals.length) {
     globalNav = "";
 
     members.globals.forEach(({kind, longname, name}) => {
       if ( kind !== "typedef" && !hasOwnProp.call(seen, longname) ) {
-        globalNav += `<li>${linkto(longname, name)}</li>`;
+        globalNav += `<li>${SymbolLinks.linkTo(longname, name)}</li>`;
       }
       seen[longname] = true;
     });
 
     if (!globalNav) {
       // turn the heading into a link so you can actually get to the global page
-      nav += `<h3>${linkto("global", "Global")}</h3>`;
+      nav += `<h3>${SymbolLinks.linkTo("global", "Global")}</h3>`;
     } else {
       nav += `<h3>Global</h3><ul>${globalNav}</ul>`;
     }
   }
 
   return nav;
-}
-
-function sourceToDestination(parentDir, sourcePath, destDir) {
-  const relativeSource = path.relative(parentDir, sourcePath);
-
-  return path.resolve(path.join(destDir, relativeSource));
 }
 
 function initLogger(verbose = false) {
@@ -473,224 +243,189 @@ function initLogger(verbose = false) {
     });
 }
 
-exports.publish = (options) => {
+exports.publish = (options /*: PublishOptions */) => {
   initLogger(!!options.verbose);
 
   docDatabase = options.docDatabase;
   const opts = options.opts;
   const docTree = options.doctree;
-  const rootDoc = docTree;// nice alias
 
   const tutorials = options.tutorials;
   const userConfig = global.Webdoc.userConfig;
   env = options.config;
-  outdir = path.normalize(env.opts.destination);
+  outDir = path.normalize(env.opts.destination);
 
-  let conf;
   let cwd;
-  let fromDir;
-  let globalUrl;
-  let indexUrl;
-  let outputSourceFiles;
-  let packageInfo;
   const sourceFilePaths = [];
   let sourceFiles = {};
-  let staticFileFilter;
   let staticFilePaths;
   let staticFiles;
-  let staticFileScanner;
-  let templatePath;
 
-  data = docDatabase;
-
-  conf = env.conf.templates || {};
+  const conf = env.conf.templates || {};
   conf.default = conf.default || {};
 
-  templatePath = __dirname;
+  const templatePath = __dirname;
 
+  // Setup template-renderer
   view = new TemplateRenderer(path.join(templatePath, "tmpl"), docDatabase, docTree);
   view.installPlugin("relations", RelationsPlugin);
   view.plugins.relations.buildRelations();
 
+  // Setup repository-plugin for linking source-locations to a remote repository
   if (userConfig.template.repository) {
     view.installPlugin("repository", RepositoryPlugin);
     view.plugins.repository.buildRepository(userConfig.template.repository);
   }
 
+  // Setup template-rendering-pipeline
   pipeline = new TemplatePipeline(view);
   pipeline.pipe(new TemplateTagsResolver());
 
-  // claim some special filenames in advance, so the All-Powerful Overseer of Filename Uniqueness
-  // doesn't try to hand them out later
-  indexUrl = helper.getUniqueFilename("index") + ".html";
-  // don't call registerLink() on this one! 'index' is also a valid longname
+  // Claim these special file-names beforehand!
+  const indexUrl = SymbolLinks.getFileName("index");
+  const globalUrl = SymbolLinks.getFileName("global");
 
-  globalUrl = helper.getUniqueFilename("global") + ".html";
-  // helper.registerLink("global", globalUrl);
+  SymbolLinks.registerLink("global", globalUrl);
 
   // set up templating
-  view.layout = conf.default.layoutFile ?
-    path.resolve(conf.default.layoutFile) :
-    "layout.tmpl";
-
-  // set up tutorials for helper
-  // helper.setTutorials(tutorials);
-
-  // data = helper.prune(data);
-  data.sort("path, version, since");
-  // helper.addEventListeners(data);
+  view.layout = "layout.tmpl";
 
   tutorials.forEach((t) => SymbolLinks.createLink(t));
 
-  data().each((doclet) => {
-    let sourcePath;
+  // Compile a list of source files
+  traverse(docTree, (doc /*: Doc */) => {
+    doc.attribs = "";
 
-    doclet.attribs = "";
-
-    if (doclet.see) {
-      doclet.see.forEach((seeItem, i) => {
-        doclet.see[i] = hashToLink(doclet, seeItem);
+    if (doc.see) {
+      doc.see.forEach((seeItem, i) => {
+        doc.see[i] = hashToLink(doc, seeItem);
       });
     }
 
-    // build a list of source files
-    if (doclet.meta) {
-      sourcePath = getPathFromDoclet(doclet);
+    // Build a list of source files
+    if (doc.loc) {
+      const sourcePath = doc.loc.fileName;
+
       sourceFiles[sourcePath] = {
         resolved: sourcePath,
         shortened: null,
       };
+
       if (!sourceFilePaths.includes(sourcePath)) {
         sourceFilePaths.push(sourcePath);
       }
     }
   });
 
-  // update outdir if necessary, then create outdir
-  packageInfo = ( find({kind: "package"}) || [] )[0];
-  if (packageInfo && packageInfo.name) {
-    outdir = path.join( outdir, packageInfo.name, (packageInfo.version || "") );
-  }
-  mkdirpSync(outdir);
+  fse.ensureDirSync(outDir);
 
-  // copy the template's static files to outdir
-  fromDir = path.join(templatePath, "static");
-  staticFiles = lsSync(fromDir);
+  // Path to @webdoc/legacy-template/static
+  const fromDir = path.join(templatePath, "static");
 
-  staticFiles.forEach((fileName) => {
-    const toPath = sourceToDestination(fromDir, fileName, outdir);
+  // Copy the template's static files to outDir
+  fse.copy(fromDir, outDir).then(() => {
+    // Copy the fonts used by the template to outDir
+    staticFiles = lsSync(path.join(require.resolve("open-sans-fonts"), "..", "open-sans"));
 
-    mkdirpSync(path.dirname(toPath));
-    fs.copyFileSync(fileName, toPath);
-  });
+    staticFiles.forEach((fileName) => {
+      const toPath = path.join(outDir, "fonts", path.basename(fileName));
 
-  // copy the fonts used by the template to outdir
-  staticFiles = lsSync(path.join(require.resolve("open-sans-fonts"), "..", "open-sans"));
-
-  staticFiles.forEach((fileName) => {
-    const toPath = path.join(outdir, "fonts", path.basename(fileName));
-
-    if (FONT_NAMES.includes(path.parse(fileName).name)) {
-      mkdirpSync(path.dirname(toPath));
-      fs.copyFileSync(fileName, toPath);
-    }
-  });
-
-  // copy the prettify script to outdir
-  PRETTIFIER_SCRIPT_FILES.forEach((fileName) => {
-    const toPath = path.join(outdir, "scripts", path.basename(fileName));
-
-    fs.copyFileSync(
-      path.join(require.resolve("code-prettify"), "..", fileName),
-      toPath,
-    );
-  });
-
-  // copy the prettify CSS to outdir
-  PRETTIFIER_CSS_FILES.forEach((fileName) => {
-    const toPath = path.join(outdir, "styles", path.basename(fileName));
-
-    fs.copyFileSync(
-      require.resolve("color-themes-for-google-code-prettify/dist/themes/" + fileName),
-      toPath,
-    );
-  });
-
-  // copy user-specified static files to outdir
-  if (conf.default.staticFiles) {
-    // The canonical property name is `include`. We accept `paths` for backwards compatibility
-    // with a bug in JSDoc 3.2.x.
-    staticFilePaths = conf.default.staticFiles.include ||
-            conf.default.staticFiles.paths ||
-            [];
-    staticFileFilter = new (require("jsdoc/src/filter").Filter)(conf.default.staticFiles);
-    staticFileScanner = new (require("jsdoc/src/scanner").Scanner)();
-    cwd = process.cwd();
-
-    staticFilePaths.forEach((filePath) => {
-      let extraStaticFiles;
-
-      filePath = path.resolve(cwd, filePath);
-      extraStaticFiles = staticFileScanner.scan([filePath], 10, staticFileFilter);
-
-      extraStaticFiles.forEach((fileName) => {
-        const toPath = sourceToDestination(fromDir, fileName, outdir);
-
+      if (FONT_NAMES.includes(path.parse(fileName).name)) {
         mkdirpSync(path.dirname(toPath));
         fs.copyFileSync(fileName, toPath);
-      });
+      }
     });
-  }
+
+    // Copy the prettify script to outDir
+    PRETTIFIER_SCRIPT_FILES.forEach((fileName) => {
+      const toPath = path.join(outDir, "scripts", path.basename(fileName));
+
+      fs.copyFileSync(
+        path.join(require.resolve("code-prettify"), "..", fileName),
+        toPath,
+      );
+    });
+
+    // Copy the prettify CSS to outDir
+    PRETTIFIER_CSS_FILES.forEach((fileName) => {
+      const toPath = path.join(outDir, "styles", path.basename(fileName));
+
+      fs.copyFileSync(
+        require.resolve("color-themes-for-google-code-prettify/dist/themes/" + fileName),
+        toPath,
+      );
+    });
+
+    // Copy user-specified static files to outDir
+    if (userConfig.template.staticFiles) {
+      staticFilePaths =
+        userConfig.template.staticFiles.include ||
+        userConfig.template.staticFiles.paths ||
+        [];
+      cwd = process.cwd();
+
+      staticFilePaths.forEach((filePath) => {
+        const destPath = path.resolve(path.join(outDir, path.relative(fromDir, filePath)));
+
+        filePath = path.resolve(cwd, filePath);
+
+        fse.copy(filePath, destPath).catch((e) => {
+          throw e;
+        });
+      });
+    }
+  }).catch((e) => {
+    throw e;
+  });
 
   if (sourceFilePaths.length) {
     sourceFiles = shortenPaths( sourceFiles, commonPathPrefix(sourceFilePaths) );
   }
 
-  // Create a hyperlink for each documented symbol.
-  data().each((doclet) => {
-    let docletPath;
-    const url = helper.createLink(doclet);
-
-    helper.registerLink(doclet.path, url);
-
-    // add a shortened version of the full path
-    if (doclet.meta) {
-      docletPath = getPathFromDoclet(doclet);
-      docletPath = sourceFiles[docletPath].shortened;
-      if (docletPath) {
-        doclet.meta.shortpath = docletPath;
-      }
+  // Create a hyperlink for each document
+  traverse(docTree, (doc /*: Doc */) => {
+    if (doc.type === "RootDoc") {
+      return;
     }
+
+    const url = SymbolLinks.createLink(doc);
+
+    SymbolLinks.registerLink(
+      doc.path,
+      url,
+    );
   });
 
-  data().each((doc) => {
-    const url = helper.pathToUrl[doc.path];
+  // Generate an ID and build signature, attributes for each document, resolve ancestors
+  traverse(docTree, (doc /*: Doc */) => {
+    if (doc.type === "RootDoc") {
+      return;
+    }
+
+    const url = SymbolLinks.pathToUrl.get(doc.path);
 
     if (url.includes("#")) {
-      doc.id = helper.pathToUrl[doc.path].split(/#/).pop();
+      doc.id = url.split(/#/).pop();
     } else {
       doc.id = doc.name;
     }
 
-    // Add signature information to the doc
-    if (needsSignature(doc)) {
+    // Add signature, attributes information to the doc
+    if (SignatureBuilder.needsSignature(doc)) {
       SignatureBuilder.appendParameters(doc);
-      addSignatureReturns(doc);
-      addAttribs(doc);
+      SignatureBuilder.appendReturns(doc);
+      AttributesBuilder.appendAttribs(doc);
     }
-  });
 
-  // Link doc ancestors & finish up signatures! (after URL generation)
-  data().each((doc) => {
-    doc.ancestors = getAncestorLinks(doc);
+    doc.ancestors = SymbolLinks.getAncestorLinks(doc);
 
     if (doc.type === "PropertyDoc" || doc.type === "EnumDoc") {
-      addSignatureTypes(doc);
-      addAttribs(doc);
+      SignatureBuilder.appendTypes(doc);
+      AttributesBuilder.appendAttribs(doc);
     }
   });
 
-  members = helper.getMembers(data);
+  const members = helper.getTypedMembers(docTree);
   members.tutorials = tutorials;
 
   function tutorialLinkGen(tut) {
@@ -700,21 +435,10 @@ exports.publish = (options) => {
 
   tutorials.forEach((t) => tutorialLinkGen(t));
 
-  // output pretty-printed source files by default
-  outputSourceFiles = conf.default && conf.default.outputSourceFiles !== false;
-
-  // add template helpers
-  /*
-  view.find = find;
-  view.linkto = linkto;
-  view.resolveAuthorLinks = resolveAuthorLinks;
-  view.tutoriallink = tutoriallink;
-  view.htmlsafe = htmlsafe;
-  view.outputSourceFiles = outputSourceFiles; */
+  const outputSourceFiles = userConfig.template.outputSourceFiles;
 
   // once for all
   view.nav = buildNav(members);
-  // attachModuleSymbols( find({longname: {left: "module:"}}), members.modules );
 
   // generate the pretty-printed source files first so other pages can link to them
   if (outputSourceFiles) {
@@ -759,6 +483,7 @@ exports.publish = (options) => {
       }
     }
 
+    // Update docPathEntry & docPath together
     docPathEntry = docPaths.next();
     docPath = docPathEntry.value;
   }
@@ -790,7 +515,7 @@ function generate(title, docs, filename) {
     docs: docs,
   };
 
-  const outpath = path.join(outdir, filename);
+  const outpath = path.join(outDir, filename);
   const html = pipeline.render("container.tmpl", docData);
 
   fs.writeFile(outpath, html, "utf8", (err) => {
@@ -857,11 +582,30 @@ function generateTutorial(title /*: string */, tutorial /*: Tutorial */, filenam
     children: tutorial.members,
   };
 
-  const tutorialPath = path.join(outdir, filename);
+  const tutorialPath = path.join(outDir, filename);
   const html = view.render("tutorial.tmpl", tutorialData);
 
-  // yes, you can use {@link} in tutorials too!
-  // html = helper.resolveLinks(html); // turn {@link foo} into <a href="foodoc.html">foo</a>
-
   fs.writeFileSync(tutorialPath, html, "utf8");
+}
+
+// Generate the source-file pages
+function generateSourceFiles(sourceFiles, encoding = "utf8") {
+  Object.keys(sourceFiles).forEach((file) => {
+    let source;
+    // links are keyed to the shortened path in each doclet's `meta.shortpath` property
+    const sourceOutfile = SymbolLinks.getFileName(sourceFiles[file].shortened);
+
+    SymbolLinks.registerLink(sourceFiles[file].shortened, sourceOutfile);
+
+    try {
+      source = {
+        type: "sourceFile",
+        code: helper.toHtmlSafeString( fs.readFileSync(sourceFiles[file].resolved, encoding) ),
+      };
+    } catch (e) {
+      publishLog.error("SourceFile", `Error while generating source file ${file}: ${e.message}`);
+    }
+
+    generate(`Source: ${sourceFiles[file].shortened}`, [source], sourceOutfile, false);
+  });
 }

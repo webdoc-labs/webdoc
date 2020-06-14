@@ -1,139 +1,104 @@
 // @flow
-// This API comes from [jsdoc/lib/]jsdoc/util/templateHelper.js
 
-const {SymbolLinks} = require("@webdoc/template-library");
+const {traverse, isMethod, isFunction, isProperty, isTypedef} = require("@webdoc/model");
 
-Object.defineProperty(exports, "pathToUrl", {
-  get() {
-    return Object.fromEntries(SymbolLinks.pathToUrl);
-  },
-});
+/*::
+import type {
+  ClassDoc,
+  Doc,
+  EventDoc,
+  GlobalDoc,
+  MixinDoc,
+  ModuleDoc,
+  NSDoc,
+  InterfaceDoc
+  TutorialDoc
+} from "@webdoc/types";
+*/
 
-// TODO {@link } {@code }
-exports.resolveLinks = (i) => i;
+/*::
+export type TypedMembers = {
+  classes: ClassDoc[],
+  externals: Doc[],
+  events: EventDoc[],
+  globals: GlobalDoc[],
+  mixins: MixinDoc[],
+  modules: ModuleDoc[],
+  namespaces: NSDoc[],
+  interfaces: InterfaceDoc[],
+  tutorials: TutorialDoc[]
+}
+*/
 
-/**
- * Retrieve all of the following types of members from a set of doclets:
- *
- * + Classes
- * + Externals
- * + Globals
- * + Mixins
- * + Modules
- * + Namespaces
- * + Events
- * @param {TAFFY} data The TaffyDB database to search.
- * @return {object} An object with `classes`, `externals`, `globals`, `mixins`, `modules`,
- * `events`, and `namespaces` properties. Each property contains an array of objects.
- */
-exports.getMembers = (data) => {
-  const members = {
-    classes: data({type: "ClassDoc"}).get(),
-    externals: data({type: "external"}).get(),
-    events: data({type: "EventDoc"}).get(),
-    globals: data({
-      type: ["MemberDoc", "FunctionDoc", "PropertyDoc", "TypedefDoc"],
-      memberof: {type: "RootDoc"},
-    }).get(),
-    mixins: data({type: "MixinDoc"}).get(),
-    modules: data({type: "ModuleDoc"}).get(),
-    namespaces: data({type: "NSDoc"}).get(),
-    interfaces: data({type: "InterfaceDoc"}).get(),
-    tutorials: data({type: "TutorialDoc"}).get(),
+// Extracts all the documents into buckets of each type
+exports.getTypedMembers = (documentTree /*: RootDoc */) /*: TypedMembers */ => {
+  const typedMembers = {
+    classes: [],
+    externals: [],
+    events: [],
+    globals: [],
+    mixins: [],
+    modules: [],
+    namespaces: [],
+    interfaces: [],
+    tutorials: [],
   };
+
+  traverse(documentTree, (doc) => {
+    if (doc.parent === documentTree &&
+        (isMethod(doc) || isFunction(doc) || isProperty(doc) || isTypedef(doc))) {
+      // typedMembers.globals.push(doc);
+      return;
+    }
+    if (doc.undocumented || doc.access === "private") {
+      return;
+    }
+
+    switch (doc.type) {
+    case "ClassDoc":
+      typedMembers.classes.push(doc);
+      break;
+    case "ExternalDoc":
+      typedMembers.externals.push(doc);
+      break;
+    case "EventDoc":
+      typedMembers.events.push(doc);
+      break;
+    case "ModuleDoc":
+      typedMembers.modules.push(doc);
+      break;
+    case "NSDoc":
+      typedMembers.namespaces.push(doc);
+      break;
+    case "InterfaceDoc":
+      typedMembers.interfaces.push(doc);
+      break;
+    case "TutorialDoc":
+      typedMembers.tutorials.push(doc);
+      break;
+    }
+  });
+
+  typedMembers.namespaces.sort((m1, m2) => m1.path.localeCompare(m2.path));
+  typedMembers.classes.sort((m1, m2) => m1.path.localeCompare(m2.path));
 
   // strip quotes from externals, since we allow quoted names that would normally indicate a
   // namespace hierarchy (as in `@external "jquery.fn"`)
   // TODO: we should probably be doing this for other types of symbols, here or elsewhere; see
   // jsdoc3/jsdoc#396
-  members.externals = members.externals.map((doclet) => {
+  typedMembers.externals = typedMembers.externals.map((doclet) => {
     doclet.name = doclet.name.replace(/(^"|"$)/g, "");
 
     return doclet;
   });
 
-  // functions that are also modules (as in `module.exports = function() {};`) are not globals
-  members.globals = members.globals.filter((doclet) => !isModuleExports(doclet));
-
-  return members;
+  return typedMembers;
 };
 
-const toHtmlSafeString = exports.toHtmlSafeString = (str /*: string */) /*: string */ => {
+exports.toHtmlSafeString = (str /*: string */) /*: string */ => {
   if (typeof str !== "string") {
     str = String(str);
   }
 
   return str.replace(/&/g, "&amp;").replace(/</g, "&lt;");
 };
-
-/*::
-type Attribute = "abstract" | "async" | "generator" | "abstract" | "virtual" | "private" |
-  "protected" | "static" | "inner" | "readonly" | "constant" | "nullable" | "non-null"
-*/
-
-// This is not a constructor
-exports.Attributes = (doc /*: Doc */) => /*: Attribute[] */ {
-  const attribs /*: Attribute[] */ = [];
-
-  if (!doc) {
-    return attribs;
-  }
-
-  if (doc.abstract) {
-    attribs.push("abstract");
-  }
-
-  if (doc.async) {
-    attribs.push("async");
-  }
-
-  if (doc.generator) {
-    attribs.push("generator");
-  }
-
-  if (doc.virtual) {
-    attribs.push("abstract");
-  }
-
-  if (doc.access && doc.access !== "public") {
-    attribs.push(doc.access);
-  }
-
-  if (doc.scope && doc.scope !== "instance" && doc.scope !== "global") {
-    if (doc.type === "MethodDoc" || doc.type === "PropertyDoc") {
-      attribs.push(doc.scope);
-    }
-  }
-
-  if (doc.readonly) {
-    if (doc.type === "PropertyDoc") {
-      attribs.push("readonly");
-    }
-  }
-
-  if (doc.nullable === true) {
-    attribs.push("nullable");
-  } else if (doc.nullable === false) {
-    attribs.push("non-null");
-  }
-
-  return attribs;
-};
-
-exports.toAttributeString = (attribs /*: Attribute */) /*: string */ => {
-  const attribsString = "";
-
-  if (attribs && attribs.length) {
-    toHtmlSafeString(`(${attribs.join(", ")}) `);
-  }
-
-  return attribsString;
-};
-
-exports.buildLink = SymbolLinks.buildLink;
-exports.linkto = SymbolLinks.linkTo;
-exports.getAncestorLinks = (data, doc, cssClass) =>
-  SymbolLinks.getAncestorLinks(doc, cssClass);// JSDoc Compat
-exports.registerLink = SymbolLinks.registerLink;
-exports.createLink = SymbolLinks.createLink;
-exports.getUniqueFilename = SymbolLinks.generateFileName;
