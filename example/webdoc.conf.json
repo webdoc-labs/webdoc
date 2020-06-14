@@ -7,6 +7,6 @@
     ],
     "template": {
       "readme": "./README.md",
-      "repository": "https://github.com/webdoc-js/webdoc/blob/master/example/"
+      "outputSourceFiles": true
     }
 }

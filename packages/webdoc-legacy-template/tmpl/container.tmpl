@@ -16,8 +16,8 @@
 <?js if (doc.type === 'mainPage' || (doc.type === 'package')) { ?>
     <?js= this.partial('components/main-page.tmpl', doc) ?>
 <?js }
-
-    if (doc.type === 'source') { ?>
+  if (doc.type === 'sourceFile') { ?>
+    <?js= this.partial('source.tmpl', doc) ?>
 <?js } else { ?>
 
 <section>

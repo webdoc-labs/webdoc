@@ -39,6 +39,11 @@ const SignatureBuilder = require("./src/SignatureBuilder").SignatureBuilder;
 /*::
 import type {TypedMembers} from './helper';
 import {TemplateRenderer, TemplatePipeline} from "@webdoc/template-library";
+
+type SourceFile = {
+  resolved: string,
+  shortened: string
+};
 */
 
 let pipeline/*: TemplatePipeline */;
@@ -132,16 +137,6 @@ function hashToLink(doclet, hash) {
 /*::
 type Signature = string
 */
-
-function shortenPaths(files, commonPrefix) {
-  Object.keys(files).forEach((file) => {
-    files[file].shortened = files[file].resolved.replace(commonPrefix, "")
-    // always use forward slashes
-      .replace(/\\/g, "/");
-  });
-
-  return files;
-}
 
 function buildMemberNav(items, itemHeading, itemsSeen, linktoFn) {
   let nav = "";
@@ -256,8 +251,8 @@ exports.publish = (options /*: PublishOptions */) => {
   outDir = path.normalize(env.opts.destination);
 
   let cwd;
-  const sourceFilePaths = [];
-  let sourceFiles = {};
+  const sourceFilePaths /*: Set<string> */ = new Set/*: <string */();
+  const sourceFiles = {};
   let staticFilePaths;
   let staticFiles;
 
@@ -311,8 +306,8 @@ exports.publish = (options /*: PublishOptions */) => {
         shortened: null,
       };
 
-      if (!sourceFilePaths.includes(sourcePath)) {
-        sourceFilePaths.push(sourcePath);
+      if (!sourceFilePaths.has(sourcePath)) {
+        sourceFilePaths.add(sourcePath);
       }
     }
   });
@@ -378,8 +373,23 @@ exports.publish = (options /*: PublishOptions */) => {
     throw e;
   });
 
-  if (sourceFilePaths.length) {
-    sourceFiles = shortenPaths( sourceFiles, commonPathPrefix(sourceFilePaths) );
+  const sourceFileNames /*: Set<string */ = new Set/*: <string > */();
+
+  if (sourceFilePaths.size) {
+    const commonDir = commonPathPrefix([...sourceFilePaths]);
+
+    Object.keys(sourceFiles).forEach((file) => {
+      sourceFiles[file].shortened = sourceFiles[file].resolved.replace(commonDir, "")
+        .replace(/\\/g, "/");// always use forward slashes
+    });
+
+    for (const filePath in sourceFiles) {
+      // eslint-disable-next-line no-prototype-builtins
+      if (sourceFiles.hasOwnProperty(filePath)) {
+        const sourceFile = sourceFiles[filePath];
+        sourceFileNames.add(sourceFile.shortened);
+      }
+    }
   }
 
   // Create a hyperlink for each document
@@ -444,9 +454,8 @@ exports.publish = (options /*: PublishOptions */) => {
   if (outputSourceFiles) {
     generateSourceFiles(sourceFiles, opts.encoding);
   }
-
   if (members.globals.length) {
-    generate("Global", [{kind: "globalobj"}], globalUrl);
+    generate("Global", [{type: "globals"}], globalUrl);
   }
 
   generateHomePage(indexUrl, docTree);
@@ -464,7 +473,12 @@ exports.publish = (options /*: PublishOptions */) => {
     }
 
     if (!doc) {
-      console.log(docPath + " doesn't point to a doc");
+      if (!sourceFilePaths.has(docPath) &&
+            !sourceFileNames.has(docPath) &&
+            docPath !== "index" &&
+            docPath !== "global") {
+        console.log(docPath + " doesn't point to a doc");
+      }
     } else {
       const docUrl = SymbolLinks.pathToUrl.get(docPath);
 
@@ -596,6 +610,7 @@ function generateSourceFiles(sourceFiles, encoding = "utf8") {
     const sourceOutfile = SymbolLinks.getFileName(sourceFiles[file].shortened);
 
     SymbolLinks.registerLink(sourceFiles[file].shortened, sourceOutfile);
+    SymbolLinks.registerLink(sourceFiles[file].resolved, sourceOutfile);
 
     try {
       source = {
