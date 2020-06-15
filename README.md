@@ -1,7 +1,6 @@
 <p align="center">
-  <a href="https://ibb.co/9pYvRgV"><img src="https://i.ibb.co/D1Kb3W8/Logo-Frame.png" alt="Logo-Frame" border="0" width="256"></a>
+  <img src="https://i.ibb.co/ZHP9PD8/Logo-Frame-5.png" alt="Logo-Frame" border="0" width="256">
 </p>
-<h1 align="center">webdoc</h1>
 
 <p align="center">
   <a href="(https://lerna.js.org/)"><img src="https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg"></img></a>
