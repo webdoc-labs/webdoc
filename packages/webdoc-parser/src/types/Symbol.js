@@ -1,9 +1,9 @@
 // @flow
 
-import {CANONICAL_DELIMITER} from "../constants";
-import type {Node} from "@babel/types";
 import type {DocType, Param, Return} from "@webdoc/types";
 import {parserLogger, tag} from "../Logger";
+import {CANONICAL_DELIMITER} from "../constants";
+import type {Node} from "@babel/types";
 import _ from "lodash";
 
 // Ignore symbol when building document-tree

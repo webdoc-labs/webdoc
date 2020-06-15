@@ -1,8 +1,6 @@
 // @flow
 // This file converts Symbols into Docs (i.e. parses the documentation comments)
 
-// TODO: Give some sympathy to the code here & organize it out
-
 import type {Doc, Tag} from "@webdoc/types";
 import type {Symbol, SymbolSignature} from "../types/Symbol";
 import {
@@ -39,10 +37,10 @@ import {
   parseType,
   parseTypedef,
 } from "../tag-parsers";
-import {parserLogger, updateDocument} from "../Logger";
 import {createDoc} from "@webdoc/model";
 import mergeParams from "./merge-params";
 import mergeReturns from "./merge-returns";
+import {updateDocument} from "../Logger";
 import validate from "../validators";
 
 type TagParser = (value: string, options: Object) => void;

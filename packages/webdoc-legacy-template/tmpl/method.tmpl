@@ -113,20 +113,19 @@ var self = this;
     const returns = doc.returns;
 
     if (returns && returns.length) { ?>
+        <h5>Returns:</h5>
 
-    <h5>Returns:</h5>
-
-    <?js if (returns.length > 1) { ?>
-        <ul>
-        <?js
-            returns.forEach(function(r) { ?>
-                <li><?js= self.partial('returns.tmpl', r) ?></li>
-            <?js }); ?>
-        </ul>
-        <?js } else {
-            returns.forEach(function(r) { ?>
-            <?js= self.partial('returns.tmpl', r) ?>
-    <?js });
+        <?js if (returns.length > 1) { ?>
+            <ul>
+            <?js
+                returns.forEach(function(r) { ?>
+                    <li><?js= self.partial('returns.tmpl', r) ?></li>
+                <?js }); ?>
+            </ul>
+            <?js } else {
+                returns.forEach(function(r) { ?>
+                <?js= self.partial('returns.tmpl', r) ?>
+        <?js });
 } } ?>
 
 <?js if (doc.yields && yields.length) { ?>

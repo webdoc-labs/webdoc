@@ -1,8 +1,7 @@
 // @flow
-/* global $Shape */
 
-import type {SymbolSignature} from "../types/Symbol";
 import type {Doc} from "@webdoc/types";
+import type {SymbolSignature} from "../types/Symbol";
 
 // Validate the parameters are structurally (not nominally) correct
 function validateParameters(doc: $Shape<Doc>, meta: SymbolSignature): void {

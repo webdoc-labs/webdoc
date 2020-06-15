@@ -32,7 +32,7 @@
 This project is the next generation documentation generator for JavaScript-based languages. Right now, it is work-in-progress
 and supports enough features to generate the PixiJS documentation.
 
-You can checkout the documentation for `example/` [here](https://webdoc-js.github.io/example-documentation/index.html)! 
+You can checkout the documentation for `example/` [here](https://webdoc-js.github.io/example-documentation/index.html)!
 
 ## Usage
 
@@ -40,16 +40,20 @@ You can checkout the documentation for `example/` [here](https://webdoc-js.githu
 npm install -g @webdoc/cli
 ```
 
-To get started, create a `webdoc.conf.json` file in your project directory. 
+To get started, create a `webdoc.conf.json` file in your project directory.
 
 ```json
 {
-  "includePattern": "src/**/*.js",
+  "includePattern": ["src/**/*.js"],
   "plugins": [
-  
+    "plugins/markdown"
   ],
   "opts": {
-    "destination": "docs" 
+    "destination": "docs"
+  },
+  "template": {
+    "repository": "<your_github_url>",
+    "outputSourceFiles": false
   }
 }
 ```
@@ -87,11 +91,11 @@ Coming soon:
   * integrates with JSFiddle & CodePen for live examples of your API
   * provides a neat and clean navigation for users
   * makes it easy to write tutorials
-  
+
 ## Development Roadmap
 
 * This Trello board has all the future plans for this project: https://trello.com/b/aXh3G8En
-  
+
 ## Contribute
 
 Glad you asked! Open an issue and I'll get you something to work on! webdoc has an amazing potential to disrupt the stagnated documentation process!
