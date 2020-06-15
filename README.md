@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://i.ibb.co/5kDG6HG/Logo-Frame-4.png" alt="Logo-Frame" border="0" width="256">
+  <img src="https://i.ibb.co/ZHP9PD8/Logo-Frame-5.png" alt="Logo-Frame" border="0" width="256">
 </p>
 
 <p align="center">
