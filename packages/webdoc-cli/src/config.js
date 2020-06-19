@@ -24,7 +24,7 @@ const defaultConfig = {
   opts: {
     destination: "docs",
     export: "example.api.json",
-    template: "@webdoc/legacy-template",
+    template: "@webdoc/default-template",
   },
   template: {
     mainPage: {

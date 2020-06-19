@@ -67,6 +67,11 @@ export class TemplateRenderer {
     };
   }
 
+  setLayoutTemplate(templateFile: string) /*: TemplateRenderer */ {
+    this.layout = templateFile;
+    return this;
+  }
+
   /**
    * Install a plugin to this renderer. It can be accessed at `renderer.plugins[name]`.
    *

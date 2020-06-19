@@ -229,9 +229,11 @@ function getFileName(str: string): string {
   return fileName;
 }
 
-const registerLink = (docPath: string, fileUrl: string) => {
+const registerLink = (docPath: string, fileUrl: string): string => {
   pathToUrl.set(docPath, fileUrl);
   urlToPath.set(fileUrl, docPath);
+
+  return fileUrl;
 };
 
 /**

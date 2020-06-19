@@ -1,0 +1,49 @@
+{
+  "name": "@webdoc/default-template",
+  "version": "1.0.0",
+  "description": "webdoc's default template",
+  "keywords": [
+    "webdoc",
+    "jsdoc",
+    "jsdoc-template",
+    "webdoc-template"
+  ],
+  "author": "Shukant Pal <shukantpal@outlook.com>",
+  "homepage": "https://github.com/SukantPal/webdoc/tree/master/default-template#readme",
+  "license": "MIT",
+  "main": "publish.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SukantPal/webdoc.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/SukantPal/webdoc/issues"
+  },
+  "dependencies": {
+    "@babel/preset-react": "^7.10.1",
+    "@webdoc/model": "^1.0.0",
+    "@webdoc/template-library": "^1.0.0",
+    "code-prettify": "^0.1.0",
+    "fs-extra": "^9.0.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.3",
+    "@babel/core": "^7.10.3",
+    "@babel/preset-env": "^7.10.3",
+    "babel-loader": "^8.1.0",
+    "webpack": "^4.43.0"
+  }
+}

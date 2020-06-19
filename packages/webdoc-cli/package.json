@@ -33,6 +33,7 @@
     "url": "https://github.com/SukantPal/webdoc/issues"
   },
   "dependencies": {
+    "@webdoc/default-template": "^1.0.0",
     "@webdoc/externalize": "^1.0.0",
     "@webdoc/legacy-template": "^1.0.0",
     "@webdoc/model": "^1.0.0",

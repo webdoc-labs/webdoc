@@ -1,6 +1,6 @@
 // @flow
 
-import type {BaseDoc, Doc, DocLink, ClassDoc, ObjectDoc, TypedefDoc} from "@webdoc/types";
+import type {BaseDoc, ClassDoc, Doc, DocLink, DocType, ObjectDoc, TypedefDoc} from "@webdoc/types";
 
 const CANONICAL_SEPARATOR = /([.#~$])/;
 
@@ -243,16 +243,53 @@ export function cloneDoc<T: BaseDoc>(doc: T): T {
 }
 
 /**
- * In-order traversal of all the docs
+ * You can pass this to traverse too.
+ */
+export type TraversalContext = { [id: DocType | "enter" | "exit"]: (doc: Doc) => boolean }
+
+export type TraversalOptions = { skipSubtree?: boolean }
+
+/**
+ * Preorder traversal of all the docs
  *
  * @param {Doc} doc
- * @param {Function} callback
+ * @param {Function | TraversalContext} callback
  */
-export function traverse(doc: Doc, callback: (doc: Doc) => void) {
+export function traverse(doc: Doc, callback: (doc: Doc) => void | TraversalContext) {
+  if (typeof callback === "object") {
+    traverseWithContext(doc, callback);
+    return;
+  }
+
   callback(doc);
 
   for (let i = 0; i < doc.members.length; i++) {
     traverse(doc.members[i], callback);
+  }
+}
+
+// Traversal with context
+export function traverseWithContext(doc: Doc, context: TraversalContext) {
+  let traversalOptions;
+
+  if (context.enter) {
+    traversalOptions = context.enter(doc);
+  }
+
+  if (context[doc.type]) {
+    traversalOptions = traversalOptions ?
+      {...context[doc.type](doc), ...traversalOptions} :
+      context[doc.type](doc);
+  }
+
+  if (!traversalOptions || !traversalOptions.skipSubtree) {
+    for (let i = 0, j = doc.members.length; i < j; i++) {
+      traverseWithContext(doc.members[i], context);
+    }
+  }
+
+  if (context.exit) {
+    context.exit(doc);
   }
 }
 

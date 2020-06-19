@@ -73,16 +73,19 @@ export class TemplatePipeline {
    * template-generated HTML directly.
    *
    * @param {TemplatePipelineElement} element
+   * @return {TemplatePipeline} this
    * @example
    * pipeline
    *    .pipe(new TemplateTagsResolver())
    *    .pipe(new FlushToFile())
    */
-  pipe(element: TemplatePipelineElement): void {
+  pipe(element: TemplatePipelineElement): TemplatePipeline {
     this.elements.push(element);
 
     if (element.attachTo) {
       element.attachTo(this);
     }
+
+    return this;
   }
 }

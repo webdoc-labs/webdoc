@@ -1,11 +1,11 @@
 0 silly argv {
-0 silly argv   _: [ 'add' ],
-0 silly argv   globs: [ 'packages/webdoc-legacy-template/' ],
+0 silly argv   _: [ 'create' ],
 0 silly argv   lernaVersion: '3.20.2',
 0 silly argv   '$0': 'lerna',
-0 silly argv   pkg: 'markdown-it-hightlightjs'
+0 silly argv   name: 'packages/webdoc-default-template'
 0 silly argv }
 1 notice cli v3.20.2
 2 verbose rootPath /Users/shukantpal/Web Projects/webdoc
-3 error Error: 404 Not Found - GET https://registry.npmjs.org/markdown-it-hightlightjs - Not found
-3 error     at /Users/shukantpal/Web Projects/webdoc/node_modules/@evocateur/npm-registry-fetch/check-response.js:104:15
+3 error TypeError: Expected the input to be `string | string[]`
+3 error     at camelCase (/Users/shukantpal/Web Projects/webdoc/node_modules/camelcase/index.js:34:9)
+3 error     at CreateCommand.initialize (/Users/shukantpal/Web Projects/webdoc/node_modules/@lerna/create/index.js:63:22)
