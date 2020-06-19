@@ -28,30 +28,24 @@ const PRETTIFIER_SCRIPT_FILES = [
 exports.publish = (options /*: PublishOptions */) => {
   const docTree = options.documentTree;
   const outDir = path.normalize(options.config.opts.destination);
-
   const index = SymbolLinks.getFileName("index");
 
-  // Copy files in /static directory to outDir
-  copyStaticFiles(outDir);
-
-  const data = crawl(docTree);
-
-  fs.writeFile(path.join(outDir, "data.json"), JSON.stringify(data), "utf8", (err) => {
-    if (err) throw err;
-  });
-
+  const crawlData = crawl(docTree);
   const renderer = new TemplateRenderer(path.join(__dirname, "tmpl"), null, docTree)
     .setLayoutTemplate("layout.tmpl");
   const pipeline = new TemplatePipeline(renderer)
     .pipe(new TemplateTagsResolver())
     .pipe(new FlushToFile({skipNullFile: false}));
 
+  outStaticFiles(outDir);
+  outExplorerData(outDir, crawlData);
+
   pipeline.render("base.tmpl", {docs: [docTree], title: "Test Template", env: options.config}, {
     outputFile: path.join(outDir, index),
   });
 };
 
-function copyStaticFiles(outDir /*: string */) /*: Promise */ {
+function outStaticFiles(outDir /*: string */) /*: Promise */ {
   const staticDir = path.join(__dirname, "./static");
 
   return fse.copy(staticDir, outDir)
@@ -66,4 +60,18 @@ function copyStaticFiles(outDir /*: string */) /*: Promise */ {
         );
       });
     });
+}
+
+function outExplorerData(outDir /*: string */, crawlData /*: CrawlData */) {
+  const explorerDir = path.join(outDir, "./explorer");
+
+  fse.ensureDir(explorerDir).then(() => {
+    fs.writeFile(
+      path.join(explorerDir, "./reference.json"),
+      JSON.stringify(crawlData.reference),
+      "utf8",
+      (err) => {
+        if (err) throw err;
+      });
+  });
 }
