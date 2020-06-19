@@ -30,6 +30,8 @@ exports.publish = (options /*: PublishOptions */) => {
   const outDir = path.normalize(options.config.opts.destination);
   const index = SymbolLinks.getFileName("index");
 
+  fse.ensureDir(outDir);
+
   const crawlData = crawl(docTree);
   const renderer = new TemplateRenderer(path.join(__dirname, "tmpl"), null, docTree)
     .setLayoutTemplate("layout.tmpl");
