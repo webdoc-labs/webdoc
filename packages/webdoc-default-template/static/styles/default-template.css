@@ -5,6 +5,7 @@ html {
 }
 
 body {
+  background: #e8eaed;
   height: 100%;
   margin: 0px;
   padding: 0px;
@@ -22,6 +23,7 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+  margin-top: 64px;
   height: 100%;
   justify-content: space;
 }
@@ -36,16 +38,15 @@ body {
 
 .explorer {
   background-color: white;
-  box-shadow: 2px 0px 4px gray;
+  box-shadow: 1px 0px 1px silver;
   display: inline-block;
-  flex-grow: .25;
   flex-shrink: 0;
   height: 100%;
   left: 0px;
   overflow-y: scroll;
-  padding: 8px;
+  padding: 16px;
   top: 0px;
-  width: 320px;
+  width: 240px;
 }
 
 .explorer-children {

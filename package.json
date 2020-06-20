@@ -46,6 +46,7 @@
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-flow": "^2.29.1",
     "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-react": "^7.20.0",
     "flow-typed": "^3.1.0",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",

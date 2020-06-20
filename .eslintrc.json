@@ -42,10 +42,15 @@
             "ignoreDeclarationSort": false,
             "ignoreMemberSort": false,
             "memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
-        }]
+        }],
+        "import/no-unresolved": ["error", {
+          "ignore": ["react", "react-dom"]
+        }],
+        "react/jsx-uses-vars": "error"
     },
     "plugins": [
         "eslint-plugin-flow",
-        "eslint-plugin-import"
+        "eslint-plugin-import",
+        "eslint-plugin-react"
     ]
 }

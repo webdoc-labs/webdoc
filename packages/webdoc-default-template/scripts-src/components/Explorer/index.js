@@ -1,9 +1,12 @@
 // @flow
 
 import * as React from "react";
-import ExplorerTarget from "./ExplorerTarget";
-import ExplorerTargetGroup from "./ExplorerTargetGroup";
+import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
+import ArrowRightIcon from "@material-ui/icons/ArrowRight";
+import ExplorerTarget from "./ExplorerItem";
 import type {ExplorerTargetData} from "./ExplorerTargetData";
+import ExplorerTargetGroup from "./ExplorerCategoryItem";
+import TreeView from "@material-ui/lab/TreeView";
 
 export type ExplorerProps = {
   data: ExplorerTargetData;
@@ -44,9 +47,13 @@ export default function Explorer(props: ExplorerProps) {
 
   return (
     <nav className="explorer">
-      <section className="explorer-children" style={{paddingLeft: 0}}>
+      <TreeView
+        defaultCollapseIcon={<ArrowDropDownIcon />}
+        defaultExpandIcon={<ArrowRightIcon />}
+        disableSelection={true}
+      >
         {children}
-      </section>
+      </TreeView>
     </nav>
   );
 }
