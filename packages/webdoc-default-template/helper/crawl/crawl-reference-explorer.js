@@ -83,11 +83,10 @@ function buildExplorerHierarchy(rootDoc /*: RootDoc */) /*: ExplorerNode */ {
         const node = {doc, children: {}};
 
         // ExplorerNode is added to the hiearchy below the parent at index i
-        hierarchyStack.push([...hierarchyStack[parent], node]);
+        hierarchyStack.push([...hierarchy.slice(0, parent + 1), node]);
 
         // Add as child to parentNode
-        const parentStack = hierarchyStack[parent];
-        const parentNode = parentStack[parentStack.length - 1];
+        const parentNode = hierarchy[parent];
 
         if (!parentNode.children[doc.type]) {
           parentNode.children[doc.type] = [];
@@ -96,7 +95,7 @@ function buildExplorerHierarchy(rootDoc /*: RootDoc */) /*: ExplorerNode */ {
         parentNode.children[doc.type].push(node);
       } else {
         // ExplorerNode ancestors are same and this doc is not included (pass-through)
-        hierarchyStack.push([...hierarchyStack[hierarchyStack.length - 1]]);
+        hierarchyStack.push([...hierarchy]);
       }
     },
     exit(doc) {
@@ -107,7 +106,7 @@ function buildExplorerHierarchy(rootDoc /*: RootDoc */) /*: ExplorerNode */ {
   return rootNode;
 }
 
-function buildExplorerTargetsTree(node /*: ExplorerNode */) /*: ExplorerTarget */ {
+function buildExplorerTargetsTree(node /*: ExplorerNode */, parentTitle /*: string */ = "") /*: ExplorerTarget */ {
   const doc = node.doc;
   let page;
 
@@ -117,27 +116,28 @@ function buildExplorerTargetsTree(node /*: ExplorerNode */) /*: ExplorerTarget *
     SymbolLinks.registerLink(doc.path, page);
   }
 
+
+  const sliceIndex = (parentTitle ? doc.path.indexOf(parentTitle) + parentTitle.length : -1) + 1;
+
+  node.title = doc.path.slice(sliceIndex);
+
   const childNodes = node.children;
   const childrenCategories = Object.keys(node.children);
 
   if (childrenCategories.length > 0) {
     node.children = {};
 
-    for (const [key, value] of Object.entries(childNodes)) {
-      node.children[DOC_TYPE_TO_TITLE[key]] = value.map((cn) => buildExplorerTargetsTree(cn));
-    }
-
     node.children.Overview = {
       title: "Overview",
       page,
     };
 
+    for (const [key, value] of Object.entries(childNodes)) {
+      node.children[DOC_TYPE_TO_TITLE[key]] = value.map((cn) => buildExplorerTargetsTree(cn, node.title));
+    }
+
     node.page = null;
   } else {
-    const parentName = doc.parent.name;
-    const sliceIndex = (parentName ? doc.path.indexOf(parentName) + parentName.length : -1) + 1;
-
-    node.title = doc.path.slice(sliceIndex);
     node.page = page;
   }
 

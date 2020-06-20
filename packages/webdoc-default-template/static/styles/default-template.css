@@ -1,0 +1,66 @@
+html {
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+#template-app {
+  height: 100%;
+}
+
+.app-container {
+  height: 100%;
+}
+
+.app-layout {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  height: 100%;
+  justify-content: space;
+}
+
+.app-layout > *:first-child {
+  margin-right: 8px;
+}
+
+.app-layout > *:last-child {
+  margin-left: 8px;
+}
+
+.explorer {
+  background-color: white;
+  box-shadow: 2px 0px 4px gray;
+  display: inline-block;
+  flex-grow: .25;
+  flex-shrink: 0;
+  height: 100%;
+  left: 0px;
+  overflow-y: scroll;
+  padding: 8px;
+  top: 0px;
+  width: 320px;
+}
+
+.explorer-children {
+  padding-left: 24px;
+}
+
+.explorer-toggle {
+  display: inline-block;
+  margin: 2px;
+  height: 12px;
+  padding: 0px;
+  vertical-align: baseline;
+  width: 12px;
+}
+
+.content {
+  flex-grow: 1;
+}

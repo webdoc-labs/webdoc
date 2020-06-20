@@ -1,7 +1,5 @@
 export type ExplorerTargetData = {
-  simpleName: string,
-  canonicalName: string,
-  expandByDefault?: boolean,
-  pageUrl: string,
-  children?: ?(ExplorerTargetData[])
+  title: string,
+  page: string,
+  children?: { [id: string]: ExplorerTargetData | ExplorerTargetData[] }
 };
