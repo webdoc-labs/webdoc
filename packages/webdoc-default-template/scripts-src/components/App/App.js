@@ -1,5 +1,6 @@
 import * as React from "react";
 import AppBar from "@material-ui/core/AppBar";
+import Content from "../Content";
 import Explorer from "../Explorer";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
@@ -16,12 +17,7 @@ export default function App() {
       </AppBar>
       <div className="app-layout">
         <Explorer />
-        <div className="content">
-          <h1>
-          @webdoc/default-template is in development! The example documentation is down as we are
-          transitioning to this new template.
-          </h1>
-        </div>
+        <Content />
       </div>
     </div>
   );

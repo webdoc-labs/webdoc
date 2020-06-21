@@ -6,6 +6,7 @@ module.exports = {
   externals: {
     "react": "React",
     "react-dom": "ReactDOM",
+    "react-markdown": "ReactMarkdown",
   },
   output: {
     path: path.resolve(__dirname, "static/scripts"),

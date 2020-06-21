@@ -1,0 +1,5 @@
+<?js const classDoc = obj; ?>
+
+<code class="signature">
+  class <?js= classDoc.path ?> <?js if (classDoc.extends) { ?><?js= classDoc.extends.map(superClass => superClass.path).join(", ") ?><?js } ?>
+</code>

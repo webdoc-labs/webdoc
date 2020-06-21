@@ -1,0 +1,11 @@
+<?js /** Renders a method or function document inline */
+    const memberDoc = obj; ?>
+
+<div class="method member">
+  <p class="member-title"><?js= memberDoc.name !== "constructor" ? memberDoc.name : "" ?></p>
+  <?js= this.plugins.signature.generateSignature(memberDoc, "member-signature") ?>
+
+  <section class="method-description member-description description">
+    <?js= memberDoc.description ?>
+  </section>
+</div>

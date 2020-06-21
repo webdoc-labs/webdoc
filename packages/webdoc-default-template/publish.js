@@ -3,7 +3,11 @@
 const {crawl} = require("./helper/crawl");
 const fs = require("fs");
 const fse = require("fs-extra");
+const fsp = require("fs").promises;
 const path = require("path");
+const {
+  doc: findDoc,
+} = require("@webdoc/model");
 const {
   FlushToFile,
   SymbolLinks,
@@ -11,6 +15,9 @@ const {
   TemplatePipeline,
   TemplateTagsResolver,
 } = require("@webdoc/template-library");
+
+// Plugins
+const {signaturePlugin} = require("./helper/renderer-plugins/signature");
 
 /*::
 import type {
@@ -34,19 +41,19 @@ exports.publish = (options /*: PublishOptions */) => {
 
   const crawlData = crawl(docTree);
   const renderer = new TemplateRenderer(path.join(__dirname, "tmpl"), null, docTree)
-    .setLayoutTemplate("layout.tmpl");
+    .setLayoutTemplate("layout.tmpl")
+    .installPlugin("signature", signaturePlugin);
   const pipeline = new TemplatePipeline(renderer)
     .pipe(new TemplateTagsResolver())
     .pipe(new FlushToFile({skipNullFile: false}));
 
   outStaticFiles(outDir);
   outExplorerData(outDir, crawlData);
-
-  pipeline.render("base.tmpl", {docs: [docTree], title: "Test Template", env: options.config}, {
-    outputFile: path.join(outDir, index),
-  });
+  outMainPage(path.join(outDir, index), pipeline, options.config);
+  outReference(outDir, pipeline, options.config, docTree);
 };
 
+// Copy the contents of ./static to the output directory
 function outStaticFiles(outDir /*: string */) /*: Promise */ {
   const staticDir = path.join(__dirname, "./static");
 
@@ -64,6 +71,7 @@ function outStaticFiles(outDir /*: string */) /*: Promise */ {
     });
 }
 
+// Write the explorer JSON data in the output directory
 function outExplorerData(outDir /*: string */, crawlData /*: CrawlData */) {
   const explorerDir = path.join(outDir, "./explorer");
 
@@ -76,4 +84,64 @@ function outExplorerData(outDir /*: string */, crawlData /*: CrawlData */) {
         if (err) throw err;
       });
   });
+}
+
+// Render the main-page into index.html (outputFile)
+async function outMainPage(
+  outputFile /*: string */,
+  pipeline /*: TemplatePipeline */,
+  config, /*: WebdocConfig */
+) {
+  let readme;
+
+  if (config.template.readme) {
+    const readmeFile = path.join(process.cwd(), config.template.readme);
+
+    if (readmeFile.endsWith(".md")) {
+      const markdownRenderer = require("markdown-it")({
+        breaks: false,
+        html: true,
+      })
+        .use(require("markdown-it-highlightjs"));
+      const markdownSource = await fsp.readFile(readmeFile, "utf8");
+
+      readme = markdownRenderer.render(markdownSource);
+    }
+  }
+
+  pipeline.render("pages/main-page.tmpl", {
+    docs: [],
+    readme,
+    title: "Test Template",
+    env: config,
+  }, {outputFile});
+}
+
+function outReference(
+  outDir /*: string */,
+  pipeline /*: TemplatePipeline */,
+  config /*: WebdocConfig */,
+  docTree, /*: RootDoc */
+) {
+  for (const [docPath, page] of SymbolLinks.pathToUrl) {
+    let doc;
+
+    try {
+      doc = findDoc(docPath, docTree);
+    } catch (_) {
+      continue;
+    }
+
+    if (!doc) {
+      continue;
+    }
+
+    pipeline.render("document.tmpl", {
+      docs: [doc],
+      title: doc.name,
+      env: config,
+    }, {
+      outputFile: path.join(outDir, page),
+    });
+  }
 }

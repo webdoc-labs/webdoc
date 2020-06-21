@@ -1,0 +1,77 @@
+<?js
+    /*::
+    import type {Doc} from "@webdoc/model";
+
+    type DocumentData = {
+      docs: Doc[]
+    }
+     */
+
+    const docData = obj;
+    const docList = obj.docs;
+
+    for (let i = 0, j = docList.length; i < j; i++) {
+      const doc = docList[i];
+  ?>
+    <h1 class="document-title"><?js= doc.path ?></h1>
+    <hr />
+
+    <?js= this.plugins.signature.generateSignature(doc, "signature") ?>
+    
+    <hr class="secondary-separator" />
+    <?js= doc.description ?>
+
+    <?js if (doc.type === "ClassDoc") {
+        /* Constructor */
+        const ctorDoc = this.getConstructor(doc);
+
+        if (ctorDoc) {
+      ?>
+        <h2 class="section-title">Constructor</h2>
+        <hr />
+        <?js= this.partial("components/member.tmpl", ctorDoc) ?>
+      <?js }
+      }
+    ?>
+
+    <?js=
+        this.partial("components/member-category.tmpl", {
+          title: "Public Properties",
+          parent: doc,
+          constraints: {
+            access: "public",
+            type: "PropertyDoc",
+          },
+        })
+      ?>
+    <?js=
+        this.partial("components/member-category.tmpl", {
+          title: "Protected Properties",
+          parent: doc,
+          constraints: {
+            access: "protected",
+            type: "PropertyDoc"
+          }
+        })
+      ?>
+    <?js=
+        this.partial("components/member-category.tmpl", {
+          title: "Public Methods",
+          parent: doc,
+          constraints: {
+            access: "public",
+            type: ["MethodDoc", "FunctionDoc"],
+          },
+        })
+      ?>
+    <?js=
+        this.partial("components/member-category.tmpl", {
+          title: "Protected Methods",
+          parent: doc,
+          constraints: {
+            access: "protected",
+            type: ["MethodDoc", "FunctionDoc"]
+          }
+        })
+      ?>
+<?js } ?>

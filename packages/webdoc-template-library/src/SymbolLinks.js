@@ -316,6 +316,9 @@ const createLink = (doc: Doc) => {
  * @return {string} the HTML link, or the link text if the link is not available.
  */
 function buildLink(docPath: string, linkText: string = docPath, options: LinkOptions) {
+  if (!docPath) {
+    return "";
+  }
   if (isDataType(docPath)) {
     let link = docPath.template;
 

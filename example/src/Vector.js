@@ -13,6 +13,7 @@ export class Vector extends Array {
 
   /**
    * The no. of components of this vector
+   * @type {number}
    */
   get dimensions() {
     return this.length;

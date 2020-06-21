@@ -13,6 +13,7 @@ import type {
   RootDoc,
   TypedefDoc,
 } from "@webdoc/types";
+import {SymbolLinks} from "./SymbolLinks";
 import {tag, templateLogger} from "./Logger";
 import fs from "fs";
 import path from "path";
@@ -83,7 +84,11 @@ export class TemplateRenderer {
 
     Object.assign(this.plugins[name], plugin);
     this.plugins[name].renderer = this;
+
+    return this;
   }
+
+  linkTo = SymbolLinks.linkTo
 
   find(spec: any) {
     return this.docDatabase(spec).get();

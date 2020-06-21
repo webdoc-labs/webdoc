@@ -16,6 +16,20 @@
 </head>
 <body>
     <div id="template-app">
+      <div class="app-container">
+        <div id="app-bar-root">
+          <!-- AppBar component mounts here -->
+        </div>
+        <div class="app-layout">
+          <nav id="explorer-root">
+            <!-- Explorer component mounted here -->
+          </nav>
+          <div id="content-root">
+            <?js= content ?>
+          </div>
+          <div></div>
+        </div>
+      </div>
     </div>
     <script> prettyPrint(); </script>
     <script src="scripts/linenumber.js"> </script>
