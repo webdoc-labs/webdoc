@@ -49,7 +49,13 @@
     "@babel/preset-env": "^7.10.3",
     "@material-ui/core": "^4.10.2",
     "babel-loader": "^8.1.0",
+    "css-loader": "^3.6.0",
     "cuid": "^2.1.8",
+    "extract-loader": "^5.1.0",
+    "file-loader": "^6.0.0",
+    "less": "^3.11.3",
+    "less-loader": "^6.1.2",
+    "mini-css-extract-plugin": "^0.9.0",
     "webpack": "^4.43.0"
   }
 }

@@ -1,11 +1,20 @@
-<?js /** Renders a method or function document inline */
-    const memberDoc = obj; ?>
+<?js
+    /** Renders a method or function document inline */
+    const memberDoc = obj;
+  ?>
+    <div class="method member">
+        <p class="member-title"><?js= memberDoc.name !== "constructor" ? memberDoc.name : "" ?></p>
+        <?js= this.plugins.signature.generateSignature(memberDoc, "member-signature") ?>
 
-<div class="method member">
-  <p class="member-title"><?js= memberDoc.name !== "constructor" ? memberDoc.name : "" ?></p>
-  <?js= this.plugins.signature.generateSignature(memberDoc, "member-signature") ?>
+        <section class="method-description member-description description">
+            <?js= memberDoc.description ?>
+        </section>
 
-  <section class="method-description member-description description">
-    <?js= memberDoc.description ?>
-  </section>
-</div>
+        <?js if (memberDoc.params && memberDoc.params.length) { ?>
+            <?js= this.partial("components/params-table.tmpl", memberDoc.params) ?>
+        <?js } ?>
+        <br />
+        <?js if (memberDoc.returns && memberDoc.returns.length) { ?>
+            <?js= this.partial("components/returns-table.tmpl", memberDoc.returns) ?>
+        <?js } ?>
+    </div>

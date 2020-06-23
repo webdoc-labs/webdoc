@@ -1,0 +1,97 @@
+<?js
+    /* Generates a table describing the parameters of a method/function. */
+
+    /*::
+     * import type {Param} from "@webdoc/types";
+     */
+    const params /*: Param[] */ = obj;
+
+    /* Determine if we need extra columns: "attributes" and "default" */
+    let hasAttributes = false;
+    let hasDefault = false;
+    let hasName = false;
+
+    params.forEach(function(param) {
+        if (!param) { return; }
+
+        if (param.optional || param.nullable || param.variable) {
+            hasAttributes = true;
+        }
+
+        if (param.identifier) {
+            hasName = true;
+        }
+
+        if (typeof param.default !== 'undefined') {
+            hasDefault = true;
+        }
+    });
+  ?>
+    <table class="parameters">
+        <caption>Parameters:</caption>
+        <thead>
+            <tr>
+                  <?js if (hasName) {?>
+                      <th>Name</th>
+                  <?js } ?>
+
+                  <th>Type</th>
+
+                  <?js if (hasAttributes) {?>
+                      <th>Attributes</th>
+                  <?js } ?>
+
+                  <?js if (hasDefault) {?>
+                      <th>Default</th>
+                  <?js } ?>
+
+                  <th class="last">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?js
+                params.forEach((param) => {
+                    if (!param) { return; }
+              ?>
+                <tr>
+                    <?js if (hasName) {?>
+                        <td class="name"><code><?js= param.identifier ?></code></td>
+                    <?js } ?>
+
+                    <td class="type">
+                    <?js if (param.dataType) {?>
+                        <code><?js= this.linkTo(param.dataType) ?></code>
+                    <?js } ?>
+                    </td>
+
+                    <?js if (hasAttributes) {?>
+                        <td class="attributes">
+                        <?js if (param.optional) { ?>
+                            &lt;optional><br>
+                        <?js } ?>
+
+                        <?js if (param.nullable) { ?>
+                            &lt;nullable><br>
+                        <?js } ?>
+
+                        <?js if (param.variable) { ?>
+                            &lt;repeatable><br>
+                        <?js } ?>
+                        </td>
+                    <?js } ?>
+
+                    <?js if (hasDefault) {?>
+                        <td class="default">
+                            <?js if (typeof param.default !== 'undefined') { ?>
+                                <?js= this.htmlText(param.default) ?>
+                            <?js } ?>
+                        </td>
+                    <?js } ?>
+
+                    <td class="description last-column">
+                        <?js= param.description ?>
+                    </td>
+                </tr>
+            <?js }); ?>
+        </tbody>
+    </table>

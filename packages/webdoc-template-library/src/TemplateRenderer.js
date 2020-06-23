@@ -168,6 +168,14 @@ export class TemplateRenderer {
     return content;
   }
 
+  htmlText = (str /*: string */) /*: string */ => {
+    if (typeof str !== "string") {
+      str = String(str);
+    }
+
+    return str.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+  };
+
   /**
    * Finds all the members namespaces of {@code doc}.
    *

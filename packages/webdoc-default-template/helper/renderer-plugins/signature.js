@@ -35,6 +35,7 @@ exports.signaturePlugin = {
       if (doc.params) {
         signature += `(${
           doc.params
+            .filter((param) => !param.identifier.includes("."))
             .map((param) =>
               param.identifier +
               (param.dataType ? ": " + SymbolLinks.linkTo(param.dataType) : ""))

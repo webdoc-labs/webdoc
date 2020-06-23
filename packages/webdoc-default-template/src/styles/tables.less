@@ -1,0 +1,76 @@
+/* tables ------ */
+
+@table-border-color: #e6e6e6;
+@table-columns-color: #fdfdfd;
+
+@table-cell-padding: 1em;
+@table-cell-padding-half: 0.5em;
+@table-cell-padding-fourth: 0.25em;
+
+table {
+  border-collapse: collapse;
+  border-spacing: 1px;
+  height: auto;
+  width: 100%;
+}
+
+table > caption {
+  font-size: 16px;
+  font-weight: 500;
+  padding-bottom: @table-cell-padding-half;
+  text-align: left;
+}
+
+thead {
+  background-color: gainsboro;
+}
+
+th {
+  font-size: 16px;
+  font-weight: 500;
+  text-align: left;
+  border-top: 1px solid @table-border-color;
+  border-bottom: 1px solid @table-border-color;
+  padding-left: @table-cell-padding-half;
+  padding-right: @table-cell-padding-half;
+  padding-bottom: 12px;
+  padding-top: 12px;
+}
+
+th:not(th:last-child) {
+  width: 108px;
+}
+
+td {
+  padding-bottom: 12px;
+  padding-left: @table-cell-padding-half;
+  padding-right: @table-cell-padding-half;
+  padding-top: 12px;
+  font-size: 15px;
+  border-bottom: 1px solid @table-border-color;
+}
+
+th:first-child, td:first-child {
+  padding-left: 1em;
+}
+
+td {
+  background-color: @table-columns-color;
+}
+
+th:last-child, td:last-child {
+  padding-right: 1em;
+}
+
+td:last-child {
+  background-color: white;
+  width: 50%;
+}
+
+td > p:first-child {
+  margin-top: 0;
+}
+
+td > p:last-child {
+  margin-bottom: 0;
+}

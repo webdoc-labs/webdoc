@@ -33,7 +33,7 @@ monorepo.task("build", (pkg) => {
 });
 
 function buildDefaultTemplate(pkg) {
-  const entryPath = path.join(pkg.location(), "./scripts-src/index.js");
+  const entryPath = path.join(pkg.location(), "./src/app/index.js");
   const configPath = path.join(pkg.location(), "./webpack.config.js");
   const distPath = path.join(pkg.location(), "./static/scripts/");
 
