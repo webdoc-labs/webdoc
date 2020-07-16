@@ -3,7 +3,6 @@
 </p>
 
 <p align="center">
-  <a href="(https://lerna.js.org/)"><img src="https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg"></img></a>
   <a href="https://www.codetriage.com/webdoc-js/webdoc"><img src="https://www.codetriage.com/webdoc-js/webdoc/badges/users.svg" /></a>
 </p>
 
