@@ -4,8 +4,6 @@
   "description": "Documentation generator for Javascript",
   "main": "index.js",
   "scripts": {
-    "postinstall": "npm run bootstrap",
-    "bootstrap": "lerna bootstrap",
     "build": "gulp build",
     "test": "",
     "unit-test": "mocha ./packages/**/test/* --require ./scripts/configureWebdocTesting",
@@ -52,7 +50,6 @@
     "gulp-babel": "^8.0.0",
     "gulp-tasks-monorepo": "^0.5.0",
     "gulp-util": "^3.0.8",
-    "lerna": "^3.20.2",
     "minimist": "^1.2.5",
     "mocha": "^7.1.1",
     "webpack-stream": "^5.2.1"

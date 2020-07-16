@@ -32,7 +32,6 @@
     "url": "https://github.com/SukantPal/webdoc/issues"
   },
   "dependencies": {
-    "@webdoc/model": "link:",
     "@webdoc/types": "^1.0.0",
     "catharsis": "0.8.11",
     "taffydb": "2.7.3"

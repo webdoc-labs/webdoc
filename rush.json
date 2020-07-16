@@ -1,0 +1,79 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/rush.schema.json",
+  "rushVersion": "5.29.1",
+  "pnpmVersion": "4.14.4",
+  "pnpmOptions": {
+    "pnpmStore": "global",
+    "strictPeerDependencies": true,
+    "resolutionStrategy": "fast"
+  },
+  "nodeSupportedVersionRange": ">=10.0.0 <13.0.0",
+  "repository": {
+    "url": "https://github.com/webdoc-js/webdoc",
+    "defaultBranch": "master",
+    "defaultRemote": "origin"
+  },
+  "eventHooks": {
+    "preRushInstall": [],
+    "postRushInstall": [],
+    "preRushBuild": [],
+    "postRushBuild": []
+  },
+  "projects": [
+    {
+      "packageName": "@webdoc/cli",
+      "projectFolder": "packages/webdoc-cli",
+      "reviewCategory": "production"
+    },
+    {
+      "packageName": "@webdoc/default-template",
+      "projectFolder": "packages/webdoc-default-template",
+      "reviewCategory": "production"
+    },
+    {
+      "packageName": "@webdoc/externalize",
+      "projectFolder": "packages/webdoc-externalize",
+      "reviewCategory": "production"
+    },
+    {
+      "packageName": "@webdoc/legacy-template",
+      "projectFolder": "packages/webdoc-legacy-template",
+      "reviewCategory": "production"
+    },
+    {
+      "packageName": "@webdoc/model",
+      "projectFolder": "packages/webdoc-model",
+      "reviewCategory": "production"
+    },
+    {
+      "packageName": "@webdoc/parser",
+      "projectFolder": "packages/webdoc-parser",
+      "reviewCategory": "production"
+    },
+    {
+      "packageName": "@webdoc/plugin-markdown",
+      "projectFolder": "packages/webdoc-plugin-markdown",
+      "reviewCategory": "production"
+    },
+    {
+      "packageName": "@webdoc/template-library",
+      "projectFolder": "packages/webdoc-template-library",
+      "reviewCategory": "production"
+    },
+    {
+      "packageName": "@webdoc/types",
+      "projectFolder": "packages/webdoc-types",
+      "reviewCategory": "production"
+    },
+    {
+      "packageName": "@webdoc/example",
+      "projectFolder": "example",
+      "reviewCategory": "production"
+    },
+    {
+      "packageName": "@webdoc/tests",
+      "projectFolder": "test",
+      "reviewCategory": "production"
+    }
+  ]
+}

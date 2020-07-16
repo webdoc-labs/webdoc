@@ -1,0 +1,10 @@
+{
+  "name": "@rush-temp/tests",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {},
+  "rushDependencies": {
+    "@webdoc/externalize": "^1.0.0",
+    "@webdoc/parser": "^1.0.0"
+  }
+}

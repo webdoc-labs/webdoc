@@ -34,6 +34,5 @@
   },
   "gitHead": "326306f477098182404f813337c0c67cc90263c6",
   "dependencies": {
-    "@webdoc/types": "link:"
   }
 }

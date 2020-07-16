@@ -35,7 +35,6 @@
     "url": "https://github.com/SukantPal/webdoc/issues"
   },
   "dependencies": {
-    "@webdoc/legacy-template": "link:",
     "@webdoc/model": "^1.0.0",
     "@webdoc/template-library": "^1.0.0",
     "bluebird": "^3.7.2",

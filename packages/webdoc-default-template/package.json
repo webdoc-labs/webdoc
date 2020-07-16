@@ -36,7 +36,6 @@
     "@babel/preset-react": "^7.10.1",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.56",
-    "@webdoc/default-template": "link:",
     "@webdoc/model": "^1.0.0",
     "@webdoc/template-library": "^1.0.0",
     "code-prettify": "^0.1.0",
@@ -57,6 +56,8 @@
     "less": "^3.11.3",
     "less-loader": "^6.1.2",
     "mini-css-extract-plugin": "^0.9.0",
-    "webpack": "^4.43.0"
+    "webpack": "^4.43.0",
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0"
   }
 }

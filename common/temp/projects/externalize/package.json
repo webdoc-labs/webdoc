@@ -1,0 +1,10 @@
+{
+  "name": "@rush-temp/externalize",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {},
+  "rushDependencies": {
+    "@webdoc/model": "^1.0.0",
+    "@webdoc/types": "^1.0.0"
+  }
+}

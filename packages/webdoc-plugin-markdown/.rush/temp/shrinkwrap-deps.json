@@ -1,0 +1,12 @@
+{
+  "argparse@1.0.10": "sha512-o5Roy6tNG4SL/FOkCAN6RzjiakZS25RLYFrcMttJqbdd8BWrnA+fGz57iN5Pb06pvBGvl5gQ0B48dJlslXvoTg==",
+  "entities@2.0.3": "sha512-MyoZ0jgnLvB2X3Lg5HqpFmn1kybDiIfEQmKzTb5apr51Rb+T3KdmMiqa70T+bhGnyv7bQ6WMj2QMHpGMmlrUYQ==",
+  "highlight.js@9.18.1": "sha512-OrVKYz70LHsnCgmbXctv/bfuvntIKDz177h0Co37DQ5jamGZLVmoCVMtjMtNZY3X9DrCcKfklHPNeA0uPZhSJg==",
+  "linkify-it@2.2.0": "sha512-GnAl/knGn+i1U/wjBz3akz2stz+HrHLsxMwHQGofCDfPvlf+gDKN58UtfmUquTY4/MXeE2x7k19KQmeoZi94Iw==",
+  "lodash.flow@3.5.0": "sha1-h79AKSuM+D5OjOGjrkIJ4gBxZ1o=",
+  "markdown-it-highlightjs@3.2.0": "sha512-QaSD7zCjAuB1Qa6GLfxcv7uB7svTvXGAiJ2LJShQRaJIWEjkQUAIDv+vsANe4F5J2lPJuOdXf7oIRXe0JFJg2g==",
+  "markdown-it@10.0.0": "sha512-YWOP1j7UbDNz+TumYP1kpwnP0aEa711cJjrAQrzd0UXlbJfc5aAq0F/PZHjiioqDC1NKgvIMX+o+9Bk7yuM2dg==",
+  "mdurl@1.0.1": "sha1-/oWy7HWlkDfyrf7BAP1sYBdhFS4=",
+  "sprintf-js@1.0.3": "sha1-BOaSb2YolTVPPdAVIDYzuFcpfiw=",
+  "uc.micro@1.0.6": "sha512-8Y75pvTYkLJW2hWQHXxoqRgV7qb9B+9vFEtidML+7koHUFapnVJAZ6cKs+Qjz5Aw3aZWHMC6u0wJE3At+nSGwA=="
+}

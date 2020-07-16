@@ -1,0 +1,44 @@
+{
+  "localLinks": {
+    "@webdoc/cli": [
+      "@webdoc/default-template",
+      "@webdoc/externalize",
+      "@webdoc/legacy-template",
+      "@webdoc/model",
+      "@webdoc/parser",
+      "@webdoc/plugin-markdown",
+      "@webdoc/template-library",
+      "@webdoc/types"
+    ],
+    "@webdoc/default-template": [
+      "@webdoc/model",
+      "@webdoc/template-library"
+    ],
+    "@webdoc/example": [
+      "@webdoc/cli"
+    ],
+    "@webdoc/externalize": [
+      "@webdoc/model",
+      "@webdoc/types"
+    ],
+    "@webdoc/legacy-template": [
+      "@webdoc/model",
+      "@webdoc/template-library"
+    ],
+    "@webdoc/model": [
+      "@webdoc/types"
+    ],
+    "@webdoc/parser": [
+      "@webdoc/model",
+      "@webdoc/types"
+    ],
+    "@webdoc/template-library": [
+      "@webdoc/model",
+      "@webdoc/types"
+    ],
+    "@webdoc/tests": [
+      "@webdoc/externalize",
+      "@webdoc/parser"
+    ]
+  }
+}

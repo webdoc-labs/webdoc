@@ -1,0 +1,6 @@
+{
+  "node": "12.7.0",
+  "packageManager": "pnpm",
+  "packageManagerVersion": "4.14.4",
+  "storePath": ""
+}
