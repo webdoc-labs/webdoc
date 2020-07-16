@@ -6,9 +6,9 @@ This project has enormous potential. Please open an issue if you want to contrib
 
 To set up development,
 * Clone the repo
-* Install "lerna" via "npm install -g lerna"
-* Run "npm install" in the repo
-* Run "lerna bootstrap"
+* Install "pnpm" via "npm install -g pnpm"
+* Install "rush" via "npm install -g rush"
+* Run "rush install" in the repo
 
 Move to the "examples" directory, and then run:
 
