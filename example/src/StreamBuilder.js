@@ -5,7 +5,7 @@ import {State} from "../state/State";
 import {ViewableBuffer} from "../geometry/ViewableBuffer";
 import {checkMaxIfStatementsInShader} from "../shader/utils/checkMaxIfStatementsInShader";
 import {settings} from "@pixi/settings";
-import {premultiplyBlendMode, premultiplyTint, nextPow2, log2} from "@pixi/utils";
+import {log2, nextPow2, premultiplyBlendMode, premultiplyTint} from "@pixi/utils";
 import {ENV} from "@pixi/constants";
 
 /**
@@ -713,8 +713,7 @@ const AbstractBatchRenderer = /** @class */ (() => {
 export {AbstractBatchRenderer};
 
 /**
- * Base for a common object renderer that can be used as a
- * system renderer plugin.
+ * Base for a common object renderer that can be used as a system renderer plugin.
  *
  * @class
  * @extends PIXI.System

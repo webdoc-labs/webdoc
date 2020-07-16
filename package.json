@@ -57,5 +57,7 @@
     "mocha": "^7.1.1",
     "webpack-stream": "^5.2.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "webdoc": "link:"
+  }
 }

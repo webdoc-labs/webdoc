@@ -188,7 +188,9 @@ export default function symbolToDoc(symbol: Symbol): ?Doc {
         description += `${commentLines[i]}\n`;
       }
 
-      noBrief = true;
+      if (commentLines[i] || brief) {
+        noBrief = true;
+      }
     }
   }
 

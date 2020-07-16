@@ -37,6 +37,7 @@
     "@babel/traverse": "7.9.5",
     "@babel/types": "7.9.5",
     "@webdoc/model": "^1.0.0",
+    "@webdoc/parser": "link:",
     "@webdoc/types": "^1.0.0",
     "lodash": "^4.17.15",
     "missionlog": "1.6.0",

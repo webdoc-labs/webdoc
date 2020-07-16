@@ -17,6 +17,7 @@ const {
 } = require("@webdoc/template-library");
 
 // Plugins
+const {indexSorterPlugin} = require("./helper/renderer-plugins/index-sorter");
 const {signaturePlugin} = require("./helper/renderer-plugins/signature");
 
 /*::
@@ -42,6 +43,7 @@ exports.publish = (options /*: PublishOptions */) => {
   const crawlData = crawl(docTree);
   const renderer = new TemplateRenderer(path.join(__dirname, "tmpl"), null, docTree)
     .setLayoutTemplate("layout.tmpl")
+    .installPlugin("generateIndex", indexSorterPlugin)
     .installPlugin("signature", signaturePlugin);
   const pipeline = new TemplatePipeline(renderer)
     .pipe(new TemplateTagsResolver())
@@ -50,6 +52,7 @@ exports.publish = (options /*: PublishOptions */) => {
   outStaticFiles(outDir);
   outExplorerData(outDir, crawlData);
   outMainPage(path.join(outDir, index), pipeline, options.config);
+  outIndexes(outDir, pipeline, options.config, crawlData.index);
   outReference(outDir, pipeline, options.config, docTree);
 };
 
@@ -115,6 +118,34 @@ async function outMainPage(
     title: "Test Template",
     env: config,
   }, {outputFile});
+}
+
+function outIndexes(
+  outDir /*: string */,
+  pipeline /*: TemplatePipeline */,
+  config /*: WebdocConfig */,
+  index, /*: Index */
+) {
+  const KEY_TO_TITLE = {
+    "classes": "Class Index",
+  };
+
+  function outIndex(indexKey, indexList) {
+    const title = KEY_TO_TITLE[indexKey];
+    const url = indexList.url;
+
+    pipeline.render("pages/api-index.tmpl", {
+      documentList: indexList,
+      title,
+      env: config,
+    }, {
+      outputFile: path.join(outDir, url),
+    });
+  }
+
+  for (const [key, list] of Object.entries(index)) {
+    outIndex(key, list);
+  }
 }
 
 function outReference(

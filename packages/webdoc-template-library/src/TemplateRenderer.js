@@ -78,8 +78,16 @@ export class TemplateRenderer {
    *
    * @param {string} name
    * @param {Object} plugin
+   * @return {TemplateRenderer} this
    */
   installPlugin(name: string, plugin: Object): void {
+    if (typeof plugin === "function") {
+      this.plugins[name] = plugin;
+      this.plugins[name].renderer = this;
+
+      return this;
+    }
+
     this.plugins[name] = this.plugins[name] || {};
 
     Object.assign(this.plugins[name], plugin);

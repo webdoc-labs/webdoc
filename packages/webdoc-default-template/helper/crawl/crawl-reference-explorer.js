@@ -132,6 +132,13 @@ function buildExplorerTargetsTree(node /*: ExplorerNode */, parentTitle /*: stri
       page,
     };
 
+    if (node.doc.type === "RootDoc") {
+      node.children.ClassIndex = {
+        title: "Class Index",
+        page: SymbolLinks.getFileName("Class-Index"),
+      };
+    }
+
     for (const [key, value] of Object.entries(childNodes)) {
       node.children[DOC_TYPE_TO_TITLE[key]] = value.map((cn) => buildExplorerTargetsTree(cn, node.title));
     }

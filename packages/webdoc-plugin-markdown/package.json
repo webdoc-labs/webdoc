@@ -29,6 +29,7 @@
     "url": "https://github.com/SukantPal/webdoc/issues"
   },
   "dependencies": {
+    "@webdoc/plugin-markdown": "link:",
     "markdown-it": "^10.0.0",
     "markdown-it-highlightjs": "^3.1.0"
   },
