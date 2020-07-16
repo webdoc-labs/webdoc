@@ -1,9 +1,0 @@
-{
-  "name": "@rush-temp/example",
-  "version": "0.0.0",
-  "private": true,
-  "dependencies": {},
-  "rushDependencies": {
-    "@webdoc/cli": "^1.0.0"
-  }
-}

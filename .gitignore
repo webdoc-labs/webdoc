@@ -3,3 +3,4 @@ lib
 example/docs/*
 
 .DS_Store
+common/temp
