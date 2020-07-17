@@ -26,8 +26,8 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
+    npm install -g pnpm @microsoft/rush
     pnpm install
-    pnpm install -g 
     pnpm run build
   displayName: "Install and build project"
   workingDirectory: webdoc
