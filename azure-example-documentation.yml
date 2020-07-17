@@ -28,15 +28,16 @@ steps:
 
 - script: |
     ls -a
-    npm install
+    npm install -g pnpm @microsoft/rush
+    pnpm install
     node node_modules/.bin/lerna bootstrap
   displayName: "Install webdoc"
   workingDirectory: webdoc
 
 - script: |
     rm -rf ./docs
-    cd .. && npm run build && cd example
-    npm run generate
+    cd .. && pnpm run build && cd example
+    pnpm run generate
     cp -r ./docs/* ../../example-documentation/
   displayName: "Generate example documentation & copy to webdoc-js/example-documentation"
   workingDirectory: webdoc/example
