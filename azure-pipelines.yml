@@ -26,9 +26,9 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    npm install
-    npm install -g 
-    npm run build
+    pnpm install
+    pnpm install -g 
+    pnpm run build
   displayName: "Install and build project"
   workingDirectory: webdoc
 
@@ -45,6 +45,6 @@ steps:
   continueOnError: true
 
 - script: |
-    npm run unit-test
+    pnpm run unit-test
   displayName: "Run unit tests"
   workingDirectory: webdoc
