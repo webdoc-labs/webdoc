@@ -7,7 +7,7 @@ This project has enormous potential. Please open an issue if you want to contrib
 To set up development,
 * Clone the repo
 * Install "pnpm" via "npm install -g pnpm"
-* Install "rush" via "npm install -g rush"
+* Install "rush" via "npm install -g  @microsoft/rush"
 * Run "rush install" in the repo
 
 Move to the "examples" directory, and then run:
