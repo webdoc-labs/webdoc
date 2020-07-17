@@ -4,6 +4,7 @@
   "description": "Documentation generator for Javascript",
   "main": "index.js",
   "scripts": {
+    "prepare": "rush install",
     "build": "gulp build",
     "test": "",
     "unit-test": "mocha ./packages/**/test/* --require ./scripts/configureWebdocTesting",
