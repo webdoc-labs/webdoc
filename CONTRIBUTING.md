@@ -8,7 +8,7 @@ To set up development,
 * Clone the repo
 * Install "pnpm" via "npm install -g pnpm"
 * Install "rush" via "npm install -g  @microsoft/rush"
-* Run "rush install" in the repo
+* Run "pnpm install" in the repo
 
 Move to the "examples" directory, and then run:
 

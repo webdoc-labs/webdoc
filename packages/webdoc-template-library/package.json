@@ -38,7 +38,8 @@
     "catharsis": "0.8.11",
     "git-branch": "2.0.1",
     "missionlog": "1.6.0",
-    "parse-github-url": "1.0.2"
+    "parse-github-url": "1.0.2",
+    "lodash": "^4.17.19"
   },
   "gitHead": "326306f477098182404f813337c0c67cc90263c6"
 }

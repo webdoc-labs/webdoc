@@ -1,7 +1,7 @@
 // @flow
 import fs from "fs";
 import {log, tags} from "missionlog";
-import merge from "lodash/merge";
+import merge from "lodash.merge";
 
 /* eslint-disable no-multi-spaces */
 const defaultConfig = {
