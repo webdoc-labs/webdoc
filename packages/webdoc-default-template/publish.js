@@ -1,9 +1,7 @@
 // @flow
 
 const {crawl} = require("./helper/crawl");
-const fs = require("fs");
 const fse = require("fs-extra");
-const fsp = require("fs").promises;
 const path = require("path");
 const {
   doc: findDoc,
@@ -66,7 +64,7 @@ function outStaticFiles(outDir /*: string */) /*: Promise */ {
       PRETTIFIER_SCRIPT_FILES.forEach((fileName) => {
         const toPath = path.join(outDir, "scripts", path.basename(fileName));
 
-        fs.copyFileSync(
+        fse.copyFileSync(
           path.join(require.resolve("code-prettify"), "..", fileName),
           toPath,
         );
@@ -79,7 +77,7 @@ function outExplorerData(outDir /*: string */, crawlData /*: CrawlData */) {
   const explorerDir = path.join(outDir, "./explorer");
 
   fse.ensureDir(explorerDir).then(() => {
-    fs.writeFile(
+    fse.writeFile(
       path.join(explorerDir, "./reference.json"),
       JSON.stringify(crawlData.reference),
       "utf8",
@@ -106,7 +104,7 @@ async function outMainPage(
         html: true,
       })
         .use(require("markdown-it-highlightjs"));
-      const markdownSource = await fsp.readFile(readmeFile, "utf8");
+      const markdownSource = await fse.readFile(readmeFile, "utf8");
 
       readme = markdownRenderer.render(markdownSource);
     }
