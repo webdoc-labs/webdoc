@@ -42,7 +42,7 @@
     "@webdoc/plugin-markdown": "^0.1.99-alpha.0",
     "@webdoc/template-library": "^1.0.0",
     "@webdoc/types": "^1.0.0",
-    "fs-extra": "^9.0.0",
+    "fs-extra": "^9.0.1",
     "globby": "11.0.0",
     "jsdoc": "3.6.4",
     "lodash.merge": "4.6.2",
