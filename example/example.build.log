@@ -1,0 +1,3 @@
+>>> @webdoc/example
+webdoc --tutorials ./tutorials 
+@webdoc took 546ms to run!

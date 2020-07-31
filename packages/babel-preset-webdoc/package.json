@@ -1,0 +1,21 @@
+{
+  "name": "@webdoc/babel-preset-webdoc",
+  "version": "1.0.0",
+  "author": {
+    "name": "Edwin Clement",
+    "email": "edwinclement08@gmail.com"
+  },
+  "scripts": {
+    "build": ""
+  },
+  "dependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-transform-flow-comments": "^7.8.3",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/preset-flow": "^7.10.1",
+    "@babel/preset-react": "^7.10.1",
+    "@babel/register": "^7.9.0"
+  }
+}

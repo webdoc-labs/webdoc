@@ -1,0 +1,12 @@
+{
+  "files": {
+    "packages/webdoc-types/.rush/temp/shrinkwrap-deps.json": "0967ef424bce6791893e9a57bb952f80fd536e93",
+    "packages/webdoc-types/README.md": "e23341245a6da626fbb79237689867973e47a9aa",
+    "packages/webdoc-types/index.d.ts": "c295bf608f30f93af9cb13fb78088230d7b43caf",
+    "packages/webdoc-types/index.js": "8936534210cdf11eb2c1b07c6d39128f1a216577",
+    "packages/webdoc-types/index.js.flow": "ab86a3a3bde624d9012cafb3d399138bf46905c3",
+    "packages/webdoc-types/package.json": "ac0dd99d2852a3d8e704dc06b2c2ed435e70d35a",
+    "packages/webdoc-types/.rush/temp/package-deps_build.json": "ca84c23cade741337b0e03d3b47f8862547edddc"
+  },
+  "arguments": ""
+}

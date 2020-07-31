@@ -22,7 +22,7 @@
     "url": "git+https://github.com/SukantPal/webdoc.git"
   },
   "scripts": {
-    "generate": "cd .. && npm run build && cd example && webdoc --tutorials ./tutorials"
+    "build": "webdoc --tutorials ./tutorials"
   },
   "bugs": {
     "url": "https://github.com/SukantPal/webdoc/issues"

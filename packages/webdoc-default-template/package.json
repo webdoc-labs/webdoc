@@ -27,12 +27,14 @@
     "url": "git+https://github.com/SukantPal/webdoc.git"
   },
   "scripts": {
+    "build": "gulp build",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
     "url": "https://github.com/SukantPal/webdoc/issues"
   },
   "dependencies": {
+    "@babel/core": "^7.9.0",
     "@babel/preset-react": "^7.10.1",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.56",
@@ -45,7 +47,6 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.10.3",
-    "@babel/core": "^7.10.3",
     "@babel/preset-env": "^7.10.3",
     "@material-ui/core": "^4.10.2",
     "babel-loader": "^8.1.0",
@@ -58,6 +59,9 @@
     "mini-css-extract-plugin": "^0.9.0",
     "webpack": "^4.43.0",
     "react": "^16.8.0",
-    "react-dom": "^16.8.0"
+    "react-dom": "^16.8.0",
+    "eslint": "^6.8.0",
+    "@webdoc/eslint-config-webdoc": "1.0.0",
+    "@webdoc/babel-preset-webdoc": "~1.0.0"
   }
 }

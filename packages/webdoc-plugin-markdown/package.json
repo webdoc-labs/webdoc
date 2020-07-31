@@ -23,6 +23,7 @@
     "url": "git+https://github.com/SukantPal/webdoc.git"
   },
   "scripts": {
+    "build": "gulp build",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
@@ -31,6 +32,15 @@
   "dependencies": {
     "markdown-it": "^10.0.0",
     "markdown-it-highlightjs": "^3.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "@webdoc/eslint-config-webdoc": "1.0.0",
+    "@webdoc/babel-preset-webdoc": "~1.0.0",
+    "@babel/core": "^7.9.0",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-util": "^3.0.8"
   },
   "gitHead": "a2866c1a42f60180a74add7bc1b0f42d8bb16330"
 }

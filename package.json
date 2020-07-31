@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "prepare": "rush install",
-    "build": "gulp build",
     "test": "",
     "unit-test": "mocha ./packages/**/test/* --require ./scripts/configureWebdocTesting",
     "prepublishOnly": "npm run build"
@@ -47,10 +46,6 @@
     "eslint-plugin-import": "^2.21.2",
     "eslint-plugin-react": "^7.20.0",
     "flow-typed": "^3.1.0",
-    "gulp": "^4.0.2",
-    "gulp-babel": "^8.0.0",
-    "gulp-tasks-monorepo": "^0.5.0",
-    "gulp-util": "^3.0.8",
     "minimist": "^1.2.5",
     "mocha": "^7.1.1",
     "webpack-stream": "^5.2.1"

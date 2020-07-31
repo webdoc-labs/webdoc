@@ -27,6 +27,7 @@
     "url": "git+https://github.com/SukantPal/webdoc.git"
   },
   "scripts": {
+    "build": "",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {

@@ -1,0 +1,20 @@
+{
+  "files": {
+    "packages/webdoc-externalize/.rush/temp/shrinkwrap-deps.json": "ae9ad8274b849ab1d24a7d270a5f4a0e4780986f",
+    "packages/webdoc-externalize/README.md": "d4413c34a82947be119a164e86de03ab44bdfda7",
+    "packages/webdoc-externalize/doctree-schema.json": "7aeb5fc00abd97473b197496757c09059ae6c3af",
+    "packages/webdoc-externalize/index.js": "bf63049fe4b27bc6c9702823bad0a2272f308ef2",
+    "packages/webdoc-externalize/index.js.flow": "b9b7c36813b30469c92eeda48262c7b31593c43d",
+    "packages/webdoc-externalize/package.json": "3d7311a8a0d7d50635032b34b20df6435b4ef13b",
+    "packages/webdoc-externalize/src/SanitizedDoc.js": "7ce5e843c8dc87472cf39cb5b25c4cd696a165cf",
+    "packages/webdoc-externalize/src/index.js": "f49ed506d47e3723837be83c693d65f26d8a1bd8",
+    "packages/webdoc-externalize/src/readDoctree.js": "3f4bc9e6e1535fca199930289c6b06f4a5181ea6",
+    "packages/webdoc-externalize/src/writeDoctree.js": "e01ab85fb54ccd4b62960eded80095793ac98bae",
+    "packages/webdoc-externalize/.eslintrc.json": "bc4e2d017147c9465c29e3c893b53f904ff48ec6",
+    "packages/webdoc-externalize/.rush/temp/package-deps_build.json": "4dbb3dc70135ea2c9d1c736b8d03f2fb7a56c20f",
+    "packages/webdoc-externalize/Gulpfile.babel.js": "95bb49db19c666536cb0b3fbfb4bd3e115a3f1da",
+    "packages/webdoc-externalize/babel.config.json": "e5f62b4f7d83b512a4a480085d60c5cf9da30955",
+    "packages/webdoc-externalize/webdoc-externalize.build.log": "15e6438dfb199eeadedcbd5b0e2a0f0d84958846"
+  },
+  "arguments": "gulp build "
+}

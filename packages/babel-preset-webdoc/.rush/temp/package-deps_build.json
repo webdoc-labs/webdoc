@@ -1,0 +1,9 @@
+{
+  "files": {
+    "packages/babel-preset-webdoc/.rush/temp/package-deps_build.json": "d2205137eb25101dd2f6b99027def35a7ca2ab8b",
+    "packages/babel-preset-webdoc/.rush/temp/shrinkwrap-deps.json": "123bf0e0d22ec459f7b401b1ccc588eb36dfdf2d",
+    "packages/babel-preset-webdoc/index.js": "7d439d1b5bb2d3cae08739347a86c19c96b75cce",
+    "packages/babel-preset-webdoc/package.json": "ca45544878dd0720faac96a054618ebec2efbaea"
+  },
+  "arguments": ""
+}

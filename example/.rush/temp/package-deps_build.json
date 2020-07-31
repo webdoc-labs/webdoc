@@ -1,0 +1,27 @@
+{
+  "files": {
+    "example/.rush/temp/shrinkwrap-deps.json": "0967ef424bce6791893e9a57bb952f80fd536e93",
+    "example/README.md": "91db53e2dba7d6b61484f8cabceccdd4ebbcc46a",
+    "example/__tests__/example.test.js": "f98b55fb8f7fd90f96bef6028bac4b247fe8b2bb",
+    "example/example.api.json": "0e2ac27d1574c3f6883b18298b2648f62e5c371b",
+    "example/package.json": "fdc967ba34c117943e9d34dc844def03d2ab35b9",
+    "example/src/Bean.ts": "608175112b3701cf88901b145bc9945ac3ea06dc",
+    "example/src/Car.ts": "f0de6aae56af62d614e03aa39d7ff32e0c06c269",
+    "example/src/CoffeeBean.js": "d3dc25e45f0fb3de4e8abd90a09ef7e133255c52",
+    "example/src/PhysicalInteraction.js": "9e85e264512cd5088b7fd2fdde4a862bd33c8590",
+    "example/src/PhysicalObject.js": "90f8caab30d5e92aa27c0f87ac218d6db307f18a",
+    "example/src/Road.js": "8624233953dae295d6b2ded60559da2ef2a6db27",
+    "example/src/StreamBuilder.js": "10c98601fee1e653ec79db141b2125c17663b0a0",
+    "example/src/Vector.js": "5aa07738a700a8866655c69f2dee93753dea9903",
+    "example/src/index.js": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "example/tutorials/car.md": "c0e761661e10c210a8432779b920a95bfede690d",
+    "example/tutorials/example.tutorials.json": "99ae5d5e801a1143d871d47666f2ec601117297a",
+    "example/tutorials/ford.md": "6495cf67e82f5da73ba47b88a87776b020a5d5e0",
+    "example/tutorials/road.md": "90591cb49b7877c8dd572ecea23fd8be14b54ecd",
+    "example/webdoc.conf.json": "01d0756c420487dd7cc5c2bc32feb6e146d0d754",
+    "example/.rush/temp/package-deps_build.json": "390e28ee3f09501b8d9c8fd8a86a20e37f50af89",
+    "example/example.build.error.log": "c7e6c3b0748229c7f1a242c0411188be3a00127b",
+    "example/example.build.log": "8f1a9728e723247c17c1558e1a052c3549b6e9f7"
+  },
+  "arguments": "webdoc --tutorials ./tutorials "
+}

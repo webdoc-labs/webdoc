@@ -71,6 +71,16 @@
       "reviewCategory": "production"
     },
     {
+      "packageName": "@webdoc/eslint-config-webdoc",
+      "projectFolder": "packages/eslint-config-webdoc",
+      "reviewCategory": "production"
+    },
+    {
+      "packageName": "@webdoc/babel-preset-webdoc",
+      "projectFolder": "packages/babel-preset-webdoc",
+      "reviewCategory": "production"
+    },
+    {
       "packageName": "@webdoc/tests",
       "projectFolder": "test",
       "reviewCategory": "production"
