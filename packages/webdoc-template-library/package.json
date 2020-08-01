@@ -28,6 +28,7 @@
   },
   "scripts": {
     "build": "gulp build",
+    "flow": "flow check",
     "lint": "eslint -c .eslintrc.json .",
     "unit-test": "mocha ./test/* --require ../../scripts/configureWebdocTesting",
     "test": "echo \"Error: run tests from root\" && exit 1"
@@ -61,7 +62,8 @@
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
     "gulp-util": "^3.0.8",
-    "flow-typed": "^3.2.1"
+    "flow-typed": "^3.2.1",
+    "flow-bin": "^0.130.0"
   },
   "gitHead": "326306f477098182404f813337c0c67cc90263c6"
 }

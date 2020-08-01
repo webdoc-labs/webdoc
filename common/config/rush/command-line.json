@@ -23,7 +23,7 @@
       "ignoreDependencyOrder": false,
       "ignoreMissingScript": false,
     
-      "allowWarningsInSuccessfulBuild": false
+      "allowWarningsInSuccessfulBuild": true
     },
     {
       "commandKind": "bulk",
@@ -32,6 +32,19 @@
       "summary": "Lints all packages",
       "description": "This will run linting on all packages that have a `lint` script defined.",
     
+      "safeForSimultaneousRushProcesses": false,
+      "enableParallelism": true,
+      "ignoreDependencyOrder": true,
+      "ignoreMissingScript": true,
+    
+      "allowWarningsInSuccessfulBuild": false
+    },
+    {
+      "commandKind": "bulk",
+    
+      "name": "flow",
+      "summary": "Runs flow on all packages",
+      "description": "This will run flow type checking on all packages that have a `flow` script defined.",
       "safeForSimultaneousRushProcesses": false,
       "enableParallelism": true,
       "ignoreDependencyOrder": true,

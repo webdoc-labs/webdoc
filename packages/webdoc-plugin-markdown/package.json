@@ -23,6 +23,7 @@
     "url": "git+https://github.com/SukantPal/webdoc.git"
   },
   "scripts": {
+    "flow": "flow check",
     "build": "gulp build",
     "unit-test": "",
     "test": "echo \"Error: run tests from root\" && exit 1"
@@ -49,7 +50,8 @@
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
     "gulp-util": "^3.0.8",
-    "flow-typed": "^3.2.1"
+    "flow-typed": "^3.2.1",
+    "flow-bin": "^0.130.0"
   },
   "gitHead": "a2866c1a42f60180a74add7bc1b0f42d8bb16330"
 }
