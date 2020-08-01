@@ -1,9 +1,0 @@
-{
-  "files": {
-    "packages/eslint-config-webdoc/.rush/temp/package-deps_build.json": "cee9abbf1062c335b83df92bb670f3451eeb84ec",
-    "packages/eslint-config-webdoc/.rush/temp/shrinkwrap-deps.json": "b82c732f12079e902cca921649206dc2a0bb0bdb",
-    "packages/eslint-config-webdoc/index.js": "04a6bc658bb0a9b928f94413df4085459083d103",
-    "packages/eslint-config-webdoc/package.json": "f1df0b5914841c17deeb77d77a1dd023f6b9fcdd"
-  },
-  "arguments": ""
-}
