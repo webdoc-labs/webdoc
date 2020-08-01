@@ -30,7 +30,6 @@ steps:
     ls -a
     npm install -g pnpm @microsoft/rush
     pnpm install
-    node node_modules/.bin/lerna bootstrap
   displayName: "Install webdoc"
   workingDirectory: webdoc
 

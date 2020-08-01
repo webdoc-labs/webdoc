@@ -17,8 +17,9 @@
     <hr />
 
     <?js= this.plugins.signature.generateSignature(doc, "signature") ?>
-    
+
     <hr class="secondary-separator" />
+    <?js= doc.brief ?>
     <?js= doc.description ?>
 
     <?js if (doc.type === "ClassDoc") {

@@ -7,6 +7,7 @@
         <?js= this.plugins.signature.generateSignature(memberDoc, "member-signature") ?>
 
         <section class="method-description member-description description">
+            <?js= memberDoc.brief ?>
             <?js= memberDoc.description ?>
         </section>
 
