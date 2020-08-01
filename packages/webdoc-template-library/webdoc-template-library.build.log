@@ -1,7 +1,0 @@
->>> @webdoc/template-library
-gulp build 
-[22:53:11] Requiring external module @babel/register
-[22:53:12] Using gulpfile ~/coding/open-source/webdoc/packages/webdoc-template-library/gulpfile.babel.js
-[22:53:12] Starting 'build'...
-[22:53:12] Building @webdoc/template-library at /Users/edwinclement/coding/open-source/webdoc/packages/webdoc-template-library/lib
-[22:53:12] Finished 'build' after 689 ms
