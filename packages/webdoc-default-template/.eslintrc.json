@@ -1,4 +1,5 @@
 {
+    "ignorePatterns": "static/scripts/*",
     "extends": [
         "@webdoc/eslint-config-webdoc"
     ]

@@ -27,6 +27,7 @@
   "scripts": {
     "build": "gulp build",
     "unit-test": "",
+    "lint": "eslint -c .eslintrc.json .",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {

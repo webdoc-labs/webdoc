@@ -27,6 +27,7 @@
   },
   "scripts": {
     "build": "gulp build",
+    "lint": "eslint -c .eslintrc.json .",
     "unit-test": "mocha ./test/* --require ../../scripts/configureWebdocTesting",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
