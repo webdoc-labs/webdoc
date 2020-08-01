@@ -43,10 +43,17 @@
     "lodash": "^4.17.15"
   },
   "devDependencies": {
-    "eslint": "^6.8.0",
     "@babel/core": "^7.9.0",
-    "@webdoc/eslint-config-webdoc": "1.0.0",
-    "@webdoc/babel-preset-webdoc": "~1.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-transform-flow-comments": "^7.8.3",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/preset-flow": "^7.10.1",
+    "@babel/preset-react": "^7.10.1",
+    "@babel/register": "^7.9.0",
+    "@webdoc/eslint-config-webdoc": "^1.0.0",
+    "@webdoc/babel-preset-webdoc": "^1.0.0",
+    "eslint": "^6.8.0",
+    "del": "5.1.0",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
     "gulp-util": "^3.0.8"

@@ -9,4 +9,4 @@ common/autoinstallers/*/.npmrc
 **/.rush/temp/
 
 packages/*/*.log
-packages/*/*.build.log
+example/*.log
