@@ -24,11 +24,6 @@
     "url": "https://github.com/SukantPal/webdoc/issues"
   },
   "homepage": "https://github.com/SukantPal/webdoc#readme",
-  "devDependencies": {
-    "@lerna/batch-packages": "^3.16.0",
-    "@lerna/filter-packages": "^3.18.0",
-    "@lerna/project": "^3.18.0"
-  },
   "dependencies": {
     "webdoc": "link:"
   }
