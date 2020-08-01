@@ -27,6 +27,7 @@
   },
   "scripts": {
     "build": "gulp build",
+    "unit-test": "mocha ./test/* --require ../../scripts/configureWebdocTesting",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
@@ -50,6 +51,8 @@
     "eslint": "^6.8.0",
     "del": "5.1.0",
     "gulp": "^4.0.2",
+    "chai": "^4.2.0",
+    "mocha": "^7.1.1",
     "gulp-babel": "^8.0.0",
     "gulp-util": "^3.0.8"
   },

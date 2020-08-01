@@ -30,6 +30,7 @@
   },
   "scripts": {
     "build": "",
+    "unit-test": "",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {

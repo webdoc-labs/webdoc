@@ -6,7 +6,6 @@
   "scripts": {
     "prepare": "rush install",
     "test": "",
-    "unit-test": "mocha ./packages/**/test/* --require ./scripts/configureWebdocTesting",
     "prepublishOnly": "npm run build"
   },
   "repository": {
@@ -38,7 +37,6 @@
     "@lerna/filter-packages": "^3.18.0",
     "@lerna/project": "^3.18.0",
     "babel-eslint": "^10.1.0",
-    "chai": "^4.2.0",
     "del": "^5.1.0",
     "eslint": "^6.8.0",
     "eslint-config-google": "^0.14.0",
@@ -46,8 +44,7 @@
     "eslint-plugin-import": "^2.21.2",
     "eslint-plugin-react": "^7.20.0",
     "flow-typed": "^3.1.0",
-    "minimist": "^1.2.5",
-    "mocha": "^7.1.1"
+    "minimist": "^1.2.5"
   },
   "dependencies": {
     "webdoc": "link:"

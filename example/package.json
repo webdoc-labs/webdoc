@@ -22,6 +22,7 @@
     "url": "git+https://github.com/SukantPal/webdoc.git"
   },
   "scripts": {
+    "unit-test": "",
     "build": "webdoc --tutorials ./tutorials"
   },
   "bugs": {
