@@ -133,6 +133,8 @@ function buildExplorerTargetsTree(node /*: ExplorerNode */, parentTitle /*: stri
     };
 
     if (node.doc.type === "RootDoc") {
+      node.children.Overview.page = "index.html";
+
       node.children.ClassIndex = {
         title: "Class Index",
         page: SymbolLinks.getFileName("Class-Index"),
