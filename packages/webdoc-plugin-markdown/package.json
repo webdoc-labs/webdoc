@@ -48,7 +48,8 @@
     "del": "5.1.0",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
-    "gulp-util": "^3.0.8"
+    "gulp-util": "^3.0.8",
+    "flow-typed": "^3.2.1"
   },
   "gitHead": "a2866c1a42f60180a74add7bc1b0f42d8bb16330"
 }

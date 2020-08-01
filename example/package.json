@@ -31,5 +31,8 @@
   "dependencies": {
     "@webdoc/cli": "^1.0.0"
   },
-  "gitHead": "a2866c1a42f60180a74add7bc1b0f42d8bb16330"
+  "gitHead": "a2866c1a42f60180a74add7bc1b0f42d8bb16330",
+  "devDependencies": {
+    "flow-typed": "^3.2.1"
+  }
 }
