@@ -8,6 +8,8 @@ resources:
 trigger:
 - master
 
+pr: none
+
 pool:
   vmImage: 'ubuntu-latest'
 
