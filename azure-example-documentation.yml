@@ -28,18 +28,17 @@ steps:
 
 - script: |
     ls -a
-    npm install -g pnpm @microsoft/rush
-    pnpm install
+    npm install -g  @microsoft/rush
+    rush install
   displayName: "Install webdoc"
   workingDirectory: webdoc
 
 - script: |
-    rm -rf ./docs
-    cd .. && pnpm run build && cd example
-    pnpm run generate
-    cp -r ./docs/* ../../example-documentation/
+    rm -rf ./example/docs
+    rush rebuild -t @webdoc/example
+    cp -r ./example/docs/* ../example-documentation/
   displayName: "Generate example documentation & copy to webdoc-js/example-documentation"
-  workingDirectory: webdoc/example
+  workingDirectory: webdoc
 
 - script: |
     git config --global user.email "sukantk2002@outlook.com"

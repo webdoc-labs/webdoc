@@ -1,5 +1,5 @@
 {
-  "name": "@webdoc/eslint-config-webdoc",
+  "name": "@webdoc/eslint-config",
   "version": "1.0.0",
   "description": "JavaScript Standard Style - ESLint Shareable Config for Webdoc",
   "main": "index.js",

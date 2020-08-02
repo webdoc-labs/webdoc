@@ -1,5 +1,5 @@
 {
-  "name": "@webdoc/babel-preset-webdoc",
+  "name": "@webdoc/babel-preset",
   "version": "1.0.0",
   "author": {
     "name": "Edwin Clement",
