@@ -29,6 +29,8 @@
     "url": "git+https://github.com/SukantPal/webdoc.git"
   },
   "scripts": {
+    "build": "",
+    "unit-test": "",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
@@ -50,6 +52,10 @@
     "marked": "^0.8.2",
     "missionlog": "1.6.0",
     "open-sans-fonts": "^1.6.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "flow-typed": "^3.2.1"
   },
   "gitHead": "326306f477098182404f813337c0c67cc90263c6"
 }

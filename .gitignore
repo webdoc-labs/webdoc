@@ -4,3 +4,9 @@ example/docs/*
 
 .DS_Store
 common/temp
+common/deploy/
+common/autoinstallers/*/.npmrc
+**/.rush/temp/
+
+packages/*/*.log
+example/*.log

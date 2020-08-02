@@ -1,0 +1,31 @@
+{
+  "name": "@webdoc/eslint-config",
+  "version": "1.0.0",
+  "description": "JavaScript Standard Style - ESLint Shareable Config for Webdoc",
+  "main": "index.js",
+  "author": {
+    "name": "Edwin Clement",
+    "email": "edwinclement08@gmail.com"
+  },
+  "scripts": {
+    "unit-test": "",
+    "build": ""
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-transform-flow-comments": "^7.8.3",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/preset-flow": "^7.10.1",
+    "@babel/preset-react": "^7.10.1",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-flow": "^2.29.1",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-react": "^7.20.0",
+    "flow-typed": "^3.1.0",
+    "@rushstack/eslint-patch": "~1.0.2"
+  }
+}

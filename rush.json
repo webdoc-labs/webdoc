@@ -71,6 +71,16 @@
       "reviewCategory": "production"
     },
     {
+      "packageName": "@webdoc/eslint-config",
+      "projectFolder": "packages/eslint-config",
+      "reviewCategory": "production"
+    },
+    {
+      "packageName": "@webdoc/babel-preset",
+      "projectFolder": "packages/babel-preset",
+      "reviewCategory": "production"
+    },
+    {
       "packageName": "@webdoc/tests",
       "projectFolder": "test",
       "reviewCategory": "production"

@@ -22,7 +22,8 @@
     "url": "git+https://github.com/SukantPal/webdoc.git"
   },
   "scripts": {
-    "generate": "cd .. && npm run build && cd example && webdoc --tutorials ./tutorials"
+    "unit-test": "",
+    "build": "webdoc --tutorials ./tutorials"
   },
   "bugs": {
     "url": "https://github.com/SukantPal/webdoc/issues"
@@ -30,5 +31,8 @@
   "dependencies": {
     "@webdoc/cli": "^1.0.0"
   },
-  "gitHead": "a2866c1a42f60180a74add7bc1b0f42d8bb16330"
+  "gitHead": "a2866c1a42f60180a74add7bc1b0f42d8bb16330",
+  "devDependencies": {
+    "flow-typed": "^3.2.1"
+  }
 }

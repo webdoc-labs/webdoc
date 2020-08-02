@@ -27,12 +27,16 @@
     "url": "git+https://github.com/SukantPal/webdoc.git"
   },
   "scripts": {
+    "build": "gulp build",
+    "lint": "eslint -c .eslintrc.json .",
+    "unit-test": "",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
     "url": "https://github.com/SukantPal/webdoc/issues"
   },
   "dependencies": {
+    "@babel/core": "^7.9.0",
     "@babel/preset-react": "^7.10.1",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.56",
@@ -44,9 +48,21 @@
     "markdown-it-highlightjs": "^3.1.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.10.3",
-    "@babel/core": "^7.10.3",
-    "@babel/preset-env": "^7.10.3",
+    "@babel/core": "^7.9.0",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-transform-flow-comments": "^7.8.3",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/preset-flow": "^7.10.1",
+    "@babel/preset-react": "^7.10.1",
+    "@babel/register": "^7.9.0",
+    "@webdoc/eslint-config": "^1.0.0",
+    "@webdoc/babel-preset": "^1.0.0",
+    "eslint": "^6.8.0",
+    "del": "5.1.0",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-util": "^3.0.8",
+    "@babel/cli": "^7.8.4",
     "@material-ui/core": "^4.10.2",
     "babel-loader": "^8.1.0",
     "css-loader": "^3.6.0",
@@ -58,6 +74,8 @@
     "mini-css-extract-plugin": "^0.9.0",
     "webpack": "^4.43.0",
     "react": "^16.8.0",
-    "react-dom": "^16.8.0"
+    "react-dom": "^16.8.0",
+    "webpack-stream": "^5.2.1",
+    "flow-typed": "^3.2.1"
   }
 }

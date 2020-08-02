@@ -5,9 +5,7 @@
   "main": "index.js",
   "scripts": {
     "prepare": "rush install",
-    "build": "gulp build",
     "test": "",
-    "unit-test": "mocha ./packages/**/test/* --require ./scripts/configureWebdocTesting",
     "prepublishOnly": "npm run build"
   },
   "repository": {
@@ -26,35 +24,6 @@
     "url": "https://github.com/SukantPal/webdoc/issues"
   },
   "homepage": "https://github.com/SukantPal/webdoc#readme",
-  "devDependencies": {
-    "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.9.0",
-    "@babel/plugin-proposal-class-properties": "^7.8.3",
-    "@babel/plugin-transform-flow-comments": "^7.8.3",
-    "@babel/preset-env": "^7.9.5",
-    "@babel/preset-flow": "^7.10.1",
-    "@babel/preset-react": "^7.10.1",
-    "@babel/register": "^7.9.0",
-    "@lerna/batch-packages": "^3.16.0",
-    "@lerna/filter-packages": "^3.18.0",
-    "@lerna/project": "^3.18.0",
-    "babel-eslint": "^10.1.0",
-    "chai": "^4.2.0",
-    "del": "^5.1.0",
-    "eslint": "^6.8.0",
-    "eslint-config-google": "^0.14.0",
-    "eslint-plugin-flow": "^2.29.1",
-    "eslint-plugin-import": "^2.21.2",
-    "eslint-plugin-react": "^7.20.0",
-    "flow-typed": "^3.1.0",
-    "gulp": "^4.0.2",
-    "gulp-babel": "^8.0.0",
-    "gulp-tasks-monorepo": "^0.5.0",
-    "gulp-util": "^3.0.8",
-    "minimist": "^1.2.5",
-    "mocha": "^7.1.1",
-    "webpack-stream": "^5.2.1"
-  },
   "dependencies": {
     "webdoc": "link:"
   }
