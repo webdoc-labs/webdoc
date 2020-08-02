@@ -13,10 +13,10 @@ dependencies:
   '@material-ui/core': 4.11.0_react-dom@16.13.1+react@16.13.1
   '@material-ui/icons': 4.9.1_64fe165cdb3bb1449f67ef4ad817869b
   '@material-ui/lab': 4.0.0-alpha.56_64fe165cdb3bb1449f67ef4ad817869b
-  '@rush-temp/babel-preset-webdoc': 'file:projects/babel-preset-webdoc.tgz'
+  '@rush-temp/babel-preset': 'file:projects/babel-preset.tgz'
   '@rush-temp/cli': 'file:projects/cli.tgz'
   '@rush-temp/default-template': 'file:projects/default-template.tgz'
-  '@rush-temp/eslint-config-webdoc': 'file:projects/eslint-config-webdoc.tgz'
+  '@rush-temp/eslint-config': 'file:projects/eslint-config.tgz'
   '@rush-temp/example': 'file:projects/example.tgz'
   '@rush-temp/externalize': 'file:projects/externalize.tgz'
   '@rush-temp/legacy-template': 'file:projects/legacy-template.tgz'
@@ -9087,7 +9087,7 @@ packages:
     dev: false
     resolution:
       integrity: sha512-huO4Fr1f9PmiJJdll5kwoS2e4GqzGSsMT3PPMpOwoVkOK8ckqAewMTZyA6LXVQWflleb/Z8oPBEvNsMft0XE+g==
-  'file:projects/babel-preset-webdoc.tgz':
+  'file:projects/babel-preset.tgz':
     dependencies:
       '@babel/cli': 7.10.5_@babel+core@7.11.0
       '@babel/core': 7.11.0
@@ -9098,10 +9098,10 @@ packages:
       '@babel/preset-react': 7.10.4_@babel+core@7.11.0
       '@babel/register': 7.10.5_@babel+core@7.11.0
     dev: false
-    name: '@rush-temp/babel-preset-webdoc'
+    name: '@rush-temp/babel-preset'
     resolution:
-      integrity: sha512-/xhBO8RK1AM3YsSoPLyIlBSk61KP7LuaGdNWZx/3s0fYkx2edZ/Rezl34nQ1v4l5nVGt2GatQ0kuKYzilVMLMQ==
-      tarball: 'file:projects/babel-preset-webdoc.tgz'
+      integrity: sha512-A/coCa9HX6Zhd60VlMxfb7RxVqd9Z0gO88z/Fe3EOM0FBhWN9ISoaEy10Mg6Eftk0kWDUs9I4N2Nb4F92C6qCQ==
+      tarball: 'file:projects/babel-preset.tgz'
     version: 0.0.0
   'file:projects/cli.tgz':
     dependencies:
@@ -9135,7 +9135,7 @@ packages:
     dev: false
     name: '@rush-temp/cli'
     resolution:
-      integrity: sha512-1X6YlAEZ9MmDt6aR4FSGJtavJCefG0bC9eX8WPkKG17Xd44wsv4HmP9tZ5sNCZ1B55JLP8/irG64RBKNh9syuw==
+      integrity: sha512-btK/1/qLuq6jw1lBnNYYfl5eZR2VoxWi7hwl0UFPuuFyFRQMIw7NZplh7kVV5Acb2Cui5jd7iSl0660+ej6hxQ==
       tarball: 'file:projects/cli.tgz'
     version: 0.0.0
   'file:projects/default-template.tgz':
@@ -9176,10 +9176,10 @@ packages:
     dev: false
     name: '@rush-temp/default-template'
     resolution:
-      integrity: sha512-x1AYMWxPVd5CMHbaGiPfSpDDfLxfi3Ifq55bisIQKwI6uKugx8S+/khsoIYCSmg8TRHUrMloKR4yS7v95DW9NA==
+      integrity: sha512-kVhIZ3IWIYDuLKFDRxLJoA4GFRdGuIdkG/WUuTcdO0af3ZHDHBtpSdJAj3kCMp2TnyQ9YHuNd4fY0DpS39FlIw==
       tarball: 'file:projects/default-template.tgz'
     version: 0.0.0
-  'file:projects/eslint-config-webdoc.tgz':
+  'file:projects/eslint-config.tgz':
     dependencies:
       '@babel/cli': 7.10.5_@babel+core@7.11.0
       '@babel/core': 7.11.0
@@ -9197,10 +9197,10 @@ packages:
       eslint-plugin-react: 7.20.5_eslint@6.8.0
       flow-typed: 3.2.1
     dev: false
-    name: '@rush-temp/eslint-config-webdoc'
+    name: '@rush-temp/eslint-config'
     resolution:
-      integrity: sha512-f2jdHR9PZ4JPqAZfVhTyz+WbPwAkUQ5Q9fX5HDjumn3Un594q2VpkFqm8doJowSakgdXGQiFCtb5tBeoR0WXYA==
-      tarball: 'file:projects/eslint-config-webdoc.tgz'
+      integrity: sha512-KafBs2crYRPYiby+SqKqpB+q27QK0baCVntOR9UKJcdubv2dBBIhRl7ZcSX/0dUywiIXTMatsykAS27f1xnodA==
+      tarball: 'file:projects/eslint-config.tgz'
     version: 0.0.0
   'file:projects/example.tgz':
     dependencies:
@@ -9222,6 +9222,7 @@ packages:
       '@babel/register': 7.10.5_@babel+core@7.11.0
       del: 5.1.0
       eslint: 6.8.0
+      flow-bin: 0.130.0
       flow-typed: 3.2.1
       gulp: 4.0.2
       gulp-babel: 8.0.0_@babel+core@7.11.0
@@ -9229,7 +9230,7 @@ packages:
     dev: false
     name: '@rush-temp/externalize'
     resolution:
-      integrity: sha512-pXO9vfhvqv+Rj6ExNKmemI8GQmbtbwXK8C9/4dL8wlKxZH6e6r6YqqPw4XvEAJd/WbirQ0hIzpMK8hOqjXigEg==
+      integrity: sha512-hbmzOuN5H5YTFKWmuXc1jJMSOpWKGMu7CjWHwLX7v/dFgxnYgYxBR6zWcOiMjtzwhVu8K0loARI/O2YK9G4W2Q==
       tarball: 'file:projects/externalize.tgz'
     version: 0.0.0
   'file:projects/legacy-template.tgz':
@@ -9268,6 +9269,7 @@ packages:
       chai: 4.2.0
       del: 5.1.0
       eslint: 6.8.0
+      flow-bin: 0.130.0
       flow-typed: 3.2.1
       gulp: 4.0.2
       gulp-babel: 8.0.0_@babel+core@7.11.0
@@ -9277,7 +9279,7 @@ packages:
     dev: false
     name: '@rush-temp/model'
     resolution:
-      integrity: sha512-WHMr85ZEzvK5NjvaCtKdyTGRt5gnb1KS6qoBJ9j6gJnheovjNjhWw/ZqKZPAxuLAYladovcBakzDtgBW4kbkfw==
+      integrity: sha512-G7zOZ+7d7TIdawHHeL+brkwPzSRrjWsDBr4Ez1hSJWdIAcvLgxx8bqtGHazTWsUEU4lugbMWmcbofUC3d8h/ag==
       tarball: 'file:projects/model.tgz'
     version: 0.0.0
   'file:projects/parser.tgz':
@@ -9295,6 +9297,7 @@ packages:
       chai: 4.2.0
       del: 5.1.0
       eslint: 6.8.0
+      flow-bin: 0.130.0
       flow-typed: 3.2.1
       gulp: 4.0.2
       gulp-babel: 8.0.0_@babel+core@7.11.0
@@ -9306,7 +9309,7 @@ packages:
     dev: false
     name: '@rush-temp/parser'
     resolution:
-      integrity: sha512-GaWUxYHn50D2Mwh3nzqVotpezwYFw9XBOkT1JIoe7zdtVwEuPmxTzPxxhKPiQP22RVAMSOCdDiwPYBziTUItjQ==
+      integrity: sha512-4z6Wxxc0TcAlPD+znCtASgIR5O6rqzpZXwI+g3szSa/J6pqcUFxHlwIa7P6DpvI59MFXCGwq44dScIn6x/VA1A==
       tarball: 'file:projects/parser.tgz'
     version: 0.0.0
   'file:projects/plugin-markdown.tgz':
@@ -9320,6 +9323,7 @@ packages:
       '@babel/register': 7.10.5_@babel+core@7.11.0
       del: 5.1.0
       eslint: 6.8.0
+      flow-bin: 0.130.0
       flow-typed: 3.2.1
       gulp: 4.0.2
       gulp-babel: 8.0.0_@babel+core@7.11.0
@@ -9329,7 +9333,7 @@ packages:
     dev: false
     name: '@rush-temp/plugin-markdown'
     resolution:
-      integrity: sha512-KCioffxpHy2EHbByUCnJeyXvIt5h+r3H1vqu1l6u0H0XPcl9ySjtOipYHnUEHkYlJCz3Brb1m00118tM1t19ww==
+      integrity: sha512-iqBO4TB/QZ2sfHFGTNNjESh0BnXaUqXH5TWWjtIlcLquUir8oi52jReJuvFxsUhNKBR+B43+60skc+LfCvRHjQ==
       tarball: 'file:projects/plugin-markdown.tgz'
     version: 0.0.0
   'file:projects/template-library.tgz':
@@ -9345,6 +9349,7 @@ packages:
       chai: 4.2.0
       del: 5.1.0
       eslint: 6.8.0
+      flow-bin: 0.130.0
       flow-typed: 3.2.1
       git-branch: 2.0.1
       gulp: 4.0.2
@@ -9357,7 +9362,7 @@ packages:
     dev: false
     name: '@rush-temp/template-library'
     resolution:
-      integrity: sha512-24TkfgxTl34EnPAcytAFP8XTp2PCfRT7WuuFRZl6zJTuiiJoLIf+Ni2rAWngeFkibXkiBjd5SFnVmTwGQd3GCQ==
+      integrity: sha512-xk5YMX/uKFHPp8xG39D41XjSDJDlvpKMeEWDA5AI/QkcKPWvT+7IaUE3+NtgHBEdgaiIyd6dZLsncNlZmLiwpg==
       tarball: 'file:projects/template-library.tgz'
     version: 0.0.0
   'file:projects/tests.tgz':
@@ -9392,10 +9397,10 @@ specifiers:
   '@material-ui/core': ^4.10.2
   '@material-ui/icons': ^4.9.1
   '@material-ui/lab': ^4.0.0-alpha.56
-  '@rush-temp/babel-preset-webdoc': 'file:./projects/babel-preset-webdoc.tgz'
+  '@rush-temp/babel-preset': 'file:./projects/babel-preset.tgz'
   '@rush-temp/cli': 'file:./projects/cli.tgz'
   '@rush-temp/default-template': 'file:./projects/default-template.tgz'
-  '@rush-temp/eslint-config-webdoc': 'file:./projects/eslint-config-webdoc.tgz'
+  '@rush-temp/eslint-config': 'file:./projects/eslint-config.tgz'
   '@rush-temp/example': 'file:./projects/example.tgz'
   '@rush-temp/externalize': 'file:./projects/externalize.tgz'
   '@rush-temp/legacy-template': 'file:./projects/legacy-template.tgz'
