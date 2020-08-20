@@ -55,6 +55,7 @@ import {
   isTSTypeQuery,
   isTSTypeReference,
   isTSUndefinedKeyword,
+  isTSUnknownKeyword,
   isTSUnionType,
   isTSVoidKeyword,
   isTypeAnnotation,
@@ -267,6 +268,9 @@ function resolveDataType(type: TSTypeAnnotation | TSType | any): DataType {
     }
     if (isTSUndefinedKeyword(type)) {
       return createSimpleKeywordType("undefined");
+    }
+    if (isTSUnknownKeyword(type)) {
+      return createSimpleKeywordType("unknown");
     }
     if (isTSVoidKeyword(type)) {
       return createSimpleKeywordType("void");
