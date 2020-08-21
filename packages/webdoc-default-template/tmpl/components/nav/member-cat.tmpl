@@ -1,0 +1,20 @@
+<?js
+    /*::
+    import type {Doc} from "@webdoc/types";
+    */
+
+    const { title, members } = obj;
+
+    if (members.length === 0) {
+      return;
+    }
+  ?>
+
+<section>
+    <span class="nav-member-category-title"><?js= title ?></span>
+    <ul class="nav-member-category-list">
+        <?js members.forEach((member) => { ?>
+            <li><?js= this.linkTo(member.path, member.name) ?></li>
+        <?js }) ?>
+    </ul>
+</section>

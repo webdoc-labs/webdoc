@@ -1,0 +1,53 @@
+<?js
+    /*::
+    import type {Doc} from "@webdoc/types";
+
+    declare var obj: Doc;
+    */
+
+    const doc = obj;
+    const members = doc.members;
+
+    const publicProperties = this.plugins.categoryFilter(doc, {
+      access: "public",
+      type: "PropertyDoc"
+    });
+    const protectedProperties = this.plugins.categoryFilter(doc, {
+      access: "protected",
+      type: "PropertyDoc"
+    });
+    const publicMethods = this.plugins.categoryFilter(doc, {
+      access: "public",
+      type: "MethodDoc"
+    });
+    const protectedMethods = this.plugins.categoryFilter(doc, {
+      access: "protected",
+      type: "MethodDoc"
+    });
+
+    function outputCategory(title /*: string */, members /*: Doc[] */) /*: string */ {
+      return
+`<section>
+    <span>${title}</span>
+</section>`;
+    }
+  ?>
+    <div>
+        <?js= this.partial("components/nav/member-cat.tmpl", {
+            title: "Public Properties",
+            members: publicProperties
+        }) ?>
+        <?js= this.partial("components/nav/member-cat.tmpl", {
+            title: "Protected Properties",
+            members: protectedProperties
+        }) ?>
+        <?js= this.partial("components/nav/member-cat.tmpl", {
+            title: "Public Methods",
+            members: publicMethods
+        }) ?>
+        <?js= this.partial("components/nav/member-cat.tmpl", {
+            title: "Protected Methods",
+            members: protectedMethods
+        }) ?>
+    </div>
+<?js ?>

@@ -1,0 +1,167 @@
+html {
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  background: #e8eaed;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+#template-app {
+  height: 100%;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.app-layout {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  flex-wrap: nowrap;
+  margin-top: 64px;
+  justify-content: center;
+}
+
+.app-layout > *:first-child {
+  margin-right: 8px;
+}
+
+.app-layout > *:last-child {
+  margin-left: 8px;
+}
+
+#explorer-root {
+  background-color: white;
+  box-shadow: 1px 0px 1px silver;
+  height: 100%;
+  left: 0px;
+  overflow-y: scroll;
+  padding: 16px;
+  padding-top: 80px;
+  position: fixed;
+  top: 0px;
+  width: 280px;
+}
+
+.explorer-children {
+  padding-left: 24px;
+}
+
+.explorer-toggle {
+  display: inline-block;
+  margin: 2px;
+  height: 12px;
+  padding: 0px;
+  vertical-align: baseline;
+  width: 12px;
+}
+
+#content-root {
+  background-color: white;
+  border-radius: 2px;
+  box-shadow: 0px 0px 2px 2px silver;
+  flex-grow: 1;
+  margin: 24px;
+  margin-left: 280px;
+  overflow-y: scroll;
+  padding: 48px;
+  flex-basis: 50%;
+  max-width: 960px;
+}
+
+
+/* Content Styling --------------------- */
+
+html, body {
+  font-family: "roboto";
+  font-size: 16px;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  background-color: #f1f2f3;
+  border-radius: 4px;
+  color: #37474f;
+  font-family: "Roboto Mono";
+  font-size: 90%;
+  font-stretch: normal;
+  font-weight: 500;
+  line-height: 1;
+  margin: 0;
+  padding-bottom: 1px;
+  padding-left: 4px;
+  padding-top: 1px;
+  padding-right: 4px;
+}
+
+/* Reference document Styling ------------ */
+
+.document-title {
+  color: gray;
+  font-size: 36px;
+  font-weight: lighter;
+  margin-bottom: 0;
+  letter-spacing: -.01em;
+}
+
+.document-title + hr {
+  border: .5px solid black;
+  color: gray;
+  margin-bottom: 48px;
+}
+
+.section-title {
+  color: gray;
+  font-size: 22px;
+  font-weight: 300;
+  margin-bottom: 0;
+  margin-top: 48px;
+  letter-spacing: -.01em;
+}
+
+.section-title + hr {
+  border: .5px solid lightgray;
+  color: gray;
+}
+
+.signature {
+  background: transparent;
+  display: inline-block;
+  font-weight: normal;
+  margin: .25em 0;
+  letter-spacing: -.01em;
+  padding: 0;
+}
+
+.member {
+  margin-top: 24px;
+}
+
+.member-title {
+  font-size: 20px;
+  margin-bottom: 24px;
+}
+
+.member-signature {
+  background: transparent;
+  display: block;
+  font-size: 14px;
+  font-weight: normal;
+  padding: 0;
+  letter-spacing: -.01em;
+  margin-bottom: 24px;
+}
+
+.secondary-separator {
+  border: .5px solid lightgray;
+  margin-top: 48px;
+}

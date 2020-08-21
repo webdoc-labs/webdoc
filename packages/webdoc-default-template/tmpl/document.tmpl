@@ -56,5 +56,10 @@ docList.forEach((doc) => {
       type: ["MethodDoc", "FunctionDoc"]
     }
   }) ?>
+
+  <hr id="nav-members-separator" />
+  <nav id="nav-members">
+      <?js= this.partial("components/nav/members.tmpl", doc) ?>
+  </nav>
 </div>
 <?js }); ?>
