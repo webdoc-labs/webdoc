@@ -11,7 +11,7 @@
     "legacy"
   ],
   "author": "Shukant Pal <shukantpal@outlook.com>",
-  "homepage": "https://github.com/SukantPal/webdoc/tree/master/webdoc-legacy-template#readme",
+  "homepage": "https://github.com/webdoc-js/webdoc/tree/master/packages/webdoc-legacy-template#readme",
   "license": "MIT",
   "main": "publish.js",
   "directories": {
