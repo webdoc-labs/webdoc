@@ -12,7 +12,7 @@
     "doc"
   ],
   "author": "Shukant Pal <shukantpal@outlook.com>",
-  "homepage": "https://github.com/SukantPal/webdoc/tree/master/webdoc-template-library#readme",
+  "homepage": "https://github.com/SukantPal/webdoc/tree/master/packages/webdoc-template-library#readme",
   "license": "MIT",
   "main": "index.js",
   "directories": {
