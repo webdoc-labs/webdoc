@@ -9,7 +9,7 @@
     "webdoc-template"
   ],
   "author": "Shukant Pal <shukantpal@outlook.com>",
-  "homepage": "https://github.com/SukantPal/webdoc/tree/master/default-template#readme",
+  "homepage": "https://github.com/SukantPal/webdoc/tree/master/packages/default-template#readme",
   "license": "MIT",
   "main": "publish.js",
   "directories": {
