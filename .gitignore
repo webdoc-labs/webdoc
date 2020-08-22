@@ -64,4 +64,4 @@ common/deploy/
 common/autoinstallers/*/.npmrc
 
 # Logs
-**/.log
+**/*.log
