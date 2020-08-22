@@ -1,0 +1,11 @@
+@mixin threeHeight($height) {
+	min-height: $height;
+	height: $height;
+	max-height: $height;
+}
+
+@mixin threeWidth($width) {
+	min-width: $width;
+	width: $width;
+	max-width: $width;
+}

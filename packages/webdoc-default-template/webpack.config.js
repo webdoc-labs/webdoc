@@ -1,9 +1,18 @@
-const path = require("path");
+const {
+  resolve: resolvePath,
+} = require("path");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 module.exports = {
-  mode: "development",
+  optimization: {
+    minimizer: [new OptimizeCSSAssetsPlugin({})],
+  },
+  mode: process.env.NODE_ENV || "production",
   entry: {
-    "default-template": ["./src/app/index.js", "./src/styles/index.less"],
+    "default-template": [
+      "./src/app/index.js",
+      "./src/styles/index.scss",
+    ],
   },
   externals: {
     "react": "React",
@@ -11,7 +20,7 @@ module.exports = {
     "react-markdown": "ReactMarkdown",
   },
   output: {
-    path: path.resolve(__dirname, "static/"),
+    path: resolvePath(__dirname, "static/"),
     filename: "[name].js",
   },
   module: {
@@ -22,12 +31,16 @@ module.exports = {
         use: {
           loader: "babel-loader",
           options: {
-            presets: ["@babel/preset-env", "@babel/preset-react", "@babel/preset-flow"],
+            presets: [
+              "@babel/preset-env",
+              "@babel/preset-react",
+              "@babel/preset-flow",
+            ],
           },
         },
       },
       {
-        test: /\.(css|less)$/i,
+        test: /\.(css|scss|sass)$/i,
         use: [
           {
             loader: "file-loader",
@@ -37,7 +50,7 @@ module.exports = {
           },
           "extract-loader",
           "css-loader",
-          "less-loader",
+          "sass-loader",
         ],
       },
     ],

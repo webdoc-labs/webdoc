@@ -1,0 +1,57 @@
+<?js
+const params = obj;
+
+/* Determine if we need extra columns: "attributes" and "default" */
+let hasAttributes = false;
+let hasDefault = false;
+let hasName = false;
+
+params.forEach((param) => {
+  if (!param) {
+    return;
+  }
+
+  if (param.optional || param.nullable || param.variable) {
+    hasAttributes = true;
+  }
+
+  if (param.identifier) {
+    hasName = true;
+  }
+
+  if (typeof param.default !== 'undefined') {
+    hasDefault = true;
+  }
+});
+?>
+<table class="parameters">
+  <caption>Parameters:</caption>
+  <thead>
+    <tr>
+      <?js if (hasName) {?><th>Name</th><?js } ?>
+      <th>Type</th>
+      <?js if (hasAttributes) {?><th>Attributes</th><?js } ?>
+      <?js if (hasDefault) {?><th>Default</th><?js } ?>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?js params.forEach((param) => { if (!param) { return; } ?><tr>
+      <?js if (hasName) {?><td class="name">
+        <pre><code><?js= param.identifier ?></code></pre>
+      </td><?js } ?>
+      <td class="type">
+        <?js if (param.dataType) {?><pre><code><?js= this.linkTo(param.dataType) ?></code></pre><?js } ?>
+      </td>
+      <?js if (hasAttributes) {?><td class="attributes">
+        <?js if (param.optional) { ?><p>&lt;optional&gt;</p><?js } ?>
+        <?js if (param.nullable) { ?><p>&lt;nullable&gt;</p><?js } ?>
+        <?js if (param.variable) { ?><p>&lt;repeatable&gt;</p><?js } ?>
+      </td><?js } ?>
+      <?js if (hasDefault) {?><td class="default">
+        <?js if (typeof param.default !== 'undefined') { ?><?js= this.htmlText(param.default) ?><?js } ?>
+      </td><?js } ?>
+      <td class="description"><?js= param.description ?></td>
+    </tr><?js }); ?>
+  </tbody>
+</table>

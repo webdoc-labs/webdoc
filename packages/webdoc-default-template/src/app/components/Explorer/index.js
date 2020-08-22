@@ -1,59 +1,55 @@
-// @flow
-
-import * as React from "react";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import ArrowRightIcon from "@material-ui/icons/ArrowRight";
 import ExplorerTarget from "./ExplorerItem";
-import type {ExplorerTargetData} from "./ExplorerTargetData";
 import ExplorerTargetGroup from "./ExplorerCategoryItem";
+import React from "react";
 import TreeView from "@material-ui/lab/TreeView";
-
-export type ExplorerProps = {
-  data: ExplorerTargetData;
-};
 
 let fetched = false;
 
-export default function Explorer(props: ExplorerProps) {
+export default function Explorer(props) {
   const [data, setData] = React.useState(null);
   const children = [];
 
   if (!fetched) {
-    fetch("explorer/reference.json").then((response) => {
-      if (response.ok) {
-        response.json().then((idata) => {
-          console.log(idata);
-          setData(idata || {});
-        });
-      } else {
-        console.error("Explorer couldn't load data");
-      }
-    });
+    fetch("explorer/reference.json")
+      .then((response) => {
+        if (response.ok) {
+          response.json().then((idata) => {
+            // console.log(idata);
+            setData(idata || {});
+          });
+        } else {
+          throw new Error("Can't fetch reference.json");
+        }
+      })
+      .catch((error) => {
+        console.error("Explorer couldn't load data:", error);
+      });
 
     fetched = true;
   }
-
+  let i = 0;
   if (data) {
-    for (const [key, value] of Object.entries(data.children)) {
-      if (Array.isArray(value)) {
-        children.push(<ExplorerTargetGroup title={key} data={value} />);
-      } else {
-        children.push(<ExplorerTarget data={value} />);
-      }
+    for (const [key, value] of Object.entries(data.children || {})) {
+      children.push(Array.isArray(value) ?
+        (<ExplorerTargetGroup key={i} title={key} data={value} />) :
+        (<ExplorerTarget key={i} data={value} />),
+      );
+      i++;
     }
   } else {
-    children.push(<span>Loading</span>);
+    children.push(<span key={++i}>Loading...</span>);
   }
 
   return (
-    <nav className="explorer">
-      <TreeView
-        defaultCollapseIcon={<ArrowDropDownIcon />}
-        defaultExpandIcon={<ArrowRightIcon />}
-        disableSelection={true}
-      >
-        {children}
-      </TreeView>
-    </nav>
+    <TreeView
+      className="explorer-tree"
+      defaultCollapseIcon={<ArrowDropDownIcon />}
+      defaultExpandIcon={<ArrowRightIcon />}
+      disableSelection={true}
+    >
+      {children}
+    </TreeView>
   );
 }

@@ -1,0 +1,48 @@
+<?js
+const
+  categoryData = obj,
+  categoryTitle = categoryData.title,
+  
+  parent = categoryData.parent,
+  contraints = categoryData.contraints,
+  
+  categoryMembers = categoryData.parent.members
+    .filter((child) => {
+      // Match access
+      if (constraints.access) {
+        if ((child.access || "public") !== constraints.access) {
+          return false;
+        }
+      }
+
+      if (child.type === "MethodDoc" && child.name === "constructor") {
+        return false; // Always hide constructors
+      }
+
+      // Match document-type
+      if (constraints.type) {
+        if (Array.isArray(constraints.type)) {
+          if (!constraints.type.includes(child.type)) {
+            return false;
+          }
+        } else {
+          if (constraints.type !== child.type) {
+            return false;
+          }
+        }
+      }
+
+      return true;
+    });
+
+if (categoryMembers.length === 0) {
+  return;
+}
+?>
+<div class="members">
+  <h2 class="members__category"><?js= categoryTitle ?></h2>
+
+  <?js categoryMembers.forEach((member) => { ?>
+    <?js= this.partial("components/member.tmpl", member) ?>
+  <?js }) ?>
+</div>

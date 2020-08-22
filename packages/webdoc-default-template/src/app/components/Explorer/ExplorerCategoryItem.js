@@ -1,15 +1,10 @@
 import ExplorerItem from "./ExplorerItem";
-import type {ExplorerTargetData} from "./ExplorerTargetData";
 import TreeItem from "@material-ui/lab/TreeItem";
 import cuid from "cuid";
 import {useExplorerStyles} from "./useExplorerStyles";
 
-export type ExplorerTargetGroupProps = {
-  title: string,
-  data: ExplorerTargetData[]
-}
 
-export default function ExplorerCategoryItem(props: ExplorerTargetGroupProps) {
+export default function ExplorerCategoryItem(props) {
   const classes = useExplorerStyles();
 
   if (!props.data.nodeId) {
@@ -17,7 +12,8 @@ export default function ExplorerCategoryItem(props: ExplorerTargetGroupProps) {
   }
 
   return (
-    <TreeItem className="explorer-group"
+    <TreeItem
+      className="explorer-tree__group"
       classes={{
         label: classes.label,
         iconContainer: classes.iconContainer,
@@ -26,9 +22,9 @@ export default function ExplorerCategoryItem(props: ExplorerTargetGroupProps) {
       nodeId={props.data.nodeId}
       label={props.title}
     >
-      {
-        props.data.map((explorerTarget) => <ExplorerItem data={explorerTarget} />)
-      }
+      {props.data.map(
+        (explorerTarget, i) => (<ExplorerItem key={i} data={explorerTarget} />),
+      )}
     </TreeItem>
   );
 }

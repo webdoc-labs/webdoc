@@ -1,0 +1,25 @@
+@import "./scss-utils/all";
+@import "global";
+@import "header";
+
+
+.page {
+	$page: &;
+	@include flex();
+	margin-top: $header-height;
+
+	&-explorer, &-members {
+		@at-root {
+			&,
+			#{$page} #{$page}-content {
+				width: 100%;
+			}
+		}
+
+		max-width: 250px;
+	}
+
+	&-content {}
+
+	&-memebers {}
+}

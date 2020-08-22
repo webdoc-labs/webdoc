@@ -1,29 +1,18 @@
 <?js
-    /* Renders a table of all the classes in the API surface */
-
-    /*::
-     * import type {ClassDoc} from "@webdoc/types";
-     * import type {Index} from "@webdoc/default-template/helper/renderer-plugins/index-sorter";
-     */
-    const { title, documentList } /*: { ClassDoc[] } */ = obj;
-
-    const classIndex /*: Index */ = this.plugins.generateIndex(documentList);
-  ?>
-    <h1 class="document-title"><?js= title ?></h1>
-    <hr />
-  <?js
-    classIndex.forEach(({ prefix, list}) => {
-  ?>
-    <h2 class="section-title"><?js= prefix ?></h2>
-    <hr />
-    <table>
-        <tbody>
-            <?js list.forEach((doc) => { ?>
-                <tr>
-                    <td><?js= this.linkTo(doc) ?></td>
-                    <td><?js= doc.brief || "" ?></td>
-                </tr>
-            <?js }); ?>
-        </tbody>
-    </table>
-<?js }); ?>
+const { title, documentList } = obj;
+const classIndex = this.plugins.generateIndex(documentList);
+?>
+<div class="document">
+  <h1 class="document__title"><?js= title ?></h1>
+  <div class="api-index">
+  <?js classIndex.forEach(({ prefix, list}) => { ?><h2 class="api-index__title"><?js= prefix ?></h2>
+  <table class="api-index-list">
+    <tbody><?js list.forEach((doc) => { ?>
+      <tr class="api-index-list__row">
+        <td class="api-index-list__row-title"><?js= this.linkTo(doc) ?></td>
+        <td class="api-index-list__row-brief"><?js= doc.brief || "" ?></td>
+      </tr><?js }); ?>
+    </tbody>
+  </table><?js }); ?>
+  </div>
+</div>

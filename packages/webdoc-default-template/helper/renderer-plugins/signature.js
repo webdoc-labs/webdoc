@@ -5,44 +5,49 @@ import type {Doc} from "@webdoc/types";
 const {SymbolLinks} = require("@webdoc/template-library");
 
 exports.signaturePlugin = {
-  DOC_TYPE_TO_KEYWORD: {
-    "ClassDoc": "class",
-    "NSDoc": "namespace",
-    "TypedefDoc": "typedef",
-    "InterfaceDoc": "interface",
-  },
-  generateSignature(doc /*: Doc */, codeClasses = "") {
+  generateSignature(doc /*: Doc */) {
+    const mapDocTypeToKeyboard = {
+      ClassDoc: "class",
+      NSDoc: "namespace",
+      TypedefDoc: "typedef",
+      InterfaceDoc: "interface",
+    };
+
     let signature = "";
 
     if (doc.access && doc.access !== "public") {
       signature += `${doc.access} `;
     }
+
     if (doc.scope && doc.scope !== "instance") {
       signature += `${doc.scope} `;
     }
 
-    if (this.DOC_TYPE_TO_KEYWORD[doc.type]) {
-      signature += this.DOC_TYPE_TO_KEYWORD[doc.type] + " ";
+    if (mapDocTypeToKeyboard[doc.type]) {
+      signature += `${mapDocTypeToKeyboard[doc.type]} `;
     }
 
-    if (doc.name !== "constructor") {
-      signature += doc.name;
-    } else {
-      signature += "new " + doc.parent.path;
-    }
+    signature += (doc.name !== "constructor") ?
+      doc.name :
+      `new ${doc.parent.path}`;
 
-    if (doc.type === "MethodDoc" || doc.type === "FunctionDoc") {
+    switch (doc.type) {
+    case "MethodDoc":
+    case "FunctionDoc":
       if (doc.params) {
         signature += `(${
           doc.params
             .filter((param) => !param.identifier.includes("."))
             .map((param) =>
               param.identifier +
-              (param.dataType ? ": " + SymbolLinks.linkTo(param.dataType) : ""))
+              (param.dataType ?
+                ": " + SymbolLinks.linkTo(param.dataType) :
+                ""
+              ),
+            )
             .join(", ")
         })`;
       }
-
       if (doc.returns) {
         signature += ` → {${
           doc.returns
@@ -51,11 +56,13 @@ exports.signaturePlugin = {
             .join(", ")
         }} `;
       }
-    } else if (doc.type === "PropertyDoc") {
+      break;
+    case "PropertyDoc":
       if (doc.dataType) {
         signature += ": " + SymbolLinks.linkTo(doc.dataType);
       }
-    } else if (doc.type === "ClassDoc") {
+      break;
+    case "ClassDoc":
       if (doc.extends) {
         signature += ` extends ${
           doc.extends.map((superClass) => SymbolLinks.linkTo(superClass)).join(", ")
@@ -66,11 +73,9 @@ exports.signaturePlugin = {
           doc.extends.map((ifc) => SymbolLinks.linkTo(ifc)).join(", ")
         }`;
       }
+      break;
     }
 
-    signature = `<code class="${codeClasses}">${signature}</code>`;
-    signature = signature.replace(/\n/g, `</code><br /><code class="${codeClasses}">`);
-
-    return signature;
+    return signature.trim();
   },
 };
