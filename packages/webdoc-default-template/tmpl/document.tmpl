@@ -5,61 +5,61 @@ const
 
 docList.forEach((doc) => {
 ?>
-<div class="document">
-  <h1 class="document__title"><?js= doc.path ?></h1>
-  <?js= this.partial("components/signature.tmpl", doc) ?>
+<div class="page-content">
+  <div class="document">
+    <h1 class="document__title"><?js= doc.path ?></h1>
+    <?js= this.partial("components/signature.tmpl", doc) ?>
 
-  <div class="document__brief"><?js= doc.brief ?></div>
-  <div class="ducument__desctiption"><?js= doc.description ?></div>
+    <div class="document__brief"><?js= doc.brief ?></div>
+    <div class="ducument__desctiption"><?js= doc.description ?></div>
 
-  <?js if (doc.type === "ClassDoc") {
-    // Constructor
-    const ctorDoc = this.getConstructor(doc);
+    <?js if (doc.type === "ClassDoc") {
+      // Constructor
+      const ctorDoc = this.getConstructor(doc);
 
-    if (ctorDoc) { ?>
-      <div class="members">
-        <h2 class="members__category">Constructor</h2>
-        <?js= this.partial("components/member.tmpl", ctorDoc) ?>
-      </div>
-    <?js }
-  } ?>
+      if (ctorDoc) { ?>
+        <div class="members">
+          <h2 class="members__category">Constructor</h2>
+          <?js= this.partial("components/member.tmpl", ctorDoc) ?>
+        </div>
+      <?js }
+    } ?>
 
-  <?js= this.partial("components/members.tmpl", {
-    title: "Public Properties",
-    parent: doc,
-    constraints: {
-      access: "public",
-      type: "PropertyDoc",
-    },
-  }) ?>
-  <?js= this.partial("components/members.tmpl", {
-    title: "Protected Properties",
-    parent: doc,
-    constraints: {
-      access: "protected",
-      type: "PropertyDoc"
-    }
-  }) ?>
-  <?js= this.partial("components/members.tmpl", {
-    title: "Public Methods",
-    parent: doc,
-    constraints: {
-      access: "public",
-      type: ["MethodDoc", "FunctionDoc"],
-    },
-  }) ?>
-  <?js= this.partial("components/members.tmpl", {
-    title: "Protected Methods",
-    parent: doc,
-    constraints: {
-      access: "protected",
-      type: ["MethodDoc", "FunctionDoc"]
-    }
-  }) ?>
-
-  <hr id="nav-members-separator" />
-  <nav id="nav-members">
-      <?js= this.partial("components/nav/members.tmpl", doc) ?>
-  </nav>
+    <?js= this.partial("components/members.tmpl", {
+      title: "Public Properties",
+      parent: doc,
+      constraints: {
+        access: "public",
+        type: "PropertyDoc",
+      },
+    }) ?>
+    <?js= this.partial("components/members.tmpl", {
+      title: "Protected Properties",
+      parent: doc,
+      constraints: {
+        access: "protected",
+        type: "PropertyDoc"
+      }
+    }) ?>
+    <?js= this.partial("components/members.tmpl", {
+      title: "Public Methods",
+      parent: doc,
+      constraints: {
+        access: "public",
+        type: ["MethodDoc", "FunctionDoc"],
+      },
+    }) ?>
+    <?js= this.partial("components/members.tmpl", {
+      title: "Protected Methods",
+      parent: doc,
+      constraints: {
+        access: "protected",
+        type: ["MethodDoc", "FunctionDoc"]
+      }
+    }) ?>
+  </div>
 </div>
+<nav class="page-members">
+    <?js= this.partial("components/nav/members.tmpl", doc) ?>
+</nav>
 <?js }); ?>

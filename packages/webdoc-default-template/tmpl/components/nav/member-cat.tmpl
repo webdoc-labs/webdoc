@@ -11,8 +11,8 @@
   ?>
 
 <section>
-    <span class="nav-member-category-title"><?js= title ?></span>
-    <ul class="nav-member-category-list">
+    <span class="page-members__category-title"><?js= title ?></span>
+    <ul class="page-members__category-list">
         <?js members.forEach((member) => { ?>
             <li><?js= this.linkTo(member.path, member.name) ?></li>
         <?js }) ?>
