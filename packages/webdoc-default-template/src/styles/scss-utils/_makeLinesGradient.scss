@@ -1,0 +1,7 @@
+@function makeLinesGradient($angle: 135deg, $base-color: #ffffff00, $secondary-color: #ffffff00) {
+	@return linear-gradient($angle,
+		$base-color 0%, $base-color 25%,
+		$secondary-color 25%, $secondary-color 50%,
+		$base-color 50%, $base-color 75%,
+		$secondary-color 75%, $secondary-color 100%);
+}

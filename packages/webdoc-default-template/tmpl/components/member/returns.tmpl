@@ -1,0 +1,23 @@
+<?js
+/**
+ * Object member returns render component.
+ */
+const returns = obj || [];
+?>
+<table class="returns">
+  <caption>Returns:</caption>
+  <thead class="returns-head">
+    <tr>
+      <th class="returns-head__type">Type</th>
+      <th class="returns-head__description">Description</th>
+    </tr>
+  </thead>
+  <tbody class="returns-body">
+    <?js returns.forEach((returnElement) => { ?><tr class="returns-body__row">
+      <td class="returns-body__type">
+        <?js if (returnElement.dataType) { ?><pre><code><?js= this.linkTo(returnElement.dataType) ?></code></pre><?js } ?>
+      </td>
+      <td class="returns-body__description"><?js if (returnElement.description) { ?><?js= returnElement.description ?><?js } ?></td>
+    </tr><?js }); ?>
+  </tbody>
+</table>

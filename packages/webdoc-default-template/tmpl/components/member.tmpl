@@ -1,21 +1,21 @@
 <?js
-    /** Renders a method or function document inline */
-    const memberDoc = obj;
-  ?>
-    <div class="method member">
-        <p class="member-title"><?js= memberDoc.name !== "constructor" ? memberDoc.name : "" ?></p>
-        <?js= this.plugins.signature.generateSignature(memberDoc, "member-signature") ?>
+/**
+ * Object member render component.
+ */
+const doc = obj;
+?>
+<div class="member">
+  <h3 class="member__title"><?js= doc.name !== "constructor" ? doc.name : "" ?></h3>
+  <?js= this.partial("components/signature.tmpl", doc) ?>
 
-        <section class="method-description member-description description">
-            <?js= memberDoc.brief ?>
-            <?js= memberDoc.description ?>
-        </section>
+  <div class="member__brief"><?js= doc.brief ?></div>
+  <div class="member__desctiption"><?js= doc.description ?></div>
 
-        <?js if (memberDoc.params && memberDoc.params.length) { ?>
-            <?js= this.partial("components/params-table.tmpl", memberDoc.params) ?>
-        <?js } ?>
-        <br />
-        <?js if (memberDoc.returns && memberDoc.returns.length) { ?>
-            <?js= this.partial("components/returns-table.tmpl", memberDoc.returns) ?>
-        <?js } ?>
-    </div>
+  <?js if (doc.params && doc.params.length) { ?>
+    <?js= this.partial("components/member/params.tmpl", doc.params) ?>
+  <?js } ?>
+
+  <?js if (doc.returns && doc.returns.length) { ?>
+    <?js= this.partial("components/member/returns.tmpl", doc.returns) ?>
+  <?js } ?>
+</div>

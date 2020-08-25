@@ -1,78 +1,63 @@
 <?js
-    /*::
-    import type {Doc} from "@webdoc/model";
+/**
+ * Documentation object render component.
+ */
+const
+  docData = obj,
+  docList = obj.docs;
 
-    type DocumentData = {
-      docs: Doc[]
-    }
-     */
+docList.forEach((doc) => {
+?>
+<div class="document">
+  <h1 class="document__title"><?js= doc.path ?></h1>
+  <?js= this.partial("components/signature.tmpl", doc) ?>
 
-    const docData = obj;
-    const docList = obj.docs;
+  <div class="document__brief"><?js= doc.brief ?></div>
+  <div class="ducument__description"><?js= doc.description ?></div>
 
-    for (let i = 0, j = docList.length; i < j; i++) {
-      const doc = docList[i];
-  ?>
-    <h1 class="document-title"><?js= doc.path ?></h1>
-    <hr />
+  <?js if (doc.type === "ClassDoc") {
+    // Constructor
+    const ctorDoc = this.getConstructor(doc);
 
-    <?js= this.plugins.signature.generateSignature(doc, "signature") ?>
-
-    <hr class="secondary-separator" />
-    <?js= doc.brief ?>
-    <?js= doc.description ?>
-
-    <?js if (doc.type === "ClassDoc") {
-        /* Constructor */
-        const ctorDoc = this.getConstructor(doc);
-
-        if (ctorDoc) {
-      ?>
-        <h2 class="section-title">Constructor</h2>
-        <hr />
+    if (ctorDoc) { ?>
+      <div class="members">
+        <h2 class="members__category">Constructor</h2>
         <?js= this.partial("components/member.tmpl", ctorDoc) ?>
-      <?js }
-      }
-    ?>
+      </div>
+    <?js }
+  } ?>
 
-    <?js=
-        this.partial("components/member-category.tmpl", {
-          title: "Public Properties",
-          parent: doc,
-          constraints: {
-            access: "public",
-            type: "PropertyDoc",
-          },
-        })
-      ?>
-    <?js=
-        this.partial("components/member-category.tmpl", {
-          title: "Protected Properties",
-          parent: doc,
-          constraints: {
-            access: "protected",
-            type: "PropertyDoc"
-          }
-        })
-      ?>
-    <?js=
-        this.partial("components/member-category.tmpl", {
-          title: "Public Methods",
-          parent: doc,
-          constraints: {
-            access: "public",
-            type: ["MethodDoc", "FunctionDoc"],
-          },
-        })
-      ?>
-    <?js=
-        this.partial("components/member-category.tmpl", {
-          title: "Protected Methods",
-          parent: doc,
-          constraints: {
-            access: "protected",
-            type: ["MethodDoc", "FunctionDoc"]
-          }
-        })
-      ?>
-<?js } ?>
+  <?js= this.partial("components/members.tmpl", {
+    title: "Public Properties",
+    parent: doc,
+    constraints: {
+      access: "public",
+      type: "PropertyDoc",
+    },
+  }) ?>
+  <?js= this.partial("components/members.tmpl", {
+    title: "Protected Properties",
+    parent: doc,
+    constraints: {
+      access: "protected",
+      type: "PropertyDoc"
+    }
+  }) ?>
+  <?js= this.partial("components/members.tmpl", {
+    title: "Public Methods",
+    parent: doc,
+    constraints: {
+      access: "public",
+      type: ["MethodDoc", "FunctionDoc"],
+    },
+  }) ?>
+  <?js= this.partial("components/members.tmpl", {
+    title: "Protected Methods",
+    parent: doc,
+    constraints: {
+      access: "protected",
+      type: ["MethodDoc", "FunctionDoc"]
+    }
+  }) ?>
+</div>
+<?js }); ?>

@@ -1,6 +1,8 @@
 import {makeStyles} from "@material-ui/core/styles";
 
-export const useExplorerStyles = makeStyles({
+export const useExplorerStyles = makeStyles({});
+/*
+makeStyles({
   label: {
     color: "black",
     fontSize: 13,
@@ -17,3 +19,4 @@ export const useExplorerStyles = makeStyles({
     backgroundColor: "none",
   },
 });
+*/

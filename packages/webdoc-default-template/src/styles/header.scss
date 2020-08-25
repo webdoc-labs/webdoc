@@ -1,0 +1,22 @@
+@import "./scss-utils/all";
+
+
+$header-height: 64px;
+
+.header {
+	position: fixed;
+	height: $header-height;
+	top: 0;
+	width: 100%;
+
+	&__container {
+		@include center(true);
+		height: 100%;
+	}
+
+	&__title {
+		@include normalize();
+		max-width: 80%;
+		width: 100%;
+	}
+}

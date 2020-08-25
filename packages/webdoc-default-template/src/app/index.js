@@ -1,24 +1,31 @@
-/** global Webdoc */
-import * as React from "react";
-import ReactDOM from "react-dom";
-import App from "./components/App";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
 import Explorer from "./components/Explorer";
-import Typography from "@material-ui/core/Typography";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import ReactDOM from "react-dom";
 
 window.onload = function() {
-  const appBarRoot = document.getElementById("app-bar-root");
-  const explorerRoot = document.getElementById("explorer-root");
+  const appBarRoot = document.getElementById("header-mount-point");
+  const explorerRoot = document.getElementById("explorer-mount-point");
+  const footerRoot = document.getElementById("footer-mount-point");
 
   ReactDOM.render(
-    <AppBar>
-      <Toolbar>
-        <Typography variant="h6">
-        @webdoc/example
-        </Typography>
-      </Toolbar>
-    </AppBar>,
-    appBarRoot);
-  ReactDOM.render(<Explorer />, explorerRoot);
+    (
+      <Header />
+    ),
+    appBarRoot,
+  );
+
+  ReactDOM.render(
+    (
+      <Explorer />
+    ),
+    explorerRoot,
+  );
+
+  ReactDOM.render(
+    (
+      <Footer />
+    ),
+    footerRoot,
+  );
 };

@@ -1,0 +1,32 @@
+@mixin link($normal: null, $hover: null, $active: null, $focus: null, $visited: null, $text-decoration: null) {
+	a {
+		@if ($text-decoration) {
+			text-decoration: $text-decoration;
+		} @else {
+			text-decoration: none;
+		}
+		@if ($normal) {
+			color: $normal;
+		}
+		@if ($hover) {
+			&:hover {
+				color: $hover;
+			}
+		}
+		@if ($visited) {
+			&:visited {
+				color: $visited;
+			}
+		}
+		@if ($active) {
+			&:active {
+				color: $active;
+			}
+		}
+		@if ($focus) {
+			&:focus {
+				color: $focus;
+			}
+		}
+	}
+}

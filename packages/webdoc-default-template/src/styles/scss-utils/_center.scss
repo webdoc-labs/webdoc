@@ -1,0 +1,13 @@
+@import "flex";
+
+@mixin center($align-items-to-center: false) {
+	@if ($align-items-to-center) {
+		@include flex($justify-content: center, $align-items: center);
+	} @else {
+		@include flex($justify-content: center);
+	}
+}
+
+@mixin center-margin {
+	margin: 0 auto;
+}

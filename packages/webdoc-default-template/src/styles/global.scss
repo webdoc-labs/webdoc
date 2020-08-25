@@ -1,0 +1,24 @@
+@import "./scss-utils/all";
+
+
+html,
+body {
+	@include normalize();
+
+	font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+pre,
+code {
+	font-family: "Roboto Mono", monospace;
+}
+
+// Sticky footer hack
+body {
+	@include flex($flex-direction: column);
+	min-height: 100vh;
+
+	.page {
+		flex-grow: 2;
+	}
+}
