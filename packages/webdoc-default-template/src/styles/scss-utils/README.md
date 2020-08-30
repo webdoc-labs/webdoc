@@ -1,5 +1,8 @@
 # scss-utils
 
+> Copied from [scss-utils](https://github.com/Zekfad/scss-utils).
+> See [#23](https://github.com/webdoc-js/webdoc/issues/23) for more info about that.
+
 Here's set of userful mixins and functions I use in my projects. Feel free to contribute and use.
 
 ## Mixins

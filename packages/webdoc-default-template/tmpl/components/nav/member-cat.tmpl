@@ -1,20 +1,20 @@
 <?js
-    /*::
-    import type {Doc} from "@webdoc/types";
-    */
+  /*::
+  import type {Doc} from "@webdoc/types";
+  */
 
-    const { title, members } = obj;
+  const { title, members } = obj;
 
-    if (members.length === 0) {
-      return;
-    }
-  ?>
+  if (members.length === 0) {
+    return;
+  }
+?>
 
 <section>
-    <span class="page-members__category-title"><?js= title ?></span>
-    <ul class="page-members__category-list">
-        <?js members.forEach((member) => { ?>
-            <li><?js= this.linkTo(member.path, member.name) ?></li>
-        <?js }) ?>
-    </ul>
+  <span class="page-members__category-title"><?js= title ?></span>
+  <ul class="page-members__category-list">
+    <?js members.forEach((member) => { ?>
+      <li><?js= this.linkTo(member.path, member.name) ?></li>
+    <?js }) ?>
+  </ul>
 </section>

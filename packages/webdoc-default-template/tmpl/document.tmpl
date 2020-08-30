@@ -1,4 +1,7 @@
 <?js
+/**
+ * Documentation object render component.
+ */
 const
   docData = obj,
   docList = obj.docs;
@@ -10,8 +13,8 @@ docList.forEach((doc) => {
     <h1 class="document__title"><?js= doc.path ?></h1>
     <?js= this.partial("components/signature.tmpl", doc) ?>
 
-    <div class="document__brief"><?js= doc.brief ?></div>
-    <div class="ducument__desctiption"><?js= doc.description ?></div>
+  <div class="document__brief"><?js= doc.brief ?></div>
+  <div class="ducument__description"><?js= doc.description ?></div>
 
     <?js if (doc.type === "ClassDoc") {
       // Constructor
