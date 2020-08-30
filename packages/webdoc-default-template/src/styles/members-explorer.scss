@@ -3,6 +3,9 @@
 .members-explorer {
   @include flex();
 
+  border-left: 1px;
+  border-left-style: solid;
+  border-left-color: black;
   font-size: 14px;
   height: 100%;
   overflow-y: scroll;
@@ -19,13 +22,8 @@
     margin-top: 8px;
   }
 
-  &__separator {
-    margin-left: 8px;
-    margin-right: 8px;
-  }
-
   &__category-title {
-    color: #37474f;
+    color: black;
     font-weight: 500;
   }
 
@@ -34,7 +32,7 @@
   }
 
   a {
-    color: #37474f;
+    color: black;
     text-decoration: none;
 
     &:hover {
