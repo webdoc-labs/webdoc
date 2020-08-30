@@ -1,4 +1,8 @@
 <?js
+    /**
+     * This renders the right-hand side explorer of the current doc's members.
+     */
+
     /*::
     import type {Doc} from "@webdoc/types";
 
@@ -25,21 +29,21 @@
       type: "MethodDoc"
     });
   ?>
-<hr class="page-members__separator" />
-<div class="page-members__container">
-  <?js= this.partial("components/nav/member-cat.tmpl", {
+<hr class="members-explorer__separator" />
+<div class="members-explorer__container">
+  <?js= this.partial("components/members-explorer/category.tmpl", {
     title: "Public Properties",
     members: publicProperties
   }) ?>
-  <?js= this.partial("components/nav/member-cat.tmpl", {
+  <?js= this.partial("components/members-explorer/category.tmpl", {
     title: "Protected Properties",
     members: protectedProperties
   }) ?>
-  <?js= this.partial("components/nav/member-cat.tmpl", {
+  <?js= this.partial("components/members-explorer/category.tmpl", {
     title: "Public Methods",
     members: publicMethods
   }) ?>
-  <?js= this.partial("components/nav/member-cat.tmpl", {
+  <?js= this.partial("components/members-explorer/category.tmpl", {
     title: "Protected Methods",
     members: protectedMethods
   }) ?>

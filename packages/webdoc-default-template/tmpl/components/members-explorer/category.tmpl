@@ -1,0 +1,24 @@
+<?js
+  /**
+   * This renders a specific category of the current doc's members into the member-explorer.
+   */
+
+  /*::
+  import type {Doc} from "@webdoc/types";
+  */
+
+  const { title, members } = obj;
+
+  if (members.length === 0) {
+    return;
+  }
+?>
+
+<div>
+  <span class="members-explorer__category-title"><?js= title ?></span>
+  <ul class="members-explorer__category-list">
+    <?js members.forEach((member) => { ?>
+      <li class="members-explorer__item"><?js= this.linkTo(member.path, member.name) ?></li>
+    <?js }) ?>
+  </ul>
+</div>
