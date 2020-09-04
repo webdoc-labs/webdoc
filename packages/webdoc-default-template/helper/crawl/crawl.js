@@ -19,12 +19,27 @@ export type CategorizedDocumentList = {
 }
 */
 
+
 exports.crawl = function crawl(tree /*: RootDoc */) {
+  buildLinks(tree);
+
   return {
     index: buildIndex(tree),
     reference: crawlReference(tree),
   };
 };
+
+function buildLinks(tree /*: RootDoc */) /*: void */ {
+  traverse(tree, (doc) => {
+    if (doc.type === "RootDoc") {
+      return;
+    }
+
+    const link = SymbolLinks.createLink(doc);
+
+    SymbolLinks.registerLink(doc.path, link);
+  });
+}
 
 function buildIndex(tree /*: RootDoc */) /*: [id: string]: [] & { url: string } */ {
   const classIndexUrl = SymbolLinks.getFileName("Class-Index");

@@ -17,6 +17,7 @@ const {
 // Plugins
 const {indexSorterPlugin} = require("./helper/renderer-plugins/index-sorter");
 const {signaturePlugin} = require("./helper/renderer-plugins/signature");
+const {categoryFilterPlugin} = require("./helper/renderer-plugins/category-filter");
 
 /*::
 import type {
@@ -42,7 +43,8 @@ exports.publish = (options /*: PublishOptions */) => {
   const renderer = new TemplateRenderer(path.join(__dirname, "tmpl"), null, docTree)
     .setLayoutTemplate("layout.tmpl")
     .installPlugin("generateIndex", indexSorterPlugin)
-    .installPlugin("signature", signaturePlugin);
+    .installPlugin("signature", signaturePlugin)
+    .installPlugin("categoryFilter", categoryFilterPlugin);
   const pipeline = new TemplatePipeline(renderer)
     .pipe(new TemplateTagsResolver())
     .pipe(new FlushToFile({skipNullFile: false}));

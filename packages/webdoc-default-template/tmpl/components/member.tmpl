@@ -4,7 +4,7 @@
  */
 const doc = obj;
 ?>
-<div class="member">
+<div class="member" id="<?js= doc.name ?>">
   <h3 class="member__title"><?js= doc.name !== "constructor" ? doc.name : "" ?></h3>
   <?js= this.partial("components/signature.tmpl", doc) ?>
 

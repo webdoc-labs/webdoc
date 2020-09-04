@@ -108,14 +108,7 @@ function buildExplorerHierarchy(rootDoc /*: RootDoc */) /*: ExplorerNode */ {
 
 function buildExplorerTargetsTree(node /*: ExplorerNode */, parentTitle /*: string */ = "") /*: ExplorerTarget */ {
   const doc = node.doc;
-  let page;
-
-  if (doc.type !== "RootDoc") {
-    page = SymbolLinks.createLink(doc);
-
-    SymbolLinks.registerLink(doc.path, page);
-  }
-
+  const page = SymbolLinks.pathToUrl.get(doc.path);
 
   const sliceIndex = (parentTitle ? doc.path.indexOf(parentTitle) + parentTitle.length : -1) + 1;
 

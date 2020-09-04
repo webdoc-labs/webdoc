@@ -24,10 +24,8 @@ const rootData = obj
     <header class="header" id="header-mount-point"></header>
     <article class="page">
       <div class="page-explorer" id="explorer-mount-point"></div>
-      <div class="page-content">
-        <?js= content ?>
-      </div>
-      <div class="page-members" id="member-mount-point"></div>
+      <?js /* Includes content and member-explorer. */ ?>
+      <?js= content ?>
     </article>
     <footer class="footer" id="footer-mount-point"></footer>
     <script>prettyPrint();</script>
