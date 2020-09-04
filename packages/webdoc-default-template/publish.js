@@ -26,6 +26,17 @@ import type {
 
 */
 
+Object.assign(SymbolLinks.STANDALONE_DOCS, [
+  "ClassDoc",
+  "EnumDoc",
+  "FunctionDoc",
+  "InterfaceDoc",
+  "MixinDoc",
+  "NSDoc",
+  "TutorialDoc",
+  "TypedefDoc",
+]);
+
 // Static files in the "code-prettify" package that are used by the generated site
 const PRETTIFIER_SCRIPT_FILES = [
   "lang-css.js",
@@ -155,6 +166,10 @@ function outReference(
   docTree, /*: RootDoc */
 ) {
   for (const [docPath, page] of SymbolLinks.pathToUrl) {
+    if (page.includes("#")) {
+      continue;// skip fragments
+    }
+
     let doc;
 
     try {
@@ -166,6 +181,8 @@ function outReference(
     if (!doc) {
       continue;
     }
+
+    console.log(doc.path, page);
 
     pipeline.render("document.tmpl", {
       docs: [doc],

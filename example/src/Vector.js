@@ -60,7 +60,7 @@ export class Vector extends Array {
 
 /**
  * A 3D vector
- * @typedef {Vector[]} VectorArray
+ * @typedef {Vector[]}VectorArray
  * @property {object} meta
  */
 // TODO: Support the following as we these are resolved to Docs
