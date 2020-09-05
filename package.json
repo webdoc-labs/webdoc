@@ -6,7 +6,8 @@
   "scripts": {
     "prepare": "rush install",
     "test": "",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "watchdog": "pwsh watchdog.ps1 -CMD rush -CMDArgs rebuild"
   },
   "repository": {
     "type": "git",
