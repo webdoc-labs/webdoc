@@ -50,16 +50,17 @@ export function applyDefaultLangConfig(cfg: LanguageConfig) {
 
 export function buildSymbolTree(
   file: string,
-  fileName ?: string = ".js",
+  source?: SourceFile = {path: ".js"},
   config: LanguageConfig = Webdoc.DEFAULT_LANG_CONFIG,
 ): Symbol {
+  const fileName = source.path;
   const lang = languages[fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length)];
 
   if (!lang) {
     throw new Error(`.${lang} file language is not registered`);
   }
 
-  return lang.parse(file, fileName, config);
+  return lang.parse(file, source, config);
 }
 
 // TODO: Asynchronous API for parsing
@@ -76,11 +77,11 @@ export function buildSymbolTree(
  *     Plugins are allowed access to make any post-transform changes as well. Undocumented entities
  *     are removed from the doc-tree.
  *
- * @param {string | string[]} target
+ * @param {string | SourceFile[]} target
  * @param {RootDoc} root
  * @return {RootDoc}
  */
-export function parse(target: string | SourceFile[] | Map<string, string>, root?: RootDoc = {
+export function parse(target: string | SourceFile[], root?: RootDoc = {
   members: [],
   path: "",
   stack: [""],
@@ -88,35 +89,26 @@ export function parse(target: string | SourceFile[] | Map<string, string>, root?
   tags: [],
 }): RootDoc {
   if (typeof target === "string") {
-    target = [target];
+    target = [{content: target, path: "", package: null}];
   }
 
   const partialDoctrees = new Array(Array.isArray(target) ? target.length : target.size);
 
   // Build a symbol-tree for all the files
-  if (Array.isArray(target)) {
-    for (let i = 0; i < target.length; i++) {
-      const {content, path: source} = target[i];
+  for (let i = 0; i < target.length; i++) {
+    const {content, path: source} = target[i];
 
-      partialDoctrees[i] = buildSymbolTree(
-        content || fs.readFileSync(path.join(process.cwd(), source), "utf8"),
-        source,
-      );
-    }
-  } else {
-    let i = 0;
-
-    for (const [fileName, file] of target) {
-      partialDoctrees[i] = buildSymbolTree(file, fileName);
-      ++i;
-    }
+    partialDoctrees[i] = buildSymbolTree(
+      content || fs.readFileSync(path.join(process.cwd(), source), "utf8"),
+      target[i],
+    );
   }
 
   const rsym = assemble(partialDoctrees);
 
   root.children = root.members;
-  transform(rsym, root);
 
+  transform(rsym, root);
   mod(root);
 
   return root;
