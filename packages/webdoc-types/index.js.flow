@@ -1,317 +1,332 @@
 declare module "@webdoc/types" {
-    declare type DataType = (string|DocLink)[] & { template: string };
+  declare type DataType = (string|DocLink)[] & { template: string };
 
-    declare type ParserOpts = {
-      memberof?: string
-    };
+  declare type SourceFile = {
+    content?: string;
+    path: string;
+    package: PackageDoc;
+  };
 
-    declare type Param = {
-      identifier: string,
+  declare type ParserOpts = {
+    memberof?: string
+  };
+
+  declare type Param = {
+    identifier: string,
+    dataType: DataType,
+    description: string,
+    optional?: Boolean,
+    default?: string,
+    variadic?: boolean,
+  };
+
+  declare type Example = {
+    caption: string,
+    code: string
+  };
+
+  declare type SymbolLocation = {
+    start: { line: number, column: number },
+    end: { line: number, column: number },
+    fileName: string
+  }
+
+  declare type Typedef = {
+    of: string[],
+    alias: String,
+  };
+
+  declare type TypedDesc = {
+    dataType: DataType,
+    description: string,
+  };
+
+  declare type DocLink = Doc | string;
+
+  declare type Return = TypedDesc;
+
+  declare type DocType = "ClassDoc" | "FunctionDoc" | "MethodDoc" | "PropertyDoc" | "TypedefDoc" |
+      "NSDoc" | "EventDoc" | "EnumDoc"
+
+  declare type BaseDoc = {
+    name: string,
+    path: string,
+    stack: string[],
+    parent: Doc,
+    children: Doc[],
+    members: Doc[],
+    tags: Tag[],
+    brief: string,
+    description: string,
+    access: "public" | "protected" | "private",
+    authors: string[],
+    deprecated?: string,
+    extends?: DocLink[],
+    examples?: Example[],
+    fires?: [],
+    license?: string,
+    loc?: SourceLocation,
+    scope: "static" | "instance" | "inner" | "default",
+    see?: DocLink[],
+    since?: string,
+    todo?: string[],
+    throws?: DocLink[],
+    version: "alpha" | "beta" | "internal" | "public" | "deprecated",
+    type: "ClassDoc" | "FunctionDoc" | "MethodDoc" | "ObjectDoc" | "RootDoc" | "TypedefDoc",
+    parserOpts?: ParserOpts
+  };
+
+  declare type Doc = BaseDoc | ClassDoc | ObjectDoc | FunctionDoc | MethodDoc | PropertyDoc
+      | TypedefDoc | NSDoc | EventDoc;
+
+  declare type RootDoc = {
+    ...Doc,
+    packages: PackageDoc[],
+    type: "RootDoc"
+  };
+
+  declare type ClassDoc = {
+    ...BaseDoc,
+    params?: Param[],
+    implements?: DocLink[],
+    mixes?: [],
+    type: "ClassDoc"
+  };
+
+  declare type EnumDoc = {
+    ...BaseDoc,
+    type: "EnumDoc"
+  };
+
+  declare type EventDoc = {
+    ...BaseDoc,
+    eventType: string,
+    params?: Param[],
+    type: "EventDoc"
+  };
+
+  declare type FunctionDoc = {
+    ...BaseDoc,
+    params: Param[],
+    returns: Return[],
+    type: "FunctionDoc"
+  };
+
+  declare type MethodDoc = {
+    ...BaseDoc,
+    params: Param[],
+    returns: Return[],
+    inherited: boolean,
+    inherits: MethodDoc,
+    overrides: boolean,
+    type: "MethodDoc"
+  };
+
+  declare type MixinDoc = {
+    ...BaseDoc,
+    mixes?: [],
+    type: "MixinDoc"
+  };
+
+  declare type NSDoc = {
+    ...Doc,
+    type: "NSDoc"
+  };
+
+  declare type ObjectDoc = {
+    ...Doc,
+    implements?: DocLink[],
+    mixes?: [],
+    type: "ObjectDoc"
+  };
+
+  declare type PackageDoc = {
+    ...Doc,
+    api: Doc[],
+    location: string,
+    metadata: Object,
+    type: "PackageDoc"
+  };
+
+  declare type PropertyDoc = {
+    ...Doc,
+    constant?: boolean,
+    dataType?: DataType,
+    dataValue?: string, // Enumerations/constants
+    defaultValue?: string,
+    inherited?: boolean,
+    inherits?: PropertyDoc,
+    optional?: boolean,
+    readonly?: boolean,
+    type: "PropertyDoc"
+  };
+
+  declare type Tutorial = {
+    ...BaseDoc,
+    title: string,
+    contents: string,
+    type: "TutorialDoc"
+  };
+
+  declare type TypedefDoc = {
+    ...Doc,
+    of: [string],
+    alias: string,
+    type: "TypedefDoc",
+    implements: DocLink[]
+  };
+
+  declare type BaseTag = {
+    name: string,
+    value: string,
+    type: "link" | "param" | "return" | "throws"
+  };
+
+  declare type Tag = AccessTag | BaseTag | DeprecatedTag | ExampleTag | ExtendsTag | TypedTag |
+      ParamTag | ReturnTag | MemberTag | ImplementsTag | MixesTag |
+      ThrowsTag | PrivateTag | PropertyTag | ProtectedTag | PublicTag
+
+  declare type AccessTag = {
+    ...BaseTag,
+    access: "public" | "protected" | "private",
+    type: "AccessTag"
+  };
+
+  declare type DeprecatedTag = {
+    ...BaseTag,
+    deprecated: string | boolean,
+    type: "DeprecatedTag"
+  };
+
+  declare type EventTag = {
+    ...BaseTag,
+    event: string,
+    type: "EventTag"
+  };
+
+  declare type ExampleTag = {
+    ...BaseTag,
+    code: string,
+    type: "ExampleTag"
+  };
+
+  declare type ExtendsTag = {
+    ...BaseTag,
+    type: "ExtendsTag"
+  };
+
+  declare type FiresTag = {
+    ...BaseTag,
+    event: string,
+    type: "FiresTag"
+  };
+
+  declare type ImplementsTag = {
+    ...BaseTag,
+    type: "ImplementsTag"
+  };
+
+  declare type InnerTag = {
+    ...BaseTag,
+    type: "InnerTag"
+  };
+
+  declare type InstanceTag = {
+    ...BaseTag,
+    type: "InstanceTag"
+  };
+
+  declare type MixesTag = {
+    ...BaseTag,
+    type: "MixesTag"
+  };
+
+  declare type MemberTag = {
+    ...BaseTag,
+    dataType: DataType
+  };
+
+  declare type MemberofTag = {
+    ...BaseTag,
+    scope: string,
+    type: "MemberofTag"
+  };
+
+  declare type NameTag = {
+    ...BaseTag,
+    alias: string,
+    type: "NameTag"
+  };
+
+  declare type ParamTag = {
+    ...TypedTag,
+    identifier: string,
+    referred: string,
+    description: string,
+    optional?: Boolean,
+    default?: string,
+    variadic?: boolean,
+    type: "ParamTag"
+  };
+
+  declare type ReturnTag = {
+    ...TypedTag,
+    type: "ReturnTag"
+  };
+
+  declare type StaticTag = {
+    ...BaseTag,
+    type: "StaticTag"
+  };
+
+  declare type ScopeTag = {
+    ...BaseTag,
+    scope: "static" | "instance" | "inner",
+    type: "ScopeTag"
+  };
+
+  declare type ThrowsTag = {
+    ...TypedTag,
+    type: "ThrowsTag"
+  };
+
+  declare type TypeTag = {
+    ...BaseTag,
+    dataType: DataType,
+    type: "TypeTag"
+  };
+
+  declare type TypedTag = {
+    ...BaseTag,
+    dataType: DataType,
+    description: string,
+  };
+
+  declare type TypedefTag = {
+    dataType: DataType,
+    alias: String,
+    type: "TypedefTag"
+  };
+
+  declare type PrivateTag = {
+    ...BaseTag,
+    type: "PrivateTag"
+  };
+
+  declare type PropertyTag = {
+      ...BaseTag,
       dataType: DataType,
       description: string,
-      optional?: Boolean,
-      default?: string,
-      variadic?: boolean,
-    };
+      type: "PropertyTag"
+  };
 
-    declare type Example = {
-      caption: string,
-      code: string
-    };
+  declare type ProtectedTag = {
+    ...BaseTag,
+    type: "ProtectedTag"
+  };
 
-    declare type SymbolLocation = {
-      start: { line: number, column: number },
-      end: { line: number, column: number },
-      fileName: string
-    }
-
-    declare type Typedef = {
-      of: string[],
-      alias: String,
-    };
-
-    declare type TypedDesc = {
-      dataType: DataType,
-      description: string,
-    };
-
-    declare type DocLink = Doc | string;
-
-    declare type Return = TypedDesc;
-
-    declare type DocType = "ClassDoc" | "FunctionDoc" | "MethodDoc" | "PropertyDoc" | "TypedefDoc" |
-        "NSDoc" | "EventDoc" | "EnumDoc"
-
-    declare type BaseDoc = {
-      name: string,
-      path: string,
-      stack: string[],
-      parent: Doc,
-      children: Doc[],
-      members: Doc[],
-      tags: Tag[],
-      brief: string,
-      description: string,
-      access: "public" | "protected" | "private",
-      authors: string[],
-      deprecated?: string,
-      extends?: DocLink[],
-      examples?: Example[],
-      fires?: [],
-      license?: string,
-      loc?: SourceLocation,
-      scope: "static" | "instance" | "inner" | "default",
-      see?: DocLink[],
-      since?: string,
-      todo?: string[],
-      throws?: DocLink[],
-      version: "alpha" | "beta" | "internal" | "public" | "deprecated",
-      type: "ClassDoc" | "FunctionDoc" | "MethodDoc" | "ObjectDoc" | "RootDoc" | "TypedefDoc",
-      parserOpts?: ParserOpts
-    };
-
-    declare type Doc = BaseDoc | ClassDoc | ObjectDoc | FunctionDoc | MethodDoc | PropertyDoc
-        | TypedefDoc | NSDoc | EventDoc;
-
-    declare type RootDoc = {
-      ...Doc,
-      type: "RootDoc"
-    };
-
-    declare type ClassDoc = {
-      ...BaseDoc,
-      params?: Param[],
-      implements?: DocLink[],
-      mixes?: [],
-      type: "ClassDoc"
-    };
-
-    declare type EnumDoc = {
-      ...BaseDoc,
-      type: "EnumDoc"
-    };
-
-    declare type EventDoc = {
-      ...BaseDoc,
-      eventType: string,
-      params?: Param[],
-      type: "EventDoc"
-    };
-
-    declare type FunctionDoc = {
-      ...BaseDoc,
-      params: Param[],
-      returns: Return[],
-      type: "FunctionDoc"
-    };
-
-    declare type MethodDoc = {
-      ...BaseDoc,
-      params: Param[],
-      returns: Return[],
-      inherited: boolean,
-      inherits: MethodDoc,
-      overrides: boolean,
-      type: "MethodDoc"
-    };
-
-    declare type MixinDoc = {
-      ...BaseDoc,
-      mixes?: [],
-      type: "MixinDoc"
-    };
-
-    declare type NSDoc = {
-      ...Doc,
-      type: "NSDoc"
-    };
-
-    declare type ObjectDoc = {
-      ...Doc,
-      implements?: DocLink[],
-      mixes?: [],
-      type: "ObjectDoc"
-    };
-
-    declare type PropertyDoc = {
-      ...Doc,
-      constant?: boolean,
-      dataType?: DataType,
-      dataValue?: string, // Enumerations/constants
-      defaultValue?: string,
-      inherited?: boolean,
-      inherits?: PropertyDoc,
-      optional?: boolean,
-      readonly?: boolean,
-      type: "PropertyDoc"
-    };
-
-    declare type Tutorial = {
-      ...BaseDoc,
-      title: string,
-      contents: string,
-      type: "TutorialDoc"
-    };
-
-    declare type TypedefDoc = {
-      ...Doc,
-      of: [string],
-      alias: string,
-      type: "TypedefDoc",
-      implements: DocLink[]
-    };
-
-    declare type BaseTag = {
-      name: string,
-      value: string,
-      type: "link" | "param" | "return" | "throws"
-    };
-
-    declare type Tag = AccessTag | BaseTag | DeprecatedTag | ExampleTag | ExtendsTag | TypedTag |
-        ParamTag | ReturnTag | MemberTag | ImplementsTag | MixesTag |
-        ThrowsTag | PrivateTag | PropertyTag | ProtectedTag | PublicTag
-
-    declare type AccessTag = {
-      ...BaseTag,
-      access: "public" | "protected" | "private",
-      type: "AccessTag"
-    };
-
-    declare type DeprecatedTag = {
-      ...BaseTag,
-      deprecated: string | boolean,
-      type: "DeprecatedTag"
-    };
-
-    declare type EventTag = {
-      ...BaseTag,
-      event: string,
-      type: "EventTag"
-    };
-
-    declare type ExampleTag = {
-      ...BaseTag,
-      code: string,
-      type: "ExampleTag"
-    };
-
-    declare type ExtendsTag = {
-      ...BaseTag,
-      type: "ExtendsTag"
-    };
-
-    declare type FiresTag = {
-      ...BaseTag,
-      event: string,
-      type: "FiresTag"
-    };
-
-    declare type ImplementsTag = {
-      ...BaseTag,
-      type: "ImplementsTag"
-    };
-
-    declare type InnerTag = {
-      ...BaseTag,
-      type: "InnerTag"
-    };
-
-    declare type InstanceTag = {
-      ...BaseTag,
-      type: "InstanceTag"
-    };
-
-    declare type MixesTag = {
-      ...BaseTag,
-      type: "MixesTag"
-    };
-
-    declare type MemberTag = {
-      ...BaseTag,
-      dataType: DataType
-    };
-
-    declare type MemberofTag = {
-      ...BaseTag,
-      scope: string,
-      type: "MemberofTag"
-    };
-
-    declare type NameTag = {
-      ...BaseTag,
-      alias: string,
-      type: "NameTag"
-    };
-
-    declare type ParamTag = {
-      ...TypedTag,
-      identifier: string,
-      referred: string,
-      description: string,
-      optional?: Boolean,
-      default?: string,
-      variadic?: boolean,
-      type: "ParamTag"
-    };
-
-    declare type ReturnTag = {
-      ...TypedTag,
-      type: "ReturnTag"
-    };
-
-    declare type StaticTag = {
-      ...BaseTag,
-      type: "StaticTag"
-    };
-
-    declare type ScopeTag = {
-      ...BaseTag,
-      scope: "static" | "instance" | "inner",
-      type: "ScopeTag"
-    };
-
-    declare type ThrowsTag = {
-      ...TypedTag,
-      type: "ThrowsTag"
-    };
-
-    declare type TypeTag = {
-      ...BaseTag,
-      dataType: DataType,
-      type: "TypeTag"
-    };
-
-    declare type TypedTag = {
-      ...BaseTag,
-      dataType: DataType,
-      description: string,
-    };
-
-    declare type TypedefTag = {
-      dataType: DataType,
-      alias: String,
-      type: "TypedefTag"
-    };
-
-    declare type PrivateTag = {
-      ...BaseTag,
-      type: "PrivateTag"
-    };
-
-    declare type PropertyTag = {
-        ...BaseTag,
-        dataType: DataType,
-        description: string,
-        type: "PropertyTag"
-    };
-
-    declare type ProtectedTag = {
-      ...BaseTag,
-      type: "ProtectedTag"
-    };
-
-    declare type PublicTag = {
-      ...BaseTag,
-      type: "PublicTag"
-    };
+  declare type PublicTag = {
+    ...BaseTag,
+    type: "PublicTag"
+  };
 }

@@ -2,12 +2,14 @@
 /* global Webdoc */
 
 import type {LanguageConfig, LanguageIntegration} from "./types/LanguageIntegration";
+import type {RootDoc, SourceFile} from "@webdoc/types";
 import {langJS, langTS} from "./symbols-babel";
-import type {RootDoc} from "@webdoc/types";
 import type {Symbol} from "./types/Symbol";
 import assemble from "./assembler";
+import fs from "fs";
 import mod from "./transformer/document-tree-modifiers";
 import {parserLogger} from "./Logger";
+import path from "path";
 import transform from "./transformer";
 
 // File-extension -> LanguageIntegration mapping
@@ -78,7 +80,7 @@ export function buildSymbolTree(
  * @param {RootDoc} root
  * @return {RootDoc}
  */
-export function parse(target: string | string[] | Map<string, string>, root?: RootDoc = {
+export function parse(target: string | SourceFile[] | Map<string, string>, root?: RootDoc = {
   members: [],
   path: "",
   stack: [""],
@@ -94,7 +96,12 @@ export function parse(target: string | string[] | Map<string, string>, root?: Ro
   // Build a symbol-tree for all the files
   if (Array.isArray(target)) {
     for (let i = 0; i < target.length; i++) {
-      partialDoctrees[i] = buildSymbolTree(target[i]);
+      const {content, path: source} = target[i];
+
+      partialDoctrees[i] = buildSymbolTree(
+        content || fs.readFileSync(path.join(process.cwd(), source), "utf8"),
+        source,
+      );
     }
   } else {
     let i = 0;
