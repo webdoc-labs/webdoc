@@ -13,6 +13,7 @@ const DOC_TYPE_TO_TITLE = {
   "ModuleDoc": "Modules",
   "NSDoc": "Namespaces",
   "ClassDoc": "Classes",
+  "EnumDoc": "Enums",
   "InterfaceDoc": "Interfaces",
   "FunctionDoc": "Functions",
   "TypedefDoc": "Type Definitions",
@@ -20,10 +21,10 @@ const DOC_TYPE_TO_TITLE = {
 
 const HIERARCHY_SPECIFIERS = {
   "RootDoc": ["PackageDoc", "ModuleDoc",
-    "ClassDoc", "InterfaceDoc", "FunctionDoc", "NSDoc", "TypedefDoc"],
-  "PackageDoc": ["ClassDoc", "InterfaceDoc", "FunctionDoc", "NSDoc", "TypedefDoc"],
-  "ModuleDoc": ["ClassDoc", "InterfaceDoc", "FunctionDoc", "NSDoc", "TypedefDoc"],
-  "NSDoc": ["ClassDoc", "InterfaceDoc", "FunctionDoc", "TypedefDoc"],
+    "ClassDoc", "EnumDoc", "InterfaceDoc", "FunctionDoc", "NSDoc", "TypedefDoc"],
+  "PackageDoc": ["ClassDoc", "EnumDoc", "InterfaceDoc", "FunctionDoc", "NSDoc", "TypedefDoc"],
+  "ModuleDoc": ["ClassDoc", "EnumDoc", "InterfaceDoc", "FunctionDoc", "NSDoc", "TypedefDoc"],
+  "NSDoc": ["ClassDoc", "EnumDoc", "InterfaceDoc", "FunctionDoc", "TypedefDoc"],
 };
 
 // Categories into which API entities are divided
