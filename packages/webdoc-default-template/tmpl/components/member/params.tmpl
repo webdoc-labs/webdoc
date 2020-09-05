@@ -27,34 +27,34 @@ params.forEach((param) => {
   }
 });
 ?>
-<table class="parameters">
-  <caption>Parameters:</caption>
-  <thead>
-    <tr>
-      <?js if (hasName) {?><th>Name</th><?js } ?>
-      <th>Type</th>
-      <?js if (hasAttributes) {?><th>Attributes</th><?js } ?>
-      <?js if (hasDefault) {?><th>Default</th><?js } ?>
-      <th>Description</th>
+<table class="member-parameters">
+  <caption class="member-parameters__caption">Parameters:</caption>
+  <thead class="member-parameters__head">
+    <tr class="member-parameter-header">
+      <?js if (hasName) {?><th class="member-parameter-header__name">Name</th><?js } ?>
+      <th class="member-parameter-header__type">Type</th>
+      <?js if (hasAttributes) {?><th class="member-parameter-header__attributes">Attributes</th><?js } ?>
+      <?js if (hasDefault) {?><th class="member-parameter-header__default">Default</th><?js } ?>
+      <th class="member-parameter-header__description">Description</th>
     </tr>
   </thead>
-  <tbody>
-    <?js params.forEach((param) => { if (!param) { return; } ?><tr>
-      <?js if (hasName) {?><td class="name">
+  <tbody class="member-parameters__body">
+    <?js params.forEach((param) => { if (!param) { return; } ?><tr class="member-parameter">
+      <?js if (hasName) {?><td class="member-parameter__name">
         <?js= param.identifier ?>
       </td><?js } ?>
-      <td class="type">
+      <td class="member-parameter__type">
         <?js if (param.dataType) {?><?js= this.linkTo(param.dataType) ?><?js } ?>
       </td>
-      <?js if (hasAttributes) {?><td class="attributes">
+      <?js if (hasAttributes) {?><td class="member-parameter__attributes">
         <?js if (param.optional) { ?><p>&lt;optional&gt;</p><?js } ?>
         <?js if (param.nullable) { ?><p>&lt;nullable&gt;</p><?js } ?>
         <?js if (param.variable) { ?><p>&lt;repeatable&gt;</p><?js } ?>
       </td><?js } ?>
-      <?js if (hasDefault) {?><td class="default">
+      <?js if (hasDefault) {?><td class="member-parameter__default">
         <?js if (typeof param.default !== 'undefined') { ?><?js= this.htmlText(param.default) ?><?js } ?>
       </td><?js } ?>
-      <td class="description"><?js= param.description ?></td>
+      <td class="member-parameter__description"><?js= param.description ?></td>
     </tr><?js }); ?>
   </tbody>
 </table>

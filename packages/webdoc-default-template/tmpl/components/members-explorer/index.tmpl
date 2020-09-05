@@ -29,7 +29,7 @@
       type: "MethodDoc"
     });
   ?>
-<div class="members-explorer__container">
+<nav class="page-members-explorer">
   <?js= this.partial("components/members-explorer/category.tmpl", {
     title: "Public Properties",
     members: publicProperties
@@ -46,5 +46,4 @@
     title: "Protected Methods",
     members: protectedMethods
   }) ?>
-</div>
-<?js ?>
+</nav>
