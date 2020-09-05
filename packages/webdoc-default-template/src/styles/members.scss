@@ -1,0 +1,26 @@
+@import "themes";
+
+.members {
+  &__category {
+    font-size: 2em;
+  }
+}
+
+.member {
+  margin-bottom: 12px;
+  width: 100%;
+}
+
+.member > .signature {
+  margin-bottom: 8px;
+}
+
+.member-separator {
+  background-color: $colorBorder;
+  border: none;
+  color: $colorBorder;
+  margin-left: 0;
+  height: 1px;
+  text-align: center;
+  width: 50%;
+}

@@ -1,0 +1,39 @@
+@import "themes";
+
+pre,
+code {
+  background-color: $colorCodeBackground;
+  border-radius: 2px;
+	font-family: "Consolas", "Roboto Mono", monospace;
+  font-size: $textCode;
+  vertical-align: baseline;
+  width: max-content;
+  word-wrap: keep-all;
+}
+
+pre {
+  margin: 0;
+}
+
+code {
+  border-color: $colorBorder;
+  border-style: solid;
+  border-width: 1px;
+  padding-left: 3px;
+  padding-top: 2px;
+  padding-right: 3px;
+  padding-bottom: 2px;
+}
+
+.signature-container {
+  max-width: 90%;
+  padding-top: 6px;
+  padding-bottom: 12px;
+  overflow-x: scroll;
+  overflow-y: visible;
+}
+
+.signature > code {
+  border-radius: 3px;
+  padding: 6px;
+}

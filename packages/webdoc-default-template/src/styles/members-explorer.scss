@@ -6,19 +6,17 @@
   border-left: 1px;
   border-left-style: solid;
   border-left-color: black;
+  flex-grow: 2;
   font-size: 14px;
-  height: 100%;
   overflow-y: scroll;
-  padding: 16px;
-  padding-left: 8px;
+  margin-right: 16px;
+  margin-left: 8px;
   padding-top: 80px;
-  position: fixed;
-  right: 0px;
-  top: 0px;
-  width: 240px;
+  max-width: 250px;
 
   &__container {
     flex-grow: 1;
+    margin-left: 8px;
     margin-top: 8px;
   }
 

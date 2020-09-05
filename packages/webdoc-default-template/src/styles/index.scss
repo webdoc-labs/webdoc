@@ -1,12 +1,21 @@
 @import "./scss-utils/all";
+
+@import "document";
 @import "global";
 @import "header";
+@import "members";
 @import "members-explorer";
+@import "snippets";
+@import "tables";
+
+@import "pages/api-index";
 
 .page {
 	$page: &;
 	@include flex();
-	margin-top: $header-height;
+
+  margin-top: $header-height;
+  justify-content: space-between;
 
 	&-explorer, &-members {
 		@at-root {
@@ -19,7 +28,15 @@
 		max-width: 250px;
 	}
 
-	&-content {}
+	&-content {
+    display: flex;
+    flex-direction: row;
+    flex-basis: min-content;
+    flex-grow: 1;
+    max-width: 67%;
+    justify-content: flex-start;
+    padding: 8px;
+  }
 
-	&-memebers {}
+	&-members {}
 }

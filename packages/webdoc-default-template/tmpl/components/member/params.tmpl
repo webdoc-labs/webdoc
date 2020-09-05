@@ -41,10 +41,10 @@ params.forEach((param) => {
   <tbody>
     <?js params.forEach((param) => { if (!param) { return; } ?><tr>
       <?js if (hasName) {?><td class="name">
-        <pre><code><?js= param.identifier ?></code></pre>
+        <?js= param.identifier ?>
       </td><?js } ?>
       <td class="type">
-        <?js if (param.dataType) {?><pre><code><?js= this.linkTo(param.dataType) ?></code></pre><?js } ?>
+        <?js if (param.dataType) {?><?js= this.linkTo(param.dataType) ?><?js } ?>
       </td>
       <?js if (hasAttributes) {?><td class="attributes">
         <?js if (param.optional) { ?><p>&lt;optional&gt;</p><?js } ?>

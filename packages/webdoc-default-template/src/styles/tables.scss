@@ -1,0 +1,32 @@
+@import "themes.scss";
+
+table {
+  border: 1px solid $colorBorder;
+  border-collapse: collapse;
+  margin-bottom: 8px;
+}
+
+caption {
+  font-weight: bold;
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+th {
+  border-bottom: 1px solid $colorBorder;
+  font-weight: 500;
+}
+
+th, td {
+  padding: 8px;
+  font-size: 92%;
+  text-align: left;
+}
+
+td p:first-child {
+  margin-top: 0;
+}
+
+td p:last-child {
+  margin-bottom: 0;
+}

@@ -1,24 +1,28 @@
 @import "./scss-utils/all";
-
+@import "metrics.scss";
+@import "themes.scss";
 
 html,
 body {
 	@include normalize();
-
-	font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-}
-
-pre,
-code {
-	font-family: "Roboto Mono", monospace;
 }
 
 // Sticky footer hack
 body {
 	@include flex($flex-direction: column);
+
+  background-color: $colorPrimary;
+  color: $colorPrimaryText;
+  font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: $textDefault;
 	min-height: 100vh;
+  text-rendering: optimizeLegibility;
 
 	.page {
 		flex-grow: 2;
 	}
+}
+
+a {
+  text-decoration: none;
 }
