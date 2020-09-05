@@ -167,7 +167,7 @@ function outReference(
 ) {
   for (const [docPath, page] of SymbolLinks.pathToUrl) {
     if (page.includes("#")) {
-      continue;// skip fragments
+      continue;// skip fragments (non-standalone docs)
     }
 
     let doc;
@@ -181,8 +181,6 @@ function outReference(
     if (!doc) {
       continue;
     }
-
-    console.log(doc.path, page);
 
     pipeline.render("document.tmpl", {
       docs: [doc],
