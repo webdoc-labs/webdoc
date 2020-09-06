@@ -38,8 +38,6 @@ function crawlReference(doc /*: Doc */) {
 
   const tree = buildExplorerTargetsTree(explorerHierarchy);
 
-  console.log(tree.children.Packages[0].children.Classes);
-
   return tree;
 }
 
