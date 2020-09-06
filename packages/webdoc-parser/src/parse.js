@@ -50,9 +50,13 @@ export function applyDefaultLangConfig(cfg: LanguageConfig) {
 
 export function buildSymbolTree(
   file: string,
-  source?: SourceFile = {path: ".js"},
+  source?: SourceFile | string = {path: ".js"},
   config: LanguageConfig = Webdoc.DEFAULT_LANG_CONFIG,
 ): Symbol {
+  if (typeof source === "string") {
+    source = {path: source};
+  }
+
   const fileName = source.path;
   const lang = languages[fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length)];
 
@@ -89,7 +93,7 @@ export function parse(target: string | SourceFile[], root?: RootDoc = {
   tags: [],
 }): RootDoc {
   if (typeof target === "string") {
-    target = [{content: target, path: "", package: null}];
+    target = [{content: target, path: ".js", package: null}];
   }
 
   const partialDoctrees = new Array(Array.isArray(target) ? target.length : target.size);

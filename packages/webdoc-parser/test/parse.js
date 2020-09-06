@@ -32,8 +32,10 @@ describe("@webdoc/parser.parse", function() {
   });
 
   it("should infer 'extends', 'implements' even if target is @memberof something else", function() {
-    const docs = parse(new Map(Object.entries({
-      "index.ts": `
+    const docs = parse([{
+      path: "index.ts",
+      package: {},
+      content: `
       /** @namespace NSName */
 
       /**
@@ -54,7 +56,7 @@ describe("@webdoc/parser.parse", function() {
       class ClassName extends SuperClassName implements InterfaceName {
 
       }
-    `})));
+    `}]);
 
     expect(docs.members.length).to.equal(2);
 
@@ -91,11 +93,11 @@ describe("@webdoc/parser.parse", function() {
       const settings = {};
     `;
 
-    const symtree = parse(new Map(Object.entries({
-      "file1.js": file1,
-      "file2.js": file2,
-      "main.js": main,
-    })));
+    const symtree = parse([
+      {content: file1, path: "file1.js", package: {}},
+      {content: file2, path: "file2.js", package: {}},
+      {content: main, path: "main.js", package: {}},
+    ]);
 
     expect(symtree.members.length).to.equal(1);
     expect(symtree.members[0].members.length).to.equal(2);

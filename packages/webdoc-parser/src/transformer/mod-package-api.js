@@ -8,6 +8,10 @@ import type {Doc} from "@webdoc/types";
  * @param {Doc} doc - root of document tree
  */
 export default function packageApi(doc: Doc): void {
+  if (global.__TEST__) {
+    return;// packageApi does not run on testing environment
+  }
+
   if (doc.type !== "RootDoc") {
     const ppkg = doc.parent.loc ? doc.parent.loc.file.package : null;
     const pkg = doc.loc.file.package;
