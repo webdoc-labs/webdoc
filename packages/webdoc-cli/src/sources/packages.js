@@ -15,7 +15,7 @@ export function packages(sourceFiles: SourceFile[]): PackageDoc[] {
     let pkg = cache.get(dir);
 
     if (!pkg) {
-      const pkgJson = pkgUp.sync(file.path);
+      const pkgJson = pkgUp.sync({cwd: dir});
 
       // Attempt to get PackageDoc from package.json mapping
       pkg = cache.get(pkgJson);
