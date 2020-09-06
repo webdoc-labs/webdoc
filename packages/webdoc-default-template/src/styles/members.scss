@@ -1,4 +1,5 @@
-@import "themes";
+@import "vars";
+
 
 .members {
   &__category {
@@ -7,20 +8,25 @@
 }
 
 .member {
-  margin-bottom: 12px;
+  position: relative;
+
   width: 100%;
-}
+  padding-bottom: 12px;
 
-.member > .signature {
-  margin-bottom: 8px;
-}
+  &:not(:last-child) {
+    &:after {
+      content: '';
+      position: absolute;
+      width: 69%;
+      height: 1px;
+      background-color: $colorBorders;
 
-.member-separator {
-  background-color: $colorBorder;
-  border: none;
-  color: $colorBorder;
-  margin-left: 0;
-  height: 1px;
-  text-align: center;
-  width: 50%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  & > .signature {
+    margin-bottom: 8px;
+  }
 }

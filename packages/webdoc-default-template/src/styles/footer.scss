@@ -1,21 +1,21 @@
 @import "./scss-utils/all";
 
+@import "vars";
 
-$footer-height: 64px;
 
 .footer {
-	height: $footer-height;
-	bottom: 0;
-	width: 100%;
+  height: $footer-height;
+  bottom: 0;
+  width: 100%;
 
-	&__container {
-		@include center(true);
-		height: 100%;
-	}
+  &__container {
+    @include center(true);
+    height: 100%;
+  }
 
-	&__text {
-		@include normalize();
-		max-width: 80%;
-		width: 100%;
-	}
+  &__text {
+    @include normalize();
+    max-width: 80%;
+    width: 100%;
+  }
 }
