@@ -33,6 +33,9 @@ const defaultConfig = {
     default: {
       includeDate: true,
     },
+    apiExplorer: {
+      mode: "package",
+    },
     repository: undefined, // ex. GitHub repo holding source files to link source files
     // should contain branch - https://github.com/webdoc-js/webdoc/blob/master/
   },
