@@ -1,9 +1,8 @@
-import type {SourceFile} from "@webdoc/types";
+import type {RootDoc, SourceFile} from "@webdoc/types";
 import globby from "globby";
 import {packages} from "./packages";
-import {path} from "path";
 
-export function sources(config: Object): SourceFile[] {
+export function sources(config: Object, documentTree: RootDoc): SourceFile[] {
   const includePattern = config.source.includePattern || config.source.include;
 
   if (!includePattern) {
@@ -13,7 +12,7 @@ export function sources(config: Object): SourceFile[] {
   const paths = globby.sync(includePattern);
   const sources: SourceFile[] = paths.map((file) => ({path: file}));
 
-  packages(sources);
+  documentTree.packages = packages(sources);
 
   return sources;
 }

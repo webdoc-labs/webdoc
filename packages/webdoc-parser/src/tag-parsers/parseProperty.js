@@ -111,6 +111,7 @@ export function parseProperty(value: string, doc: $Shape<Doc>): PropertyTag {
     description,
     optional,
     scope: "default", // related-resolution doctree-mod will resolve this
+    loc: doc.loc,
   }));
 
   return {

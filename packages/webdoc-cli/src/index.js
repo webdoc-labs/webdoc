@@ -85,8 +85,6 @@ async function main(argv: yargs.Arguments<>) {
     }
   }
 
-  const sourceFiles = sources(config);
-
   const documentTree: RootDoc = {
     children: [],
     path: "",
@@ -94,6 +92,8 @@ async function main(argv: yargs.Arguments<>) {
     type: "RootDoc",
     tags: [],
   };
+
+  const sourceFiles = sources(config, documentTree);
 
   documentTree.members = documentTree.children;
 

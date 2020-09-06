@@ -2,9 +2,10 @@
 
 import type {Doc, RootDoc} from "@webdoc/types";
 import modDiscoverMembers from "./mod-discover-members";
+import modPackageApi from "./mod-package-api";
 import modPrune from "./mod-prune";
-import modResolveMembers from "./mod-resolve-members";
 import modResolveMemberof from "./mod-resolve-memberof";
+import modResolveMembers from "./mod-resolve-members";
 import modResolveRelated from "./mod-resolve-related";
 import modSort from "./mod-sort-members";
 
@@ -130,6 +131,7 @@ registerDoctreeMod("ExtendsImplementsMixesResolution", STAGE_SYMBOLS_RESOLVED, m
 registerDoctreeMod("Prune", STAGE_FINISHED, modPrune);
 registerDoctreeMod("ClassMemberDiscovery", STAGE_FINISHED, modDiscoverMembers);
 registerDoctreeMod("Sort", STAGE_FINISHED, modSort);
+registerDoctreeMod("PackageApi", STAGE_FINISHED, modPackageApi);
 
 export default function mod(doctree) {
   for (let i = 0; i < installedMods.length; i++) {
