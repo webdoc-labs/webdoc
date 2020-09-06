@@ -51,6 +51,7 @@ coverage/
 
 # Example docs
 example/docs/*
+example/*docs/*
 
 # OS specific configs
 .DS_Store

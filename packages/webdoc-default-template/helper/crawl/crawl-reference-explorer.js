@@ -4,7 +4,12 @@ const {SymbolLinks} = require("@webdoc/template-library");
 const {traverse} = require("@webdoc/model");
 
 /*::
-import type {DocType} from "@webdoc/types";
+import type {
+  Doc,
+  DocType,
+  PackageDoc,
+  RootDoc
+} from "@webdoc/types";
 import type {CategorizedDocumentList} from "./crawl";
 */
 
@@ -27,22 +32,13 @@ const HIERARCHY_SPECIFIERS = {
   "NSDoc": ["ClassDoc", "EnumDoc", "InterfaceDoc", "FunctionDoc", "TypedefDoc"],
 };
 
-// Categories into which API entities are divided
-const CATEGORIES = [
-  "namespaces",
-  "classes",
-  "enums",
-  "events",
-  "mixins",
-  "interfaces",
-  "typedefs",
-];
-
 // Crawls the tree searching for the API reference
 function crawlReference(doc /*: Doc */) {
-  const explorerHierarchy = buildExplorerHierarchy(doc);
+  const explorerHierarchy = buildExplorerHierarchy(doc, doc.packages ? (doc.packages.length > 1) : false);
 
-  return buildExplorerTargetsTree(explorerHierarchy);
+  const tree = buildExplorerTargetsTree(explorerHierarchy);
+
+  return tree;
 }
 
 exports.crawlReference = crawlReference;
@@ -53,14 +49,16 @@ type ExplorerNode = {
   children: CategorizedDocumentList,
 */
 
-function buildExplorerHierarchy(rootDoc /*: RootDoc */) /*: ExplorerNode */ {
+function buildExplorerHierarchy(rootDoc /*: RootDoc */, multiPackage = false) /*: ExplorerNode */ {
   const hierarchyStack /*: DocType[][] */ = [];
   const rootNode = {doc: rootDoc, children: {}};
 
-  traverse(rootDoc, {
+  let baseNode = rootNode;
+
+  const traversalContext = {
     enter(doc) {
-      if (doc.type === "RootDoc") {
-        hierarchyStack.push([rootNode]);
+      if (doc.type === "RootDoc" || doc.type === "PackageDoc") {
+        hierarchyStack.push([baseNode]);
         return;
       }
 
@@ -102,18 +100,71 @@ function buildExplorerHierarchy(rootDoc /*: RootDoc */) /*: ExplorerNode */ {
     exit(doc) {
       hierarchyStack.pop();
     },
-  });
+  };
+
+  if (!multiPackage) {
+    traverse(rootDoc, traversalContext);
+  } else {
+    rootNode.children.PackageDoc = [];
+
+    rootDoc.packages.forEach((pkgDoc) => {
+      const pkgNode = {
+        doc: pkgDoc,
+        children: {},
+      };
+
+      rootNode.children.PackageDoc.push(pkgNode);
+
+      baseNode = pkgNode;
+
+      traversePackage(pkgDoc, traversalContext);
+    });
+  }
 
   return rootNode;
+}
+
+/*::
+type PackageTraversalContext = {
+  [id: "enter" | "exit"]: (doc: Doc) => void,
+};
+*/
+
+function traversePackage(doc /*: Doc | PackageDoc */, context /*: Object */) {
+  if (doc.type !== "PackageDoc" &&
+    doc.parent.type !== "PackageDoc" &&
+    doc.parent.type !== "RootDoc" &&
+    doc.loc.file.package !== doc.parent.loc.file.package) {
+    // cannot enter into a different package's API
+    return;
+  }
+
+  context.enter(doc);
+
+  const arr = doc.members || doc.api;
+
+  for (let i = 0; i < arr.length; i++) {
+    traversePackage(arr[i], context);
+  }
+
+  context.exit(doc);
 }
 
 function buildExplorerTargetsTree(node /*: ExplorerNode */, parentTitle /*: string */ = "") /*: ExplorerTarget */ {
   const doc = node.doc;
   const page = SymbolLinks.pathToUrl.get(doc.path);
 
-  const sliceIndex = (parentTitle ? doc.path.indexOf(parentTitle) + parentTitle.length : -1) + 1;
+  let title = "";
 
-  node.title = doc.path.slice(sliceIndex);
+  if (doc.type !== "PackageDoc") {
+    const sliceIndex = (parentTitle ? doc.path.indexOf(parentTitle) + parentTitle.length : -1) + 1;
+
+    node.title = doc.path.slice(sliceIndex);
+    title = node.title;
+  } else {
+    node.title = doc.metadata.name;
+    // Don't pass on title for packages
+  }
 
   const childNodes = node.children;
   const childrenCategories = Object.keys(node.children);
@@ -136,7 +187,7 @@ function buildExplorerTargetsTree(node /*: ExplorerNode */, parentTitle /*: stri
     }
 
     for (const [key, value] of Object.entries(childNodes)) {
-      node.children[DOC_TYPE_TO_TITLE[key]] = value.map((cn) => buildExplorerTargetsTree(cn, node.title));
+      node.children[DOC_TYPE_TO_TITLE[key]] = value.map((cn) => buildExplorerTargetsTree(cn, title));
     }
 
     node.page = null;
