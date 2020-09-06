@@ -34,7 +34,7 @@ const HIERARCHY_SPECIFIERS = {
 
 // Crawls the tree searching for the API reference
 function crawlReference(doc /*: Doc */) {
-  const explorerHierarchy = buildExplorerHierarchy(doc, true);
+  const explorerHierarchy = buildExplorerHierarchy(doc, doc.packages ? (doc.packages.length > 1) : false);
 
   const tree = buildExplorerTargetsTree(explorerHierarchy);
 
