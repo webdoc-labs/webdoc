@@ -1,0 +1,629 @@
+{
+	"type": "RootDoc",
+	"children": [
+		{
+			"name": "WebdocParser",
+			"type": "ClassDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "STAGE_AST_LIKE",
+			"type": "PropertyDoc",
+			"brief": "",
+			"description": "<p>The doctree-mod should run when the &quot;members&quot; are resolved to their actual AST parent. This\noccurs after {@code STAGE_BLANK}.</p>\n<p>Example:</p>\n<pre><code class=\"hljs language-js\"><span class=\"hljs-class\"><span class=\"hljs-keyword\">class</span> <span class=\"hljs-title\">DocumentedClass</span> </span>{\n  <span class=\"hljs-keyword\">constructor</span>() {\n    <span class=\"hljs-comment\">/** <span class=\"hljs-doctag\">@member <span class=\"hljs-type\">{string) *\\/\n    this.instanceProperty = \"defaultValue\";\n    /** @member {string}</span> </span>*\\/\n    DocumentedClass.instanceCount = DocumentedClass.instanceCount\n      ? DocumentedClass.instanceCount + 1 : 1;\n  }\n}\n</span></code></pre>\n<p>Before STAGE_AST_LIKE, the symbols <code>instanceProperty</code> and <code>instanceCount</code> will be a child of\n<code>DocumentedClass#constructor</code>. However, in STAGE_ASK_LIKE, they will be resolved as children of\n<code>DocumentedClass</code>.</p>"
+		},
+		{
+			"name": "STAGE_BLANK",
+			"type": "PropertyDoc",
+			"brief": "",
+			"description": "<p>The doctree-mod should run before all other mods.</p>"
+		},
+		{
+			"name": "STAGE_FINISHED",
+			"type": "PropertyDoc",
+			"brief": "",
+			"description": "<p>This stage occurs after all symbol-hierarchy operations are done. This is the best place for\ndoctree-mods that simply alter the doc content without using the parent/members relations.</p>\n<p>This occurs after {@code STAGE_SYMBOLS_DISCOVERED}.</p>"
+		},
+		{
+			"name": "STAGE_SYMBOLS_RESOLVED",
+			"type": "PropertyDoc",
+			"brief": "",
+			"description": "<p>The doctree-mod should run when symbols are placed in their documented parents. The\n<code>@modResolveMemberof</code> tag is resolved in this stage. This occurs after {@code STAGE_AST_LIKE}.</p>\n<p>Example:</p>\n<pre><code class=\"hljs language-js\"><span class=\"hljs-comment\">/**\n * <span class=\"hljs-doctag\">@namespace <span class=\"hljs-variable\">NS</span></span>\n *\\/\n\n/**\n * <span class=\"hljs-doctag\">@modResolveMemberof <span class=\"hljs-variable\">NS</span></span>\n *\\/\nclass API {}\n</span></code></pre>\n<p>Before {@code STAGE_SYMBOLS_RESOLVED}, the symbol {@code API} won't have a parent. However, in\n{@code STAGE_SYMBOLS_RESOLVED}, the symbol {@code API} will be a child of {@code NS}.</p>"
+		},
+		{
+			"name": "createHeadlessSymbol",
+			"type": "MethodDoc",
+			"scope": "instance",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "del",
+			"type": "MethodDoc",
+			"scope": "instance",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "logRecursive",
+			"type": "MethodDoc",
+			"scope": "instance",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "parse",
+			"type": "MethodDoc",
+			"scope": "instance",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "TagParser",
+			"type": "MethodDoc",
+			"scope": "instance",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "addChildDoc",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "addChildSymbol",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "addDoc",
+			"type": "FunctionDoc",
+			"brief": "<p>Adds a doc at its path in the doc-tree.</p>",
+			"description": ""
+		},
+		{
+			"name": "applyDefaultLangConfig",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "assemble",
+			"type": "FunctionDoc",
+			"brief": "<p>Assembles the symbol-metadata trees of each source-file into one, monolithic tree.</p>",
+			"description": ""
+		},
+		{
+			"name": "buildSymbolTree",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": "",
+			"children": [
+				{
+					"name": "enter",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": "",
+					"description": ""
+				},
+				{
+					"name": "exit",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": "",
+					"description": ""
+				}
+			]
+		},
+		{
+			"name": "childDoc",
+			"type": "FunctionDoc",
+			"brief": "<p>Searches for the doc named {@code lname} in the given scoped documentation.</p>",
+			"description": ""
+		},
+		{
+			"name": "clearRegistry",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "cloneDoc",
+			"type": "FunctionDoc",
+			"brief": "<p>Clones the doc without its children or parent.</p>",
+			"description": ""
+		},
+		{
+			"name": "cloneType",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "coalescePair",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "createBlock",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "createDataType",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "createDoc",
+			"type": "FunctionDoc",
+			"brief": "<p>Creates a valid doc object with a name &amp; type.</p>",
+			"description": ""
+		},
+		{
+			"name": "createRestDataType",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "createSimpleDocumentedType",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "declareParameter",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "discoverMembers",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "doc",
+			"type": "FunctionDoc",
+			"brief": "<p>Finds the doc whose relative path is {@code path} w.r.t {@code root}.</p>",
+			"description": ""
+		},
+		{
+			"name": "ensureDiscovered",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "exportTaffy",
+			"type": "FunctionDoc",
+			"brief": "<p>Exports a doc-tree in a TaffyDB database. The docs are inserted in a depth-first order.</p>",
+			"description": ""
+		},
+		{
+			"name": "extract",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": "<p>Extracts the documentation of the node, if one exists. This also handles the case where the node\nitself is a documentation comment.</p>"
+		},
+		{
+			"name": "extractDataValue",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "extractExtends",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "extractIdentifier",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "extractParams",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "extractSymbol",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "extractType",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "filterComments",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "findSymbol",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "generateComparator",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "initLogger",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "isClass",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "isExternal",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "isInterface",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "isModule",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "isNamespace",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "isObligateLeaf",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "isParentThis",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "isProperty",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "loadTutorials",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "matchDataTypeClosure",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "memberofResolve",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "mergeParams",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "modAssembly",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "morphTutorials",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "packageApi",
+			"type": "FunctionDoc",
+			"brief": "<p>Resolves each package's top-level API docs.</p>",
+			"description": ""
+		},
+		{
+			"name": "packages",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "parse",
+			"type": "FunctionDoc",
+			"brief": "<p>Parses the file(s) into a doc-tree. This consists of the following phases:</p>",
+			"description": "<ul>\n<li>Capture Phase: Documentation comments are extracted out of each file and assembled into\na temporary list of partial-doc trees.</li>\n<li>Transform Phase: Each file's partial-doc tree is transformed into docs and assembled in\nmonolithic doc-tree.</li>\n<li>Mod Phase: The &quot;@memberof&quot; tag is handled by moving docs to their final path;\n<this> member docs are moved to the appropriate scope.\nPlugins are allowed access to make any post-transform changes as well. Undocumented entities\nare removed from the doc-tree.</li>\n</ul>"
+		},
+		{
+			"name": "parseAbstract",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "parseCopyright",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "parseDeprecated",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "parseEvent",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "parseFires",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "parseImplements",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "parseInstance",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "parseLicense",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "parsePrivate",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "parseProperty",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "parsePublic",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "parseScope",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "parseSince",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "parseTodo",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "parseType",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "parseTypedDescription",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "queueTargets",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "readDoctree",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": "<p>Imports the doctree from the JSON format string-data. This will not recover all of the\ninformation in the original doctree.</p>"
+		},
+		{
+			"name": "registerDoctreeMod",
+			"type": "FunctionDoc",
+			"brief": "<p>Registers the doctree-mod so that it will run when {@code parse} is invoked.</p>",
+			"description": "<p>NOTE: This is an internal API. If you're writing a plugin, use the\n{@code Parser#installDoctreeMod} API instead.</p>\n<p>HINT: If your doctree-mod isn't affected by the relations b/w different symbols, then you should\npick {@code STAGE_FINISHED}.</p>"
+		},
+		{
+			"name": "registerObjectPropertyVariables",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "registerParameters",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "registerValidator",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "registerWebdocParser",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": "",
+			"children": [
+				{
+					"name": "installPlugin",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": "",
+					"description": ""
+				}
+			]
+		},
+		{
+			"name": "resolveAssignedMembersRecursive",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "resolvedThis",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "resolveLinkArray",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "resolveRelated",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": "<ul>\n<li>\n<p>Resolves all docs listed in the &quot;extends&quot;, &quot;implements&quot;, &quot;mixes&quot;. This prevent redundant\nsearches to extended/implemented/mixed symbols.</p>\n</li>\n<li>\n<p>Replaces the &quot;default&quot; scopes for properties with a good guess. (The @property tag parser puts\n&quot;default&quot; scope on the PropertyDocs it creates)</p>\n</li>\n<li>\n<p>Brings down any methods/properties coming from parent classes &amp; mixins. Adds the implementation\nproperty to methods/properties that come from interfaces.</p>\n</li>\n</ul>"
+		},
+		{
+			"name": "resolveReturn",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "resolveRootObject",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "resolveToObject",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "searchExtendedClasses",
+			"type": "FunctionDoc",
+			"brief": "<p>Finds all the symbols that are extended by {@code doc}.</p>",
+			"description": ""
+		},
+		{
+			"name": "searchImplementedInterfaces",
+			"type": "FunctionDoc",
+			"brief": "<p>Finds all the symbols that are implemented by {@code doc}.</p>",
+			"description": ""
+		},
+		{
+			"name": "symbolToDoc",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "transformRecursive",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "traverse",
+			"type": "FunctionDoc",
+			"brief": "<p>Preorder traversal of all the docs</p>",
+			"description": ""
+		},
+		{
+			"name": "tutorialDoc",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "updateScope",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "updateStage",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "validateParameters",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "writeDoctree",
+			"type": "FunctionDoc",
+			"brief": "<p>Exports the doctree to a JSON string.</p>",
+			"description": ""
+		}
+	]
+}

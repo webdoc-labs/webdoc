@@ -3,8 +3,9 @@
 // This file provides langJS and langTS integration, both of which use Babel to generate
 // symbols trees. These are registered in parse.js!
 
-import buildSymbolTree from "./build-symbol-tree";
 import type {LanguageConfig} from "../types/LanguageIntegration";
+import type {SourceFile} from "@webdoc/types";
+import buildSymbolTree from "./build-symbol-tree";
 
 // Plugins for plain JavaScript files
 const defaultPreset = [
@@ -44,15 +45,15 @@ const tsPreset = [
 
 export const langJS = {
   extensions: ["js", "jsx", "jsdoc"],
-  parse(file: string, fileName: string, config: LanguageConfig): Symbol {
+  parse(file: string, source: SourceFile, config: LanguageConfig): Symbol {
     // Flow is automatically handled!
-    return buildSymbolTree(file, fileName, config, flowPreset);
+    return buildSymbolTree(file, source, config, flowPreset);
   },
 };
 
 export const langTS = {
   extensions: ["ts", "tsx"],
-  parse(file: string, fileName: string, config: LanguageConfig): Symbol {
-    return buildSymbolTree(file, fileName, config, tsPreset);
+  parse(file: string, source: SourceFile, config: LanguageConfig): Symbol {
+    return buildSymbolTree(file, source, config, tsPreset);
   },
 };

@@ -1,6 +1,6 @@
 // @flow
 
-import type {DocType, Param, Return} from "@webdoc/types";
+import type {DocType, Param, Return, SourceFile} from "@webdoc/types";
 import {parserLogger, tag} from "../Logger";
 import {CANONICAL_DELIMITER} from "../constants";
 import type {Node} from "@babel/types";
@@ -36,7 +36,8 @@ export type SymbolSignature = {
 export type SymbolLocation = {
   start: { line: number, column: number },
   end: { line: number, column: number },
-  fileName: string
+  fileName: string,
+  file: SourceFile
 }
 
 // This is a preliminary data-format that represents a documentable symbol.

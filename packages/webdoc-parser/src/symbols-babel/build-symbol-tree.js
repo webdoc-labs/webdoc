@@ -2,55 +2,55 @@
 
 // This file implements the construction of a symbol-tree for JavaScript/Flow/TypeScript code.
 
+import * as parser from "@babel/parser";
 import {
-  type ArrowFunctionExpression,
   type ArrayPattern,
+  type ArrowFunctionExpression,
   type Comment,
   type CommentBlock,
   type FunctionDeclaration,
   type FunctionExpression,
   type Node,
   type ObjectPattern,
+  SourceLocation,
   type VariableDeclaration,
-  isArrowFunctionExpression,
   isArrayPattern,
+  isArrowFunctionExpression,
   isBlockStatement,
   isClassMethod,
-  isIdentifier,
-  isFunctionDeclaration,
-  isFunctionExpression,
-  isObjectMethod,
-  isObjectPattern,
-  isVariableDeclaration,
-  isScope,
-  SourceLocation,
   isExportDefaultDeclaration,
   isExportNamedDeclaration,
+  isFunctionDeclaration,
+  isFunctionExpression,
+  isIdentifier,
+  isObjectMethod,
+  isObjectPattern,
+  isScope,
+  isVariableDeclaration,
 } from "@babel/types";
-
-import traverse, {type NodePath} from "@babel/traverse";
-import extract from "../extract";
-import {parserLogger} from "../Logger";
-import extractSymbol from "./extract-symbol";
-import * as parser from "@babel/parser";
-
 import {
-  type Symbol, VIRTUAL, isVirtual, isObligateLeaf,
+  type Symbol,
   type SymbolLocation,
+  VIRTUAL,
   addChildSymbol,
+  isObligateLeaf,
+  isVirtual,
 } from "../types/Symbol";
-
 import {
+  clearRegistry,
+  createBlock,
   declareParameter,
   declareVariable,
-  createBlock,
   removeBlock,
-  clearRegistry,
 } from "../types/VariableRegistry";
 
+import traverse, {type NodePath} from "@babel/traverse";
 import {LanguageConfig} from "../types/LanguageIntegration";
-
+import type {SourceFile} from "@webdoc/types";
+import extract from "../extract";
 import {extractParams} from "./extract-metadata";
+import extractSymbol from "./extract-symbol";
+import {parserLogger} from "../Logger";
 
 // TODO: This shouldn't really be a part of symbols-babel but rather should live with Symbol.js
 // in SymbolUtils.js
@@ -123,19 +123,21 @@ const extraVistors = {
 };
 
 let fileName = "";
+let sourceFile: SourceFile;
 let reportUndocumented = false;
 
 // Parses the file and returns a tree of symbols
 export default function buildSymbolTree(
   file: string,
-  _fileName: string,
+  source: SourceFile,
   config: LanguageConfig,
   plugins: string[],
 ): Symbol {
   const moduleSymbol = SymbolUtils.createModuleSymbol();
   let ast;
 
-  fileName = _fileName;
+  fileName = source.path;
+  sourceFile = source;
   reportUndocumented = config.reportUndocumented;
   clearRegistry();
 
@@ -504,19 +506,15 @@ function _createLoc(loc?: SourceLocation): SymbolLocation {
   if (!loc) {
     return {
       fileName,
-      start: {
-        line: NaN,
-        column: NaN,
-      },
-      end: {
-        line: NaN,
-        column: NaN,
-      },
+      file: sourceFile,
+      start: {line: NaN, column: NaN},
+      end: {line: NaN, column: NaN},
     };
   }
 
   return {
     fileName,
+    file: sourceFile,
     start: {line: loc.start.line, column: loc.start.column},
     end: {line: loc.end.line, column: loc.end.column},
   };

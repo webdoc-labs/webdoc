@@ -7,11 +7,11 @@ import type {RootDoc} from "@webdoc/types";
 import {exportTaffy} from "@webdoc/model";
 import fs from "fs";
 import fse from "fs-extra";
-import globby from "globby";
 import {initLogger as initParserLogger} from "@webdoc/parser";
 import {loadTutorials} from "./load-tutorials";
 import path from "path";
 import {performance} from "perf_hooks";
+import {sources} from "./sources";
 import {writeDoctree} from "@webdoc/externalize";
 
 require("./shims");// Node v10 support
@@ -85,8 +85,6 @@ async function main(argv: yargs.Arguments<>) {
     }
   }
 
-  const sourceFiles = globby.sync(includePattern);
-
   const documentTree: RootDoc = {
     children: [],
     path: "",
@@ -95,21 +93,16 @@ async function main(argv: yargs.Arguments<>) {
     tags: [],
   };
 
+  const sourceFiles = sources(config, documentTree);
+
   documentTree.members = documentTree.children;
-
-  const files = new Map();
-
-  for (let i = 0; i < sourceFiles.length; i++) {
-    log.info(tag.Parser, `Parsing ${sourceFiles[i]}`);
-    files.set(sourceFiles[i], fs.readFileSync(path.join(process.cwd(), sourceFiles[i]), "utf8"));
-  }
 
   if (config.opts.export) {
     fse.ensureFileSync(config.opts.export);
   }
 
   try {
-    parse(files, documentTree);
+    parse(sourceFiles, documentTree);
   } catch (e) {
     // Make sure we get that API structure out so the user can debug the problem!
     if (config.opts.export) {
