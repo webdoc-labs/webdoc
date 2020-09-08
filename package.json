@@ -7,7 +7,7 @@
     "prepare": "rush install",
     "test": "",
     "prepublishOnly": "npm run build",
-    "watchdog": "pwsh watchdog.ps1 -CMD rush -CMDArgs rebuild"
+    "watchdog": "pwsh watchdog.ps1 -CMD rush -CMDArgs \"build\" -Debounce 0"
   },
   "repository": {
     "type": "git",
