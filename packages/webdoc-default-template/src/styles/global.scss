@@ -35,6 +35,8 @@ a {
     max-width: 1200px;
     @include center-margin();
 
+    word-break: break-word;
+
     margin-top: $header-height;
     flex-grow: 2;
 
@@ -47,6 +49,7 @@ a {
       }
 
       min-width: 200px;
+      max-width: 400px;
     }
 
     &-content {
