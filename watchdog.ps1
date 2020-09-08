@@ -17,10 +17,28 @@ param (
 	$CMDArgs,
 	[Parameter(Mandatory = $False)]
 	[float]
-	$Debouce = 1
+	$Debounce = 0.5
 )
 
+Function WD-Echo {
+	param (
+		[Parameter(Mandatory = $True)]
+		[string]
+		$text,
+		[Parameter(Mandatory = $False)]
+		[string]
+		$ID
+	)
+	[string] $header = "[WATCHDOG]:"
+	if ($ID -ne "") {
+		$header += $ID + ":"
+	}
+	Write-Host "$header $text"
+	# return $True
+}
+
 $global:LastEventTS = Get-Date
+[bigint] $global:TaskNo = 0
 Function FS-Event-Callback {
 	param (
 		$FSEvent
@@ -35,13 +53,15 @@ Function FS-Event-Callback {
 		if ($TSDiff -lt $global:Debouce) {
 			return
 		}
-
-		Write-Host "Update($TimeStamp): $Path was $ChangeType"
-		Write-Host "EXECUTING: $global:CMD $global:CMDArgs"
-		Start-Process $global:CMD $global:CMDArgs -Wait
-
+		$global:TaskNo += 1
+		WD-Echo "Update($TimeStamp): $Path was $ChangeType" $global:TaskNo
+		WD-Echo "Executing task ($global:TaskNo): $global:CMD $global:CMDArgs" $global:TaskNo
+		Start-Process $global:CMD $global:CMDArgs -Wait -NoNewWindow
+		WD-Echo "Task done." $global:TaskNo
 		$global:LastEventTS = Get-Date
-	} catch {}
+	} catch {
+		WD-Echo "Error during command execution." $global:TaskNo
+	}
 }
 
 Function Register-Watcher {
@@ -73,14 +93,33 @@ Function Register-Watcher {
 
 Register-Watcher $WatchPath $Filter | Out-Null
 
-Write-Host "Watchdog is online on $WatchPath/$Filter"
-Write-Host "Press CTRL-C to exit."
+WD-Echo "Watchdog is online on $WatchPath/$Filter"
 
-[console]::TreatControlCAsInput = $true
+Function Shutdown-Watchdog {
+	WD-Echo "Shutting down watchdog."
+	[Environment]::Exit(0)
+}
 
-while ($true) {
-	if ($Host.UI.RawUI.KeyAvailable -and (3 -eq [int]$Host.UI.RawUI.ReadKey("AllowCtrlC,IncludeKeyUp,NoEcho").Character)) {
-		Write-Host "Shutting down watchdog."
-		[Environment]::Exit(0)
+if ($Host.UI.RawUI.KeyAvailable) {
+	[console]::TreatControlCAsInput = $true
+	WD-Echo "Press CTRL-C or Q to exit."
+	while ($true) {
+		
+		if ($Host.UI.RawUI.KeyAvailable) {
+			$KeyInfo = $Host.UI.RawUI.ReadKey("AllowCtrlC,IncludeKeyUp,NoEcho")
+			$char = [int]$KeyInfo.Character
+			switch ($char) {
+				{$_ -in (3, 113)} {
+					Shutdown-Watchdog
+					break
+				}
+				default {
+					# No-op
+				}
+			}
+		}
 	}
 }
+
+WD-Echo "No key input handling available."
+WD-Echo "You must manually kill the process in order to stop the watchdog."
