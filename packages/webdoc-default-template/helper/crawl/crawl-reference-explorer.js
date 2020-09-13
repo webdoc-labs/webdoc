@@ -51,6 +51,14 @@ function crawlReference(doc /*: Doc */) {
 
 exports.crawlReference = crawlReference;
 
+function getPage(doc /*: Doc */) {
+  if (doc.type === "PackageDoc") {
+    return SymbolLinks.pathToUrl.get(doc.metadata.name);
+  }
+
+  return SymbolLinks.pathToUrl.get(doc.path);
+}
+
 /*::
 type ExplorerNode = {
   doc: Doc,
@@ -161,7 +169,7 @@ function traversePackage(doc /*: Doc | PackageDoc */, context /*: Object */, par
 
 function buildExplorerTargetsTree(node /*: ExplorerNode */, parentTitle /*: string */ = "") /*: ExplorerTarget */ {
   const doc = node.doc;
-  const page = SymbolLinks.pathToUrl.get(doc.path);
+  const page = getPage(doc);
 
   let title = "";
 
@@ -177,7 +185,6 @@ function buildExplorerTargetsTree(node /*: ExplorerNode */, parentTitle /*: stri
   }
 
   const childNodes = node.children;
-  const childrenCategories = Object.keys(node.children);
 
   if (HIERARCHY_SPECIFIERS[doc.type]) {
     node.children = {};

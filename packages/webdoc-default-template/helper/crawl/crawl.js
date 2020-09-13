@@ -32,6 +32,12 @@ exports.crawl = function crawl(tree /*: RootDoc */) {
 function buildLinks(tree /*: RootDoc */) /*: void */ {
   traverse(tree, (doc) => {
     if (doc.type === "RootDoc") {
+      doc.packages.forEach((packageDoc) => {
+        const link = SymbolLinks.createLink(packageDoc);
+
+        SymbolLinks.registerLink(packageDoc.metadata.name, link);
+      });
+
       return;
     }
 

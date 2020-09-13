@@ -33,6 +33,7 @@ Object.assign(SymbolLinks.STANDALONE_DOCS, [
   "InterfaceDoc",
   "MixinDoc",
   "NSDoc",
+  "PackageDoc",
   "TutorialDoc",
   "TypedefDoc",
 ]);
@@ -106,21 +107,39 @@ async function outMainPage(
   pipeline /*: TemplatePipeline */,
   config, /*: WebdocConfig */
 ) {
-  let readme;
-
   if (config.template.readme) {
     const readmeFile = path.join(process.cwd(), config.template.readme);
 
-    if (readmeFile.endsWith(".md")) {
-      const markdownRenderer = require("markdown-it")({
-        breaks: false,
-        html: true,
-      })
-        .use(require("markdown-it-highlightjs"));
-      const markdownSource = await fse.readFile(readmeFile, "utf8");
+    outReadme(
+      outputFile,
+      pipeline,
+      config,
+      readmeFile,
+    );
+  }
+}
 
-      readme = markdownRenderer.render(markdownSource);
-    }
+async function outReadme(
+  outputFile /*: string */,
+  pipeline /*: TemplatePipeline */,
+  config /*: WebdocConfig */,
+  readmeFile, /*: string */
+) {
+  if (!(await fse.pathExists(readmeFile))) {
+    return;
+  }
+
+  let readme;
+
+  if (readmeFile.endsWith(".md")) {
+    const markdownRenderer = require("markdown-it")({
+      breaks: false,
+      html: true,
+    })
+      .use(require("markdown-it-highlightjs"));
+    const markdownSource = await fse.readFile(readmeFile, "utf8");
+
+    readme = markdownRenderer.render(markdownSource);
   }
 
   pipeline.render("pages/main-page.tmpl", {
@@ -182,12 +201,23 @@ function outReference(
       continue;
     }
 
-    pipeline.render("document.tmpl", {
-      docs: [doc],
-      title: doc.name,
-      env: config,
-    }, {
-      outputFile: path.join(outDir, page),
-    });
+    if (doc.type === "PackageDoc") {
+      const readmeFile = path.join(doc.location, "README.md");
+
+      outReadme(
+        path.join(outDir, page),
+        pipeline,
+        config,
+        readmeFile,
+      );
+    } else {
+      pipeline.render("document.tmpl", {
+        docs: [doc],
+        title: doc.name,
+        env: config,
+      }, {
+        outputFile: path.join(outDir, page),
+      });
+    }
   }
 }

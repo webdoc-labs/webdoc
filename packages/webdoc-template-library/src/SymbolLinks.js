@@ -32,6 +32,7 @@ const STANDALONE_DOCS = [
   "NSDoc",
   "InterfaceDoc",
   "MixinDoc",
+  "PackageDoc",
   "TutorialDoc",
 ];
 

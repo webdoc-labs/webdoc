@@ -151,6 +151,15 @@ export function removeChildDoc(doc: BaseDoc, noUpdate: boolean = false) {
  * @return {?Doc}
  */
 export function doc(path: string | string[], root: BaseDoc): ?Doc {
+  // Packages
+  for (let i = 0; i < root.packages.length; i++) {
+    const pkg = root.packages[i];
+
+    if (pkg.name === path) {
+      return pkg;
+    }
+  }
+
   const docStack = Array.isArray(path) ? path : path.split(/[.|#]/);
   let doc = root;
 
