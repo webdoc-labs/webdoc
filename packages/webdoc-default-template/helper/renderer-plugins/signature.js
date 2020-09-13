@@ -50,7 +50,7 @@ exports.signaturePlugin = {
       }
       if (doc.returns) {
         signature += ` → {${
-          doc.returns
+          (doc.returns || [])
             .map((returns) =>
               (returns.dataType ? SymbolLinks.linkTo(returns.dataType) : ""))
             .join(", ")
@@ -65,12 +65,12 @@ exports.signaturePlugin = {
     case "ClassDoc":
       if (doc.extends) {
         signature += ` extends ${
-          doc.extends.map((superClass) => SymbolLinks.linkTo(superClass)).join(", ")
+          (doc.extends || []).map((superClass) => SymbolLinks.linkTo(superClass)).join(", ")
         }`;
       }
       if (doc.implements) {
         signature += `\nimplements ${
-          doc.extends.map((ifc) => SymbolLinks.linkTo(ifc)).join(", ")
+          (doc.implements || []).map((ifc) => SymbolLinks.linkTo(ifc)).join(", ")
         }`;
       }
       break;
