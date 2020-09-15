@@ -3,7 +3,7 @@
 import type {TemplatePipelineElement} from "../TemplatePipelineElement";
 import {SymbolLinks} from "../SymbolLinks";
 
-const LINK_PATTERN = /{@link ([^}]*)}/g;
+const LINK_PATTERN = /{@link ([^|\s}]*)([\s|])?([^}]*)}/g;
 
 /**
  * Resolves the following types of tags:
@@ -34,10 +34,8 @@ export class TemplateTagsResolver implements TemplatePipelineElement<{}> {
 
     while ((linkMatch = linkPattern.exec(input)) !== null) {
       const linkTextMatch = matchTextPrefix(input, linkMatch.index);
-
-      const parts = linkMatch[1].split(/\s*?[|\s]\s*?/);
-      const link = parts[0];
-      const linkName = parts[1];
+      const link = linkMatch[1];
+      const linkName = linkMatch[3];
       const linkText = linkTextMatch ? linkTextMatch[0].slice(1, -1) : (linkName || link);
 
       let replaced;
