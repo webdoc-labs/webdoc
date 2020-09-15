@@ -35,8 +35,11 @@ export class TemplateTagsResolver implements TemplatePipelineElement<{}> {
     while ((linkMatch = linkPattern.exec(input)) !== null) {
       const linkTextMatch = matchTextPrefix(input, linkMatch.index);
 
-      const link = linkMatch[1];
-      const linkText = linkTextMatch ? linkTextMatch[0].slice(1, -1) : link;
+      const parts = linkMatch[1].split(/\s*?[|\s]\s*?/);
+      const link = parts[0];
+      const linkName = parts[0];
+      const linkText = linkTextMatch ? linkTextMatch[0].slice(1, -1) : (linkName || link);
+
       let replaced;
 
       if (isValidUrl(link)) {

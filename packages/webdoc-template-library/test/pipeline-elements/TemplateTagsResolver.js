@@ -10,6 +10,26 @@ describe("@webdoc/template-library.TemplateTagsResolver", function() {
       .to.equal("--<DOC_PATH>--");
   });
 
+  it("{@link <DOC_PATH> <NAME>}", function() {
+    expect(mockTagsResolver.runLink("--{@link <DOC_PATH> <NAME>}--"))
+      .to.equal("--<DOC_PATH>--");
+  });
+
+  it("{@link <DOC_PATH>   <NAME>}", function() {
+    expect(mockTagsResolver.runLink("--{@link <DOC_PATH>   <NAME>}--"))
+      .to.equal("--<DOC_PATH>--");
+  });
+
+  it("{@link <DOC_PATH>|<NAME>}", function() {
+    expect(mockTagsResolver.runLink("--{@link <DOC_PATH>|<NAME>}--"))
+      .to.equal("--<DOC_PATH>--");
+  });
+
+  it("{@link <DOC_PATH> | <NAME>}", function() {
+    expect(mockTagsResolver.runLink("--{@link <DOC_PATH> | <NAME>}--"))
+      .to.equal("--<DOC_PATH>--");
+  });
+
   it("{@link https://github.com/webdoc-js/webdoc}", function() {
     expect(mockTagsResolver.runLink("--{@link https://github.com/webdoc-js/webdoc}--"))
       .to.equal("--<a href=\"https://github.com/webdoc-js/webdoc\">" +
