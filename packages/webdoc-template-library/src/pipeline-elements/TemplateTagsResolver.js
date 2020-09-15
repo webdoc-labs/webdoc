@@ -37,7 +37,7 @@ export class TemplateTagsResolver implements TemplatePipelineElement<{}> {
 
       const parts = linkMatch[1].split(/\s*?[|\s]\s*?/);
       const link = parts[0];
-      const linkName = parts[0];
+      const linkName = parts[1];
       const linkText = linkTextMatch ? linkTextMatch[0].slice(1, -1) : (linkName || link);
 
       let replaced;
