@@ -12,7 +12,12 @@ export default function packageApi(doc: Doc): void {
     return;// packageApi does not run on testing environment
   }
 
-  if (doc.type !== "RootDoc") {
+  if (doc.type !== "RootDoc" &&
+    // Only top-level stuff can switch packages
+    (doc.parent.type === "RootDoc" || doc.parent.type === "NSDoc" ||
+      // and classes, objects, namespaces nested beneath
+      doc.type === "ObjectDoc" || doc.type === "ClassDoc" || doc.type === "NSDoc")
+  ) {
     const ppkg = doc.parent.loc ? doc.parent.loc.file.package : null;
     const pkg = doc.loc.file.package;
 

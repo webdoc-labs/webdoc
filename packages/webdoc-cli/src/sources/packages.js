@@ -21,11 +21,15 @@ export function packages(sourceFiles: SourceFile[]): PackageDoc[] {
       pkg = cache.get(pkgJson);
 
       if (!pkg) {
+        const metadata = require(path.relative(__dirname, pkgJson));
+
         // Create PackageDoc for this package
         pkg = {
           api: [],
-          location: pkgJson,
-          metadata: require(path.relative(__dirname, pkgJson)),
+          name: metadata.name,
+          path: metadata.name,
+          location: path.dirname(pkgJson),
+          metadata,
           type: "PackageDoc",
         };
 

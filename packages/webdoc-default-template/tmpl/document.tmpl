@@ -10,6 +10,7 @@ docList.forEach((doc) => {
 ?>
 <div class="page-content">
   <div class="document">
+    <div class="document__package"><?js= doc.loc.file && doc.loc.file.package.metadata.name ?></div>
     <h1 class="document__title"><?js= doc.path ?></h1>
     <?js= this.partial("components/signature.tmpl", doc) ?>
 
