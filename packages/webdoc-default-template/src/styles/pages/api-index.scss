@@ -1,0 +1,13 @@
+@import "../themes";
+
+.api-index {
+  &-list {
+    width: 100%;
+  }
+
+  td, th {
+    border-right: 1px solid $colorBorder;
+    border-bottom: 1px solid $colorBorder;
+    width: 50%;
+  }
+}

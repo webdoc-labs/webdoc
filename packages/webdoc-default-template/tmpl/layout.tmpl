@@ -20,15 +20,17 @@ const rootData = obj
     <script src="scripts/prettify.js"></script>
     <script src="scripts/lang-css.js"></script>
   </head>
-  <body class="docs">
-    <header class="header" id="header-mount-point"></header>
-    <article class="page">
-      <div class="page-explorer" id="explorer-mount-point"></div>
-      <?js /* Includes content and member-explorer. */ ?>
-      <?js= content ?>
-    </article>
-    <footer class="footer" id="footer-mount-point"></footer>
-    <script>prettyPrint();</script>
-    <script src="scripts/linenumber.js"> </script>
-  </body>
+  <body class="root">
+    <div class="docs">
+      <header class="header" id="header-mount-point"></header>
+      <article class="page">
+        <div class="page-explorer" id="explorer-mount-point"></div>
+        <?js /* Includes content and member-explorer. */ ?>
+        <?js= content ?>
+      </article>
+      <footer class="footer" id="footer-mount-point"></footer>
+      <script>prettyPrint();</script>
+      <script src="scripts/linenumber.js"> </script>
+    </body>
+  </div>
 </html>

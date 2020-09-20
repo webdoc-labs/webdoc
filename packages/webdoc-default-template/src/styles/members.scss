@@ -1,0 +1,32 @@
+@import "vars";
+
+
+.members {
+  &__category {
+    font-size: 2em;
+  }
+}
+
+.member {
+  position: relative;
+
+  width: 100%;
+  padding-bottom: 12px;
+
+  &:not(:last-child) {
+    &:after {
+      content: '';
+      position: absolute;
+      width: 69%;
+      height: 1px;
+      background-color: $colorBorders;
+
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  & > .signature {
+    margin-bottom: 8px;
+  }
+}

@@ -5,21 +5,21 @@
 const
   categoryData = obj,
   categoryTitle = categoryData.title,
-  
+
   parent = categoryData.parent,
   contraints = categoryData.contraints,
-  
-  categoryMembers = categoryData.parent.members
+
+  categoryMembers = parent.members
     .filter((child) => {
+      if (child.type === "MethodDoc" && child.name === "constructor") {
+        return constraints.type === "constructor"; // Show constructor only when asked explicit
+      }
+
       // Match access
       if (constraints.access) {
         if ((child.access || "public") !== constraints.access) {
           return false;
         }
-      }
-
-      if (child.type === "MethodDoc" && child.name === "constructor") {
-        return false; // Always hide constructors
       }
 
       // Match document-type
@@ -46,6 +46,6 @@ if (categoryMembers.length === 0) {
   <h2 class="members__category"><?js= categoryTitle ?></h2>
 
   <?js categoryMembers.forEach((member) => { ?>
-    <?js= this.partial("components/member.tmpl", member) ?>
+    <?js= this.partial("components/member/index.tmpl", member) ?>
   <?js }) ?>
 </div>

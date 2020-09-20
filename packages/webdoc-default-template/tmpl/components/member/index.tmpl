@@ -9,7 +9,7 @@ const doc = obj;
   <?js= this.partial("components/signature.tmpl", doc) ?>
 
   <div class="member__brief"><?js= doc.brief ?></div>
-  <div class="member__desctiption"><?js= doc.description ?></div>
+  <div class="member__description"><?js= doc.description ?></div>
 
   <?js if (doc.params && doc.params.length) { ?>
     <?js= this.partial("components/member/params.tmpl", doc.params) ?>

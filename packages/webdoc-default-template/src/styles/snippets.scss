@@ -1,0 +1,36 @@
+@import "./scss-utils/all";
+
+@import "vars";
+
+
+pre {
+  @include normalize();
+
+  width: 100%;
+
+  border-color: 1px solid $colorBorders;
+  padding: 2px 3px;
+
+  &, code {
+    font-family: "Consolas", "Roboto Mono", monospace;
+    font-size: $textSizeCode;
+  
+    background-color: $colorCodeBackground;
+    border-radius: 2px;
+
+    vertical-align: baseline;
+    word-break: keep-all;
+  }
+}
+
+.signature {
+  border-radius: 3px;
+  padding: 6px;
+
+  &__container {
+    padding-top: 6px;
+    padding-bottom: 12px;
+    overflow-x: scroll;
+    overflow-y: visible;
+  }
+}

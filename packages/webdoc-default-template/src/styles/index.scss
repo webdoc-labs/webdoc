@@ -1,25 +1,13 @@
 @import "./scss-utils/all";
+
 @import "global";
+@import "tables";
+
 @import "header";
+@import "document";
+@import "members";
 @import "members-explorer";
+@import "snippets";
+@import "footer";
 
-.page {
-	$page: &;
-	@include flex();
-	margin-top: $header-height;
-
-	&-explorer, &-members {
-		@at-root {
-			&,
-			#{$page} #{$page}-content {
-				flex-grow: 1;
-			}
-		}
-
-		max-width: 250px;
-	}
-
-	&-content {}
-
-	&-memebers {}
-}
+// @import "pages/api-index";

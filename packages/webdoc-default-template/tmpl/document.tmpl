@@ -13,20 +13,18 @@ docList.forEach((doc) => {
     <h1 class="document__title"><?js= doc.path ?></h1>
     <?js= this.partial("components/signature.tmpl", doc) ?>
 
-  <div class="document__brief"><?js= doc.brief ?></div>
-  <div class="ducument__description"><?js= doc.description ?></div>
+    <div class="document__brief"><?js= doc.brief ?></div>
+    <div class="document__description"><?js= doc.description ?></div>
 
-    <?js if (doc.type === "ClassDoc") {
-      // Constructor
-      const ctorDoc = this.getConstructor(doc);
-
-      if (ctorDoc) { ?>
-        <div class="members">
-          <h2 class="members__category">Constructor</h2>
-          <?js= this.partial("components/member.tmpl", ctorDoc) ?>
-        </div>
-      <?js }
-    } ?>
+    <?js if (doc.type === "ClassDoc") { ?>
+      <?js= this.partial("components/members.tmpl", {
+        title: "Constructor",
+        parent: doc,
+        constraints: {
+          type: "constructor",
+        },
+      }) ?>
+    <?js } ?>
 
     <?js= this.partial("components/members.tmpl", {
       title: "Public Properties",
@@ -62,7 +60,5 @@ docList.forEach((doc) => {
     }) ?>
   </div>
 </div>
-<nav class="members-explorer">
-    <?js= this.partial("components/members-explorer/index.tmpl", doc) ?>
-</nav>
+<?js= this.partial("components/members-explorer/index.tmpl", doc) ?>
 <?js }); ?>

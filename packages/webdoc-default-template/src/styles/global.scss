@@ -1,24 +1,60 @@
-@import "./scss-utils/all";
+@import "scss-utils/all";
+
+@import "vars";
 
 
 html,
 body {
-	@include normalize();
-
-	font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  @include normalize();
 }
 
-pre,
-code {
-	font-family: "Roboto Mono", monospace;
+@include link(#3f51b5, #102ac0);
+a {
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 // Sticky footer hack
-body {
-	@include flex($flex-direction: column);
-	min-height: 100vh;
+.docs {
+  @include flex($flex-direction: column);
 
-	.page {
-		flex-grow: 2;
-	}
+  color: $colorPrimaryText;
+  background-color: $colorPrimary;
+
+  font-family: Roboto, Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: $textSizeMain;
+
+  min-height: 100vh;
+
+  .page {
+    $page: &;
+    @include flex();
+
+    width: 100%;
+    max-width: 1200px;
+    @include center-margin();
+
+    word-break: break-word;
+
+    margin-top: $header-height;
+    flex-grow: 2;
+
+    &-explorer, &-members-explorer {
+      @at-root {
+        &,
+        #{$page} .page-content {
+          padding: 8px;
+        }
+      }
+
+      min-width: 200px;
+      max-width: 400px;
+    }
+
+    &-content {
+      width: 0;
+      flex-grow: 2;
+    }
+  }
 }
