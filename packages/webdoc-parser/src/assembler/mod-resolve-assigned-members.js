@@ -1,6 +1,6 @@
 // @flow
 
-import {type Symbol, findAccessedSymbol, addChildSymbol} from "../types/Symbol";
+import {type Symbol, addChildSymbol, findAccessedSymbol} from "../types/Symbol";
 
 // This mod resolves symbols were "assigned" to another symbol parent in source code. For example,
 
@@ -64,11 +64,13 @@ export default function resolveAssignedMembersRecursive(
     }
 
     if (tryQueue.length) {
-      console.error("{@assembly-mod resolve-assigned-members} failed to resolve these symbols: ");
+      if (!global.__TEST__) {
+        console.error("{@assembly-mod resolve-assigned-members} failed to resolve these symbols: ");
 
-      tryQueue.forEach((sym) => {
-        console.error(`\t ${sym.canonicalName} [to ${sym.meta.object}]`);
-      });
+        tryQueue.forEach((sym) => {
+          console.error(`\t ${sym.canonicalName} [to ${sym.meta.object}]`);
+        });
+      }
 
       // Error code for unit-testing
       return -1;

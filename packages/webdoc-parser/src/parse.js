@@ -88,6 +88,7 @@ export function buildSymbolTree(
 export function parse(target: string | SourceFile[], root?: RootDoc = {
   members: [],
   path: "",
+  packages: [],
   stack: [""],
   type: "RootDoc",
   tags: [],
