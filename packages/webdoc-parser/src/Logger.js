@@ -22,6 +22,9 @@ const logContextProviders = {
   },
 };
 
+const warn = !global.__TEST__ ? "info" : "warn";
+const error = !global.__TEST__ ? "info" : "error";
+
 export let parserLogger: Log = null;
 
 export function initLogger(defaultLevel: string = "INFO") {
@@ -42,10 +45,10 @@ export function initLogger(defaultLevel: string = "INFO") {
 
       switch (level) {
       case LogLevel.ERROR:
-        console.error(tagPrefix, msg, ...params);
+        console[error](tagPrefix, msg, ...params);
         break;
       case LogLevel.WARN:
-        console.warn(tagPrefix, msg, ...params);
+        console[warn](tagPrefix, msg, ...params);
         break;
       case LogLevel.INFO:
         console.info(tagPrefix, msg, ...params);

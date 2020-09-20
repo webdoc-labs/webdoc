@@ -1,6 +1,6 @@
 // @flow
-import type {TypedefTag} from "@webdoc/types";
 import {parserLogger, tag} from "../Logger";
+import type {TypedefTag} from "@webdoc/types";
 import {parseDataType} from "@webdoc/model";
 
 // @typedef {<DATA_TYPE>} <NAME>
@@ -15,11 +15,12 @@ export function parseTypedef(value: string, options: any): TypedefTag {
   if (!refClosure) {
     // eslint-disable-next-line max-len
     parserLogger.warn(tag.TagParser, "@typedef has not defined the {OriginalType}; defaulting to {any}");
-    alias = value;
+    alias = value.trim();
   } else {
     of = refClosure[0].slice(1, -1);
     alias = value.replace(
-      new RegExp(`(.{${refClosure.index}}).{${refClosure.index + refClosure[0].length}}`), "$1");
+      new RegExp(`(.{${refClosure.index}}).{${refClosure.index + refClosure[0].length}}`), "$1")
+      .trim();
   }
 
   options.dataType = of ? parseDataType(of) : undefined;
