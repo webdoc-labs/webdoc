@@ -15,6 +15,7 @@ table {
   th {
     border-bottom: 1px solid $colorBorders;
     font-weight: 500;
+    word-break: normal;
 
     @at-root &, td {
       padding: 8px;
@@ -24,6 +25,8 @@ table {
   }
 
   td {
+    word-break: normal;
+
     p {
       &:first-child {
         margin-top: 0;
@@ -34,4 +37,9 @@ table {
       }
     }
   }
+}
+
+.table-wrapper {
+  display: block;
+  overflow-x: scroll;
 }

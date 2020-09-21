@@ -6,6 +6,8 @@
 html,
 body {
   @include normalize();
+
+  height: 100%;
 }
 
 @include link(#3f51b5, #102ac0);
@@ -25,6 +27,7 @@ a {
   font-family: Roboto, Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: $textSizeMain;
 
+  height: 100%;
   min-height: 100vh;
 
   .page {
@@ -38,7 +41,9 @@ a {
     word-break: break-word;
 
     margin-top: $header-height;
+    min-height: 0;
     flex-grow: 2;
+    flex-basis: 0;
 
     &-explorer, &-members-explorer {
       @at-root {
@@ -50,11 +55,16 @@ a {
 
       min-width: 200px;
       max-width: 400px;
+      height: 100%;
+      overflow: auto;
     }
 
     &-content {
       width: 0;
       flex-grow: 2;
+      height: 100%;
+      overflow-x: hidden;// TODO: Slight horizontal scrolling pops up for some reason
+      overflow-y: auto;
     }
   }
 }

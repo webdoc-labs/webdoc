@@ -9,18 +9,19 @@ pre {
   width: 100%;
 
   border-color: 1px solid $colorBorders;
-  padding: 2px 3px;
+  padding: 4px 6px;
+  overflow-x: scroll;
+}
 
-  &, code {
-    font-family: "Consolas", "Roboto Mono", monospace;
-    font-size: $textSizeCode;
-  
-    background-color: $colorCodeBackground;
-    border-radius: 2px;
+pre, code {
+  font-family: "Consolas", "Roboto Mono", monospace;
+  font-size: $textSizeCode;
 
-    vertical-align: baseline;
-    word-break: keep-all;
-  }
+  background-color: $colorCodeBackground;
+  border-radius: 2px;
+
+  vertical-align: baseline;
+  word-break: keep-all;
 }
 
 .signature {

@@ -5019,9 +5019,9 @@ function Explorer(props) {
 function Footer() {
   return React.createElement("div", {
     className: "footer__container"
-  }, React.createElement("h3", {
+  }, React.createElement("span", {
     className: "footer__text"
-  }, "Made with ", React.createElement("a", {
+  }, "Powered by ", React.createElement("a", {
     href: "https://github.com/webdoc-js/webdoc"
   }, "webdoc"), "!"));
 }
