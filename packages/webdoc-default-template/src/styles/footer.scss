@@ -4,18 +4,16 @@
 
 
 .footer {
-  height: $footer-height;
   bottom: 0;
   width: 100%;
+  z-index: 10000;
 
   &__container {
     @include center(true);
-    height: 100%;
   }
 
   &__text {
     @include normalize();
-    max-width: 80%;
-    width: 100%;
+    background: white;
   }
 }
