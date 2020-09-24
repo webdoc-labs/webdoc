@@ -4,10 +4,12 @@
  */
 const mainPageData = obj
 ?>
-<div class="homepage">
-<?js if (mainPageData.readme) { ?>
-  <div class="homepage__readme md">
-    <?js= mainPageData.readme ?>
+<div class="page-content">
+  <div class="homepage">
+  <?js if (mainPageData.readme) { ?>
+    <div class="homepage__readme md">
+      <?js= mainPageData.readme ?>
+    </div>
+  <?js } ?>
   </div>
-<?js } ?>
 </div>
