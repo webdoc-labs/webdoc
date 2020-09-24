@@ -76,6 +76,11 @@ exports.signaturePlugin = {
       break;
     }
 
-    return signature.trim();
+    signature = signature.trim();
+    signature = signature
+      .replace(/&/g, "&amp;")
+      .replace(/<(?![a ]|[/a])/g, "&lt;");// replace html <> arrows unless for <a>,</a> tags
+
+    return signature;
   },
 };
