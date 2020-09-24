@@ -17,11 +17,15 @@ pre, code {
   font-family: "Consolas", "Roboto Mono", monospace;
   font-size: $textSizeCode;
 
-  background-color: $colorCodeBackground;
+  background-color: $colorCodeBackground !important;
   border-radius: 2px;
 
   vertical-align: baseline;
   word-break: keep-all;
+}
+
+.hljs { /* Override markdown highlight-js */
+  background-color: $colorCodeBackground !important;
 }
 
 .signature {

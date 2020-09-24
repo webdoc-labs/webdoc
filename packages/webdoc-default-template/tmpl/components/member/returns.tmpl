@@ -15,7 +15,7 @@ const returns = obj || [];
   <tbody class="member-returns__body">
     <?js returns.forEach((returnElement) => { ?><tr class="member-return">
       <td class="member-return__type">
-        <?js if (returnElement.dataType) { ?><pre><code><?js= this.linkTo(returnElement.dataType) ?></code></pre><?js } ?>
+        <?js if (returnElement.dataType) { ?><?js= this.linkTo(returnElement.dataType) ?><?js } ?>
       </td>
       <td class="member-return__description"><?js if (returnElement.description) { ?><?js= returnElement.description ?><?js } ?></td>
     </tr><?js }); ?>
