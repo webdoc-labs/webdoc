@@ -174,7 +174,12 @@ const keywords = {
 // Parse a string or Catharsis grammar into a simple tokenized DataType
 export function parseDataType(exp: string | any): DataType {
   if (typeof exp === "string") {
-    return parseDataType(catharsis.parse(exp, {jsdoc: true}));
+    try {
+      return parseDataType(catharsis.parse(exp, {jsdoc: true}));
+    } catch (e) {
+      console.error("Catharsis failed to parse: " + exp);
+      return "unknown";
+    }
   }
 
   if (exp.type === "NameExpression") {

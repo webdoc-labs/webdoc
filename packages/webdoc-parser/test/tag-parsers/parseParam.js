@@ -65,4 +65,14 @@ describe("@webdoc/parser.parseParam", function() {
     expect(param.default).to.equal("defaultValue[]");
     expect(param.optional).to.equal(true);
   });
+
+  it("@param paramName - <description> with {@link Symbol}", function() {
+    const doc = {};
+
+    parseParam("paramName - <description> with {@link Symbol}", doc);
+
+    const param = doc.params[0];
+
+    expect(param.dataType).to.equal(undefined);
+  });
 });

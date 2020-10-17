@@ -79,8 +79,10 @@ function extractIdentifier(from: string, index: number = 0): {
 
 // Parses a ParamTag from a string
 export function parseParam(value: string, options: $Shape<Doc>): ParamTag {
+  value = value.trim();
+
   // Finds the {Type} closure,
-  const refClosure = /{([^{}])+}/.exec(value);
+  const refClosure = /^{([^{}])+}/.exec(value);
 
   // We delete stuff that is parsed from the value, and this is leftover
   let extractable = value;

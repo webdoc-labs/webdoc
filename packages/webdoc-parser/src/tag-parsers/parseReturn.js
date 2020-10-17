@@ -6,8 +6,10 @@ import {parseDataType} from "@webdoc/model";
 
 // Parse the "@return {ReturnType} description" tag
 export function parseReturn(value: string, doc: $Shape<Doc>): ReturnTag {
+  value = value.trim();
+
   // Get {ReferredType}
-  const refClosure = /{([^{}])+}/.exec(value);
+  const refClosure = /^{([^{}])+}/.exec(value);
   let dataType;
   let description;
 
