@@ -1,11 +1,15 @@
-# `@webdoc/js-docmodel`
+# @webdoc/model
 
-> TODO: description
+This package is the API to manipulating loaded documentation tree models. [@webdoc/types](https://github.com/webdoc-js/webdoc/tree/master/packages/webdoc-types) defines the node structure.
+
+## Installation :package:
+
+```bash
+npm install @webdoc/model
+```
 
 ## Usage
 
-```
-const jsDocmodel = require('@webdoc/js-docmodel');
-
-// TODO: DEMONSTRATE API
+```js
+const Model = require('@webdoc/model');
 ```
