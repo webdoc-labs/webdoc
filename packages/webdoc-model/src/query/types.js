@@ -1,5 +1,3 @@
-import type {Doc} from "@webdoc/types";
-
 export type Op =
   "=" |
   ">=" |

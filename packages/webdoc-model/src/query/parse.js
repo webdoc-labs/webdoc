@@ -18,6 +18,7 @@ const VARIANT_EXPR = /\[([^\]]+)\]/g;
 // Condition operators
 const OP = /(?:=)|(?:>=)|(?:<=)|(?:>)|(?:<)/g;
 
+// Parses a condition clause
 function parseCondition(condition: string): VariantCondition {
   const opPattern = new RegExp(OP).exec(condition);
 
@@ -71,7 +72,7 @@ export function parse(queryExpr: string): QueryExpr {
   if (queryExpr[0] !== "." &&
        queryExpr[0] !== "#" &&
        queryExpr[0] !== "~") {
-    queryExpr = `...${queryExpr}`;
+    queryExpr = `.${queryExpr}`;
   }
 
   const stepDelimiterList = queryExpr.match(STEP_EXPR_DELIMITER);
