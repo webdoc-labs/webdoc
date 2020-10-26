@@ -1,7 +1,7 @@
 // @flow
 
-import type {TemplatePipelineElement} from "../TemplatePipelineElement";
 import {SymbolLinks} from "../SymbolLinks";
+import type {TemplatePipelineElement} from "../TemplatePipeline";
 
 const LINK_PATTERN = /{@link ([^|\s}]*)([\s|])?([^}]*)}/g;
 
