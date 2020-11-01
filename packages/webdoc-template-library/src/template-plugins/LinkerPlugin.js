@@ -118,6 +118,10 @@ function LinkerPluginShell() {
      * @return {LinkerDocumentRecord} All the data this linker has on the document.
      */
     getDocumentRecord(id: string): LinkerDocumentRecord {
+      if (typeof id !== "string") {
+        throw new Error("The id must be a valid string!");
+      }
+
       const recordHit = this.documentRegistry.get(id);
 
       if (!recordHit) {
@@ -231,11 +235,12 @@ function LinkerPluginShell() {
         const doc = query(docPath, this.renderer.docTree)[0];
 
         if (!doc) {
-          console.log("QUERY RESULT: " + docPath + " -> " + (doc ? doc.path : "undefined"))
           return text;
         }
 
-        fileUrl = this.getDocumentRecord(doc).uri || this.getURI(doc);
+        const rec = this.documentRegistry.get(doc.id);
+
+        fileUrl = rec ? rec.uri : this.getURI(doc);
 
         // Cache this query
         if (fileUrl) {
