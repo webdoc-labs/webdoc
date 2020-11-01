@@ -18,6 +18,8 @@ import {SymbolLinks} from "./SymbolLinks";
 import fs from "fs";
 import path from "path";
 
+let printedDefaultLinker = false;
+
 /**
  * The template renderer uses lodash to parse .tmpl template files and renders HTML content. A
  * template file contains {@code <?js js>} delimiters containing JavaScript code to control
@@ -106,7 +108,16 @@ export class TemplateRenderer {
     return this;
   }
 
-  //linkTo = SymbolLinks.linkTo
+  linkTo(...args) {
+    if (!printedDefaultLinker) {
+      console.warn("The default linker is the deprecated SymbolLinks API. " +
+        "Upgrade to the LinkerPlugin!");
+      printedDefaultLinker = true;
+      this.linkTo = SymbolLinks.linkTo;
+    }
+
+    return SymbolLinks.linkTo(...args);
+  }
 
   find(spec: any) {
     return this.docDatabase(spec).get();

@@ -442,7 +442,7 @@ const getAncestorLinks = (doc: Doc, cssClass: string): string[] => {
  *
  * @object
  */
- const SymbolLinks = {
+export const SymbolLinks = {
   STANDALONE_DOCS,
   pathToUrl,
   urlToPath,
