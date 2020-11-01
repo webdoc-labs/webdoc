@@ -68,6 +68,11 @@ exports.publish = (options /*: PublishOptions */) => {
   idToDoc = new Map();
 
   traverse(docTree, (doc) => {
+    if (doc.type === "RootDoc") {
+      doc.packages.forEach((pkg) => {
+        idToDoc.set(pkg.id, pkg);
+      });
+    }
     idToDoc.set(doc.id, doc);
   });
 
