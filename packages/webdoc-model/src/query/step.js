@@ -32,5 +32,5 @@ const stepHandlers = {
 };
 
 export function step(stepExpr: StepExpr, doc: Doc): Doc[] {
-  return stepHandlers[stepExpr.stepType](stepExpr.qualifier, doc);
+  return stepHandlers[stepExpr.type](stepExpr.qualifier, doc);
 }

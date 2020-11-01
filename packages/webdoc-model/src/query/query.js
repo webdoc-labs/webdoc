@@ -16,12 +16,12 @@ import {variant} from "./variant";
  */
 export function query(queryExpr: string | Query, docTree: Doc): Doc[] {
   queryExpr = typeof queryExpr === "string" ? parse(queryExpr) : queryExpr;
-  let results: Doc[] = [];
+  let results: Doc[] = [docTree];
 
   queryExpr.steps.forEach((stepExpr) => {
     results = results
       .flatMap((doc) => step(stepExpr, doc))
-      .filter((doc) => variant(doc));
+      .filter((doc) => variant(stepExpr.variant, doc));
   });
 
   return results;
