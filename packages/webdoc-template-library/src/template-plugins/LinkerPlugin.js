@@ -29,7 +29,7 @@ function LinkerPluginShell() {
   // TODO: Replace catharsis with a in-built @webdoc/data-type-parser
   const catharsis = require("catharsis");
   const {query} = require("@webdoc/model");
-  const {Plugin} = require("./Plugin");
+  const {MixinPlugin} = require("./MixinPlugin");
 
   /* -----------------------Helper Functions--------------------------------- */
   function isComplexTypeExpression(expr) {
@@ -77,7 +77,7 @@ function LinkerPluginShell() {
   /**
    * @class LinkerPlugin
    */
-  class LinkerPluginImpl extends Plugin {
+  class LinkerPluginImpl extends MixinPlugin {
     /**
      * The documents that are rendered into standalone files. By default, only
      * classes, namespaes, interfaces, mixins, packages, and tutorials are
@@ -181,7 +181,7 @@ function LinkerPluginShell() {
      * longname and display the short name in the link text. Ignored if `linkText` is specified.
      * @return {string} the HTML link, or the link text if the link is not available.
      */
-    linkTo(docPath: string, linkText: string = docPath, options: LinkOptions) {
+    linkTo(docPath: string, linkText: string = docPath, options: LinkOptions = {}) {
       if (!docPath) {
         return "";
       }
@@ -231,6 +231,7 @@ function LinkerPluginShell() {
         const doc = query(docPath, this.renderer.docTree)[0];
 
         if (!doc) {
+          console.log("QUERY RESULT: " + docPath + " -> " + (doc ? doc.path : "undefined"))
           return text;
         }
 
@@ -244,8 +245,6 @@ function LinkerPluginShell() {
       }
 
       text = options.monospace ? `<code>${text}</code>` : text;
-
-      console.log(docPath, fileUrl)
 
       if (!fileUrl) {
         return text;
@@ -448,6 +447,8 @@ function LinkerPluginShell() {
       // the doc gets its own HTML file
       if (standaloneDocTypes.includes(doc.type)) {
         baseURI = this.generateBaseURI(docPath);
+
+        this.getFileRecord(baseURI);
       } else { // inside another HTML file
         baseURI = doc.parent.type !== "RootDoc" ? this.getURI(doc.parent) : "global.html";
         fragment = this.generateURIFragment(

@@ -5,6 +5,7 @@ const fse = require("fs-extra");
 const path = require("path");
 const {
   doc: findDoc,
+  traverse,
 } = require("@webdoc/model");
 const {
   FlushToFile,
@@ -44,6 +45,8 @@ const PRETTIFIER_SCRIPT_FILES = [
   "prettify.js",
 ];
 
+let idToDoc/*: Map<string, Doc> */;
+
 exports.publish = (options /*: PublishOptions */) => {
   const docTree = options.documentTree;
   const outDir = path.normalize(options.config.opts.destination);
@@ -61,6 +64,12 @@ exports.publish = (options /*: PublishOptions */) => {
   const pipeline = new TemplatePipeline(renderer)
     .pipe(new TemplateTagsResolver())
     .pipe(new FlushToFile({skipNullFile: false}));
+
+  idToDoc = new Map();
+
+  traverse(docTree, (doc) => {
+    idToDoc.set(doc.id, doc);
+  });
 
   outStaticFiles(outDir);
   outExplorerData(outDir, crawlData);
@@ -185,7 +194,7 @@ function outReference(
   config /*: WebdocConfig */,
   docTree, /*: RootDoc */
 ) {
-  for (const [docPath, docRecord] of linker.documentRegistry) {
+  for (const [id, docRecord] of linker.documentRegistry) {
     const {uri: page} = docRecord;
 
     if (page.includes("#")) {
@@ -195,7 +204,7 @@ function outReference(
     let doc;
 
     try {
-      doc = findDoc(docPath, docTree);
+      doc = idToDoc.get(id);
     } catch (_) {
       continue;
     }

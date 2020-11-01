@@ -106,7 +106,7 @@ export class TemplateRenderer {
     return this;
   }
 
-  linkTo = SymbolLinks.linkTo
+  //linkTo = SymbolLinks.linkTo
 
   find(spec: any) {
     return this.docDatabase(spec).get();
