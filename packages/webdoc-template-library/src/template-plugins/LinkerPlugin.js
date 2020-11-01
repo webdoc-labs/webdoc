@@ -235,7 +235,7 @@ function LinkerPluginShell() {
         const doc = query(docPath, this.renderer.docTree)[0];
 
         if (!doc) {
-          return text;
+          return linkText || docPath;
         }
 
         const rec = this.documentRegistry.get(doc.id);
