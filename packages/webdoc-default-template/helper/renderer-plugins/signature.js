@@ -2,7 +2,7 @@
 import type {Doc} from "@webdoc/types";
 */
 
-const {SymbolLinks} = require("@webdoc/template-library");
+const {linker} = require("../linker");
 
 exports.signaturePlugin = {
   generateSignature(doc /*: Doc */) {
@@ -41,7 +41,7 @@ exports.signaturePlugin = {
             .map((param) =>
               param.identifier +
               (param.dataType ?
-                ": " + SymbolLinks.linkTo(param.dataType) :
+                ": " + linker.linkTo(param.dataType) :
                 ""
               ),
             )
@@ -52,25 +52,25 @@ exports.signaturePlugin = {
         signature += ` → {${
           (doc.returns || [])
             .map((returns) =>
-              (returns.dataType ? SymbolLinks.linkTo(returns.dataType) : ""))
+              (returns.dataType ? linker.linkTo(returns.dataType) : ""))
             .join(", ")
         }} `;
       }
       break;
     case "PropertyDoc":
       if (doc.dataType) {
-        signature += ": " + SymbolLinks.linkTo(doc.dataType);
+        signature += ": " + linker.linkTo(doc.dataType);
       }
       break;
     case "ClassDoc":
       if (doc.extends) {
         signature += ` extends ${
-          (doc.extends || []).map((superClass) => SymbolLinks.linkTo(superClass)).join(", ")
+          (doc.extends || []).map((superClass) => linker.linkTo(superClass)).join(", ")
         }`;
       }
       if (doc.implements) {
         signature += `\nimplements ${
-          (doc.implements || []).map((ifc) => SymbolLinks.linkTo(ifc)).join(", ")
+          (doc.implements || []).map((ifc) => linker.linkTo(ifc)).join(", ")
         }`;
       }
       break;

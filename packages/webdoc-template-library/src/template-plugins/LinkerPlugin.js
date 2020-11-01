@@ -1,10 +1,9 @@
 // @flow
 import type {Doc, DocType} from "@webdoc/types";
-import {RuntimePlugin} from "./RuntimePlugin";
 import {isDataType} from "@webdoc/model";
-import {templateLogger} from "./Logger";
+import {templateLogger} from "../Logger";
 
-type LinkOptions = {
+export type LinkOptions = {
   cssClass?: string,
   fragmentId?: string,
   linkMap?: Map<string, string>,
@@ -12,12 +11,26 @@ type LinkOptions = {
   shortenName?: boolean
 };
 
-// TODO: Replace catharsis with a in-built @webdoc/data-type-parser
-const catharsis = require("catharsis");
+export type LinkerDocumentRecord = {
+  uri?: string,
+};
 
-let LinkerPlugin;
+export type LinkerFileRecord = {
+  uriFragments: Set<string>,
+  uri?: string,
+};
 
+/**
+ * Shell wrapper around {@link LinkerPlugin}.
+ *
+ * @return {LinkerPluginCls} The linker plugin class object.
+ */
 function LinkerPluginShell() {
+  // TODO: Replace catharsis with a in-built @webdoc/data-type-parser
+  const catharsis = require("catharsis");
+  const {query} = require("@webdoc/model");
+  const {Plugin} = require("./Plugin");
+
   /* -----------------------Helper Functions--------------------------------- */
   function isComplexTypeExpression(expr) {
     // record types, type unions, and type applications all count as "complex"
@@ -61,16 +74,10 @@ function LinkerPluginShell() {
   }
   /* -------------------------------------------------------------- */
 
-  type LinkerDocumentRecord = {
-    uri?: string,
-  };
-
-  type LinkerFileRecord = {
-    uriFragments: Set<string>,
-    uri?: string,
-  };
-
-  class LinkerPluginImpl extends RuntimePlugin {
+  /**
+   * @class LinkerPlugin
+   */
+  class LinkerPluginImpl extends Plugin {
     /**
      * The documents that are rendered into standalone files. By default, only
      * classes, namespaes, interfaces, mixins, packages, and tutorials are
@@ -97,6 +104,11 @@ function LinkerPluginShell() {
      * @protected
      */
     fileRegistry = new Map<string, LinkerFileRecord>();
+
+    /**
+     * Cache of DPL queries to their URIs.
+     */
+    queryCache = new Map<string, string>();
 
     /**
      * Returns the linker's record on a specific document, creating a new one if one does not exist
@@ -127,7 +139,7 @@ function LinkerPluginShell() {
      * @return {LinkerFileRecord} All the data this linker has on the output file.
      */
     getFileRecord(uri: string): LinkerFileRecord {
-      const recordHit = this.fileRecord.get(uri.toLowerCase());
+      const recordHit = this.fileRegistry.get(uri.toLowerCase());
 
       if (!recordHit) {
         const record: LinkerFileRecord = {
@@ -163,8 +175,8 @@ function LinkerPluginShell() {
      * @param {string} options.fragmentId - The fragment identifier (for example, `name` in
      * `foo.html#name`) to append to the link target.
      * @param {string} options.linkMap - The link map in which to look up the longname.
-     * @param {boolean} options.monospace - Indicates whether to display the link text in a monospace
-     * font.
+     * @param {boolean} options.monospace - Indicates whether to display the link text in a
+     *  monospace font.
      * @param {boolean} options.shortenName - Indicates whether to extract the short name from the
      * longname and display the short name in the link text. Ignored if `linkText` is specified.
      * @return {string} the HTML link, or the link text if the link is not available.
@@ -172,6 +184,9 @@ function LinkerPluginShell() {
     linkTo(docPath: string, linkText: string = docPath, options: LinkOptions) {
       if (!docPath) {
         return "";
+      }
+      if (this.queryCache.has(docPath)) {
+        return this.queryCache.get(docPath);
       }
       if (isDataType(docPath)) {
         let link = docPath.template;
@@ -213,17 +228,74 @@ function LinkerPluginShell() {
         // Optimize Object.fromEntires, it's ugly
         return stringifyType(parsedType, options.cssClass, mapToLinks(this.documentRegistry));
       } else {
-        fileUrl = options.linkMap.has(docPath) ? options.linkMap.get(docPath) : "";
+        const doc = query(docPath, this.renderer.docTree)[0];
+
+        if (!doc) {
+          return text;
+        }
+
+        fileUrl = this.getDocumentRecord(doc).uri || this.getURI(doc);
+
+        // Cache this query
+        if (fileUrl) {
+          this.queryCache.set(docPath, fileUrl);
+        }
         text = linkText || (options.shortenName ? getShortName(docPath) : docPath);
       }
 
       text = options.monospace ? `<code>${text}</code>` : text;
+
+      console.log(docPath, fileUrl)
 
       if (!fileUrl) {
         return text;
       } else {
         return `<a href="${encodeURI(fileUrl + fragmentString)}"${classString}>${text}</a>`;
       }
+    }
+
+    /**
+     * Retrieves all the links to the ancestors of the given {@code doc}. The first link is to the
+     * direct parent while the last one is the root doc.
+     *
+     * @param {Doc} doc
+     * @param {string} cssClass
+     * @return {string[]}
+     */
+    linksToAncestors(doc: Doc, cssClass: string): string[] {
+      const ancestors = [];
+
+      let searchDoc = doc.parent;
+
+      while (searchDoc) {
+        ancestors.push(searchDoc);
+        searchDoc = searchDoc.parent;
+      }
+
+      const links = [];
+
+      ancestors.forEach((ancestor) => {
+        if (ancestor.type === "RootDoc" || !ancestor.parent) {
+          return;
+        }
+
+        links.unshift(this.linkTo(ancestor.path, ancestor.name, cssClass));
+      });
+
+      if (links.length) {
+        // links[links.length - 1] += (SCOPE_TO_PUNC[doclet.scope] || "");
+      }
+
+      return links;
+    }
+
+    /**
+     * @override
+     */
+    getMixin() {
+      return {
+        linkTo: this.linkTo.bind(this),
+      };
     }
 
     /**
@@ -237,21 +309,27 @@ function LinkerPluginShell() {
      * Returns the URI pointing to the document's output file. An unique URI is created, if one
      * wasn't already.
      *
-     * @param {Doc | string} doc
+     * @param {Doc} doc
      * @return {string}
      */
-    getURI(doc: Doc | string): string {
-      if (typeof doc === "object") {
-        doc = doc.id;
-      }
+    getURI(doc: Doc): string {
+      const id = doc.id;
 
-      const record = this.getDocumentRecord(doc);
+      const record = this.getDocumentRecord(id);
       let uri = record.uri;
 
       if (!uri) {
         uri = this.generateURI(doc);
         record.uri = uri;
       }
+
+      return uri;
+    }
+
+    createURI(preferredUri: string): string {
+      const uri = this.generateBaseURI(preferredUri);
+
+      this.getFileRecord(uri);
 
       return uri;
     }
@@ -353,11 +431,15 @@ function LinkerPluginShell() {
      * If a doc corresponds to a smaller portion of an output file (for example, if the doc
      * represents a method), the URL will consist of a filename and a fragment ID.
      *
-     * @memberof SymbolLinks
+     * @private
      * @param {Doc} doc - The doc that will be used to create the URL.
      * @return {string} The URL to the generated documentation for the doc.
      */
     generateURI(doc: Doc) {
+      if (typeof doc === "string") {
+        throw new Error("Invalid argument, cannot generate an URI from a document path.");
+      }
+
       let baseURI: string;
       let fragment: string;
       const docPath = doc.path;
@@ -367,7 +449,7 @@ function LinkerPluginShell() {
       if (standaloneDocTypes.includes(doc.type)) {
         baseURI = this.generateBaseURI(docPath);
       } else { // inside another HTML file
-        baseURI = this.getURI(doc.parent);
+        baseURI = doc.parent.type !== "RootDoc" ? this.getURI(doc.parent) : "global.html";
         fragment = this.generateURIFragment(
           baseURI,
           doc.name,
@@ -379,10 +461,11 @@ function LinkerPluginShell() {
     }
   }
 
-  LinkerPlugin = LinkerPluginImpl;
-
-  return LinkerPlugin;
+  return LinkerPluginImpl;
 }
+
+/* eslint-disable-next-line new-cap */
+const LinkerPlugin = LinkerPluginShell();
 
 export {LinkerPlugin};
 export {LinkerPluginShell};

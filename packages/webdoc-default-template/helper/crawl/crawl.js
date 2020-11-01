@@ -2,10 +2,10 @@
 
 const {crawlReference} = require("./crawl-reference-explorer");
 const {traverse} = require("@webdoc/model");
-const {SymbolLinks} = require("@webdoc/template-library");
+const {linker} = require("../linker");
 
 // This file crawls the document tree to:
-// + feed the SymbolLinks database with links to pages to be generated.
+// + feed the linker database with links to pages to be generated.
 // + build a hierarchy of explorer-targets
 
 /*::
@@ -33,22 +33,18 @@ function buildLinks(tree /*: RootDoc */) /*: void */ {
   traverse(tree, (doc) => {
     if (doc.type === "RootDoc") {
       doc.packages.forEach((packageDoc) => {
-        const link = SymbolLinks.createLink(packageDoc);
-
-        SymbolLinks.registerLink(packageDoc.metadata.name, link);
+        linker.getURI(packageDoc);
       });
 
       return;
     }
 
-    const link = SymbolLinks.createLink(doc);
-
-    SymbolLinks.registerLink(doc.path, link);
+    linker.getURI(doc);
   });
 }
 
 function buildIndex(tree /*: RootDoc */) /*: [id: string]: [] & { url: string } */ {
-  const classIndexUrl = SymbolLinks.getFileName("Class-Index");
+  const classIndexUrl = linker.createURI("Class-Index");
 
   const index /*: [id: string]: [] & { url: string } */ = {
     classes: [],

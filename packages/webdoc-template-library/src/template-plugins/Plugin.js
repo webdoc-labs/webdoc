@@ -5,7 +5,7 @@ export type BindingPolicy = "partial" | "complete";
 /**
  * @abstract
  */
-export class RuntimePlugin {
+export class Plugin {
   constructor() {
     this.bindingPolicy = "complete";
     this.renderer = null;

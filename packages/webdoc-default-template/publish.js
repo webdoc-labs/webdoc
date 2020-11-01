@@ -8,11 +8,11 @@ const {
 } = require("@webdoc/model");
 const {
   FlushToFile,
-  SymbolLinks,
   TemplateRenderer,
   TemplatePipeline,
   TemplateTagsResolver,
 } = require("@webdoc/template-library");
+const {linker} = require("./helper/linker");
 
 // Plugins
 const {indexSorterPlugin} = require("./helper/renderer-plugins/index-sorter");
@@ -26,7 +26,7 @@ import type {
 
 */
 
-Object.assign(SymbolLinks.STANDALONE_DOCS, [
+Object.assign(linker.standaloneDocTypes, [
   "ClassDoc",
   "EnumDoc",
   "FunctionDoc",
@@ -47,13 +47,14 @@ const PRETTIFIER_SCRIPT_FILES = [
 exports.publish = (options /*: PublishOptions */) => {
   const docTree = options.documentTree;
   const outDir = path.normalize(options.config.opts.destination);
-  const index = SymbolLinks.getFileName("index");
+  const index = linker.createURI("index.html");
 
   fse.ensureDir(outDir);
 
   const crawlData = crawl(docTree);
   const renderer = new TemplateRenderer(path.join(__dirname, "tmpl"), null, docTree)
     .setLayoutTemplate("layout.tmpl")
+    .installPlugin("linker", linker)
     .installPlugin("generateIndex", indexSorterPlugin)
     .installPlugin("signature", signaturePlugin)
     .installPlugin("categoryFilter", categoryFilterPlugin);
@@ -184,7 +185,9 @@ function outReference(
   config /*: WebdocConfig */,
   docTree, /*: RootDoc */
 ) {
-  for (const [docPath, page] of SymbolLinks.pathToUrl) {
+  for (const [docPath, docRecord] of linker.documentRegistry) {
+    const {uri: page} = docRecord;
+
     if (page.includes("#")) {
       continue;// skip fragments (non-standalone docs)
     }
