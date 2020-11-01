@@ -27,6 +27,7 @@ dependencies:
   '@rush-temp/tests': 'file:projects/tests.tgz'
   '@rush-temp/types': 'file:projects/types.tgz'
   '@rushstack/eslint-patch': 1.0.3
+  array.prototype.flatmap: 1.2.3
   babel-eslint: 10.1.0_eslint@6.8.0
   babel-loader: 8.1.0_5a36cfe3630aa5e4fa0785cefae272b5
   bluebird: 3.7.2
@@ -10865,6 +10866,7 @@ packages:
       '@babel/preset-flow': 7.10.4_@babel+core@7.11.4
       '@babel/preset-react': 7.10.4_@babel+core@7.11.4
       '@babel/register': 7.10.5_@babel+core@7.11.4
+      array.prototype.flatmap: 1.2.3
       chai: 4.2.0
       del: 5.1.0
       eslint: 6.8.0
@@ -10889,7 +10891,7 @@ packages:
     dev: false
     name: '@rush-temp/cli'
     resolution:
-      integrity: sha512-D3IXIgj7msd6KeoVF+1IepNpHe8z4PtwmZcMW0ajkyBir+LsAB56BWmTOdO2yENpUlDg1EW/XNCzFKU33i4z/w==
+      integrity: sha512-ZlaBgQj6UjSagu6ImG9sm0ptt6OCQ1ZwgftYcZjSrL/Yue+L9d5u3LSaMRWynwjsggA7we0jsQPJOB+HXG5M5A==
       tarball: 'file:projects/cli.tgz'
     version: 0.0.0
   'file:projects/default-template.tgz':
@@ -11030,11 +11032,12 @@ packages:
       gulp-babel: 8.0.0_@babel+core@7.11.4
       gulp-util: 3.0.8
       mocha: 7.2.0
+      nanoid: 3.1.16
       taffydb: 2.7.3
     dev: false
     name: '@rush-temp/model'
     resolution:
-      integrity: sha512-PAetJ85M8+Xq1oyGo/k1WHCpdHbxQQiFVvLG5jQzqlM9zb5TlS42UGAtG3M+/ZV0exHYOBFvY8E9v54alfMn/w==
+      integrity: sha512-yEE/bVMbt/1chdAFIq+M+yAdJAolSfzEtPzwJewALCY/v45GFLqD7f4rbeKuL5KBXAq8VrN7/9YFvCoqscH/kw==
       tarball: 'file:projects/model.tgz'
     version: 0.0.0
   'file:projects/parser.tgz':
@@ -11167,6 +11170,7 @@ specifiers:
   '@rush-temp/tests': 'file:./projects/tests.tgz'
   '@rush-temp/types': 'file:./projects/types.tgz'
   '@rushstack/eslint-patch': ~1.0.2
+  array.prototype.flatmap: ~1.2.3
   babel-eslint: ^10.1.0
   babel-loader: ^8.1.0
   bluebird: ^3.7.2
