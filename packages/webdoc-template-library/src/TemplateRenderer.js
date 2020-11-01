@@ -13,8 +13,8 @@ import type {
   RootDoc,
   TypedefDoc,
 } from "@webdoc/types";
-import {SymbolLinks} from "./SymbolLinks";
 import {tag, templateLogger} from "./Logger";
+import {SymbolLinks} from "./SymbolLinks";
 import fs from "fs";
 import path from "path";
 
@@ -73,6 +73,10 @@ export class TemplateRenderer {
     return this;
   }
 
+  getPlugin<T>(pluginName: string): T {
+    return this.plugins[pluginName];
+  }
+
   /**
    * Install a plugin to this renderer. It can be accessed at `renderer.plugins[name]`.
    *
@@ -88,10 +92,16 @@ export class TemplateRenderer {
       return this;
     }
 
-    this.plugins[name] = this.plugins[name] || {};
+    if (plugin.bindingPolicy === "complete") {
+      this.plugins[name] = plugin;
 
-    Object.assign(this.plugins[name], plugin);
-    this.plugins[name].renderer = this;
+      plugin.onBind(this);
+    } else {
+      this.plugins[name] = this.plugins[name] || {};
+
+      Object.assign(this.plugins[name], plugin);
+      this.plugins[name].renderer = this;
+    }
 
     return this;
   }

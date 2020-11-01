@@ -1,6 +1,7 @@
 // @flow
 
 import type {BaseDoc, ClassDoc, Doc, DocLink, DocType, ObjectDoc, TypedefDoc} from "@webdoc/types";
+import {nanoid} from "nanoid";
 
 const CANONICAL_SEPARATOR = /([.#~$])/;
 
@@ -30,6 +31,7 @@ function updateScope(doc: Doc, scopeStack: string[], scopePath: string): void {
  */
 export const createDoc = (name?: string, type?: string = "BaseDoc", options: any, instance: any) => {
   const doc = Object.assign(instance || {}, {
+    id: nanoid(),
     name,
     path: "",
     stack: [""],
