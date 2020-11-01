@@ -20,6 +20,10 @@ function condition(conditionClause: VariantCondition, doc: Doc): boolean {
 
 // Evaluates all variant conditionsa and returns whether the doc passes them.
 export function variant(variantExpr: VariantExpr, doc: Doc): boolean {
+  if (!variantExpr) {
+    return true;
+  }
+
   for (let i = 0, j = variantExpr.conditions.length; i < j; i++) {
     if (!condition(variantExpr.conditions[i], doc)) {
       return false;

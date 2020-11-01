@@ -1,7 +1,7 @@
 // @flow
-import {templateLogger} from "./Logger";
 import type {Doc} from "@webdoc/types";
 import {isDataType} from "@webdoc/model";
+import {templateLogger} from "./Logger";
 
 // TODO: Replace catharsis with a in-built @webdoc/data-type-parser
 const catharsis = require("catharsis");

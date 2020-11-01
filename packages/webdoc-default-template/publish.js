@@ -5,14 +5,15 @@ const fse = require("fs-extra");
 const path = require("path");
 const {
   doc: findDoc,
+  traverse,
 } = require("@webdoc/model");
 const {
   FlushToFile,
-  SymbolLinks,
   TemplateRenderer,
   TemplatePipeline,
   TemplateTagsResolver,
 } = require("@webdoc/template-library");
+const {linker} = require("./helper/linker");
 
 // Plugins
 const {indexSorterPlugin} = require("./helper/renderer-plugins/index-sorter");
@@ -26,7 +27,7 @@ import type {
 
 */
 
-Object.assign(SymbolLinks.STANDALONE_DOCS, [
+Object.assign(linker.standaloneDocTypes, [
   "ClassDoc",
   "EnumDoc",
   "FunctionDoc",
@@ -44,22 +45,36 @@ const PRETTIFIER_SCRIPT_FILES = [
   "prettify.js",
 ];
 
+let idToDoc/*: Map<string, Doc> */;
+
 exports.publish = (options /*: PublishOptions */) => {
   const docTree = options.documentTree;
   const outDir = path.normalize(options.config.opts.destination);
-  const index = SymbolLinks.getFileName("index");
+  const index = linker.createURI("index");
 
   fse.ensureDir(outDir);
 
   const crawlData = crawl(docTree);
   const renderer = new TemplateRenderer(path.join(__dirname, "tmpl"), null, docTree)
     .setLayoutTemplate("layout.tmpl")
+    .installPlugin("linker", linker)
     .installPlugin("generateIndex", indexSorterPlugin)
     .installPlugin("signature", signaturePlugin)
     .installPlugin("categoryFilter", categoryFilterPlugin);
   const pipeline = new TemplatePipeline(renderer)
     .pipe(new TemplateTagsResolver())
     .pipe(new FlushToFile({skipNullFile: false}));
+
+  idToDoc = new Map();
+
+  traverse(docTree, (doc) => {
+    if (doc.type === "RootDoc") {
+      doc.packages.forEach((pkg) => {
+        idToDoc.set(pkg.id, pkg);
+      });
+    }
+    idToDoc.set(doc.id, doc);
+  });
 
   outStaticFiles(outDir);
   outExplorerData(outDir, crawlData);
@@ -184,7 +199,9 @@ function outReference(
   config /*: WebdocConfig */,
   docTree, /*: RootDoc */
 ) {
-  for (const [docPath, page] of SymbolLinks.pathToUrl) {
+  for (const [id, docRecord] of linker.documentRegistry) {
+    const {uri: page} = docRecord;
+
     if (page.includes("#")) {
       continue;// skip fragments (non-standalone docs)
     }
@@ -192,7 +209,7 @@ function outReference(
     let doc;
 
     try {
-      doc = findDoc(docPath, docTree);
+      doc = idToDoc.get(id);
     } catch (_) {
       continue;
     }

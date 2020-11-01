@@ -1,7 +1,6 @@
 // @flow
 
-import {SymbolLinks} from "../SymbolLinks";
-import type {TemplatePipelineElement} from "../TemplatePipeline";
+import type {TemplatePipeline, TemplatePipelineElement} from "../TemplatePipeline";
 
 const LINK_PATTERN = /{@link ([^|\s}]*)([\s|])?([^}]*)}/g;
 
@@ -20,6 +19,10 @@ export class TemplateTagsResolver implements TemplatePipelineElement<{}> {
    */
   constructor(options?: { linkClass?: string } = {}) {
     this.linkClass = options.linkClass;
+  }
+
+  attachTo(pipeline: TemplatePipeline) {
+    this.renderer = pipeline.renderer;
   }
 
   run(input: string, pipelineData: any): string {
@@ -44,7 +47,7 @@ export class TemplateTagsResolver implements TemplatePipelineElement<{}> {
         replaced = `<a ${this.linkClass ? "class=\"" + this.linkClass + "\"" : ""}` +
         `href="${link}">${linkText}</a>`;
       } else {
-        replaced = SymbolLinks.linkTo(link, linkText);
+        replaced = this.renderer.linkTo(link, linkText);
       }
 
       const startIndex = linkTextMatch ? linkTextMatch.index : linkMatch.index;

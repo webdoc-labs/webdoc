@@ -4,6 +4,8 @@ import type {PackageDoc, SourceFile} from "@webdoc/types";
 import path from "path";
 import pkgUp from "pkg-up";
 
+let pkgId = 0;
+
 export function packages(sourceFiles: SourceFile[]): PackageDoc[] {
   const cache = new Map<string, PackageDoc>();
   const packages: PackageDoc[] = [];
@@ -25,6 +27,7 @@ export function packages(sourceFiles: SourceFile[]): PackageDoc[] {
 
         // Create PackageDoc for this package
         pkg = {
+          id: `package-${pkgId++}`,
           api: [],
           name: metadata.name,
           path: metadata.name,

@@ -1,7 +1,7 @@
 // @flow
 
-const {SymbolLinks} = require("@webdoc/template-library");
 const {traverse} = require("@webdoc/model");
+const {linker} = require("../linker");
 
 /*::
 import type {
@@ -52,11 +52,7 @@ function crawlReference(doc /*: Doc */) {
 exports.crawlReference = crawlReference;
 
 function getPage(doc /*: Doc */) {
-  if (doc.type === "PackageDoc") {
-    return SymbolLinks.pathToUrl.get(doc.metadata.name);
-  }
-
-  return SymbolLinks.pathToUrl.get(doc.path);
+  return linker.getURI(doc);
 }
 
 /*::
@@ -169,7 +165,7 @@ function traversePackage(doc /*: Doc | PackageDoc */, context /*: Object */, par
 
 function buildExplorerTargetsTree(node /*: ExplorerNode */, parentTitle /*: string */ = "") /*: ExplorerTarget */ {
   const doc = node.doc;
-  const page = getPage(doc);
+  const page = doc.type !== "RootDoc" ? getPage(doc) : "index.html";
 
   let title = "";
 
@@ -199,7 +195,7 @@ function buildExplorerTargetsTree(node /*: ExplorerNode */, parentTitle /*: stri
 
       node.children.ClassIndex = {
         title: "Class Index",
-        page: SymbolLinks.getFileName("Class-Index"),
+        page: linker.createURI("Class-Index.html"),
       };
     }
 

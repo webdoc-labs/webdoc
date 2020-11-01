@@ -1,9 +1,15 @@
+const {LinkerPlugin} = require("../../lib/template-plugins/LinkerPlugin");
 const {TemplateTagsResolver} = require("../../lib/pipeline-elements/TemplateTagsResolver");
+const {TemplateRenderer} = require("../../lib/TemplateRenderer");
 
 const expect = require("chai").expect;
 
 describe("@webdoc/template-library.TemplateTagsResolver", function() {
   const mockTagsResolver = new TemplateTagsResolver();
+  const mockTemplateRenderer = new TemplateRenderer();
+
+  mockTemplateRenderer.installPlugin("linker", LinkerPlugin);
+  mockTagsResolver.attachTo({ renderer: mockTemplateRenderer });
 
   it("{@link <DOC_PATH>}", function() {
     expect(mockTagsResolver.runLink("--{@link <DOC_PATH>}--"))

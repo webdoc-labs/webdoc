@@ -38,7 +38,8 @@
   "dependencies": {
     "@webdoc/types": "^1.0.1",
     "catharsis": "0.8.11",
-    "taffydb": "2.7.3"
+    "taffydb": "2.7.3",
+    "nanoid": "~3.1.16"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",

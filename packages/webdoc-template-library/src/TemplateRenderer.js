@@ -13,10 +13,12 @@ import type {
   RootDoc,
   TypedefDoc,
 } from "@webdoc/types";
-import {SymbolLinks} from "./SymbolLinks";
 import {tag, templateLogger} from "./Logger";
+import {SymbolLinks} from "./SymbolLinks";
 import fs from "fs";
 import path from "path";
+
+let printedDefaultLinker = false;
 
 /**
  * The template renderer uses lodash to parse .tmpl template files and renders HTML content. A
@@ -73,6 +75,10 @@ export class TemplateRenderer {
     return this;
   }
 
+  getPlugin<T>(pluginName: string): T {
+    return this.plugins[pluginName];
+  }
+
   /**
    * Install a plugin to this renderer. It can be accessed at `renderer.plugins[name]`.
    *
@@ -88,15 +94,30 @@ export class TemplateRenderer {
       return this;
     }
 
-    this.plugins[name] = this.plugins[name] || {};
+    if (plugin.bindingPolicy === "complete") {
+      this.plugins[name] = plugin;
 
-    Object.assign(this.plugins[name], plugin);
-    this.plugins[name].renderer = this;
+      plugin.onBind(this);
+    } else {
+      this.plugins[name] = this.plugins[name] || {};
+
+      Object.assign(this.plugins[name], plugin);
+      this.plugins[name].renderer = this;
+    }
 
     return this;
   }
 
-  linkTo = SymbolLinks.linkTo
+  linkTo(...args) {
+    if (!printedDefaultLinker) {
+      console.warn("The default linker is the deprecated SymbolLinks API. " +
+        "Upgrade to the LinkerPlugin!");
+      printedDefaultLinker = true;
+      this.linkTo = SymbolLinks.linkTo;
+    }
+
+    return SymbolLinks.linkTo(...args);
+  }
 
   find(spec: any) {
     return this.docDatabase(spec).get();
