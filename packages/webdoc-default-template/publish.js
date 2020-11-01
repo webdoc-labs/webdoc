@@ -50,7 +50,7 @@ let idToDoc/*: Map<string, Doc> */;
 exports.publish = (options /*: PublishOptions */) => {
   const docTree = options.documentTree;
   const outDir = path.normalize(options.config.opts.destination);
-  const index = linker.createURI("index.html");
+  const index = linker.createURI("index");
 
   fse.ensureDir(outDir);
 
