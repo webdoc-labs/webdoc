@@ -21,7 +21,8 @@ export function extractDataValue(value: string): any {
     return /'([^'])*'/.exec(value);
   }
 
-  return /(\w)+/.exec(value);
+  // Match everything until a whitespace
+  return /([^ ])+/.exec(value);
 }
 
 // Extract simpleName & defaultValue when passing simpleName=defaultValue
