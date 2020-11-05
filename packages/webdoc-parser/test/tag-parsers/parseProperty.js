@@ -61,6 +61,17 @@ describe("@webdoc/parser.parseProperty", function() {
     expect(propertyDoc.description).to.equal("<description>");
   });
 
+  it("@property {DataType} propertyName=-numberDefaultValue - <description>", function() {
+    const doc = {};
+
+    parseProperty("{DataType} propertyName=-numberDefaultValue - <description>", doc);
+
+    const propertyDoc = doc.members[0];
+
+    expect(propertyDoc.constant).to.equal(true);
+    expect(propertyDoc.dataValue).to.equal("-numberDefaultValue");
+    expect(propertyDoc.description).to.equal("<description>");
+  });
 
   it("@property {DataType}[propertyName] <description>", function() {
     const doc = {};
