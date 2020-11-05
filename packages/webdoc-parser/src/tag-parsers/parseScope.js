@@ -1,4 +1,5 @@
-import type {StaticTag, InstanceTag, InnerTag} from "@webdoc/types";
+import type {AccessTag, InnerTag, InstanceTag, StaticTag} from "@webdoc/types";
+import {parserLogger, tag} from "../Logger";
 
 // @scope <"static" | "instance" | "inner">
 // @static

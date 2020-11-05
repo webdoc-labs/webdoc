@@ -3,8 +3,8 @@
 import type {Doc, RootDoc} from "@webdoc/types";
 import modDiscoverMembers from "./mod-discover-members";
 import modPackageApi from "./mod-package-api";
-import modPrune from "./mod-prune";
-import modResolveMemberof from "./mod-resolve-memberof";
+import modPrune from "./mod-prune";// Next line is f'd up b/c the compiler ran on that file
+import modResolveMemberof from "./mod-resolve-memberof"; // eslint-disable-line
 import modResolveMembers from "./mod-resolve-members";
 import modResolveRelated from "./mod-resolve-related";
 import modSort from "./mod-sort-members";

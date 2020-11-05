@@ -352,7 +352,7 @@ function buildLink(docPath: string, linkText: string = docPath, options: LinkOpt
   if (hasUrlPrefix(stripped)) {
     fileUrl = stripped;
     text = linkText || stripped;
-  }
+  }// eslint-disable-line brace-style
   // handle complex type expressions that may require multiple links
   // (but skip anything that looks like an inline tag or HTML tag)
   else if (docPath && isComplexTypeExpression(docPath) && /\{@.+\}/.test(docPath) === false &&

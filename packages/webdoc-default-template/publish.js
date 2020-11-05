@@ -3,10 +3,7 @@
 const {crawl} = require("./helper/crawl");
 const fse = require("fs-extra");
 const path = require("path");
-const {
-  doc: findDoc,
-  traverse,
-} = require("@webdoc/model");
+const {traverse} = require("@webdoc/model");
 const {
   FlushToFile,
   TemplateRenderer,

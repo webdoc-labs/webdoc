@@ -82,6 +82,7 @@ function convertMarkdownToHTML(doc /*: Doc */) {
   }
 }
 
+// Install plugin
 function main() {
   global.Webdoc.Parser.installPlugin({
     id: "@webdoc/plugin-markdown",
