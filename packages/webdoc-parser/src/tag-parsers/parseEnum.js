@@ -1,6 +1,6 @@
 // @flow
 import type {Doc, EnumTag} from "@webdoc/types";
-import {matchDataTypeClosure, StringUtils} from "./helper";
+import {StringUtils, matchDataTypeClosure} from "./helper";
 import {parseDataType} from "@webdoc/model";
 
 // @enum [{<DATA_TYPE>}] [<NAME>]

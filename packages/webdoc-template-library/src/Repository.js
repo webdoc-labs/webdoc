@@ -2,8 +2,8 @@
 
 import type {Doc} from "@webdoc/types";
 import branch from "git-branch";
-import path from "path";
 import gh from "parse-github-url";
+import path from "path";
 
 /**
  * Abstract class that handles linking documented symbols to their source locations in a remote

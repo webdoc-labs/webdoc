@@ -1,4 +1,4 @@
-import type {StaticTag, InstanceTag, InnerTag} from "@webdoc/types";
+import type {InnerTag, InstanceTag, StaticTag} from "@webdoc/types";
 
 // @scope <"static" | "instance" | "inner">
 // @static

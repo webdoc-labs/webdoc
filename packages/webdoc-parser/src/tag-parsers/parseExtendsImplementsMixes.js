@@ -1,6 +1,6 @@
 // @flow
 
-import type {ExtendsTag, ImplementsTag, MixesTag} from "@webdoc/types";
+import type {Doc, ExtendsTag, ImplementsTag, MixesTag} from "@webdoc/types";
 
 // @extends     <SUPER_CLASS>
 // @implements  <INTERFACE>

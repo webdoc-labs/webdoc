@@ -3,7 +3,7 @@
 // This file/directory providse a modular way to verify documented information is structurally
 // correct.
 
-import type {Doc} from "@webdoc/type";
+import type {Doc} from "@webdoc/types";
 import type {SymbolSignature} from "../types/Symbol";
 
 import ValidatorParameters from "./validate-parameters";
