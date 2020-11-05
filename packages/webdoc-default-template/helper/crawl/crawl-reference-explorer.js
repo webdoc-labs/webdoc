@@ -13,17 +13,6 @@ import type {
 import type {CategorizedDocumentList} from "./crawl";
 */
 
-const DOC_TYPE_TO_TITLE = {
-  "PackageDoc": "Packages",
-  "ModuleDoc": "Modules",
-  "NSDoc": "Namespaces",
-  "ClassDoc": "Classes",
-  "EnumDoc": "Enums",
-  "InterfaceDoc": "Interfaces",
-  "FunctionDoc": "Functions",
-  "TypedefDoc": "Type Definitions",
-};
-
 const HIERARCHY_SPECIFIERS = {
   "RootDoc": ["PackageDoc", "ModuleDoc",
     "ClassDoc", "EnumDoc", "InterfaceDoc", "FunctionDoc", "NSDoc", "TypedefDoc"],
@@ -42,7 +31,8 @@ const HINTS = {
 
 // Crawls the tree searching for the API reference
 function crawlReference(doc /*: Doc */) {
-  const explorerHierarchy = buildExplorerHierarchy(doc, doc.packages ? (doc.packages.length > 1) : false);
+  const explorerHierarchy =
+    buildExplorerHierarchy(doc, doc.packages ? (doc.packages.length > 1) : false);
 
   const tree = buildExplorerTargetsTree(explorerHierarchy);
 
@@ -146,7 +136,10 @@ function traversePackage(doc /*: Doc | PackageDoc */, context /*: Object */, par
   if (doc.type !== "PackageDoc" &&
     !parentWasPackage &&
     doc.parent.type !== "RootDoc" &&
-    (doc.type === "ClassDoc" || doc.type === "ObjectDoc" || doc.type === "NSDoc" || doc.parent.type === "NSDoc") &&
+    (doc.type === "ClassDoc" ||
+      doc.type === "ObjectDoc" ||
+      doc.type === "NSDoc" ||
+      doc.parent.type === "NSDoc") &&
     doc.loc.file.package !== doc.parent.loc.file.package) {
     // cannot enter into a different package's API
     return;
@@ -163,7 +156,10 @@ function traversePackage(doc /*: Doc | PackageDoc */, context /*: Object */, par
   context.exit(doc);
 }
 
-function buildExplorerTargetsTree(node /*: ExplorerNode */, parentTitle /*: string */ = "") /*: ExplorerTarget */ {
+function buildExplorerTargetsTree(
+  node /*: ExplorerNode */,
+  parentTitle /*: string */ = "",
+) /*: ExplorerTarget */ {
   const doc = node.doc;
   const page = doc.type !== "RootDoc" ? getPage(doc) : "index.html";
 
@@ -199,7 +195,7 @@ function buildExplorerTargetsTree(node /*: ExplorerNode */, parentTitle /*: stri
       };
     }
 
-    for (const [key, value] of Object.entries(childNodes)) {
+    for (const [, value] of Object.entries(childNodes)) {
       const children = value.map((cn) => buildExplorerTargetsTree(cn, title));
 
       children.forEach((child) => {

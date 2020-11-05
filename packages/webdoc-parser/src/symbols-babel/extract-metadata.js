@@ -62,6 +62,8 @@ import {
   isVoidTypeAnnotation,
 } from "@babel/types";
 
+import type {DataType, Param, Return} from "@webdoc/types";
+
 import {
   cloneType,
   createComplexType,
@@ -70,8 +72,6 @@ import {
   createSimpleDocumentedType,
   createSimpleKeywordType,
 } from "@webdoc/model";
-
-import type {DataType, Param, Return} from "@webdoc/types";
 
 // Extracts all the extended class/interface names
 export function extractExtends(
