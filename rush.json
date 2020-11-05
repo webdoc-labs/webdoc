@@ -10,7 +10,7 @@
   "nodeSupportedVersionRange": ">=10.0.0",
   "repository": {
     "url": "https://github.com/webdoc-js/webdoc",
-    "defaultBranch": "master",
+    "defaultBranch": "release",
     "defaultRemote": "origin"
   },
   "eventHooks": {
