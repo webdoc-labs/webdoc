@@ -29,7 +29,10 @@ let nestedTutorials = new Set<string>();
 // NOTE: The resulting tutorial-hierarchy need not be a simple tree and can be a cyclic, complex
 // graph. Multiple tutorials can be the parent of one tutorial. That is why tutorialDoc.parent is
 // not set.
-export function morphTutorials(tutorials: TutorialDoc[], tconf: TutorialConfiguration): TutorialDoc[] {
+export function morphTutorials(
+  tutorials: TutorialDoc[],
+  tconf: TutorialConfiguration,
+): TutorialDoc[] {
   tutorialDB = new Map<string, TutorialDoc>();
   nestedTutorials = new Set<string>();
 

@@ -1,8 +1,8 @@
 // @flow
 
 import type {Doc} from "@webdoc/types";
-import path from "path";
 import branch from "git-branch";
+import path from "path";
 import gh from "parse-github-url";
 
 /**

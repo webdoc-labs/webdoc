@@ -1,11 +1,11 @@
 // @flow
 
+import type {Tutorial} from "@webdoc/types";
 import fs from "fs";
 import globby from "globby";
-import path from "path";
-import type {Tutorial} from "@webdoc/types";
 import merge from "lodash.merge";
 import {morphTutorials} from "./morph-tutorials";
+import path from "path";
 
 // Markdown rendering
 const renderer = require("markdown-it")({

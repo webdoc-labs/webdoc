@@ -1,5 +1,5 @@
 // @flow
-import type {RootDoc, Doc} from "@webdoc/types";
+import type {Doc, RootDoc} from "@webdoc/types";
 import type {SanitizedDoc} from "./SanitizedDoc";
 
 function sanitizeDoc(doc: Doc): SanitizedDoc {

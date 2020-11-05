@@ -3,6 +3,7 @@ import * as _ from "lodash";
 import type {
   ClassDoc,
   Doc,
+  EnumDoc,
   EventDoc,
   FunctionDoc,
   InterfaceDoc,
@@ -20,6 +21,8 @@ import path from "path";
 
 let printedDefaultLinker = false;
 
+// No idea what ESLint is thinking in the following doc.
+/* eslint-disable valid-jsdoc */
 /**
  * The template renderer uses lodash to parse .tmpl template files and renders HTML content. A
  * template file contains {@code <?js js>} delimiters containing JavaScript code to control
@@ -32,6 +35,7 @@ let printedDefaultLinker = false;
  * {@code getFunctions}, {@code getConstructor}, {@code getEvents}, {@code getTypedefs},
  * {@code getMixins}, {@code getInterfaces} methods were made for use in templates!
  */
+/* eslint-enable valid-jsdoc */
 export class TemplateRenderer {
   templateDir: string;
   docDatabase: any;
@@ -242,18 +246,6 @@ export class TemplateRenderer {
   }
 
   /**
-   * Finds all the member properites of {@code doc}.
-   *
-   * @param {Doc} doc
-   * @param {boolean}[recursive=false] - whether to find properties recursively
-   * @param {Doc[]}[out] - optional array to output the property-docs into
-   * @return {PropertyDoc[]}
-   */
-  getProperties(doc: Doc, recursive = false, out: Doc[]): PropertyDoc[] {
-    return this.getMembers(doc, "PropertyDoc", recursive, out);
-  }
-
-  /**
    * Finds all the member methods of {@code doc}.
    *
    * @param {Doc} doc
@@ -325,7 +317,7 @@ export class TemplateRenderer {
       for (let i = 0; i < doc.members.length; i++) {
         // Don't search inside private docs
         if (doc.members[i].access !== "private") {
-          this.getMembers(doc, type, true, out);
+          this.getMembers(doc, true, out);
         }
       }
     }
