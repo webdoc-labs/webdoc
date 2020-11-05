@@ -65,9 +65,3 @@ export function loadTutorials(tutorialsDir?: string): Tutorial[] {
 
   return tutorials;
 }
-
-function buildTutorialTree(config, tutorials) {
-  const nameToTutorial = new Map();
-
-  tutorials.forEach((t) => nameToTutorial.set(t.name, t));
-}
