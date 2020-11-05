@@ -33,8 +33,9 @@ const TYPE_ORDER = {
 const collator = new Intl.Collator();
 
 const PROP_COMPARATORS = {
+  "access": (d0, d1) =>
+    (ACCESS_ORDER[d0.access || "public"]) - (ACCESS_ORDER[d1.access || "public"]),
   "name": (d0, d1) => collator.compare(d0.name, d1.name),
-  "access": (d0, d1) => (ACCESS_ORDER[d0.access || "public"]) - (ACCESS_ORDER[d1.access || "public"]),
   "scope": (d0, d1) => (SCOPE_ORDER[d0.scope || "inner"]) - (SCOPE_ORDER[d1.scope || "inner"]),
   "type": (d0, d1) => (TYPE_ORDER[d0.type] || 10) - (TYPE_ORDER[d1.type] || 10),
 };

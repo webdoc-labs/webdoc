@@ -26,10 +26,16 @@ function updateScope(doc: Doc, scopeStack: string[], scopePath: string): void {
  * @param {string}[name]
  * @param {string}[type="BaseDoc"]
  * @param {*}[options]
- * @param {*}[instance] - the doc object to assign properties (if not provided, a new object is created)
+ * @param {*}[instance] - the doc object to assign properties (if not provided, a new object
+ *    is created)
  * @return {BaseDoc}
  */
-export const createDoc = (name?: string, type?: string = "BaseDoc", options: any, instance: any) => {
+export const createDoc = (
+  name?: string,
+  type?: string = "BaseDoc",
+  options: any,
+  instance: any,
+) => {
   const doc = Object.assign(instance || {}, {
     id: nanoid(),
     name,

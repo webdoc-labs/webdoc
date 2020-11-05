@@ -5,7 +5,7 @@ export {tag} from "missionlog";
 
 type ParserStage = "Symbol-Parser" | "Assembler" | "Transformer" | "Document-Tree-Modifier";
 
-let stage: ParserStage = "Symbol-Parser";
+export let stage: ParserStage = "Symbol-Parser";
 let doc: string;
 
 export function updateStage(newStage: ParserStage) {

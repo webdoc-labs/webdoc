@@ -55,12 +55,14 @@ import {
   isTSTypeQuery,
   isTSTypeReference,
   isTSUndefinedKeyword,
-  isTSUnknownKeyword,
   isTSUnionType,
+  isTSUnknownKeyword,
   isTSVoidKeyword,
   isTypeAnnotation,
   isVoidTypeAnnotation,
 } from "@babel/types";
+
+import type {DataType, Param, Return} from "@webdoc/types";
 
 import {
   cloneType,
@@ -70,8 +72,6 @@ import {
   createSimpleDocumentedType,
   createSimpleKeywordType,
 } from "@webdoc/model";
-
-import type {DataType, Param, Return} from "@webdoc/types";
 
 // Extracts all the extended class/interface names
 export function extractExtends(

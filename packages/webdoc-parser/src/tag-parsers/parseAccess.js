@@ -1,5 +1,5 @@
+import type {AccessTag, PrivateTag, ProtectedTag, PublicTag} from "@webdoc/types";
 import {parserLogger, tag} from "../Logger";
-import type {PublicTag, ProtectedTag, PrivateTag, AccessTag} from "@webdoc/types";
 
 // @access <"public" | "private" | "protected">
 // @public

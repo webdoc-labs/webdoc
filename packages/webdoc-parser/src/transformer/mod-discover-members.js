@@ -46,8 +46,6 @@ function discoverMembers(doc: Doc, depsChain = new Set<Doc>()): void {
     return;
   }
 
-  const members = doc.members;
-
   // This maps symbol names to the members of doc, so that the same symbol is not
   // inherited/overriden multiple times.
   const memberMap: { [id: string]: string } = {};
@@ -87,7 +85,10 @@ function discoverMembers(doc: Doc, depsChain = new Set<Doc>()): void {
       const member = parent.members[i];
 
       // Only methods/properties/events are inheritable
-      if (member.type !== "MethodDoc" && member.type !== "PropertyDoc" && member.type !== "EventDoc") {
+      if (member.type !== "MethodDoc" &&
+        member.type !== "PropertyDoc" &&
+        member.type !== "EventDoc"
+      ) {
         continue;
       }
 

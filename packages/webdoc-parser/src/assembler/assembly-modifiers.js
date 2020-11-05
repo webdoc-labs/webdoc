@@ -1,9 +1,9 @@
 // @flow
 
+import {parserLogger, tag} from "../Logger";
 import type {AssemblyModifier} from "../types/AssemblyModifier";
 import modResolveAssignedMembers from "./mod-resolve-assigned-members";
 import modResolveLinks from "./mod-resolve-links";
-import {parserLogger, tag} from "../Logger";
 
 const mods: AssemblyModifier[] = [];
 

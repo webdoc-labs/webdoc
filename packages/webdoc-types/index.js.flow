@@ -50,6 +50,7 @@ declare module "@webdoc/types" {
       "NSDoc" | "EventDoc" | "EnumDoc"
 
   declare type BaseDoc = {
+    id: string,
     name: string,
     path: string,
     stack: string[],

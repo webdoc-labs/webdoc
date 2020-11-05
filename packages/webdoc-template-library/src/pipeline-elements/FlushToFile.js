@@ -1,6 +1,6 @@
 // @flow
 
-import type {TemplatePipelineElement} from "../TemplatePipelineElement";
+import type {TemplatePipelineElement} from "../TemplatePipeline";
 import fs from "fs";
 
 type FlushData = {

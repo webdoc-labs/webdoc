@@ -1,7 +1,7 @@
 // @flow
-import type {RootDoc, Doc} from "@webdoc/types";
-import {addChildDoc} from "@webdoc/model";
+import type {Doc, RootDoc} from "@webdoc/types";
 import type {SanitizedDoc} from "./SanitizedDoc";
+import {addChildDoc} from "@webdoc/model";
 
 function restoreDoc(sanitized: SanitizedDoc, scope?: Doc): Doc {
   const doc: Doc = {

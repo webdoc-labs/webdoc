@@ -9,7 +9,7 @@ describe("@webdoc/template-library.TemplateTagsResolver", function() {
   const mockTemplateRenderer = new TemplateRenderer();
 
   mockTemplateRenderer.installPlugin("linker", LinkerPlugin);
-  mockTagsResolver.attachTo({ renderer: mockTemplateRenderer });
+  mockTagsResolver.attachTo({renderer: mockTemplateRenderer});
 
   it("{@link <DOC_PATH>}", function() {
     expect(mockTagsResolver.runLink("--{@link <DOC_PATH>}--"))
