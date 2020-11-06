@@ -2,6 +2,18 @@
   "name": "@webdoc/default-template",
   "entries": [
     {
+      "version": "1.1.1",
+      "tag": "@webdoc/default-template_v1.1.1",
+      "date": "Fri, 06 Nov 2020 00:46:42 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "1.1.0 flop because @webdoc/default-template didn't publish all files."
+          }
+        ]
+      }
+    },
+    {
       "version": "1.0.1",
       "tag": "@webdoc/default-template_v1.0.1",
       "date": "Fri, 06 Nov 2020 00:32:36 GMT",

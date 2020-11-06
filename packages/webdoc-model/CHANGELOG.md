@@ -1,6 +1,11 @@
 # Change Log - @webdoc/model
 
-This log was last generated on Fri, 06 Nov 2020 00:32:36 GMT and should not be manually modified.
+This log was last generated on Fri, 06 Nov 2020 00:46:42 GMT and should not be manually modified.
+
+## 1.1.1
+Fri, 06 Nov 2020 00:46:42 GMT
+
+*Version update only*
 
 ## 1.0.1
 Fri, 06 Nov 2020 00:32:36 GMT
