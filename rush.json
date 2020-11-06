@@ -8,6 +8,7 @@
     "resolutionStrategy": "fast"
   },
   "nodeSupportedVersionRange": ">=10.0.0",
+  "ensureConsistentVersions": false,
   "repository": {
     "url": "https://github.com/webdoc-js/webdoc",
     "defaultBranch": "release",

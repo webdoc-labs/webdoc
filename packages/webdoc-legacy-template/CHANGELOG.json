@@ -1,0 +1,17 @@
+{
+  "name": "@webdoc/legacy-template",
+  "entries": [
+    {
+      "version": "1.0.1",
+      "tag": "@webdoc/legacy-template_v1.0.1",
+      "date": "Fri, 06 Nov 2020 00:32:36 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "Release webdoc 1.1.0 with better linking API that supports method overloads and DPL queries"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "changes": [
+    {
+      "changeType": 0,
+      "newVersion": "1.1.0",
+      "packageName": "@webdoc/cli",
+      "comment": ""
+    }
+  ],
+  "packageName": "@webdoc/cli",
+  "email": "shukantpal@outlook.com"
+}
