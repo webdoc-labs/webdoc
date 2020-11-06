@@ -23,27 +23,32 @@
     {
       "packageName": "@webdoc/cli",
       "projectFolder": "packages/webdoc-cli",
-      "reviewCategory": "production"
+      "reviewCategory": "production",
+      "shouldPublish": true
     },
     {
       "packageName": "@webdoc/default-template",
       "projectFolder": "packages/webdoc-default-template",
-      "reviewCategory": "production"
+      "reviewCategory": "production",
+      "shouldPublish": true
     },
     {
       "packageName": "@webdoc/externalize",
       "projectFolder": "packages/webdoc-externalize",
-      "reviewCategory": "production"
+      "reviewCategory": "production",
+      "shouldPublish": true
     },
     {
       "packageName": "@webdoc/legacy-template",
       "projectFolder": "packages/webdoc-legacy-template",
-      "reviewCategory": "production"
+      "reviewCategory": "production",
+      "shouldPublish": true
     },
     {
       "packageName": "@webdoc/model",
       "projectFolder": "packages/webdoc-model",
-      "reviewCategory": "production"
+      "reviewCategory": "production",
+      "shouldPublish": true
     },
     {
       "packageName": "@webdoc/parser",
@@ -53,37 +58,44 @@
     {
       "packageName": "@webdoc/plugin-markdown",
       "projectFolder": "packages/webdoc-plugin-markdown",
-      "reviewCategory": "production"
+      "reviewCategory": "production",
+      "shouldPublish": true
     },
     {
       "packageName": "@webdoc/template-library",
       "projectFolder": "packages/webdoc-template-library",
-      "reviewCategory": "production"
+      "reviewCategory": "production",
+      "shouldPublish": true
     },
     {
       "packageName": "@webdoc/types",
       "projectFolder": "packages/webdoc-types",
-      "reviewCategory": "production"
+      "reviewCategory": "production",
+      "shouldPublish": true
     },
     {
       "packageName": "@webdoc/example",
       "projectFolder": "example",
-      "reviewCategory": "production"
+      "reviewCategory": "production",
+      "shouldPublish": false
     },
     {
       "packageName": "@webdoc/eslint-config",
       "projectFolder": "packages/eslint-config",
-      "reviewCategory": "production"
+      "reviewCategory": "production",
+      "shouldPublish": false
     },
     {
       "packageName": "@webdoc/babel-preset",
       "projectFolder": "packages/babel-preset",
-      "reviewCategory": "production"
+      "reviewCategory": "production",
+      "shouldPublish": false
     },
     {
       "packageName": "@webdoc/tests",
       "projectFolder": "test",
-      "reviewCategory": "production"
+      "reviewCategory": "production",
+      "shouldPublish": false
     }
   ]
 }
