@@ -24,55 +24,55 @@
       "packageName": "@webdoc/cli",
       "projectFolder": "packages/webdoc-cli",
       "reviewCategory": "production",
-      "versionPolicy": "webdoc"
+      "versionPolicyName": "webdoc"
     },
     {
       "packageName": "@webdoc/default-template",
       "projectFolder": "packages/webdoc-default-template",
       "reviewCategory": "production",
-      "versionPolicy": "webdoc"
+      "versionPolicyName": "webdoc"
     },
     {
       "packageName": "@webdoc/externalize",
       "projectFolder": "packages/webdoc-externalize",
       "reviewCategory": "production",
-      "versionPolicy": "webdoc"
+      "versionPolicyName": "webdoc"
     },
     {
       "packageName": "@webdoc/legacy-template",
       "projectFolder": "packages/webdoc-legacy-template",
       "reviewCategory": "production",
-      "versionPolicy": "webdoc"
+      "versionPolicyName": "webdoc"
     },
     {
       "packageName": "@webdoc/model",
       "projectFolder": "packages/webdoc-model",
       "reviewCategory": "production",
-      "versionPolicy": "webdoc"
+      "versionPolicyName": "webdoc"
     },
     {
       "packageName": "@webdoc/parser",
       "projectFolder": "packages/webdoc-parser",
       "reviewCategory": "production",
-      "versionPolicy": "webdoc"
+      "versionPolicyName": "webdoc"
     },
     {
       "packageName": "@webdoc/plugin-markdown",
       "projectFolder": "packages/webdoc-plugin-markdown",
       "reviewCategory": "production",
-      "versionPolicy": "webdoc"
+      "versionPolicyName": "webdoc"
     },
     {
       "packageName": "@webdoc/template-library",
       "projectFolder": "packages/webdoc-template-library",
       "reviewCategory": "production",
-      "versionPolicy": "webdoc"
+      "versionPolicyName": "webdoc"
     },
     {
       "packageName": "@webdoc/types",
       "projectFolder": "packages/webdoc-types",
       "reviewCategory": "production",
-      "versionPolicy": "webdoc"
+      "versionPolicyName": "webdoc"
     },
     {
       "packageName": "@webdoc/example",
