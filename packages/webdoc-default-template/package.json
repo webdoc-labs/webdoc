@@ -17,7 +17,10 @@
     "test": "__tests__"
   },
   "files": [
-    "lib"
+    "tmpl",
+    "static",
+    "publish.js",
+    "helper"
   ],
   "publishConfig": {
     "access": "public"
