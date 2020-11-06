@@ -24,54 +24,55 @@
       "packageName": "@webdoc/cli",
       "projectFolder": "packages/webdoc-cli",
       "reviewCategory": "production",
-      "shouldPublish": true
+      "versionPolicy": "webdoc"
     },
     {
       "packageName": "@webdoc/default-template",
       "projectFolder": "packages/webdoc-default-template",
       "reviewCategory": "production",
-      "shouldPublish": true
+      "versionPolicy": "webdoc"
     },
     {
       "packageName": "@webdoc/externalize",
       "projectFolder": "packages/webdoc-externalize",
       "reviewCategory": "production",
-      "shouldPublish": true
+      "versionPolicy": "webdoc"
     },
     {
       "packageName": "@webdoc/legacy-template",
       "projectFolder": "packages/webdoc-legacy-template",
       "reviewCategory": "production",
-      "shouldPublish": true
+      "versionPolicy": "webdoc"
     },
     {
       "packageName": "@webdoc/model",
       "projectFolder": "packages/webdoc-model",
       "reviewCategory": "production",
-      "shouldPublish": true
+      "versionPolicy": "webdoc"
     },
     {
       "packageName": "@webdoc/parser",
       "projectFolder": "packages/webdoc-parser",
-      "reviewCategory": "production"
+      "reviewCategory": "production",
+      "versionPolicy": "webdoc"
     },
     {
       "packageName": "@webdoc/plugin-markdown",
       "projectFolder": "packages/webdoc-plugin-markdown",
       "reviewCategory": "production",
-      "shouldPublish": true
+      "versionPolicy": "webdoc"
     },
     {
       "packageName": "@webdoc/template-library",
       "projectFolder": "packages/webdoc-template-library",
       "reviewCategory": "production",
-      "shouldPublish": true
+      "versionPolicy": "webdoc"
     },
     {
       "packageName": "@webdoc/types",
       "projectFolder": "packages/webdoc-types",
       "reviewCategory": "production",
-      "shouldPublish": true
+      "versionPolicy": "webdoc"
     },
     {
       "packageName": "@webdoc/example",
