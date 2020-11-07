@@ -1,11 +1,3 @@
-# `@webdoc/default-template`
+# @webdoc/default-template
 
-> TODO: description
-
-## Usage
-
-```
-const defaultTemplate = require('@webdoc/default-template');
-
-// TODO: DEMONSTRATE API
-```
+This package is the default template shipped with @webdoc/cli.
