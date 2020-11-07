@@ -1,11 +1,15 @@
 [ignore]
 
 [include]
+./src
 
 [libs]
+./flow-typed
 
 [lints]
 
 [options]
 
 [strict]
+
+[untyped]

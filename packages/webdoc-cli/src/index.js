@@ -10,11 +10,12 @@ import fse from "fs-extra";
 import {initLogger as initParserLogger} from "@webdoc/parser";
 import {loadTutorials} from "./load-tutorials";
 import path from "path";
-import {performance} from "perf_hooks";
 import {sources} from "./sources";
 import {writeDoctree} from "@webdoc/externalize";
 
 require("./shims");// Node v10 support
+
+declare var global: Object;
 
 export function initLogger(verbose: boolean = false) {
   const defaultLevel = verbose ? "INFO" : "WARN";
@@ -45,7 +46,7 @@ export function initLogger(verbose: boolean = false) {
 }
 
 // main() is the default command.
-async function main(argv: yargs.Arguments<>) {
+async function main(argv: yargs.Argv) {
   initLogger(!!argv.verbose);
 
   if (argv.verbose) {
@@ -57,17 +58,18 @@ async function main(argv: yargs.Arguments<>) {
   global.Webdoc = global.Webdoc || {};
   registerWebdocParser();// global.Webdoc.Parser
 
-  const {loadConfig} = require("./config");
+  const {loadConfig, getIncludePattern, getTemplate} = require("./config");
   const config = loadConfig(argv.config);
   const tutorials = loadTutorials(argv.tutorials);
 
   // TODO: Fix what env/conf is?
   global.Webdoc.env = config;
+  // $FlowFixMe
   global.Webdoc.env.conf = config;
   global.Webdoc.userConfig = config;
 
   // TODO: excludePattern
-  const includePattern = config.source.includePattern || config.source.include;
+  const includePattern = getIncludePattern(config);
 
   if (!includePattern) {
     console.log("No source.include or source.includePattern found in config file");
@@ -81,6 +83,7 @@ async function main(argv: yargs.Arguments<>) {
       }
 
       // Plugin should invoke installPlugin to whatever APIs it uses.
+      // $FlowFixMe
       require(pluginPath);
     }
   }
@@ -97,7 +100,7 @@ async function main(argv: yargs.Arguments<>) {
 
   documentTree.members = documentTree.children;
 
-  if (config.opts.export) {
+  if (config.opts && config.opts.export) {
     fse.ensureFileSync(config.opts.export);
   }
 
@@ -105,7 +108,7 @@ async function main(argv: yargs.Arguments<>) {
     parse(sourceFiles, documentTree);
   } catch (e) {
     // Make sure we get that API structure out so the user can debug the problem!
-    if (config.opts.export) {
+    if (config.opts && config.opts.export) {
       fs.writeFileSync(config.opts.export, writeDoctree(documentTree));
     }
 
@@ -114,13 +117,13 @@ async function main(argv: yargs.Arguments<>) {
 
   log.info(tag.Parser, "Parsing stage finished!");
 
-  if (config.opts.export) {
+  if (config.opts && config.opts.export) {
     fs.writeFileSync(config.opts.export, writeDoctree(documentTree));
   }
 
   const db = exportTaffy(documentTree);
 
-  const _path = `${config.opts.template}/publish`;
+  const _path = `${getTemplate(config)}/publish`;
   // $FlowFixMe
   const template = require(_path);
 
@@ -139,7 +142,7 @@ async function main(argv: yargs.Arguments<>) {
   if (template.publish && typeof template.publish === "function") {
     template.publish(publishOptions);
   } else {
-    console.error("[Config]: ", `${config.opts.template} not found.`);
+    console.error("[Config]: ", `${getTemplate(config)} not found.`);
   }
 
   console.log(`@webdoc took ${Math.ceil(performance.now() - start)}ms to run!`);

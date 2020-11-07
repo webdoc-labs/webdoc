@@ -23,6 +23,7 @@ export function packages(sourceFiles: SourceFile[]): PackageDoc[] {
       pkg = cache.get(pkgJson);
 
       if (!pkg) {
+        // $FlowFixMe
         const metadata = require(path.relative(__dirname, pkgJson));
 
         // Create PackageDoc for this package

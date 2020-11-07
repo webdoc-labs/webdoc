@@ -3,8 +3,50 @@ import {log, tags} from "missionlog";
 import fs from "fs";
 import merge from "lodash.merge";
 
+type ConfigSchema = {
+  plugins?: Array<string>,
+  docs?: {
+    sort?: string
+  },
+  source?: {
+    includePattern?: string | Array<string>,
+    include?: string | Array<string>
+  },
+  conf?: {
+    tags?: {
+      dictionaries: Array<string>
+    },
+    templates?: {
+      default?: {
+        useLongNameInNav?: boolean
+      }
+    },
+  },
+  opts?: {
+    destination?: string,
+    export?: string,
+    template?: string,
+  },
+  template?: {
+    mainPage?: {
+      title?: string
+    },
+    default: {
+      includeData?: true
+    },
+    apiExplorer?: {
+      mode?: string
+    },
+    repository?: string,
+    outputSourceFiles?: boolean
+  },
+  version: {
+    number?: 1
+  }
+};
+
 /* eslint-disable no-multi-spaces */
-const defaultConfig = {
+const defaultConfig: ConfigSchema = {
   docs: {
     sort: "type, scope, access, name",                    // @webdoc/parser{mod:sort}
   },
@@ -45,7 +87,7 @@ const defaultConfig = {
 };
 /* eslint-enable no-multi-spaces */
 
-export function loadConfig(file: string) {
+export function loadConfig(file: string): ConfigSchema {
   let config;
 
   if (!fs.existsSync(file)) {
@@ -57,4 +99,36 @@ export function loadConfig(file: string) {
   }
 
   return config;
+}
+
+export function getIncludePattern(config: ConfigSchema): string[] {
+  const source = config.source;
+
+  if (typeof source !== "undefined") {
+    if (typeof source.includePattern !== "undefined") {
+      if (Array.isArray(source.includePattern)) {
+        return source.includePattern;
+      } else if (typeof source.includePattern === "string") {
+        return [source.includePattern];
+      }
+    }
+
+    if (typeof source.include !== "undefined") {
+      if (Array.isArray(source.include)) {
+        return source.include;
+      } else if (typeof source.include === "string") {
+        return [source.include];
+      }
+    }
+  }
+
+  return [];
+}
+
+export function getTemplate(config: ConfigSchema): string {
+  if (config.opts && config.opts.template) {
+    return config.opts.template;
+  }
+
+  return "@webdoc/default-template";
 }
