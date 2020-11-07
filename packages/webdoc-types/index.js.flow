@@ -8,7 +8,7 @@ export type SourceFile = {
 };
 
 export type ParserOpts = {
-  memberof?: string
+  memberof?: string[]
 };
 
 export type Param = {
@@ -47,7 +47,7 @@ export type DocLink = Doc | string;
 export type Return = TypedDesc;
 
 export type DocType = "ClassDoc" | "FunctionDoc" | "MethodDoc" | "PropertyDoc" | "TypedefDoc" |
-    "NSDoc" | "EventDoc" | "EnumDoc"
+    "NSDoc" | "EventDoc" | "EnumDoc" | "RootDoc"
 
 export type BaseDoc = {
   id: string,
@@ -74,7 +74,7 @@ export type BaseDoc = {
   todo?: string[],
   throws?: DocLink[],
   version?: "alpha" | "beta" | "internal" | "public" | "deprecated",
-  type: "ClassDoc" | "FunctionDoc" | "MethodDoc" | "ObjectDoc" | "RootDoc" | "TypedefDoc",
+  type: DocType,
   parserOpts?: ParserOpts
 };
 

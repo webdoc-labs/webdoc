@@ -1,6 +1,6 @@
 // @flow
 
-import type {BaseDoc, ClassDoc, Doc, DocLink, DocType, ObjectDoc, TypedefDoc} from "@webdoc/types";
+import type {BaseDoc, ClassDoc, Doc, DocLink, DocType, ObjectDoc, PackageDoc, RootDoc, TypedefDoc} from "@webdoc/types";
 import {nanoid} from "nanoid";
 
 const CANONICAL_SEPARATOR = /([.#~$])/;
@@ -14,8 +14,8 @@ function updateScope(doc: Doc, scopeStack: string[], scopePath: string): void {
     doc.path = `${doc.name}`;
   }
 
-  for (let i = 0; i < doc.children.length; i++) {
-    updateScope(doc.children[i], doc.stack, doc.path);
+  for (let i = 0; i < doc.members.length; i++) {
+    updateScope(doc.members[i], doc.stack, doc.path);
   }
 }
 
@@ -36,7 +36,7 @@ export const createDoc = (
   options: any,
   instance: any,
 ) => {
-  const doc = Object.assign(instance || {}, {
+  const doc: BaseDoc = (Object.assign(instance || {}, {
     id: nanoid(),
     name,
     path: "",
@@ -49,9 +49,9 @@ export const createDoc = (
     access: "public",
     scope: type === "MethodDoc" ? "instance" : "inner",
     type,
-  }, options || {});
+  }, options || {}) : any);
 
-  const separators = name.match(CANONICAL_SEPARATOR);
+  const separators = doc.name.match(CANONICAL_SEPARATOR);
 
   // @memberof is not used, rather the user directly used the longname
   if (separators) {
@@ -66,16 +66,17 @@ export const createDoc = (
     }
 
     // Sad: splitting will include the separators so filter them
-    const path = name.split(CANONICAL_SEPARATOR)
+    const path = doc.name.split(CANONICAL_SEPARATOR)
       .filter((ch) => ch !== "." && ch !== "#" && ch !== "#");
+    const parserOpts = doc.parserOpts || {};
 
     doc.name = path[path.length - 1];
-    doc.parserOpts = doc.parserOpts || {};
+    doc.parserOpts = parserOpts;
 
-    if (doc.parserOpts.memberof) {
-      doc.parserOpts.memberof.push(...path.slice(0, -1));
+    if (parserOpts.memberof) {
+      parserOpts.memberof.push(...path.slice(0, -1));
     } else {
-      doc.parserOpts.memberof = path.slice(0, -1);
+      parserOpts.memberof = path.slice(0, -1);
     }
   }
 
@@ -98,10 +99,10 @@ export const createDoc = (
  * @return {Doc} - the child doc
  */
 export function childDoc(lname: string, scope: BaseDoc): ?Doc {
-  const {children} = scope;
+  const {members} = scope;
 
-  for (let i = 0; i < scope.children.length; i++) {
-    const child = children[i];
+  for (let i = 0; i < members.length; i++) {
+    const child = members[i];
 
     if (child.name === lname) {
       return child;
@@ -116,19 +117,20 @@ export function childDoc(lname: string, scope: BaseDoc): ?Doc {
  * @return {T}
  */
 export function addChildDoc<T: BaseDoc>(doc: T, scope: BaseDoc): T {
-  if (doc.parent) {
-    const i = doc.parent.children.indexOf(doc);
+  if (typeof doc.parent !== "undefined" && doc.parent !== null) {
+    const parent = doc.parent;
+    const i = parent.members.indexOf(doc);
 
     if (i >= 0) {
-      doc.parent.children.splice(i, 1);
+      parent.members.splice(i, 1);
     }
   }
 
-  const {children} = scope;
+  const {members} = scope;
   const index = -1;
 
   if (index === -1) {
-    children.push(doc);
+    members.push(doc);
   }
 
   doc.parent = scope;
@@ -138,15 +140,18 @@ export function addChildDoc<T: BaseDoc>(doc: T, scope: BaseDoc): T {
 }
 
 export function removeChildDoc(doc: BaseDoc, noUpdate: boolean = false) {
-  if (doc.parent) {
-    const i = doc.parent.children.indexOf(doc);
+  if (!doc.parent) {
+    return;
+  }
 
-    if (i >= 0) {
-      doc.parent.children.splice(i, 1);
+  const parent = doc.parent;
+  const i = parent.members.indexOf(doc);
 
-      if (!noUpdate) {
-        updateScope(doc, [], "");
-      }
+  if (i >= 0) {
+    parent.members.splice(i, 1);
+
+    if (!noUpdate) {
+      updateScope(doc, [], "");
     }
   }
 }
@@ -160,11 +165,15 @@ export function removeChildDoc(doc: BaseDoc, noUpdate: boolean = false) {
  */
 export function doc(path: string | string[], root: BaseDoc): ?Doc {
   // Packages
-  for (let i = 0; i < root.packages.length; i++) {
-    const pkg = root.packages[i];
+  if (root.type === "RootDoc") {
+    const packages: PackageDoc[] = (root: RootDoc).packages;
 
-    if (pkg.name === path) {
-      return pkg;
+    for (let i = 0; i < packages.length; i++) {
+      const pkg = packages[i];
+
+      if (pkg.name === path) {
+        return pkg;
+      }
     }
   }
 
