@@ -5,6 +5,7 @@
 
 import type {LanguageConfig} from "../types/LanguageIntegration";
 import type {SourceFile} from "@webdoc/types";
+import type {Symbol} from "../types/Symbol";
 import buildSymbolTree from "./build-symbol-tree";
 
 // Plugins for plain JavaScript files

@@ -23,8 +23,8 @@ export const VIRTUAL = 1 << 2;
 export type SymbolSignature = {
   access?: string,
   dataType?: string,
-  extends?: string[],
-  implements?: string[],
+  extends?: Array<string | Symbol>,
+  implements?: Array<string | Symbol>,
   object?: string,
   params?: Param[],
   returns?: Return[],

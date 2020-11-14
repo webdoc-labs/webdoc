@@ -2,14 +2,11 @@
 
 import type {
   BaseDoc,
-  ClassDoc,
   Doc,
   DocLink,
   DocType,
-  ObjectDoc,
   PackageDoc,
   RootDoc,
-  TypedefDoc,
 } from "@webdoc/types";
 import {nanoid} from "nanoid";
 
@@ -100,6 +97,35 @@ export const createDoc = (
 
   return doc;
 };
+
+export function createRootDoc(): RootDoc {
+  return {
+    id: `root-${nanoid()}`,
+    members: [],
+    name: "",
+    packages: [],
+    path: "",
+    stack: [],
+    tags: [],
+    type: "RootDoc",
+  };
+}
+
+export function createPackageDoc(
+  name: string = "<webdoc.internal>",
+): PackageDoc {
+  return {
+    api: [],
+    id: `pkg-${nanoid()}`,
+    members: [],
+    metadata: {},
+    name,
+    path: name,
+    stack: [name],
+    location: "nowhere",
+    type: "PackageDoc",
+  };
+}
 
 /**
  * Searches for the doc named {@code lname} in the given scoped documentation.

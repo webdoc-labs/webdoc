@@ -1,8 +1,8 @@
 // @flow
-/* global Webdoc */
 
 import type {LanguageConfig, LanguageIntegration} from "./types/LanguageIntegration";
 import type {RootDoc, SourceFile} from "@webdoc/types";
+import {createPackageDoc, createRootDoc} from "@webdoc/model";
 import {langJS, langTS} from "./symbols-babel";
 import type {Symbol} from "./types/Symbol";
 import assemble from "./assembler";
@@ -11,6 +11,8 @@ import mod from "./transformer/document-tree-modifiers";
 import {parserLogger} from "./Logger";
 import path from "path";
 import transform from "./transformer";
+
+declare var Webdoc: any;
 
 // File-extension -> LanguageIntegration mapping
 const languages: { [id: string]: LanguageIntegration } = {};
@@ -33,28 +35,48 @@ registerLanguage(langJS);
 registerLanguage(langTS);
 
 // Default language-config for parsing documentation
-const DEFAULT_LANG_CONFIG: LanguageIntegration = {
+const DEFAULT_LANG_CONFIG: LanguageConfig = {
   reportUndocumented: false,
 };
 
+// $FlowFixMe
 if (!global.Webdoc) {
+  // $FlowFixMe
   global.Webdoc = {};
 }
 
+// $FlowFixMe
 global.Webdoc.DEFAULT_LANG_CONFIG = DEFAULT_LANG_CONFIG;
 
 // Used when you want to parse all the symbols in the code. This includes unit-testing.
 export function applyDefaultLangConfig(cfg: LanguageConfig) {
+  // $FlowFixMe
   global.Webdoc.DEFAULT_LANG_CONFIG = cfg;
 }
 
 export function buildSymbolTree(
   file: string,
-  source?: SourceFile | string = {path: ".js"},
+  source?: SourceFile | string,
   config: LanguageConfig = Webdoc.DEFAULT_LANG_CONFIG,
 ): Symbol {
+  if (typeof source === "undefined") {
+    source = ".js";
+  }
   if (typeof source === "string") {
-    source = {path: source};
+    source = {
+      path: source,
+      package: {
+        id: "id-virtual-root",
+        api: [],
+        name: "",
+        path: "",
+        stack: [],
+        location: "",
+        metadata: {},
+        members: [],
+        type: "PackageDoc",
+      },
+    };
   }
 
   const fileName = source.path;
@@ -85,16 +107,13 @@ export function buildSymbolTree(
  * @param {RootDoc} root
  * @return {RootDoc}
  */
-export function parse(target: string | SourceFile[], root?: RootDoc = {
-  members: [],
-  path: "",
-  packages: [],
-  stack: [""],
-  type: "RootDoc",
-  tags: [],
-}): RootDoc {
+export function parse(target: string | SourceFile[], root?: RootDoc = createRootDoc()): RootDoc {
   if (typeof target === "string") {
-    target = [{content: target, path: ".js", package: null}];
+    target = [{
+      content: target,
+      path: ".js",
+      package: createPackageDoc(),
+    }];
   }
 
   const partialDoctrees = new Array(Array.isArray(target) ? target.length : target.size);
