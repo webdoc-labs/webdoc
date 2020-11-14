@@ -1,6 +1,16 @@
 // @flow
 
-import type {BaseDoc, ClassDoc, Doc, DocLink, DocType, ObjectDoc, PackageDoc, RootDoc, TypedefDoc} from "@webdoc/types";
+import type {
+  BaseDoc,
+  ClassDoc,
+  Doc,
+  DocLink,
+  DocType,
+  ObjectDoc,
+  PackageDoc,
+  RootDoc,
+  TypedefDoc,
+} from "@webdoc/types";
 import {nanoid} from "nanoid";
 
 const CANONICAL_SEPARATOR = /([.#~$])/;
@@ -32,11 +42,11 @@ function updateScope(doc: Doc, scopeStack: string[], scopePath: string): void {
  */
 export const createDoc = (
   name?: string,
-  type?: string = "BaseDoc",
+  type: DocType,
   options: any,
   instance: any,
-) => {
-  const doc: BaseDoc = (Object.assign(instance || {}, {
+): BaseDoc => {
+  const doc: Doc = (Object.assign(instance || {}, {
     id: nanoid(),
     name,
     path: "",
@@ -116,7 +126,7 @@ export function childDoc(lname: string, scope: BaseDoc): ?Doc {
  * @param {BaseDoc} scope
  * @return {T}
  */
-export function addChildDoc<T: BaseDoc>(doc: T, scope: BaseDoc): T {
+export function addChildDoc<T: Doc>(doc: T, scope: Doc): T {
   if (typeof doc.parent !== "undefined" && doc.parent !== null) {
     const parent = doc.parent;
     const i = parent.members.indexOf(doc);
@@ -139,7 +149,7 @@ export function addChildDoc<T: BaseDoc>(doc: T, scope: BaseDoc): T {
   return doc;
 }
 
-export function removeChildDoc(doc: BaseDoc, noUpdate: boolean = false) {
+export function removeChildDoc(doc: Doc, noUpdate: boolean = false) {
   if (!doc.parent) {
     return;
   }
@@ -160,10 +170,10 @@ export function removeChildDoc(doc: BaseDoc, noUpdate: boolean = false) {
  * Finds the doc whose relative path is {@code path} w.r.t {@code root}.
  *
  * @param {string | string[]} path
- * @param {BaseDoc} root
+ * @param {Doc} root
  * @return {?Doc}
  */
-export function doc(path: string | string[], root: BaseDoc): ?Doc {
+export function doc(path: string | string[], root: Doc): ?Doc {
   // Packages
   if (root.type === "RootDoc") {
     const packages: PackageDoc[] = (root: RootDoc).packages;
@@ -236,10 +246,10 @@ export function findAccessedDoc(
  *
  * @template T
  * @param {T} doc
- * @param {BaseDoc} root
+ * @param {Doc} root
  * @return {?T} - the doc, if it was added
  */
-export function addDoc<T: BaseDoc>(doc: T, root: BaseDoc): ?T {
+export function addDoc<T: Doc>(doc: T, root: Doc): ?T {
   const docStack = doc.stack ? doc.stack : doc.path.split(/[.|#]/);
   let scope = root;
 
@@ -264,16 +274,21 @@ export function addDoc<T: BaseDoc>(doc: T, root: BaseDoc): ?T {
  * @param {T} doc
  * @return {T}
  */
-export function cloneDoc<T: BaseDoc>(doc: T): T {
+export function cloneDoc<T: Doc>(doc: T): T {
+  // $FlowFixMe
   return Object.assign({}, doc, {children: [], members: [], parent: undefined});
 }
 
 /**
  * You can pass this to traverse too.
  */
-export type TraversalContext = { [id: DocType | "enter" | "exit"]: (doc: Doc) => boolean }
+export type TraversalContext = {
+  [id: DocType | "enter" | "exit"]: ((doc: Doc) => TraversalOptions | void)
+}
 
-export type TraversalOptions = { skipSubtree?: boolean }
+export type TraversalOptions = {
+  skipSubtree?: boolean
+}
 
 /**
  * Preorder traversal of all the docs
@@ -281,7 +296,7 @@ export type TraversalOptions = { skipSubtree?: boolean }
  * @param {Doc} doc
  * @param {Function | TraversalContext} callback
  */
-export function traverse(doc: Doc, callback: (doc: Doc) => void | TraversalContext) {
+export function traverse(doc: Doc, callback: ((doc: Doc) => void) | TraversalContext) {
   if (typeof callback === "object") {
     traverseWithContext(doc, callback);
     return;
@@ -361,22 +376,27 @@ export function searchExtendedClasses(doc: Doc, extended?: Set<DocLink>): Set<Do
  * @return {Set<DocLink>} the symbols that are implemented by {@code doc}
  */
 export function searchImplementedInterfaces(
-  doc: ClassDoc | ObjectDoc | TypedefDoc,
+  doc: Doc,
   implemented?: Set<DocLink>,
 ): Set<DocLink> {
   implemented = implemented ? implemented : new Set<DocLink>();
 
-  if (!doc.implements) {
-    return implemented;
-  }
+  if ("implements" in doc) {
+    // eslint-disable-next-line no-undef
+    const implementsArr = ((doc: any).implements: $ReadOnlyArray<DocLink>);
 
-  for (let i = 0; i < doc.implements.length; i++) {
-    const implementedSymbol = doc.implements[i];
+    if (!implementsArr) {
+      return implemented;
+    }
 
-    implemented.add(implementedSymbol);
+    for (let i = 0; i < implementsArr.length; i++) {
+      const implementedSymbol = implementsArr[i];
 
-    if (typeof implementedSymbol !== "string" && implementedSymbol.implements) {
-      searchImplementedInterfaces(implementedSymbol, implemented);
+      implemented.add(implementedSymbol);
+
+      if (typeof implementedSymbol !== "string" && implementedSymbol.implements) {
+        searchImplementedInterfaces(implementedSymbol, implemented);
+      }
     }
   }
 

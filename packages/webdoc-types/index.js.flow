@@ -46,8 +46,20 @@ export type DocLink = Doc | string;
 
 export type Return = TypedDesc;
 
-export type DocType = "ClassDoc" | "FunctionDoc" | "MethodDoc" | "PropertyDoc" | "TypedefDoc" |
-    "NSDoc" | "EventDoc" | "EnumDoc" | "RootDoc"
+export type DocType =
+  "RootDoc" |
+  "ClassDoc" |
+  "EnumDoc" |
+  "EventDoc" |
+  "ObjectDoc" |
+  "FunctionDoc" |
+  "NSDoc" |
+  "MethodDoc" |
+  "MixinDoc" |
+  "PackageDoc" |
+  "PropertyDoc" |
+  "TutorialDoc" |
+  "TypedefDoc";
 
 export type BaseDoc = {
   id: string,
@@ -74,15 +86,26 @@ export type BaseDoc = {
   todo?: string[],
   throws?: DocLink[],
   version?: "alpha" | "beta" | "internal" | "public" | "deprecated",
-  type: DocType,
   parserOpts?: ParserOpts
 };
 
-export type Doc = BaseDoc | ClassDoc | ObjectDoc | FunctionDoc | MethodDoc | PropertyDoc
-    | TypedefDoc | NSDoc | EventDoc;
+export type Doc =
+  RootDoc |
+  ClassDoc |
+  EnumDoc |
+  EventDoc |
+  ObjectDoc |
+  FunctionDoc |
+  NSDoc |
+  MethodDoc |
+  MixinDoc |
+  PackageDoc |
+  PropertyDoc |
+  TutorialDoc |
+  TypedefDoc;
 
 export type RootDoc = {
-  ...Doc,
+  ...BaseDoc,
   packages: PackageDoc[],
   type: "RootDoc"
 };
@@ -131,19 +154,19 @@ export type MixinDoc = {
 };
 
 export type NSDoc = {
-  ...Doc,
+  ...BaseDoc,
   type: "NSDoc"
 };
 
 export type ObjectDoc = {
-  ...Doc,
+  ...BaseDoc,
   implements?: DocLink[],
   mixes?: [],
   type: "ObjectDoc"
 };
 
 export type PackageDoc = {
-  ...Doc,
+  ...BaseDoc,
   api: Doc[],
   location: string,
   metadata: Object,
@@ -151,7 +174,7 @@ export type PackageDoc = {
 };
 
 export type PropertyDoc = {
-  ...Doc,
+  ...BaseDoc,
   constant?: boolean,
   dataType?: DataType,
   dataValue?: string, // Enumerations/constants
@@ -173,11 +196,11 @@ export type Tutorial = {
 export type TutorialDoc = Tutorial;
 
 export type TypedefDoc = {
-  ...Doc,
+  ...BaseDoc,
   of: [string],
   alias: string,
   type: "TypedefDoc",
-  implements: DocLink[]
+  implements?: DocLink[]
 };
 
 export type BaseTag = {
