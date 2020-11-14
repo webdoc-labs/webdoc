@@ -4,5 +4,5 @@ import type {Symbol} from "./Symbol";
 
 export type AssemblyModifier = {
   name: string,
-  mod: (tree: Symbol) => void
+  mod: (tree: Symbol) => any
 };

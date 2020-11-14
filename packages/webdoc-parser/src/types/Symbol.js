@@ -25,6 +25,7 @@ export type SymbolSignature = {
   dataType?: string,
   extends?: string[],
   implements?: string[],
+  object?: string,
   params?: Param[],
   returns?: Return[],
   scope?: string,
@@ -36,8 +37,8 @@ export type SymbolSignature = {
 export type SymbolLocation = {
   start: { line: number, column: number },
   end: { line: number, column: number },
-  fileName: string,
-  file: SourceFile
+  fileName?: string,
+  file?: SourceFile
 }
 
 // This is a preliminary data-format that represents a documentable symbol.
@@ -45,21 +46,21 @@ export type SymbolLocation = {
 // + Symbols with no associated AST node are said to be "headless". They are back solely by
 // documentation comments.
 export type Symbol = {
-  node: ?Node,
+  node?: ?Node,
   simpleName: string,
   canonicalName: string,
   flags: number,
   path: string[],
   comment: string,
-  parent: ?Symbol,
+  parent?: ?Symbol,
   members: Symbol[],
   loc: SymbolLocation,
   meta: SymbolSignature,
 
   // This flags symbols that are the initializer of a parent. They are merged when another symbol
   // with the same name is found.
-  __INITOR__: ?boolean,
-  __INIT__: ?boolean
+  __INITOR__?: ?boolean,
+  __INIT__?: ?boolean
 };
 
 export function isPassThrough(symbol: Symbol): boolean {
