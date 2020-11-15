@@ -43,11 +43,11 @@ import mergeReturns from "./merge-returns";
 import {updateDocument} from "../Logger";
 import validate from "../validators";
 
-type TagParser = (value: string, options: Object) => void;
+type TagParser = (value: string, options: Object) => $Shape<Tag>;
 
 // This is used to generate a BaseTag parser with no special features.
 // @name, @class, @interface, @mixin
-function createTagParser(type: string) {
+function createTagParser(type: string): $Shape<Tag> {
   return function(value: string) {
     return {
       value,

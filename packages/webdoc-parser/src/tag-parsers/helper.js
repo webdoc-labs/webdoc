@@ -55,7 +55,8 @@ export function matchDefaultValueClosure(
     }
   }
 
-  const result = [value.slice(openIndex, closeIndex + 1)];
+  // $FlowFixMe
+  const result: $Shape<MatchResult> = [value.slice(openIndex, closeIndex + 1)];
 
   result.index = openIndex;
 
@@ -63,7 +64,12 @@ export function matchDefaultValueClosure(
 }
 
 // This is a helper to parse "{Type} [-] description"
-export function parseTypedDescription(value: string): { dataType: DataType, description: string } {
+export function parseTypedDescription(
+  value: string,
+): {
+  dataType?: ?DataType,
+  description: string
+} {
   const refClosure = /{([^{}])+}/.exec(value);
   let dataType;
   let description;

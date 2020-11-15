@@ -388,6 +388,9 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
     // Inner comments are treated as a child of the created nodeSymbol. It is expected that the
     // node is a scope & nodeSymbol will always exist if innerComments also exists.
 
+    // Alias
+    const ns = nodeSymbol;
+
     innerComments.forEach((comment) => {
       const doc = extract(comment);
 
@@ -395,7 +398,7 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
         // $FlowFixMe
         SymbolUtils.addChild(
           SymbolUtils.createHeadlessSymbol(doc, comment.loc),
-          nodeSymbol);
+          ns);
       }
     });
   }
@@ -419,8 +422,9 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
 
       if (doc) {
         const actualParent = is11469 && isTrailing(comment) ? parent.parent : parent;
-
         const tsym = SymbolUtils.createHeadlessSymbol(doc, comment.loc);
+
+        // $FlowFixMe
         SymbolUtils.addChild(tsym, actualParent);
       }
     });
@@ -431,11 +435,16 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
 
 const EMPTY_ARRAY = [];
 
-function filterComments(comments: (CommentBlock | Comment)[]): void {
-  return comments ? comments.filter((cnode) => {
-    return (cnode.type === "CommentBlock") &&
-     (cnode.value.startsWith("*") || cnode.value.startsWith("!"));
-  }) : EMPTY_ARRAY;
+function filterComments(
+  // eslint-disable-next-line no-undef
+  comments: $ReadOnlyArray<CommentBlock | Comment>,
+): (CommentBlock | Comment)[] {
+  return comments ?
+    comments.filter((cnode) => {
+      return (cnode.type === "CommentBlock") &&
+       (cnode.value.startsWith("*") || cnode.value.startsWith("!"));
+    }) :
+    EMPTY_ARRAY;
 }
 
 function registerDeclaredVariables(node: VariableDeclaration): void {

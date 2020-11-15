@@ -1,6 +1,6 @@
 // @flow
 
-import type {DocType, Param, Return, SourceFile} from "@webdoc/types";
+import type {DataType, DocType, Param, Return, SourceFile} from "@webdoc/types";
 import {parserLogger, tag} from "../Logger";
 import {CANONICAL_DELIMITER} from "../constants";
 import type {Node} from "@babel/types";
@@ -21,15 +21,19 @@ export const VIRTUAL = 1 << 2;
 // information that is not explicity documented and/or verify the documented information
 // is correct.
 export type SymbolSignature = {
-  access?: string,
-  dataType?: string,
-  extends?: Array<string | Symbol>,
-  implements?: Array<string | Symbol>,
-  object?: string,
-  params?: Param[],
-  returns?: Return[],
-  scope?: string,
-  type?: DocType,
+  abstract?: boolean,
+  access?: ?string,
+  constant?: ?boolean,
+  dataType?: ?DataType,
+  defaultValue?: ?string,
+  extends?: ?Array<string | Symbol>,
+  implements?: ?Array<string | Symbol>,
+  object?: ?string,
+  params?: ?Array<$Shape<Param>>,
+  returns?: ?Array<$Shape<Return>>,
+  scope?: ?string,
+  value?: ?string,
+  type?: ?DocType,
   undocumented?: boolean
 }
 

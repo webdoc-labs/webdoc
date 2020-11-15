@@ -1,13 +1,18 @@
 // @flow
 
-import type {Doc, ExtendsTag, ImplementsTag, MixesTag} from "@webdoc/types";
+import type {
+  BaseDoc,
+  ExtendsTag,
+  ImplementsTag,
+  MixesTag,
+} from "@webdoc/types";
 
 // @extends     <SUPER_CLASS>
 // @implements  <INTERFACE>
 // @mixes       <MIXIN>
 
 // Parses "@extends ExtendedClass" tags
-export function parseExtends(value: string, options: $Shape<Doc>): ExtendsTag {
+export function parseExtends(value: string, options: $Shape<BaseDoc>): $Shape<ExtendsTag> {
   if (!options.extends) {
     options.extends = [value];
   } else {
@@ -21,7 +26,7 @@ export function parseExtends(value: string, options: $Shape<Doc>): ExtendsTag {
 }
 
 // Parses "@implements ImplementedInterface" tags
-export function parseImplements(value: string, options: $Shape<Doc>): ImplementsTag {
+export function parseImplements(value: string, options: any): $Shape<ImplementsTag> {
   if (!options.implements) {
     options.implements = [value];
   } else {
@@ -29,13 +34,14 @@ export function parseImplements(value: string, options: $Shape<Doc>): Implements
   }
 
   return {
+    name: "implements",
     value,
     type: "ImplementsTag",
   };
 }
 
 // Parses "@mixes MixedMixin" tagss
-export function parseMixes(value: string, options: $Shape<Doc>): MixesTag {
+export function parseMixes(value: string, options: any): $Shape<MixesTag> {
   if (!options.mixes) {
     options.mixes = [value];
   } else {

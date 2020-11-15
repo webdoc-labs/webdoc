@@ -73,10 +73,12 @@ import {
   createSimpleKeywordType,
 } from "@webdoc/model";
 
+import type {Symbol} from "../types/Symbol";
+
 // Extracts all the extended class/interface names
 export function extractExtends(
   node: ClassDeclaration | ClassExpression | InterfaceDeclaration | TSInterfaceDeclaration,
-): ?(string[]) {
+): ?Array<string | Symbol> {
   if (isClassDeclaration(node) || isClassExpression(node)) {
     if (isIdentifier(node.superClass)) {
       return [node.superClass.name];
@@ -99,7 +101,9 @@ export function extractExtends(
 }
 
 // Extracts all the implemented interface names
-export function extractImplements(node: ClassDeclaration | ClassExpression): ?(string[]) {
+export function extractImplements(
+  node: ClassDeclaration | ClassExpression,
+): ?Array<string | Symbol> {
   return node.implements ? node.implements.map((impls) => {
     if (isClassImplements(impls)) {
       return impls.id.name;
@@ -118,7 +122,7 @@ export function extractImplements(node: ClassDeclaration | ClassExpression): ?(s
 // Extract all the parameter-data from the method/function AST node
 export function extractParams(
   node: ClassMethod | FunctionDeclaration | FunctionExpression | TSMethodSignature,
-): Param[] {
+): $Shape<Param>[] {
   if (!node.params && !node.parameters) {
     return [];
   }
@@ -129,42 +133,44 @@ export function extractParams(
 
   for (let i = 0; i < nodeParams.length; i++) {
     const paramNode = nodeParams[i];
-    let notParsed = false;
+
+    let param: ?$Shape<Param>;
 
     // TODO: Infer types
     if (isIdentifier(paramNode)) {
-      params.push({
+      param = {
         identifier: paramNode.name,
         optional: paramNode.optional || false,
-      });
+      };
     } else if (isRestElement(paramNode)) {
-      params.push({
+      param = {
         identifier: paramNode.argument.name,
         optional: paramNode.optional || false,
         variadic: true,
-      });
+      };
     } else if (isAssignmentPattern(paramNode)) {
-      params.push({
+      param = {
         identifier: paramNode.left.name,
         optional: paramNode.optional || false,
         default: paramNode.right.raw,
-      });
+      };
     } else if (isObjectExpression(paramNode)) {
       // TODO: Find a way to document {x, y, z} parameters
       // e.g. function ({x, y, z}), you would need to give the object pattern an anonymous like
       // "", " ", "  ",  "    " or using &zwnj; because it is truly invisible
 
-      notParsed = true;
       ((params: any)).flawed = true;
       console.error("Object patterns as parameters can't be documented");
     } else {
-      notParsed = true;
       ((params: any)).flawed = true;
       console.error("Parameter node couldn't be parsed");
     }
 
-    if (!notParsed && paramNode.typeAnnotation) {
-      params[params.length - 1].dataType = resolveDataType(paramNode.typeAnnotation);
+    if (param && paramNode.typeAnnotation) {
+      param.dataType = resolveDataType(paramNode.typeAnnotation);
+    }
+    if (param) {
+      params.push(param);
     }
   }
 
@@ -174,7 +180,7 @@ export function extractParams(
 // Extract the returns for the method/function
 export function extractReturns(
   node: ClassMethod | ObjectMethod | FunctionDeclaration | FunctionExpression,
-): ?(Return[]) {
+): $Shape<Return>[] {
   if (node.returnType) {
     return [{dataType: resolveDataType(node.returnType)}];
   }
@@ -182,7 +188,7 @@ export function extractReturns(
     return [{dataType: resolveDataType(node.typeAnnotation)}];
   }
 
-  return null;
+  return [];
 }
 
 // Extract the data-type for a property

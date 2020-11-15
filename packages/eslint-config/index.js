@@ -13,6 +13,7 @@ module.exports = {
     Atomics: "readonly",
     SharedArrayBuffer: "readonly",
     $Shape: "readonly",
+    $ReadOnlyArray: "readonly",
   },
   parser: "babel-eslint",
   parserOptions: {

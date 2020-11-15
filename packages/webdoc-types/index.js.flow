@@ -8,14 +8,16 @@ export type SourceFile = {
 };
 
 export type ParserOpts = {
-  memberof?: string[]
+  memberof?: string[],
+  object?: string,
+  undocumented?: boolean
 };
 
 export type Param = {
   identifier: string,
-  dataType: DataType,
+  dataType?: ?DataType,
   description: string,
-  optional?: Boolean,
+  optional?: boolean,
   default?: string,
   variadic?: boolean,
 };
@@ -34,11 +36,11 @@ export type SymbolLocation = {
 
 export type Typedef = {
   of: string[],
-  alias: String,
+  alias: string,
 };
 
 export type TypedDesc = {
-  dataType: DataType,
+  dataType?: DataType,
   description: string,
 };
 
@@ -51,6 +53,7 @@ export type DocType =
   "ClassDoc" |
   "EnumDoc" |
   "EventDoc" |
+  "InterfaceDoc" |
   "ObjectDoc" |
   "FunctionDoc" |
   "NSDoc" |
@@ -72,9 +75,12 @@ export type BaseDoc = {
   tags?: Tag[],
   brief?: string,
   description?: string,
+  abstract?: ?boolean,
   access?: "public" | "protected" | "private",
   authors?: string[],
-  deprecated?: string,
+  copyright?: string,
+  defaultValue?: string,
+  deprecated?: string | boolean,
   extends?: DocLink[],
   examples?: Example[],
   fires?: [],
@@ -94,8 +100,9 @@ export type Doc =
   ClassDoc |
   EnumDoc |
   EventDoc |
-  ObjectDoc |
   FunctionDoc |
+  InterfaceDoc |
+  ObjectDoc |
   NSDoc |
   MethodDoc |
   MixinDoc |
@@ -120,6 +127,7 @@ export type ClassDoc = {
 
 export type EnumDoc = {
   ...BaseDoc,
+  dataType?: ?DataType,
   type: "EnumDoc"
 };
 
@@ -135,6 +143,11 @@ export type FunctionDoc = {
   params: Param[],
   returns: Return[],
   type: "FunctionDoc"
+};
+
+export type InterfaceDoc = {
+  ...BaseDoc,
+  type: "InterfaceDoc",
 };
 
 export type MethodDoc = {
@@ -205,13 +218,34 @@ export type TypedefDoc = {
 
 export type BaseTag = {
   name: string,
-  value: string,
-  type: "link" | "param" | "return" | "throws"
+  value: string
 };
 
-export type Tag = AccessTag | BaseTag | DeprecatedTag | ExampleTag | ExtendsTag | TypedTag |
-    ParamTag | ReturnTag | MemberTag | ImplementsTag | MixesTag |
-    ThrowsTag | PrivateTag | PropertyTag | ProtectedTag | PublicTag
+export type Tag =
+  AbstractTag |
+  AccessTag |
+  AuthorTag |
+  CopyrightTag |
+  DefaultTag |
+  DeprecatedTag |
+  ExampleTag |
+  EnumTag |
+  ExtendsTag |
+  LicenseTag |
+  ParamTag |
+  ReturnTag |
+  SeeTag |
+  SinceTag |
+  TodoTag |
+  MemberTag |
+  ImplementsTag |
+  MixesTag |
+  ThrowsTag | PrivateTag | PropertyTag | ProtectedTag | PublicTag;
+
+export type AbstractTag = {
+  ...BaseTag,
+  type: "AbstractTag"
+};
 
 export type AccessTag = {
   ...BaseTag,
@@ -219,10 +253,30 @@ export type AccessTag = {
   type: "AccessTag"
 };
 
+export type AuthorTag = {
+  ...BaseTag,
+  type: "AuthorTag",
+};
+
+export type CopyrightTag = {
+  ...BaseTag,
+  type: "CopyrightTag"
+};
+
+export type DefaultTag = {
+  ...BaseTag,
+  type: "DefaultTag"
+};
+
 export type DeprecatedTag = {
   ...BaseTag,
   deprecated: string | boolean,
   type: "DeprecatedTag"
+};
+
+export type EnumTag = {
+  ...BaseTag,
+  type: "EnumTag"
 };
 
 export type EventTag = {
@@ -263,6 +317,11 @@ export type InstanceTag = {
   type: "InstanceTag"
 };
 
+export type LicenseTag = {
+  ...BaseTag,
+  type: "LicenseTag"
+};
+
 export type MixesTag = {
   ...BaseTag,
   type: "MixesTag"
@@ -288,9 +347,8 @@ export type NameTag = {
 export type ParamTag = {
   ...TypedTag,
   identifier: string,
-  referred: string,
   description: string,
-  optional?: Boolean,
+  optional?: boolean,
   default?: string,
   variadic?: boolean,
   type: "ParamTag"
@@ -299,6 +357,16 @@ export type ParamTag = {
 export type ReturnTag = {
   ...TypedTag,
   type: "ReturnTag"
+};
+
+export type SeeTag = {
+  ...BaseTag,
+  type: "SeeTag"
+};
+
+export type SinceTag = {
+  ...BaseTag,
+  type: "SinceTag"
 };
 
 export type StaticTag = {
@@ -312,6 +380,11 @@ export type ScopeTag = {
   type: "ScopeTag"
 };
 
+export type TodoTag = {
+  ...BaseTag,
+  type: "TodoTag"
+};
+
 export type ThrowsTag = {
   ...TypedTag,
   type: "ThrowsTag"
@@ -319,19 +392,20 @@ export type ThrowsTag = {
 
 export type TypeTag = {
   ...BaseTag,
-  dataType: DataType,
+  dataType: ?DataType,
   type: "TypeTag"
 };
 
 export type TypedTag = {
   ...BaseTag,
-  dataType: DataType,
+  dataType?: ?string,
   description: string,
 };
 
 export type TypedefTag = {
-  dataType: DataType,
-  alias: String,
+  ...BaseTag,
+  dataType?: ?DataType,
+  alias: string,
   type: "TypedefTag"
 };
 
@@ -341,9 +415,7 @@ export type PrivateTag = {
 };
 
 export type PropertyTag = {
-    ...BaseTag,
-    dataType: DataType,
-    description: string,
+    ...TypedTag,
     type: "PropertyTag"
 };
 

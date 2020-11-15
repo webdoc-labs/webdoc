@@ -133,7 +133,7 @@ registerDoctreeMod("ClassMemberDiscovery", STAGE_FINISHED, modDiscoverMembers);
 registerDoctreeMod("Sort", STAGE_FINISHED, modSort);
 registerDoctreeMod("PackageApi", STAGE_FINISHED, modPackageApi);
 
-export default function mod(doctree) {
+export default function mod(doctree: RootDoc): void {
   for (let i = 0; i < installedMods.length; i++) {
     installedMods[i].mod(doctree, doctree);
   }

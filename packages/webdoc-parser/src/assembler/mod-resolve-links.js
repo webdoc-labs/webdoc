@@ -41,7 +41,7 @@ export default function resolveLinksRecursive(
 // Resolve an array of referred names to the referred symbols
 function resolveLinkArray(
   // eslint-disable-next-line no-undef
-  links?: Array<string | any>,
+  links?: ?Array<string | any>,
   referee: Symbol,
   start: number = 0,
 ): void {
