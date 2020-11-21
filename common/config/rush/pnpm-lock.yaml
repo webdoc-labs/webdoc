@@ -66,6 +66,7 @@ dependencies:
   open-sans-fonts: 1.6.2
   optimize-css-assets-webpack-plugin: 5.0.4_webpack@4.44.2
   parse-github-url: 1.0.2
+  perf_hooks: 0.0.1
   pkg-up: 3.1.0
   react: 16.14.0
   react-dom: 16.14.0_react@16.14.0
@@ -7409,6 +7410,10 @@ packages:
       node: '>=0.12'
     resolution:
       integrity: sha512-4Ejy1OPxi9f2tt1rRV7Go7zmfDQ+ZectEQz3VGUQhgq62HtIRPDyG/JtnwIxs6x3uNMwo2V7q1fMvKjb+Tnpqg==
+  /perf_hooks/0.0.1:
+    dev: false
+    resolution:
+      integrity: sha512-qG/D9iA4KDme+KF4vCObJy6Bouu3BlQnmJ8jPydVPm32NJBD9ZK1ZNgXSYaZKHkVC1sKSqUiLgFvAZPUiIEnBw==
   /picomatch/2.2.2:
     dev: false
     engines:
@@ -7852,6 +7857,10 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-1PRWKwzjaW5BrFLQ4ALlemNdxtw=
+  /present/1.0.0:
+    dev: false
+    resolution:
+      integrity: sha1-bS+GW+epaIURj0Zg6D4hYftxzys=
   /prettier/1.19.1:
     dev: false
     engines:
@@ -10016,14 +10025,16 @@ packages:
       missionlog: 1.6.0
       mocha: 7.2.0
       object.fromentries: 2.0.2
+      perf_hooks: 0.0.1
       pkg-up: 3.1.0
+      present: 1.0.0
       read-pkg-up: 7.0.1
       requizzle: 0.2.3
       yargs: 15.3.1
     dev: false
     name: '@rush-temp/cli'
     resolution:
-      integrity: sha512-8IjGzExKRmOl+P9Cmu+po7d2Ed2tIHyi1dW6sx3W7v3jtQyN4KMMbohk4lHhKJp3Vlt/Bp5K7Tm6oJoRcSJ5wg==
+      integrity: sha512-xS1dsZUMK/SRLElQqt1yCWAxaU5Z8DdeoCGR3OAuKYA0H6e0g8KniGKmwtoxHc9geYHTajw2ZT+Qqpm0hSxw+A==
       tarball: 'file:projects/cli.tgz'
     version: 0.0.0
   'file:projects/default-template.tgz':
@@ -10341,6 +10352,7 @@ specifiers:
   open-sans-fonts: ^1.6.2
   optimize-css-assets-webpack-plugin: ^5.0.3
   parse-github-url: 1.0.2
+  perf_hooks: ~0.0.1
   pkg-up: ~3.1.0
   react: ^16.8.0
   react-dom: ^16.8.0

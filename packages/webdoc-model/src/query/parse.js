@@ -81,7 +81,7 @@ export function parse(queryExpr: string): QueryExpr {
   stepExprList.shift();
 
   const steps = stepExprList.map((stepExpr, i) => {
-    parseStepExpr(stepExpr, stepDelimiterList[i]);
+    return parseStepExpr(stepExpr, stepDelimiterList[i]);
   });
 
   return {

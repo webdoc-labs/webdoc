@@ -9,6 +9,8 @@ import fse from "fs-extra";
 import {initLogger as initParserLogger} from "@webdoc/parser";
 import {loadTutorials} from "./load-tutorials";
 import path from "path";
+// $FlowFixMe
+import {performance} from "perf_hooks";
 import {sources} from "./sources";
 import {writeDoctree} from "@webdoc/externalize";
 
