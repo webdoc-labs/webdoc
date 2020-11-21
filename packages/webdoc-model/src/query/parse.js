@@ -75,12 +75,14 @@ export function parse(queryExpr: string): QueryExpr {
     queryExpr = `.${queryExpr}`;
   }
 
-  const stepDelimiterList = queryExpr.match(STEP_EXPR_DELIMITER);
+  const stepDelimiterList = queryExpr.match(STEP_EXPR_DELIMITER) || [];
   const stepExprList = queryExpr.split(STEP_EXPR_DELIMITER);
 
   stepExprList.shift();
 
-  const steps = stepExprList.map((stepExpr, i) => parseStepExpr(stepExpr, stepDelimiterList[i]));
+  const steps = stepExprList.map((stepExpr, i) => {
+    return parseStepExpr(stepExpr, stepDelimiterList[i]);
+  });
 
   return {
     steps,

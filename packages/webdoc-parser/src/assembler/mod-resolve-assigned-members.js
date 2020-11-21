@@ -68,7 +68,7 @@ export default function resolveAssignedMembersRecursive(
         console.error("{@assembly-mod resolve-assigned-members} failed to resolve these symbols: ");
 
         tryQueue.forEach((sym) => {
-          console.error(`\t ${sym.canonicalName} [to ${sym.meta.object}]`);
+          console.error(`\t ${sym.canonicalName} [to ${sym.meta.object || ""}]`);
         });
       }
 
@@ -113,7 +113,7 @@ function resolveToObject(symbol: Symbol, tree: Symbol = symbol): void {
 }
 
 // Bubble through the ancestors of "sym" to find the "this" context for it.
-function bubbleThis(sym: Symbol): Symbol {
+function bubbleThis(sym: Symbol): ?Symbol {
   if (sym.meta.type === "ClassDoc" || sym.meta.type === "ObjectDoc" ||
         sym.meta.type === "MixinDoc" || sym.meta.type === "InterfaceDoc") {
     return sym;
@@ -126,7 +126,7 @@ function bubbleThis(sym: Symbol): Symbol {
 }
 
 // Check whether the symbol's parent is its "this" context.
-function isParentThis(sym: Symbol): Symbol {
+function isParentThis(sym: Symbol): boolean {
   if (!sym.parent) {
     return true;
   }

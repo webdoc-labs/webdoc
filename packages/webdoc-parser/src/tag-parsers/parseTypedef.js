@@ -6,7 +6,7 @@ import {parseDataType} from "@webdoc/model";
 // @typedef {<DATA_TYPE>} <NAME>
 
 // Parse the "@typedef {of} alias" tag
-export function parseTypedef(value: string, options: any): TypedefTag {
+export function parseTypedef(value: string, options: any): $Shape<TypedefTag> {
   // Get {ReferredType}
   const refClosure = /{([^{}])+}/.exec(value);
   let of;
@@ -27,8 +27,8 @@ export function parseTypedef(value: string, options: any): TypedefTag {
   options.alias = alias;
   options.name = alias;
 
+  // $FlowFixMe
   return {
-    name: "typedef",
     dataType: [of],
     alias,
     type: "TypedefTag",

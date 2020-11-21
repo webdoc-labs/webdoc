@@ -21,7 +21,7 @@ let tutorialDB = new Map<string, TutorialDoc>();
 
 // The set of tutorials that have been referenced as a child of another tutorial. These
 // are not added as top-level tutorials after being referenced.
-let nestedTutorials = new Set<string>();
+let nestedTutorials = new Set<any>();
 
 // Morph the tutorials into a graph-like structure as configured by the configuration file provided
 // by the user.
@@ -48,7 +48,7 @@ export function morphTutorials(
       continue;
     }
 
-    const tdoc = resolveConfigurator(name, configurator);
+    const tdoc = resolveConfigurator(name, ((configurator: any): TutorialConfigurator));
 
     if (nestedTutorials.has(tdoc.name)) {
       continue;
@@ -73,14 +73,14 @@ function resolveConfigurator(
 
   if (Array.isArray(configurator.children)) {
     configurator.children.forEach((childRef) => {
-      nestedTutorials.add(childRef);
-      tdoc.members.push(tutorialDoc(childRef));
+      nestedTutorials.add((childRef: any));
+      tdoc.members.push(tutorialDoc((childRef: any)));
     });
   } else {
     for (const [name, childConf] of Object.entries(configurator.children)) {
       // eslint-disable-next-line no-prototype-builtins
       if (configurator.children.hasOwnProperty(name)) {
-        tdoc.members.push(tutorialDoc(name, childConf));
+        tdoc.members.push(tutorialDoc(name, (childConf: any)));
       }
     }
   }
@@ -89,13 +89,16 @@ function resolveConfigurator(
 }
 
 // Fetch the tutorial-doc based off its name.
-function tutorialDoc(name: string, configurator?: TutorialConfigurator) {
+function tutorialDoc(name: string, configurator?: TutorialConfigurator): TutorialDoc {
   if (!tutorialDB.has(name)) {
     throw new Error("There is no such tutorial '" + name + "'");
   }
 
   const tdoc = tutorialDB.get(name);
 
+  if (!tdoc) {
+    throw new Error("NOT FOUND");
+  }
   if (configurator) {
     tdoc.title = configurator.title || name;
   }

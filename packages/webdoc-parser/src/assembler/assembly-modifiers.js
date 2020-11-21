@@ -2,6 +2,7 @@
 
 import {parserLogger, tag} from "../Logger";
 import type {AssemblyModifier} from "../types/AssemblyModifier";
+import type {Symbol} from "../types/Symbol";
 import modResolveAssignedMembers from "./mod-resolve-assigned-members";
 import modResolveLinks from "./mod-resolve-links";
 
@@ -10,7 +11,10 @@ const mods: AssemblyModifier[] = [];
 registerAssemblyModifier("{@assembly-mod resolve-assigned-members}", modResolveAssignedMembers);
 registerAssemblyModifier("{@assembly-mod resolve-links}", modResolveLinks);
 
-export function registerAssemblyModifier(name: string, mod: (tree: Symbol[]) => void) {
+export function registerAssemblyModifier(
+  name: string,
+  mod: (tree: Symbol) => any,
+) {
   mods.push({
     name,
     mod,

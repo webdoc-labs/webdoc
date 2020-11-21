@@ -1,6 +1,13 @@
 // @flow
 
-import type {BaseDoc, ClassDoc, Doc, DocLink, DocType, ObjectDoc, TypedefDoc} from "@webdoc/types";
+import type {
+  BaseDoc,
+  Doc,
+  DocLink,
+  DocType,
+  PackageDoc,
+  RootDoc,
+} from "@webdoc/types";
 import {nanoid} from "nanoid";
 
 const CANONICAL_SEPARATOR = /([.#~$])/;
@@ -14,8 +21,8 @@ function updateScope(doc: Doc, scopeStack: string[], scopePath: string): void {
     doc.path = `${doc.name}`;
   }
 
-  for (let i = 0; i < doc.children.length; i++) {
-    updateScope(doc.children[i], doc.stack, doc.path);
+  for (let i = 0; i < doc.members.length; i++) {
+    updateScope(doc.members[i], doc.stack, doc.path);
   }
 }
 
@@ -32,11 +39,11 @@ function updateScope(doc: Doc, scopeStack: string[], scopePath: string): void {
  */
 export const createDoc = (
   name?: string,
-  type?: string = "BaseDoc",
+  type: DocType,
   options: any,
   instance: any,
-) => {
-  const doc = Object.assign(instance || {}, {
+): BaseDoc => {
+  const doc: Doc = (Object.assign(instance || {}, {
     id: nanoid(),
     name,
     path: "",
@@ -49,9 +56,9 @@ export const createDoc = (
     access: "public",
     scope: type === "MethodDoc" ? "instance" : "inner",
     type,
-  }, options || {});
+  }, options || {}) : any);
 
-  const separators = name.match(CANONICAL_SEPARATOR);
+  const separators = doc.name.match(CANONICAL_SEPARATOR);
 
   // @memberof is not used, rather the user directly used the longname
   if (separators) {
@@ -66,16 +73,17 @@ export const createDoc = (
     }
 
     // Sad: splitting will include the separators so filter them
-    const path = name.split(CANONICAL_SEPARATOR)
+    const path = doc.name.split(CANONICAL_SEPARATOR)
       .filter((ch) => ch !== "." && ch !== "#" && ch !== "#");
+    const parserOpts = doc.parserOpts || {};
 
     doc.name = path[path.length - 1];
-    doc.parserOpts = doc.parserOpts || {};
+    doc.parserOpts = parserOpts;
 
-    if (doc.parserOpts.memberof) {
-      doc.parserOpts.memberof.push(...path.slice(0, -1));
+    if (parserOpts.memberof) {
+      parserOpts.memberof.push(...path.slice(0, -1));
     } else {
-      doc.parserOpts.memberof = path.slice(0, -1);
+      parserOpts.memberof = path.slice(0, -1);
     }
   }
 
@@ -90,6 +98,37 @@ export const createDoc = (
   return doc;
 };
 
+export function createRootDoc(): RootDoc {
+  return {
+    id: `root-${nanoid()}`,
+    members: [],
+    name: "",
+    packages: [],
+    path: "",
+    stack: [],
+    tags: [],
+    type: "RootDoc",
+  };
+}
+
+export function createPackageDoc(
+  name: string = "<webdoc.internal>",
+  location?: string,
+  metadata?: any,
+): PackageDoc {
+  return {
+    api: [],
+    id: `pkg-${nanoid()}`,
+    members: [],
+    metadata: metadata || {},
+    name,
+    path: name,
+    stack: [name],
+    location: location || "nowhere",
+    type: "PackageDoc",
+  };
+}
+
 /**
  * Searches for the doc named {@code lname} in the given scoped documentation.
  *
@@ -98,10 +137,10 @@ export const createDoc = (
  * @return {Doc} - the child doc
  */
 export function childDoc(lname: string, scope: BaseDoc): ?Doc {
-  const {children} = scope;
+  const {members} = scope;
 
-  for (let i = 0; i < scope.children.length; i++) {
-    const child = children[i];
+  for (let i = 0; i < members.length; i++) {
+    const child = members[i];
 
     if (child.name === lname) {
       return child;
@@ -115,20 +154,21 @@ export function childDoc(lname: string, scope: BaseDoc): ?Doc {
  * @param {BaseDoc} scope
  * @return {T}
  */
-export function addChildDoc<T: BaseDoc>(doc: T, scope: BaseDoc): T {
-  if (doc.parent) {
-    const i = doc.parent.children.indexOf(doc);
+export function addChildDoc<T: Doc>(doc: T, scope: Doc): T {
+  if (typeof doc.parent !== "undefined" && doc.parent !== null) {
+    const parent = doc.parent;
+    const i = parent.members.indexOf(doc);
 
     if (i >= 0) {
-      doc.parent.children.splice(i, 1);
+      parent.members.splice(i, 1);
     }
   }
 
-  const {children} = scope;
+  const {members} = scope;
   const index = -1;
 
   if (index === -1) {
-    children.push(doc);
+    members.push(doc);
   }
 
   doc.parent = scope;
@@ -137,16 +177,19 @@ export function addChildDoc<T: BaseDoc>(doc: T, scope: BaseDoc): T {
   return doc;
 }
 
-export function removeChildDoc(doc: BaseDoc, noUpdate: boolean = false) {
-  if (doc.parent) {
-    const i = doc.parent.children.indexOf(doc);
+export function removeChildDoc(doc: Doc, noUpdate: boolean = false) {
+  if (!doc.parent) {
+    return;
+  }
 
-    if (i >= 0) {
-      doc.parent.children.splice(i, 1);
+  const parent = doc.parent;
+  const i = parent.members.indexOf(doc);
 
-      if (!noUpdate) {
-        updateScope(doc, [], "");
-      }
+  if (i >= 0) {
+    parent.members.splice(i, 1);
+
+    if (!noUpdate) {
+      updateScope(doc, [], "");
     }
   }
 }
@@ -155,16 +198,20 @@ export function removeChildDoc(doc: BaseDoc, noUpdate: boolean = false) {
  * Finds the doc whose relative path is {@code path} w.r.t {@code root}.
  *
  * @param {string | string[]} path
- * @param {BaseDoc} root
+ * @param {Doc} root
  * @return {?Doc}
  */
-export function doc(path: string | string[], root: BaseDoc): ?Doc {
+export function doc(path: string | string[], root: Doc): ?Doc {
   // Packages
-  for (let i = 0; i < root.packages.length; i++) {
-    const pkg = root.packages[i];
+  if (root.type === "RootDoc") {
+    const packages: PackageDoc[] = (root: RootDoc).packages;
 
-    if (pkg.name === path) {
-      return pkg;
+    for (let i = 0; i < packages.length; i++) {
+      const pkg = packages[i];
+
+      if (pkg.name === path) {
+        return pkg;
+      }
     }
   }
 
@@ -227,10 +274,10 @@ export function findAccessedDoc(
  *
  * @template T
  * @param {T} doc
- * @param {BaseDoc} root
+ * @param {Doc} root
  * @return {?T} - the doc, if it was added
  */
-export function addDoc<T: BaseDoc>(doc: T, root: BaseDoc): ?T {
+export function addDoc<T: Doc>(doc: T, root: Doc): ?T {
   const docStack = doc.stack ? doc.stack : doc.path.split(/[.|#]/);
   let scope = root;
 
@@ -255,16 +302,21 @@ export function addDoc<T: BaseDoc>(doc: T, root: BaseDoc): ?T {
  * @param {T} doc
  * @return {T}
  */
-export function cloneDoc<T: BaseDoc>(doc: T): T {
+export function cloneDoc<T: Doc>(doc: T): T {
+  // $FlowFixMe
   return Object.assign({}, doc, {children: [], members: [], parent: undefined});
 }
 
 /**
  * You can pass this to traverse too.
  */
-export type TraversalContext = { [id: DocType | "enter" | "exit"]: (doc: Doc) => boolean }
+export type TraversalContext = {
+  [id: DocType | "enter" | "exit"]: ((doc: Doc) => TraversalOptions | void)
+}
 
-export type TraversalOptions = { skipSubtree?: boolean }
+export type TraversalOptions = {
+  skipSubtree?: boolean
+}
 
 /**
  * Preorder traversal of all the docs
@@ -272,7 +324,7 @@ export type TraversalOptions = { skipSubtree?: boolean }
  * @param {Doc} doc
  * @param {Function | TraversalContext} callback
  */
-export function traverse(doc: Doc, callback: (doc: Doc) => void | TraversalContext) {
+export function traverse(doc: Doc, callback: ((doc: Doc) => void) | TraversalContext) {
   if (typeof callback === "object") {
     traverseWithContext(doc, callback);
     return;
@@ -352,22 +404,27 @@ export function searchExtendedClasses(doc: Doc, extended?: Set<DocLink>): Set<Do
  * @return {Set<DocLink>} the symbols that are implemented by {@code doc}
  */
 export function searchImplementedInterfaces(
-  doc: ClassDoc | ObjectDoc | TypedefDoc,
+  doc: Doc,
   implemented?: Set<DocLink>,
 ): Set<DocLink> {
   implemented = implemented ? implemented : new Set<DocLink>();
 
-  if (!doc.implements) {
-    return implemented;
-  }
+  if ("implements" in doc) {
+    // eslint-disable-next-line no-undef
+    const implementsArr = ((doc: any).implements: $ReadOnlyArray<DocLink>);
 
-  for (let i = 0; i < doc.implements.length; i++) {
-    const implementedSymbol = doc.implements[i];
+    if (!implementsArr) {
+      return implemented;
+    }
 
-    implemented.add(implementedSymbol);
+    for (let i = 0; i < implementsArr.length; i++) {
+      const implementedSymbol = implementsArr[i];
 
-    if (typeof implementedSymbol !== "string" && implementedSymbol.implements) {
-      searchImplementedInterfaces(implementedSymbol, implemented);
+      implemented.add(implementedSymbol);
+
+      if (typeof implementedSymbol !== "string" && implementedSymbol.implements) {
+        searchImplementedInterfaces(implementedSymbol, implemented);
+      }
     }
   }
 

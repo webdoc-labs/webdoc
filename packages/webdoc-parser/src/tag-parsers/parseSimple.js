@@ -1,16 +1,18 @@
 // @flow
 
 import type {
+  AbstractTag,
   AuthorTag,
+  BaseDoc,
   CopyrightTag,
+  DataType,
   DefaultTag,
   DeprecatedTag,
-  Doc,
+  ExampleTag,
   LicenseTag,
   NameTag,
   SeeTag,
   SinceTag,
-  Tag,
   ThrowsTag,
   TodoTag,
   TypeTag,
@@ -34,13 +36,13 @@ import {parseTypedDescription} from "./helper";
 // @see <URL | DOC_PATH>
 // @since <WHEN>
 
-export function parseAbstract(value: string, doc: $Shape<Doc>): Tag {
+export function parseAbstract(value: string, doc: $Shape<BaseDoc>): $Shape<AbstractTag> {
   doc.abstract = true;
 
   return {value, type: "AbstractTag"};
 }
 
-export function parseAuthor(value: string, doc: $Shape<Doc>): $Shape<AuthorTag> {
+export function parseAuthor(value: string, doc: $Shape<BaseDoc>): $Shape<AuthorTag> {
   if (!doc.authors) {
     doc.authors = [];
   }
@@ -53,7 +55,7 @@ export function parseAuthor(value: string, doc: $Shape<Doc>): $Shape<AuthorTag> 
   };
 }
 
-export function parseCopyright(value: string, doc: $Shape<Doc>): $Shape<CopyrightTag> {
+export function parseCopyright(value: string, doc: $Shape<BaseDoc>): $Shape<CopyrightTag> {
   doc.copyright = value;
 
   return {
@@ -62,7 +64,7 @@ export function parseCopyright(value: string, doc: $Shape<Doc>): $Shape<Copyrigh
   };
 }
 
-export function parseDefault(value: string, doc: $Shape<Doc>): $Shape<DefaultTag> {
+export function parseDefault(value: string, doc: $Shape<BaseDoc>): $Shape<DefaultTag> {
   doc.defaultValue = value;
 
   return {
@@ -71,17 +73,17 @@ export function parseDefault(value: string, doc: $Shape<Doc>): $Shape<DefaultTag
   };
 }
 
-export function parseDeprecated(value: string, options: $Shape<Doc>): DeprecatedTag {
+export function parseDeprecated(value: string, options: $Shape<BaseDoc>): $Shape<DeprecatedTag> {
   options.deprecated = value || true;
 
   return {
-    name: "deprecated",
+    deprecated: value,
     type: "DeprecatedTag",
     value: "",
   };
 }
 
-export function parseExample(value: string, options: $Shape<Doc>): Tag {
+export function parseExample(value: string, options: $Shape<BaseDoc>): $Shape<ExampleTag> {
   if (!options.examples) {
     options.examples = [];
   }
@@ -95,7 +97,7 @@ export function parseExample(value: string, options: $Shape<Doc>): Tag {
   };
 }
 
-export function parseLicense(value: string, doc: $Shape<Doc>): LicenseTag {
+export function parseLicense(value: string, doc: $Shape<BaseDoc>): $Shape<LicenseTag> {
   doc.license = value;
 
   return {
@@ -104,7 +106,7 @@ export function parseLicense(value: string, doc: $Shape<Doc>): LicenseTag {
   };
 }
 
-export function parseName(value: string, doc: $Shape<Doc>): NameTag {
+export function parseName(value: string, doc: $Shape<BaseDoc>): $Shape<NameTag> {
   doc.name = value;
 
   return {
@@ -113,7 +115,7 @@ export function parseName(value: string, doc: $Shape<Doc>): NameTag {
   };
 }
 
-export function parseTodo(value: string, doc: $Shape<Doc>): TodoTag {
+export function parseTodo(value: string, doc: $Shape<BaseDoc>): $Shape<TodoTag> {
   if (!doc.todo) {
     doc.todo = [];
   }
@@ -126,7 +128,7 @@ export function parseTodo(value: string, doc: $Shape<Doc>): TodoTag {
   };
 }
 
-export function parseThrows(value: string, doc: $Shape<Doc>): ThrowsTag {
+export function parseThrows(value: string, doc: $Shape<BaseDoc>): $Shape<ThrowsTag> {
   if (!doc.throws) {
     doc.throws = [];
   }
@@ -139,7 +141,7 @@ export function parseThrows(value: string, doc: $Shape<Doc>): ThrowsTag {
   };
 }
 
-export function parseType(value: string, doc: $Shape<Doc>): TypeTag {
+export function parseType(value: string, doc: $Shape<{ dataType?: ?DataType }>): $Shape<TypeTag> {
   const dataType = parseTypedDescription(value).dataType;
 
   doc.dataType = dataType;
@@ -151,7 +153,7 @@ export function parseType(value: string, doc: $Shape<Doc>): TypeTag {
   };
 }
 
-export function parseSee(value: string, doc: $Shape<Doc>): SeeTag {
+export function parseSee(value: string, doc: $Shape<BaseDoc>): $Shape<SeeTag> {
   if (!doc.see) {
     doc.see = [];
   }
@@ -164,7 +166,7 @@ export function parseSee(value: string, doc: $Shape<Doc>): SeeTag {
   };
 }
 
-export function parseSince(value: string, doc: $Shape<Doc>): SinceTag {
+export function parseSince(value: string, doc: $Shape<BaseDoc>): $Shape<SinceTag> {
   doc.since = value;
 
   return {

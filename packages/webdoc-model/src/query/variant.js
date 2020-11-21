@@ -1,7 +1,7 @@
 // @flow
 
 import {VariantCondition, VariantExpr} from "./types";
-import {Doc} from "@webdoc/types";
+import type {Doc} from "@webdoc/types";
 
 const operatorEngines = {
   "=": (a, b) => (a === b),
@@ -15,7 +15,7 @@ function condition(conditionClause: VariantCondition, doc: Doc): boolean {
   const attributeValue = doc[conditionClause.attribute];
   const conditionValue = conditionClause.value;
 
-  operatorEngines[conditionClause.op](attributeValue, conditionValue);
+  return operatorEngines[conditionClause.op](attributeValue, conditionValue);
 }
 
 // Evaluates all variant conditionsa and returns whether the doc passes them.

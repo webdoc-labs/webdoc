@@ -1,10 +1,9 @@
 // @flow
 
 import type {PackageDoc, SourceFile} from "@webdoc/types";
+import {createPackageDoc} from "@webdoc/model";
 import path from "path";
 import pkgUp from "pkg-up";
-
-let pkgId = 0;
 
 export function packages(sourceFiles: SourceFile[]): PackageDoc[] {
   const cache = new Map<string, PackageDoc>();
@@ -23,18 +22,15 @@ export function packages(sourceFiles: SourceFile[]): PackageDoc[] {
       pkg = cache.get(pkgJson);
 
       if (!pkg) {
+        // $FlowFixMe
         const metadata = require(path.relative(__dirname, pkgJson));
 
         // Create PackageDoc for this package
-        pkg = {
-          id: `package-${pkgId++}`,
-          api: [],
-          name: metadata.name,
-          path: metadata.name,
-          location: path.dirname(pkgJson),
+        pkg = createPackageDoc(
+          metadata.name,
+          path.dirname(pkgJson),
           metadata,
-          type: "PackageDoc",
-        };
+        );
 
         packages.push(pkg);
         cache.set(pkgJson, pkg);

@@ -1,11 +1,11 @@
 // @flow
-import type {Doc, ReturnTag} from "@webdoc/types";
+import type {Return, ReturnTag} from "@webdoc/types";
 import {parseDataType} from "@webdoc/model";
 
 // @return {<DATA_TYPE>} [-] <DESC>
 
 // Parse the "@return {ReturnType} description" tag
-export function parseReturn(value: string, doc: $Shape<Doc>): ReturnTag {
+export function parseReturn(value: string, doc: $Shape<{ returns?: Return[] }>): ReturnTag {
   value = value.trim();
 
   // Get {ReferredType}
@@ -35,6 +35,7 @@ export function parseReturn(value: string, doc: $Shape<Doc>): ReturnTag {
     name: "return",
     dataType,
     description,
+    value,
     type: "ReturnTag",
   };
 }

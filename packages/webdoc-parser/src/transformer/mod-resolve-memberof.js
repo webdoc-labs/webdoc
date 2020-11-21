@@ -1,23 +1,21 @@
 // @flow
-/* eslint-disable */
 
-"use strict";
-
+import type {Doc, RootDoc} from "@webdoc/types";
+import {addChildDoc, doc as findDoc} from "@webdoc/model";
 import {CANONICAL_DELIMITER} from "../constants";
-import type {Doc} from "@webdoc/types";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true,
-});
-exports.default = memberofResolve;
+type PendingResolve = {
+  doc: Doc,
+  destination: string[],
+};
 
-const _model = require("@webdoc/model");
-import {doc as findDoc} from "@webdoc/model";
+function queueTargets(doc: Doc, into: Array<PendingResolve> = []): Array<PendingResolve> {
+  const memberofTag = doc.tags ? doc.tags.find((tag) => tag.name === "memberof") : null;
 
-function queueTargets(doc, into = []) {
-  const memberofTag = doc.tags.find((tag) => tag.name === "memberof");
-
-  if (doc.parserOpts && doc.parserOpts.memberof != null && typeof doc.parserOpts.memberof !== "undefined") {
+  if (doc.parserOpts &&
+      doc.parserOpts.memberof != null &&
+      typeof doc.parserOpts.memberof !== "undefined"
+  ) {
     into.push({
       doc,
       destination: doc.parserOpts.memberof,
@@ -38,18 +36,20 @@ function queueTargets(doc, into = []) {
 
     into.push({
       doc,
-      destination: memberof.split(CANONICAL_DELIMITER).filter((ch) => ch !== "." && ch !== "~" && ch !== "#"),
+      destination: memberof
+        .split(CANONICAL_DELIMITER)
+        .filter((ch) => ch !== "." && ch !== "~" && ch !== "#"),
     });
   }
 
-  for (let i = 0; i < doc.children.length; i++) {
-    queueTargets(doc.children[i], into);
+  for (let i = 0; i < doc.members.length; i++) {
+    queueTargets(doc.members[i], into);
   }
 
   return into;
 }
 
-function queueResolve(queue, root) {
+function queueResolve(queue: Array<PendingResolve>, root: RootDoc): Array<PendingResolve> {
   const backlog = [];
 
   while (queue.length) {
@@ -62,7 +62,7 @@ function queueResolve(queue, root) {
     }
 
     if (scope) {
-      (0, _model.addChildDoc)(resolve.doc, scope);
+      addChildDoc(resolve.doc, scope);
     } else {
       backlog.push(resolve);
     }
@@ -71,7 +71,7 @@ function queueResolve(queue, root) {
   return backlog;
 }
 
-function memberofResolve(doc, root) {
+export default function memberofResolve(doc: Doc, root: RootDoc): void {
   let iqueue = queueTargets(root);
   let lastQueueLength = iqueue.length + 1;
 
@@ -85,13 +85,15 @@ function memberofResolve(doc, root) {
   }
 }
 
-function throwCircularDepsError(queue: Doc[], root: RootDoc): void {
+function throwCircularDepsError(queue: PendingResolve[], root: RootDoc): void {
   for (let i = 0; i < queue.length; i++) {
     const doc = queue[i].doc;
-    const destination = queue[i].destination;
+    const destination = queue[i].destination.join(".");
 
-    console.error(`[DepsChain]: ${doc.name} (@${doc.path})[${doc.type}] is a member of ${destination}`);
+    console.error(
+      `[DepsChain]: ${doc.name} (@${doc.path})[${doc.type}] is a member of ${destination}`);
   }
 
-  throw new Error("@memberof dependencies are circular; cannot resolve after " + queue.length + " deps are left");
+  throw new Error(
+    "@memberof dependencies are circular; cannot resolve after " + queue.length + " deps are left");
 }

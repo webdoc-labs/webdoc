@@ -22,7 +22,7 @@ export function loadTutorials(tutorialsDir?: string): Tutorial[] {
 
   const tutorialFiles = globby.sync(path.join(tutorialsDir, "./**/*"));
   let tutorialConf = null;
-  let tutorials = [];
+  let tutorials: Tutorial[] = [];
 
   for (let i = 0; i < tutorialFiles.length; i++) {
     let fileName = tutorialFiles[i];
@@ -49,6 +49,7 @@ export function loadTutorials(tutorialsDir?: string): Tutorial[] {
 
     // Tutorials can be part of the doc-tree!
     tutorials.push({
+      id: `tutorial-${fileName}`,
       name: fileName,
       path: fileName,
       stack: [fileName],

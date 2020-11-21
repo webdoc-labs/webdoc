@@ -15,9 +15,19 @@ export function assemble(modules: Symbol[]): Symbol {
     canonicalName: "",
     isRoot: true,
     flags: 0,
+    comment: "",
     path: [""],
     members: [],
-    loc: {start: {}, end: {}},
+    loc: {
+      start: {
+        line: NaN,
+        column: NaN,
+      },
+      end: {
+        line: NaN,
+        column: NaN,
+      },
+    },
     meta: {
       type: "RootDoc",
     },

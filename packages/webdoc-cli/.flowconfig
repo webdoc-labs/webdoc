@@ -1,11 +1,20 @@
 [ignore]
 
 [include]
+./src
 
 [libs]
+./flow-typed
 
 [lints]
 
 [options]
 
 [strict]
+
+[untyped]
+.*/webdoc-externalize/.*
+.*/webdoc-model/.*
+.*/webdoc-parser/.*
+.*/webdoc-template-library/.*
+.*/webdoc-.*-template/.*

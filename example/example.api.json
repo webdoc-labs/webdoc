@@ -1,19 +1,20 @@
 {
+	"name": "",
 	"type": "RootDoc",
-	"children": [
+	"members": [
 		{
 			"name": "PIXI",
 			"type": "NSDoc",
 			"brief": "",
 			"description": "",
-			"children": [
+			"members": [
 				{
 					"name": "utils",
 					"type": "NSDoc",
 					"scope": "static",
 					"brief": "",
 					"description": "",
-					"children": [
+					"members": [
 						{
 							"name": "skipHello",
 							"type": "FunctionDoc",
@@ -34,7 +35,7 @@
 					"type": "ClassDoc",
 					"brief": "",
 					"description": "",
-					"children": [
+					"members": [
 						{
 							"name": "backgroundColor",
 							"type": "PropertyDoc",
@@ -49,7 +50,7 @@
 					"type": "ClassDoc",
 					"brief": "<p>Base for a common object renderer that can be used as a system renderer plugin.</p>",
 					"description": "",
-					"children": [
+					"members": [
 						{
 							"name": "renderer",
 							"type": "PropertyDoc",
@@ -106,7 +107,7 @@
 					"type": "ClassDoc",
 					"brief": "<p>System is a base class used for extending systems used by the {@link PIXI.AbstractRenderer}.</p>",
 					"description": "<p>Search more here: {@link https://www.google.com/}</p>",
-					"children": [
+					"members": [
 						{
 							"name": "renderer",
 							"type": "PropertyDoc",
@@ -136,7 +137,7 @@
 					"access": "protected",
 					"brief": "<p>Renderer dedicated to drawing and batching sprites.</p>",
 					"description": "<p>This is the default batch renderer. It buffers objects\nwith texture-based geometries and renders them in\nbatches. It uploads multiple textures to the GPU to\nreduce to the number of draw calls.</p>",
-					"children": [
+					"members": [
 						{
 							"name": "_drawCallPool",
 							"type": "PropertyDoc",
@@ -419,7 +420,7 @@
 					"scope": "static",
 					"brief": "<p>Constants that specify the transform type.</p>",
 					"description": "",
-					"children": [
+					"members": [
 						{
 							"name": "DYNAMIC",
 							"type": "PropertyDoc",
@@ -445,7 +446,7 @@
 			"type": "NSDoc",
 			"brief": "<p>A namespace dedicated to road manipulation utilites.</p>",
 			"description": "",
-			"children": [
+			"members": [
 				{
 					"name": "Road",
 					"type": "ClassDoc",
@@ -479,7 +480,7 @@
 			"type": "NSDoc",
 			"brief": "",
 			"description": "",
-			"children": [
+			"members": [
 				{
 					"name": "Transaction",
 					"type": "ClassDoc",
@@ -493,7 +494,7 @@
 			"type": "ClassDoc",
 			"brief": "<p>Bean class</p>",
 			"description": "",
-			"children": [
+			"members": [
 				{
 					"name": "roast",
 					"type": "MethodDoc",
@@ -507,8 +508,8 @@
 			"name": "Car",
 			"type": "ClassDoc",
 			"brief": "<p><em>Simulation</em> for a automobile that can drive on a manifold surface.</p>",
-			"description": "<pre><code class=\"hljs language-js\"><span class=\"hljs-keyword\">const</span> car = <span class=\"hljs-keyword\">new</span> Car({ <span class=\"hljs-attr\">make</span>: <span class=\"hljs-string\">\"Ferrari\"</span> });\n\ncar.installComponent(<span class=\"hljs-string\">\"interior\"</span>, <span class=\"hljs-keyword\">new</span> AirConditioner());\ncar.installComponent(<span class=\"hljs-string\">\"exterior\"</span>, <span class=\"hljs-keyword\">new</span> Bumper());\ncar.drop(<span class=\"hljs-string\">\"1234 Virtual Street, OH, Virtual US\"</span>, <span class=\"hljs-string\">\"Universe-Default\"</span>);\ncar.gear(<span class=\"hljs-string\">\"D\"</span>);\ncar.accelerate(<span class=\"hljs-number\">2</span>).until(<span class=\"hljs-number\">65</span>).then(<span class=\"hljs-number\">0</span>);\n\ncar.onCrash(<span class=\"hljs-function\"><span class=\"hljs-params\">()</span> =&gt;</span> Services.Insurance.initiateClaim(<span class=\"hljs-string\">\"abcdefghi-ticket\"</span>));\n</code></pre>",
-			"children": [
+			"description": "<pre><code class=\"hljs language-js\"><span class=\"hljs-keyword\">const</span> car = <span class=\"hljs-keyword\">new</span> Car({ <span class=\"hljs-attr\">make</span>: <span class=\"hljs-string\">&quot;Ferrari&quot;</span> });\n\ncar.installComponent(<span class=\"hljs-string\">&quot;interior&quot;</span>, <span class=\"hljs-keyword\">new</span> AirConditioner());\ncar.installComponent(<span class=\"hljs-string\">&quot;exterior&quot;</span>, <span class=\"hljs-keyword\">new</span> Bumper());\ncar.drop(<span class=\"hljs-string\">&quot;1234 Virtual Street, OH, Virtual US&quot;</span>, <span class=\"hljs-string\">&quot;Universe-Default&quot;</span>);\ncar.gear(<span class=\"hljs-string\">&quot;D&quot;</span>);\ncar.accelerate(<span class=\"hljs-number\">2</span>).until(<span class=\"hljs-number\">65</span>).then(<span class=\"hljs-number\">0</span>);\n\ncar.onCrash(<span class=\"hljs-function\">() =&gt;</span> Services.Insurance.initiateClaim(<span class=\"hljs-string\">&quot;abcdefghi-ticket&quot;</span>));\n</code></pre>",
+			"members": [
 				{
 					"name": "DEFAULT_DRIVE_SHIFT",
 					"type": "PropertyDoc",
@@ -579,7 +580,7 @@
 			"type": "ClassDoc",
 			"brief": "<p>This class illustrates how you can create a Java-bean like component in JavaScript</p>",
 			"description": "",
-			"children": [
+			"members": [
 				{
 					"name": "maturity",
 					"type": "PropertyDoc",
@@ -615,7 +616,7 @@
 			"type": "ClassDoc",
 			"brief": "<p>This class shouldn't be documented!</p>",
 			"description": "",
-			"children": [
+			"members": [
 				{
 					"name": "force",
 					"type": "MethodDoc",
@@ -630,7 +631,7 @@
 			"type": "ClassDoc",
 			"brief": "",
 			"description": "<p>A physical interaction is a force causes object positions to be re-evaulated each frame based on\nforce's magnitude.</p>",
-			"children": [
+			"members": [
 				{
 					"name": "GRAVITATIONAL_CONSTANT",
 					"type": "PropertyDoc",
@@ -659,7 +660,7 @@
 			"type": "ClassDoc",
 			"brief": "",
 			"description": "<p>Represents a physical-object and its intrinsic properties. This is useful for approximating\nextended objects as a uniform, continous body mass (ignoring its particulate composition).</p>",
-			"children": [
+			"members": [
 				{
 					"name": "bounds",
 					"type": "PropertyDoc",
@@ -702,7 +703,7 @@
 			"type": "ClassDoc",
 			"brief": "",
 			"description": "",
-			"children": [
+			"members": [
 				{
 					"name": "dimensions",
 					"type": "PropertyDoc",
@@ -738,7 +739,7 @@
 			"type": "EnumDoc",
 			"brief": "",
 			"description": "<p>These are the possible types of car makes.</p>",
-			"children": [
+			"members": [
 				{
 					"name": "FERRARI",
 					"type": "PropertyDoc",
@@ -802,7 +803,7 @@
 			"type": "TypedefDoc",
 			"brief": "",
 			"description": "<p>A 3D vector</p>",
-			"children": [
+			"members": [
 				{
 					"name": "meta",
 					"type": "PropertyDoc",
@@ -818,7 +819,7 @@
 			"type": "InterfaceDoc",
 			"brief": "<p>This is the interface for dealing with car dealers.</p>",
 			"description": "",
-			"children": [
+			"members": [
 				{
 					"name": "closeTransaction",
 					"type": "MethodDoc",

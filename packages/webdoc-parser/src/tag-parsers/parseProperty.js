@@ -1,5 +1,5 @@
 // @flow
-import type {Doc, PropertyTag} from "@webdoc/types";
+import type {BaseDoc, PropertyTag} from "@webdoc/types";
 import {StringUtils, matchDataTypeClosure, matchDefaultValueClosure} from "./helper";
 import {createDoc} from "@webdoc/model";
 import {parseDataType} from "@webdoc/model";
@@ -28,7 +28,7 @@ export function extractDataValue(value: string): any {
 // Extract simpleName & defaultValue when passing simpleName=defaultValue
 export function extractDefaultValueClosureData(closure: string): {
   simpleName: string,
-  defaultValue: string
+  defaultValue?: string
 } {
   const splitIndex = closure.indexOf("=");
 
@@ -43,7 +43,7 @@ export function extractDefaultValueClosureData(closure: string): {
   };
 }
 
-export function parseProperty(value: string, doc: $Shape<Doc>): PropertyTag {
+export function parseProperty(value: string, doc: $Shape<BaseDoc>): PropertyTag {
   // Extract "{DataType}" regexp-match from the tag value
   const dataTypeClosure = matchDataTypeClosure(value);
   let dataType;
@@ -119,6 +119,7 @@ export function parseProperty(value: string, doc: $Shape<Doc>): PropertyTag {
     name: "property",
     dataType,
     description,
+    value,
     type: "PropertyTag",
   };
 }

@@ -1,11 +1,11 @@
 // @flow
-import type {Doc, EnumTag} from "@webdoc/types";
+import type {EnumDoc, EnumTag} from "@webdoc/types";
 import {StringUtils, matchDataTypeClosure} from "./helper";
 import {parseDataType} from "@webdoc/model";
 
 // @enum [{<DATA_TYPE>}] [<NAME>]
 
-export function parseEnum(value: string, doc: $Shape<Doc>): EnumTag {
+export function parseEnum(value: string, doc: $Shape<EnumDoc>): $Shape<EnumTag> {
   const dataTypeClosure = matchDataTypeClosure(value);
 
   if (dataTypeClosure) {
@@ -22,6 +22,6 @@ export function parseEnum(value: string, doc: $Shape<Doc>): EnumTag {
 
   return {
     value,
-    type: "EnumDoc",
+    type: "EnumTag",
   };
 }

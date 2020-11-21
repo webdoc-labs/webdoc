@@ -1,6 +1,6 @@
 // @flow
 
-import type {Doc, ParamTag} from "@webdoc/types";
+import type {Param, ParamTag} from "@webdoc/types";
 import {StringUtils, matchDefaultValueClosure} from "./helper";
 import {parserLogger, tag} from "../Logger";
 import {parseDataType} from "@webdoc/model";
@@ -12,7 +12,7 @@ import {parseDataType} from "@webdoc/model";
 // Extracts the parameter's identifier & related information that occurs after the type
 function extractIdentifier(from: string, index: number = 0): {
   identifier: string,
-  optional: boolean,
+  optional?: boolean,
   default?: string,
   variadic?: boolean,
   closureStart: number,
@@ -78,7 +78,7 @@ function extractIdentifier(from: string, index: number = 0): {
 }
 
 // Parses a ParamTag from a string
-export function parseParam(value: string, options: $Shape<Doc>): ParamTag {
+export function parseParam(value: string, doc: $Shape<{ params?: Param[] }>): ParamTag {
   value = value.trim();
 
   // Finds the {Type} closure,
@@ -111,11 +111,11 @@ export function parseParam(value: string, options: $Shape<Doc>): ParamTag {
         `does not have a "-" token preceeding description <${extractable}>`);
   }
 
-  if (!options.params) {
-    options.params = [];
+  if (!doc.params) {
+    doc.params = [];
   }
 
-  options.params.push({
+  doc.params.push({
     identifier: identClosure.identifier,
     dataType: ref ? parseDataType(ref) : undefined,
     description: extractable,

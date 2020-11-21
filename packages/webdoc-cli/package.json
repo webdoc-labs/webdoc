@@ -64,7 +64,8 @@
     "pkg-up": "~3.1.0",
     "read-pkg-up": "~7.0.1",
     "requizzle": "0.2.3",
-    "yargs": "15.3.1"
+    "yargs": "15.3.1",
+    "perf_hooks": "~0.0.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
@@ -80,7 +81,7 @@
     "chai": "^4.2.0",
     "del": "5.1.0",
     "eslint": "^6.8.0",
-    "flow-bin": "^0.130.0",
+    "flow-bin": "^0.137.0",
     "flow-typed": "^3.2.1",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",

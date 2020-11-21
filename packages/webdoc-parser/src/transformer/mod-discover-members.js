@@ -23,7 +23,7 @@ function ensureDiscovered(doc: Doc, depsChain: Set<Doc>): void {
 
 function findInherited(member: Doc): Doc {
   let counter = 0;
-  let doc = member;
+  let doc: any = member;
 
   while (doc.inherits) {
     doc = doc.inherits;
@@ -34,7 +34,7 @@ function findInherited(member: Doc): Doc {
     }
   }
 
-  return doc;
+  return (doc: Doc);
 }
 
 // Finds all the members of doc, including those that are inherited, implemented, or mixed.
@@ -48,7 +48,7 @@ function discoverMembers(doc: Doc, depsChain = new Set<Doc>()): void {
 
   // This maps symbol names to the members of doc, so that the same symbol is not
   // inherited/overriden multiple times.
-  const memberMap: { [id: string]: string } = {};
+  const memberMap: { [id: string]: any } = {};
 
   // Prevent overridding symbols from being replaced by adding them beforehand.
   for (let i = 0; i < doc.members.length; i++) {
@@ -63,10 +63,10 @@ function discoverMembers(doc: Doc, depsChain = new Set<Doc>()): void {
     parents.push(...doc.extends);
   }
   if (doc.implements) {
-    parents.push(...doc.implements);
+    parents.push(...(doc.implements: any));
   }
   if (doc.mixes) {
-    parents.push(...doc.mixes);
+    parents.push(...(doc.mixes: any));
   }
 
   for (const parent of parents) {

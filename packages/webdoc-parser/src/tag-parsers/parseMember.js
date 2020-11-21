@@ -1,12 +1,12 @@
+import type {BaseDoc, MemberTag} from "@webdoc/types";
 import {parserLogger, tag} from "../Logger";
-import type {MemberTag} from "@webdoc/types";
 import {StringUtils} from "./helper";
 import {parseDataType} from "@webdoc/model";
 
 // @member {<DATA_TYPE>}
 
 // Parses @member {DataType} tags (no description)
-export function parseMember(value: string, options: any): MemberTag {
+export function parseMember(value: string, options: $Shape<BaseDoc>): $Shape<MemberTag> {
   // Extract {DataType}
   const dataTypeClosureResult = /{([^{}])+}/.exec(value);
   const dataTypeClosure = dataTypeClosureResult ? dataTypeClosureResult[0] : "";

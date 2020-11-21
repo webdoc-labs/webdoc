@@ -1,6 +1,6 @@
 // @flow
 
-import type {DocType, Param, Return, SourceFile} from "@webdoc/types";
+import type {DataType, DocType, Param, Return, SourceFile} from "@webdoc/types";
 import {parserLogger, tag} from "../Logger";
 import {CANONICAL_DELIMITER} from "../constants";
 import type {Node} from "@babel/types";
@@ -21,14 +21,20 @@ export const VIRTUAL = 1 << 2;
 // information that is not explicity documented and/or verify the documented information
 // is correct.
 export type SymbolSignature = {
-  access?: string,
-  dataType?: string,
-  extends?: string[],
-  implements?: string[],
-  params?: Param[],
-  returns?: Return[],
-  scope?: string,
-  type?: DocType,
+  abstract?: boolean,
+  access?: ?string,
+  constant?: ?boolean,
+  dataType?: ?DataType,
+  defaultValue?: ?string,
+  extends?: ?Array<string | Symbol>,
+  implements?: ?Array<string | Symbol>,
+  object?: ?string,
+  params?: ?Array<$Shape<Param>>,
+  returns?: ?Array<$Shape<Return>>,
+  scope?: ?string,
+  value?: ?string,
+  type?: ?DocType,
+  typeParameters?: ?Array<string>,
   undocumented?: boolean
 }
 
@@ -36,8 +42,8 @@ export type SymbolSignature = {
 export type SymbolLocation = {
   start: { line: number, column: number },
   end: { line: number, column: number },
-  fileName: string,
-  file: SourceFile
+  fileName?: string,
+  file?: SourceFile
 }
 
 // This is a preliminary data-format that represents a documentable symbol.
@@ -45,33 +51,34 @@ export type SymbolLocation = {
 // + Symbols with no associated AST node are said to be "headless". They are back solely by
 // documentation comments.
 export type Symbol = {
-  node: ?Node,
+  node?: ?Node,
   simpleName: string,
   canonicalName: string,
   flags: number,
   path: string[],
   comment: string,
-  parent: ?Symbol,
+  parent?: ?Symbol,
   members: Symbol[],
   loc: SymbolLocation,
   meta: SymbolSignature,
+  isRoot?: boolean,
 
   // This flags symbols that are the initializer of a parent. They are merged when another symbol
   // with the same name is found.
-  __INITOR__: ?boolean,
-  __INIT__: ?boolean
+  __INITOR__?: ?boolean,
+  __INIT__?: ?boolean
 };
 
 export function isPassThrough(symbol: Symbol): boolean {
-  return symbol.flags & PASS_THROUGH;
+  return !!(symbol.flags & PASS_THROUGH);
 }
 
 export function isObligateLeaf(symbol: Symbol): boolean {
-  return symbol.flags & OBLIGATE_LEAF;
+  return !!(symbol.flags & OBLIGATE_LEAF);
 }
 
 export function isVirtual(symbol: Symbol): boolean {
-  return symbol.flags & VIRTUAL;
+  return !!(symbol.flags & VIRTUAL);
 }
 
 // Find the symbol with the given canonicalName w.r.t the rootSymbol.
@@ -80,8 +87,8 @@ export function isVirtual(symbol: Symbol): boolean {
 export function findSymbol(
   canonicalName: string | string[],
   rootSymbol: Symbol,
-  depth = 0,
-): boolean {
+  depth: number = 0,
+): ?Symbol {
   if (typeof canonicalName === "string") {
     canonicalName = canonicalName.split(CANONICAL_DELIMITER);
   }
@@ -222,7 +229,7 @@ export function addChildSymbol(doc: Symbol, scope: Symbol): Symbol {
 }
 
 // Remove a child from its parent
-export function removeChildSymbol(symbol: Symbol): Symbol {
+export function removeChildSymbol(symbol: Symbol): ?Symbol {
   const parentSymbol = symbol.parent;
 
   if (!parentSymbol) {

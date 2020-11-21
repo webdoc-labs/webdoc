@@ -1,18 +1,9 @@
 // @flow
 import * as _ from "lodash";
 import type {
-  ClassDoc,
   Doc,
-  EnumDoc,
-  EventDoc,
-  FunctionDoc,
-  InterfaceDoc,
   MethodDoc,
-  MixinDoc,
-  NSDoc,
-  PropertyDoc,
   RootDoc,
-  TypedefDoc,
 } from "@webdoc/types";
 import {tag, templateLogger} from "./Logger";
 import {SymbolLinks} from "./SymbolLinks";
@@ -90,7 +81,7 @@ export class TemplateRenderer {
    * @param {Object} plugin
    * @return {TemplateRenderer} this
    */
-  installPlugin(name: string, plugin: Object): void {
+  installPlugin(name: string, plugin: Object): TemplateRenderer {
     if (typeof plugin === "function") {
       this.plugins[name] = plugin;
       this.plugins[name].renderer = this;
@@ -112,11 +103,13 @@ export class TemplateRenderer {
     return this;
   }
 
-  linkTo(...args) {
+  linkTo(...args: any[]) {
     if (!printedDefaultLinker) {
       console.warn("The default linker is the deprecated SymbolLinks API. " +
         "Upgrade to the LinkerPlugin!");
       printedDefaultLinker = true;
+
+      // $FlowFixMe
       this.linkTo = SymbolLinks.linkTo;
     }
 
@@ -217,7 +210,7 @@ export class TemplateRenderer {
    * @param {Doc[]}[out] - optional array to output the namespace-docs into
    * @return {NSDoc[]}
    */
-  getNamespaces(doc: Doc, recursive = false, out: Doc[]): NSDoc[] {
+  getNamespaces(doc: Doc, recursive: boolean = false, out: Doc[]): Doc[] {
     return this.getMembers(doc, "NSDoc", recursive, out);
   }
 
@@ -229,7 +222,7 @@ export class TemplateRenderer {
    * @param {Doc[]}[out] - optional array to output the classes-docs into
    * @return {ClassDoc[]}
    */
-  getClasses(doc: Doc, recursive = false, out: Doc[]): ClassDoc[] {
+  getClasses(doc: Doc, recursive: boolean = false, out: Doc[]): Doc[] {
     return this.getMembers(doc, "ClassDoc", recursive, out);
   }
 
@@ -241,7 +234,7 @@ export class TemplateRenderer {
    * @param {Doc[]}[out] - optional array to output the classes-docs into
    * @return {EnumDoc[]}
    */
-  getEnums(doc: Doc, recursive = false, out: Doc[]): EnumDoc[] {
+  getEnums(doc: Doc, recursive: boolean = false, out: Doc[]): Doc[] {
     return this.getMembers(doc, "EnumDoc", recursive, out);
   }
 
@@ -253,7 +246,7 @@ export class TemplateRenderer {
    * @param {Doc[]}[out] - optional array to output the method-docs into
    * @return {MethodDoc[]}
    */
-  getMethods(doc: Doc, recursive = false, out: Doc[]): MethodDoc[] {
+  getMethods(doc: Doc, recursive: boolean = false, out: Doc[]): Doc[] {
     // Can't use getMembers because "constructor" is a special MethodDoc that isn't included!
 
     if (!out) {
@@ -269,8 +262,8 @@ export class TemplateRenderer {
 
     if (recursive) {
       for (let i = 0; i < doc.members.length; i++) {
-        if (this.members[i].access !== "private") {
-          this.getMethods(doc, true, out);
+        if (doc.members[i].access !== "private") {
+          this.getMethods(doc.members[i], true, out);
         }
       }
     }
@@ -286,7 +279,7 @@ export class TemplateRenderer {
    * @param {Doc[]}[out] - optional array to output the classes-docs into
    * @return {FunctionDoc[]}
    */
-  getFunctions(doc: Doc, recursive = false, out: Doc[]): FunctionDoc[] {
+  getFunctions(doc: Doc, recursive: boolean = false, out: Doc[]): Doc[] {
     return this.getMembers(doc, "FunctionDoc", recursive, out);
   }
 
@@ -298,7 +291,7 @@ export class TemplateRenderer {
    * @param {Doc[]}[out] - optional array to output the classes-docs into
    * @return {(MethodDoc | FunctionDoc)[]}
    */
-  getMethodLikes(doc: Doc, recursive = false, out: Doc[]): (MethodDoc | FunctionDoc)[] {
+  getMethodLikes(doc: Doc, recursive: boolean = false, out: Doc[]): Doc[] {
     if (!out) {
       out = [];
     }
@@ -317,7 +310,7 @@ export class TemplateRenderer {
       for (let i = 0; i < doc.members.length; i++) {
         // Don't search inside private docs
         if (doc.members[i].access !== "private") {
-          this.getMembers(doc, true, out);
+          this.getMethodLikes(doc.members[i], true, out);
         }
       }
     }
@@ -332,8 +325,8 @@ export class TemplateRenderer {
    * @return {MethodDoc}
    */
   getConstructor(doc: Doc): ?MethodDoc {
-    return doc.members.find(
-      (member) => member.type === "MethodDoc" && member.name === "constructor");
+    return (doc.members.find(
+      (member) => member.type === "MethodDoc" && member.name === "constructor"): any);
   }
 
   /**
@@ -344,7 +337,7 @@ export class TemplateRenderer {
    * @param {Doc[]}[out] - optional array to output the event-docs into
    * @return {EventDoc[]}
    */
-  getEvents(doc: Doc, recursive = false, out: Doc[]): EventDoc[] {
+  getEvents(doc: Doc, recursive: boolean = false, out: Doc[]): Doc[] {
     return this.getMembers(doc, "EventDoc", recursive, out);
   }
 
@@ -356,7 +349,7 @@ export class TemplateRenderer {
    * @param {Doc[]}[out] - optional array to output the event-docs into
    * @return {PropertyDoc[]}
    */
-  getProperties(doc: Doc, recursive = false, out: Doc[]): PropertyDoc[] {
+  getProperties(doc: Doc, recursive: boolean = false, out: Doc[]): Doc[] {
     return this.getMembers(doc, "PropertyDoc", recursive, out);
   }
 
@@ -368,7 +361,7 @@ export class TemplateRenderer {
    * @param {Doc[]}[out] - optional array to output the typedef-docs into
    * @return {Typedef[]}
    */
-  getTypedefs(doc: Doc, recursive = false, out: Doc[]): TypedefDoc[] {
+  getTypedefs(doc: Doc, recursive: boolean = false, out: Doc[]): Doc[] {
     return this.getMembers(doc, "TypedefDoc", recursive, out);
   }
 
@@ -380,7 +373,7 @@ export class TemplateRenderer {
    * @param {Doc[]}[out] - optional array to output the mixin-docs into
    * @return {MixinDoc[]}
    */
-  getMixins(doc: Doc, recursive = false, out: Doc[]): MixinDoc[] {
+  getMixins(doc: Doc, recursive: boolean = false, out: Doc[]): Doc[] {
     return this.getMembers(doc, "MixinDoc", recursive, out);
   }
 
@@ -392,7 +385,7 @@ export class TemplateRenderer {
    * @param {Doc[]}[out] - optional array to output the interface-docs into
    * @return {InterfaceDoc[]}
    */
-  getInterfaces(doc: Doc, recursive = false, out: Doc[]): InterfaceDoc[] {
+  getInterfaces(doc: Doc, recursive: boolean = false, out: Doc[]): Doc[] {
     return this.getMembers(doc, "InterfaceDoc", recursive, out);
   }
 
@@ -406,7 +399,7 @@ export class TemplateRenderer {
    * @param {Doc[]}[out] - optional array to push the members into
    * @return {Doc[]}
    */
-  getMembers(doc: Doc, type: string, recursive = false, out?: Doc[]): Doc[] {
+  getMembers(doc: Doc, type: string, recursive: boolean = false, out?: Doc[]): Doc[] {
     if (!out) {
       out = [];
     }

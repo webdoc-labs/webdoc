@@ -13,16 +13,16 @@ function sanitizeDoc(doc: Doc): SanitizedDoc {
     description: doc.description,
   };
 
-  if (doc.children.length) {
-    sanitized.children = new Array(doc.children.length);
+  if (doc.members.length) {
+    sanitized.members = new Array(doc.members.length);
 
-    for (let i = 0; i < doc.children.length; i++) {
-      (sanitized.children: any)[i] = sanitizeDoc(doc.children[i]);
+    for (let i = 0; i < doc.members.length; i++) {
+      (sanitized.members: any)[i] = sanitizeDoc(doc.members[i]);
     }
   }
 
-  if (doc.url) {
-    sanitized.url = doc.url;
+  if ((doc: any).url) {
+    sanitized.url = (doc: any).url;
   }
 
   return sanitized;

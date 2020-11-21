@@ -57,12 +57,12 @@ export default function extractSymbol(
   node: Node,
   parent: Symbol,
   out: {
-    name?: string,
-    flags?: number,
-    nodeSymbol?: Symbol,
-    isInit?: boolean,
-    initComment?: string,
-    init?: Node
+    name?: ?string,
+    flags?: ?number,
+    nodeSymbol?: ?Symbol,
+    isInit?: ?boolean,
+    initComment?: ?string,
+    init?: ?Node
   },
 ): void {
   let name;
@@ -70,7 +70,7 @@ export default function extractSymbol(
   let isInit = false;
   let initComment;
   let init;
-  const nodeSymbol = out.nodeSymbol || {meta: {}};
+  const nodeSymbol: $Shape<Symbol> = out.nodeSymbol || {meta: {}};
 
   if ((isClassMethod(node) && (node.kind === "method" || node.kind === "constructor")) ||
         isObjectMethod(node) ||
@@ -197,17 +197,19 @@ export default function extractSymbol(
       if (isExpressionStatement(node)) {
         // Literal property
 
-        nodeSymbol.meta.object = resolveObject(node.expression.left);
-        nodeSymbol.meta.scope = isInstancePropertyAssignment(node.expression.left) ?
+        const object = resolveObject(node.expression.left);
+        const scope = isInstancePropertyAssignment(node.expression.left) ?
           "instance" : "static";
 
-        if (nodeSymbol.meta.scope === "instance" &&
-              nodeSymbol.meta.object.includes(".prototype")) {
+        nodeSymbol.meta.object = object;
+        nodeSymbol.meta.scope = scope;
+
+        if (scope === "instance" && object.includes(".prototype")) {
           // webdoc doesn't really support .prototype.prototype (multiple prototypes)
           // Should we?
           // It would probably be implemented as a document-tree mod that climbs the
           // inheritance/super-class chain.
-          nodeSymbol.meta.object = nodeSymbol.meta.object.replace(".prototype", "");
+          nodeSymbol.meta.object = object.replace(".prototype", "");
         }
       } else if (isObjectProperty(node)) {
         nodeSymbol.meta.scope = "static";
@@ -328,7 +330,7 @@ function resolveReturn(callee: FunctionExpression | ArrowFunctionExpression): ?s
 }
 
 // Helper to resolve assignment to object chain, e.g. [Class.prototype].property
-function resolveObject(expression: MemberExpression): void {
+function resolveObject(expression: MemberExpression): string {
   let longname = "";
   expression = expression.object;
 
@@ -350,7 +352,7 @@ function resolveObject(expression: MemberExpression): void {
   return longname;
 }
 
-function resolveRootObject(expression: MemberExpression): void {
+function resolveRootObject(expression: MemberExpression): string {
   expression = expression.object;
 
   if (isTSAsExpression(expression)) {

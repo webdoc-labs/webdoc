@@ -45,7 +45,7 @@ import {
 } from "../types/VariableRegistry";
 
 import traverse, {type NodePath} from "@babel/traverse";
-import {LanguageConfig} from "../types/LanguageIntegration";
+import type {LanguageConfig} from "../types/LanguageIntegration";
 import type {SourceFile} from "@webdoc/types";
 import extract from "../extract";
 import {extractParams} from "./extract-metadata";
@@ -67,9 +67,9 @@ export const SymbolUtils = {
     // Just try the leading comment
     return comments.length - 1;
   },
-  logRecursive(sym: Symbol, prefix = ""): void {
+  logRecursive(sym: Symbol, prefix: string = ""): void {
     parserLogger.info("Debug", prefix + (sym.simpleName || "-no-name-") + " " + sym.flags +
-      ` [${sym.meta ? sym.meta.type : "-no-meta-"}]`);
+      ` [${sym.meta && sym.meta.type ? sym.meta.type : "-no-meta-"}]`);
 
     for (let i = 0; i < sym.members.length; i++) {
       SymbolUtils.logRecursive(sym.members[i], prefix + "\t");
@@ -93,11 +93,13 @@ export const SymbolUtils = {
     return {
       node: null,
       simpleName: "",
+      canonicalName: "",
       flags: 0,
       comment,
       members: [],
       loc: _createLoc(loc),
       meta: {},
+      path: [],
     };
   },
 
@@ -287,7 +289,7 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
   // Create the nodeSymbol & add it as a child to parent
   //
 
-  const leadingComments = filterComments(node.leadingComments);
+  const leadingComments = filterComments(node.leadingComments) || [];
 
   // leadingComments -> documented
   // isScope -> children may be documented even if node is not
@@ -386,6 +388,9 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
     // Inner comments are treated as a child of the created nodeSymbol. It is expected that the
     // node is a scope & nodeSymbol will always exist if innerComments also exists.
 
+    // Alias
+    const ns = nodeSymbol;
+
     innerComments.forEach((comment) => {
       const doc = extract(comment);
 
@@ -393,7 +398,7 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
         // $FlowFixMe
         SymbolUtils.addChild(
           SymbolUtils.createHeadlessSymbol(doc, comment.loc),
-          nodeSymbol);
+          ns);
       }
     });
   }
@@ -417,8 +422,9 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
 
       if (doc) {
         const actualParent = is11469 && isTrailing(comment) ? parent.parent : parent;
-
         const tsym = SymbolUtils.createHeadlessSymbol(doc, comment.loc);
+
+        // $FlowFixMe
         SymbolUtils.addChild(tsym, actualParent);
       }
     });
@@ -429,11 +435,16 @@ function captureSymbols(node: Node, parent: Symbol): ?Symbol {
 
 const EMPTY_ARRAY = [];
 
-function filterComments(comments: (CommentBlock | Comment)[]): void {
-  return comments ? comments.filter((cnode) => {
-    return (cnode.type === "CommentBlock") &&
-     (cnode.value.startsWith("*") || cnode.value.startsWith("!"));
-  }) : EMPTY_ARRAY;
+function filterComments(
+  // eslint-disable-next-line no-undef
+  comments: $ReadOnlyArray<CommentBlock | Comment>,
+): (CommentBlock | Comment)[] {
+  return comments ?
+    comments.filter((cnode) => {
+      return (cnode.type === "CommentBlock") &&
+       (cnode.value.startsWith("*") || cnode.value.startsWith("!"));
+    }) :
+    EMPTY_ARRAY;
 }
 
 function registerDeclaredVariables(node: VariableDeclaration): void {
