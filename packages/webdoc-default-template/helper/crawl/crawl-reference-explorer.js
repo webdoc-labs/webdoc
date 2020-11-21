@@ -147,7 +147,7 @@ function traversePackage(doc /*: Doc | PackageDoc */, context /*: Object */, par
 
   context.enter(doc);
 
-  const arr = doc.members || doc.api;
+  const arr = doc.type === "PackageDoc" ? doc.api : doc.members;
 
   for (let i = 0; i < arr.length; i++) {
     traversePackage(arr[i], context, doc.type === "PackageDoc");
