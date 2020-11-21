@@ -9,6 +9,7 @@ const ACCESS_ORDER = {
   "public": 0,
   "protected": 1,
   "private": 2,
+  // $FlowFixMe
   [undefined]: 0,
 };
 
@@ -16,6 +17,7 @@ const SCOPE_ORDER = {
   "static": 0,
   "instance": 1,
   "inner": 2,
+  // $FlowFixMe
   [undefined]: 0,
 };
 
@@ -27,6 +29,7 @@ const TYPE_ORDER = {
   "PropertyDoc": 5,
   "MethodDoc": 6,
   "EventDoc": 7,
+  // $FlowFixMe
   [undefined]: 10,
 };
 

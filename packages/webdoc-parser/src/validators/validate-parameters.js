@@ -1,19 +1,22 @@
 // @flow
 
-import type {Doc} from "@webdoc/types";
+import type {DocShape, Param} from "@webdoc/types";
 import type {SymbolSignature} from "../types/Symbol";
 
 // Validate the parameters are structurally (not nominally) correct
-function validateParameters(doc: $Shape<Doc>, meta: SymbolSignature): void {
+function validateParameters(doc: DocShape, meta: SymbolSignature): void {
   // Only validate if parameters are documented AND exist
   if (!meta.params || !doc.params) {
     return;
   }
 
+  const metaParams = meta.params;
+  const docParams = ((doc: any).params: Param[]);
+
   let lastParam = null;
 
-  for (let i = 0, j = 0; i < doc.params.length; i++) {
-    const param = doc.params[i];
+  for (let i = 0, j = 0; i < docParams.length; i++) {
+    const param = docParams[i];
     const name = param.identifier;
 
     if (!name) {
@@ -36,9 +39,9 @@ function validateParameters(doc: $Shape<Doc>, meta: SymbolSignature): void {
 
       continue;
     }
-    if (j >= meta.params.length) {
+    if (j >= metaParams.length) {
       throw new Error(`"${name}" is not a parameter & cannot` +
-            ` come after the last parameter "${lastParam}"`);
+            ` come after the last parameter "${lastParam || ""}"`);
     }
 
     ++j;

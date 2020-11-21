@@ -34,6 +34,7 @@ export type SymbolSignature = {
   scope?: ?string,
   value?: ?string,
   type?: ?DocType,
+  typeParameters?: ?Array<string>,
   undocumented?: boolean
 }
 
@@ -60,6 +61,7 @@ export type Symbol = {
   members: Symbol[],
   loc: SymbolLocation,
   meta: SymbolSignature,
+  isRoot?: boolean,
 
   // This flags symbols that are the initializer of a parent. They are merged when another symbol
   // with the same name is found.
@@ -68,15 +70,15 @@ export type Symbol = {
 };
 
 export function isPassThrough(symbol: Symbol): boolean {
-  return symbol.flags & PASS_THROUGH;
+  return !!(symbol.flags & PASS_THROUGH);
 }
 
 export function isObligateLeaf(symbol: Symbol): boolean {
-  return symbol.flags & OBLIGATE_LEAF;
+  return !!(symbol.flags & OBLIGATE_LEAF);
 }
 
 export function isVirtual(symbol: Symbol): boolean {
-  return symbol.flags & VIRTUAL;
+  return !!(symbol.flags & VIRTUAL);
 }
 
 // Find the symbol with the given canonicalName w.r.t the rootSymbol.
@@ -85,8 +87,8 @@ export function isVirtual(symbol: Symbol): boolean {
 export function findSymbol(
   canonicalName: string | string[],
   rootSymbol: Symbol,
-  depth = 0,
-): boolean {
+  depth: number = 0,
+): ?Symbol {
   if (typeof canonicalName === "string") {
     canonicalName = canonicalName.split(CANONICAL_DELIMITER);
   }
@@ -227,7 +229,7 @@ export function addChildSymbol(doc: Symbol, scope: Symbol): Symbol {
 }
 
 // Remove a child from its parent
-export function removeChildSymbol(symbol: Symbol): Symbol {
+export function removeChildSymbol(symbol: Symbol): ?Symbol {
   const parentSymbol = symbol.parent;
 
   if (!parentSymbol) {

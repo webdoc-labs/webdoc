@@ -48,22 +48,6 @@ export type DocLink = Doc | string;
 
 export type Return = TypedDesc;
 
-export type DocType =
-  "RootDoc" |
-  "ClassDoc" |
-  "EnumDoc" |
-  "EventDoc" |
-  "InterfaceDoc" |
-  "ObjectDoc" |
-  "FunctionDoc" |
-  "NSDoc" |
-  "MethodDoc" |
-  "MixinDoc" |
-  "PackageDoc" |
-  "PropertyDoc" |
-  "TutorialDoc" |
-  "TypedefDoc";
-
 export type BaseDoc = {
   id: string,
   name: string,
@@ -95,6 +79,22 @@ export type BaseDoc = {
   parserOpts?: ParserOpts
 };
 
+export type DocType =
+  "RootDoc" |
+  "ClassDoc" |
+  "EnumDoc" |
+  "EventDoc" |
+  "InterfaceDoc" |
+  "ObjectDoc" |
+  "FunctionDoc" |
+  "NSDoc" |
+  "MethodDoc" |
+  "MixinDoc" |
+  "PackageDoc" |
+  "PropertyDoc" |
+  "TutorialDoc" |
+  "TypedefDoc";
+
 export type Doc =
   RootDoc |
   ClassDoc |
@@ -110,6 +110,22 @@ export type Doc =
   PropertyDoc |
   TutorialDoc |
   TypedefDoc;
+
+export type DocShape =
+  $Shape<RootDoc> |
+  $Shape<ClassDoc> |
+  $Shape<EnumDoc> |
+  $Shape<EventDoc> |
+  $Shape<FunctionDoc> |
+  $Shape<InterfaceDoc> |
+  $Shape<ObjectDoc> |
+  $Shape<NSDoc> |
+  $Shape<MethodDoc> |
+  $Shape<MixinDoc> |
+  $Shape<PackageDoc> |
+  $Shape<PropertyDoc> |
+  $Shape<TutorialDoc> |
+  $Shape<TypedefDoc>;
 
 export type RootDoc = {
   ...BaseDoc,
@@ -221,6 +237,34 @@ export type BaseTag = {
   value: string
 };
 
+export type TagType =
+  "AbstractTag" |
+  "AccessTag" |
+  "AuthorTag" |
+  "CopyrightTag" |
+  "DefaultTag" |
+  "DeprecatedTag" |
+  "ExampleTag" |
+  "EnumTag" |
+  "ExtendsTag" |
+  "InnerTag" |
+  "InterfaceTag" |
+  "MemberTag" |
+  "MemberofTag" |
+  "MethodTag" |
+  "MixesTag" |
+  "MixinTag" |
+  "NameTag" |
+  "NSTag" |
+  "LicenseTag" |
+  "ParamTag" |
+  "ReturnTag" |
+  "SeeTag" |
+  "SinceTag" |
+  "TodoTag" |
+  "ImplementsTag" |
+  "ThrowsTag" | "PrivateTag" | "PropertyTag" | "ProtectedTag" | "PublicTag";
+
 export type Tag =
   AbstractTag |
   AccessTag |
@@ -231,16 +275,51 @@ export type Tag =
   ExampleTag |
   EnumTag |
   ExtendsTag |
+  InnerTag |
+  InterfaceTag |
+  MemberTag |
+  MemberofTag |
+  MethodTag |
+  MixesTag |
+  MixinTag |
+  NameTag |
+  NSTag |
   LicenseTag |
   ParamTag |
   ReturnTag |
   SeeTag |
   SinceTag |
   TodoTag |
-  MemberTag |
   ImplementsTag |
-  MixesTag |
   ThrowsTag | PrivateTag | PropertyTag | ProtectedTag | PublicTag;
+
+export type TagShape =
+  $Shape<AbstractTag> |
+  $Shape<AccessTag> |
+  $Shape<AuthorTag> |
+  $Shape<CopyrightTag> |
+  $Shape<DefaultTag> |
+  $Shape<DeprecatedTag> |
+  $Shape<ExampleTag> |
+  $Shape<EnumTag> |
+  $Shape<ExtendsTag> |
+  $Shape<InnerTag> |
+  $Shape<InterfaceTag> |
+  $Shape<MemberTag> |
+  $Shape<MemberofTag> |
+  $Shape<MethodTag> |
+  $Shape<MixesTag> |
+  $Shape<MixinTag> |
+  $Shape<NameTag> |
+  $Shape<NSTag> |
+  $Shape<LicenseTag> |
+  $Shape<ParamTag> |
+  $Shape<ReturnTag> |
+  $Shape<SeeTag> |
+  $Shape<SinceTag> |
+  $Shape<TodoTag> |
+  $Shape<ImplementsTag> |
+  $Shape<ThrowsTag> | $Shape<PrivateTag> | $Shape<PropertyTag> | $Shape<ProtectedTag> | $Shape<PublicTag>;
 
 export type AbstractTag = {
   ...BaseTag,
@@ -312,6 +391,12 @@ export type InnerTag = {
   type: "InnerTag"
 };
 
+
+export type InterfaceTag = {
+  ...BaseTag,
+  type: "InterfaceTag"
+};
+
 export type InstanceTag = {
   ...BaseTag,
   type: "InstanceTag"
@@ -322,14 +407,10 @@ export type LicenseTag = {
   type: "LicenseTag"
 };
 
-export type MixesTag = {
-  ...BaseTag,
-  type: "MixesTag"
-};
-
 export type MemberTag = {
   ...BaseTag,
-  dataType: DataType
+  dataType: DataType,
+  type: "MemberTag"
 };
 
 export type MemberofTag = {
@@ -338,10 +419,30 @@ export type MemberofTag = {
   type: "MemberofTag"
 };
 
+export type MethodTag = {
+  ...BaseTag,
+  type: "MethodTag"
+};
+
+export type MixesTag = {
+  ...BaseTag,
+  type: "MixesTag"
+};
+
+export type MixinTag = {
+  ...BaseTag,
+  type: "MixinTag"
+};
+
 export type NameTag = {
   ...BaseTag,
   alias: string,
   type: "NameTag"
+};
+
+export type NSTag = {
+  ...BaseTag,
+  type: "NSTag"
 };
 
 export type ParamTag = {

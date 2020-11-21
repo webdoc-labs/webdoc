@@ -1,7 +1,12 @@
 // @flow
 // This file converts Symbols into Docs (i.e. parses the documentation comments)
 
-import type {Doc, Tag} from "@webdoc/types";
+import type {
+  Doc,
+  Tag,
+  TagShape,
+  TagType,
+} from "@webdoc/types";
 import type {Symbol, SymbolSignature} from "../types/Symbol";
 import {
   parseAbstract,
@@ -43,16 +48,17 @@ import mergeReturns from "./merge-returns";
 import {updateDocument} from "../Logger";
 import validate from "../validators";
 
-type TagParser = (value: string, options: Object) => $Shape<Tag>;
+type TagParser = (value: string, options: Object) => TagShape;
 
 // This is used to generate a BaseTag parser with no special features.
 // @name, @class, @interface, @mixin
-function createTagParser(type: string): $Shape<Tag> {
-  return function(value: string) {
-    return {
+function createTagParser(type: TagType): TagParser {
+  return function(value: string): TagShape {
+    // $FlowFixMe
+    return ({
       value,
       type,
-    };
+    });
   };
 }
 
@@ -92,6 +98,7 @@ const TAG_PARSERS: { [id: string]: TagParser } = {
   "see": parseSee,
   "since": parseSince,
   "static": parseStatic,
+  // $FlowFixMe
   "tag": (name: string, value: string): Tag => ({name, value}),
   "todo": parseTodo,
   "throws": parseThrows,
@@ -277,7 +284,7 @@ export default function symbolToDoc(symbol: Symbol): ?Doc {
 }
 
 // Infer everything we can from the metadata
-function infer(doc: Doc, meta: SymbolSignature) {
+function infer(doc: any, meta: SymbolSignature) {
   doc.params = mergeParams(doc.params, meta.params);
   doc.returns = mergeReturns(doc.returns, meta.returns);
   doc.extends = doc.extends || meta.extends;

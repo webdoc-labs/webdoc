@@ -17,24 +17,24 @@ export default function resolveAssignedMembersRecursive(doc: Doc, root: RootDoc)
         if (scope !== doc.parent) {
           addChildDoc(doc, scope);
         }
-      } else if (!doc.undocumented) {
+      } else if (!(doc.parserOpts && doc.parserOpts.undocumented)) {
         console.warn(`Member ${doc.path} could not be resolved to ${objectPath}`);
       }
     }
   }
 
-  for (let i = 0; i < doc.children.length; i++) {
-    const child = doc.children[i];
+  for (let i = 0; i < doc.members.length; i++) {
+    const child = doc.members[i];
 
-    resolveAssignedMembersRecursive(doc.children[i], root);
+    resolveAssignedMembersRecursive(doc.members[i], root);
 
-    if (child !== doc.children[i]) {
+    if (child !== doc.members[i]) {
       --i;
     }
   }
 }
 
-function bubbleThis(doc: Doc): Doc {
+function bubbleThis(doc: Doc): ?Doc {
   if (doc.type === "ClassDoc" || doc.type === "ObjectDoc" ||
         doc.type === "MixinDoc" || doc.type === "InterfaceDoc") {
     return doc;

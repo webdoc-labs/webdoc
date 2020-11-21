@@ -8,19 +8,19 @@ import symbolToDoc from "./symbol-to-doc";
 
 // This file provides the transformation from a symbol-metadata tree into a documentation tree.
 
-export function transformRecursive(symbol: Symbol, root: RootDoc): Doc {
+export function transformRecursive(symbol: Symbol, root: RootDoc): ?Doc {
   // transform will *destroy* everything in symbol, so store things needed beforehand
   const members = symbol.members;
   const parent = symbol.parent;// :Doc (not a symbol because assemble() was called on parent!!!)
 
-  const doc: Doc = symbolToDoc(symbol);
+  const doc = symbolToDoc(symbol);
 
   if (!doc && !symbol.isRoot) {
     parserLogger.error(tag.DocParser,
       `Failed to parse doc for ${symbol.simpleName}(@${symbol.canonicalName || "Unnamed"})` +
-      `{@${symbol.loc.fileName}` +
-      `<${symbol.start ? symbol.start.line : "NaN"},` +
-      ` ${symbol.start ? symbol.start.column : "NaN"}>}`);
+      `{@${symbol.loc.fileName || "<UNKNOWN_FILE>"}` +
+      `<${symbol.loc.start ? symbol.loc.start.line : "NaN"},` +
+      ` ${symbol.loc.start ? symbol.loc.start.column : "NaN"}>}`);
     return;
   }
 

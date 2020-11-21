@@ -1,6 +1,6 @@
 // @flow
 
-import type {Doc, DocLink, RootDoc} from "@webdoc/types";
+import type {Doc, DocLink, Param, Return, RootDoc} from "@webdoc/types";
 import {doc as findDoc} from "@webdoc/model";
 
 // Resolve all string symbol-paths in array to the actual Doc from the tree.
@@ -41,31 +41,35 @@ export default function resolveRelated(doc: Doc, tree: RootDoc) {
   }
 
   if (doc.implements) {
-    resolveArray(doc.implements, doc, tree);
+    resolveArray((doc.implements: any), doc, tree);
   }
 
   if (doc.mixes) {
-    resolveArray(doc.mixes, doc, tree);
+    resolveArray((doc.mixes: any), doc, tree);
   }
 
   if (doc.params) {
-    for (let i = 0; i < doc.params.length; i++) {
-      if (doc.params[i].dataType) {
-        resolveArray(doc.params[i].dataType, doc, tree, 1);
+    const params = ((doc: any).params: Param[]);
+
+    for (let i = 0; i < params.length; i++) {
+      if (params[i].dataType) {
+        resolveArray(params[i].dataType, doc, tree, 1);
       }
     }
   }
 
   if (doc.returns) {
-    for (let i = 0; i < doc.returns.length; i++) {
-      if (doc.returns[i].dataType) {
-        resolveArray(doc.returns[i].dataType, doc, tree, 1);
+    const returns = ((doc: any).returns: Return[]);
+
+    for (let i = 0; i < returns.length; i++) {
+      if (returns[i].dataType) {
+        resolveArray(returns[i].dataType, doc, tree, 1);
       }
     }
   }
 
   if (doc.type === "PropertyDoc" && doc.scope === "default") {
-    if (doc.parent.type === "InterfaceDoc" || doc.parent.type === "ClassDoc") {
+    if (doc.parent && (doc.parent.type === "InterfaceDoc" || doc.parent.type === "ClassDoc")) {
       doc.scope = "instance";
     } else {
       doc.scope = "static";

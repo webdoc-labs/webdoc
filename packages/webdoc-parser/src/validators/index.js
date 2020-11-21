@@ -3,7 +3,7 @@
 // This file/directory providse a modular way to verify documented information is structurally
 // correct.
 
-import type {Doc} from "@webdoc/types";
+import type {DocShape} from "@webdoc/types";
 import type {SymbolSignature} from "../types/Symbol";
 
 import ValidatorParameters from "./validate-parameters";
@@ -23,7 +23,7 @@ import ValidatorParameters from "./validate-parameters";
 // NOTE-2: For "soft"-errors, validators are allowed to correct documented information.
 export type Validator = {
   name?: string,
-  validate(doc: Doc, meta: SymbolSignature): void,
+  validate(doc: DocShape, meta: SymbolSignature): void,
 }
 
 // The registered validators
@@ -37,6 +37,6 @@ export function registerValidator(validator: Validator): void {
 registerValidator(ValidatorParameters);
 
 // Runs all the registered validators
-export default function validate(doc: $Shape<Doc>, meta: SymbolSignature): void {
+export default function validate(doc: DocShape, meta: SymbolSignature): void {
   validators.forEach((validator) => validator.validate(doc, meta));
 }
