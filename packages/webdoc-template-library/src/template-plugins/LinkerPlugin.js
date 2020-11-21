@@ -283,7 +283,7 @@ function LinkerPluginShell() {
           return;
         }
 
-        links.unshift(this.linkTo(ancestor.path, ancestor.name, { cssClass }));
+        links.unshift(this.linkTo(ancestor.path, ancestor.name, {cssClass}));
       });
 
       if (links.length) {

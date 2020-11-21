@@ -2,9 +2,8 @@
 
 import * as yargs from "yargs";
 import {LogLevel, log, tag} from "missionlog";
-import {parse, registerWebdocParser} from "@webdoc/parser";
-import type {RootDoc} from "@webdoc/types";
 import {createRootDoc, exportTaffy} from "@webdoc/model";
+import {parse, registerWebdocParser} from "@webdoc/parser";
 import fs from "fs";
 import fse from "fs-extra";
 import {initLogger as initParserLogger} from "@webdoc/parser";
