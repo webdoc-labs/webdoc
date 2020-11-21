@@ -2,11 +2,11 @@
 
 export type SanitizedDoc = {
   name: string,
-  type?: string,
-  children?: SanitizedDoc[],
+  type: string,
+  members?: SanitizedDoc[],
   url?: string,
-  access: string,
-  scope: string,
-  version: string,
-  brief: string
+  access?: string,
+  scope?: string,
+  version?: string,
+  brief?: string
 };

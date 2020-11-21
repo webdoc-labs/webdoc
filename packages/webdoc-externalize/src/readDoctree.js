@@ -3,11 +3,11 @@ import type {Doc, RootDoc} from "@webdoc/types";
 import type {SanitizedDoc} from "./SanitizedDoc";
 import {addChildDoc} from "@webdoc/model";
 
-function restoreDoc(sanitized: SanitizedDoc, scope?: Doc): Doc {
-  const doc: Doc = {
+function restoreDoc(sanitized: SanitizedDoc, scope: ?Doc): Doc {
+  const doc: any = {
     name: sanitized.name,
     type: sanitized.type,
-    children: sanitized.children ? new Array(sanitized.children.length) : [],
+    members: sanitized.members ? new Array(sanitized.members.length) : [],
     access: sanitized.access,
     scope: sanitized.scope,
     version: sanitized.version,
@@ -15,15 +15,15 @@ function restoreDoc(sanitized: SanitizedDoc, scope?: Doc): Doc {
   };
 
   if (sanitized.url) {
-    doc.url = sanitized.url;
+    (doc: any).url = sanitized.url;
   }
 
   if (scope) {
     addChildDoc(doc, scope);
   }
 
-  for (let i = 0; i < doc.children.length; i++) {
-    doc.children[i] = restoreDoc((sanitized.children: any)[i], doc);
+  for (let i = 0; i < doc.members.length; i++) {
+    doc.members[i] = restoreDoc((sanitized.members: any)[i], doc);
   }
 
   return doc;
@@ -39,5 +39,5 @@ function restoreDoc(sanitized: SanitizedDoc, scope?: Doc): Doc {
 export default function readDoctree(data: string): RootDoc {
   const sanitizedDoctree = JSON.parse(data);
 
-  return restoreDoc(sanitizedDoctree, null);
+  return (restoreDoc(sanitizedDoctree, null): any);
 }
