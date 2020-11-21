@@ -66,9 +66,9 @@ function LinkerPluginShell() {
     const keys = documentRegistry.keys();
     const object = {};
 
-    keys.forEach((key) => {
-      object[key] = documentRegistry.get(key).uri;
-    });
+    for (const key of keys) {
+      object[key] = (documentRegistry.get(key): any).uri;
+    }
 
     return object;
   }
@@ -185,7 +185,7 @@ function LinkerPluginShell() {
      * longname and display the short name in the link text. Ignored if `linkText` is specified.
      * @return {string} the HTML link, or the link text if the link is not available.
      */
-    linkTo(docPath: string, linkText: string = docPath, options: LinkOptions = {}) {
+    linkTo(docPath: any, linkText: string = docPath, options: LinkOptions = {}) {
       if (!docPath) {
         return "";
       }
@@ -266,7 +266,7 @@ function LinkerPluginShell() {
      * @param {string} cssClass
      * @return {string[]}
      */
-    linksToAncestors(doc: Doc, cssClass: string): string[] {
+    linksToAncestors(doc: Doc, cssClass: string): Array<?string> {
       const ancestors = [];
 
       let searchDoc = doc.parent;
@@ -283,7 +283,7 @@ function LinkerPluginShell() {
           return;
         }
 
-        links.unshift(this.linkTo(ancestor.path, ancestor.name, cssClass));
+        links.unshift(this.linkTo(ancestor.path, ancestor.name, { cssClass }));
       });
 
       if (links.length) {
@@ -445,7 +445,7 @@ function LinkerPluginShell() {
       }
 
       let baseURI: string;
-      let fragment: string;
+      let fragment: ?string;
       const docPath = doc.path;
       const {standaloneDocTypes} = this;
 
@@ -455,7 +455,9 @@ function LinkerPluginShell() {
 
         this.getFileRecord(baseURI);
       } else { // inside another HTML file
-        baseURI = doc.parent.type !== "RootDoc" ? this.getURI(doc.parent) : "global.html";
+        baseURI = doc.parent && doc.parent.type !== "RootDoc" ?
+          this.getURI(doc.parent) :
+          "global.html";
         fragment = this.generateURIFragment(
           baseURI,
           doc.name,

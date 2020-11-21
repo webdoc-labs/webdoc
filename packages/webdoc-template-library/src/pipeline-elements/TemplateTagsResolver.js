@@ -1,6 +1,7 @@
 // @flow
 
 import type {TemplatePipeline, TemplatePipelineElement} from "../TemplatePipeline";
+import type {TemplateRenderer} from "../TemplateRenderer";
 
 const LINK_PATTERN = /{@link ([^|\s}]*)([\s|])?([^}]*)}/g;
 
@@ -12,12 +13,13 @@ const LINK_PATTERN = /{@link ([^|\s}]*)([\s|])?([^}]*)}/g;
  */
 export class TemplateTagsResolver implements TemplatePipelineElement<{}> {
   linkClass: ?string;
+  renderer: TemplateRenderer;
 
   /**
    * @param {object} options
    * @param {string}[options.linkClass] - CSS class for the link elements generated
    */
-  constructor(options?: { linkClass?: string } = {}) {
+  constructor(options?: { linkClass?: ?string } = {}) {
     this.linkClass = options.linkClass;
   }
 
@@ -31,11 +33,11 @@ export class TemplateTagsResolver implements TemplatePipelineElement<{}> {
     return input;
   }
 
-  runLink(input: string, _: {}): string {
+  runLink(input: string): string {
     const linkPattern = LINK_PATTERN;
-    let linkMatch;
+    let linkMatch = linkPattern.exec(input);
 
-    while ((linkMatch = linkPattern.exec(input)) !== null) {
+    while (linkMatch) {
       const linkTextMatch = matchTextPrefix(input, linkMatch.index);
       const link = linkMatch[1];
       const linkName = linkMatch[3];
@@ -57,6 +59,8 @@ export class TemplateTagsResolver implements TemplatePipelineElement<{}> {
         input.slice(0, startIndex) +
         replaced +
         input.slice(endIndex);
+
+      linkMatch = linkPattern.exec(input);
     }
 
     return input;
@@ -118,7 +122,8 @@ function matchTextPrefix(content: string, tagStart: number): ?([string] & {index
 
   const result = [content.slice(openIndex, index + 1)];
 
+  // $FlowFixMe
   result.index = openIndex;
-
+  // $FlowFixMe
   return result;
 }

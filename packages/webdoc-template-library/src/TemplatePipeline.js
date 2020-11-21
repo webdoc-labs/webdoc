@@ -11,7 +11,7 @@ export interface TemplatePipelineElement<T> {
    *
    * @param {TemplatePipeline} pipeline
    */
-  attachTo: (pipeline: TemplatePipeline) => void;
+  attachTo(pipeline: TemplatePipeline): void;
 
   /**
    * Runs any modification to the HTML and returns the result.
@@ -34,7 +34,7 @@ export interface TemplatePipelineElement<T> {
  */
 export class TemplatePipeline {
   renderer: TemplateRenderer;
-  elements: Array<TemplatePipelineElement>;
+  elements: Array<TemplatePipelineElement<any>>;
 
   /**
    * @param {TemplateRenderer} renderer
@@ -53,14 +53,16 @@ export class TemplatePipeline {
    * @return {?string}
    */
   render(templateFile: string, templateData: any, pipelineData: any): ?string {
-    let output = this.renderer.render(templateFile, templateData);
+    let output: string = this.renderer.render(templateFile, templateData);
 
     for (let i = 0; i < this.elements.length; i++) {
-      output = this.elements[i].run(output, pipelineData);
+      const poutput = this.elements[i].run(output, pipelineData);
 
-      if (!output) {
+      if (!poutput) {
         return;
       }
+
+      output = poutput;
     }
 
     return output;
@@ -79,7 +81,7 @@ export class TemplatePipeline {
    *    .pipe(new TemplateTagsResolver())
    *    .pipe(new FlushToFile())
    */
-  pipe(element: TemplatePipelineElement): TemplatePipeline {
+  pipe(element: TemplatePipelineElement<any>): TemplatePipeline {
     this.elements.push(element);
 
     if (element.attachTo) {

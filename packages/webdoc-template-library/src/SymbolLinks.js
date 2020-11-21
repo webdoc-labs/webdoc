@@ -9,7 +9,7 @@ const catharsis = require("catharsis");
 type LinkOptions = {
   cssClass?: string,
   fragmentId?: string,
-  linkMap?: Map<string, string>,
+  linkMap: Map<string, string>,
   monospace?: boolean,
   shortenName?: boolean
 };
@@ -141,7 +141,7 @@ function getID(docPath: string, id?: string): string {
   return id || "";
 }
 
-function formatNameForLink(doclet: Doc): string {
+function formatNameForLink(doclet: any): string {
   let newName = (doclet.name || "") + (doclet.variation || "");
   const scopePunc = SCOPE_TO_PUNC[doclet.scope] || "";
 
@@ -199,7 +199,7 @@ function generateFileName(fileName: string, str: string): string {
  * @param {string} str The string to convert.
  * @return {string} The filename to use for the string.
  */
-function getFileName(str: string): string {
+function getFileName(str: string): ?string {
   if (pathToUrl.has(str)) {
     return pathToUrl.get(str);
   }
@@ -250,7 +250,7 @@ const registerLink = (docPath: string, fileUrl: string): string => {
  * @param {Doc} doc - The doc that will be used to create the URL.
  * @return {string} The URL to the generated documentation for the doc.
  */
-const createLink = (doc: Doc) => {
+const createLink = (doc: any) => {
   let fakeContainer;
   let filename;
   let fragment: string = "";
@@ -261,7 +261,7 @@ const createLink = (doc: Doc) => {
   // doc.type says otherwise. this happens due to mistagged JSDoc (for example, a module that
   // somehow has doc.type set to `member`).
   // TODO: generate a warning (ideally during parsing!)
-  if (!STANDALONE_DOCS[doc.type]) {
+  if (!STANDALONE_DOCS.includes(doc.type)) {
     match = /(\S+):/.exec(docPath);
     if (match && STANDALONE_DOCS.includes(match[1])) {
       fakeContainer = match[1];
@@ -286,7 +286,7 @@ const createLink = (doc: Doc) => {
     }
   }
 
-  return encodeURI(filename) + fragmentHash(fragment);
+  return encodeURI(filename || "") + fragmentHash(fragment);
 };
 
 /**
@@ -316,7 +316,7 @@ const createLink = (doc: Doc) => {
  * longname and display the short name in the link text. Ignored if `linkText` is specified.
  * @return {string} the HTML link, or the link text if the link is not available.
  */
-function buildLink(docPath: string, linkText: string = docPath, options: LinkOptions) {
+function buildLink(docPath: any, linkText: string = docPath, options: LinkOptions) {
   if (!docPath) {
     return "";
   }

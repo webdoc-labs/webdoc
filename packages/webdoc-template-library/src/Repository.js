@@ -39,7 +39,7 @@ export class RepositoryIntegration {
    * @param {string}[linkText]
    * @return {string} the source-location URL
    */
-  linkTo(doc: Doc, linkText?: string): string {
+  linkTo(doc: Doc, linkText?: string): ?string {
     const fakeCondition = false;
 
     if (fakeCondition) {
@@ -66,7 +66,7 @@ export class RepositoryIntegration {
   }
 }
 
-const repositoryIntegrations: typeof RepositoryIntegration = [];
+const repositoryIntegrations: Array<typeof RepositoryIntegration> = [];
 
 /**
  * Auto-detect the repository-integration for the given remote repository URL.
@@ -74,7 +74,7 @@ const repositoryIntegrations: typeof RepositoryIntegration = [];
  * @param {string} url
  * @return {RepositoryIntegration}
  */
-export function autoDetectRepository(url: string): RepositoryIntegration {
+export function autoDetectRepository(url: string): ?RepositoryIntegration {
   for (const Integration of repositoryIntegrations) {
     if (Integration.test(url)) {
       return new Integration(url);
@@ -113,7 +113,7 @@ class GitHubIntegration extends RepositoryIntegration {
     }
   }
 
-  linkTo(doc: Doc, linkText?: string): string {
+  linkTo(doc: Doc, linkText?: string): ?string {
     if (!doc.loc) {
       return;
     }
@@ -127,7 +127,7 @@ class GitHubIntegration extends RepositoryIntegration {
     let sourceFile = `${this.url}${fileName}`;
     let defaultText = `${path.basename(fileName)}`;
 
-    if (doc.loc.start) {
+    if (doc.loc && doc.loc.start) {
       sourceFile += `#L${doc.loc.start.line}`;
       defaultText += `:${doc.loc.start.line}`;
     }

@@ -25,11 +25,13 @@ export class FlushToFile implements TemplatePipelineElement<FlushData> {
    *    passed in {@code pipelineData}
    */
   constructor(options: { halt?: boolean, skipNullFile?: boolean } = {}) {
-    this.halt = options.halt;
-    this.skipNullFile = options.skipNullFile;
+    this.halt = options.halt || false;
+    this.skipNullFile = options.skipNullFile || false;
   }
 
-  run(input: string, pipelineData: FlushData = {}): string {
+  attachTo(pipeline: any) {}
+
+  run(input: string, pipelineData: FlushData = {}): ?string {
     if (!pipelineData.outputFile) {
       if (this.skipNullFile) {
         return input;
