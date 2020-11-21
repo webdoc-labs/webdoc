@@ -4,7 +4,7 @@ import * as yargs from "yargs";
 import {LogLevel, log, tag} from "missionlog";
 import {parse, registerWebdocParser} from "@webdoc/parser";
 import type {RootDoc} from "@webdoc/types";
-import {exportTaffy} from "@webdoc/model";
+import {createRootDoc, exportTaffy} from "@webdoc/model";
 import fs from "fs";
 import fse from "fs-extra";
 import {initLogger as initParserLogger} from "@webdoc/parser";
@@ -88,17 +88,10 @@ async function main(argv: yargs.Argv) {
     }
   }
 
-  const documentTree: RootDoc = {
-    children: [],
-    path: "",
-    stack: [""],
-    type: "RootDoc",
-    tags: [],
-  };
-
+  const documentTree = createRootDoc();
   const sourceFiles = sources(config, documentTree);
 
-  documentTree.members = documentTree.children;
+  documentTree.children = documentTree.members;
 
   if (config.opts && config.opts.export) {
     fse.ensureFileSync(config.opts.export);

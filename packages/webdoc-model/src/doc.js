@@ -113,16 +113,18 @@ export function createRootDoc(): RootDoc {
 
 export function createPackageDoc(
   name: string = "<webdoc.internal>",
+  location?: string,
+  metadata?: any,
 ): PackageDoc {
   return {
     api: [],
     id: `pkg-${nanoid()}`,
     members: [],
-    metadata: {},
+    metadata: metadata || {},
     name,
     path: name,
     stack: [name],
-    location: "nowhere",
+    location: location || "nowhere",
     type: "PackageDoc",
   };
 }

@@ -13,3 +13,8 @@
 [strict]
 
 [untyped]
+.*/webdoc-externalize/.*
+.*/webdoc-model/.*
+.*/webdoc-parser/.*
+.*/webdoc-template-library/.*
+.*/webdoc-.*-template/.*
