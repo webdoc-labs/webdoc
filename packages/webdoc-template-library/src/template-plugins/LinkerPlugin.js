@@ -190,7 +190,7 @@ function LinkerPluginShell() {
         return "";
       }
       if (this.queryCache.has(docPath)) {
-        return this.queryCache.get(docPath);
+        return `<a href=${encodeURI(this.queryCache.get(docPath) || "")}>${linkText}</a>`;
       }
       if (isDataType(docPath)) {
         let link = docPath.template;
