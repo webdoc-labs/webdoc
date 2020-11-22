@@ -2,6 +2,12 @@
   "name": "@webdoc/types",
   "entries": [
     {
+      "version": "1.1.2",
+      "tag": "@webdoc/types_v1.1.2",
+      "date": "Sun, 22 Nov 2020 16:57:25 GMT",
+      "comments": {}
+    },
+    {
       "version": "1.1.1",
       "tag": "@webdoc/types_v1.1.1",
       "date": "Fri, 06 Nov 2020 00:46:42 GMT",
