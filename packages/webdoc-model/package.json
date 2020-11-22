@@ -1,6 +1,6 @@
 {
   "name": "@webdoc/model",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Doclet API for JavaScript",
   "keywords": [
     "doclet",
@@ -36,7 +36,7 @@
     "url": "https://github.com/SukantPal/webdoc/issues"
   },
   "dependencies": {
-    "@webdoc/types": "^1.1.1",
+    "@webdoc/types": "^1.1.2",
     "catharsis": "0.8.11",
     "taffydb": "2.7.3",
     "nanoid": "~3.1.16"

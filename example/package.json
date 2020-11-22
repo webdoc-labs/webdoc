@@ -31,11 +31,11 @@
     "url": "https://github.com/SukantPal/webdoc/issues"
   },
   "dependencies": {
-    "@webdoc/cli": "^1.1.1"
+    "@webdoc/cli": "^1.1.2"
   },
   "gitHead": "a2866c1a42f60180a74add7bc1b0f42d8bb16330",
   "devDependencies": {
     "flow-typed": "^3.2.1",
-    "@webdoc/eslint-config": "~1.0.0"
+    "@webdoc/eslint-config": "^1.0.0"
   }
 }

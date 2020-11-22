@@ -47,6 +47,8 @@ dependencies:
   eslint-plugin-react: 7.21.5_eslint@6.8.0
   extract-loader: 5.1.0
   file-loader: 6.2.0_webpack@4.44.2
+  flow-bin: 0.130.0
+  flow-typed: 3.2.1
   fs-extra: 9.0.1
   git-branch: 2.0.1
   globby: 11.0.0
@@ -57,6 +59,7 @@ dependencies:
   klaw-sync: 6.0.0
   lodash: 4.17.20
   lodash.merge: 4.6.2
+  markdown-it: 11.0.1
   markdown-it-highlightjs: 3.3.0
   marked: 0.8.2
   mini-css-extract-plugin: 0.9.0_webpack@4.44.2
@@ -4652,13 +4655,6 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-1TSLwCPXvKPwiae7Fh+dpipCzwlHQ1UcBHfCpQImz+hsxYIUWkLWJWEm34bY6I7dSM4ekSiVeP02BhzVJGwtpw==
-  /flow-bin/0.137.0:
-    dev: false
-    engines:
-      node: '>=0.10.0'
-    hasBin: true
-    resolution:
-      integrity: sha512-ytwUn68fPKK/VWVpCxJ4KNeNIjCC/uX0Ll6Z1E98sOXfMknB000WtgQjKYDdO6tOR8mvXBE0adzjgCrChVympw==
   /flow-typed/3.2.1:
     dependencies:
       '@octokit/rest': 16.43.2
@@ -10011,7 +10007,7 @@ packages:
       chai: 4.2.0
       del: 5.1.0
       eslint: 6.8.0
-      flow-bin: 0.137.0
+      flow-bin: 0.130.0
       flow-typed: 3.2.1
       fs-extra: 9.0.1
       globby: 11.0.0
@@ -10020,7 +10016,7 @@ packages:
       gulp-util: 3.0.8
       jsdoc: 3.6.4
       lodash.merge: 4.6.2
-      markdown-it: 10.0.0
+      markdown-it: 11.0.1
       markdown-it-highlightjs: 3.3.0
       missionlog: 1.6.0
       mocha: 7.2.0
@@ -10034,7 +10030,7 @@ packages:
     dev: false
     name: '@rush-temp/cli'
     resolution:
-      integrity: sha512-xS1dsZUMK/SRLElQqt1yCWAxaU5Z8DdeoCGR3OAuKYA0H6e0g8KniGKmwtoxHc9geYHTajw2ZT+Qqpm0hSxw+A==
+      integrity: sha512-AeReWN7Dm3a3XFyGCspYCQQLK7EOIhE6oQFhUJLXW0CaCTwsYhZhydG4Qxd658fNUi49On9RqLtzMJ1lVR7JTQ==
       tarball: 'file:projects/cli.tgz'
     version: 0.0.0
   'file:projects/default-template.tgz':
@@ -10076,7 +10072,7 @@ packages:
     dev: false
     name: '@rush-temp/default-template'
     resolution:
-      integrity: sha512-Kxszu1VfXOsQxRKSr6Gl3VGOzalGOb/vJpWdyKFNn8fvATmNi2oqVw3H99go/+l43xQuZbQPcG3kaDvNyLnGaA==
+      integrity: sha512-ggUEtpnxI6lSQ8q2FK8XmAM1gthABj8oqdEgDGTuYYbnMwXIS6tqiRJb+Lnnv3Nl94GjfAA5vWz6JQUjDWcKiA==
       tarball: 'file:projects/default-template.tgz'
     version: 0.0.0
   'file:projects/eslint-config.tgz':
@@ -10099,7 +10095,7 @@ packages:
     dev: false
     name: '@rush-temp/eslint-config'
     resolution:
-      integrity: sha512-KafBs2crYRPYiby+SqKqpB+q27QK0baCVntOR9UKJcdubv2dBBIhRl7ZcSX/0dUywiIXTMatsykAS27f1xnodA==
+      integrity: sha512-FtwiVpIA0OLDAgNmy3TRDKYojcavHpnyj1bXHGaNgHa6+XzpTdH2NU2x+KvsqdIAuajhtdzjE9TB6VWQeHec5Q==
       tarball: 'file:projects/eslint-config.tgz'
     version: 0.0.0
   'file:projects/example.tgz':
@@ -10108,7 +10104,7 @@ packages:
     dev: false
     name: '@rush-temp/example'
     resolution:
-      integrity: sha512-kZChPyy54Hd7srCt/CXscVo6MztFPrbUDx10ip0z8NYIeagK6RU0hGyDgO3L9UXSHmhOu2/qDHxK0uPDXmznBA==
+      integrity: sha512-VqV1k5oKrnVXEEoEdBbWdY1wj93KVn5/2869Dg1ZLPsS6MjthV6BvsXVfPyw1kG5IuGkWUPU8DV1UK96gf24FA==
       tarball: 'file:projects/example.tgz'
     version: 0.0.0
   'file:projects/externalize.tgz':
@@ -10130,7 +10126,7 @@ packages:
     dev: false
     name: '@rush-temp/externalize'
     resolution:
-      integrity: sha512-Knt5jciJ00WgcbipXG3tDx7eZ0ubXg54UXmgKW4GiUi6UjcDRVKBmckE3qiSYvcK6FZyr64Do12Bfi+Zcy0wIw==
+      integrity: sha512-lbBg3X3kZ7rBF+d6LcwNNtQ+5Pi/jfqCD9bLSmAN5K8+hvThJlxXWwPa4HRqvRtiXNOKCHKAie727Wte1IfuBg==
       tarball: 'file:projects/externalize.tgz'
     version: 0.0.0
   'file:projects/legacy-template.tgz':
@@ -10153,7 +10149,7 @@ packages:
     dev: false
     name: '@rush-temp/legacy-template'
     resolution:
-      integrity: sha512-wwoEGO8YJOP2LgHXiB94gy+qlrPqvyU38MyfzzQofdjwoPXlE5cDXukLIllSGdyyPUCT93yGD6HLulzaVQ/sGA==
+      integrity: sha512-PGyKP1rFkjoqub5Z9zjPfk0V59NMT27WrVKtgmNYYnWSO+zu32pEKPjzP5Oepxh/0W3g5MUfNn5Tug6uFqe3QA==
       tarball: 'file:projects/legacy-template.tgz'
     version: 0.0.0
   'file:projects/model.tgz':
@@ -10180,7 +10176,7 @@ packages:
     dev: false
     name: '@rush-temp/model'
     resolution:
-      integrity: sha512-mih0vsTKmzPyf7CmvvxALVcP1RbhmEiz1BdjYhOFtMSBee4KNiDc4MfFznWcls9JGOW4pEN8pxoTZVjT3vcEdw==
+      integrity: sha512-58jQrxgPNo7JntJZ85llOMoaeXhq0iezIhLva0WHSuZlLv8bQ5Dis9jA9HSA/gDSvl5N/+b92sC2lHwZAjVH5g==
       tarball: 'file:projects/model.tgz'
     version: 0.0.0
   'file:projects/parser.tgz':
@@ -10210,7 +10206,7 @@ packages:
     dev: false
     name: '@rush-temp/parser'
     resolution:
-      integrity: sha512-U9ZCS9Q4QJWVn87Pv5W1Cq/dTqLg+2ToC1oN+O1vQ0jss2JD6ZyNAV0NhIG0MC/lAh81Ih5cAkShFzvuyjhBSw==
+      integrity: sha512-NfxGimWiEfKPvLYQzWmLFpMphmmjVirt4CHfjn6X4YAXMF5A5wN/7tOXME5iaddlnQRRrMXg0pRO2EGqJCc87w==
       tarball: 'file:projects/parser.tgz'
     version: 0.0.0
   'file:projects/plugin-markdown.tgz':
@@ -10229,12 +10225,12 @@ packages:
       gulp: 4.0.2
       gulp-babel: 8.0.0_@babel+core@7.12.3
       gulp-util: 3.0.8
-      markdown-it: 10.0.0
+      markdown-it: 11.0.1
       markdown-it-highlightjs: 3.3.0
     dev: false
     name: '@rush-temp/plugin-markdown'
     resolution:
-      integrity: sha512-iqBO4TB/QZ2sfHFGTNNjESh0BnXaUqXH5TWWjtIlcLquUir8oi52jReJuvFxsUhNKBR+B43+60skc+LfCvRHjQ==
+      integrity: sha512-5oqJmNnCLEOEiajKv63DQ2wl56rAkmGQuk4kSyYZrLjCmZyY18JtZ+UkLAanJB9zByFz+jLpeLRNrPG/7Orwtg==
       tarball: 'file:projects/plugin-markdown.tgz'
     version: 0.0.0
   'file:projects/template-library.tgz':
@@ -10264,7 +10260,7 @@ packages:
     dev: false
     name: '@rush-temp/template-library'
     resolution:
-      integrity: sha512-iwX/Gn10z/b0PfRRpFhhHEdSl+38ulJ8obcC6cwThSQoHHps4UFzbFmNqvHrIUmZgjfxeJwbw/NQtnWjEeTIgw==
+      integrity: sha512-nbRzS6qNwmtBSKOdqRAwL1ZKL/qJ/4l1o82KK84tTlhoopWYdCZmzr/xugm4qDd7Wrk+sjuI07vnrFu+PKvhog==
       tarball: 'file:projects/template-library.tgz'
     version: 0.0.0
   'file:projects/tests.tgz':
@@ -10273,7 +10269,7 @@ packages:
     dev: false
     name: '@rush-temp/tests'
     resolution:
-      integrity: sha512-koLuB76Uu1Ptk6S+5KGY/PgjDjDaROM0L4FDQ2ukoQxMjGqG+E8TLeXlPXkgmwV5PdKACdTpx8TQaq//jG5gQQ==
+      integrity: sha512-7kEYfMRQsXampa7BDLlLFZJa86k6yQZ2qP/ZbVasZGGiBOGbNjjC+zFBnuCUm/BMnhqcwSGKquswlY2ZVJJ9vw==
       tarball: 'file:projects/tests.tgz'
     version: 0.0.0
   'file:projects/types.tgz':
@@ -10333,6 +10329,8 @@ specifiers:
   eslint-plugin-react: ^7.20.0
   extract-loader: ^5.1.0
   file-loader: ^6.0.0
+  flow-bin: ^0.130.0
+  flow-typed: ^3.2.1
   fs-extra: ^9.0.1
   git-branch: 2.0.1
   globby: 11.0.0
@@ -10343,6 +10341,7 @@ specifiers:
   klaw-sync: 6.0.0
   lodash: ^4.17.15
   lodash.merge: 4.6.2
+  markdown-it: ^11.0.0
   markdown-it-highlightjs: ^3.1.0
   marked: ^0.8.2
   mini-css-extract-plugin: ^0.9.0
