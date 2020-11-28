@@ -304,7 +304,12 @@ export function addDoc<T: Doc>(doc: T, root: Doc): ?T {
  */
 export function cloneDoc<T: Doc>(doc: T): T {
   // $FlowFixMe
-  return Object.assign({}, doc, {children: [], members: [], parent: undefined});
+  return Object.assign({}, doc, {
+    id: nanoid(),
+    children: [],
+    members: [],
+    parent: undefined,
+  });
 }
 
 /**
