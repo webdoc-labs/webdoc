@@ -1,6 +1,13 @@
 # Change Log - @webdoc/template-library
 
-This log was last generated on Sun, 22 Nov 2020 16:57:25 GMT and should not be manually modified.
+This log was last generated on Sat, 28 Nov 2020 16:51:35 GMT and should not be manually modified.
+
+## 1.1.3
+Sat, 28 Nov 2020 16:51:35 GMT
+
+### Updates
+
+- Make data-type links HTML-safe to prevent markup leaks
 
 ## 1.1.2
 Sun, 22 Nov 2020 16:57:25 GMT
