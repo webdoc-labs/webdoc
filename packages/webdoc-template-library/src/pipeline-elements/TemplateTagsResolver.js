@@ -3,6 +3,8 @@
 import type {TemplatePipeline, TemplatePipelineElement} from "../TemplatePipeline";
 import type {TemplateRenderer} from "../TemplateRenderer";
 
+const CODE_PATTERN = /{@code ([^}]*)}/g;
+
 const LINK_PATTERN = /{@link ([^|\s}]*)([\s|])?([^}]*)}/g;
 
 /**
@@ -28,12 +30,33 @@ export class TemplateTagsResolver implements TemplatePipelineElement<{}> {
   }
 
   run(input: string, pipelineData: any): string {
-    input = this.runLink(input);
+    input = this.runCodeTag(input);
+    input = this.runLinkTag(input);
 
     return input;
   }
 
-  runLink(input: string): string {
+  runCodeTag(input: string): string {
+    const codePattern = CODE_PATTERN;
+
+    let codeMatch = codePattern.exec(input);
+
+    while (codeMatch) {
+      const code = codeMatch[1];
+      const startIndex = codeMatch.index;
+      const endIndex = codeMatch.index + codeMatch[0].length;
+
+      input = input.slice(0, startIndex) +
+        `<code>${code}</code>` +
+        input.slice(endIndex);
+
+      codeMatch = codePattern.exec(input);
+    }
+
+    return input;
+  }
+
+  runLinkTag(input: string): string {
     const linkPattern = LINK_PATTERN;
     let linkMatch = linkPattern.exec(input);
 

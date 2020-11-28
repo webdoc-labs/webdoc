@@ -8,7 +8,8 @@ export type LinkOptions = {
   fragmentId?: string,
   linkMap?: Map<string, string>,
   monospace?: boolean,
-  shortenName?: boolean
+  shortenName?: boolean,
+  htmlSafe?: boolean
 };
 
 export type LinkerDocumentRecord = {
@@ -183,6 +184,7 @@ function LinkerPluginShell() {
      *  monospace font.
      * @param {boolean} options.shortenName - Indicates whether to extract the short name from the
      * longname and display the short name in the link text. Ignored if `linkText` is specified.
+     * @param {boolean}[options.htmlSafe=true]
      * @return {string} the HTML link, or the link text if the link is not available.
      */
     linkTo(docPath: any, linkText: string = docPath, options: LinkOptions = {}) {
@@ -193,9 +195,11 @@ function LinkerPluginShell() {
         return `<a href=${encodeURI(this.queryCache.get(docPath) || "")}>${linkText}</a>`;
       }
       if (isDataType(docPath)) {
-        let link = docPath.template
-          .replace(/</g, "&lt;")
-          .replace(/>/g, "&gt;");
+        let link = docPath.template;
+
+        if (options.htmlSafe !== false) {
+          link = link.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        }
 
         for (let i = 1; i < docPath.length; i++) {
           link = link.replace(`%${i}`, this.linkTo(docPath[i], docPath[i], options));

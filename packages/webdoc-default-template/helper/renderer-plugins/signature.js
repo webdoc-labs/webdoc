@@ -41,7 +41,7 @@ exports.signaturePlugin = {
             .map((param) =>
               param.identifier +
               (param.dataType ?
-                ": " + linker.linkTo(param.dataType) :
+                ": " + linker.linkTo(param.dataType, undefined, {htmlSafe: false}) :
                 ""
               ),
             )
@@ -52,25 +52,26 @@ exports.signaturePlugin = {
         signature += ` → {${
           (doc.returns || [])
             .map((returns) =>
-              (returns.dataType ? linker.linkTo(returns.dataType) : ""))
+              (returns.dataType ? linker.linkTo(returns.dataType, undefined, {htmlSafe: false}) : ""))
             .join(", ")
         }} `;
       }
       break;
     case "PropertyDoc":
       if (doc.dataType) {
-        signature += ": " + linker.linkTo(doc.dataType);
+        signature += ": " + linker.linkTo(doc.dataType, undefined, {htmlSafe: false});
       }
       break;
     case "ClassDoc":
       if (doc.extends) {
         signature += ` extends ${
-          (doc.extends || []).map((superClass) => linker.linkTo(superClass)).join(", ")
+          (doc.extends || [])
+            .map((superClass) => linker.linkTo(superClass, undefined, {htmlSafe: false})).join(", ")
         }`;
       }
       if (doc.implements) {
         signature += `\nimplements ${
-          (doc.implements || []).map((ifc) => linker.linkTo(ifc)).join(", ")
+          (doc.implements || []).map((ifc) => linker.linkTo(ifc, undefined, {htmlSafe: false})).join(", ")
         }`;
       }
       break;
