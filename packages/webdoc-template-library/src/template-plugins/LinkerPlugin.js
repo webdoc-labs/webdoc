@@ -193,7 +193,9 @@ function LinkerPluginShell() {
         return `<a href=${encodeURI(this.queryCache.get(docPath) || "")}>${linkText}</a>`;
       }
       if (isDataType(docPath)) {
-        let link = docPath.template;
+        let link = docPath.template
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;");
 
         for (let i = 1; i < docPath.length; i++) {
           link = link.replace(`%${i}`, this.linkTo(docPath[i], docPath[i], options));
