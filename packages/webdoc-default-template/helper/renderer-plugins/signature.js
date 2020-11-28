@@ -51,8 +51,9 @@ exports.signaturePlugin = {
       if (doc.returns) {
         signature += ` → {${
           (doc.returns || [])
-            .map((returns) =>
-              (returns.dataType ? linker.linkTo(returns.dataType, undefined, {htmlSafe: false}) : ""))
+            .map((returns) => (returns.dataType ?
+              linker.linkTo(returns.dataType, undefined, {htmlSafe: false}) :
+              ""))
             .join(", ")
         }} `;
       }
@@ -71,7 +72,8 @@ exports.signaturePlugin = {
       }
       if (doc.implements) {
         signature += `\nimplements ${
-          (doc.implements || []).map((ifc) => linker.linkTo(ifc, undefined, {htmlSafe: false})).join(", ")
+          (doc.implements || [])
+            .map((ifc) => linker.linkTo(ifc, undefined, {htmlSafe: false})).join(", ")
         }`;
       }
       break;
