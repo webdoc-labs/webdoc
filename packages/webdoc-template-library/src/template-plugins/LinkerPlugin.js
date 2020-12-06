@@ -260,7 +260,7 @@ function LinkerPluginShell() {
 
         const rec = this.documentRegistry.get(doc.id);
 
-        fileUrl = rec ? rec.uri : this.getURI(doc);
+        fileUrl = rec && rec.uri ? this.processInternalURI(rec.uri) : this.getURI(doc);
 
         // Cache this query
         if (fileUrl) {
@@ -334,9 +334,10 @@ function LinkerPluginShell() {
      * wasn't already.
      *
      * @param {Doc} doc
+     * @param {boolean} outputRelative
      * @return {string}
      */
-    getURI(doc: Doc): string {
+    getURI(doc: Doc, outputRelative?: boolean): string {
       const id = doc.id;
 
       const record = this.getDocumentRecord(id);
@@ -347,13 +348,30 @@ function LinkerPluginShell() {
         record.uri = uri;
       }
 
-      return uri;
+      return this.processInternalURI(uri, {outputRelative});
     }
 
-    createURI(preferredUri: string): string {
+    createURI(preferredUri: string, outputRelative?: boolean): string {
       const uri = this.generateBaseURI(preferredUri);
 
       this.getFileRecord(uri);
+
+      return this.processInternalURI(uri, {outputRelative});
+    }
+
+    /**
+     * Replaces variables like &lt;siteRoot/&gt; in the URI.
+     *
+     * @param {string} uri
+     * @param {object} options
+     * @return {string} uri with siteRoot
+     */
+    processInternalURI(uri: string, options: { outputRelative?: boolean } = {}): string {
+      if (!options.outputRelative) {
+        uri = uri.replace("%3CsiteRoot%3E", this.siteRoot);
+      } else {
+        uri = uri.replace("/%3CsiteRoot%3E/", "");
+      }
 
       return uri;
     }
@@ -369,19 +387,18 @@ function LinkerPluginShell() {
      *
      * @private
      * @param {string} canonicalPath - The canonical
+     * @param {string} pathPrefix - The folder path inside which to place the document, if desired.
      * @return {string} The filename to use for the string.
      */
-    generateBaseURI(canonicalPath: string): string {
+    generateBaseURI(canonicalPath: string, pathPrefix: string = ""): string {
       let seedURI = (canonicalPath || "")
         // use - instead of : in namespace prefixes
         // replace characters that can cause problems on some filesystems
-        .replace(/[\\/?*:|'"<>]/g, "_")
+        .replace(/[\\?*:|'"<>]/g, "_")
         // use - instead of ~ to denote 'inner'
         .replace(/~/g, "-")
         // use _ instead of # to denote 'instance'
         .replace(/#/g, "_")
-        // use _ instead of / (for example, in module names)
-        .replace(/\//g, "_")
         // remove the variation, if any
         .replace(/\([\s\S]*\)$/, "")
         // make sure we don't create hidden files, or files whose names start with a dash
@@ -389,7 +406,10 @@ function LinkerPluginShell() {
 
       if (this.fileLayout === "tree") {
         seedURI = seedURI.replace(/[.]/g, "/");
-        seedURI = "/" + path.join(this.siteRoot, seedURI);
+        seedURI = path.join("/<siteRoot>", pathPrefix, seedURI);
+      } else {
+        // use _ instead of / (for example, in module names)
+        seedURI = seedURI.replace(/\//g, "_");
       }
 
       // in case we've now stripped the entire basename (uncommon, but possible):
@@ -416,7 +436,7 @@ function LinkerPluginShell() {
         }
       }
 
-      return probeURI;
+      return encodeURI(probeURI);
     }
 
     /**
@@ -476,7 +496,18 @@ function LinkerPluginShell() {
 
       // the doc gets its own HTML file
       if (standaloneDocTypes.includes(doc.type)) {
-        baseURI = this.generateBaseURI(docPath);
+        let pathPrefix = "";
+
+        if (doc.type !== "PackageDoc" && doc.loc) {
+          const pkg = doc.loc.file.package;
+
+          if (pkg) {
+            // Remove extension of package URI and use as folder
+            pathPrefix = this.getURI(pkg, true).split(".").slice(0, -1).join(".");
+          }
+        }
+
+        baseURI = this.generateBaseURI(docPath, pathPrefix);
 
         this.getFileRecord(baseURI);
       } else { // inside another HTML file
@@ -490,7 +521,7 @@ function LinkerPluginShell() {
         );
       }
 
-      return `${encodeURI(baseURI)}${fragment ? "#" + fragment : ""}`;
+      return `${baseURI}${fragment ? "#" + fragment : ""}`;
     }
   }
 
