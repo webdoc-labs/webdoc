@@ -70,7 +70,7 @@ async function main(argv: yargs.Argv) {
     config.template.siteRoot = config.template.siteRoot.slice(1);
   }
   if (config.template.siteRoot.endsWith("/")) {
-    config.template.siteRoot.length -= 1;
+    config.template.siteRoot = config.template.siteRoot.slice(0, -1);
   }
 
   // TODO: Fix what env/conf is?

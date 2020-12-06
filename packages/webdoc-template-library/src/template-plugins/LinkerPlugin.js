@@ -260,7 +260,7 @@ function LinkerPluginShell() {
 
         const rec = this.documentRegistry.get(doc.id);
 
-        fileUrl = rec ? this.processInternalURI(rec.uri) : this.getURI(doc);
+        fileUrl = rec && rec.uri ? this.processInternalURI(rec.uri) : this.getURI(doc);
 
         // Cache this query
         if (fileUrl) {
@@ -390,7 +390,7 @@ function LinkerPluginShell() {
      * @param {string} pathPrefix - The folder path inside which to place the document, if desired.
      * @return {string} The filename to use for the string.
      */
-    generateBaseURI(canonicalPath: string, pathPrefix = ""): string {
+    generateBaseURI(canonicalPath: string, pathPrefix: string = ""): string {
       let seedURI = (canonicalPath || "")
         // use - instead of : in namespace prefixes
         // replace characters that can cause problems on some filesystems
