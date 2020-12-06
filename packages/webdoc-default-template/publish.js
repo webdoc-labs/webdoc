@@ -45,13 +45,17 @@ const PRETTIFIER_SCRIPT_FILES = [
 let idToDoc/*: Map<string, Doc> */;
 
 exports.publish = (options /*: PublishOptions */) => {
+  const config = options.config;
+
+  linker.siteRoot = config.template.siteRoot;
+
   const docTree = options.documentTree;
   const outDir = path.normalize(options.config.opts.destination);
   const index = linker.createURI("index");
 
   fse.ensureDir(outDir);
 
-  const crawlData = crawl(docTree);
+  const crawlData = crawl(docTree, index);
   const renderer = new TemplateRenderer(path.join(__dirname, "tmpl"), null, docTree)
     .setLayoutTemplate("layout.tmpl")
     .installPlugin("linker", linker)
@@ -168,13 +172,18 @@ function outIndexes(
   config /*: WebdocConfig */,
   index, /*: Index */
 ) {
+  const siteRoot = `/${config.template.siteRoot}`;
   const KEY_TO_TITLE = {
     "classes": "Class Index",
   };
 
   function outIndex(indexKey, indexList) {
     const title = KEY_TO_TITLE[indexKey];
-    const url = indexList.url;
+    let url = indexList.url;
+
+    if (url.startsWith(siteRoot)) {
+      url = url.slice(siteRoot.length);
+    }
 
     pipeline.render("pages/api-index.tmpl", {
       documentList: indexList,
@@ -196,11 +205,16 @@ function outReference(
   config /*: WebdocConfig */,
   docTree, /*: RootDoc */
 ) {
+  const siteRoot = `/${config.template.siteRoot}`;
+
   for (const [id, docRecord] of linker.documentRegistry) {
-    const {uri: page} = docRecord;
+    let {uri: page} = docRecord;
 
     if (page.includes("#")) {
       continue;// skip fragments (non-standalone docs)
+    }
+    if (page.startsWith(siteRoot)) {
+      page = page.slice(siteRoot.length);
     }
 
     let doc;

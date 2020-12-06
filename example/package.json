@@ -23,9 +23,9 @@
   },
   "scripts": {
     "unit-test": "",
-    "build": "webdoc --tutorials ./tutorials",
+    "build": "webdoc --tutorials ./tutorials --site-root example-documentation",
     "build-next": "cd .. && webdoc && cd example",
-    "build-pixi-api": "cd ../../pixi-api && webdoc && cd ../webdoc/example"
+    "build-pixi-api": "cd ../../pixi-api && webdoc --site-root docs && cd ../webdoc/example"
   },
   "bugs": {
     "url": "https://github.com/SukantPal/webdoc/issues"

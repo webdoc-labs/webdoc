@@ -31,6 +31,7 @@ export type FileLayout = "linear" | "tree";
 function LinkerPluginShell() {
   // TODO: Replace catharsis with a in-built @webdoc/data-type-parser
   const catharsis = require("catharsis");
+  const path = require("path");
   const {query} = require("@webdoc/model");
   const {MixinPlugin} = require("./MixinPlugin");
 
@@ -113,6 +114,11 @@ function LinkerPluginShell() {
      * @protected
      */
     fileRegistry = new Map<string, LinkerFileRecord>();
+
+    /**
+     * The site root path, used to for absolute linking.
+     */
+    siteRoot = "";
 
     /**
      * Cache of DPL queries to their URIs.
@@ -383,6 +389,7 @@ function LinkerPluginShell() {
 
       if (this.fileLayout === "tree") {
         seedURI = seedURI.replace(/[.]/g, "/");
+        seedURI = "/" + path.join(this.siteRoot, seedURI);
       }
 
       // in case we've now stripped the entire basename (uncommon, but possible):

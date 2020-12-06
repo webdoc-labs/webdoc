@@ -30,11 +30,10 @@ const HINTS = {
 };
 
 // Crawls the tree searching for the API reference
-function crawlReference(doc /*: Doc */) {
+function crawlReference(doc /*: Doc */, index /*: string */) {
   const explorerHierarchy =
     buildExplorerHierarchy(doc, doc.packages ? (doc.packages.length > 1) : false);
-
-  const tree = buildExplorerTargetsTree(explorerHierarchy);
+  const tree = buildExplorerTargetsTree(explorerHierarchy, "", index);
 
   return tree;
 }
@@ -42,7 +41,7 @@ function crawlReference(doc /*: Doc */) {
 exports.crawlReference = crawlReference;
 
 function getPage(doc /*: Doc */) {
-  return "/" + linker.getURI(doc);
+  return linker.getURI(doc);
 }
 
 /*::
@@ -159,9 +158,10 @@ function traversePackage(doc /*: Doc | PackageDoc */, context /*: Object */, par
 function buildExplorerTargetsTree(
   node /*: ExplorerNode */,
   parentTitle /*: string */ = "",
+  index /*: string */,
 ) /*: ExplorerTarget */ {
   const doc = node.doc;
-  const page = doc.type !== "RootDoc" ? getPage(doc) : "/index.html";
+  const page = doc.type !== "RootDoc" ? getPage(doc) : index;
 
   let title = "";
 
@@ -187,16 +187,16 @@ function buildExplorerTargetsTree(
     };
 
     if (node.doc.type === "RootDoc") {
-      node.children["(overview)"].page = "/index.html";
+      node.children["(overview)"].page = index;
 
       node.children.ClassIndex = {
         title: "Class Index",
-        page: "/" + linker.createURI("Class-Index"),
+        page: linker.createURI("Class-Index"),
       };
     }
 
     for (const [, value] of Object.entries(childNodes)) {
-      const children = value.map((cn) => buildExplorerTargetsTree(cn, title));
+      const children = value.map((cn) => buildExplorerTargetsTree(cn, title, index));
 
       children.forEach((child) => {
         node.children[child.title] = child;
