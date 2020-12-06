@@ -1,6 +1,7 @@
 {
+	"name": "",
 	"type": "RootDoc",
-	"children": [
+	"members": [
 		{
 			"name": "WebdocParser",
 			"type": "ClassDoc",
@@ -11,7 +12,7 @@
 			"name": "STAGE_AST_LIKE",
 			"type": "PropertyDoc",
 			"brief": "",
-			"description": "<p>The doctree-mod should run when the &quot;members&quot; are resolved to their actual AST parent. This\noccurs after {@code STAGE_BLANK}.</p>\n<p>Example:</p>\n<pre><code class=\"hljs language-js\"><span class=\"hljs-class\"><span class=\"hljs-keyword\">class</span> <span class=\"hljs-title\">DocumentedClass</span> </span>{\n  <span class=\"hljs-keyword\">constructor</span>() {\n    <span class=\"hljs-comment\">/** <span class=\"hljs-doctag\">@member <span class=\"hljs-type\">{string) *\\/\n    this.instanceProperty = \"defaultValue\";\n    /** @member {string}</span> </span>*\\/\n    DocumentedClass.instanceCount = DocumentedClass.instanceCount\n      ? DocumentedClass.instanceCount + 1 : 1;\n  }\n}\n</span></code></pre>\n<p>Before STAGE_AST_LIKE, the symbols <code>instanceProperty</code> and <code>instanceCount</code> will be a child of\n<code>DocumentedClass#constructor</code>. However, in STAGE_ASK_LIKE, they will be resolved as children of\n<code>DocumentedClass</code>.</p>"
+			"description": "<p>The doctree-mod should run when the &quot;members&quot; are resolved to their actual AST parent. This\noccurs after {@code STAGE_BLANK}.</p>\n<p>Example:</p>\n<pre><code class=\"hljs language-js\"><span class=\"hljs-class\"><span class=\"hljs-keyword\">class</span> <span class=\"hljs-title\">DocumentedClass</span> </span>{\n  <span class=\"hljs-function\"><span class=\"hljs-title\">constructor</span>(<span class=\"hljs-params\"></span>)</span> {\n    <span class=\"hljs-comment\">/** <span class=\"hljs-doctag\">@member <span class=\"hljs-type\">{string) *\\/\n    this.instanceProperty = &quot;defaultValue&quot;;\n    /** @member {string}</span> </span>*\\/\n    DocumentedClass.instanceCount = DocumentedClass.instanceCount\n      ? DocumentedClass.instanceCount + 1 : 1;\n  }\n}\n</span></code></pre>\n<p>Before STAGE_AST_LIKE, the symbols <code>instanceProperty</code> and <code>instanceCount</code> will be a child of\n<code>DocumentedClass#constructor</code>. However, in STAGE_ASK_LIKE, they will be resolved as children of\n<code>DocumentedClass</code>.</p>"
 		},
 		{
 			"name": "STAGE_BLANK",
@@ -39,13 +40,6 @@
 			"description": ""
 		},
 		{
-			"name": "del",
-			"type": "MethodDoc",
-			"scope": "instance",
-			"brief": "",
-			"description": ""
-		},
-		{
 			"name": "logRecursive",
 			"type": "MethodDoc",
 			"scope": "instance",
@@ -53,7 +47,7 @@
 			"description": ""
 		},
 		{
-			"name": "parse",
+			"name": "splice",
 			"type": "MethodDoc",
 			"scope": "instance",
 			"brief": "",
@@ -101,7 +95,7 @@
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": "",
-			"children": [
+			"members": [
 				{
 					"name": "enter",
 					"type": "MethodDoc",
@@ -144,6 +138,12 @@
 		},
 		{
 			"name": "coalescePair",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "condition",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
@@ -215,7 +215,7 @@
 			"description": "<p>Extracts the documentation of the node, if one exists. This also handles the case where the node\nitself is a documentation comment.</p>"
 		},
 		{
-			"name": "extractDataValue",
+			"name": "extractDefaultValueClosureData",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
@@ -227,19 +227,7 @@
 			"description": ""
 		},
 		{
-			"name": "extractIdentifier",
-			"type": "FunctionDoc",
-			"brief": "",
-			"description": ""
-		},
-		{
 			"name": "extractParams",
-			"type": "FunctionDoc",
-			"brief": "",
-			"description": ""
-		},
-		{
-			"name": "extractSymbol",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
@@ -269,6 +257,12 @@
 			"description": ""
 		},
 		{
+			"name": "getIncludePattern",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
 			"name": "initLogger",
 			"type": "FunctionDoc",
 			"brief": "",
@@ -282,6 +276,12 @@
 		},
 		{
 			"name": "isExternal",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "isInstancePropertyAssignment",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
@@ -329,7 +329,13 @@
 			"description": ""
 		},
 		{
-			"name": "matchDataTypeClosure",
+			"name": "matchDefaultValueClosure",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "matchIdentifier",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
@@ -353,19 +359,13 @@
 			"description": ""
 		},
 		{
-			"name": "morphTutorials",
-			"type": "FunctionDoc",
-			"brief": "",
-			"description": ""
-		},
-		{
 			"name": "packageApi",
 			"type": "FunctionDoc",
 			"brief": "<p>Resolves each package's top-level API docs.</p>",
 			"description": ""
 		},
 		{
-			"name": "packages",
+			"name": "parse",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
@@ -377,100 +377,124 @@
 			"description": "<ul>\n<li>Capture Phase: Documentation comments are extracted out of each file and assembled into\na temporary list of partial-doc trees.</li>\n<li>Transform Phase: Each file's partial-doc tree is transformed into docs and assembled in\nmonolithic doc-tree.</li>\n<li>Mod Phase: The &quot;@memberof&quot; tag is handled by moving docs to their final path;\n<this> member docs are moved to the appropriate scope.\nPlugins are allowed access to make any post-transform changes as well. Undocumented entities\nare removed from the doc-tree.</li>\n</ul>"
 		},
 		{
-			"name": "parseAbstract",
+			"name": "parseAccess",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
 		},
 		{
-			"name": "parseCopyright",
+			"name": "parseAuthor",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
 		},
 		{
-			"name": "parseDeprecated",
+			"name": "parseCondition",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
 		},
 		{
-			"name": "parseEvent",
+			"name": "parseDefault",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
 		},
 		{
-			"name": "parseFires",
+			"name": "parseEnum",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
 		},
 		{
-			"name": "parseImplements",
+			"name": "parseExample",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
 		},
 		{
-			"name": "parseInstance",
+			"name": "parseExtends",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
 		},
 		{
-			"name": "parseLicense",
+			"name": "parseInner",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
 		},
 		{
-			"name": "parsePrivate",
+			"name": "parseMember",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
 		},
 		{
-			"name": "parseProperty",
+			"name": "parseMixes",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
 		},
 		{
-			"name": "parsePublic",
+			"name": "parseName",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
 		},
 		{
-			"name": "parseScope",
+			"name": "parseParam",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
 		},
 		{
-			"name": "parseSince",
+			"name": "parseProtected",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
 		},
 		{
-			"name": "parseTodo",
+			"name": "parseReturn",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
 		},
 		{
-			"name": "parseType",
+			"name": "parseSee",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
 		},
 		{
-			"name": "parseTypedDescription",
+			"name": "parseStatic",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
+		},
+		{
+			"name": "parseStepType",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "parseThrows",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "parseTypedef",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "query",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": "<p>Runs a query in the document tree and returns the matching document, according to the\nDocument Path Langugage expression {@code query}.</p>"
 		},
 		{
 			"name": "queueTargets",
@@ -513,7 +537,7 @@
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": "",
-			"children": [
+			"members": [
 				{
 					"name": "installPlugin",
 					"type": "MethodDoc",
@@ -530,7 +554,19 @@
 			"description": ""
 		},
 		{
+			"name": "resolveConfigurator",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
 			"name": "resolvedThis",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "resolveInit",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
@@ -542,25 +578,31 @@
 			"description": ""
 		},
 		{
+			"name": "resolveObject",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
 			"name": "resolveRelated",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": "<ul>\n<li>\n<p>Resolves all docs listed in the &quot;extends&quot;, &quot;implements&quot;, &quot;mixes&quot;. This prevent redundant\nsearches to extended/implemented/mixed symbols.</p>\n</li>\n<li>\n<p>Replaces the &quot;default&quot; scopes for properties with a good guess. (The @property tag parser puts\n&quot;default&quot; scope on the PropertyDocs it creates)</p>\n</li>\n<li>\n<p>Brings down any methods/properties coming from parent classes &amp; mixins. Adds the implementation\nproperty to methods/properties that come from interfaces.</p>\n</li>\n</ul>"
 		},
 		{
-			"name": "resolveReturn",
-			"type": "FunctionDoc",
-			"brief": "",
-			"description": ""
-		},
-		{
-			"name": "resolveRootObject",
-			"type": "FunctionDoc",
-			"brief": "",
-			"description": ""
-		},
-		{
 			"name": "resolveToObject",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "resolveTSDataType",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "restoreDoc",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
@@ -575,6 +617,24 @@
 			"name": "searchImplementedInterfaces",
 			"type": "FunctionDoc",
 			"brief": "<p>Finds all the symbols that are implemented by {@code doc}.</p>",
+			"description": ""
+		},
+		{
+			"name": "sources",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "stepInstanceMember",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "stepRMember",
+			"type": "FunctionDoc",
+			"brief": "",
 			"description": ""
 		},
 		{
@@ -593,12 +653,6 @@
 			"name": "traverse",
 			"type": "FunctionDoc",
 			"brief": "<p>Preorder traversal of all the docs</p>",
-			"description": ""
-		},
-		{
-			"name": "tutorialDoc",
-			"type": "FunctionDoc",
-			"brief": "",
 			"description": ""
 		},
 		{
