@@ -7,6 +7,7 @@ import type {LanguageConfig} from "../types/LanguageIntegration";
 import type {SourceFile} from "@webdoc/types";
 import type {Symbol} from "../types/Symbol";
 import buildSymbolTree from "./build-symbol-tree";
+import {mode} from "./extract-metadata";
 
 // Plugins for plain JavaScript files
 const defaultPreset = [
@@ -47,6 +48,8 @@ const tsPreset = [
 export const langJS = {
   extensions: ["js", "jsx", "jsdoc"],
   parse(file: string, source: SourceFile, config: LanguageConfig): Symbol {
+    mode.current = "flow";
+
     // Flow is automatically handled!
     return buildSymbolTree(file, source, config, flowPreset);
   },
@@ -55,6 +58,8 @@ export const langJS = {
 export const langTS = {
   extensions: ["ts", "tsx"],
   parse(file: string, source: SourceFile, config: LanguageConfig): Symbol {
+    mode.current = "typescript";
+
     return buildSymbolTree(file, source, config, tsPreset);
   },
 };

@@ -1,6 +1,7 @@
 {
+	"name": "",
 	"type": "RootDoc",
-	"children": [
+	"members": [
 		{
 			"name": "WebdocParser",
 			"type": "ClassDoc",
@@ -11,7 +12,7 @@
 			"name": "STAGE_AST_LIKE",
 			"type": "PropertyDoc",
 			"brief": "",
-			"description": "<p>The doctree-mod should run when the &quot;members&quot; are resolved to their actual AST parent. This\noccurs after {@code STAGE_BLANK}.</p>\n<p>Example:</p>\n<pre><code class=\"hljs language-js\"><span class=\"hljs-class\"><span class=\"hljs-keyword\">class</span> <span class=\"hljs-title\">DocumentedClass</span> </span>{\n  <span class=\"hljs-keyword\">constructor</span>() {\n    <span class=\"hljs-comment\">/** <span class=\"hljs-doctag\">@member <span class=\"hljs-type\">{string) *\\/\n    this.instanceProperty = \"defaultValue\";\n    /** @member {string}</span> </span>*\\/\n    DocumentedClass.instanceCount = DocumentedClass.instanceCount\n      ? DocumentedClass.instanceCount + 1 : 1;\n  }\n}\n</span></code></pre>\n<p>Before STAGE_AST_LIKE, the symbols <code>instanceProperty</code> and <code>instanceCount</code> will be a child of\n<code>DocumentedClass#constructor</code>. However, in STAGE_ASK_LIKE, they will be resolved as children of\n<code>DocumentedClass</code>.</p>"
+			"description": "<p>The doctree-mod should run when the &quot;members&quot; are resolved to their actual AST parent. This\noccurs after {@code STAGE_BLANK}.</p>\n<p>Example:</p>\n<pre><code class=\"hljs language-js\"><span class=\"hljs-class\"><span class=\"hljs-keyword\">class</span> <span class=\"hljs-title\">DocumentedClass</span> </span>{\n  <span class=\"hljs-function\"><span class=\"hljs-title\">constructor</span>(<span class=\"hljs-params\"></span>)</span> {\n    <span class=\"hljs-comment\">/** <span class=\"hljs-doctag\">@member <span class=\"hljs-type\">{string) *\\/\n    this.instanceProperty = &quot;defaultValue&quot;;\n    /** @member {string}</span> </span>*\\/\n    DocumentedClass.instanceCount = DocumentedClass.instanceCount\n      ? DocumentedClass.instanceCount + 1 : 1;\n  }\n}\n</span></code></pre>\n<p>Before STAGE_AST_LIKE, the symbols <code>instanceProperty</code> and <code>instanceCount</code> will be a child of\n<code>DocumentedClass#constructor</code>. However, in STAGE_ASK_LIKE, they will be resolved as children of\n<code>DocumentedClass</code>.</p>"
 		},
 		{
 			"name": "STAGE_BLANK",
@@ -101,7 +102,7 @@
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": "",
-			"children": [
+			"members": [
 				{
 					"name": "enter",
 					"type": "MethodDoc",
@@ -144,6 +145,12 @@
 		},
 		{
 			"name": "coalescePair",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "condition",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
@@ -245,7 +252,7 @@
 			"description": ""
 		},
 		{
-			"name": "extractType",
+			"name": "extractTypeFailsafe",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
@@ -264,6 +271,12 @@
 		},
 		{
 			"name": "generateComparator",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "getIncludePattern",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
@@ -353,19 +366,13 @@
 			"description": ""
 		},
 		{
-			"name": "morphTutorials",
-			"type": "FunctionDoc",
-			"brief": "",
-			"description": ""
-		},
-		{
 			"name": "packageApi",
 			"type": "FunctionDoc",
 			"brief": "<p>Resolves each package's top-level API docs.</p>",
 			"description": ""
 		},
 		{
-			"name": "packages",
+			"name": "parse",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
@@ -378,6 +385,12 @@
 		},
 		{
 			"name": "parseAbstract",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "parseCondition",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
@@ -455,6 +468,12 @@
 			"description": ""
 		},
 		{
+			"name": "parseStepType",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
 			"name": "parseTodo",
 			"type": "FunctionDoc",
 			"brief": "",
@@ -471,6 +490,12 @@
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
+		},
+		{
+			"name": "query",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": "<p>Runs a query in the document tree and returns the matching document, according to the\nDocument Path Langugage expression {@code query}.</p>"
 		},
 		{
 			"name": "queueTargets",
@@ -513,7 +538,7 @@
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": "",
-			"children": [
+			"members": [
 				{
 					"name": "installPlugin",
 					"type": "MethodDoc",
@@ -530,7 +555,19 @@
 			"description": ""
 		},
 		{
+			"name": "resolveConfigurator",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
 			"name": "resolvedThis",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "resolveFlowDataType",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
@@ -566,6 +603,12 @@
 			"description": ""
 		},
 		{
+			"name": "restoreDoc",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
 			"name": "searchExtendedClasses",
 			"type": "FunctionDoc",
 			"brief": "<p>Finds all the symbols that are extended by {@code doc}.</p>",
@@ -575,6 +618,24 @@
 			"name": "searchImplementedInterfaces",
 			"type": "FunctionDoc",
 			"brief": "<p>Finds all the symbols that are implemented by {@code doc}.</p>",
+			"description": ""
+		},
+		{
+			"name": "sources",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "stepInstanceMember",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "stepRMember",
+			"type": "FunctionDoc",
+			"brief": "",
 			"description": ""
 		},
 		{
@@ -593,12 +654,6 @@
 			"name": "traverse",
 			"type": "FunctionDoc",
 			"brief": "<p>Preorder traversal of all the docs</p>",
-			"description": ""
-		},
-		{
-			"name": "tutorialDoc",
-			"type": "FunctionDoc",
-			"brief": "",
 			"description": ""
 		},
 		{
