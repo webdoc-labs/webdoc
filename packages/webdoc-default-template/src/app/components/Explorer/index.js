@@ -12,7 +12,7 @@ export default function Explorer(props) {
   const children = [];
 
   if (!fetched) {
-    fetch("explorer/reference.json")
+    fetch("/explorer/reference.json")
       .then((response) => {
         if (response.ok) {
           response.json().then((idata) => {
