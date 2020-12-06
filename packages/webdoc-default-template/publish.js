@@ -52,7 +52,7 @@ exports.publish = (options /*: PublishOptions */) => {
   const docTree = options.documentTree;
   const outDir = path.normalize(options.config.opts.destination);
   const index = linker.createURI("index");
-  const indexRelative = index.slice(linker.siteRoot.length + 1);
+  const indexRelative = index.replace(`/${linker.siteRoot}/`, "");
 
   fse.ensureDir(outDir);
 
@@ -173,18 +173,13 @@ function outIndexes(
   config /*: WebdocConfig */,
   index, /*: Index */
 ) {
-  const siteRoot = `/${config.template.siteRoot}`;
   const KEY_TO_TITLE = {
     "classes": "Class Index",
   };
 
   function outIndex(indexKey, indexList) {
     const title = KEY_TO_TITLE[indexKey];
-    let url = indexList.url;
-
-    if (url.startsWith(siteRoot)) {
-      url = url.slice(siteRoot.length);
-    }
+    const url = linker.processInternalURI(indexList.url, {outputRelative: true});
 
     pipeline.render("pages/api-index.tmpl", {
       documentList: indexList,
@@ -206,17 +201,16 @@ function outReference(
   config /*: WebdocConfig */,
   docTree, /*: RootDoc */
 ) {
-  const siteRoot = `/${config.template.siteRoot}`;
-
   for (const [id, docRecord] of linker.documentRegistry) {
     let {uri: page} = docRecord;
 
     if (page.includes("#")) {
       continue;// skip fragments (non-standalone docs)
     }
-    if (page.startsWith(siteRoot)) {
-      page = page.slice(siteRoot.length);
-    }
+
+    page = linker.processInternalURI(page, {outputRelative: true});
+
+    console.log(page);
 
     let doc;
 

@@ -44,7 +44,7 @@ function buildLinks(tree /*: RootDoc */) /*: void */ {
 }
 
 function buildIndex(tree /*: RootDoc */) /*: [id: string]: [] & { url: string } */ {
-  const classIndexUrl = linker.createURI("Class-Index");
+  const classIndexUrl = linker.createURI("Class-Index", true);
 
   const index /*: [id: string]: [] & { url: string } */ = {
     classes: [],
