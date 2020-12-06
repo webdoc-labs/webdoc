@@ -215,13 +215,31 @@ export function extractReturns(
   node: ClassMethod | ObjectMethod | FunctionDeclaration | FunctionExpression,
 ): $Shape<Return>[] {
   if (node.returnType) {
-    return [{dataType: extractType(node.returnType)}];
+    return [{dataType: extractTypeFailsafe(node.returnType)}];
   }
   if (node.typeAnnotation) {
-    return [{dataType: extractType(node.typeAnnotation)}];
+    return [{dataType: extractTypeFailsafe(node.typeAnnotation)}];
   }
 
   return [];
+}
+
+// Failsafe
+export function extractTypeFailsafe(
+  node: BabelNodeTypeAnnotation | BabelNodeTSTypeAnnotation | any,
+): DataType {
+  if (node.typeAnnotation) {
+    if (isFlowType(node.typeAnnotation) || mode.current === "flow") {
+      return resolveFlowDataType(node.typeAnnotation);
+    }
+
+    return resolveTSDataType(node.typeAnnotation);
+  }
+
+  console.error(node);
+  console.error("Failsafe type extraction found invalid type.");
+
+  return createSimpleKeywordType("invalid");
 }
 
 // Extract the data-type for a property

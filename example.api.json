@@ -40,6 +40,13 @@
 			"description": ""
 		},
 		{
+			"name": "del",
+			"type": "MethodDoc",
+			"scope": "instance",
+			"brief": "",
+			"description": ""
+		},
+		{
 			"name": "logRecursive",
 			"type": "MethodDoc",
 			"scope": "instance",
@@ -47,7 +54,7 @@
 			"description": ""
 		},
 		{
-			"name": "splice",
+			"name": "parse",
 			"type": "MethodDoc",
 			"scope": "instance",
 			"brief": "",
@@ -215,7 +222,7 @@
 			"description": "<p>Extracts the documentation of the node, if one exists. This also handles the case where the node\nitself is a documentation comment.</p>"
 		},
 		{
-			"name": "extractDefaultValueClosureData",
+			"name": "extractDataValue",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
@@ -227,13 +234,25 @@
 			"description": ""
 		},
 		{
+			"name": "extractIdentifier",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
 			"name": "extractParams",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
 		},
 		{
-			"name": "extractType",
+			"name": "extractSymbol",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "extractTypeFailsafe",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
@@ -281,12 +300,6 @@
 			"description": ""
 		},
 		{
-			"name": "isInstancePropertyAssignment",
-			"type": "FunctionDoc",
-			"brief": "",
-			"description": ""
-		},
-		{
 			"name": "isInterface",
 			"type": "FunctionDoc",
 			"brief": "",
@@ -329,13 +342,7 @@
 			"description": ""
 		},
 		{
-			"name": "matchDefaultValueClosure",
-			"type": "FunctionDoc",
-			"brief": "",
-			"description": ""
-		},
-		{
-			"name": "matchIdentifier",
+			"name": "matchDataTypeClosure",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
@@ -377,13 +384,7 @@
 			"description": "<ul>\n<li>Capture Phase: Documentation comments are extracted out of each file and assembled into\na temporary list of partial-doc trees.</li>\n<li>Transform Phase: Each file's partial-doc tree is transformed into docs and assembled in\nmonolithic doc-tree.</li>\n<li>Mod Phase: The &quot;@memberof&quot; tag is handled by moving docs to their final path;\n<this> member docs are moved to the appropriate scope.\nPlugins are allowed access to make any post-transform changes as well. Undocumented entities\nare removed from the doc-tree.</li>\n</ul>"
 		},
 		{
-			"name": "parseAccess",
-			"type": "FunctionDoc",
-			"brief": "",
-			"description": ""
-		},
-		{
-			"name": "parseAuthor",
+			"name": "parseAbstract",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
@@ -395,79 +396,73 @@
 			"description": ""
 		},
 		{
-			"name": "parseDefault",
+			"name": "parseCopyright",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
 		},
 		{
-			"name": "parseEnum",
+			"name": "parseDeprecated",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
 		},
 		{
-			"name": "parseExample",
+			"name": "parseEvent",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
 		},
 		{
-			"name": "parseExtends",
+			"name": "parseFires",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
 		},
 		{
-			"name": "parseInner",
+			"name": "parseImplements",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
 		},
 		{
-			"name": "parseMember",
+			"name": "parseInstance",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
 		},
 		{
-			"name": "parseMixes",
+			"name": "parseLicense",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
 		},
 		{
-			"name": "parseName",
+			"name": "parsePrivate",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
 		},
 		{
-			"name": "parseParam",
+			"name": "parseProperty",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
 		},
 		{
-			"name": "parseProtected",
+			"name": "parsePublic",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
 		},
 		{
-			"name": "parseReturn",
+			"name": "parseScope",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
 		},
 		{
-			"name": "parseSee",
-			"type": "FunctionDoc",
-			"brief": "",
-			"description": ""
-		},
-		{
-			"name": "parseStatic",
+			"name": "parseSince",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
@@ -479,13 +474,19 @@
 			"description": ""
 		},
 		{
-			"name": "parseThrows",
+			"name": "parseTodo",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
 		},
 		{
-			"name": "parseTypedef",
+			"name": "parseType",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "parseTypedDescription",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
@@ -566,7 +567,7 @@
 			"description": ""
 		},
 		{
-			"name": "resolveInit",
+			"name": "resolveFlowDataType",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
@@ -578,25 +579,25 @@
 			"description": ""
 		},
 		{
-			"name": "resolveObject",
-			"type": "FunctionDoc",
-			"brief": "",
-			"description": ""
-		},
-		{
 			"name": "resolveRelated",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": "<ul>\n<li>\n<p>Resolves all docs listed in the &quot;extends&quot;, &quot;implements&quot;, &quot;mixes&quot;. This prevent redundant\nsearches to extended/implemented/mixed symbols.</p>\n</li>\n<li>\n<p>Replaces the &quot;default&quot; scopes for properties with a good guess. (The @property tag parser puts\n&quot;default&quot; scope on the PropertyDocs it creates)</p>\n</li>\n<li>\n<p>Brings down any methods/properties coming from parent classes &amp; mixins. Adds the implementation\nproperty to methods/properties that come from interfaces.</p>\n</li>\n</ul>"
 		},
 		{
-			"name": "resolveToObject",
+			"name": "resolveReturn",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
 		},
 		{
-			"name": "resolveTSDataType",
+			"name": "resolveRootObject",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "resolveToObject",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
