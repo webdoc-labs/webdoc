@@ -47,7 +47,8 @@
     "lodash": "^4.17.15",
     "missionlog": "1.6.0",
     "nanoid": "~3.1.16",
-    "parse-github-url": "1.0.2"
+    "parse-github-url": "1.0.2",
+    "fs-extra": "^9.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",

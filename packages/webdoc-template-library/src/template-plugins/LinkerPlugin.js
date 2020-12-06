@@ -21,6 +21,8 @@ export type LinkerFileRecord = {
   uri?: string,
 };
 
+export type FileLayout = "linear" | "tree";
+
 /**
  * Shell wrapper around {@link LinkerPlugin}.
  *
@@ -99,6 +101,12 @@ function LinkerPluginShell() {
      * @protected
      */
     documentRegistry = new Map<string, LinkerDocumentRecord>();
+
+    /**
+     * The mode with which the path for output files is choosen.
+     * @protected
+     */
+    fileLayout = "tree";
 
     /**
      * This holds all the linker's data on each output file, mapping each URI lowercased.
@@ -372,6 +380,10 @@ function LinkerPluginShell() {
         .replace(/\([\s\S]*\)$/, "")
         // make sure we don't create hidden files, or files whose names start with a dash
         .replace(/^[.-]/, "");
+
+      if (this.fileLayout === "tree") {
+        seedURI = seedURI.replace(/[.]/g, "/");
+      }
 
       // in case we've now stripped the entire basename (uncommon, but possible):
       seedURI = seedURI.length ? seedURI : "_";

@@ -1,7 +1,7 @@
 // @flow
 
+import * as fse from "fs-extra";
 import type {TemplatePipelineElement} from "../TemplatePipeline";
-import fs from "fs";
 
 type FlushData = {
   outputFile: string;
@@ -40,7 +40,7 @@ export class FlushToFile implements TemplatePipelineElement<FlushData> {
       throw new Error("No outputFile specified in pipeline-data");
     }
 
-    fs.writeFile(pipelineData.outputFile, input, (err) => {
+    fse.outputFile(pipelineData.outputFile, input, (err) => {
       if (err) throw err;
     });
 

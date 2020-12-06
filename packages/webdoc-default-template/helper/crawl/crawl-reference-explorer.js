@@ -42,7 +42,7 @@ function crawlReference(doc /*: Doc */) {
 exports.crawlReference = crawlReference;
 
 function getPage(doc /*: Doc */) {
-  return linker.getURI(doc);
+  return "/" + linker.getURI(doc);
 }
 
 /*::
@@ -161,7 +161,7 @@ function buildExplorerTargetsTree(
   parentTitle /*: string */ = "",
 ) /*: ExplorerTarget */ {
   const doc = node.doc;
-  const page = doc.type !== "RootDoc" ? getPage(doc) : "index.html";
+  const page = doc.type !== "RootDoc" ? getPage(doc) : "/index.html";
 
   let title = "";
 
@@ -187,11 +187,11 @@ function buildExplorerTargetsTree(
     };
 
     if (node.doc.type === "RootDoc") {
-      node.children["(overview)"].page = "index.html";
+      node.children["(overview)"].page = "/index.html";
 
       node.children.ClassIndex = {
         title: "Class Index",
-        page: linker.createURI("Class-Index.html"),
+        page: "/" + linker.createURI("Class-Index"),
       };
     }
 
