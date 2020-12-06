@@ -52,6 +52,7 @@ exports.publish = (options /*: PublishOptions */) => {
   const docTree = options.documentTree;
   const outDir = path.normalize(options.config.opts.destination);
   const index = linker.createURI("index");
+  const indexRelative = index.slice(linker.siteRoot.length + 1);
 
   fse.ensureDir(outDir);
 
@@ -79,7 +80,7 @@ exports.publish = (options /*: PublishOptions */) => {
 
   outStaticFiles(outDir);
   outExplorerData(outDir, crawlData);
-  outMainPage(path.join(outDir, index), pipeline, options.config);
+  outMainPage(path.join(outDir, indexRelative), pipeline, options.config);
   outIndexes(outDir, pipeline, options.config, crawlData.index);
   outReference(outDir, pipeline, options.config, docTree);
 };
