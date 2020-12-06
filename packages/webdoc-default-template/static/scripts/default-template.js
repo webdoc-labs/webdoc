@@ -4970,7 +4970,7 @@ function Explorer(props) {
   var children = [];
 
   if (!fetched) {
-    fetch("/explorer/reference.json").then(function (response) {
+    fetch("/" + window.appData.siteRoot + "/explorer/reference.json").then(function (response) {
       if (response.ok) {
         response.json().then(function (idata) {
           setData(idata || {});

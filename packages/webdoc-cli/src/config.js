@@ -27,7 +27,8 @@ type ConfigSchema = {
     export?: string,
     template?: string,
   },
-  template?: {
+  template: {
+    siteRoot: string,
     mainPage?: {
       title?: string
     },
@@ -69,6 +70,7 @@ const defaultConfig: ConfigSchema = {
     template: "@webdoc/default-template",
   },
   template: {
+    siteRoot: "",
     mainPage: {
       title: "Main Page",
     },

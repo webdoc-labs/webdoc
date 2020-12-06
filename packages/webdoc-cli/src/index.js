@@ -63,6 +63,13 @@ async function main(argv: yargs.Argv) {
   const config = loadConfig(argv.config);
   const tutorials = loadTutorials(argv.tutorials);
 
+  if (argv.siteRoot) {
+    config.template.siteRoot = argv.siteRoot;
+  }
+  if (config.template.siteRoot[0] === "/") {
+    config.template.siteRoot = config.template.siteRoot.slice(1);
+  }
+
   // TODO: Fix what env/conf is?
   global.Webdoc.env = config;
   // $FlowFixMe
@@ -143,7 +150,7 @@ async function main(argv: yargs.Argv) {
 }
 
 const argv = yargs.scriptName("@webdoc/cli")
-  .usage("$0 -c <configFile> -u <tutorialDir> --verbose")
+  .usage("$0 -c <configFile> -u <tutorialDir> --verbose --site-root <siteRoot>")
   .default("config", path.join(process.cwd(), "webdoc.conf.json"), "webdoc config file")
   .alias("c", "config")
   .alias("u", "tutorials")

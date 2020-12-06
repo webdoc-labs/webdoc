@@ -20,12 +20,12 @@ export type CategorizedDocumentList = {
 */
 
 
-exports.crawl = function crawl(tree /*: RootDoc */) {
+exports.crawl = function crawl(tree /*: RootDoc */, index /*: string */) {
   buildLinks(tree);
 
   return {
     index: buildIndex(tree),
-    reference: crawlReference(tree),
+    reference: crawlReference(tree, index),
   };
 };
 
