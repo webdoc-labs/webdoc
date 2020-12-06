@@ -26,7 +26,7 @@
     "build": "webdoc --tutorials ./tutorials --site-root example-documentation",
     "build-next": "cd .. && webdoc && cd example",
     "build-pixi-api": "cd ../../pixi-api && webdoc --site-root docs && cd ../webdoc/example",
-    "build-pixi-api-prod": "cd ../../pixi-api && webdoc --site-root pixi-api && cd ../webdoc/example",
+    "build-pixi-api-prod": "cd ../../pixi-api && webdoc --site-root pixi-api && cd ../webdoc/example"
   },
   "bugs": {
     "url": "https://github.com/SukantPal/webdoc/issues"
