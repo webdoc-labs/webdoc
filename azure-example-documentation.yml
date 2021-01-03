@@ -3,7 +3,7 @@ resources:
     - repository: ExampleDocs
       type: github
       endpoint: PalConnection
-      name: webdoc-js/example-documentation
+      name: webdoc-labs/example-documentation
 
 trigger:
 - master
