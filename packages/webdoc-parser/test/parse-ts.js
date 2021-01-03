@@ -26,7 +26,7 @@ class Example {
 
     expect(fieldDoc.access).to.equal("protected");
     expect(fieldDoc.dataType && fieldDoc.dataType[0]).to.equal("boolean");
-    expect(fieldDoc.defaultValue).to.equal("true");
+    expect(fieldDoc.defaultValue).to.equal(true);
     expect(fieldDoc.description).to.equal("Field description");
   });
 });
