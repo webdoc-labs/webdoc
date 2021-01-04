@@ -11,6 +11,7 @@ import type {
   ExampleTag,
   LicenseTag,
   NameTag,
+  ReadonlyTag,
   SeeTag,
   SinceTag,
   ThrowsTag,
@@ -33,6 +34,8 @@ import {parseTypedDescription} from "./helper";
 // @todo <TODO>
 // @throws <ERROR_TYPE>
 // @type {TYPE}
+// @readonly
+// @readOnly
 // @see <URL | DOC_PATH>
 // @since <WHEN>
 
@@ -150,6 +153,15 @@ export function parseType(value: string, doc: $Shape<{ dataType?: ?DataType }>):
     dataType,
     value,
     type: "TypeTag",
+  };
+}
+
+export function parseReadonly(value: string, doc: $Shape<BaseDoc>): $Shape<ReadonlyTag> {
+  doc.readonly = true;
+
+  return {
+    value,
+    type: "ReadonlyTag",
   };
 }
 

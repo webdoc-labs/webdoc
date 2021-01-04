@@ -32,6 +32,7 @@ import {
   parseProperty,
   parseProtected,
   parsePublic,
+  parseReadonly,
   parseReturn,
   parseScope,
   parseSee,
@@ -92,6 +93,8 @@ const TAG_PARSERS: { [id: string]: TagParser } = {
   "protected": parseProtected,
   "private": parsePrivate,
   "public": parsePublic,
+  "readOnly": parseReadonly,
+  "readonly": parseReadonly,
   "return": parseReturn,
   "returns": parseReturn, // alias @return
   "scope": parseScope,

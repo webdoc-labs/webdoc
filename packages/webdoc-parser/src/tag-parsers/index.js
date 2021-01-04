@@ -20,6 +20,7 @@ export {
   parseTodo,
   parseThrows,
   parseType,
+  parseReadonly,
   parseSee,
   parseSince,
 } from "./parseSimple";
