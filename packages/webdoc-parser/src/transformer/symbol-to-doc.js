@@ -133,6 +133,8 @@ export default function symbolToDoc(symbol: Symbol): ?Doc {
 
   options.abstract = symbol.meta.abstract;
   options.access = symbol.meta.access;
+  options.dataType = symbol.meta.dataType;
+  options.defaultValue = symbol.meta.defaultValue;
   options.scope = symbol.meta.scope;
   options.loc = symbol.loc;
 
