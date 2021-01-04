@@ -70,6 +70,7 @@ export type BaseDoc = {
   fires?: [],
   license?: string,
   loc?: SymbolLocation,
+  readonly?: boolean,
   scope?: "static" | "instance" | "inner" | "default",
   see?: DocLink[],
   since?: string,
@@ -258,6 +259,7 @@ export type TagType =
   "NSTag" |
   "LicenseTag" |
   "ParamTag" |
+  "ReadonlyTag" |
   "ReturnTag" |
   "SeeTag" |
   "SinceTag" |
@@ -286,6 +288,7 @@ export type Tag =
   NSTag |
   LicenseTag |
   ParamTag |
+  ReadonlyTag |
   ReturnTag |
   SeeTag |
   SinceTag |
@@ -314,6 +317,7 @@ export type TagShape =
   $Shape<NSTag> |
   $Shape<LicenseTag> |
   $Shape<ParamTag> |
+  $Shape<ReadonlyTag> |
   $Shape<ReturnTag> |
   $Shape<SeeTag> |
   $Shape<SinceTag> |
@@ -453,6 +457,11 @@ export type ParamTag = {
   default?: string,
   variadic?: boolean,
   type: "ParamTag"
+};
+
+export type ReadonlyTag = {
+  ...BaseTag,
+  type: "ReadonlyTag"
 };
 
 export type ReturnTag = {

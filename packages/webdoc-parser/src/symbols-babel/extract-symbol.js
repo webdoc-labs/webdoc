@@ -101,6 +101,7 @@ export default function extractSymbol(
     name = node.key.name;
 
     nodeSymbol.meta.access = node.access || node.accessibility;
+    nodeSymbol.meta.readonly = node.readonly;
     nodeSymbol.meta.dataType = extractType(node);
     nodeSymbol.meta.scope = node.static ? "static" : "instance";
     nodeSymbol.meta.type = "PropertyDoc";
