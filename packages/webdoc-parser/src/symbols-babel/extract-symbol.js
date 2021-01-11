@@ -8,6 +8,7 @@ import {
   type FunctionExpression,
   type MemberExpression,
   type Node,
+  type NodePath,
   type VariableDeclarator,
   isArrowFunctionExpression,
   isAssignmentExpression,
@@ -54,7 +55,7 @@ import {
 // + Set the appopriate flags
 // + Set isInit & initComment if the symbol has a initializer child
 export default function extractSymbol(
-  node: Node,
+  nodePath: NodePath,
   parent: Symbol,
   out: {
     name?: ?string,
@@ -65,6 +66,8 @@ export default function extractSymbol(
     init?: ?Node
   },
 ): void {
+  const node = nodePath.node;
+
   let name;
   let flags = out.flags || 0;
   let isInit = false;
@@ -174,6 +177,11 @@ export default function extractSymbol(
     } else if (isVariableDeclarator(node)) {
       name = node.id.name;
       init = resolveInit(node);
+
+      // Variables defined with the const keyword are inferred to be readonly.
+      if (nodePath.parent && nodePath.parent.kind === "const") {
+        nodeSymbol.meta.readonly = true;
+      }
     } else {// ObjectProperty
       name = node.key.name;
       init = node.value;
