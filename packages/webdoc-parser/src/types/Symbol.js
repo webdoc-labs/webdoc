@@ -30,6 +30,7 @@ export type SymbolSignature = {
   implements?: ?Array<string | Symbol>,
   object?: ?string,
   params?: ?Array<$Shape<Param>>,
+  readonly?: boolean,
   returns?: ?Array<$Shape<Return>>,
   scope?: ?string,
   value?: ?string,
