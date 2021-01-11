@@ -25,6 +25,7 @@ import {
   isIdentifier,
   isObjectMethod,
   isObjectPattern,
+  isRestElement,
   isScope,
   isVariableDeclaration,
 } from "@babel/types";
@@ -469,6 +470,14 @@ function registerObjectPropertyVariables(node: ObjectPattern): void {
 
   for (let i = 0, j = props.length; i < j; i++) {
     const prop = props[i];
+
+    if (isRestElement(prop)) {
+      continue;
+    }
+
+    if (!prop.key) {
+      throw new Error("WTF");
+    }
 
     declareVariable(prop.key.name);
 
