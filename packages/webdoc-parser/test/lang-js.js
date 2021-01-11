@@ -112,4 +112,12 @@ describe("@webdoc/parser.LanguageIntegration{@lang js}", function() {
     expect(symtree.members[0].meta.readonly).to.equal(true);
     expect(symtree.members[1].meta.readonly).to.not.equal(true);
   });
+
+  it("should not crash with rest object properties syntax", function() {
+    expect(
+      () => buildSymbolTree(`
+        const { a, b, ...rest } = globalThis;
+      `),
+    ).to.not.throw();
+  });
 });
