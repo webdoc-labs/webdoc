@@ -32,6 +32,7 @@ import {
   parseProperty,
   parseProtected,
   parsePublic,
+  parseReadonly,
   parseReturn,
   parseScope,
   parseSee,
@@ -92,6 +93,8 @@ const TAG_PARSERS: { [id: string]: TagParser } = {
   "protected": parseProtected,
   "private": parsePrivate,
   "public": parsePublic,
+  "readOnly": parseReadonly,
+  "readonly": parseReadonly,
   "return": parseReturn,
   "returns": parseReturn, // alias @return
   "scope": parseScope,
@@ -135,6 +138,7 @@ export default function symbolToDoc(symbol: Symbol): ?Doc {
   options.access = symbol.meta.access;
   options.dataType = symbol.meta.dataType;
   options.defaultValue = symbol.meta.defaultValue;
+  options.readonly = symbol.meta.readonly;
   options.scope = symbol.meta.scope;
   options.loc = symbol.loc;
 

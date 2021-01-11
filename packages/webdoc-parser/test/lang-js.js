@@ -101,4 +101,15 @@ describe("@webdoc/parser.LanguageIntegration{@lang js}", function() {
     expect(symbolClassName.members[0].simpleName).to.equal("constructor");
     expect(symbolClassName.members[0].members.length).to.equal(0);
   });
+
+  it("should mark const variable declarations as readonly", function() {
+    const symtree = buildSymbolTree(`
+      const variable = "value";
+      let mutable = "mutable";
+    `);
+
+    expect(symtree.members.length).to.equal(2);
+    expect(symtree.members[0].meta.readonly).to.equal(true);
+    expect(symtree.members[1].meta.readonly).to.not.equal(true);
+  });
 });

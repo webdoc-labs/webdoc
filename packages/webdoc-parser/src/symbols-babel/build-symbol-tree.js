@@ -186,7 +186,7 @@ export default function buildSymbolTree(
       let idoc;
 
       try {
-        idoc = captureSymbols(nodePath.node, scope);
+        idoc = captureSymbols(nodePath, scope);
       } catch (e) {
         console.error(ancestorStack);
         console.log(node);
@@ -255,10 +255,11 @@ export default function buildSymbolTree(
 // them as a child of parent.
 //
 // The returned symbol is the one backed by the AST node.
-function captureSymbols(node: Node, parent: Symbol): ?Symbol {
+function captureSymbols(nodePath: NodePath, parent: Symbol): ?Symbol {
+  const node = nodePath.node;
   const symbolInfo = {};
 
-  extractSymbol(node, parent, symbolInfo);
+  extractSymbol(nodePath, parent, symbolInfo);
 
   let {
     name: simpleName,
