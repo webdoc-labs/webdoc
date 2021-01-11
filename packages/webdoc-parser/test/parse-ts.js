@@ -12,7 +12,7 @@ class Example {
   /**
    * Field description
    */
-  protected field: boolean = true;
+  protected readonly field: boolean = true;
 }
 `,
       path: ".ts",
@@ -27,6 +27,7 @@ class Example {
     expect(fieldDoc.access).to.equal("protected");
     expect(fieldDoc.dataType && fieldDoc.dataType[0]).to.equal("boolean");
     expect(fieldDoc.defaultValue).to.equal(true);
+    expect(fieldDoc.readonly).to.equal(true);
 
     // TODO: Fix this. No space should be there (added/not-fixed b/c this was
     // in a PR for different issue)
