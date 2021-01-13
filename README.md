@@ -64,14 +64,14 @@ You can now run `webdoc` in your terminal and documentation will be generated.
 
 | Packages                    | npm                                                              ||
 |-----------------------------|------------------------------------------------------------------|-|
-| @webdoc/cli                 | ![npm](https://img.shields.io/npm/v/@webdoc/cli)                 |![David (path)](https://img.shields.io/david/webdoc-js/webdoc?path=packages%2Fwebdoc-cli)|
-| @webdoc/model               | ![npm](https://img.shields.io/npm/v/@webdoc/model)               |![David (path)](https://img.shields.io/david/webdoc-js/webdoc?path=packages%2Fwebdoc-model)|
-| @webdoc/types               | ![npm](https://img.shields.io/npm/v/@webdoc/types)               |![David (path)](https://img.shields.io/david/webdoc-js/webdoc?path=packages%2Fwebdoc-types)|
-| @webdoc/parser              | ![npm](https://img.shields.io/npm/v/@webdoc/parser)              |![David (path)](https://img.shields.io/david/webdoc-js/webdoc?path=packages%2Fwebdoc-parser)|
-| @webdoc/externalize         | ![npm](https://img.shields.io/npm/v/@webdoc/externalize)         |![David (path)](https://img.shields.io/david/webdoc-js/webdoc?path=packages%2Fwebdoc-externalize)|
-| @webdoc/template-library    | ![npm](https://img.shields.io/npm/v/@webdoc/template-library)    |![David (path)](https://img.shields.io/david/webdoc-js/webdoc?path=packages%2Fwebdoc-template-library)|
-| @webdoc/legacy-template     | ![npm](https://img.shields.io/npm/v/@webdoc/legacy-template)     |![David (path)](https://img.shields.io/david/webdoc-js/webdoc?path=packages%2Fwebdoc-legacy-template)|
-| @webdoc/default-template    | ![npm](https://img.shields.io/npm/v/@webdoc/default-template)    |![David (path)](https://img.shields.io/david/webdoc-js/webdoc?path=packages%2Fwebdoc-default-template)|
+| @webdoc/cli                 | ![npm](https://img.shields.io/npm/v/@webdoc/cli)                 |![David (path)](https://img.shields.io/david/webdoc-labs/webdoc?path=packages%2Fwebdoc-cli)|
+| @webdoc/model               | ![npm](https://img.shields.io/npm/v/@webdoc/model)               |![David (path)](https://img.shields.io/david/webdoc-labs/webdoc?path=packages%2Fwebdoc-model)|
+| @webdoc/types               | ![npm](https://img.shields.io/npm/v/@webdoc/types)               |![David (path)](https://img.shields.io/david/webdoc-labs/webdoc?path=packages%2Fwebdoc-types)|
+| @webdoc/parser              | ![npm](https://img.shields.io/npm/v/@webdoc/parser)              |![David (path)](https://img.shields.io/david/webdoc-labs/webdoc?path=packages%2Fwebdoc-parser)|
+| @webdoc/externalize         | ![npm](https://img.shields.io/npm/v/@webdoc/externalize)         |![David (path)](https://img.shields.io/david/webdoc-labs/webdoc?path=packages%2Fwebdoc-externalize)|
+| @webdoc/template-library    | ![npm](https://img.shields.io/npm/v/@webdoc/template-library)    |![David (path)](https://img.shields.io/david/webdoc-labs/webdoc?path=packages%2Fwebdoc-template-library)|
+| @webdoc/legacy-template     | ![npm](https://img.shields.io/npm/v/@webdoc/legacy-template)     |![David (path)](https://img.shields.io/david/webdoc-labs/webdoc?path=packages%2Fwebdoc-legacy-template)|
+| @webdoc/default-template    | ![npm](https://img.shields.io/npm/v/@webdoc/default-template)    |![David (path)](https://img.shields.io/david/webdoc-labs/webdoc?path=packages%2Fwebdoc-default-template)|
 
 ## Features
 
