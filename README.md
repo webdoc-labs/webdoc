@@ -15,12 +15,12 @@
     <tr>
       <td>
         <a href="https://dev.azure.com/webdoc-js/webdoc/_build/latest?definitionId=2&branchName=master">
-          <img src="https://dev.azure.com/webdoc-js/webdoc/_apis/build/status/webdoc-js.webdoc?branchName=master"></img>
+          <img src="https://dev.azure.com/webdoc-js/webdoc/_apis/build/status/Build%2C%20unit-test%2C%20type-check?repoName=webdoc-labs%2Fwebdoc&branchName=master"></img>
         </a>
       </td>
       <td>
         <a href="https://dev.azure.com/webdoc-js/webdoc/_build/latest?definitionId=3&branchName=master">
-          <img src="https://dev.azure.com/webdoc-js/webdoc/_apis/build/status/webdoc-js.webdoc%20(1)?branchName=master"></img>
+          <img src="https://dev.azure.com/webdoc-js/webdoc/_apis/build/status/webdoc-example%20documentation%20generator?repoName=webdoc-labs%2Fwebdoc&branchName=master"></img>
         </a>
       </td>
     </tr>
