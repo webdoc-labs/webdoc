@@ -121,7 +121,7 @@ export default function extractSymbol(
           nodeSymbol.meta.dataType = createSimpleKeywordType("string");
         }
       } else {
-        nodeSymbol.meta.defaultValue = node.value.value;
+        nodeSymbol.meta.defaultValue = `${node.value.value}`;
 
         if (!nodeSymbol.meta.dataType && isNumericLiteral(node.value)) {
           nodeSymbol.meta.dataType = createSimpleKeywordType("number");
