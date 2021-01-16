@@ -1,6 +1,6 @@
 {
   "name": "@webdoc/default-template",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "description": "webdoc's default template",
   "keywords": [
     "webdoc",
@@ -43,8 +43,8 @@
     "@babel/preset-react": "^7.10.1",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.56",
-    "@webdoc/model": "^1.1.3",
-    "@webdoc/template-library": "^1.1.3",
+    "@webdoc/model": "^1.1.4",
+    "@webdoc/template-library": "^1.1.4",
     "code-prettify": "^0.1.0",
     "fs-extra": "^9.0.1",
     "markdown-it": "^11.0.0",

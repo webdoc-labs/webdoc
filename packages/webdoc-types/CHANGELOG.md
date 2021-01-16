@@ -1,6 +1,13 @@
 # Change Log - @webdoc/types
 
-This log was last generated on Sat, 28 Nov 2020 16:51:35 GMT and should not be manually modified.
+This log was last generated on Sat, 16 Jan 2021 16:17:04 GMT and should not be manually modified.
+
+## 1.1.4
+Sat, 16 Jan 2021 16:17:04 GMT
+
+### Updates
+
+- Add ReadonlyTag, readonly property on Doc
 
 ## 1.1.3
 Sat, 28 Nov 2020 16:51:35 GMT
