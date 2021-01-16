@@ -1,5 +1,6 @@
 @import "scss-utils/all";
 
+@import "themes";
 @import "vars";
 
 
@@ -35,12 +36,10 @@ a {
     @include flex();
 
     width: 100%;
-    max-width: 1200px;
     @include center-margin();
 
     word-break: break-word;
 
-    margin-top: $header-height;
     min-height: 0;
     flex-grow: 2;
     flex-basis: 0;
@@ -49,22 +48,33 @@ a {
       @at-root {
         &,
         #{$page} .page-content {
-          padding: 8px;
         }
       }
 
-      min-width: 200px;
       max-width: 400px;
       height: 100%;
       overflow: auto;
     }
 
+    &-members-explorer {
+      min-width: 200px;
+    }
+    &-members-explorer > *:first-child, &-content > *:first-child {
+      margin-top: 8px;
+    }
+    &-members-explorer > *:last-child, &-content > *:last-child {
+      margin-bottom: 8px;
+    }
+
     &-content {
       width: 0;
       flex-grow: 2;
+      flex-shrink: 1;
       height: 100%;
       overflow-x: hidden;// TODO: Slight horizontal scrolling pops up for some reason
       overflow-y: auto;
+      max-width: 900px;
+      padding: 0 8px;
     }
   }
 }

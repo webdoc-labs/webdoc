@@ -73,7 +73,9 @@ dependencies:
   pkg-up: 3.1.0
   react: 16.14.0
   react-dom: 16.14.0_react@16.14.0
+  react-redux: 7.2.2_bbabd8c34ea235719dc50e75b43f85a4
   read-pkg-up: 7.0.1
+  redux: 4.0.5
   sass: 1.32.4
   sass-loader: 9.0.3_sass@1.32.4+webpack@4.46.0
   taffydb: 2.7.3
@@ -7997,6 +7999,29 @@ packages:
     dev: false
     resolution:
       integrity: sha512-NAnt2iGDXohE5LI7uBnLnqvLQMtzhkiAOLXTmv+qnF9Ky7xAPcX8Up/xWIhxvLVGJvuLiNc4xQLtuqDRzb4fSA==
+  /react-redux/7.2.2_bbabd8c34ea235719dc50e75b43f85a4:
+    dependencies:
+      '@babel/runtime': 7.12.5
+      hoist-non-react-statics: 3.3.2
+      loose-envify: 1.4.0
+      prop-types: 15.7.2
+      react: 16.14.0
+      react-dom: 16.14.0_react@16.14.0
+      react-is: 16.13.1
+      redux: 4.0.5
+    dev: false
+    peerDependencies:
+      react: ^16.8.3 || ^17
+      react-dom: '*'
+      react-native: '*'
+      redux: ^2.0.0 || ^3.0.0 || ^4.0.0-0
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
+      react-native:
+        optional: true
+    resolution:
+      integrity: sha512-8+CQ1EvIVFkYL/vu6Olo7JFLWop1qRUeb46sGtIMDCSpgwPQq8fPLpirIB0iTqFe9XYEFPHssdX8/UwN6pAkEA==
   /react-transition-group/4.4.1_react-dom@16.14.0+react@16.14.0:
     dependencies:
       '@babel/runtime': 7.12.5
@@ -8145,6 +8170,13 @@ packages:
       node: '>= 0.10'
     resolution:
       integrity: sha1-hSBLVNuoLVdC4oyWdW70OvUOM4Q=
+  /redux/4.0.5:
+    dependencies:
+      loose-envify: 1.4.0
+      symbol-observable: 1.2.0
+    dev: false
+    resolution:
+      integrity: sha512-VSz1uMAH24DM6MF72vcojpYPtrTUu3ByVWfPL1nPfVRb5mZVTve5GnNCUV53QM/BZ66xfWrm0CTWoM+Xlz8V1w==
   /regenerate-unicode-properties/8.2.0:
     dependencies:
       regenerate: 1.4.2
@@ -10035,7 +10067,7 @@ packages:
     dev: false
     name: '@rush-temp/cli'
     resolution:
-      integrity: sha512-4PPhq4+bsioYKACYAb/X2dlVp8sMSImNfuqs/0sX1JkDYGKEzWZYk+VqHCWz3yX4ayGgVIfSnQJzkXBDfYhtGg==
+      integrity: sha512-z5AQM4D/Ip0LJgc2c6k50Tl4kkJrhT24KmPQEgsbyP0OS6z4wUcMKct1WYEWzkwsfEBIN8QHmHsqIwoProIPXA==
       tarball: 'file:projects/cli.tgz'
     version: 0.0.0
   'file:projects/default-template.tgz':
@@ -10070,6 +10102,8 @@ packages:
       optimize-css-assets-webpack-plugin: 5.0.4_webpack@4.46.0
       react: 16.14.0
       react-dom: 16.14.0_react@16.14.0
+      react-redux: 7.2.2_bbabd8c34ea235719dc50e75b43f85a4
+      redux: 4.0.5
       sass: 1.32.4
       sass-loader: 9.0.3_sass@1.32.4+webpack@4.46.0
       webpack: 4.46.0_webpack@4.46.0
@@ -10077,7 +10111,7 @@ packages:
     dev: false
     name: '@rush-temp/default-template'
     resolution:
-      integrity: sha512-jPKDRy3Ib0cIoYj7NS657FVUSjz6JXT2jCY142Br18L01YPGLluz1iaNRBck5E1Q184Fp2lRXmgkb9wmdexlFg==
+      integrity: sha512-XC/t8gpaU4rTP8ZW3zHn9jXFWafbOx+901WTQX55HD0JJht15Q9zepMnpeP6Y8JAqzablZCgsusdmLPWqf6RYg==
       tarball: 'file:projects/default-template.tgz'
     version: 0.0.0
   'file:projects/eslint-config.tgz':
@@ -10109,7 +10143,7 @@ packages:
     dev: false
     name: '@rush-temp/example'
     resolution:
-      integrity: sha512-9sQubrBBcFb9siNUrrxgUAehgR6pySusO/Q4SKQqW3JheZT1qTJohAQNbAA5hFlMVtN4Vl6/KvH+6vCwFaW4fw==
+      integrity: sha512-2CAgdP9qCYbx2GXoyPH4hXDTot6/dlL9wpzVd5B2s6VOiRp25NqZUytW0EBw1ulvqgWkcwTr3SQUZjzsIz3nUg==
       tarball: 'file:projects/example.tgz'
     version: 0.0.0
   'file:projects/externalize.tgz':
@@ -10131,7 +10165,7 @@ packages:
     dev: false
     name: '@rush-temp/externalize'
     resolution:
-      integrity: sha512-Aaawnxa73tgphrxeVhkgFtFsEg/TgpH4Gk3iOYtRZnRlqXByxxIK9u0cnNmp/CtOW0MGla5nOG2oW6yaHZG0TA==
+      integrity: sha512-S1jds3PD5UYDMZRsSjIKqP+eMy7Bp/lvuvveqHgAYjxhz16NFZxKWEGq1YDA91Ka+KJKRqTG3SqKO75OIuxOoQ==
       tarball: 'file:projects/externalize.tgz'
     version: 0.0.0
   'file:projects/legacy-template.tgz':
@@ -10154,7 +10188,7 @@ packages:
     dev: false
     name: '@rush-temp/legacy-template'
     resolution:
-      integrity: sha512-XrqDVDJjln217q6mDocgp3EuxhvsavNIDIJXCx+9kqGngo6vYD2KtQBW/KKRFWYfLjGhLs7C/VvzRPoVBKNAcA==
+      integrity: sha512-0Ztd34ALg5EHH7J+6vU1uUVorhtV52+q2GSWoyO1iOPwrLkaitbR1xzHJS8m5PjPIAUq6glxAnEk/PHxOhT2Ww==
       tarball: 'file:projects/legacy-template.tgz'
     version: 0.0.0
   'file:projects/model.tgz':
@@ -10181,7 +10215,7 @@ packages:
     dev: false
     name: '@rush-temp/model'
     resolution:
-      integrity: sha512-HASqMTuhRrBPJ2DBtKQB95//Dseqp2rC970I7wTgSXqwKv71MT4BdrHFaDpv5Q7z6NPjxiJYSDskEvbpZucyYQ==
+      integrity: sha512-DcN2vZ4gt0AE7v0NXNOOVjcBG38YlSkZE0eY2AuGggzf43XSoHcaa4mozn3LuRTqtx/nPh9Ec5KBdRHyd89t5A==
       tarball: 'file:projects/model.tgz'
     version: 0.0.0
   'file:projects/parser.tgz':
@@ -10211,7 +10245,7 @@ packages:
     dev: false
     name: '@rush-temp/parser'
     resolution:
-      integrity: sha512-bAzVZVP5bds3Txr1gP04FLh7m6VGbLhXqF8ra9/WFIVpSKqga2I+ZYRG8SD6M58vs3gMlSYFflEsGlk1StSN0g==
+      integrity: sha512-SjPb6IaRVT1NgfUjGIar2D/99BpTS8R0U+NjHmNMzKDzk2+UMeNiJ7M9ahqQo8xUuaX02MOne4nQCpreLXYzJQ==
       tarball: 'file:projects/parser.tgz'
     version: 0.0.0
   'file:projects/plugin-markdown.tgz':
@@ -10266,7 +10300,7 @@ packages:
     dev: false
     name: '@rush-temp/template-library'
     resolution:
-      integrity: sha512-Ga7ifiRQU0sO65PCFKou1uGHWNYrrL1VFvlS4a2MVmDy1oIJGnqV7I05kpoU0mZwo2jxb4D4K3lPgIUOKqu5Ew==
+      integrity: sha512-0NrGfO+hq42SAE6hey96REhD+dFUT5ejuQufSM/UTtHQbVIssKXYLnig9ykts7h18lhgaZr+HJB8XT3GNDF/Xg==
       tarball: 'file:projects/template-library.tgz'
     version: 0.0.0
   'file:projects/tests.tgz':
@@ -10275,7 +10309,7 @@ packages:
     dev: false
     name: '@rush-temp/tests'
     resolution:
-      integrity: sha512-Wj1nXVRwxWhCOnxK3jQgSixX7Q3/yk8F47yI+e8X89/BuFg/KNNA/6HwBKDO3MiHRDfs5DZWAVT4ShWocN/3vw==
+      integrity: sha512-y6oVwycfBWpk5tP5rv8H2nsKrLywi+idkBEh0+b8+577vQIe9Ajiu7pB0VZjpC4QJDKaWKnkbFdFBj/G+LH4Ww==
       tarball: 'file:projects/tests.tgz'
     version: 0.0.0
   'file:projects/types.tgz':
@@ -10285,6 +10319,7 @@ packages:
       integrity: sha512-maxudznjgJEhASCC8FSBY42y0jNeTsC8qD+VqHy4OwuohcnBX0UtjTX4e3yJauqjefEzEwQbGTP3ZninK/VazQ==
       tarball: 'file:projects/types.tgz'
     version: 0.0.0
+registry: ''
 specifiers:
   '@babel/cli': ^7.8.4
   '@babel/core': ^7.9.0
@@ -10360,7 +10395,9 @@ specifiers:
   pkg-up: ~3.1.0
   react: ^16.8.0
   react-dom: ^16.8.0
+  react-redux: ~7.2.2
   read-pkg-up: ~7.0.1
+  redux: ~4.0.5
   sass: ^1.26.10
   sass-loader: ^9.0.3
   taffydb: 2.7.3
