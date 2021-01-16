@@ -10035,7 +10035,7 @@ packages:
     dev: false
     name: '@rush-temp/cli'
     resolution:
-      integrity: sha512-ut+RkWOKa4tJuJXxcMBFNUP7yfG3VehZt6ROTGxHlRahVNkPUFT3WrxUI5hhl2iDFLDNd81WHk3NZ/HLINa75Q==
+      integrity: sha512-4PPhq4+bsioYKACYAb/X2dlVp8sMSImNfuqs/0sX1JkDYGKEzWZYk+VqHCWz3yX4ayGgVIfSnQJzkXBDfYhtGg==
       tarball: 'file:projects/cli.tgz'
     version: 0.0.0
   'file:projects/default-template.tgz':

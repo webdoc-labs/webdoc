@@ -12,6 +12,7 @@ import {
   type VariableDeclarator,
   isArrowFunctionExpression,
   isAssignmentExpression,
+  isBooleanLiteral,
   isCallExpression,
   isClassDeclaration,
   isClassExpression,
@@ -23,6 +24,7 @@ import {
   isInterfaceDeclaration,
   isLiteral,
   isMemberExpression,
+  isNumericLiteral,
   isObjectExpression,
   isObjectMethod,
   isObjectProperty,
@@ -50,6 +52,7 @@ import {
   extractReturns,
   extractType,
 } from "./extract-metadata";
+import {createSimpleKeywordType} from "@webdoc/model";
 
 // + Extract the symbol name, type from the Node
 // + Set the appopriate flags
@@ -113,8 +116,18 @@ export default function extractSymbol(
       if (isStringLiteral(node.value)) {
         // Quotes for strings
         nodeSymbol.meta.defaultValue = `"${node.value.value}"`;
+
+        if (!nodeSymbol.meta.dataType) {
+          nodeSymbol.meta.dataType = createSimpleKeywordType("string");
+        }
       } else {
         nodeSymbol.meta.defaultValue = node.value.value;
+
+        if (!nodeSymbol.meta.dataType && isNumericLiteral(node.value)) {
+          nodeSymbol.meta.dataType = createSimpleKeywordType("number");
+        } else if (!nodeSymbol.meta.dataType && isBooleanLiteral(node.value)) {
+          nodeSymbol.meta.dataType = createSimpleKeywordType("boolean");
+        }
       }
     }
   } else if (isClassDeclaration(node) || isClassExpression(node)) {

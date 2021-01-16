@@ -27,10 +27,13 @@ describe("@webdoc/parser.LanguageIntegration{@lang js}", function() {
 
     expect(symClassName.members.length).to.equal(6);
 
+    const symInitProperty = findSymbol("ClassName.initProperty", symtree);
+
     expect(findSymbol("ClassName.constructor", symtree)).to.not.equal(undefined);
     expect(findSymbol("ClassName.classProperty", symtree)).to.not.equal(undefined);
     expect(findSymbol("ClassName.classMethod", symtree)).to.not.equal(undefined);
-    expect(findSymbol("ClassName.initProperty", symtree)).to.not.equal(undefined);
+    expect(symInitProperty).to.not.equal(undefined);
+    expect(symInitProperty.meta.defaultValue).to.equal(9);
   });
 
   it("should parse assigned members properly", function() {
