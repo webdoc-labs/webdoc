@@ -107,4 +107,20 @@ describe("@webdoc/parser.LanguageIntegration{@lang ts}", function() {
 
     expect(symbolObjectName.meta.object).to.equal("this.objectName");
   });
+
+  it("should infer simple types", function() {
+    const symtree = buildSymbolTree(`
+      class ClassName {
+        bool = true;
+        num = 1;
+        str = "string";
+      }
+    `);
+
+    const [bool, num, str] = symtree.members[0].members;
+
+    expect(bool.meta.dataType[0]).to.equal("boolean");
+    expect(num.meta.dataType[0]).to.equal("number");
+    expect(str.meta.dataType[0]).to.equal("string");
+  });
 });
