@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 33);
+/******/ 	return __webpack_require__(__webpack_require__.s = 38);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -191,35 +191,11 @@ function toVal(mix) {
 /***/ }),
 /* 4 */,
 /* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-if (false) { var throwOnDirectAccess, ReactIs; } else {
-  // By explicitly using `prop-types` you are opting into new production behavior.
-  // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(36)();
-}
-
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports) {
-
-module.exports = ReactDOM;
-
-/***/ }),
-/* 7 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return capitalize; });
-/* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(29);
+/* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(34);
 
 // It should to be noted that this function isn't equivalent to `text-transform: capitalize`.
 //
@@ -232,6 +208,30 @@ function capitalize(string) {
 
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+if (false) { var throwOnDirectAccess, ReactIs; } else {
+  // By explicitly using `prop-types` you are opting into new production behavior.
+  // http://fb.me/prop-types-in-prod
+  module.exports = __webpack_require__(41)();
+}
+
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports) {
+
+module.exports = ReactDOM;
 
 /***/ }),
 /* 8 */
@@ -250,16 +250,16 @@ var external_React_ = __webpack_require__(0);
 var external_React_default = /*#__PURE__*/__webpack_require__.n(external_React_);
 
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/prop-types/15.7.2/node_modules/prop-types/index.js
-var prop_types = __webpack_require__(5);
+var prop_types = __webpack_require__(6);
 
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/hoist-non-react-statics/3.3.2/node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js
-var hoist_non_react_statics_cjs = __webpack_require__(26);
+var hoist_non_react_statics_cjs = __webpack_require__(31);
 var hoist_non_react_statics_cjs_default = /*#__PURE__*/__webpack_require__.n(hoist_non_react_statics_cjs);
 
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.10.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/makeStyles/makeStyles.js + 23 modules
-var makeStyles = __webpack_require__(59);
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/makeStyles/makeStyles.js + 23 modules
+var makeStyles = __webpack_require__(64);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.10.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/getThemeProps/getThemeProps.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/getThemeProps/getThemeProps.js
 /* eslint-disable no-restricted-syntax */
 function getThemeProps(params) {
   var theme = params.theme,
@@ -283,10 +283,10 @@ function getThemeProps(params) {
 
   return props;
 }
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.10.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/useTheme/useTheme.js + 1 modules
-var useTheme = __webpack_require__(60);
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/useTheme/useTheme.js + 1 modules
+var useTheme = __webpack_require__(65);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.10.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/withStyles/withStyles.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/withStyles/withStyles.js
 
 
 
@@ -320,7 +320,7 @@ var withStyles_withStyles = function withStyles(stylesOrCreator) {
       name: name || Component.displayName,
       classNamePrefix: classNamePrefix
     }, stylesOptions));
-    var WithStyles = external_React_default.a.forwardRef(function WithStyles(props, ref) {
+    var WithStyles = /*#__PURE__*/external_React_default.a.forwardRef(function WithStyles(props, ref) {
       var classesProp = props.classes,
           innerRef = props.innerRef,
           other = Object(objectWithoutProperties["a" /* default */])(props, ["classes", "innerRef"]); // The wrapper receives only user supplied props, which could be a subset of
@@ -328,7 +328,7 @@ var withStyles_withStyles = function withStyles(stylesOrCreator) {
       // So copying it here would give us the same result in the wrapper as well.
 
 
-      var classes = useStyles(Object(esm_extends["a" /* default */])(Object(esm_extends["a" /* default */])({}, Component.defaultProps), props));
+      var classes = useStyles(Object(esm_extends["a" /* default */])({}, Component.defaultProps, props));
       var theme;
       var more = other;
 
@@ -370,10 +370,10 @@ var withStyles_withStyles = function withStyles(stylesOrCreator) {
 };
 
 /* harmony default export */ var esm_withStyles_withStyles = (withStyles_withStyles);
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/defaultTheme.js + 22 modules
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/defaultTheme.js + 22 modules
 var styles_defaultTheme = __webpack_require__(11);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/withStyles.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/withStyles.js
 
 
 
@@ -427,7 +427,7 @@ function _iterableToArrayLimit(arr, i) {
   return _arr;
 }
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/unsupportedIterableToArray.js
-var unsupportedIterableToArray = __webpack_require__(16);
+var unsupportedIterableToArray = __webpack_require__(20);
 
 // CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/nonIterableRest.js
 function _nonIterableRest() {
@@ -487,13 +487,13 @@ function _defineProperty(obj, key, value) {
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js
 var objectWithoutProperties = __webpack_require__(2);
 
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/utils/4.10.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/utils/esm/deepmerge.js
-var deepmerge = __webpack_require__(58);
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/utils/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/utils/esm/deepmerge.js
+var deepmerge = __webpack_require__(63);
 
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/extends.js
 var esm_extends = __webpack_require__(1);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/createBreakpoints.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/createBreakpoints.js
 
 
 // Sorted ASC by size. That's important.
@@ -561,7 +561,7 @@ function createBreakpoints(breakpoints) {
     width: width
   }, other);
 }
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/createMixins.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/createMixins.js
 
 
 function createMixins(breakpoints, spacing, mixins) {
@@ -603,16 +603,16 @@ function createMixins(breakpoints, spacing, mixins) {
     }), _toolbar)
   }, mixins);
 }
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/utils/4.10.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/utils/esm/formatMuiErrorMessage.js
-var formatMuiErrorMessage = __webpack_require__(29);
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/utils/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/utils/esm/formatMuiErrorMessage.js
+var formatMuiErrorMessage = __webpack_require__(34);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/colors/common.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/colors/common.js
 var common = {
   black: '#000',
   white: '#fff'
 };
 /* harmony default export */ var colors_common = (common);
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/colors/grey.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/colors/grey.js
 var grey = {
   50: '#fafafa',
   100: '#f5f5f5',
@@ -630,7 +630,7 @@ var grey = {
   A700: '#616161'
 };
 /* harmony default export */ var colors_grey = (grey);
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/colors/indigo.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/colors/indigo.js
 var indigo = {
   50: '#e8eaf6',
   100: '#c5cae9',
@@ -648,7 +648,7 @@ var indigo = {
   A700: '#304ffe'
 };
 /* harmony default export */ var colors_indigo = (indigo);
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/colors/pink.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/colors/pink.js
 var pink = {
   50: '#fce4ec',
   100: '#f8bbd0',
@@ -666,7 +666,7 @@ var pink = {
   A700: '#c51162'
 };
 /* harmony default export */ var colors_pink = (pink);
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/colors/red.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/colors/red.js
 var red = {
   50: '#ffebee',
   100: '#ffcdd2',
@@ -684,7 +684,7 @@ var red = {
   A700: '#d50000'
 };
 /* harmony default export */ var colors_red = (red);
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/colors/orange.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/colors/orange.js
 var orange = {
   50: '#fff3e0',
   100: '#ffe0b2',
@@ -702,7 +702,7 @@ var orange = {
   A700: '#ff6d00'
 };
 /* harmony default export */ var colors_orange = (orange);
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/colors/blue.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/colors/blue.js
 var blue = {
   50: '#e3f2fd',
   100: '#bbdefb',
@@ -720,7 +720,7 @@ var blue = {
   A700: '#2962ff'
 };
 /* harmony default export */ var colors_blue = (blue);
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/colors/green.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/colors/green.js
 var green = {
   50: '#e8f5e9',
   100: '#c8e6c9',
@@ -738,10 +738,10 @@ var green = {
   A700: '#00c853'
 };
 /* harmony default export */ var colors_green = (green);
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/colorManipulator.js
-var colorManipulator = __webpack_require__(19);
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/colorManipulator.js
+var colorManipulator = __webpack_require__(23);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/createPalette.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/createPalette.js
 
 
 
@@ -962,7 +962,7 @@ function createPalette(palette) {
   }, types[type]), other);
   return paletteOutput;
 }
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/createTypography.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/createTypography.js
 
 
 
@@ -1051,7 +1051,7 @@ function createTypography(palette, typography) {
 
   });
 }
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/shadows.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/shadows.js
 var shadowKeyUmbraOpacity = 0.2;
 var shadowKeyPenumbraOpacity = 0.14;
 var shadowAmbientShadowOpacity = 0.12;
@@ -1063,7 +1063,7 @@ function createShadow() {
 
 var shadows = ['none', createShadow(0, 2, 1, -1, 0, 1, 1, 0, 0, 1, 3, 0), createShadow(0, 3, 1, -2, 0, 2, 2, 0, 0, 1, 5, 0), createShadow(0, 3, 3, -2, 0, 3, 4, 0, 0, 1, 8, 0), createShadow(0, 2, 4, -1, 0, 4, 5, 0, 0, 1, 10, 0), createShadow(0, 3, 5, -1, 0, 5, 8, 0, 0, 1, 14, 0), createShadow(0, 3, 5, -1, 0, 6, 10, 0, 0, 1, 18, 0), createShadow(0, 4, 5, -2, 0, 7, 10, 1, 0, 2, 16, 1), createShadow(0, 5, 5, -3, 0, 8, 10, 1, 0, 3, 14, 2), createShadow(0, 5, 6, -3, 0, 9, 12, 1, 0, 3, 16, 2), createShadow(0, 6, 6, -3, 0, 10, 14, 1, 0, 4, 18, 3), createShadow(0, 6, 7, -4, 0, 11, 15, 1, 0, 4, 20, 3), createShadow(0, 7, 8, -4, 0, 12, 17, 2, 0, 5, 22, 4), createShadow(0, 7, 8, -4, 0, 13, 19, 2, 0, 5, 24, 4), createShadow(0, 7, 9, -4, 0, 14, 21, 2, 0, 5, 26, 4), createShadow(0, 8, 9, -5, 0, 15, 22, 2, 0, 6, 28, 5), createShadow(0, 8, 10, -5, 0, 16, 24, 2, 0, 6, 30, 5), createShadow(0, 8, 11, -5, 0, 17, 26, 2, 0, 6, 32, 5), createShadow(0, 9, 11, -5, 0, 18, 28, 2, 0, 7, 34, 6), createShadow(0, 9, 12, -6, 0, 19, 29, 2, 0, 7, 36, 6), createShadow(0, 10, 13, -6, 0, 20, 31, 3, 0, 8, 38, 7), createShadow(0, 10, 13, -6, 0, 21, 33, 3, 0, 8, 40, 7), createShadow(0, 10, 14, -6, 0, 22, 35, 3, 0, 8, 42, 7), createShadow(0, 11, 14, -7, 0, 23, 36, 3, 0, 9, 44, 8), createShadow(0, 11, 15, -7, 0, 24, 38, 3, 0, 9, 46, 8)];
 /* harmony default export */ var styles_shadows = (shadows);
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/shape.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/shape.js
 var shape = {
   borderRadius: 4
 };
@@ -1072,15 +1072,15 @@ var shape = {
 var slicedToArray = __webpack_require__(9);
 
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/toConsumableArray.js + 3 modules
-var toConsumableArray = __webpack_require__(18);
+var toConsumableArray = __webpack_require__(22);
 
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/typeof.js
 var esm_typeof = __webpack_require__(12);
 
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/prop-types/15.7.2/node_modules/prop-types/index.js
-var prop_types = __webpack_require__(5);
+var prop_types = __webpack_require__(6);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/system/4.9.14_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/system/esm/merge.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/system/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/system/esm/merge.js
 
 
 function merge(acc, item) {
@@ -1095,7 +1095,7 @@ function merge(acc, item) {
 }
 
 /* harmony default export */ var esm_merge = (merge);
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/system/4.9.14_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/system/esm/breakpoints.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/system/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/system/esm/breakpoints.js
 
 
 
@@ -1165,7 +1165,7 @@ function breakpoints_breakpoints(styleFunction) {
 }
 
 /* harmony default export */ var esm_breakpoints = (breakpoints_breakpoints);
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/system/4.9.14_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/system/esm/memoize.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/system/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/system/esm/memoize.js
 function memoize(fn) {
   var cache = {};
   return function (arg) {
@@ -1176,7 +1176,7 @@ function memoize(fn) {
     return cache[arg];
   };
 }
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/system/4.9.14_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/system/esm/spacing.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/system/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/system/esm/spacing.js
 
 
 
@@ -1303,7 +1303,7 @@ function spacing_spacing(props) {
 spacing_spacing.propTypes =  false ? undefined : {};
 spacing_spacing.filterProps = spacingKeys;
 /* harmony default export */ var esm_spacing = (spacing_spacing);
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/createSpacing.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/createSpacing.js
 
 var warnOnce;
 function createSpacing() {
@@ -1357,10 +1357,10 @@ function createSpacing() {
   spacing.mui = true;
   return spacing;
 }
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/transitions.js
-var transitions = __webpack_require__(17);
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/transitions.js
+var transitions = __webpack_require__(21);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/zIndex.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/zIndex.js
 // We need to centralize the zIndex definitions as they work
 // like global values in the browser.
 var zIndex = {
@@ -1373,7 +1373,7 @@ var zIndex = {
   tooltip: 1500
 };
 /* harmony default export */ var styles_zIndex = (zIndex);
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/createMuiTheme.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/createMuiTheme.js
 
 
 
@@ -1435,7 +1435,7 @@ function createMuiTheme() {
 }
 
 /* harmony default export */ var styles_createMuiTheme = (createMuiTheme);
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/defaultTheme.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/defaultTheme.js
 
 var defaultTheme = styles_createMuiTheme();
 /* harmony default export */ var styles_defaultTheme = __webpack_exports__["a"] = (defaultTheme);
@@ -1467,6 +1467,21 @@ function _typeof(obj) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return setRef; });
+// TODO v5: consider to make it private
+function setRef(ref, value) {
+  if (typeof ref === 'function') {
+    ref(value);
+  } else if (ref) {
+    ref.current = value;
+  }
+}
+
+/***/ }),
+/* 14 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _inheritsLoose; });
 function _inheritsLoose(subClass, superClass) {
   subClass.prototype = Object.create(superClass.prototype);
@@ -1475,7 +1490,7 @@ function _inheritsLoose(subClass, superClass) {
 }
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1491,7 +1506,567 @@ function _arrayLikeToArray(arr, len) {
 }
 
 /***/ }),
-/* 15 */
+/* 16 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+// ESM COMPAT FLAG
+__webpack_require__.r(__webpack_exports__);
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, "capitalize", function() { return /* reexport */ capitalize["a" /* default */]; });
+__webpack_require__.d(__webpack_exports__, "createChainedFunction", function() { return /* reexport */ createChainedFunction; });
+__webpack_require__.d(__webpack_exports__, "createSvgIcon", function() { return /* reexport */ createSvgIcon; });
+__webpack_require__.d(__webpack_exports__, "debounce", function() { return /* reexport */ debounce; });
+__webpack_require__.d(__webpack_exports__, "deprecatedPropType", function() { return /* reexport */ deprecatedPropType; });
+__webpack_require__.d(__webpack_exports__, "isMuiElement", function() { return /* reexport */ isMuiElement; });
+__webpack_require__.d(__webpack_exports__, "ownerDocument", function() { return /* reexport */ ownerDocument; });
+__webpack_require__.d(__webpack_exports__, "ownerWindow", function() { return /* reexport */ ownerWindow; });
+__webpack_require__.d(__webpack_exports__, "requirePropFactory", function() { return /* reexport */ requirePropFactory; });
+__webpack_require__.d(__webpack_exports__, "setRef", function() { return /* reexport */ setRef["a" /* default */]; });
+__webpack_require__.d(__webpack_exports__, "unsupportedProp", function() { return /* reexport */ unsupportedProp; });
+__webpack_require__.d(__webpack_exports__, "useControlled", function() { return /* reexport */ useControlled["a" /* default */]; });
+__webpack_require__.d(__webpack_exports__, "useEventCallback", function() { return /* reexport */ useEventCallback; });
+__webpack_require__.d(__webpack_exports__, "useForkRef", function() { return /* reexport */ useForkRef["a" /* default */]; });
+__webpack_require__.d(__webpack_exports__, "unstable_useId", function() { return /* reexport */ useId; });
+__webpack_require__.d(__webpack_exports__, "useIsFocusVisible", function() { return /* reexport */ useIsFocusVisible["a" /* default */]; });
+
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/capitalize.js
+var capitalize = __webpack_require__(5);
+
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/createChainedFunction.js
+/**
+ * Safe chained function
+ *
+ * Will only create a new function if needed,
+ * otherwise will pass back existing functions or null.
+ *
+ * @param {function} functions to chain
+ * @returns {function|null}
+ */
+function createChainedFunction() {
+  for (var _len = arguments.length, funcs = new Array(_len), _key = 0; _key < _len; _key++) {
+    funcs[_key] = arguments[_key];
+  }
+
+  return funcs.reduce(function (acc, func) {
+    if (func == null) {
+      return acc;
+    }
+
+    if (false) {}
+
+    return function chainedFunction() {
+      for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+        args[_key2] = arguments[_key2];
+      }
+
+      acc.apply(this, args);
+      func.apply(this, args);
+    };
+  }, function () {});
+}
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/extends.js
+var esm_extends = __webpack_require__(1);
+
+// EXTERNAL MODULE: external "React"
+var external_React_ = __webpack_require__(0);
+var external_React_default = /*#__PURE__*/__webpack_require__.n(external_React_);
+
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js
+var objectWithoutProperties = __webpack_require__(2);
+
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/prop-types/15.7.2/node_modules/prop-types/index.js
+var prop_types = __webpack_require__(6);
+
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/clsx/1.1.1/node_modules/clsx/dist/clsx.m.js
+var clsx_m = __webpack_require__(3);
+
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/withStyles.js + 2 modules
+var withStyles = __webpack_require__(8);
+
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/SvgIcon/SvgIcon.js
+
+
+
+
+
+
+
+var styles = function styles(theme) {
+  return {
+    /* Styles applied to the root element. */
+    root: {
+      userSelect: 'none',
+      width: '1em',
+      height: '1em',
+      display: 'inline-block',
+      fill: 'currentColor',
+      flexShrink: 0,
+      fontSize: theme.typography.pxToRem(24),
+      transition: theme.transitions.create('fill', {
+        duration: theme.transitions.duration.shorter
+      })
+    },
+
+    /* Styles applied to the root element if `color="primary"`. */
+    colorPrimary: {
+      color: theme.palette.primary.main
+    },
+
+    /* Styles applied to the root element if `color="secondary"`. */
+    colorSecondary: {
+      color: theme.palette.secondary.main
+    },
+
+    /* Styles applied to the root element if `color="action"`. */
+    colorAction: {
+      color: theme.palette.action.active
+    },
+
+    /* Styles applied to the root element if `color="error"`. */
+    colorError: {
+      color: theme.palette.error.main
+    },
+
+    /* Styles applied to the root element if `color="disabled"`. */
+    colorDisabled: {
+      color: theme.palette.action.disabled
+    },
+
+    /* Styles applied to the root element if `fontSize="inherit"`. */
+    fontSizeInherit: {
+      fontSize: 'inherit'
+    },
+
+    /* Styles applied to the root element if `fontSize="small"`. */
+    fontSizeSmall: {
+      fontSize: theme.typography.pxToRem(20)
+    },
+
+    /* Styles applied to the root element if `fontSize="large"`. */
+    fontSizeLarge: {
+      fontSize: theme.typography.pxToRem(35)
+    }
+  };
+};
+var SvgIcon_SvgIcon = /*#__PURE__*/external_React_["forwardRef"](function SvgIcon(props, ref) {
+  var children = props.children,
+      classes = props.classes,
+      className = props.className,
+      _props$color = props.color,
+      color = _props$color === void 0 ? 'inherit' : _props$color,
+      _props$component = props.component,
+      Component = _props$component === void 0 ? 'svg' : _props$component,
+      _props$fontSize = props.fontSize,
+      fontSize = _props$fontSize === void 0 ? 'default' : _props$fontSize,
+      htmlColor = props.htmlColor,
+      titleAccess = props.titleAccess,
+      _props$viewBox = props.viewBox,
+      viewBox = _props$viewBox === void 0 ? '0 0 24 24' : _props$viewBox,
+      other = Object(objectWithoutProperties["a" /* default */])(props, ["children", "classes", "className", "color", "component", "fontSize", "htmlColor", "titleAccess", "viewBox"]);
+
+  return /*#__PURE__*/external_React_["createElement"](Component, Object(esm_extends["a" /* default */])({
+    className: Object(clsx_m["a" /* default */])(classes.root, className, color !== 'inherit' && classes["color".concat(Object(capitalize["a" /* default */])(color))], fontSize !== 'default' && classes["fontSize".concat(Object(capitalize["a" /* default */])(fontSize))]),
+    focusable: "false",
+    viewBox: viewBox,
+    color: htmlColor,
+    "aria-hidden": titleAccess ? undefined : true,
+    role: titleAccess ? 'img' : undefined,
+    ref: ref
+  }, other), children, titleAccess ? /*#__PURE__*/external_React_["createElement"]("title", null, titleAccess) : null);
+});
+ false ? undefined : void 0;
+SvgIcon_SvgIcon.muiName = 'SvgIcon';
+/* harmony default export */ var esm_SvgIcon_SvgIcon = (Object(withStyles["a" /* default */])(styles, {
+  name: 'MuiSvgIcon'
+})(SvgIcon_SvgIcon));
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/createSvgIcon.js
+
+
+
+/**
+ * Private module reserved for @material-ui/x packages.
+ */
+
+function createSvgIcon(path, displayName) {
+  var Component = function Component(props, ref) {
+    return /*#__PURE__*/external_React_default.a.createElement(esm_SvgIcon_SvgIcon, Object(esm_extends["a" /* default */])({
+      ref: ref
+    }, props), path);
+  };
+
+  if (false) {}
+
+  Component.muiName = esm_SvgIcon_SvgIcon.muiName;
+  return /*#__PURE__*/external_React_default.a.memo( /*#__PURE__*/external_React_default.a.forwardRef(Component));
+}
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/debounce.js
+// Corresponds to 10 frames at 60 Hz.
+// A few bytes payload overhead when lodash/debounce is ~3 kB and debounce ~300 B.
+function debounce(func) {
+  var wait = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 166;
+  var timeout;
+
+  function debounced() {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    // eslint-disable-next-line consistent-this
+    var that = this;
+
+    var later = function later() {
+      func.apply(that, args);
+    };
+
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  }
+
+  debounced.clear = function () {
+    clearTimeout(timeout);
+  };
+
+  return debounced;
+}
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/deprecatedPropType.js
+function deprecatedPropType(validator, reason) {
+  if (true) {
+    return function () {
+      return null;
+    };
+  }
+
+  return function (props, propName, componentName, location, propFullName) {
+    var componentNameSafe = componentName || '<<anonymous>>';
+    var propFullNameSafe = propFullName || propName;
+
+    if (typeof props[propName] !== 'undefined') {
+      return new Error("The ".concat(location, " `").concat(propFullNameSafe, "` of ") + "`".concat(componentNameSafe, "` is deprecated. ").concat(reason));
+    }
+
+    return null;
+  };
+}
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/isMuiElement.js
+
+function isMuiElement(element, muiNames) {
+  return /*#__PURE__*/external_React_["isValidElement"](element) && muiNames.indexOf(element.type.muiName) !== -1;
+}
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/ownerDocument.js
+function ownerDocument(node) {
+  return node && node.ownerDocument || document;
+}
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/ownerWindow.js
+
+function ownerWindow(node) {
+  var doc = ownerDocument(node);
+  return doc.defaultView || window;
+}
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/requirePropFactory.js
+function requirePropFactory(componentNameInError) {
+  if (true) {
+    return function () {
+      return null;
+    };
+  }
+
+  var requireProp = function requireProp(requiredProp) {
+    return function (props, propName, componentName, location, propFullName) {
+      var propFullNameSafe = propFullName || propName;
+
+      if (typeof props[propName] !== 'undefined' && !props[requiredProp]) {
+        return new Error("The prop `".concat(propFullNameSafe, "` of ") + "`".concat(componentNameInError, "` must be used on `").concat(requiredProp, "`."));
+      }
+
+      return null;
+    };
+  };
+
+  return requireProp;
+}
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/setRef.js
+var setRef = __webpack_require__(13);
+
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/unsupportedProp.js
+function unsupportedProp(props, propName, componentName, location, propFullName) {
+  if (true) {
+    return null;
+  }
+
+  var propFullNameSafe = propFullName || propName;
+
+  if (typeof props[propName] !== 'undefined') {
+    return new Error("The prop `".concat(propFullNameSafe, "` is not supported. Please remove it."));
+  }
+
+  return null;
+}
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/useControlled.js
+var useControlled = __webpack_require__(27);
+
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/useEventCallback.js
+
+var useEnhancedEffect = typeof window !== 'undefined' ? external_React_["useLayoutEffect"] : external_React_["useEffect"];
+/**
+ * https://github.com/facebook/react/issues/14099#issuecomment-440013892
+ *
+ * @param {function} fn
+ */
+
+function useEventCallback(fn) {
+  var ref = external_React_["useRef"](fn);
+  useEnhancedEffect(function () {
+    ref.current = fn;
+  });
+  return external_React_["useCallback"](function () {
+    return (0, ref.current).apply(void 0, arguments);
+  }, []);
+}
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/useForkRef.js
+var useForkRef = __webpack_require__(17);
+
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/unstable_useId.js
+
+/**
+ * Private module reserved for @material-ui/x packages.
+ */
+
+function useId(idOverride) {
+  var _React$useState = external_React_["useState"](idOverride),
+      defaultId = _React$useState[0],
+      setDefaultId = _React$useState[1];
+
+  var id = idOverride || defaultId;
+  external_React_["useEffect"](function () {
+    if (defaultId == null) {
+      // Fallback to this default id when possible.
+      // Use the random value for client-side rendering only.
+      // We can't use it server-side.
+      setDefaultId("mui-".concat(Math.round(Math.random() * 1e5)));
+    }
+  }, [defaultId]);
+  return id;
+}
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/useIsFocusVisible.js
+var useIsFocusVisible = __webpack_require__(18);
+
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/index.js
+
+
+
+
+
+
+
+
+
+
+
+
+
+ // eslint-disable-next-line camelcase
+
+
+
+
+/***/ }),
+/* 17 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return useForkRef; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _setRef__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(13);
+
+
+function useForkRef(refA, refB) {
+  /**
+   * This will create a new function if the ref props change and are defined.
+   * This means react will call the old forkRef with `null` and the new forkRef
+   * with the ref. Cleanup naturally emerges from this behavior
+   */
+  return react__WEBPACK_IMPORTED_MODULE_0__["useMemo"](function () {
+    if (refA == null && refB == null) {
+      return null;
+    }
+
+    return function (refValue) {
+      Object(_setRef__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(refA, refValue);
+      Object(_setRef__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(refB, refValue);
+    };
+  }, [refA, refB]);
+}
+
+/***/ }),
+/* 18 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export teardown */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return useIsFocusVisible; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+// based on https://github.com/WICG/focus-visible/blob/v4.1.5/src/focus-visible.js
+
+
+var hadKeyboardEvent = true;
+var hadFocusVisibleRecently = false;
+var hadFocusVisibleRecentlyTimeout = null;
+var inputTypesWhitelist = {
+  text: true,
+  search: true,
+  url: true,
+  tel: true,
+  email: true,
+  password: true,
+  number: true,
+  date: true,
+  month: true,
+  week: true,
+  time: true,
+  datetime: true,
+  'datetime-local': true
+};
+/**
+ * Computes whether the given element should automatically trigger the
+ * `focus-visible` class being added, i.e. whether it should always match
+ * `:focus-visible` when focused.
+ * @param {Element} node
+ * @return {boolean}
+ */
+
+function focusTriggersKeyboardModality(node) {
+  var type = node.type,
+      tagName = node.tagName;
+
+  if (tagName === 'INPUT' && inputTypesWhitelist[type] && !node.readOnly) {
+    return true;
+  }
+
+  if (tagName === 'TEXTAREA' && !node.readOnly) {
+    return true;
+  }
+
+  if (node.isContentEditable) {
+    return true;
+  }
+
+  return false;
+}
+/**
+ * Keep track of our keyboard modality state with `hadKeyboardEvent`.
+ * If the most recent user interaction was via the keyboard;
+ * and the key press did not include a meta, alt/option, or control key;
+ * then the modality is keyboard. Otherwise, the modality is not keyboard.
+ * @param {KeyboardEvent} event
+ */
+
+
+function handleKeyDown(event) {
+  if (event.metaKey || event.altKey || event.ctrlKey) {
+    return;
+  }
+
+  hadKeyboardEvent = true;
+}
+/**
+ * If at any point a user clicks with a pointing device, ensure that we change
+ * the modality away from keyboard.
+ * This avoids the situation where a user presses a key on an already focused
+ * element, and then clicks on a different element, focusing it with a
+ * pointing device, while we still think we're in keyboard modality.
+ */
+
+
+function handlePointerDown() {
+  hadKeyboardEvent = false;
+}
+
+function handleVisibilityChange() {
+  if (this.visibilityState === 'hidden') {
+    // If the tab becomes active again, the browser will handle calling focus
+    // on the element (Safari actually calls it twice).
+    // If this tab change caused a blur on an element with focus-visible,
+    // re-apply the class when the user switches back to the tab.
+    if (hadFocusVisibleRecently) {
+      hadKeyboardEvent = true;
+    }
+  }
+}
+
+function prepare(doc) {
+  doc.addEventListener('keydown', handleKeyDown, true);
+  doc.addEventListener('mousedown', handlePointerDown, true);
+  doc.addEventListener('pointerdown', handlePointerDown, true);
+  doc.addEventListener('touchstart', handlePointerDown, true);
+  doc.addEventListener('visibilitychange', handleVisibilityChange, true);
+}
+
+function teardown(doc) {
+  doc.removeEventListener('keydown', handleKeyDown, true);
+  doc.removeEventListener('mousedown', handlePointerDown, true);
+  doc.removeEventListener('pointerdown', handlePointerDown, true);
+  doc.removeEventListener('touchstart', handlePointerDown, true);
+  doc.removeEventListener('visibilitychange', handleVisibilityChange, true);
+}
+
+function isFocusVisible(event) {
+  var target = event.target;
+
+  try {
+    return target.matches(':focus-visible');
+  } catch (error) {} // browsers not implementing :focus-visible will throw a SyntaxError
+  // we use our own heuristic for those browsers
+  // rethrow might be better if it's not the expected error but do we really
+  // want to crash if focus-visible malfunctioned?
+  // no need for validFocusTarget check. the user does that by attaching it to
+  // focusable events only
+
+
+  return hadKeyboardEvent || focusTriggersKeyboardModality(target);
+}
+/**
+ * Should be called if a blur event is fired on a focus-visible element
+ */
+
+
+function handleBlurVisible() {
+  // To detect a tab/window switch, we look for a blur event followed
+  // rapidly by a visibility change.
+  // If we don't see a visibility change within 100ms, it's probably a
+  // regular focus change.
+  hadFocusVisibleRecently = true;
+  window.clearTimeout(hadFocusVisibleRecentlyTimeout);
+  hadFocusVisibleRecentlyTimeout = window.setTimeout(function () {
+    hadFocusVisibleRecently = false;
+  }, 100);
+}
+
+function useIsFocusVisible() {
+  var ref = react__WEBPACK_IMPORTED_MODULE_0__["useCallback"](function (instance) {
+    var node = react_dom__WEBPACK_IMPORTED_MODULE_1__["findDOMNode"](instance);
+
+    if (node != null) {
+      prepare(node.ownerDocument);
+    }
+  }, []);
+
+  if (false) {}
+
+  return {
+    isFocusVisible: isFocusVisible,
+    onBlurVisible: handleBlurVisible,
+    ref: ref
+  };
+}
+
+/***/ }),
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -1506,9 +2081,9 @@ function _arrayLikeToArray(arr, len) {
  * MIT License
  */
 
-var fingerprint = __webpack_require__(34);
-var pad = __webpack_require__(24);
-var getRandomValue = __webpack_require__(35);
+var fingerprint = __webpack_require__(39);
+var pad = __webpack_require__(26);
+var getRandomValue = __webpack_require__(40);
 
 var c = 0,
   blockSize = 4,
@@ -1581,12 +2156,12 @@ module.exports = cuid;
 
 
 /***/ }),
-/* 16 */
+/* 20 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _unsupportedIterableToArray; });
-/* harmony import */ var _babel_runtime_helpers_esm_arrayLikeToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(14);
+/* harmony import */ var _babel_runtime_helpers_esm_arrayLikeToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(15);
 
 function _unsupportedIterableToArray(o, minLen) {
   if (!o) return;
@@ -1598,7 +2173,7 @@ function _unsupportedIterableToArray(o, minLen) {
 }
 
 /***/ }),
-/* 17 */
+/* 21 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1681,7 +2256,7 @@ function formatMs(milliseconds) {
 });
 
 /***/ }),
-/* 18 */
+/* 22 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1690,7 +2265,7 @@ function formatMs(milliseconds) {
 __webpack_require__.d(__webpack_exports__, "a", function() { return /* binding */ _toConsumableArray; });
 
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/arrayLikeToArray.js
-var arrayLikeToArray = __webpack_require__(14);
+var arrayLikeToArray = __webpack_require__(15);
 
 // CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/arrayWithoutHoles.js
 
@@ -1702,7 +2277,7 @@ function _iterableToArray(iter) {
   if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);
 }
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/unsupportedIterableToArray.js
-var unsupportedIterableToArray = __webpack_require__(16);
+var unsupportedIterableToArray = __webpack_require__(20);
 
 // CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/nonIterableSpread.js
 function _nonIterableSpread() {
@@ -1718,7 +2293,7 @@ function _toConsumableArray(arr) {
 }
 
 /***/ }),
-/* 19 */
+/* 23 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1733,7 +2308,7 @@ function _toConsumableArray(arr) {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return fade; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return darken; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return lighten; });
-/* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(29);
+/* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(34);
 
 
 /* eslint-disable no-use-before-define */
@@ -2012,7 +2587,55 @@ function lighten(color, coefficient) {
 }
 
 /***/ }),
-/* 20 */
+/* 24 */,
+/* 25 */,
+/* 26 */
+/***/ (function(module, exports) {
+
+module.exports = function pad (num, size) {
+  var s = '000000000' + num;
+  return s.substr(s.length - size);
+};
+
+
+/***/ }),
+/* 27 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return useControlled; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* eslint-disable react-hooks/rules-of-hooks, react-hooks/exhaustive-deps */
+
+function useControlled(_ref) {
+  var controlled = _ref.controlled,
+      defaultProp = _ref.default,
+      name = _ref.name,
+      _ref$state = _ref.state,
+      state = _ref$state === void 0 ? 'value' : _ref$state;
+
+  var _React$useRef = react__WEBPACK_IMPORTED_MODULE_0__["useRef"](controlled !== undefined),
+      isControlled = _React$useRef.current;
+
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__["useState"](defaultProp),
+      valueState = _React$useState[0],
+      setValue = _React$useState[1];
+
+  var value = isControlled ? controlled : valueState;
+
+  if (false) { var _React$useRef2, defaultValue; }
+
+  var setValueIfUncontrolled = react__WEBPACK_IMPORTED_MODULE_0__["useCallback"](function (newValue) {
+    if (!isControlled) {
+      setValue(newValue);
+    }
+  }, []);
+  return [value, setValueIfUncontrolled];
+}
+
+/***/ }),
+/* 28 */
 /***/ (function(module, exports) {
 
 function _interopRequireDefault(obj) {
@@ -2024,59 +2647,92 @@ function _interopRequireDefault(obj) {
 module.exports = _interopRequireDefault;
 
 /***/ }),
-/* 21 */,
-/* 22 */,
-/* 23 */,
-/* 24 */
-/***/ (function(module, exports) {
+/* 29 */
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = function pad (num, size) {
-  var s = '000000000' + num;
-  return s.substr(s.length - size);
-};
+var _typeof = __webpack_require__(45);
 
+function _getRequireWildcardCache() {
+  if (typeof WeakMap !== "function") return null;
+  var cache = new WeakMap();
+
+  _getRequireWildcardCache = function _getRequireWildcardCache() {
+    return cache;
+  };
+
+  return cache;
+}
+
+function _interopRequireWildcard(obj) {
+  if (obj && obj.__esModule) {
+    return obj;
+  }
+
+  if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") {
+    return {
+      "default": obj
+    };
+  }
+
+  var cache = _getRequireWildcardCache();
+
+  if (cache && cache.has(obj)) {
+    return cache.get(obj);
+  }
+
+  var newObj = {};
+  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
+
+  for (var key in obj) {
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
+
+      if (desc && (desc.get || desc.set)) {
+        Object.defineProperty(newObj, key, desc);
+      } else {
+        newObj[key] = obj[key];
+      }
+    }
+  }
+
+  newObj["default"] = obj;
+
+  if (cache) {
+    cache.set(obj, newObj);
+  }
+
+  return newObj;
+}
+
+module.exports = _interopRequireWildcard;
 
 /***/ }),
-/* 25 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-
-var _interopRequireDefault = __webpack_require__(20);
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = createSvgIcon;
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function get() {
+    return _utils.createSvgIcon;
+  }
+});
 
-var _extends2 = _interopRequireDefault(__webpack_require__(40));
-
-var _react = _interopRequireDefault(__webpack_require__(0));
-
-var _SvgIcon = _interopRequireDefault(__webpack_require__(43));
-
-function createSvgIcon(path, displayName) {
-  var Component = _react.default.memo(_react.default.forwardRef(function (props, ref) {
-    return _react.default.createElement(_SvgIcon.default, (0, _extends2.default)({
-      ref: ref
-    }, props), path);
-  }));
-
-  if (false) {}
-
-  Component.muiName = _SvgIcon.default.muiName;
-  return Component;
-}
+var _utils = __webpack_require__(16);
 
 /***/ }),
-/* 26 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var reactIs = __webpack_require__(38);
+var reactIs = __webpack_require__(43);
 
 /**
  * Copyright 2015, Yahoo! Inc.
@@ -2180,55 +2836,59 @@ module.exports = hoistNonReactStatics;
 
 
 /***/ }),
-/* 27 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(20);
+var _interopRequireDefault = __webpack_require__(28);
+
+var _interopRequireWildcard = __webpack_require__(29);
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
 
-var _react = _interopRequireDefault(__webpack_require__(0));
+var React = _interopRequireWildcard(__webpack_require__(0));
 
-var _createSvgIcon = _interopRequireDefault(__webpack_require__(25));
+var _createSvgIcon = _interopRequireDefault(__webpack_require__(30));
 
-var _default = (0, _createSvgIcon.default)(_react.default.createElement("path", {
+var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
   d: "M7 10l5 5 5-5z"
 }), 'ArrowDropDown');
 
 exports.default = _default;
 
 /***/ }),
-/* 28 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(20);
+var _interopRequireDefault = __webpack_require__(28);
+
+var _interopRequireWildcard = __webpack_require__(29);
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
 
-var _react = _interopRequireDefault(__webpack_require__(0));
+var React = _interopRequireWildcard(__webpack_require__(0));
 
-var _createSvgIcon = _interopRequireDefault(__webpack_require__(25));
+var _createSvgIcon = _interopRequireDefault(__webpack_require__(30));
 
-var _default = (0, _createSvgIcon.default)(_react.default.createElement("path", {
+var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
   d: "M10 17l5-5-5-5v10z"
 }), 'ArrowRight');
 
 exports.default = _default;
 
 /***/ }),
-/* 29 */
+/* 34 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2257,21 +2917,21 @@ function formatMuiErrorMessage(code) {
 }
 
 /***/ }),
-/* 30 */,
-/* 31 */,
-/* 32 */,
-/* 33 */
+/* 35 */,
+/* 36 */,
+/* 37 */,
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(42);
-module.exports = __webpack_require__(41);
+__webpack_require__(47);
+module.exports = __webpack_require__(46);
 
 
 /***/ }),
-/* 34 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var pad = __webpack_require__(24);
+var pad = __webpack_require__(26);
 
 var env = typeof window === 'object' ? window : self;
 var globalCount = Object.keys(env).length;
@@ -2286,7 +2946,7 @@ module.exports = function fingerprint () {
 
 
 /***/ }),
-/* 35 */
+/* 40 */
 /***/ (function(module, exports) {
 
 
@@ -2310,7 +2970,7 @@ module.exports = getRandomValue;
 
 
 /***/ }),
-/* 36 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2323,7 +2983,7 @@ module.exports = getRandomValue;
 
 
 
-var ReactPropTypesSecret = __webpack_require__(37);
+var ReactPropTypesSecret = __webpack_require__(42);
 
 function emptyFunction() {}
 function emptyFunctionWithReset() {}
@@ -2381,7 +3041,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 37 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2400,19 +3060,19 @@ module.exports = ReactPropTypesSecret;
 
 
 /***/ }),
-/* 38 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 if (true) {
-  module.exports = __webpack_require__(39);
+  module.exports = __webpack_require__(44);
 } else {}
 
 
 /***/ }),
-/* 39 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2434,31 +3094,29 @@ exports.isValidElementType=function(a){return"string"===typeof a||"function"===t
 
 
 /***/ }),
-/* 40 */
+/* 45 */
 /***/ (function(module, exports) {
 
-function _extends() {
-  module.exports = _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
+function _typeof(obj) {
+  "@babel/helpers - typeof";
 
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
+  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+    module.exports = _typeof = function _typeof(obj) {
+      return typeof obj;
+    };
+  } else {
+    module.exports = _typeof = function _typeof(obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+  }
 
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
+  return _typeof(obj);
 }
 
-module.exports = _extends;
+module.exports = _typeof;
 
 /***/ }),
-/* 41 */
+/* 46 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2466,19 +3124,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "../styles/index.css");
 
 /***/ }),
-/* 42 */
+/* 47 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/icons/4.9.1_95a14655f7783aafa461b3f6228f005c/node_modules/@material-ui/icons/ArrowDropDown.js
-var ArrowDropDown = __webpack_require__(27);
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/icons/4.11.2_3335f0bfb61930572868dabe45efc2f7/node_modules/@material-ui/icons/ArrowDropDown.js
+var ArrowDropDown = __webpack_require__(32);
 var ArrowDropDown_default = /*#__PURE__*/__webpack_require__.n(ArrowDropDown);
 
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/icons/4.9.1_95a14655f7783aafa461b3f6228f005c/node_modules/@material-ui/icons/ArrowRight.js
-var ArrowRight = __webpack_require__(28);
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/icons/4.11.2_3335f0bfb61930572868dabe45efc2f7/node_modules/@material-ui/icons/ArrowRight.js
+var ArrowRight = __webpack_require__(33);
 var ArrowRight_default = /*#__PURE__*/__webpack_require__.n(ArrowRight);
 
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/extends.js
@@ -2495,15 +3153,15 @@ var external_React_default = /*#__PURE__*/__webpack_require__.n(external_React_)
 var clsx_m = __webpack_require__(3);
 
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/prop-types/15.7.2/node_modules/prop-types/index.js
-var prop_types = __webpack_require__(5);
+var prop_types = __webpack_require__(6);
 
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/withStyles.js + 2 modules
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/withStyles.js + 2 modules
 var withStyles = __webpack_require__(8);
 
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/capitalize.js
-var capitalize = __webpack_require__(7);
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/capitalize.js
+var capitalize = __webpack_require__(5);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/Typography/Typography.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/Typography/Typography.js
 
 
 
@@ -2694,10 +3352,10 @@ var slicedToArray = __webpack_require__(9);
 var objectWithoutPropertiesLoose = __webpack_require__(10);
 
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/inheritsLoose.js
-var inheritsLoose = __webpack_require__(13);
+var inheritsLoose = __webpack_require__(14);
 
 // EXTERNAL MODULE: external "ReactDOM"
-var external_ReactDOM_ = __webpack_require__(6);
+var external_ReactDOM_ = __webpack_require__(7);
 var external_ReactDOM_default = /*#__PURE__*/__webpack_require__.n(external_ReactDOM_);
 
 // CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-transition-group/4.4.1_react-dom@16.14.0+react@16.14.0/node_modules/react-transition-group/esm/config.js
@@ -3138,10 +3796,10 @@ Transition_Transition.ENTERING = ENTERING;
 Transition_Transition.ENTERED = ENTERED;
 Transition_Transition.EXITING = EXITING;
 /* harmony default export */ var esm_Transition = (Transition_Transition);
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/transitions.js
-var transitions = __webpack_require__(17);
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/transitions.js
+var transitions = __webpack_require__(21);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/transitions/utils.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/transitions/utils.js
 var reflow = function reflow(node) {
   return node.scrollTop;
 };
@@ -3154,13 +3812,13 @@ function getTransitionProps(props, options) {
     delay: style.transitionDelay
   };
 }
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.10.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/useTheme/useTheme.js + 1 modules
-var useTheme = __webpack_require__(60);
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/useTheme/useTheme.js + 1 modules
+var useTheme = __webpack_require__(65);
 
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/defaultTheme.js + 22 modules
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/defaultTheme.js + 22 modules
 var defaultTheme = __webpack_require__(11);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/useTheme.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/useTheme.js
 
 
 
@@ -3171,36 +3829,10 @@ function useTheme_useTheme() {
 
   return theme;
 }
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/setRef.js
-// TODO v5: consider to make it private
-function setRef(ref, value) {
-  if (typeof ref === 'function') {
-    ref(value);
-  } else if (ref) {
-    ref.current = value;
-  }
-}
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/useForkRef.js
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/useForkRef.js
+var useForkRef = __webpack_require__(17);
 
-
-function useForkRef(refA, refB) {
-  /**
-   * This will create a new function if the ref props change and are defined.
-   * This means react will call the old forkRef with `null` and the new forkRef
-   * with the ref. Cleanup naturally emerges from this behavior
-   */
-  return external_React_["useMemo"](function () {
-    if (refA == null && refB == null) {
-      return null;
-    }
-
-    return function (refValue) {
-      setRef(refA, refValue);
-      setRef(refB, refValue);
-    };
-  }, [refA, refB]);
-}
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/Collapse/Collapse.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/Collapse/Collapse.js
 
 
 
@@ -3287,7 +3919,7 @@ var Collapse_Collapse = /*#__PURE__*/external_React_["forwardRef"](function Coll
   }, []);
   var enableStrictModeCompat = theme.unstable_strictMode && !disableStrictModeCompat;
   var nodeRef = external_React_["useRef"](null);
-  var handleRef = useForkRef(ref, enableStrictModeCompat ? nodeRef : undefined);
+  var handleRef = Object(useForkRef["a" /* default */])(ref, enableStrictModeCompat ? nodeRef : undefined);
 
   var normalizedTransitionCallback = function normalizedTransitionCallback(callback) {
     return function (nodeOrAppearing, maybeAppearing) {
@@ -3423,10 +4055,10 @@ Collapse_Collapse.muiSupportAuto = true;
 /* harmony default export */ var esm_Collapse_Collapse = (Object(withStyles["a" /* default */])(Collapse_styles, {
   name: 'MuiCollapse'
 })(Collapse_Collapse));
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/colorManipulator.js
-var colorManipulator = __webpack_require__(19);
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/colorManipulator.js
+var colorManipulator = __webpack_require__(23);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/lab/4.0.0-alpha.56_95a14655f7783aafa461b3f6228f005c/node_modules/@material-ui/lab/esm/TreeView/TreeViewContext.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/lab/4.0.0-alpha.57_3335f0bfb61930572868dabe45efc2f7/node_modules/@material-ui/lab/esm/TreeView/TreeViewContext.js
 
 /**
  * @ignore - internal component.
@@ -3437,7 +4069,7 @@ var TreeViewContext = external_React_["createContext"]({});
 if (false) {}
 
 /* harmony default export */ var TreeView_TreeViewContext = (TreeViewContext);
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/lab/4.0.0-alpha.56_95a14655f7783aafa461b3f6228f005c/node_modules/@material-ui/lab/esm/TreeItem/TreeItem.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/lab/4.0.0-alpha.57_3335f0bfb61930572868dabe45efc2f7/node_modules/@material-ui/lab/esm/TreeItem/TreeItem.js
 
 
 
@@ -3577,7 +4209,7 @@ var TreeItem_TreeItem = /*#__PURE__*/external_React_["forwardRef"](function Tree
 
   var nodeRef = external_React_["useRef"](null);
   var contentRef = external_React_["useRef"](null);
-  var handleRef = useForkRef(nodeRef, ref);
+  var handleRef = Object(useForkRef["a" /* default */])(nodeRef, ref);
   var icon = iconProp;
   var expandable = Boolean(Array.isArray(children) ? children.length : children);
   var expanded = isExpanded ? isExpanded(nodeId) : false;
@@ -3865,13 +4497,13 @@ var TreeItem_TreeItem = /*#__PURE__*/external_React_["forwardRef"](function Tree
   name: 'MuiTreeItem'
 })(TreeItem_TreeItem));
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/cuid/2.1.8/node_modules/cuid/index.js
-var cuid = __webpack_require__(15);
+var cuid = __webpack_require__(19);
 var cuid_default = /*#__PURE__*/__webpack_require__.n(cuid);
 
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.10.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/makeStyles/makeStyles.js + 23 modules
-var makeStyles = __webpack_require__(59);
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/makeStyles/makeStyles.js + 23 modules
+var makeStyles = __webpack_require__(64);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/makeStyles.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/makeStyles.js
 
 
 
@@ -3915,161 +4547,10 @@ function ExplorerCategoryItem(props) {
     });
   }));
 }
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/useIsFocusVisible.js
-// based on https://github.com/WICG/focus-visible/blob/v4.1.5/src/focus-visible.js
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/useIsFocusVisible.js
+var useIsFocusVisible = __webpack_require__(18);
 
-
-var hadKeyboardEvent = true;
-var hadFocusVisibleRecently = false;
-var hadFocusVisibleRecentlyTimeout = null;
-var inputTypesWhitelist = {
-  text: true,
-  search: true,
-  url: true,
-  tel: true,
-  email: true,
-  password: true,
-  number: true,
-  date: true,
-  month: true,
-  week: true,
-  time: true,
-  datetime: true,
-  'datetime-local': true
-};
-/**
- * Computes whether the given element should automatically trigger the
- * `focus-visible` class being added, i.e. whether it should always match
- * `:focus-visible` when focused.
- * @param {Element} node
- * @return {boolean}
- */
-
-function focusTriggersKeyboardModality(node) {
-  var type = node.type,
-      tagName = node.tagName;
-
-  if (tagName === 'INPUT' && inputTypesWhitelist[type] && !node.readOnly) {
-    return true;
-  }
-
-  if (tagName === 'TEXTAREA' && !node.readOnly) {
-    return true;
-  }
-
-  if (node.isContentEditable) {
-    return true;
-  }
-
-  return false;
-}
-/**
- * Keep track of our keyboard modality state with `hadKeyboardEvent`.
- * If the most recent user interaction was via the keyboard;
- * and the key press did not include a meta, alt/option, or control key;
- * then the modality is keyboard. Otherwise, the modality is not keyboard.
- * @param {KeyboardEvent} event
- */
-
-
-function useIsFocusVisible_handleKeyDown(event) {
-  if (event.metaKey || event.altKey || event.ctrlKey) {
-    return;
-  }
-
-  hadKeyboardEvent = true;
-}
-/**
- * If at any point a user clicks with a pointing device, ensure that we change
- * the modality away from keyboard.
- * This avoids the situation where a user presses a key on an already focused
- * element, and then clicks on a different element, focusing it with a
- * pointing device, while we still think we're in keyboard modality.
- */
-
-
-function handlePointerDown() {
-  hadKeyboardEvent = false;
-}
-
-function handleVisibilityChange() {
-  if (this.visibilityState === 'hidden') {
-    // If the tab becomes active again, the browser will handle calling focus
-    // on the element (Safari actually calls it twice).
-    // If this tab change caused a blur on an element with focus-visible,
-    // re-apply the class when the user switches back to the tab.
-    if (hadFocusVisibleRecently) {
-      hadKeyboardEvent = true;
-    }
-  }
-}
-
-function prepare(doc) {
-  doc.addEventListener('keydown', useIsFocusVisible_handleKeyDown, true);
-  doc.addEventListener('mousedown', handlePointerDown, true);
-  doc.addEventListener('pointerdown', handlePointerDown, true);
-  doc.addEventListener('touchstart', handlePointerDown, true);
-  doc.addEventListener('visibilitychange', handleVisibilityChange, true);
-}
-
-function teardown(doc) {
-  doc.removeEventListener('keydown', useIsFocusVisible_handleKeyDown, true);
-  doc.removeEventListener('mousedown', handlePointerDown, true);
-  doc.removeEventListener('pointerdown', handlePointerDown, true);
-  doc.removeEventListener('touchstart', handlePointerDown, true);
-  doc.removeEventListener('visibilitychange', handleVisibilityChange, true);
-}
-
-function useIsFocusVisible_isFocusVisible(event) {
-  var target = event.target;
-
-  try {
-    return target.matches(':focus-visible');
-  } catch (error) {// browsers not implementing :focus-visible will throw a SyntaxError
-    // we use our own heuristic for those browsers
-    // rethrow might be better if it's not the expected error but do we really
-    // want to crash if focus-visible malfunctioned?
-  } // no need for validFocusTarget check. the user does that by attaching it to
-  // focusable events only
-
-
-  return hadKeyboardEvent || focusTriggersKeyboardModality(target);
-}
-/**
- * Should be called if a blur event is fired on a focus-visible element
- */
-
-
-function handleBlurVisible() {
-  // To detect a tab/window switch, we look for a blur event followed
-  // rapidly by a visibility change.
-  // If we don't see a visibility change within 100ms, it's probably a
-  // regular focus change.
-  hadFocusVisibleRecently = true;
-  window.clearTimeout(hadFocusVisibleRecentlyTimeout);
-  hadFocusVisibleRecentlyTimeout = window.setTimeout(function () {
-    hadFocusVisibleRecently = false;
-  }, 100);
-}
-
-function useIsFocusVisible() {
-  var ref = external_React_["useCallback"](function (instance) {
-    var node = external_ReactDOM_["findDOMNode"](instance);
-
-    if (node != null) {
-      prepare(node.ownerDocument);
-    }
-  }, []);
-
-  if (false) {}
-
-  return {
-    isFocusVisible: useIsFocusVisible_isFocusVisible,
-    onBlurVisible: handleBlurVisible,
-    ref: ref
-  };
-}
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/Link/Link.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/Link/Link.js
 
 
 
@@ -4153,7 +4634,7 @@ var Link_Link = /*#__PURE__*/external_React_["forwardRef"](function Link(props, 
       variant = _props$variant === void 0 ? 'inherit' : _props$variant,
       other = Object(objectWithoutProperties["a" /* default */])(props, ["classes", "className", "color", "component", "onBlur", "onFocus", "TypographyClasses", "underline", "variant"]);
 
-  var _useIsFocusVisible = useIsFocusVisible(),
+  var _useIsFocusVisible = Object(useIsFocusVisible["a" /* default */])(),
       isFocusVisible = _useIsFocusVisible.isFocusVisible,
       onBlurVisible = _useIsFocusVisible.onBlurVisible,
       focusVisibleRef = _useIsFocusVisible.ref;
@@ -4162,7 +4643,7 @@ var Link_Link = /*#__PURE__*/external_React_["forwardRef"](function Link(props, 
       focusVisible = _React$useState[0],
       setFocusVisible = _React$useState[1];
 
-  var handlerRef = useForkRef(ref, focusVisibleRef);
+  var handlerRef = Object(useForkRef["a" /* default */])(ref, focusVisibleRef);
 
   var handleBlur = function handleBlur(event) {
     if (focusVisible) {
@@ -4260,35 +4741,10 @@ function ExplorerItem(props) {
     }, props.data.title) : props.data.title
   }, targetChildren);
 }
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/useControlled.js
-/* eslint-disable react-hooks/rules-of-hooks, react-hooks/exhaustive-deps */
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/useControlled.js
+var useControlled = __webpack_require__(27);
 
-function useControlled(_ref) {
-  var controlled = _ref.controlled,
-      defaultProp = _ref.default,
-      name = _ref.name,
-      _ref$state = _ref.state,
-      state = _ref$state === void 0 ? 'value' : _ref$state;
-
-  var _React$useRef = external_React_["useRef"](controlled !== undefined),
-      isControlled = _React$useRef.current;
-
-  var _React$useState = external_React_["useState"](defaultProp),
-      valueState = _React$useState[0],
-      setValue = _React$useState[1];
-
-  var value = isControlled ? controlled : valueState;
-
-  if (false) { var _React$useRef2, defaultValue; }
-
-  var setValueIfUncontrolled = external_React_["useCallback"](function (newValue) {
-    if (!isControlled) {
-      setValue(newValue);
-    }
-  }, []);
-  return [value, setValueIfUncontrolled];
-}
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/lab/4.0.0-alpha.56_95a14655f7783aafa461b3f6228f005c/node_modules/@material-ui/lab/esm/TreeView/TreeView.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/lab/4.0.0-alpha.57_3335f0bfb61930572868dabe45efc2f7/node_modules/@material-ui/lab/esm/TreeView/TreeView.js
 
 
 
@@ -4363,7 +4819,7 @@ var TreeView_TreeView = /*#__PURE__*/external_React_["forwardRef"](function Tree
   var firstCharMap = external_React_["useRef"]({});
   var visibleNodes = external_React_["useRef"]([]);
 
-  var _useControlled = useControlled({
+  var _useControlled = Object(useControlled["a" /* default */])({
     controlled: expandedProp,
     default: defaultExpanded,
     name: 'TreeView',
@@ -4373,7 +4829,7 @@ var TreeView_TreeView = /*#__PURE__*/external_React_["forwardRef"](function Tree
       expanded = _useControlled2[0],
       setExpandedState = _useControlled2[1];
 
-  var _useControlled3 = useControlled({
+  var _useControlled3 = Object(useControlled["a" /* default */])({
     controlled: selectedProp,
     default: defaultSelected,
     name: 'TreeView',
@@ -5055,141 +5511,6 @@ window.onload = function () {
 };
 
 /***/ }),
-/* 43 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-// ESM COMPAT FLAG
-__webpack_require__.r(__webpack_exports__);
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, "default", function() { return /* reexport */ esm_SvgIcon_SvgIcon; });
-
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/extends.js
-var esm_extends = __webpack_require__(1);
-
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js
-var objectWithoutProperties = __webpack_require__(2);
-
-// EXTERNAL MODULE: external "React"
-var external_React_ = __webpack_require__(0);
-
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/prop-types/15.7.2/node_modules/prop-types/index.js
-var prop_types = __webpack_require__(5);
-
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/clsx/1.1.1/node_modules/clsx/dist/clsx.m.js
-var clsx_m = __webpack_require__(3);
-
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/withStyles.js + 2 modules
-var withStyles = __webpack_require__(8);
-
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/capitalize.js
-var capitalize = __webpack_require__(7);
-
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/SvgIcon/SvgIcon.js
-
-
-
-
-
-
-
-var styles = function styles(theme) {
-  return {
-    /* Styles applied to the root element. */
-    root: {
-      userSelect: 'none',
-      width: '1em',
-      height: '1em',
-      display: 'inline-block',
-      fill: 'currentColor',
-      flexShrink: 0,
-      fontSize: theme.typography.pxToRem(24),
-      transition: theme.transitions.create('fill', {
-        duration: theme.transitions.duration.shorter
-      })
-    },
-
-    /* Styles applied to the root element if `color="primary"`. */
-    colorPrimary: {
-      color: theme.palette.primary.main
-    },
-
-    /* Styles applied to the root element if `color="secondary"`. */
-    colorSecondary: {
-      color: theme.palette.secondary.main
-    },
-
-    /* Styles applied to the root element if `color="action"`. */
-    colorAction: {
-      color: theme.palette.action.active
-    },
-
-    /* Styles applied to the root element if `color="error"`. */
-    colorError: {
-      color: theme.palette.error.main
-    },
-
-    /* Styles applied to the root element if `color="disabled"`. */
-    colorDisabled: {
-      color: theme.palette.action.disabled
-    },
-
-    /* Styles applied to the root element if `fontSize="inherit"`. */
-    fontSizeInherit: {
-      fontSize: 'inherit'
-    },
-
-    /* Styles applied to the root element if `fontSize="small"`. */
-    fontSizeSmall: {
-      fontSize: theme.typography.pxToRem(20)
-    },
-
-    /* Styles applied to the root element if `fontSize="large"`. */
-    fontSizeLarge: {
-      fontSize: theme.typography.pxToRem(35)
-    }
-  };
-};
-var SvgIcon_SvgIcon = /*#__PURE__*/external_React_["forwardRef"](function SvgIcon(props, ref) {
-  var children = props.children,
-      classes = props.classes,
-      className = props.className,
-      _props$color = props.color,
-      color = _props$color === void 0 ? 'inherit' : _props$color,
-      _props$component = props.component,
-      Component = _props$component === void 0 ? 'svg' : _props$component,
-      _props$fontSize = props.fontSize,
-      fontSize = _props$fontSize === void 0 ? 'default' : _props$fontSize,
-      htmlColor = props.htmlColor,
-      titleAccess = props.titleAccess,
-      _props$viewBox = props.viewBox,
-      viewBox = _props$viewBox === void 0 ? '0 0 24 24' : _props$viewBox,
-      other = Object(objectWithoutProperties["a" /* default */])(props, ["children", "classes", "className", "color", "component", "fontSize", "htmlColor", "titleAccess", "viewBox"]);
-
-  return /*#__PURE__*/external_React_["createElement"](Component, Object(esm_extends["a" /* default */])({
-    className: Object(clsx_m["a" /* default */])(classes.root, className, color !== 'inherit' && classes["color".concat(Object(capitalize["a" /* default */])(color))], fontSize !== 'default' && classes["fontSize".concat(Object(capitalize["a" /* default */])(fontSize))]),
-    focusable: "false",
-    viewBox: viewBox,
-    color: htmlColor,
-    "aria-hidden": titleAccess ? undefined : true,
-    role: titleAccess ? 'img' : undefined,
-    ref: ref
-  }, other), children, titleAccess ? /*#__PURE__*/external_React_["createElement"]("title", null, titleAccess) : null);
-});
- false ? undefined : void 0;
-SvgIcon_SvgIcon.muiName = 'SvgIcon';
-/* harmony default export */ var esm_SvgIcon_SvgIcon = (Object(withStyles["a" /* default */])(styles, {
-  name: 'MuiSvgIcon'
-})(SvgIcon_SvgIcon));
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/SvgIcon/index.js
-
-
-/***/ }),
-/* 44 */,
-/* 45 */,
-/* 46 */,
-/* 47 */,
 /* 48 */,
 /* 49 */,
 /* 50 */,
@@ -5200,7 +5521,12 @@ SvgIcon_SvgIcon.muiName = 'SvgIcon';
 /* 55 */,
 /* 56 */,
 /* 57 */,
-/* 58 */
+/* 58 */,
+/* 59 */,
+/* 60 */,
+/* 61 */,
+/* 62 */,
+/* 63 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5238,7 +5564,7 @@ function deepmerge(target, source) {
 }
 
 /***/ }),
-/* 59 */
+/* 64 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5302,7 +5628,7 @@ function _createClass(Constructor, protoProps, staticProps) {
   return Constructor;
 }
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/inheritsLoose.js
-var inheritsLoose = __webpack_require__(13);
+var inheritsLoose = __webpack_require__(14);
 
 // CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js
 function _assertThisInitialized(self) {
@@ -5315,7 +5641,7 @@ function _assertThisInitialized(self) {
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js
 var objectWithoutPropertiesLoose = __webpack_require__(10);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/jss/10.4.0/node_modules/jss/dist/jss.esm.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/jss/10.5.0/node_modules/jss/dist/jss.esm.js
 
 
 
@@ -5371,6 +5697,7 @@ var join = function join(value, by) {
 
   return result;
 };
+
 /**
  * Converts array values to string.
  *
@@ -5379,9 +5706,7 @@ var join = function join(value, by) {
  * `margin: [['5px', '10px'], '!important']` > `margin: 5px 10px !important;`
  * `color: ['red', !important]` > `color: red !important;`
  */
-
-
-function toCssValue(value, ignoreImportant) {
+var toCssValue = function toCssValue(value, ignoreImportant) {
   if (ignoreImportant === void 0) {
     ignoreImportant = false;
   }
@@ -5403,7 +5728,7 @@ function toCssValue(value, ignoreImportant) {
   }
 
   return cssValue;
-}
+};
 
 /**
  * Indent a string.
@@ -5687,11 +6012,11 @@ function () {
     this.options = void 0;
     this.isProcessed = false;
     this.renderable = void 0;
-    this.key = key; // Key might contain a unique suffix in case the `name` passed by user was duplicate.
-
-    this.query = options.name;
+    this.key = key;
     var atMatch = key.match(atRegExp);
-    this.at = atMatch ? atMatch[1] : 'unknown';
+    this.at = atMatch ? atMatch[1] : 'unknown'; // Key might contain a unique suffix in case the `name` passed by user was duplicate.
+
+    this.query = options.name || "@" + this.at;
     this.options = options;
     this.rules = new jss_esm_RuleList(Object(esm_extends["a" /* default */])({}, options, {
       parent: this
@@ -6240,13 +6565,13 @@ function () {
     var options;
 
     if (typeof (arguments.length <= 0 ? undefined : arguments[0]) === 'string') {
-      name = arguments.length <= 0 ? undefined : arguments[0]; // $FlowFixMe
+      name = arguments.length <= 0 ? undefined : arguments[0]; // $FlowFixMe[invalid-tuple-index]
 
-      data = arguments.length <= 1 ? undefined : arguments[1]; // $FlowFixMe
+      data = arguments.length <= 1 ? undefined : arguments[1]; // $FlowFixMe[invalid-tuple-index]
 
       options = arguments.length <= 2 ? undefined : arguments[2];
     } else {
-      data = arguments.length <= 0 ? undefined : arguments[0]; // $FlowFixMe
+      data = arguments.length <= 0 ? undefined : arguments[0]; // $FlowFixMe[invalid-tuple-index]
 
       options = arguments.length <= 1 ? undefined : arguments[1];
       name = null;
@@ -6473,7 +6798,13 @@ function () {
 
   _proto.deleteRule = function deleteRule(name) {
     var rule = typeof name === 'object' ? name : this.rules.get(name);
-    if (!rule) return false;
+
+    if (!rule || // Style sheet was created without link: true and attached, in this case we
+    // won't be able to remove the CSS rule from the DOM.
+    this.attached && !rule.renderable) {
+      return false;
+    }
+
     this.rules.remove(rule);
 
     if (this.attached && rule.renderable && this.renderer) {
@@ -6580,7 +6911,7 @@ function () {
 
   _proto.onProcessStyle = function onProcessStyle(style, rule, sheet) {
     for (var i = 0; i < this.registry.onProcessStyle.length; i++) {
-      // $FlowFixMe
+      // $FlowFixMe[prop-missing]
       rule.style = this.registry.onProcessStyle[i](rule.style, rule, sheet);
     }
   }
@@ -6757,7 +7088,7 @@ function () {
  * each request in order to not leak sheets across requests.
  */
 
-var sheets = new jss_esm_SheetsRegistry();
+var registry = new jss_esm_SheetsRegistry();
 
 /* eslint-disable */
 // https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
@@ -6823,12 +7154,11 @@ var memoize = function memoize(fn) {
     return value;
   };
 };
+
 /**
  * Get a style property value.
  */
-
-
-function getPropertyValue(cssRule, prop) {
+var getPropertyValue = function getPropertyValue(cssRule, prop) {
   try {
     // Support CSSTOM.
     if (cssRule.attributeStyleMap) {
@@ -6840,13 +7170,12 @@ function getPropertyValue(cssRule, prop) {
     // IE may throw if property is unknown.
     return '';
   }
-}
+};
+
 /**
  * Set a style property.
  */
-
-
-function setProperty(cssRule, prop, value) {
+var setProperty = function setProperty(cssRule, prop, value) {
   try {
     var cssValue = value;
 
@@ -6871,13 +7200,12 @@ function setProperty(cssRule, prop, value) {
   }
 
   return true;
-}
+};
+
 /**
  * Remove a style property.
  */
-
-
-function removeProperty(cssRule, prop) {
+var removeProperty = function removeProperty(cssRule, prop) {
   try {
     // Support CSSTOM.
     if (cssRule.attributeStyleMap) {
@@ -6888,18 +7216,17 @@ function removeProperty(cssRule, prop) {
   } catch (err) {
      false ? undefined : void 0;
   }
-}
+};
+
 /**
  * Set the selector.
  */
-
-
-function setSelector(cssRule, selectorText) {
+var setSelector = function setSelector(cssRule, selectorText) {
   cssRule.selectorText = selectorText; // Return false if setter was not successful.
   // Currently works in chrome only.
 
   return cssRule.selectorText === selectorText;
-}
+};
 /**
  * Gets the `head` element upon the first call and caches it.
  * We assume it can't be null.
@@ -6963,11 +7290,11 @@ function findCommentNode(text) {
  * Find a node before which we can insert the sheet.
  */
 function findPrevNode(options) {
-  var registry = sheets.registry;
+  var registry$1 = registry.registry;
 
-  if (registry.length > 0) {
+  if (registry$1.length > 0) {
     // Try to insert before the next higher sheet.
-    var sheet = findHigherSheet(registry, options);
+    var sheet = findHigherSheet(registry$1, options);
 
     if (sheet && sheet.renderer) {
       return {
@@ -6977,7 +7304,7 @@ function findPrevNode(options) {
     } // Otherwise insert after the last attached.
 
 
-    sheet = findHighestSheet(registry, options);
+    sheet = findHighestSheet(registry$1, options);
 
     if (sheet && sheet.renderer) {
       return {
@@ -7043,13 +7370,6 @@ var getNonce = memoize(function () {
 });
 
 var _insertRule = function insertRule(container, rule, index) {
-  var maxIndex = container.cssRules.length; // In case previous insertion fails, passed index might be wrong
-
-  if (index === undefined || index > maxIndex) {
-    // eslint-disable-next-line no-param-reassign
-    index = maxIndex;
-  }
-
   try {
     if ('insertRule' in container) {
       var c = container;
@@ -7068,6 +7388,17 @@ var _insertRule = function insertRule(container, rule, index) {
   return container.cssRules[index];
 };
 
+var getValidRuleInsertionIndex = function getValidRuleInsertionIndex(container, index) {
+  var maxIndex = container.cssRules.length; // In case previous insertion fails, passed index might be wrong
+
+  if (index === undefined || index > maxIndex) {
+    // eslint-disable-next-line no-param-reassign
+    return maxIndex;
+  }
+
+  return index;
+};
+
 var createStyle = function createStyle() {
   var el = document.createElement('style'); // Without it, IE will have a broken source order specificity if we
   // insert rules after we insert the style tag.
@@ -7081,6 +7412,8 @@ var DomRenderer =
 /*#__PURE__*/
 function () {
   // HTMLStyleElement needs fixing https://github.com/facebook/flow/issues/2696
+  // Will be empty if link: true option is not set, because
+  // it is only for use together with insertRule API.
   function DomRenderer(sheet) {
     this.getPropertyValue = getPropertyValue;
     this.setProperty = setProperty;
@@ -7089,8 +7422,9 @@ function () {
     this.element = void 0;
     this.sheet = void 0;
     this.hasInsertedRules = false;
+    this.cssRules = [];
     // There is no sheet when the renderer is used from a standalone StyleRule.
-    if (sheet) sheets.add(sheet);
+    if (sheet) registry.add(sheet);
     this.sheet = sheet;
 
     var _ref = this.sheet ? this.sheet.options : {},
@@ -7131,8 +7465,15 @@ function () {
   ;
 
   _proto.detach = function detach() {
+    if (!this.sheet) return;
     var parentNode = this.element.parentNode;
-    if (parentNode) parentNode.removeChild(this.element);
+    if (parentNode) parentNode.removeChild(this.element); // In the most browsers, rules inserted using insertRule() API will be lost when style element is removed.
+    // Though IE will keep them and we need a consistent behavior.
+
+    if (this.sheet.options.link) {
+      this.cssRules = [];
+      this.element.textContent = '\n';
+    }
   }
   /**
    * Inject CSS string into element.
@@ -7175,39 +7516,46 @@ function () {
       var latestNativeParent = nativeParent;
 
       if (rule.type === 'conditional' || rule.type === 'keyframes') {
-        // We need to render the container without children first.
+        var _insertionIndex = getValidRuleInsertionIndex(nativeParent, index); // We need to render the container without children first.
+
+
         latestNativeParent = _insertRule(nativeParent, parent.toString({
           children: false
-        }), index);
+        }), _insertionIndex);
 
         if (latestNativeParent === false) {
           return false;
         }
+
+        this.refCssRule(rule, _insertionIndex, latestNativeParent);
       }
 
       this.insertRules(parent.rules, latestNativeParent);
       return latestNativeParent;
-    } // IE keeps the CSSStyleSheet after style node has been reattached,
-    // so we need to check if the `renderable` reference the right style sheet and not
-    // rerender those rules.
-
-
-    if (rule.renderable && rule.renderable.parentStyleSheet === this.element.sheet) {
-      return rule.renderable;
     }
 
     var ruleStr = rule.toString();
     if (!ruleStr) return false;
+    var insertionIndex = getValidRuleInsertionIndex(nativeParent, index);
 
-    var nativeRule = _insertRule(nativeParent, ruleStr, index);
+    var nativeRule = _insertRule(nativeParent, ruleStr, insertionIndex);
 
     if (nativeRule === false) {
       return false;
     }
 
     this.hasInsertedRules = true;
-    rule.renderable = nativeRule;
+    this.refCssRule(rule, insertionIndex, nativeRule);
     return nativeRule;
+  };
+
+  _proto.refCssRule = function refCssRule(rule, index, cssRule) {
+    rule.renderable = cssRule; // We only want to reference the top level rules, deleteRule API doesn't support removing nested rules
+    // like rules inside media queries or keyframes
+
+    if (rule.options.parent instanceof jss_esm_StyleSheet) {
+      this.cssRules[index] = cssRule;
+    }
   }
   /**
    * Delete a rule.
@@ -7219,6 +7567,7 @@ function () {
     var index = this.indexOf(cssRule);
     if (index === -1) return false;
     sheet.deleteRule(index);
+    this.cssRules.splice(index, 1);
     return true;
   }
   /**
@@ -7227,13 +7576,7 @@ function () {
   ;
 
   _proto.indexOf = function indexOf(cssRule) {
-    var cssRules = this.element.sheet.cssRules;
-
-    for (var index = 0; index < cssRules.length; index++) {
-      if (cssRule === cssRules[index]) return index;
-    }
-
-    return -1;
+    return this.cssRules.indexOf(cssRule);
   }
   /**
    * Generate a new CSS rule and replace the existing one.
@@ -7246,6 +7589,7 @@ function () {
     var index = this.indexOf(cssRule);
     if (index === -1) return false;
     this.element.sheet.deleteRule(index);
+    this.cssRules.splice(index, 1);
     return this.insertRule(rule, index);
   }
   /**
@@ -7267,7 +7611,7 @@ var jss_esm_Jss =
 function () {
   function Jss(options) {
     this.id = instanceCounter++;
-    this.version = "10.4.0";
+    this.version = "10.5.0";
     this.plugins = new PluginsRegistry();
     this.options = {
       id: {
@@ -7339,7 +7683,7 @@ function () {
         index = _options.index;
 
     if (typeof index !== 'number') {
-      index = sheets.index === 0 ? 0 : sheets.index + 1;
+      index = registry.index === 0 ? 0 : registry.index + 1;
     }
 
     var sheet = new jss_esm_StyleSheet(styles, Object(esm_extends["a" /* default */])({}, options, {
@@ -7359,7 +7703,7 @@ function () {
 
   _proto.removeStyleSheet = function removeStyleSheet(sheet) {
     sheet.detach();
-    sheets.remove(sheet);
+    registry.remove(sheet);
     return this;
   }
   /**
@@ -7379,9 +7723,9 @@ function () {
 
     // Enable rule without name for inline styles.
     if (typeof name === 'object') {
-      // $FlowIgnore
+      // $FlowFixMe[incompatible-call]
       return this.createRule(undefined, name, style);
-    } // $FlowIgnore
+    } // $FlowFixMe[incompatible-type]
 
 
     var ruleOptions = Object(esm_extends["a" /* default */])({}, options, {
@@ -7525,7 +7869,7 @@ function () {
  * Export a constant indicating if this browser has CSSTOM support.
  * https://developers.google.com/web/updates/2018/03/cssom
  */
-var hasCSSTOMSupport = typeof CSS !== 'undefined' && CSS && 'number' in CSS;
+var hasCSSTOMSupport = typeof CSS === 'object' && CSS != null && 'number' in CSS;
 /**
  * Creates a new instance of Jss.
  */
@@ -7537,12 +7881,12 @@ var jss_esm_create = function create(options) {
  * A global Jss instance.
  */
 
-var jss_esm_index = jss_esm_create();
+var jss_esm_jss = jss_esm_create();
 
-/* harmony default export */ var jss_esm = (jss_esm_index);
+/* harmony default export */ var jss_esm = (jss_esm_jss);
 
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.10.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/mergeClasses/mergeClasses.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/mergeClasses/mergeClasses.js
 
 
 function mergeClasses() {
@@ -7568,7 +7912,7 @@ function mergeClasses() {
   });
   return nextClasses;
 }
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.10.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/makeStyles/multiKeyStore.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/makeStyles/multiKeyStore.js
 // Used https://github.com/thinkloop/multi-key-cache as inspiration
 var multiKeyStore = {
   set: function set(cache, key1, key2, value) {
@@ -7591,16 +7935,16 @@ var multiKeyStore = {
   }
 };
 /* harmony default export */ var makeStyles_multiKeyStore = (multiKeyStore);
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.10.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/useTheme/useTheme.js + 1 modules
-var useTheme = __webpack_require__(60);
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/useTheme/useTheme.js + 1 modules
+var useTheme = __webpack_require__(65);
 
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/prop-types/15.7.2/node_modules/prop-types/index.js
-var prop_types = __webpack_require__(5);
+var prop_types = __webpack_require__(6);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.10.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/ThemeProvider/nested.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/ThemeProvider/nested.js
 var hasSymbol = typeof Symbol === 'function' && Symbol.for;
 /* harmony default export */ var nested = (hasSymbol ? Symbol.for('mui.nested') : '__THEME_NESTED__');
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.10.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/createGenerateClassName/createGenerateClassName.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/createGenerateClassName/createGenerateClassName.js
 
 /**
  * This is the list of the style rule name we use as drop in replacement for the built-in
@@ -7669,14 +8013,15 @@ function createGenerateClassName() {
     return "".concat(seedPrefix).concat(suffix);
   };
 }
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/jss-plugin-rule-value-function/10.4.0/node_modules/jss-plugin-rule-value-function/dist/jss-plugin-rule-value-function.esm.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/jss-plugin-rule-value-function/10.5.0/node_modules/jss-plugin-rule-value-function/dist/jss-plugin-rule-value-function.esm.js
 
 
 
 var now = Date.now();
 var fnValuesNs = "fnValues" + now;
 var fnRuleNs = "fnStyle" + ++now;
-function functionPlugin() {
+
+var jss_plugin_rule_value_function_esm_functionPlugin = function functionPlugin() {
   return {
     onCreateRule: function onCreateRule(name, decl, options) {
       if (typeof decl !== 'function') return null;
@@ -7697,14 +8042,15 @@ function functionPlugin() {
         if (typeof value !== 'function') continue;
         delete style[prop];
         fnValues[prop] = value;
-      } // $FlowFixMe
+      } // $FlowFixMe[prop-missing]
 
 
       rule[fnValuesNs] = fnValues;
       return style;
     },
     onUpdate: function onUpdate(data, rule, sheet, options) {
-      var styleRule = rule;
+      var styleRule = rule; // $FlowFixMe[prop-missing]
+
       var fnRule = styleRule[fnRuleNs]; // If we have a style function, the entire rule is dynamic and style object
       // will be returned from that function.
 
@@ -7714,7 +8060,8 @@ function functionPlugin() {
         styleRule.style = fnRule(data) || {};
 
         if (false) { var prop; }
-      }
+      } // $FlowFixMe[prop-missing]
+
 
       var fnValues = styleRule[fnValuesNs]; // If we have a fn values map, it is a rule with function values.
 
@@ -7725,11 +8072,11 @@ function functionPlugin() {
       }
     }
   };
-}
+};
 
-/* harmony default export */ var jss_plugin_rule_value_function_esm = (functionPlugin);
+/* harmony default export */ var jss_plugin_rule_value_function_esm = (jss_plugin_rule_value_function_esm_functionPlugin);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/jss-plugin-global/10.4.0/node_modules/jss-plugin-global/dist/jss-plugin-global.esm.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/jss-plugin-global/10.5.0/node_modules/jss-plugin-global/dist/jss-plugin-global.esm.js
 
 
 
@@ -7775,7 +8122,7 @@ function () {
 
   _proto.addRule = function addRule(name, style, options) {
     var rule = this.rules.add(name, style, options);
-    this.options.jss.plugins.onProcessRule(rule);
+    if (rule) this.options.jss.plugins.onProcessRule(rule);
     return rule;
   }
   /**
@@ -7839,14 +8186,14 @@ function addScope(selector, scope) {
   return scoped;
 }
 
-function handleNestedGlobalContainerRule(rule) {
+function handleNestedGlobalContainerRule(rule, sheet) {
   var options = rule.options,
       style = rule.style;
   var rules = style ? style[at] : null;
   if (!rules) return;
 
   for (var name in rules) {
-    options.sheet.addRule(name, rules[name], Object(esm_extends["a" /* default */])({}, options, {
+    sheet.addRule(name, rules[name], Object(esm_extends["a" /* default */])({}, options, {
       selector: addScope(name, rule.selector)
     }));
   }
@@ -7854,14 +8201,14 @@ function handleNestedGlobalContainerRule(rule) {
   delete style[at];
 }
 
-function handlePrefixedGlobalRule(rule) {
+function handlePrefixedGlobalRule(rule, sheet) {
   var options = rule.options,
       style = rule.style;
 
   for (var prop in style) {
     if (prop[0] !== '@' || prop.substr(0, at.length) !== at) continue;
     var selector = addScope(prop.substr(at.length), rule.selector);
-    options.sheet.addRule(selector, style[prop], Object(esm_extends["a" /* default */])({}, options, {
+    sheet.addRule(selector, style[prop], Object(esm_extends["a" /* default */])({}, options, {
       selector: selector
     }));
     delete style[prop];
@@ -7902,10 +8249,10 @@ function jssGlobal() {
     return null;
   }
 
-  function onProcessRule(rule) {
-    if (rule.type !== 'style') return;
-    handleNestedGlobalContainerRule(rule);
-    handlePrefixedGlobalRule(rule);
+  function onProcessRule(rule, sheet) {
+    if (rule.type !== 'style' || !sheet) return;
+    handleNestedGlobalContainerRule(rule, sheet);
+    handlePrefixedGlobalRule(rule, sheet);
   }
 
   return {
@@ -7916,7 +8263,7 @@ function jssGlobal() {
 
 /* harmony default export */ var jss_plugin_global_esm = (jssGlobal);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/jss-plugin-nested/10.4.0/node_modules/jss-plugin-nested/dist/jss-plugin-nested.esm.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/jss-plugin-nested/10.5.0/node_modules/jss-plugin-nested/dist/jss-plugin-nested.esm.js
 
 
 
@@ -7968,7 +8315,8 @@ function jssNested() {
   function getOptions(rule, container, prevOptions) {
     // Options has been already created, now we only increase index.
     if (prevOptions) return Object(esm_extends["a" /* default */])({}, prevOptions, {
-      index: prevOptions.index + 1
+      index: prevOptions.index + 1 // $FlowFixMe[prop-missing]
+
     });
     var nestingLevel = rule.options.nestingLevel;
     nestingLevel = nestingLevel === undefined ? 1 : nestingLevel + 1;
@@ -8010,7 +8358,8 @@ function jssNested() {
         // Place conditional right after the parent rule to ensure right ordering.
         container.addRule(prop, {}, options) // Flow expects more options but they aren't required
         // And flow doesn't know this will always be a StyleRule which has the addRule method
-        // $FlowFixMe
+        // $FlowFixMe[incompatible-use]
+        // $FlowFixMe[prop-missing]
         .addRule(styleRule.key, style[prop], {
           selector: styleRule.selector
         });
@@ -8050,7 +8399,7 @@ function hyphenateStyleName(name) {
 
 /* harmony default export */ var hyphenate_style_name = (hyphenateStyleName);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/jss-plugin-camel-case/10.4.0/node_modules/jss-plugin-camel-case/dist/jss-plugin-camel-case.esm.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/jss-plugin-camel-case/10.5.0/node_modules/jss-plugin-camel-case/dist/jss-plugin-camel-case.esm.js
 
 
 /**
@@ -8116,7 +8465,7 @@ function camelCase() {
 
 /* harmony default export */ var jss_plugin_camel_case_esm = (camelCase);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/jss-plugin-default-unit/10.4.0/node_modules/jss-plugin-default-unit/dist/jss-plugin-default-unit.esm.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/jss-plugin-default-unit/10.5.0/node_modules/jss-plugin-default-unit/dist/jss-plugin-default-unit.esm.js
 
 
 var px = hasCSSTOMSupport && CSS ? CSS.px : 'px';
@@ -8153,18 +8502,46 @@ var defaultUnits = {
   'border-top-right-radius': px,
   'border-top-width': px,
   'border-width': px,
+  'border-block': px,
+  'border-block-end': px,
+  'border-block-end-width': px,
+  'border-block-start': px,
+  'border-block-start-width': px,
+  'border-block-width': px,
+  'border-inline': px,
+  'border-inline-end': px,
+  'border-inline-end-width': px,
+  'border-inline-start': px,
+  'border-inline-start-width': px,
+  'border-inline-width': px,
+  'border-start-start-radius': px,
+  'border-start-end-radius': px,
+  'border-end-start-radius': px,
+  'border-end-end-radius': px,
   // Margin properties
   margin: px,
   'margin-bottom': px,
   'margin-left': px,
   'margin-right': px,
   'margin-top': px,
+  'margin-block': px,
+  'margin-block-end': px,
+  'margin-block-start': px,
+  'margin-inline': px,
+  'margin-inline-end': px,
+  'margin-inline-start': px,
   // Padding properties
   padding: px,
   'padding-bottom': px,
   'padding-left': px,
   'padding-right': px,
   'padding-top': px,
+  'padding-block': px,
+  'padding-block-end': px,
+  'padding-block-start': px,
+  'padding-inline': px,
+  'padding-inline-end': px,
+  'padding-inline-start': px,
   // Mask properties
   'mask-position-x': px,
   'mask-position-y': px,
@@ -8181,6 +8558,13 @@ var defaultUnits = {
   left: px,
   top: px,
   right: px,
+  inset: px,
+  'inset-block': px,
+  'inset-block-end': px,
+  'inset-block-start': px,
+  'inset-inline': px,
+  'inset-inline-end': px,
+  'inset-inline-start': px,
   // Shadow properties
   'box-shadow': px,
   'text-shadow': px,
@@ -8222,6 +8606,7 @@ var defaultUnits = {
   // Some random properties
   'shape-margin': px,
   size: px,
+  gap: px,
   // Grid properties
   grid: px,
   'grid-gap': px,
@@ -8269,7 +8654,7 @@ var units = addCamelCasedVersion(defaultUnits);
  */
 
 function iterate(prop, value, options) {
-  if (!value) return value;
+  if (value == null) return value;
 
   if (Array.isArray(value)) {
     for (var i = 0; i < value.length; i++) {
@@ -8286,9 +8671,9 @@ function iterate(prop, value, options) {
       }
     }
   } else if (typeof value === 'number') {
-    var unit = options[prop] || units[prop];
+    var unit = options[prop] || units[prop]; // Add the unit if available, except for the special case of 0px.
 
-    if (unit) {
+    if (unit && !(value === 0 && unit === px)) {
       return typeof unit === 'function' ? unit(value).toString() : "" + value + unit;
     }
 
@@ -8332,7 +8717,7 @@ function defaultUnit(options) {
 /* harmony default export */ var jss_plugin_default_unit_esm = (defaultUnit);
 
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/toConsumableArray.js + 3 modules
-var toConsumableArray = __webpack_require__(18);
+var toConsumableArray = __webpack_require__(22);
 
 // CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/css-vendor/2.0.8/node_modules/css-vendor/dist/css-vendor.esm.js
 
@@ -8909,7 +9294,7 @@ function supportedValue(property, value) {
 
 
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/jss-plugin-vendor-prefixer/10.4.0/node_modules/jss-plugin-vendor-prefixer/dist/jss-plugin-vendor-prefixer.esm.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/jss-plugin-vendor-prefixer/10.5.0/node_modules/jss-plugin-vendor-prefixer/dist/jss-plugin-vendor-prefixer.esm.js
 
 
 
@@ -8970,7 +9355,7 @@ function jssVendorPrefixer() {
 
 /* harmony default export */ var jss_plugin_vendor_prefixer_esm = (jssVendorPrefixer);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/jss-plugin-props-sort/10.4.0/node_modules/jss-plugin-props-sort/dist/jss-plugin-props-sort.esm.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/jss-plugin-props-sort/10.5.0/node_modules/jss-plugin-props-sort/dist/jss-plugin-props-sort.esm.js
 /**
  * Sort props by length.
  */
@@ -9000,7 +9385,7 @@ function jssPropsSort() {
 
 /* harmony default export */ var jss_plugin_props_sort_esm = (jssPropsSort);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.10.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/jssPreset/jssPreset.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/jssPreset/jssPreset.js
 
 
 
@@ -9017,7 +9402,7 @@ function jssPreset() {
     typeof window === 'undefined' ? null : jss_plugin_vendor_prefixer_esm(), jss_plugin_props_sort_esm()]
   };
 }
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.10.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/StylesProvider/StylesProvider.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/StylesProvider/StylesProvider.js
 
 
 
@@ -9058,7 +9443,7 @@ function StylesProvider(props) {
 
   var outerOptions = external_React_default.a.useContext(StylesContext);
 
-  var context = Object(esm_extends["a" /* default */])(Object(esm_extends["a" /* default */])({}, outerOptions), {}, {
+  var context = Object(esm_extends["a" /* default */])({}, outerOptions, {
     disableGeneration: disableGeneration
   }, localOptions);
 
@@ -9088,7 +9473,7 @@ function StylesProvider(props) {
  false ? undefined : void 0;
 
 if (false) {}
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.10.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/makeStyles/indexCounter.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/makeStyles/indexCounter.js
 /* eslint-disable import/prefer-default-export */
 // Global index counter to preserve source order.
 // We create the style sheet during the creation of the component,
@@ -9109,10 +9494,10 @@ function increment() {
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/typeof.js
 var esm_typeof = __webpack_require__(12);
 
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/utils/4.10.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/utils/esm/deepmerge.js
-var deepmerge = __webpack_require__(58);
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/utils/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/utils/esm/deepmerge.js
+var deepmerge = __webpack_require__(63);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.10.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/getStylesCreator/getStylesCreator.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/getStylesCreator/getStylesCreator.js
 
 
 
@@ -9152,11 +9537,11 @@ function getStylesCreator(stylesOrCreator) {
     options: {}
   };
 }
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.10.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/getStylesCreator/noopTheme.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/getStylesCreator/noopTheme.js
 // We use the same empty object to ref count the styles that don't need a theme object.
 var noopTheme = {};
 /* harmony default export */ var getStylesCreator_noopTheme = (noopTheme);
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.10.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/makeStyles/makeStyles.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/makeStyles/makeStyles.js
 
 
 
@@ -9235,7 +9620,7 @@ function attach(_ref2, props) {
     makeStyles_multiKeyStore.set(stylesOptions.sheetsManager, stylesCreator, theme, sheetManager);
   }
 
-  var options = Object(esm_extends["a" /* default */])(Object(esm_extends["a" /* default */])(Object(esm_extends["a" /* default */])({}, stylesCreator.options), stylesOptions), {}, {
+  var options = Object(esm_extends["a" /* default */])({}, stylesCreator.options, stylesOptions, {
     theme: theme,
     flip: typeof stylesOptions.flip === 'boolean' ? stylesOptions.flip : theme.direction === 'rtl'
   });
@@ -9380,7 +9765,7 @@ function makeStyles(stylesOrCreator) {
     var props = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
     var theme = Object(useTheme["a" /* default */])() || defaultTheme;
 
-    var stylesOptions = Object(esm_extends["a" /* default */])(Object(esm_extends["a" /* default */])({}, external_React_default.a.useContext(StylesContext)), stylesOptions2);
+    var stylesOptions = Object(esm_extends["a" /* default */])({}, external_React_default.a.useContext(StylesContext), stylesOptions2);
 
     var instance = external_React_default.a.useRef();
     var shouldUpdate = external_React_default.a.useRef();
@@ -9417,7 +9802,7 @@ function makeStyles(stylesOrCreator) {
 }
 
 /***/ }),
-/* 60 */
+/* 65 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9429,14 +9814,14 @@ __webpack_require__.d(__webpack_exports__, "a", function() { return /* binding *
 var external_React_ = __webpack_require__(0);
 var external_React_default = /*#__PURE__*/__webpack_require__.n(external_React_);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.10.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/useTheme/ThemeContext.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/useTheme/ThemeContext.js
 
 var ThemeContext = external_React_default.a.createContext(null);
 
 if (false) {}
 
 /* harmony default export */ var useTheme_ThemeContext = (ThemeContext);
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.10.0_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/useTheme/useTheme.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/useTheme/useTheme.js
 
 
 function useTheme() {
