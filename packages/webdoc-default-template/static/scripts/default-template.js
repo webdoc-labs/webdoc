@@ -8645,6 +8645,12 @@ function globalReducer() {
   explorerOpen: true
 }));
 // CONCATENATED MODULE: ./src/app/components/Explorer/index.js
+function Explorer_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function Explorer_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { Explorer_ownKeys(Object(source), true).forEach(function (key) { Explorer_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { Explorer_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function Explorer_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function Explorer_slicedToArray(arr, i) { return Explorer_arrayWithHoles(arr) || Explorer_iterableToArrayLimit(arr, i) || Explorer_unsupportedIterableToArray(arr, i) || Explorer_nonIterableRest(); }
 
 function Explorer_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -8737,12 +8743,15 @@ var fetched = false;
 
   return external_React_default.a.createElement("div", {
     className: "explorer",
-    style: {
-      minWidth: !isOpen ? "0px" : undefined,
-      width: !isOpen ? "0px" : undefined,
-      overflowX: !isOpen ? "hidden" : undefined,
-      transitionDuration: "200ms"
-    }
+    style: Explorer_objectSpread({
+      transition: "margin-left 200ms, width 200ms",
+      transform: "matrix(1, 0, 0, 1, 0, 0)"
+    }, !isOpen && {
+      marginLeft: "-291px",
+      minWidth: 0,
+      width: 291,
+      overflowX: "hidden"
+    })
   }, external_React_default.a.createElement(ExplorerHeader, {
     isOpen: isOpen,
     toggleOpen: toggleOpen

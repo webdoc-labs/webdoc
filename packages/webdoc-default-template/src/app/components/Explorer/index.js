@@ -56,10 +56,14 @@ export default connect(({explorerOpen}) => ({
 
   return (
     <div className="explorer" style={{
-      minWidth: !isOpen ? "0px" : undefined,
-      width: !isOpen ? "0px" : undefined,
-      overflowX: !isOpen ? "hidden" : undefined,
-      transitionDuration: "200ms",
+      transition: "margin-left 200ms, width 200ms",
+      transform: "matrix(1, 0, 0, 1, 0, 0)",
+      ...(!isOpen && {
+        marginLeft: "-291px",
+        minWidth: 0,
+        width: 291,
+        overflowX: "hidden",
+      }),
     }}>
       <ExplorerHeader isOpen={isOpen} toggleOpen={toggleOpen} />
       <TreeView
