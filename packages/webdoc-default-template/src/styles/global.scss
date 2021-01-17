@@ -23,7 +23,6 @@ a {
   @include flex($flex-direction: column);
 
   color: $colorPrimaryText;
-  background-color: $colorPrimary;
 
   font-family: Roboto, Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: $textSizeMain;
@@ -52,14 +51,16 @@ a {
       }
 
       max-width: 400px;
-      height: 100%;
       overflow: auto;
     }
 
     &-members-explorer {
       min-width: 200px;
     }
-    &-members-explorer > *:first-child, &-content > *:first-child {
+    &-members-explorer > *:first-child {
+      margin-top: 68px;
+    }
+    &-content > *:first-child {
       margin-top: 8px;
     }
     &-members-explorer > *:last-child, &-content > *:last-child {
@@ -67,14 +68,26 @@ a {
     }
 
     &-content {
-      width: 0;
+      color: $colorText;
+      font-family: Arial, Roboto, sans-serif;
       flex-grow: 2;
       flex-shrink: 1;
       height: 100%;
       overflow-x: hidden;// TODO: Slight horizontal scrolling pops up for some reason
       overflow-y: auto;
-      max-width: 900px;
-      padding: 0 8px;
+      max-width: 800px;
+      padding-left: 67px;
+      padding-right: 83px;
+      width: 0;
+    }
+    &-content > *:first-child {
+      margin-top: 24px;
+    }
+    &-r-divider {
+      border: 1px solid $colorPrimaryLight;
+      margin: 0;
+      margin-top: 68px;
+      height: 67vh;
     }
   }
 }

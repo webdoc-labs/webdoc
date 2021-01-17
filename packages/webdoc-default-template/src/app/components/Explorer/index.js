@@ -56,10 +56,10 @@ export default connect(({explorerOpen}) => ({
 
   return (
     <div className="explorer" style={{
-      display: !isOpen ? "none" : undefined,
       minWidth: !isOpen ? "0px" : undefined,
       width: !isOpen ? "0px" : undefined,
       overflowX: !isOpen ? "hidden" : undefined,
+      transitionDuration: "200ms",
     }}>
       <ExplorerHeader isOpen={isOpen} toggleOpen={toggleOpen} />
       <TreeView

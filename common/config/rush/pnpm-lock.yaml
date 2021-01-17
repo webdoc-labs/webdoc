@@ -2755,7 +2755,7 @@ packages:
       integrity: sha512-Z942RysHXmJrhqk88FmKBVq/v5tqmSkDz7p54G/MGyjMnCFFnC79XWNbg+Vta8W6Wb2qtSZTSxIGkJrRpCFEiA==
   /browserslist/3.2.8:
     dependencies:
-      caniuse-lite: 1.0.30001177
+      caniuse-lite: 1.0.30001178
       electron-to-chromium: 1.3.641
     dev: false
     hasBin: true
@@ -2763,7 +2763,7 @@ packages:
       integrity: sha512-WHVocJYavUwVgVViC0ORikPHQquXwVh939TaelZ4WDqpWgTX/FsGhl/+P4qBUAGcRvtOgDgC+xftNWWp2RUTAQ==
   /browserslist/4.16.1:
     dependencies:
-      caniuse-lite: 1.0.30001177
+      caniuse-lite: 1.0.30001178
       colorette: 1.2.1
       electron-to-chromium: 1.3.641
       escalade: 3.1.1
@@ -2932,16 +2932,16 @@ packages:
   /caniuse-api/3.0.0:
     dependencies:
       browserslist: 4.16.1
-      caniuse-lite: 1.0.30001177
+      caniuse-lite: 1.0.30001178
       lodash.memoize: 4.1.2
       lodash.uniq: 4.5.0
     dev: false
     resolution:
       integrity: sha512-bsTwuIg/BZZK/vreVTYYbSWoe2F+71P7K5QGEX+pT250DZbfU1MQ5prOKpPR+LL6uWKK3KMwMCAS74QB3Um1uw==
-  /caniuse-lite/1.0.30001177:
+  /caniuse-lite/1.0.30001178:
     dev: false
     resolution:
-      integrity: sha512-6Ld7t3ifCL02jTj3MxPMM5wAYjbo4h/TAQGFTgv1inihP1tWnWp8mxxT4ut4JBEHLbpFXEXJJQ119JCJTBkYDw==
+      integrity: sha512-VtdZLC0vsXykKni8Uztx45xynytOi71Ufx9T8kHptSw9AL4dpqailUJJHavttuzUe1KYuBYtChiWv+BAb7mPmQ==
   /catharsis/0.8.11:
     dependencies:
       lodash: 4.17.20
@@ -4438,7 +4438,7 @@ packages:
     dev: false
     resolution:
       integrity: sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==
-  /fast-glob/3.2.4:
+  /fast-glob/3.2.5:
     dependencies:
       '@nodelib/fs.stat': 2.0.4
       '@nodelib/fs.walk': 1.2.6
@@ -4450,7 +4450,7 @@ packages:
     engines:
       node: '>=8'
     resolution:
-      integrity: sha512-kr/Oo6PX51265qeuCYsyGypiO5uJFgBS0jksyG7FUeCyQzNwYnzrNIMR1NXfkZXsMYXYLRAHgISHBz8gQcxKHQ==
+      integrity: sha512-2DtFcgT68wiTTiwZ2hNdJfcHNke9XOfnwmBRWXhmeKM8rF0TGwmC/Qto3S7RoZKp5cilZbxzO5iTNTQsJ+EeDg==
   /fast-json-stable-stringify/2.1.0:
     dev: false
     resolution:
@@ -4993,7 +4993,7 @@ packages:
       '@types/glob': 7.1.3
       array-union: 2.1.0
       dir-glob: 3.0.1
-      fast-glob: 3.2.4
+      fast-glob: 3.2.5
       glob: 7.1.6
       ignore: 5.1.8
       merge2: 1.4.1
@@ -5007,7 +5007,7 @@ packages:
     dependencies:
       array-union: 2.1.0
       dir-glob: 3.0.1
-      fast-glob: 3.2.4
+      fast-glob: 3.2.5
       ignore: 5.1.8
       merge2: 1.4.1
       slash: 3.0.0
@@ -10067,7 +10067,7 @@ packages:
     dev: false
     name: '@rush-temp/cli'
     resolution:
-      integrity: sha512-z5AQM4D/Ip0LJgc2c6k50Tl4kkJrhT24KmPQEgsbyP0OS6z4wUcMKct1WYEWzkwsfEBIN8QHmHsqIwoProIPXA==
+      integrity: sha512-1A31QytqJBffkdM0wvDLReTPRK3GOEpT8I3q/4rLBHLArgL6iKy4b9QcwXCK4CQ4XhRD+Mt9Y5K0eLLNNhAWEw==
       tarball: 'file:projects/cli.tgz'
     version: 0.0.0
   'file:projects/default-template.tgz':
@@ -10111,7 +10111,7 @@ packages:
     dev: false
     name: '@rush-temp/default-template'
     resolution:
-      integrity: sha512-XC/t8gpaU4rTP8ZW3zHn9jXFWafbOx+901WTQX55HD0JJht15Q9zepMnpeP6Y8JAqzablZCgsusdmLPWqf6RYg==
+      integrity: sha512-3VQYDkXEPOJ6WvsBsAq9PcKNaQEHV79g4zWnBnT38i6f+umXQstMfYCLdyvbhIjCoUukBGnFtATXwk32ZuRW4g==
       tarball: 'file:projects/default-template.tgz'
     version: 0.0.0
   'file:projects/eslint-config.tgz':
@@ -10143,7 +10143,7 @@ packages:
     dev: false
     name: '@rush-temp/example'
     resolution:
-      integrity: sha512-2CAgdP9qCYbx2GXoyPH4hXDTot6/dlL9wpzVd5B2s6VOiRp25NqZUytW0EBw1ulvqgWkcwTr3SQUZjzsIz3nUg==
+      integrity: sha512-tlJshpuGAHXrQFR1hxWJv/Z1ZwDe1I68QpUkw4GXILjF3p+DwdKmiLH0aTrsnqAoR+h1rDsIuGjDNezqUBG4sA==
       tarball: 'file:projects/example.tgz'
     version: 0.0.0
   'file:projects/externalize.tgz':
@@ -10165,7 +10165,7 @@ packages:
     dev: false
     name: '@rush-temp/externalize'
     resolution:
-      integrity: sha512-S1jds3PD5UYDMZRsSjIKqP+eMy7Bp/lvuvveqHgAYjxhz16NFZxKWEGq1YDA91Ka+KJKRqTG3SqKO75OIuxOoQ==
+      integrity: sha512-4cKqcXTXbLPhrO2eH/UXxzCeCw1RVHWY9WpjCXaOpXdP+9FVQkeESZ5cY+5ECO4i5xZZEV8wt8v9UGcw9fN7jw==
       tarball: 'file:projects/externalize.tgz'
     version: 0.0.0
   'file:projects/legacy-template.tgz':
@@ -10188,7 +10188,7 @@ packages:
     dev: false
     name: '@rush-temp/legacy-template'
     resolution:
-      integrity: sha512-0Ztd34ALg5EHH7J+6vU1uUVorhtV52+q2GSWoyO1iOPwrLkaitbR1xzHJS8m5PjPIAUq6glxAnEk/PHxOhT2Ww==
+      integrity: sha512-fb2MbgxzTn3poBEWy3DHlEPj4FTKHTzXukzkki/AC14DpbQRrBUqi3InwifOpIJVlxXpdHawhfaCVeKmfe0yFw==
       tarball: 'file:projects/legacy-template.tgz'
     version: 0.0.0
   'file:projects/model.tgz':
@@ -10215,7 +10215,7 @@ packages:
     dev: false
     name: '@rush-temp/model'
     resolution:
-      integrity: sha512-DcN2vZ4gt0AE7v0NXNOOVjcBG38YlSkZE0eY2AuGggzf43XSoHcaa4mozn3LuRTqtx/nPh9Ec5KBdRHyd89t5A==
+      integrity: sha512-7kbxvAEVt84uFg5xlaentpuQWLEW9xD5/w6VT+NZM+ajb6rcxNTbx6CWiXuj6nyetBCeE+mSTIXp/WoHnwxBGQ==
       tarball: 'file:projects/model.tgz'
     version: 0.0.0
   'file:projects/parser.tgz':
@@ -10245,7 +10245,7 @@ packages:
     dev: false
     name: '@rush-temp/parser'
     resolution:
-      integrity: sha512-SjPb6IaRVT1NgfUjGIar2D/99BpTS8R0U+NjHmNMzKDzk2+UMeNiJ7M9ahqQo8xUuaX02MOne4nQCpreLXYzJQ==
+      integrity: sha512-zxm4VBRKFH+eDEjKuefEi+LYVOhIoAxR/NuJqQODDh9BN+0JZndNTCvLTugeBTz3P+k0CGZOWNF06Qk1a9z+6g==
       tarball: 'file:projects/parser.tgz'
     version: 0.0.0
   'file:projects/plugin-markdown.tgz':
@@ -10300,7 +10300,7 @@ packages:
     dev: false
     name: '@rush-temp/template-library'
     resolution:
-      integrity: sha512-0NrGfO+hq42SAE6hey96REhD+dFUT5ejuQufSM/UTtHQbVIssKXYLnig9ykts7h18lhgaZr+HJB8XT3GNDF/Xg==
+      integrity: sha512-mvUeEAaXnRzs0IjV196vBSyqMhfBN9+0P0Ek9md5/H5Li7rczdaIV0ExOYIOsHFLDIpKjuDA7Aev4stA8S9uWQ==
       tarball: 'file:projects/template-library.tgz'
     version: 0.0.0
   'file:projects/tests.tgz':
@@ -10309,7 +10309,7 @@ packages:
     dev: false
     name: '@rush-temp/tests'
     resolution:
-      integrity: sha512-y6oVwycfBWpk5tP5rv8H2nsKrLywi+idkBEh0+b8+577vQIe9Ajiu7pB0VZjpC4QJDKaWKnkbFdFBj/G+LH4Ww==
+      integrity: sha512-iqXI/obPhSDrxgJ6ki0hmH7jAXZdXNz9xJeiVpEzOM8Wg5pNmfePe/LBhVmcHaN4b2XHATeYjWWjx4ig34XAog==
       tarball: 'file:projects/tests.tgz'
     version: 0.0.0
   'file:projects/types.tgz':
@@ -10319,7 +10319,6 @@ packages:
       integrity: sha512-maxudznjgJEhASCC8FSBY42y0jNeTsC8qD+VqHy4OwuohcnBX0UtjTX4e3yJauqjefEzEwQbGTP3ZninK/VazQ==
       tarball: 'file:projects/types.tgz'
     version: 0.0.0
-registry: ''
 specifiers:
   '@babel/cli': ^7.8.4
   '@babel/core': ^7.9.0

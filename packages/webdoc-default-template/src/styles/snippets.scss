@@ -8,33 +8,35 @@ pre {
 
   width: 100%;
 
+  align-items: center;
+  display: flex;
   border-color: 1px solid $colorBorders;
   padding: 4px 6px;
-  overflow-x: scroll;
+  overflow-x: auto;
 }
 
 pre, code {
-  font-family: "Consolas", "Roboto Mono", monospace;
+  font-family: "IBM Plex Mono", "Consolas", "Roboto Mono", monospace;
   font-size: $textSizeCode;
 
-  background-color: $colorCodeBackground !important;
-  border-radius: 2px;
+  background-color: $colorSheetSecondary !important;
+  border-radius: 8px;
 
   vertical-align: baseline;
   word-break: keep-all;
 }
 
 .hljs { /* Override markdown highlight-js */
-  background-color: $colorCodeBackground !important;
+  background-color: $colorSheetSecondary !important;
 }
 
 .signature {
   border-radius: 3px;
   padding: 6px;
+  padding-left: 24px;
 
   &__container {
-    padding-top: 6px;
-    padding-bottom: 12px;
+    min-height: 42px;/* 48px minus 6px padding */
     overflow-x: scroll;
     overflow-y: visible;
   }
