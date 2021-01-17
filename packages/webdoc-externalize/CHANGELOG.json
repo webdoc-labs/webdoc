@@ -2,6 +2,12 @@
   "name": "@webdoc/externalize",
   "entries": [
     {
+      "version": "1.1.5",
+      "tag": "@webdoc/externalize_v1.1.5",
+      "date": "Sun, 17 Jan 2021 16:21:24 GMT",
+      "comments": {}
+    },
+    {
       "version": "1.1.4",
       "tag": "@webdoc/externalize_v1.1.4",
       "date": "Sat, 16 Jan 2021 16:17:04 GMT",
