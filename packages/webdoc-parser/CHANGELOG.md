@@ -1,6 +1,13 @@
 # Change Log - @webdoc/parser
 
-This log was last generated on Sat, 16 Jan 2021 16:17:04 GMT and should not be manually modified.
+This log was last generated on Sun, 17 Jan 2021 16:21:24 GMT and should not be manually modified.
+
+## 1.1.5
+Sun, 17 Jan 2021 16:21:24 GMT
+
+### Updates
+
+- Fix incorrect inference of class, interface extends, implements in some cases and when the referred symbols are qualified names
 
 ## 1.1.4
 Sat, 16 Jan 2021 16:17:04 GMT

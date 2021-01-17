@@ -408,6 +408,30 @@
 					]
 				},
 				{
+					"name": "",
+					"type": "TypedefDoc",
+					"brief": "",
+					"description": "",
+					"members": [
+						{
+							"name": "destroy",
+							"type": "PropertyDoc",
+							"access": "public",
+							"scope": "static",
+							"brief": "",
+							"description": "<p>Called when destroying Application, scoped to Application instance</p>"
+						},
+						{
+							"name": "init",
+							"type": "PropertyDoc",
+							"access": "public",
+							"scope": "static",
+							"brief": "",
+							"description": "<p>Called when Application is constructed, scoped to Application instance.\nPasses in <code>options</code> as the only argument, which are Application constructor options.</p>"
+						}
+					]
+				},
+				{
 					"name": "SVG_SIZE",
 					"type": "PropertyDoc",
 					"scope": "static",

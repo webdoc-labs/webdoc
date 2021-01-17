@@ -4,6 +4,8 @@
 
 import {
   type BabelNodeFlow,
+  type BabelNodeMemberExpression,
+  type BabelNodeQualifiedName,
   type BabelNodeTSTypeAnnotation,
   type BabelNodeTypeAnnotation,
   type ClassDeclaration,
@@ -15,6 +17,7 @@ import {
   type ObjectMethod,
   type TSInterfaceDeclaration,
   type TSMethodSignature,
+  type TSQualifiedName,
   type TSType,
   type TSTypeAnnotation,
   isAnyTypeAnnotation,
@@ -31,6 +34,7 @@ import {
   isGenericTypeAnnotation,
   isIdentifier,
   isIntersectionTypeAnnotation,
+  isMemberExpression,
   isMixedTypeAnnotation,
   isNullLiteralTypeAnnotation,
   isNullableTypeAnnotation,
@@ -47,6 +51,7 @@ import {
   isStringTypeAnnotation,
   isTSAnyKeyword,
   isTSArrayType,
+  isTSAsExpression,
   isTSBigIntKeyword,
   isTSBooleanKeyword,
   isTSConstructSignatureDeclaration,
@@ -81,6 +86,7 @@ import {
   isTSUnionType,
   isTSUnknownKeyword,
   isTSVoidKeyword,
+  isThisExpression,
   isThisTypeAnnotation,
   isTupleTypeAnnotation,
   isTypeAnnotation,
@@ -116,6 +122,9 @@ export function extractExtends(
     if (isIdentifier(node.superClass)) {
       return [node.superClass.name];
     }
+    if (isMemberExpression(node.superClass)) {
+      return [reduceMemberExpression(node.superClass)];
+    }
 
     return null;
   }
@@ -126,6 +135,15 @@ export function extractExtends(
   return node.extends.map((exs) => {
     if (isIdentifier(exs.id)) {
       return exs.id.name;
+    }
+    if (isQualifiedTypeIdentifier(exs.id)) {
+      return reduceQualifiedName(exs.id);
+    }
+    if (isIdentifier(exs.expression)) {
+      return exs.expression.name;
+    }
+    if (isTSQualifiedName(exs.expression)) {
+      return reduceTSQualifiedName(exs.expression);
     }
 
     // TODO: QualifiedTypeIdentifier
@@ -144,10 +162,18 @@ export function extractImplements(
     if (isTSExpressionWithTypeArguments(impls)) {
       if (isIdentifier(impls.expression)) {
         return impls.expression.name;
-      } else {
-        // TODO: TSQualifiedName
-        return "";
       }
+      if (isQualifiedTypeIdentifier(impls.id)) {
+        return reduceQualifiedName(impls.id);
+      }
+      if (isIdentifier(impls.expression)) {
+        return impls.expression.name;
+      }
+      if (isTSQualifiedName(impls.expression)) {
+        return reduceTSQualifiedName(impls.expression);
+      }
+
+      return "";
     }
   }) : null;
 }
@@ -255,6 +281,60 @@ export function extractType(
   }
 }
 
+// Helper to resolve assignment to object chain, e.g. [Class.prototype].property
+function reduceMemberExpression(expression: BabelNodeMemberExpression): string {
+  let longname = "";
+
+  if (isTSAsExpression(expression)) {
+    expression = expression.expression;
+  }
+  if (isThisExpression(expression)) {
+    return "this";
+  }
+
+  while (expression.object) {
+    longname = expression.property.name + (longname ? "." + longname : "");
+    expression = expression.object;
+  }
+
+  longname = (isThisExpression(expression) ? "this" : expression.name) +
+    (longname ? "." : "") + longname;
+
+  return longname;
+}
+
+// Reduce the qualified name into a string
+function reduceQualifiedName(type: BabelNodeQualifiedName): string {
+  let name = "";
+
+  while (type && !isIdentifier(type)) {
+    name = type.id.name + (name ? "." : "") + name;
+    type = type.qualification;
+  }
+
+  if (type) {
+    name = type.name + "." + name;
+  }
+
+  return name;
+}
+
+// Reduce the qualified name node into a string
+function reduceTSQualifiedName(type: TSQualifiedName): string {
+  let name = "";
+
+  while (type && !isIdentifier(type)) {
+    name = type.right.name + (name ? "." : "") + name;
+    type = type.left;
+  }
+
+  if (type) {
+    name = type.name + "." + name;
+  }
+
+  return name;
+}
+
 // Resolve a flow type-annotation into a parsed DataType
 function resolveFlowDataType(type: BabelNodeTypeAnnotation | BabelNodeFlow | any): DataType {
   if (isTypeAnnotation(type)) {
@@ -290,18 +370,7 @@ function resolveFlowDataType(type: BabelNodeTypeAnnotation | BabelNodeFlow | any
     return dataType;
   }
   if (isQualifiedTypeIdentifier(type)) {
-    let name = "";
-
-    while (type && !isIdentifier(type)) {
-      name = type.id.name + (name ? "." : "") + name;
-      type = type.qualification;
-    }
-
-    if (type) {
-      name = type.id + "." + name;
-    }
-
-    return createSimpleDocumentedType(name);
+    return createSimpleDocumentedType(reduceQualifiedName(type));
   }
   if (isObjectTypeIndexer(type)) {
     const id = type.id ? type.id.name : null;
@@ -440,18 +509,7 @@ function resolveTSDataType(type: TSTypeAnnotation | TSType | any): DataType {
   if (isIdentifier(type)) {
     return createSimpleDocumentedType(type.name);
   } else if (isTSQualifiedName(type)) { // TSQualifiedName
-    let name = "";
-
-    while (type && !isIdentifier(type)) {
-      name = type.right.name + (name ? "." : "") + name;
-      type = type.left;
-    }
-
-    if (type) {
-      name = type.name + "." + name;
-    }
-
-    return createSimpleDocumentedType(name);
+    return createSimpleDocumentedType(reduceTSQualifiedName(type));
   }
 
   if (isTSType(type)) {
