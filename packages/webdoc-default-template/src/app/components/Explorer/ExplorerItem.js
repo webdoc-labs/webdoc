@@ -1,10 +1,9 @@
+import {useExplorerCategoryStyles, useExplorerStyles} from "./useExplorerStyles";
 import ExplorerTargetGroup from "./ExplorerCategoryItem";
 import Link from "@material-ui/core/Link";
 //import React from "react";
 import TreeItem from "@material-ui/lab/TreeItem";
 import cuid from "cuid";
-import {useExplorerCategoryStyles, useExplorerStyles} from "./useExplorerStyles";
-
 
 export default function ExplorerItem(props) {
   if (!props.data.nodeId) {
