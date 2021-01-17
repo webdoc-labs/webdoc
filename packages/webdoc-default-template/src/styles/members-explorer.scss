@@ -1,22 +1,43 @@
 @import "./scss-utils/all";
+@import "themes";
 
 
 .page-members-explorer {
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  line-height: 14px;
+
   &-category {
+    margin-left: 16px;
+    margin-bottom: 7px;
+
     &__title {
-      color: black;
-      font-weight: 500;
+      font-weight: 700;
+      margin-bottom: 7px;
     }
 
     &__items {
-      @include normalize(true);
+      margin-left: 12px;
+      margin-top: 0;
+      margin-bottom: 0;
+      padding: 0;
+      list-style: none;
     }
-
   }
 
   &__item {
+    align-items: center;
+    border-radius: 8px 0 0 8px;
+    display: flex;
     font-weight: 400;
+    height: 15px;
     line-height: 1.5;
+    padding-left: 2px;
+    vertical-align: middle;
+
+    a {
+      color: $colorText;
+    }
 
     &:hover {
       background-color: rgba(0, 0, 0, 0.04);

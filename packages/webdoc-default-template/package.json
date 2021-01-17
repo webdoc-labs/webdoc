@@ -41,8 +41,6 @@
   "dependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-react": "^7.10.1",
-    "@material-ui/icons": "^4.9.1",
-    "@material-ui/lab": "^4.0.0-alpha.56",
     "@webdoc/model": "^1.1.5",
     "@webdoc/template-library": "^1.1.5",
     "code-prettify": "^0.1.0",
@@ -60,6 +58,8 @@
     "@babel/preset-react": "^7.10.1",
     "@babel/register": "^7.9.0",
     "@material-ui/core": "^4.10.2",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.56",
     "@webdoc/babel-preset": "^1.0.0",
     "@webdoc/eslint-config": "^1.0.0",
     "babel-loader": "^8.1.0",
@@ -80,6 +80,8 @@
     "sass": "^1.26.10",
     "sass-loader": "^9.0.3",
     "webpack": "^4.43.0",
-    "webpack-stream": "^5.2.1"
+    "webpack-stream": "^5.2.1",
+    "redux": "~4.0.5",
+    "react-redux": "~7.2.2"
   }
 }

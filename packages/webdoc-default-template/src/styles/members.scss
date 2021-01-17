@@ -1,29 +1,49 @@
+@import "themes";
 @import "vars";
 
 
 .members {
   &__category {
-    font-size: 2em;
+    font-size: 1.5em;
+    font-weight: bold;
+    line-height: 1.4em;
+    padding: 8px;
+  }
+
+  > hr {
+    border: 2px solid $colorSheetSecondary
+  }
+
+  > * {
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
 }
 
 .member {
   position: relative;
-
-  width: 100%;
   padding-bottom: 12px;
+  width: 100%;
 
-  &:not(:last-child) {
-    &:after {
-      content: '';
-      position: absolute;
-      width: 69%;
-      height: 1px;
-      background-color: $colorBorders;
+  &__title {
+    align-items: center;
+    display: flex;
+    margin-left: 12px;
+    margin-bottom: 10px;
 
-      left: 50%;
-      transform: translateX(-50%);
+    > a {
+      height: 16px;
     }
+
+    > span {
+      font-size: 1.3em;
+      margin-left: 8px;
+      line-height: 1.4em;
+    }
+  }
+
+  &__brief, &__description, > .table-wrapper {
+    margin-left: 8px;
   }
 
   & > .signature {

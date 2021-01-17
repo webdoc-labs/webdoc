@@ -1,9 +1,10 @@
 @at-root :root {
-  --color-primary        : #ffffff;
-  --color-primary-light  : #ffffff;
+  --color-primary        : #0066CD;
+  --color-primary-light  : #8EC4FB;
   --color-primary-dark   : #c2c2c2;
 
   --color-primary-text   : #212121;
+  --color-text           : #333;
 
   --color-secondary      : #ffb74d;
   --color-secondary-light: #ffe97d;
@@ -12,4 +13,7 @@
   --color-borders        : #d9d9d9;
 
   --color-code-background: #f5f5f5;
+
+  --color-sheet-primary: #fbfbfb;
+  --color-sheet-secondary: #f7f7f7;
 }

@@ -1,14 +1,26 @@
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import ArrowRightIcon from "@material-ui/icons/ArrowRight";
+import ExplorerHeader from "./ExplorerHeader";
 import ExplorerTarget from "./ExplorerItem";
 import ExplorerTargetGroup from "./ExplorerCategoryItem";
 import React from "react";
 import TreeView from "@material-ui/lab/TreeView";
+import {connect} from "react-redux";
+import store from "../../store";
+import {useExplorerStyles} from "./useExplorerStyles";
 
 let fetched = false;
 
-export default function Explorer(props) {
+export default connect(({explorerOpen}) => ({
+  isOpen: explorerOpen,
+  setOpen: (isOpen) => store.dispatch({type: "setExplorerOpen", value: isOpen}),
+}))(function Explorer({
+  isOpen,
+  setOpen,
+}) {
   const [data, setData] = React.useState(null);
+  const {root} = useExplorerStyles();
+  const toggleOpen = React.useCallback(() => setOpen(!isOpen), [isOpen]);
   const children = [];
 
   if (!fetched) {
@@ -43,13 +55,32 @@ export default function Explorer(props) {
   }
 
   return (
-    <TreeView
-      className="explorer-tree"
-      defaultCollapseIcon={<ArrowDropDownIcon />}
-      defaultExpandIcon={<ArrowRightIcon />}
-      disableSelection={true}
-    >
-      {children}
-    </TreeView>
+    <div className="explorer" style={{
+      transition: "margin-left 200ms, width 200ms",
+      transform: "matrix(1, 0, 0, 1, 0, 0)",
+      ...(!isOpen && {
+        marginLeft: "-291px",
+        minWidth: 0,
+        width: 291,
+        overflowX: "hidden",
+      }),
+    }}>
+      <ExplorerHeader isOpen={isOpen} toggleOpen={toggleOpen} />
+      <TreeView
+        className={"explorer__tree " + (
+          isOpen ? "explorer__tree-open" : "explorer__tree-open"
+        )}
+        classes={{
+          root,
+        }}
+        defaultCollapseIcon={<ArrowDropDownIcon />}
+        defaultExpandIcon={<ArrowRightIcon />}
+        disableSelection={true}
+      >
+        {children}
+      </TreeView>
+    </div>
   );
-}
+});
+
+export {ExplorerHeader};

@@ -44,6 +44,7 @@ if (categoryMembers.length === 0) {
 ?>
 <div class="members">
   <h2 class="members__category"><?js= categoryTitle ?></h2>
+  <hr />
 
   <?js categoryMembers.forEach((member) => { ?>
     <?js= this.partial("components/member/index.tmpl", member) ?>

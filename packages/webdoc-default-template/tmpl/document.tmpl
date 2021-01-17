@@ -10,7 +10,17 @@ docList.forEach((doc) => {
 ?>
 <div class="page-content">
   <div class="document">
-    <div class="document__package"><?js= doc.loc.file && doc.loc.file.package.metadata.name ?></div>
+    <div class="document__breadcrumb">
+      <?js if (doc.loc.file.package) { ?>
+        <?js= this.linkTo(doc.loc.file.package) ?>
+        &gt;
+      <?js } ?>
+      <?js if (doc.parent && doc.parent.type !== "RootDoc") { ?>
+        <?js= this.getPlugin("linker").linksToAncestors(doc).join(" &gt; ") ?>
+        &gt;
+      <?js } ?>
+      <span><?js= doc.name ?></span>
+    </div>
     <h1 class="document__title"><?js= doc.path ?></h1>
     <?js= this.partial("components/signature.tmpl", doc) ?>
 

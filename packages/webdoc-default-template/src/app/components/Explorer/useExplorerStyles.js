@@ -1,22 +1,36 @@
 import {makeStyles} from "@material-ui/core/styles";
 
-export const useExplorerStyles = makeStyles({});
-/*
-makeStyles({
+const itemStyle = {
   label: {
-    color: "black",
-    fontSize: 13,
+    alignItems: "center",
+    display: "flex",
+    color: "#333333",
+    fontSize: 12,
+    height: "24px",
+    lineHeight: "14px",
   },
   labelLinks: {
-    color: "black",
+    color: "#333333",
   },
   iconContainer: {
-    color: "#A5A5A5",
+    color: "#333333",
     fontSize: 8,
     marginRight: 0,
   },
   selected: {
     backgroundColor: "none",
   },
+  root: {
+    padding: "0 8px",
+  },
+};
+
+export const useExplorerStyles = makeStyles(itemStyle);
+
+export const useExplorerCategoryStyles = makeStyles({
+  ...itemStyle,
+  label: {
+    ...itemStyle.label,
+    fontWeight: "bold",
+  },
 });
-*/

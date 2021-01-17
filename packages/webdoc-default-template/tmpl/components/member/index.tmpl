@@ -5,7 +5,18 @@
 const doc = obj;
 ?>
 <div class="member" id="<?js= doc.name ?>">
-  <h3 class="member__title"><?js= doc.name !== "constructor" ? doc.name : "" ?></h3>
+  <?js if (doc.name !== "constructor") { ?>
+    <section class="member__title">
+      <a href="<?js= this.getPlugin("linker").getURI(doc) ?>">
+        <img
+          src="/<?js= this.getPlugin("linker").siteRoot ?>/icons/link.svg"
+          width="16px"
+          height="16px"
+        />
+      </a>
+      <span><?js= doc.name ?></span>
+    </section>
+  <?js } ?>
   <?js= this.partial("components/signature.tmpl", doc) ?>
 
   <div class="member__brief"><?js= doc.brief ?></div>

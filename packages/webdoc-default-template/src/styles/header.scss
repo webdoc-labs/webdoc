@@ -2,16 +2,57 @@
 
 @import "vars";
 
+.header-content-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow-y: auto;
+  min-width: 0;
+  max-height: 100%;
+
+  &__content {
+    display: flex;
+    overflow: auto;
+  }
+}
 
 .header {
-  position: fixed;
+  background-color: white;
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.16);
   height: $header-height;
   top: 0;
   width: 100%;
 
   &__container {
-    @include center(true);
+    align-items: center;
+    backdrop-filter: blur(48px);
+    display: flex;
     height: 100%;
+    justify-content: space-around;
+  }
+
+  &__contents {
+    align-items: center;
+    backdrop-filter: blur(48px);
+    display: flex;
+    flex-grow: 1;
+    padding-right: 110px;
+    justify-content: flex-end;
+    height: 100%;
+
+    * {
+      margin-right: 42px;
+    }
+  }
+
+  &__link {
+    color: black;
+    text-decoration: underline;
+  }
+
+  &__link__current {
+    color: #0066cd;
+    text-decoration: none;
   }
 
   &__title {

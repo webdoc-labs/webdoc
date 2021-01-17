@@ -210,8 +210,6 @@ function outReference(
 
     page = linker.processInternalURI(page, {outputRelative: true});
 
-    console.log(page);
-
     let doc;
 
     try {

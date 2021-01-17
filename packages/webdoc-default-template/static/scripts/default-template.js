@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 38);
+/******/ 	return __webpack_require__(__webpack_require__.s = 45);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -120,7 +120,7 @@ function _extends() {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _objectWithoutProperties; });
-/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(10);
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5);
 
 function _objectWithoutProperties(source, excluded) {
   if (source == null) return {};
@@ -189,28 +189,7 @@ function toVal(mix) {
 
 
 /***/ }),
-/* 4 */,
-/* 5 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return capitalize; });
-/* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(34);
-
-// It should to be noted that this function isn't equivalent to `text-transform: capitalize`.
-//
-// A strict capitalization should uppercase the first letter of each word a the sentence.
-// We only handle the first word.
-function capitalize(string) {
-  if (typeof string !== 'string') {
-    throw new Error( false ? undefined : Object(_material_ui_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(7));
-  }
-
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
-/***/ }),
-/* 6 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -223,18 +202,33 @@ function capitalize(string) {
 if (false) { var throwOnDirectAccess, ReactIs; } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(41)();
+  module.exports = __webpack_require__(46)();
 }
 
 
 /***/ }),
-/* 7 */
-/***/ (function(module, exports) {
+/* 5 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = ReactDOM;
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _objectWithoutPropertiesLoose; });
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
 
 /***/ }),
-/* 8 */
+/* 6 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -250,14 +244,14 @@ var external_React_ = __webpack_require__(0);
 var external_React_default = /*#__PURE__*/__webpack_require__.n(external_React_);
 
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/prop-types/15.7.2/node_modules/prop-types/index.js
-var prop_types = __webpack_require__(6);
+var prop_types = __webpack_require__(4);
 
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/hoist-non-react-statics/3.3.2/node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js
-var hoist_non_react_statics_cjs = __webpack_require__(31);
+var hoist_non_react_statics_cjs = __webpack_require__(22);
 var hoist_non_react_statics_cjs_default = /*#__PURE__*/__webpack_require__.n(hoist_non_react_statics_cjs);
 
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/makeStyles/makeStyles.js + 23 modules
-var makeStyles = __webpack_require__(64);
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/makeStyles/makeStyles.js + 22 modules
+var makeStyles = __webpack_require__(73);
 
 // CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/getThemeProps/getThemeProps.js
 /* eslint-disable no-restricted-syntax */
@@ -284,7 +278,7 @@ function getThemeProps(params) {
   return props;
 }
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/useTheme/useTheme.js + 1 modules
-var useTheme = __webpack_require__(65);
+var useTheme = __webpack_require__(74);
 
 // CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/withStyles/withStyles.js
 
@@ -371,7 +365,7 @@ var withStyles_withStyles = function withStyles(stylesOrCreator) {
 
 /* harmony default export */ var esm_withStyles_withStyles = (withStyles_withStyles);
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/defaultTheme.js + 22 modules
-var styles_defaultTheme = __webpack_require__(11);
+var styles_defaultTheme = __webpack_require__(16);
 
 // CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/withStyles.js
 
@@ -387,7 +381,395 @@ function styles_withStyles_withStyles(stylesOrCreator, options) {
 /* harmony default export */ var styles_withStyles = __webpack_exports__["a"] = (styles_withStyles_withStyles);
 
 /***/ }),
-/* 9 */
+/* 7 */
+/***/ (function(module, exports) {
+
+module.exports = ReactDOM;
+
+/***/ }),
+/* 8 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return capitalize; });
+/* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(40);
+
+// It should to be noted that this function isn't equivalent to `text-transform: capitalize`.
+//
+// A strict capitalization should uppercase the first letter of each word a the sentence.
+// We only handle the first word.
+function capitalize(string) {
+  if (typeof string !== 'string') {
+    throw new Error( false ? undefined : Object(_material_ui_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(7));
+  }
+
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+/***/ }),
+/* 9 */,
+/* 10 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return useEventCallback; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+var useEnhancedEffect = typeof window !== 'undefined' ? react__WEBPACK_IMPORTED_MODULE_0__["useLayoutEffect"] : react__WEBPACK_IMPORTED_MODULE_0__["useEffect"];
+/**
+ * https://github.com/facebook/react/issues/14099#issuecomment-440013892
+ *
+ * @param {function} fn
+ */
+
+function useEventCallback(fn) {
+  var ref = react__WEBPACK_IMPORTED_MODULE_0__["useRef"](fn);
+  useEnhancedEffect(function () {
+    ref.current = fn;
+  });
+  return react__WEBPACK_IMPORTED_MODULE_0__["useCallback"](function () {
+    return (0, ref.current).apply(void 0, arguments);
+  }, []);
+}
+
+/***/ }),
+/* 11 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return useForkRef; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _setRef__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(19);
+
+
+function useForkRef(refA, refB) {
+  /**
+   * This will create a new function if the ref props change and are defined.
+   * This means react will call the old forkRef with `null` and the new forkRef
+   * with the ref. Cleanup naturally emerges from this behavior
+   */
+  return react__WEBPACK_IMPORTED_MODULE_0__["useMemo"](function () {
+    if (refA == null && refB == null) {
+      return null;
+    }
+
+    return function (refValue) {
+      Object(_setRef__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(refA, refValue);
+      Object(_setRef__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(refB, refValue);
+    };
+  }, [refA, refB]);
+}
+
+/***/ }),
+/* 12 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export hexToRgb */
+/* unused harmony export rgbToHex */
+/* unused harmony export hslToRgb */
+/* unused harmony export decomposeColor */
+/* unused harmony export recomposeColor */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return getContrastRatio; });
+/* unused harmony export getLuminance */
+/* unused harmony export emphasize */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return fade; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return darken; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return lighten; });
+/* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(40);
+
+
+/* eslint-disable no-use-before-define */
+
+/**
+ * Returns a number whose value is limited to the given range.
+ *
+ * @param {number} value The value to be clamped
+ * @param {number} min The lower boundary of the output range
+ * @param {number} max The upper boundary of the output range
+ * @returns {number} A number in the range [min, max]
+ */
+function clamp(value) {
+  var min = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+  var max = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
+
+  if (false) {}
+
+  return Math.min(Math.max(min, value), max);
+}
+/**
+ * Converts a color from CSS hex format to CSS rgb format.
+ *
+ * @param {string} color - Hex color, i.e. #nnn or #nnnnnn
+ * @returns {string} A CSS rgb color string
+ */
+
+
+function hexToRgb(color) {
+  color = color.substr(1);
+  var re = new RegExp(".{1,".concat(color.length >= 6 ? 2 : 1, "}"), 'g');
+  var colors = color.match(re);
+
+  if (colors && colors[0].length === 1) {
+    colors = colors.map(function (n) {
+      return n + n;
+    });
+  }
+
+  return colors ? "rgb".concat(colors.length === 4 ? 'a' : '', "(").concat(colors.map(function (n, index) {
+    return index < 3 ? parseInt(n, 16) : Math.round(parseInt(n, 16) / 255 * 1000) / 1000;
+  }).join(', '), ")") : '';
+}
+
+function intToHex(int) {
+  var hex = int.toString(16);
+  return hex.length === 1 ? "0".concat(hex) : hex;
+}
+/**
+ * Converts a color from CSS rgb format to CSS hex format.
+ *
+ * @param {string} color - RGB color, i.e. rgb(n, n, n)
+ * @returns {string} A CSS rgb color string, i.e. #nnnnnn
+ */
+
+
+function rgbToHex(color) {
+  // Idempotent
+  if (color.indexOf('#') === 0) {
+    return color;
+  }
+
+  var _decomposeColor = decomposeColor(color),
+      values = _decomposeColor.values;
+
+  return "#".concat(values.map(function (n) {
+    return intToHex(n);
+  }).join(''));
+}
+/**
+ * Converts a color from hsl format to rgb format.
+ *
+ * @param {string} color - HSL color values
+ * @returns {string} rgb color values
+ */
+
+function hslToRgb(color) {
+  color = decomposeColor(color);
+  var _color = color,
+      values = _color.values;
+  var h = values[0];
+  var s = values[1] / 100;
+  var l = values[2] / 100;
+  var a = s * Math.min(l, 1 - l);
+
+  var f = function f(n) {
+    var k = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : (n + h / 30) % 12;
+    return l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+  };
+
+  var type = 'rgb';
+  var rgb = [Math.round(f(0) * 255), Math.round(f(8) * 255), Math.round(f(4) * 255)];
+
+  if (color.type === 'hsla') {
+    type += 'a';
+    rgb.push(values[3]);
+  }
+
+  return recomposeColor({
+    type: type,
+    values: rgb
+  });
+}
+/**
+ * Returns an object with the type and values of a color.
+ *
+ * Note: Does not support rgb % values.
+ *
+ * @param {string} color - CSS color, i.e. one of: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla()
+ * @returns {object} - A MUI color object: {type: string, values: number[]}
+ */
+
+function decomposeColor(color) {
+  // Idempotent
+  if (color.type) {
+    return color;
+  }
+
+  if (color.charAt(0) === '#') {
+    return decomposeColor(hexToRgb(color));
+  }
+
+  var marker = color.indexOf('(');
+  var type = color.substring(0, marker);
+
+  if (['rgb', 'rgba', 'hsl', 'hsla'].indexOf(type) === -1) {
+    throw new Error( false ? undefined : Object(_material_ui_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(3, color));
+  }
+
+  var values = color.substring(marker + 1, color.length - 1).split(',');
+  values = values.map(function (value) {
+    return parseFloat(value);
+  });
+  return {
+    type: type,
+    values: values
+  };
+}
+/**
+ * Converts a color object with type and values to a string.
+ *
+ * @param {object} color - Decomposed color
+ * @param {string} color.type - One of: 'rgb', 'rgba', 'hsl', 'hsla'
+ * @param {array} color.values - [n,n,n] or [n,n,n,n]
+ * @returns {string} A CSS color string
+ */
+
+function recomposeColor(color) {
+  var type = color.type;
+  var values = color.values;
+
+  if (type.indexOf('rgb') !== -1) {
+    // Only convert the first 3 values to int (i.e. not alpha)
+    values = values.map(function (n, i) {
+      return i < 3 ? parseInt(n, 10) : n;
+    });
+  } else if (type.indexOf('hsl') !== -1) {
+    values[1] = "".concat(values[1], "%");
+    values[2] = "".concat(values[2], "%");
+  }
+
+  return "".concat(type, "(").concat(values.join(', '), ")");
+}
+/**
+ * Calculates the contrast ratio between two colors.
+ *
+ * Formula: https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
+ *
+ * @param {string} foreground - CSS color, i.e. one of: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla()
+ * @param {string} background - CSS color, i.e. one of: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla()
+ * @returns {number} A contrast ratio value in the range 0 - 21.
+ */
+
+function getContrastRatio(foreground, background) {
+  var lumA = getLuminance(foreground);
+  var lumB = getLuminance(background);
+  return (Math.max(lumA, lumB) + 0.05) / (Math.min(lumA, lumB) + 0.05);
+}
+/**
+ * The relative brightness of any point in a color space,
+ * normalized to 0 for darkest black and 1 for lightest white.
+ *
+ * Formula: https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
+ *
+ * @param {string} color - CSS color, i.e. one of: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla()
+ * @returns {number} The relative brightness of the color in the range 0 - 1
+ */
+
+function getLuminance(color) {
+  color = decomposeColor(color);
+  var rgb = color.type === 'hsl' ? decomposeColor(hslToRgb(color)).values : color.values;
+  rgb = rgb.map(function (val) {
+    val /= 255; // normalized
+
+    return val <= 0.03928 ? val / 12.92 : Math.pow((val + 0.055) / 1.055, 2.4);
+  }); // Truncate at 3 digits
+
+  return Number((0.2126 * rgb[0] + 0.7152 * rgb[1] + 0.0722 * rgb[2]).toFixed(3));
+}
+/**
+ * Darken or lighten a color, depending on its luminance.
+ * Light colors are darkened, dark colors are lightened.
+ *
+ * @param {string} color - CSS color, i.e. one of: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla()
+ * @param {number} coefficient=0.15 - multiplier in the range 0 - 1
+ * @returns {string} A CSS color string. Hex input values are returned as rgb
+ */
+
+function emphasize(color) {
+  var coefficient = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0.15;
+  return getLuminance(color) > 0.5 ? darken(color, coefficient) : lighten(color, coefficient);
+}
+/**
+ * Set the absolute transparency of a color.
+ * Any existing alpha values are overwritten.
+ *
+ * @param {string} color - CSS color, i.e. one of: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla()
+ * @param {number} value - value to set the alpha channel to in the range 0 -1
+ * @returns {string} A CSS color string. Hex input values are returned as rgb
+ */
+
+function fade(color, value) {
+  color = decomposeColor(color);
+  value = clamp(value);
+
+  if (color.type === 'rgb' || color.type === 'hsl') {
+    color.type += 'a';
+  }
+
+  color.values[3] = value;
+  return recomposeColor(color);
+}
+/**
+ * Darkens a color.
+ *
+ * @param {string} color - CSS color, i.e. one of: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla()
+ * @param {number} coefficient - multiplier in the range 0 - 1
+ * @returns {string} A CSS color string. Hex input values are returned as rgb
+ */
+
+function darken(color, coefficient) {
+  color = decomposeColor(color);
+  coefficient = clamp(coefficient);
+
+  if (color.type.indexOf('hsl') !== -1) {
+    color.values[2] *= 1 - coefficient;
+  } else if (color.type.indexOf('rgb') !== -1) {
+    for (var i = 0; i < 3; i += 1) {
+      color.values[i] *= 1 - coefficient;
+    }
+  }
+
+  return recomposeColor(color);
+}
+/**
+ * Lightens a color.
+ *
+ * @param {string} color - CSS color, i.e. one of: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla()
+ * @param {number} coefficient - multiplier in the range 0 - 1
+ * @returns {string} A CSS color string. Hex input values are returned as rgb
+ */
+
+function lighten(color, coefficient) {
+  color = decomposeColor(color);
+  coefficient = clamp(coefficient);
+
+  if (color.type.indexOf('hsl') !== -1) {
+    color.values[2] += (100 - color.values[2]) * coefficient;
+  } else if (color.type.indexOf('rgb') !== -1) {
+    for (var i = 0; i < 3; i += 1) {
+      color.values[i] += (255 - color.values[i]) * coefficient;
+    }
+  }
+
+  return recomposeColor(color);
+}
+
+/***/ }),
+/* 13 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _inheritsLoose; });
+function _inheritsLoose(subClass, superClass) {
+  subClass.prototype = Object.create(superClass.prototype);
+  subClass.prototype.constructor = subClass;
+  subClass.__proto__ = superClass;
+}
+
+/***/ }),
+/* 14 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -427,7 +809,7 @@ function _iterableToArrayLimit(arr, i) {
   return _arr;
 }
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/unsupportedIterableToArray.js
-var unsupportedIterableToArray = __webpack_require__(20);
+var unsupportedIterableToArray = __webpack_require__(24);
 
 // CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/nonIterableRest.js
 function _nonIterableRest() {
@@ -443,28 +825,172 @@ function _slicedToArray(arr, i) {
 }
 
 /***/ }),
-/* 10 */
+/* 15 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _objectWithoutPropertiesLoose; });
-function _objectWithoutPropertiesLoose(source, excluded) {
-  if (source == null) return {};
-  var target = {};
-  var sourceKeys = Object.keys(source);
-  var key, i;
+/* unused harmony export teardown */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return useIsFocusVisible; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+// based on https://github.com/WICG/focus-visible/blob/v4.1.5/src/focus-visible.js
 
-  for (i = 0; i < sourceKeys.length; i++) {
-    key = sourceKeys[i];
-    if (excluded.indexOf(key) >= 0) continue;
-    target[key] = source[key];
+
+var hadKeyboardEvent = true;
+var hadFocusVisibleRecently = false;
+var hadFocusVisibleRecentlyTimeout = null;
+var inputTypesWhitelist = {
+  text: true,
+  search: true,
+  url: true,
+  tel: true,
+  email: true,
+  password: true,
+  number: true,
+  date: true,
+  month: true,
+  week: true,
+  time: true,
+  datetime: true,
+  'datetime-local': true
+};
+/**
+ * Computes whether the given element should automatically trigger the
+ * `focus-visible` class being added, i.e. whether it should always match
+ * `:focus-visible` when focused.
+ * @param {Element} node
+ * @return {boolean}
+ */
+
+function focusTriggersKeyboardModality(node) {
+  var type = node.type,
+      tagName = node.tagName;
+
+  if (tagName === 'INPUT' && inputTypesWhitelist[type] && !node.readOnly) {
+    return true;
   }
 
-  return target;
+  if (tagName === 'TEXTAREA' && !node.readOnly) {
+    return true;
+  }
+
+  if (node.isContentEditable) {
+    return true;
+  }
+
+  return false;
+}
+/**
+ * Keep track of our keyboard modality state with `hadKeyboardEvent`.
+ * If the most recent user interaction was via the keyboard;
+ * and the key press did not include a meta, alt/option, or control key;
+ * then the modality is keyboard. Otherwise, the modality is not keyboard.
+ * @param {KeyboardEvent} event
+ */
+
+
+function handleKeyDown(event) {
+  if (event.metaKey || event.altKey || event.ctrlKey) {
+    return;
+  }
+
+  hadKeyboardEvent = true;
+}
+/**
+ * If at any point a user clicks with a pointing device, ensure that we change
+ * the modality away from keyboard.
+ * This avoids the situation where a user presses a key on an already focused
+ * element, and then clicks on a different element, focusing it with a
+ * pointing device, while we still think we're in keyboard modality.
+ */
+
+
+function handlePointerDown() {
+  hadKeyboardEvent = false;
+}
+
+function handleVisibilityChange() {
+  if (this.visibilityState === 'hidden') {
+    // If the tab becomes active again, the browser will handle calling focus
+    // on the element (Safari actually calls it twice).
+    // If this tab change caused a blur on an element with focus-visible,
+    // re-apply the class when the user switches back to the tab.
+    if (hadFocusVisibleRecently) {
+      hadKeyboardEvent = true;
+    }
+  }
+}
+
+function prepare(doc) {
+  doc.addEventListener('keydown', handleKeyDown, true);
+  doc.addEventListener('mousedown', handlePointerDown, true);
+  doc.addEventListener('pointerdown', handlePointerDown, true);
+  doc.addEventListener('touchstart', handlePointerDown, true);
+  doc.addEventListener('visibilitychange', handleVisibilityChange, true);
+}
+
+function teardown(doc) {
+  doc.removeEventListener('keydown', handleKeyDown, true);
+  doc.removeEventListener('mousedown', handlePointerDown, true);
+  doc.removeEventListener('pointerdown', handlePointerDown, true);
+  doc.removeEventListener('touchstart', handlePointerDown, true);
+  doc.removeEventListener('visibilitychange', handleVisibilityChange, true);
+}
+
+function isFocusVisible(event) {
+  var target = event.target;
+
+  try {
+    return target.matches(':focus-visible');
+  } catch (error) {} // browsers not implementing :focus-visible will throw a SyntaxError
+  // we use our own heuristic for those browsers
+  // rethrow might be better if it's not the expected error but do we really
+  // want to crash if focus-visible malfunctioned?
+  // no need for validFocusTarget check. the user does that by attaching it to
+  // focusable events only
+
+
+  return hadKeyboardEvent || focusTriggersKeyboardModality(target);
+}
+/**
+ * Should be called if a blur event is fired on a focus-visible element
+ */
+
+
+function handleBlurVisible() {
+  // To detect a tab/window switch, we look for a blur event followed
+  // rapidly by a visibility change.
+  // If we don't see a visibility change within 100ms, it's probably a
+  // regular focus change.
+  hadFocusVisibleRecently = true;
+  window.clearTimeout(hadFocusVisibleRecentlyTimeout);
+  hadFocusVisibleRecentlyTimeout = window.setTimeout(function () {
+    hadFocusVisibleRecently = false;
+  }, 100);
+}
+
+function useIsFocusVisible() {
+  var ref = react__WEBPACK_IMPORTED_MODULE_0__["useCallback"](function (instance) {
+    var node = react_dom__WEBPACK_IMPORTED_MODULE_1__["findDOMNode"](instance);
+
+    if (node != null) {
+      prepare(node.ownerDocument);
+    }
+  }, []);
+
+  if (false) {}
+
+  return {
+    isFocusVisible: isFocusVisible,
+    onBlurVisible: handleBlurVisible,
+    ref: ref
+  };
 }
 
 /***/ }),
-/* 11 */
+/* 16 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -488,7 +1014,7 @@ function _defineProperty(obj, key, value) {
 var objectWithoutProperties = __webpack_require__(2);
 
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/utils/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/utils/esm/deepmerge.js
-var deepmerge = __webpack_require__(63);
+var deepmerge = __webpack_require__(72);
 
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/extends.js
 var esm_extends = __webpack_require__(1);
@@ -604,7 +1130,7 @@ function createMixins(breakpoints, spacing, mixins) {
   }, mixins);
 }
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/utils/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/utils/esm/formatMuiErrorMessage.js
-var formatMuiErrorMessage = __webpack_require__(34);
+var formatMuiErrorMessage = __webpack_require__(40);
 
 // CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/colors/common.js
 var common = {
@@ -739,7 +1265,7 @@ var green = {
 };
 /* harmony default export */ var colors_green = (green);
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/colorManipulator.js
-var colorManipulator = __webpack_require__(23);
+var colorManipulator = __webpack_require__(12);
 
 // CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/createPalette.js
 
@@ -1069,16 +1595,16 @@ var shape = {
 };
 /* harmony default export */ var styles_shape = (shape);
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/slicedToArray.js + 3 modules
-var slicedToArray = __webpack_require__(9);
+var slicedToArray = __webpack_require__(14);
 
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/toConsumableArray.js + 3 modules
-var toConsumableArray = __webpack_require__(22);
+var toConsumableArray = __webpack_require__(17);
 
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/typeof.js
-var esm_typeof = __webpack_require__(12);
+var esm_typeof = __webpack_require__(18);
 
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/prop-types/15.7.2/node_modules/prop-types/index.js
-var prop_types = __webpack_require__(6);
+var prop_types = __webpack_require__(4);
 
 // CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/system/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/system/esm/merge.js
 
@@ -1358,7 +1884,7 @@ function createSpacing() {
   return spacing;
 }
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/transitions.js
-var transitions = __webpack_require__(21);
+var transitions = __webpack_require__(25);
 
 // CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/zIndex.js
 // We need to centralize the zIndex definitions as they work
@@ -1441,7 +1967,44 @@ var defaultTheme = styles_createMuiTheme();
 /* harmony default export */ var styles_defaultTheme = __webpack_exports__["a"] = (defaultTheme);
 
 /***/ }),
-/* 12 */
+/* 17 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, "a", function() { return /* binding */ _toConsumableArray; });
+
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/arrayLikeToArray.js
+var arrayLikeToArray = __webpack_require__(21);
+
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/arrayWithoutHoles.js
+
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) return Object(arrayLikeToArray["a" /* default */])(arr);
+}
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/iterableToArray.js
+function _iterableToArray(iter) {
+  if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);
+}
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/unsupportedIterableToArray.js
+var unsupportedIterableToArray = __webpack_require__(24);
+
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/nonIterableSpread.js
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/toConsumableArray.js
+
+
+
+
+function _toConsumableArray(arr) {
+  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || Object(unsupportedIterableToArray["a" /* default */])(arr) || _nonIterableSpread();
+}
+
+/***/ }),
+/* 18 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1463,7 +2026,7 @@ function _typeof(obj) {
 }
 
 /***/ }),
-/* 13 */
+/* 19 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1478,19 +2041,21 @@ function setRef(ref, value) {
 }
 
 /***/ }),
-/* 14 */
+/* 20 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _inheritsLoose; });
-function _inheritsLoose(subClass, superClass) {
-  subClass.prototype = Object.create(superClass.prototype);
-  subClass.prototype.constructor = subClass;
-  subClass.__proto__ = superClass;
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _assertThisInitialized; });
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
 }
 
 /***/ }),
-/* 15 */
+/* 21 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1506,7 +2071,117 @@ function _arrayLikeToArray(arr, len) {
 }
 
 /***/ }),
-/* 16 */
+/* 22 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var reactIs = __webpack_require__(31);
+
+/**
+ * Copyright 2015, Yahoo! Inc.
+ * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
+ */
+var REACT_STATICS = {
+  childContextTypes: true,
+  contextType: true,
+  contextTypes: true,
+  defaultProps: true,
+  displayName: true,
+  getDefaultProps: true,
+  getDerivedStateFromError: true,
+  getDerivedStateFromProps: true,
+  mixins: true,
+  propTypes: true,
+  type: true
+};
+var KNOWN_STATICS = {
+  name: true,
+  length: true,
+  prototype: true,
+  caller: true,
+  callee: true,
+  arguments: true,
+  arity: true
+};
+var FORWARD_REF_STATICS = {
+  '$$typeof': true,
+  render: true,
+  defaultProps: true,
+  displayName: true,
+  propTypes: true
+};
+var MEMO_STATICS = {
+  '$$typeof': true,
+  compare: true,
+  defaultProps: true,
+  displayName: true,
+  propTypes: true,
+  type: true
+};
+var TYPE_STATICS = {};
+TYPE_STATICS[reactIs.ForwardRef] = FORWARD_REF_STATICS;
+TYPE_STATICS[reactIs.Memo] = MEMO_STATICS;
+
+function getStatics(component) {
+  // React v16.11 and below
+  if (reactIs.isMemo(component)) {
+    return MEMO_STATICS;
+  } // React v16.12 and above
+
+
+  return TYPE_STATICS[component['$$typeof']] || REACT_STATICS;
+}
+
+var defineProperty = Object.defineProperty;
+var getOwnPropertyNames = Object.getOwnPropertyNames;
+var getOwnPropertySymbols = Object.getOwnPropertySymbols;
+var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+var getPrototypeOf = Object.getPrototypeOf;
+var objectPrototype = Object.prototype;
+function hoistNonReactStatics(targetComponent, sourceComponent, blacklist) {
+  if (typeof sourceComponent !== 'string') {
+    // don't hoist over string (html) components
+    if (objectPrototype) {
+      var inheritedComponent = getPrototypeOf(sourceComponent);
+
+      if (inheritedComponent && inheritedComponent !== objectPrototype) {
+        hoistNonReactStatics(targetComponent, inheritedComponent, blacklist);
+      }
+    }
+
+    var keys = getOwnPropertyNames(sourceComponent);
+
+    if (getOwnPropertySymbols) {
+      keys = keys.concat(getOwnPropertySymbols(sourceComponent));
+    }
+
+    var targetStatics = getStatics(targetComponent);
+    var sourceStatics = getStatics(sourceComponent);
+
+    for (var i = 0; i < keys.length; ++i) {
+      var key = keys[i];
+
+      if (!KNOWN_STATICS[key] && !(blacklist && blacklist[key]) && !(sourceStatics && sourceStatics[key]) && !(targetStatics && targetStatics[key])) {
+        var descriptor = getOwnPropertyDescriptor(sourceComponent, key);
+
+        try {
+          // Avoid failures from read-only properties
+          defineProperty(targetComponent, key, descriptor);
+        } catch (e) {}
+      }
+    }
+  }
+
+  return targetComponent;
+}
+
+module.exports = hoistNonReactStatics;
+
+
+/***/ }),
+/* 23 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1526,13 +2201,13 @@ __webpack_require__.d(__webpack_exports__, "requirePropFactory", function() { re
 __webpack_require__.d(__webpack_exports__, "setRef", function() { return /* reexport */ setRef["a" /* default */]; });
 __webpack_require__.d(__webpack_exports__, "unsupportedProp", function() { return /* reexport */ unsupportedProp; });
 __webpack_require__.d(__webpack_exports__, "useControlled", function() { return /* reexport */ useControlled["a" /* default */]; });
-__webpack_require__.d(__webpack_exports__, "useEventCallback", function() { return /* reexport */ useEventCallback; });
+__webpack_require__.d(__webpack_exports__, "useEventCallback", function() { return /* reexport */ useEventCallback["a" /* default */]; });
 __webpack_require__.d(__webpack_exports__, "useForkRef", function() { return /* reexport */ useForkRef["a" /* default */]; });
 __webpack_require__.d(__webpack_exports__, "unstable_useId", function() { return /* reexport */ useId; });
 __webpack_require__.d(__webpack_exports__, "useIsFocusVisible", function() { return /* reexport */ useIsFocusVisible["a" /* default */]; });
 
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/capitalize.js
-var capitalize = __webpack_require__(5);
+var capitalize = __webpack_require__(8);
 
 // CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/createChainedFunction.js
 /**
@@ -1577,13 +2252,13 @@ var external_React_default = /*#__PURE__*/__webpack_require__.n(external_React_)
 var objectWithoutProperties = __webpack_require__(2);
 
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/prop-types/15.7.2/node_modules/prop-types/index.js
-var prop_types = __webpack_require__(6);
+var prop_types = __webpack_require__(4);
 
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/clsx/1.1.1/node_modules/clsx/dist/clsx.m.js
 var clsx_m = __webpack_require__(3);
 
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/withStyles.js + 2 modules
-var withStyles = __webpack_require__(8);
+var withStyles = __webpack_require__(6);
 
 // CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/SvgIcon/SvgIcon.js
 
@@ -1787,7 +2462,7 @@ function requirePropFactory(componentNameInError) {
   return requireProp;
 }
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/setRef.js
-var setRef = __webpack_require__(13);
+var setRef = __webpack_require__(19);
 
 // CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/unsupportedProp.js
 function unsupportedProp(props, propName, componentName, location, propFullName) {
@@ -1804,28 +2479,13 @@ function unsupportedProp(props, propName, componentName, location, propFullName)
   return null;
 }
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/useControlled.js
-var useControlled = __webpack_require__(27);
+var useControlled = __webpack_require__(34);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/useEventCallback.js
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/useEventCallback.js
+var useEventCallback = __webpack_require__(10);
 
-var useEnhancedEffect = typeof window !== 'undefined' ? external_React_["useLayoutEffect"] : external_React_["useEffect"];
-/**
- * https://github.com/facebook/react/issues/14099#issuecomment-440013892
- *
- * @param {function} fn
- */
-
-function useEventCallback(fn) {
-  var ref = external_React_["useRef"](fn);
-  useEnhancedEffect(function () {
-    ref.current = fn;
-  });
-  return external_React_["useCallback"](function () {
-    return (0, ref.current).apply(void 0, arguments);
-  }, []);
-}
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/useForkRef.js
-var useForkRef = __webpack_require__(17);
+var useForkRef = __webpack_require__(11);
 
 // CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/unstable_useId.js
 
@@ -1850,7 +2510,7 @@ function useId(idOverride) {
   return id;
 }
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/useIsFocusVisible.js
-var useIsFocusVisible = __webpack_require__(18);
+var useIsFocusVisible = __webpack_require__(15);
 
 // CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/index.js
 
@@ -1872,296 +2532,12 @@ var useIsFocusVisible = __webpack_require__(18);
 
 
 /***/ }),
-/* 17 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return useForkRef; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _setRef__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(13);
-
-
-function useForkRef(refA, refB) {
-  /**
-   * This will create a new function if the ref props change and are defined.
-   * This means react will call the old forkRef with `null` and the new forkRef
-   * with the ref. Cleanup naturally emerges from this behavior
-   */
-  return react__WEBPACK_IMPORTED_MODULE_0__["useMemo"](function () {
-    if (refA == null && refB == null) {
-      return null;
-    }
-
-    return function (refValue) {
-      Object(_setRef__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(refA, refValue);
-      Object(_setRef__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(refB, refValue);
-    };
-  }, [refA, refB]);
-}
-
-/***/ }),
-/* 18 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* unused harmony export teardown */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return useIsFocusVisible; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-// based on https://github.com/WICG/focus-visible/blob/v4.1.5/src/focus-visible.js
-
-
-var hadKeyboardEvent = true;
-var hadFocusVisibleRecently = false;
-var hadFocusVisibleRecentlyTimeout = null;
-var inputTypesWhitelist = {
-  text: true,
-  search: true,
-  url: true,
-  tel: true,
-  email: true,
-  password: true,
-  number: true,
-  date: true,
-  month: true,
-  week: true,
-  time: true,
-  datetime: true,
-  'datetime-local': true
-};
-/**
- * Computes whether the given element should automatically trigger the
- * `focus-visible` class being added, i.e. whether it should always match
- * `:focus-visible` when focused.
- * @param {Element} node
- * @return {boolean}
- */
-
-function focusTriggersKeyboardModality(node) {
-  var type = node.type,
-      tagName = node.tagName;
-
-  if (tagName === 'INPUT' && inputTypesWhitelist[type] && !node.readOnly) {
-    return true;
-  }
-
-  if (tagName === 'TEXTAREA' && !node.readOnly) {
-    return true;
-  }
-
-  if (node.isContentEditable) {
-    return true;
-  }
-
-  return false;
-}
-/**
- * Keep track of our keyboard modality state with `hadKeyboardEvent`.
- * If the most recent user interaction was via the keyboard;
- * and the key press did not include a meta, alt/option, or control key;
- * then the modality is keyboard. Otherwise, the modality is not keyboard.
- * @param {KeyboardEvent} event
- */
-
-
-function handleKeyDown(event) {
-  if (event.metaKey || event.altKey || event.ctrlKey) {
-    return;
-  }
-
-  hadKeyboardEvent = true;
-}
-/**
- * If at any point a user clicks with a pointing device, ensure that we change
- * the modality away from keyboard.
- * This avoids the situation where a user presses a key on an already focused
- * element, and then clicks on a different element, focusing it with a
- * pointing device, while we still think we're in keyboard modality.
- */
-
-
-function handlePointerDown() {
-  hadKeyboardEvent = false;
-}
-
-function handleVisibilityChange() {
-  if (this.visibilityState === 'hidden') {
-    // If the tab becomes active again, the browser will handle calling focus
-    // on the element (Safari actually calls it twice).
-    // If this tab change caused a blur on an element with focus-visible,
-    // re-apply the class when the user switches back to the tab.
-    if (hadFocusVisibleRecently) {
-      hadKeyboardEvent = true;
-    }
-  }
-}
-
-function prepare(doc) {
-  doc.addEventListener('keydown', handleKeyDown, true);
-  doc.addEventListener('mousedown', handlePointerDown, true);
-  doc.addEventListener('pointerdown', handlePointerDown, true);
-  doc.addEventListener('touchstart', handlePointerDown, true);
-  doc.addEventListener('visibilitychange', handleVisibilityChange, true);
-}
-
-function teardown(doc) {
-  doc.removeEventListener('keydown', handleKeyDown, true);
-  doc.removeEventListener('mousedown', handlePointerDown, true);
-  doc.removeEventListener('pointerdown', handlePointerDown, true);
-  doc.removeEventListener('touchstart', handlePointerDown, true);
-  doc.removeEventListener('visibilitychange', handleVisibilityChange, true);
-}
-
-function isFocusVisible(event) {
-  var target = event.target;
-
-  try {
-    return target.matches(':focus-visible');
-  } catch (error) {} // browsers not implementing :focus-visible will throw a SyntaxError
-  // we use our own heuristic for those browsers
-  // rethrow might be better if it's not the expected error but do we really
-  // want to crash if focus-visible malfunctioned?
-  // no need for validFocusTarget check. the user does that by attaching it to
-  // focusable events only
-
-
-  return hadKeyboardEvent || focusTriggersKeyboardModality(target);
-}
-/**
- * Should be called if a blur event is fired on a focus-visible element
- */
-
-
-function handleBlurVisible() {
-  // To detect a tab/window switch, we look for a blur event followed
-  // rapidly by a visibility change.
-  // If we don't see a visibility change within 100ms, it's probably a
-  // regular focus change.
-  hadFocusVisibleRecently = true;
-  window.clearTimeout(hadFocusVisibleRecentlyTimeout);
-  hadFocusVisibleRecentlyTimeout = window.setTimeout(function () {
-    hadFocusVisibleRecently = false;
-  }, 100);
-}
-
-function useIsFocusVisible() {
-  var ref = react__WEBPACK_IMPORTED_MODULE_0__["useCallback"](function (instance) {
-    var node = react_dom__WEBPACK_IMPORTED_MODULE_1__["findDOMNode"](instance);
-
-    if (node != null) {
-      prepare(node.ownerDocument);
-    }
-  }, []);
-
-  if (false) {}
-
-  return {
-    isFocusVisible: isFocusVisible,
-    onBlurVisible: handleBlurVisible,
-    ref: ref
-  };
-}
-
-/***/ }),
-/* 19 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/**
- * cuid.js
- * Collision-resistant UID generator for browsers and node.
- * Sequential for fast db lookups and recency sorting.
- * Safe for element IDs and server-side lookups.
- *
- * Extracted from CLCTR
- *
- * Copyright (c) Eric Elliott 2012
- * MIT License
- */
-
-var fingerprint = __webpack_require__(39);
-var pad = __webpack_require__(26);
-var getRandomValue = __webpack_require__(40);
-
-var c = 0,
-  blockSize = 4,
-  base = 36,
-  discreteValues = Math.pow(base, blockSize);
-
-function randomBlock () {
-  return pad((getRandomValue() *
-    discreteValues << 0)
-    .toString(base), blockSize);
-}
-
-function safeCounter () {
-  c = c < discreteValues ? c : 0;
-  c++; // this is not subliminal
-  return c - 1;
-}
-
-function cuid () {
-  // Starting with a lowercase letter makes
-  // it HTML element ID friendly.
-  var letter = 'c', // hard-coded allows for sequential access
-
-    // timestamp
-    // warning: this exposes the exact date and time
-    // that the uid was created.
-    timestamp = (new Date().getTime()).toString(base),
-
-    // Prevent same-machine collisions.
-    counter = pad(safeCounter().toString(base), blockSize),
-
-    // A few chars to generate distinct ids for different
-    // clients (so different computers are far less
-    // likely to generate the same id)
-    print = fingerprint(),
-
-    // Grab some more chars from Math.random()
-    random = randomBlock() + randomBlock();
-
-  return letter + timestamp + counter + print + random;
-}
-
-cuid.slug = function slug () {
-  var date = new Date().getTime().toString(36),
-    counter = safeCounter().toString(36).slice(-4),
-    print = fingerprint().slice(0, 1) +
-      fingerprint().slice(-1),
-    random = randomBlock().slice(-2);
-
-  return date.slice(-2) +
-    counter + print + random;
-};
-
-cuid.isCuid = function isCuid (stringToCheck) {
-  if (typeof stringToCheck !== 'string') return false;
-  if (stringToCheck.startsWith('c')) return true;
-  return false;
-};
-
-cuid.isSlug = function isSlug (stringToCheck) {
-  if (typeof stringToCheck !== 'string') return false;
-  var stringLength = stringToCheck.length;
-  if (stringLength >= 7 && stringLength <= 10) return true;
-  return false;
-};
-
-cuid.fingerprint = fingerprint;
-
-module.exports = cuid;
-
-
-/***/ }),
-/* 20 */
+/* 24 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _unsupportedIterableToArray; });
-/* harmony import */ var _babel_runtime_helpers_esm_arrayLikeToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(15);
+/* harmony import */ var _babel_runtime_helpers_esm_arrayLikeToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(21);
 
 function _unsupportedIterableToArray(o, minLen) {
   if (!o) return;
@@ -2173,7 +2549,7 @@ function _unsupportedIterableToArray(o, minLen) {
 }
 
 /***/ }),
-/* 21 */
+/* 25 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2256,385 +2632,97 @@ function formatMs(milliseconds) {
 });
 
 /***/ }),
-/* 22 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, "a", function() { return /* binding */ _toConsumableArray; });
-
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/arrayLikeToArray.js
-var arrayLikeToArray = __webpack_require__(15);
-
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/arrayWithoutHoles.js
-
-function _arrayWithoutHoles(arr) {
-  if (Array.isArray(arr)) return Object(arrayLikeToArray["a" /* default */])(arr);
-}
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/iterableToArray.js
-function _iterableToArray(iter) {
-  if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);
-}
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/unsupportedIterableToArray.js
-var unsupportedIterableToArray = __webpack_require__(20);
-
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/nonIterableSpread.js
-function _nonIterableSpread() {
-  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/toConsumableArray.js
-
-
-
-
-function _toConsumableArray(arr) {
-  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || Object(unsupportedIterableToArray["a" /* default */])(arr) || _nonIterableSpread();
-}
-
-/***/ }),
-/* 23 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* unused harmony export hexToRgb */
-/* unused harmony export rgbToHex */
-/* unused harmony export hslToRgb */
-/* unused harmony export decomposeColor */
-/* unused harmony export recomposeColor */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return getContrastRatio; });
-/* unused harmony export getLuminance */
-/* unused harmony export emphasize */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return fade; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return darken; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return lighten; });
-/* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(34);
-
-
-/* eslint-disable no-use-before-define */
-
-/**
- * Returns a number whose value is limited to the given range.
- *
- * @param {number} value The value to be clamped
- * @param {number} min The lower boundary of the output range
- * @param {number} max The upper boundary of the output range
- * @returns {number} A number in the range [min, max]
- */
-function clamp(value) {
-  var min = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-  var max = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
-
-  if (false) {}
-
-  return Math.min(Math.max(min, value), max);
-}
-/**
- * Converts a color from CSS hex format to CSS rgb format.
- *
- * @param {string} color - Hex color, i.e. #nnn or #nnnnnn
- * @returns {string} A CSS rgb color string
- */
-
-
-function hexToRgb(color) {
-  color = color.substr(1);
-  var re = new RegExp(".{1,".concat(color.length >= 6 ? 2 : 1, "}"), 'g');
-  var colors = color.match(re);
-
-  if (colors && colors[0].length === 1) {
-    colors = colors.map(function (n) {
-      return n + n;
-    });
-  }
-
-  return colors ? "rgb".concat(colors.length === 4 ? 'a' : '', "(").concat(colors.map(function (n, index) {
-    return index < 3 ? parseInt(n, 16) : Math.round(parseInt(n, 16) / 255 * 1000) / 1000;
-  }).join(', '), ")") : '';
-}
-
-function intToHex(int) {
-  var hex = int.toString(16);
-  return hex.length === 1 ? "0".concat(hex) : hex;
-}
-/**
- * Converts a color from CSS rgb format to CSS hex format.
- *
- * @param {string} color - RGB color, i.e. rgb(n, n, n)
- * @returns {string} A CSS rgb color string, i.e. #nnnnnn
- */
-
-
-function rgbToHex(color) {
-  // Idempotent
-  if (color.indexOf('#') === 0) {
-    return color;
-  }
-
-  var _decomposeColor = decomposeColor(color),
-      values = _decomposeColor.values;
-
-  return "#".concat(values.map(function (n) {
-    return intToHex(n);
-  }).join(''));
-}
-/**
- * Converts a color from hsl format to rgb format.
- *
- * @param {string} color - HSL color values
- * @returns {string} rgb color values
- */
-
-function hslToRgb(color) {
-  color = decomposeColor(color);
-  var _color = color,
-      values = _color.values;
-  var h = values[0];
-  var s = values[1] / 100;
-  var l = values[2] / 100;
-  var a = s * Math.min(l, 1 - l);
-
-  var f = function f(n) {
-    var k = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : (n + h / 30) % 12;
-    return l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
-  };
-
-  var type = 'rgb';
-  var rgb = [Math.round(f(0) * 255), Math.round(f(8) * 255), Math.round(f(4) * 255)];
-
-  if (color.type === 'hsla') {
-    type += 'a';
-    rgb.push(values[3]);
-  }
-
-  return recomposeColor({
-    type: type,
-    values: rgb
-  });
-}
-/**
- * Returns an object with the type and values of a color.
- *
- * Note: Does not support rgb % values.
- *
- * @param {string} color - CSS color, i.e. one of: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla()
- * @returns {object} - A MUI color object: {type: string, values: number[]}
- */
-
-function decomposeColor(color) {
-  // Idempotent
-  if (color.type) {
-    return color;
-  }
-
-  if (color.charAt(0) === '#') {
-    return decomposeColor(hexToRgb(color));
-  }
-
-  var marker = color.indexOf('(');
-  var type = color.substring(0, marker);
-
-  if (['rgb', 'rgba', 'hsl', 'hsla'].indexOf(type) === -1) {
-    throw new Error( false ? undefined : Object(_material_ui_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(3, color));
-  }
-
-  var values = color.substring(marker + 1, color.length - 1).split(',');
-  values = values.map(function (value) {
-    return parseFloat(value);
-  });
-  return {
-    type: type,
-    values: values
-  };
-}
-/**
- * Converts a color object with type and values to a string.
- *
- * @param {object} color - Decomposed color
- * @param {string} color.type - One of: 'rgb', 'rgba', 'hsl', 'hsla'
- * @param {array} color.values - [n,n,n] or [n,n,n,n]
- * @returns {string} A CSS color string
- */
-
-function recomposeColor(color) {
-  var type = color.type;
-  var values = color.values;
-
-  if (type.indexOf('rgb') !== -1) {
-    // Only convert the first 3 values to int (i.e. not alpha)
-    values = values.map(function (n, i) {
-      return i < 3 ? parseInt(n, 10) : n;
-    });
-  } else if (type.indexOf('hsl') !== -1) {
-    values[1] = "".concat(values[1], "%");
-    values[2] = "".concat(values[2], "%");
-  }
-
-  return "".concat(type, "(").concat(values.join(', '), ")");
-}
-/**
- * Calculates the contrast ratio between two colors.
- *
- * Formula: https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
- *
- * @param {string} foreground - CSS color, i.e. one of: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla()
- * @param {string} background - CSS color, i.e. one of: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla()
- * @returns {number} A contrast ratio value in the range 0 - 21.
- */
-
-function getContrastRatio(foreground, background) {
-  var lumA = getLuminance(foreground);
-  var lumB = getLuminance(background);
-  return (Math.max(lumA, lumB) + 0.05) / (Math.min(lumA, lumB) + 0.05);
-}
-/**
- * The relative brightness of any point in a color space,
- * normalized to 0 for darkest black and 1 for lightest white.
- *
- * Formula: https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
- *
- * @param {string} color - CSS color, i.e. one of: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla()
- * @returns {number} The relative brightness of the color in the range 0 - 1
- */
-
-function getLuminance(color) {
-  color = decomposeColor(color);
-  var rgb = color.type === 'hsl' ? decomposeColor(hslToRgb(color)).values : color.values;
-  rgb = rgb.map(function (val) {
-    val /= 255; // normalized
-
-    return val <= 0.03928 ? val / 12.92 : Math.pow((val + 0.055) / 1.055, 2.4);
-  }); // Truncate at 3 digits
-
-  return Number((0.2126 * rgb[0] + 0.7152 * rgb[1] + 0.0722 * rgb[2]).toFixed(3));
-}
-/**
- * Darken or lighten a color, depending on its luminance.
- * Light colors are darkened, dark colors are lightened.
- *
- * @param {string} color - CSS color, i.e. one of: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla()
- * @param {number} coefficient=0.15 - multiplier in the range 0 - 1
- * @returns {string} A CSS color string. Hex input values are returned as rgb
- */
-
-function emphasize(color) {
-  var coefficient = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0.15;
-  return getLuminance(color) > 0.5 ? darken(color, coefficient) : lighten(color, coefficient);
-}
-/**
- * Set the absolute transparency of a color.
- * Any existing alpha values are overwritten.
- *
- * @param {string} color - CSS color, i.e. one of: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla()
- * @param {number} value - value to set the alpha channel to in the range 0 -1
- * @returns {string} A CSS color string. Hex input values are returned as rgb
- */
-
-function fade(color, value) {
-  color = decomposeColor(color);
-  value = clamp(value);
-
-  if (color.type === 'rgb' || color.type === 'hsl') {
-    color.type += 'a';
-  }
-
-  color.values[3] = value;
-  return recomposeColor(color);
-}
-/**
- * Darkens a color.
- *
- * @param {string} color - CSS color, i.e. one of: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla()
- * @param {number} coefficient - multiplier in the range 0 - 1
- * @returns {string} A CSS color string. Hex input values are returned as rgb
- */
-
-function darken(color, coefficient) {
-  color = decomposeColor(color);
-  coefficient = clamp(coefficient);
-
-  if (color.type.indexOf('hsl') !== -1) {
-    color.values[2] *= 1 - coefficient;
-  } else if (color.type.indexOf('rgb') !== -1) {
-    for (var i = 0; i < 3; i += 1) {
-      color.values[i] *= 1 - coefficient;
-    }
-  }
-
-  return recomposeColor(color);
-}
-/**
- * Lightens a color.
- *
- * @param {string} color - CSS color, i.e. one of: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla()
- * @param {number} coefficient - multiplier in the range 0 - 1
- * @returns {string} A CSS color string. Hex input values are returned as rgb
- */
-
-function lighten(color, coefficient) {
-  color = decomposeColor(color);
-  coefficient = clamp(coefficient);
-
-  if (color.type.indexOf('hsl') !== -1) {
-    color.values[2] += (100 - color.values[2]) * coefficient;
-  } else if (color.type.indexOf('rgb') !== -1) {
-    for (var i = 0; i < 3; i += 1) {
-      color.values[i] += (255 - color.values[i]) * coefficient;
-    }
-  }
-
-  return recomposeColor(color);
-}
-
-/***/ }),
-/* 24 */,
-/* 25 */,
 /* 26 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = function pad (num, size) {
-  var s = '000000000' + num;
-  return s.substr(s.length - size);
+/**
+ * cuid.js
+ * Collision-resistant UID generator for browsers and node.
+ * Sequential for fast db lookups and recency sorting.
+ * Safe for element IDs and server-side lookups.
+ *
+ * Extracted from CLCTR
+ *
+ * Copyright (c) Eric Elliott 2012
+ * MIT License
+ */
+
+var fingerprint = __webpack_require__(50);
+var pad = __webpack_require__(35);
+var getRandomValue = __webpack_require__(51);
+
+var c = 0,
+  blockSize = 4,
+  base = 36,
+  discreteValues = Math.pow(base, blockSize);
+
+function randomBlock () {
+  return pad((getRandomValue() *
+    discreteValues << 0)
+    .toString(base), blockSize);
+}
+
+function safeCounter () {
+  c = c < discreteValues ? c : 0;
+  c++; // this is not subliminal
+  return c - 1;
+}
+
+function cuid () {
+  // Starting with a lowercase letter makes
+  // it HTML element ID friendly.
+  var letter = 'c', // hard-coded allows for sequential access
+
+    // timestamp
+    // warning: this exposes the exact date and time
+    // that the uid was created.
+    timestamp = (new Date().getTime()).toString(base),
+
+    // Prevent same-machine collisions.
+    counter = pad(safeCounter().toString(base), blockSize),
+
+    // A few chars to generate distinct ids for different
+    // clients (so different computers are far less
+    // likely to generate the same id)
+    print = fingerprint(),
+
+    // Grab some more chars from Math.random()
+    random = randomBlock() + randomBlock();
+
+  return letter + timestamp + counter + print + random;
+}
+
+cuid.slug = function slug () {
+  var date = new Date().getTime().toString(36),
+    counter = safeCounter().toString(36).slice(-4),
+    print = fingerprint().slice(0, 1) +
+      fingerprint().slice(-1),
+    random = randomBlock().slice(-2);
+
+  return date.slice(-2) +
+    counter + print + random;
 };
 
+cuid.isCuid = function isCuid (stringToCheck) {
+  if (typeof stringToCheck !== 'string') return false;
+  if (stringToCheck.startsWith('c')) return true;
+  return false;
+};
+
+cuid.isSlug = function isSlug (stringToCheck) {
+  if (typeof stringToCheck !== 'string') return false;
+  var stringLength = stringToCheck.length;
+  if (stringLength >= 7 && stringLength <= 10) return true;
+  return false;
+};
+
+cuid.fingerprint = fingerprint;
+
+module.exports = cuid;
+
 
 /***/ }),
-/* 27 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return useControlled; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* eslint-disable react-hooks/rules-of-hooks, react-hooks/exhaustive-deps */
-
-function useControlled(_ref) {
-  var controlled = _ref.controlled,
-      defaultProp = _ref.default,
-      name = _ref.name,
-      _ref$state = _ref.state,
-      state = _ref$state === void 0 ? 'value' : _ref$state;
-
-  var _React$useRef = react__WEBPACK_IMPORTED_MODULE_0__["useRef"](controlled !== undefined),
-      isControlled = _React$useRef.current;
-
-  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__["useState"](defaultProp),
-      valueState = _React$useState[0],
-      setValue = _React$useState[1];
-
-  var value = isControlled ? controlled : valueState;
-
-  if (false) { var _React$useRef2, defaultValue; }
-
-  var setValueIfUncontrolled = react__WEBPACK_IMPORTED_MODULE_0__["useCallback"](function (newValue) {
-    if (!isControlled) {
-      setValue(newValue);
-    }
-  }, []);
-  return [value, setValueIfUncontrolled];
-}
-
-/***/ }),
+/* 27 */,
 /* 28 */
 /***/ (function(module, exports) {
 
@@ -2650,7 +2738,7 @@ module.exports = _interopRequireDefault;
 /* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var _typeof = __webpack_require__(45);
+var _typeof = __webpack_require__(49);
 
 function _getRequireWildcardCache() {
   if (typeof WeakMap !== "function") return null;
@@ -2723,7 +2811,7 @@ Object.defineProperty(exports, "default", {
   }
 });
 
-var _utils = __webpack_require__(16);
+var _utils = __webpack_require__(23);
 
 /***/ }),
 /* 31 */
@@ -2732,111 +2820,137 @@ var _utils = __webpack_require__(16);
 "use strict";
 
 
-var reactIs = __webpack_require__(43);
-
-/**
- * Copyright 2015, Yahoo! Inc.
- * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
- */
-var REACT_STATICS = {
-  childContextTypes: true,
-  contextType: true,
-  contextTypes: true,
-  defaultProps: true,
-  displayName: true,
-  getDefaultProps: true,
-  getDerivedStateFromError: true,
-  getDerivedStateFromProps: true,
-  mixins: true,
-  propTypes: true,
-  type: true
-};
-var KNOWN_STATICS = {
-  name: true,
-  length: true,
-  prototype: true,
-  caller: true,
-  callee: true,
-  arguments: true,
-  arity: true
-};
-var FORWARD_REF_STATICS = {
-  '$$typeof': true,
-  render: true,
-  defaultProps: true,
-  displayName: true,
-  propTypes: true
-};
-var MEMO_STATICS = {
-  '$$typeof': true,
-  compare: true,
-  defaultProps: true,
-  displayName: true,
-  propTypes: true,
-  type: true
-};
-var TYPE_STATICS = {};
-TYPE_STATICS[reactIs.ForwardRef] = FORWARD_REF_STATICS;
-TYPE_STATICS[reactIs.Memo] = MEMO_STATICS;
-
-function getStatics(component) {
-  // React v16.11 and below
-  if (reactIs.isMemo(component)) {
-    return MEMO_STATICS;
-  } // React v16.12 and above
-
-
-  return TYPE_STATICS[component['$$typeof']] || REACT_STATICS;
-}
-
-var defineProperty = Object.defineProperty;
-var getOwnPropertyNames = Object.getOwnPropertyNames;
-var getOwnPropertySymbols = Object.getOwnPropertySymbols;
-var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
-var getPrototypeOf = Object.getPrototypeOf;
-var objectPrototype = Object.prototype;
-function hoistNonReactStatics(targetComponent, sourceComponent, blacklist) {
-  if (typeof sourceComponent !== 'string') {
-    // don't hoist over string (html) components
-    if (objectPrototype) {
-      var inheritedComponent = getPrototypeOf(sourceComponent);
-
-      if (inheritedComponent && inheritedComponent !== objectPrototype) {
-        hoistNonReactStatics(targetComponent, inheritedComponent, blacklist);
-      }
-    }
-
-    var keys = getOwnPropertyNames(sourceComponent);
-
-    if (getOwnPropertySymbols) {
-      keys = keys.concat(getOwnPropertySymbols(sourceComponent));
-    }
-
-    var targetStatics = getStatics(targetComponent);
-    var sourceStatics = getStatics(sourceComponent);
-
-    for (var i = 0; i < keys.length; ++i) {
-      var key = keys[i];
-
-      if (!KNOWN_STATICS[key] && !(blacklist && blacklist[key]) && !(sourceStatics && sourceStatics[key]) && !(targetStatics && targetStatics[key])) {
-        var descriptor = getOwnPropertyDescriptor(sourceComponent, key);
-
-        try {
-          // Avoid failures from read-only properties
-          defineProperty(targetComponent, key, descriptor);
-        } catch (e) {}
-      }
-    }
-  }
-
-  return targetComponent;
-}
-
-module.exports = hoistNonReactStatics;
+if (true) {
+  module.exports = __webpack_require__(48);
+} else {}
 
 
 /***/ }),
 /* 32 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(global, module) {/* harmony import */ var _ponyfill_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(37);
+/* global window */
+
+
+var root;
+
+if (typeof self !== 'undefined') {
+  root = self;
+} else if (typeof window !== 'undefined') {
+  root = window;
+} else if (typeof global !== 'undefined') {
+  root = global;
+} else if (true) {
+  root = module;
+} else {}
+
+var result = Object(_ponyfill_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(root);
+/* harmony default export */ __webpack_exports__["a"] = (result);
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(52), __webpack_require__(53)(module)))
+
+/***/ }),
+/* 33 */,
+/* 34 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return useControlled; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* eslint-disable react-hooks/rules-of-hooks, react-hooks/exhaustive-deps */
+
+function useControlled(_ref) {
+  var controlled = _ref.controlled,
+      defaultProp = _ref.default,
+      name = _ref.name,
+      _ref$state = _ref.state,
+      state = _ref$state === void 0 ? 'value' : _ref$state;
+
+  var _React$useRef = react__WEBPACK_IMPORTED_MODULE_0__["useRef"](controlled !== undefined),
+      isControlled = _React$useRef.current;
+
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__["useState"](defaultProp),
+      valueState = _React$useState[0],
+      setValue = _React$useState[1];
+
+  var value = isControlled ? controlled : valueState;
+
+  if (false) { var _React$useRef2, defaultValue; }
+
+  var setValueIfUncontrolled = react__WEBPACK_IMPORTED_MODULE_0__["useCallback"](function (newValue) {
+    if (!isControlled) {
+      setValue(newValue);
+    }
+  }, []);
+  return [value, setValueIfUncontrolled];
+}
+
+/***/ }),
+/* 35 */
+/***/ (function(module, exports) {
+
+module.exports = function pad (num, size) {
+  var s = '000000000' + num;
+  return s.substr(s.length - size);
+};
+
+
+/***/ }),
+/* 36 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(28);
+
+var _interopRequireWildcard = __webpack_require__(29);
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var React = _interopRequireWildcard(__webpack_require__(0));
+
+var _createSvgIcon = _interopRequireDefault(__webpack_require__(30));
+
+var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
+  d: "M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+}), 'Menu');
+
+exports.default = _default;
+
+/***/ }),
+/* 37 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return symbolObservablePonyfill; });
+function symbolObservablePonyfill(root) {
+	var result;
+	var Symbol = root.Symbol;
+
+	if (typeof Symbol === 'function') {
+		if (Symbol.observable) {
+			result = Symbol.observable;
+		} else {
+			result = Symbol('observable');
+			Symbol.observable = result;
+		}
+	} else {
+		result = '@@observable';
+	}
+
+	return result;
+};
+
+
+/***/ }),
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2862,7 +2976,7 @@ var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("pa
 exports.default = _default;
 
 /***/ }),
-/* 33 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2888,7 +3002,7 @@ var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("pa
 exports.default = _default;
 
 /***/ }),
-/* 34 */
+/* 40 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2917,60 +3031,19 @@ function formatMuiErrorMessage(code) {
 }
 
 /***/ }),
-/* 35 */,
-/* 36 */,
-/* 37 */,
-/* 38 */
+/* 41 */,
+/* 42 */,
+/* 43 */,
+/* 44 */,
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(47);
-module.exports = __webpack_require__(46);
+__webpack_require__(55);
+module.exports = __webpack_require__(54);
 
 
 /***/ }),
-/* 39 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var pad = __webpack_require__(26);
-
-var env = typeof window === 'object' ? window : self;
-var globalCount = Object.keys(env).length;
-var mimeTypesLength = navigator.mimeTypes ? navigator.mimeTypes.length : 0;
-var clientId = pad((mimeTypesLength +
-  navigator.userAgent.length).toString(36) +
-  globalCount.toString(36), 4);
-
-module.exports = function fingerprint () {
-  return clientId;
-};
-
-
-/***/ }),
-/* 40 */
-/***/ (function(module, exports) {
-
-
-var getRandomValue;
-
-var crypto = typeof window !== 'undefined' &&
-  (window.crypto || window.msCrypto) ||
-  typeof self !== 'undefined' &&
-  self.crypto;
-
-if (crypto) {
-    var lim = Math.pow(2, 32) - 1;
-    getRandomValue = function () {
-        return Math.abs(crypto.getRandomValues(new Uint32Array(1))[0] / lim);
-    };
-} else {
-    getRandomValue = Math.random;
-}
-
-module.exports = getRandomValue;
-
-
-/***/ }),
-/* 41 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2983,7 +3056,7 @@ module.exports = getRandomValue;
 
 
 
-var ReactPropTypesSecret = __webpack_require__(42);
+var ReactPropTypesSecret = __webpack_require__(47);
 
 function emptyFunction() {}
 function emptyFunctionWithReset() {}
@@ -3041,7 +3114,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 42 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3060,19 +3133,7 @@ module.exports = ReactPropTypesSecret;
 
 
 /***/ }),
-/* 43 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-if (true) {
-  module.exports = __webpack_require__(44);
-} else {}
-
-
-/***/ }),
-/* 44 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3094,7 +3155,7 @@ exports.isValidElementType=function(a){return"string"===typeof a||"function"===t
 
 
 /***/ }),
-/* 45 */
+/* 49 */
 /***/ (function(module, exports) {
 
 function _typeof(obj) {
@@ -3116,7 +3177,105 @@ function _typeof(obj) {
 module.exports = _typeof;
 
 /***/ }),
-/* 46 */
+/* 50 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var pad = __webpack_require__(35);
+
+var env = typeof window === 'object' ? window : self;
+var globalCount = Object.keys(env).length;
+var mimeTypesLength = navigator.mimeTypes ? navigator.mimeTypes.length : 0;
+var clientId = pad((mimeTypesLength +
+  navigator.userAgent.length).toString(36) +
+  globalCount.toString(36), 4);
+
+module.exports = function fingerprint () {
+  return clientId;
+};
+
+
+/***/ }),
+/* 51 */
+/***/ (function(module, exports) {
+
+
+var getRandomValue;
+
+var crypto = typeof window !== 'undefined' &&
+  (window.crypto || window.msCrypto) ||
+  typeof self !== 'undefined' &&
+  self.crypto;
+
+if (crypto) {
+    var lim = Math.pow(2, 32) - 1;
+    getRandomValue = function () {
+        return Math.abs(crypto.getRandomValues(new Uint32Array(1))[0] / lim);
+    };
+} else {
+    getRandomValue = Math.random;
+}
+
+module.exports = getRandomValue;
+
+
+/***/ }),
+/* 52 */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || new Function("return this")();
+} catch (e) {
+	// This works if the window reference is available
+	if (typeof window === "object") g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+
+/***/ }),
+/* 53 */
+/***/ (function(module, exports) {
+
+module.exports = function(originalModule) {
+	if (!originalModule.webpackPolyfill) {
+		var module = Object.create(originalModule);
+		// module.parent = undefined by default
+		if (!module.children) module.children = [];
+		Object.defineProperty(module, "loaded", {
+			enumerable: true,
+			get: function() {
+				return module.l;
+			}
+		});
+		Object.defineProperty(module, "id", {
+			enumerable: true,
+			get: function() {
+				return module.i;
+			}
+		});
+		Object.defineProperty(module, "exports", {
+			enumerable: true
+		});
+		module.webpackPolyfill = 1;
+	}
+	return module;
+};
+
+
+/***/ }),
+/* 54 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3124,7 +3283,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "../styles/index.css");
 
 /***/ }),
-/* 47 */
+/* 55 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3132,11 +3291,11 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/icons/4.11.2_3335f0bfb61930572868dabe45efc2f7/node_modules/@material-ui/icons/ArrowDropDown.js
-var ArrowDropDown = __webpack_require__(32);
+var ArrowDropDown = __webpack_require__(38);
 var ArrowDropDown_default = /*#__PURE__*/__webpack_require__.n(ArrowDropDown);
 
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/icons/4.11.2_3335f0bfb61930572868dabe45efc2f7/node_modules/@material-ui/icons/ArrowRight.js
-var ArrowRight = __webpack_require__(33);
+var ArrowRight = __webpack_require__(39);
 var ArrowRight_default = /*#__PURE__*/__webpack_require__.n(ArrowRight);
 
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/extends.js
@@ -3149,18 +3308,1193 @@ var objectWithoutProperties = __webpack_require__(2);
 var external_React_ = __webpack_require__(0);
 var external_React_default = /*#__PURE__*/__webpack_require__.n(external_React_);
 
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/prop-types/15.7.2/node_modules/prop-types/index.js
+var prop_types = __webpack_require__(4);
+
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/clsx/1.1.1/node_modules/clsx/dist/clsx.m.js
 var clsx_m = __webpack_require__(3);
 
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/prop-types/15.7.2/node_modules/prop-types/index.js
-var prop_types = __webpack_require__(6);
-
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/withStyles.js + 2 modules
-var withStyles = __webpack_require__(8);
+var withStyles = __webpack_require__(6);
 
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/colorManipulator.js
+var colorManipulator = __webpack_require__(12);
+
+// EXTERNAL MODULE: external "ReactDOM"
+var external_ReactDOM_ = __webpack_require__(7);
+var external_ReactDOM_default = /*#__PURE__*/__webpack_require__.n(external_ReactDOM_);
+
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/useForkRef.js
+var useForkRef = __webpack_require__(11);
+
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/useEventCallback.js
+var useEventCallback = __webpack_require__(10);
+
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/useIsFocusVisible.js
+var useIsFocusVisible = __webpack_require__(15);
+
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/toConsumableArray.js + 3 modules
+var toConsumableArray = __webpack_require__(17);
+
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js
+var objectWithoutPropertiesLoose = __webpack_require__(5);
+
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js
+var assertThisInitialized = __webpack_require__(20);
+
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/inheritsLoose.js
+var inheritsLoose = __webpack_require__(13);
+
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-transition-group/4.4.1_react-dom@16.14.0+react@16.14.0/node_modules/react-transition-group/esm/TransitionGroupContext.js
+
+/* harmony default export */ var TransitionGroupContext = (external_React_default.a.createContext(null));
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-transition-group/4.4.1_react-dom@16.14.0+react@16.14.0/node_modules/react-transition-group/esm/utils/ChildMapping.js
+
+/**
+ * Given `this.props.children`, return an object mapping key to child.
+ *
+ * @param {*} children `this.props.children`
+ * @return {object} Mapping of key to child
+ */
+
+function getChildMapping(children, mapFn) {
+  var mapper = function mapper(child) {
+    return mapFn && Object(external_React_["isValidElement"])(child) ? mapFn(child) : child;
+  };
+
+  var result = Object.create(null);
+  if (children) external_React_["Children"].map(children, function (c) {
+    return c;
+  }).forEach(function (child) {
+    // run the map function here instead so that the key is the computed one
+    result[child.key] = mapper(child);
+  });
+  return result;
+}
+/**
+ * When you're adding or removing children some may be added or removed in the
+ * same render pass. We want to show *both* since we want to simultaneously
+ * animate elements in and out. This function takes a previous set of keys
+ * and a new set of keys and merges them with its best guess of the correct
+ * ordering. In the future we may expose some of the utilities in
+ * ReactMultiChild to make this easy, but for now React itself does not
+ * directly have this concept of the union of prevChildren and nextChildren
+ * so we implement it here.
+ *
+ * @param {object} prev prev children as returned from
+ * `ReactTransitionChildMapping.getChildMapping()`.
+ * @param {object} next next children as returned from
+ * `ReactTransitionChildMapping.getChildMapping()`.
+ * @return {object} a key set that contains all keys in `prev` and all keys
+ * in `next` in a reasonable order.
+ */
+
+function mergeChildMappings(prev, next) {
+  prev = prev || {};
+  next = next || {};
+
+  function getValueForKey(key) {
+    return key in next ? next[key] : prev[key];
+  } // For each key of `next`, the list of keys to insert before that key in
+  // the combined list
+
+
+  var nextKeysPending = Object.create(null);
+  var pendingKeys = [];
+
+  for (var prevKey in prev) {
+    if (prevKey in next) {
+      if (pendingKeys.length) {
+        nextKeysPending[prevKey] = pendingKeys;
+        pendingKeys = [];
+      }
+    } else {
+      pendingKeys.push(prevKey);
+    }
+  }
+
+  var i;
+  var childMapping = {};
+
+  for (var nextKey in next) {
+    if (nextKeysPending[nextKey]) {
+      for (i = 0; i < nextKeysPending[nextKey].length; i++) {
+        var pendingNextKey = nextKeysPending[nextKey][i];
+        childMapping[nextKeysPending[nextKey][i]] = getValueForKey(pendingNextKey);
+      }
+    }
+
+    childMapping[nextKey] = getValueForKey(nextKey);
+  } // Finally, add the keys which didn't appear before any key in `next`
+
+
+  for (i = 0; i < pendingKeys.length; i++) {
+    childMapping[pendingKeys[i]] = getValueForKey(pendingKeys[i]);
+  }
+
+  return childMapping;
+}
+
+function getProp(child, prop, props) {
+  return props[prop] != null ? props[prop] : child.props[prop];
+}
+
+function getInitialChildMapping(props, onExited) {
+  return getChildMapping(props.children, function (child) {
+    return Object(external_React_["cloneElement"])(child, {
+      onExited: onExited.bind(null, child),
+      in: true,
+      appear: getProp(child, 'appear', props),
+      enter: getProp(child, 'enter', props),
+      exit: getProp(child, 'exit', props)
+    });
+  });
+}
+function getNextChildMapping(nextProps, prevChildMapping, onExited) {
+  var nextChildMapping = getChildMapping(nextProps.children);
+  var children = mergeChildMappings(prevChildMapping, nextChildMapping);
+  Object.keys(children).forEach(function (key) {
+    var child = children[key];
+    if (!Object(external_React_["isValidElement"])(child)) return;
+    var hasPrev = (key in prevChildMapping);
+    var hasNext = (key in nextChildMapping);
+    var prevChild = prevChildMapping[key];
+    var isLeaving = Object(external_React_["isValidElement"])(prevChild) && !prevChild.props.in; // item is new (entering)
+
+    if (hasNext && (!hasPrev || isLeaving)) {
+      // console.log('entering', key)
+      children[key] = Object(external_React_["cloneElement"])(child, {
+        onExited: onExited.bind(null, child),
+        in: true,
+        exit: getProp(child, 'exit', nextProps),
+        enter: getProp(child, 'enter', nextProps)
+      });
+    } else if (!hasNext && hasPrev && !isLeaving) {
+      // item is old (exiting)
+      // console.log('leaving', key)
+      children[key] = Object(external_React_["cloneElement"])(child, {
+        in: false
+      });
+    } else if (hasNext && hasPrev && Object(external_React_["isValidElement"])(prevChild)) {
+      // item hasn't changed transition states
+      // copy over the last transition props;
+      // console.log('unchanged', key)
+      children[key] = Object(external_React_["cloneElement"])(child, {
+        onExited: onExited.bind(null, child),
+        in: prevChild.props.in,
+        exit: getProp(child, 'exit', nextProps),
+        enter: getProp(child, 'enter', nextProps)
+      });
+    }
+  });
+  return children;
+}
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-transition-group/4.4.1_react-dom@16.14.0+react@16.14.0/node_modules/react-transition-group/esm/TransitionGroup.js
+
+
+
+
+
+
+
+
+
+var values = Object.values || function (obj) {
+  return Object.keys(obj).map(function (k) {
+    return obj[k];
+  });
+};
+
+var defaultProps = {
+  component: 'div',
+  childFactory: function childFactory(child) {
+    return child;
+  }
+};
+/**
+ * The `<TransitionGroup>` component manages a set of transition components
+ * (`<Transition>` and `<CSSTransition>`) in a list. Like with the transition
+ * components, `<TransitionGroup>` is a state machine for managing the mounting
+ * and unmounting of components over time.
+ *
+ * Consider the example below. As items are removed or added to the TodoList the
+ * `in` prop is toggled automatically by the `<TransitionGroup>`.
+ *
+ * Note that `<TransitionGroup>`  does not define any animation behavior!
+ * Exactly _how_ a list item animates is up to the individual transition
+ * component. This means you can mix and match animations across different list
+ * items.
+ */
+
+var TransitionGroup_TransitionGroup = /*#__PURE__*/function (_React$Component) {
+  Object(inheritsLoose["a" /* default */])(TransitionGroup, _React$Component);
+
+  function TransitionGroup(props, context) {
+    var _this;
+
+    _this = _React$Component.call(this, props, context) || this;
+
+    var handleExited = _this.handleExited.bind(Object(assertThisInitialized["a" /* default */])(_this)); // Initial children should all be entering, dependent on appear
+
+
+    _this.state = {
+      contextValue: {
+        isMounting: true
+      },
+      handleExited: handleExited,
+      firstRender: true
+    };
+    return _this;
+  }
+
+  var _proto = TransitionGroup.prototype;
+
+  _proto.componentDidMount = function componentDidMount() {
+    this.mounted = true;
+    this.setState({
+      contextValue: {
+        isMounting: false
+      }
+    });
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    this.mounted = false;
+  };
+
+  TransitionGroup.getDerivedStateFromProps = function getDerivedStateFromProps(nextProps, _ref) {
+    var prevChildMapping = _ref.children,
+        handleExited = _ref.handleExited,
+        firstRender = _ref.firstRender;
+    return {
+      children: firstRender ? getInitialChildMapping(nextProps, handleExited) : getNextChildMapping(nextProps, prevChildMapping, handleExited),
+      firstRender: false
+    };
+  } // node is `undefined` when user provided `nodeRef` prop
+  ;
+
+  _proto.handleExited = function handleExited(child, node) {
+    var currentChildMapping = getChildMapping(this.props.children);
+    if (child.key in currentChildMapping) return;
+
+    if (child.props.onExited) {
+      child.props.onExited(node);
+    }
+
+    if (this.mounted) {
+      this.setState(function (state) {
+        var children = Object(esm_extends["a" /* default */])({}, state.children);
+
+        delete children[child.key];
+        return {
+          children: children
+        };
+      });
+    }
+  };
+
+  _proto.render = function render() {
+    var _this$props = this.props,
+        Component = _this$props.component,
+        childFactory = _this$props.childFactory,
+        props = Object(objectWithoutPropertiesLoose["a" /* default */])(_this$props, ["component", "childFactory"]);
+
+    var contextValue = this.state.contextValue;
+    var children = values(this.state.children).map(childFactory);
+    delete props.appear;
+    delete props.enter;
+    delete props.exit;
+
+    if (Component === null) {
+      return /*#__PURE__*/external_React_default.a.createElement(TransitionGroupContext.Provider, {
+        value: contextValue
+      }, children);
+    }
+
+    return /*#__PURE__*/external_React_default.a.createElement(TransitionGroupContext.Provider, {
+      value: contextValue
+    }, /*#__PURE__*/external_React_default.a.createElement(Component, props, children));
+  };
+
+  return TransitionGroup;
+}(external_React_default.a.Component);
+
+TransitionGroup_TransitionGroup.propTypes =  false ? undefined : {};
+TransitionGroup_TransitionGroup.defaultProps = defaultProps;
+/* harmony default export */ var esm_TransitionGroup = (TransitionGroup_TransitionGroup);
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/ButtonBase/Ripple.js
+
+
+
+
+var useEnhancedEffect = typeof window === 'undefined' ? external_React_["useEffect"] : external_React_["useLayoutEffect"];
+/**
+ * @ignore - internal component.
+ */
+
+function Ripple(props) {
+  var classes = props.classes,
+      _props$pulsate = props.pulsate,
+      pulsate = _props$pulsate === void 0 ? false : _props$pulsate,
+      rippleX = props.rippleX,
+      rippleY = props.rippleY,
+      rippleSize = props.rippleSize,
+      inProp = props.in,
+      _props$onExited = props.onExited,
+      onExited = _props$onExited === void 0 ? function () {} : _props$onExited,
+      timeout = props.timeout;
+
+  var _React$useState = external_React_["useState"](false),
+      leaving = _React$useState[0],
+      setLeaving = _React$useState[1];
+
+  var rippleClassName = Object(clsx_m["a" /* default */])(classes.ripple, classes.rippleVisible, pulsate && classes.ripplePulsate);
+  var rippleStyles = {
+    width: rippleSize,
+    height: rippleSize,
+    top: -(rippleSize / 2) + rippleY,
+    left: -(rippleSize / 2) + rippleX
+  };
+  var childClassName = Object(clsx_m["a" /* default */])(classes.child, leaving && classes.childLeaving, pulsate && classes.childPulsate);
+  var handleExited = Object(useEventCallback["a" /* default */])(onExited); // Ripple is used for user feedback (e.g. click or press) so we want to apply styles with the highest priority
+
+  useEnhancedEffect(function () {
+    if (!inProp) {
+      // react-transition-group#onExit
+      setLeaving(true); // react-transition-group#onExited
+
+      var timeoutId = setTimeout(handleExited, timeout);
+      return function () {
+        clearTimeout(timeoutId);
+      };
+    }
+
+    return undefined;
+  }, [handleExited, inProp, timeout]);
+  return /*#__PURE__*/external_React_["createElement"]("span", {
+    className: rippleClassName,
+    style: rippleStyles
+  }, /*#__PURE__*/external_React_["createElement"]("span", {
+    className: childClassName
+  }));
+}
+
+ false ? undefined : void 0;
+/* harmony default export */ var ButtonBase_Ripple = (Ripple);
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/ButtonBase/TouchRipple.js
+
+
+
+
+
+
+
+
+
+var DURATION = 550;
+var DELAY_RIPPLE = 80;
+var TouchRipple_styles = function styles(theme) {
+  return {
+    /* Styles applied to the root element. */
+    root: {
+      overflow: 'hidden',
+      pointerEvents: 'none',
+      position: 'absolute',
+      zIndex: 0,
+      top: 0,
+      right: 0,
+      bottom: 0,
+      left: 0,
+      borderRadius: 'inherit'
+    },
+
+    /* Styles applied to the internal `Ripple` components `ripple` class. */
+    ripple: {
+      opacity: 0,
+      position: 'absolute'
+    },
+
+    /* Styles applied to the internal `Ripple` components `rippleVisible` class. */
+    rippleVisible: {
+      opacity: 0.3,
+      transform: 'scale(1)',
+      animation: "$enter ".concat(DURATION, "ms ").concat(theme.transitions.easing.easeInOut)
+    },
+
+    /* Styles applied to the internal `Ripple` components `ripplePulsate` class. */
+    ripplePulsate: {
+      animationDuration: "".concat(theme.transitions.duration.shorter, "ms")
+    },
+
+    /* Styles applied to the internal `Ripple` components `child` class. */
+    child: {
+      opacity: 1,
+      display: 'block',
+      width: '100%',
+      height: '100%',
+      borderRadius: '50%',
+      backgroundColor: 'currentColor'
+    },
+
+    /* Styles applied to the internal `Ripple` components `childLeaving` class. */
+    childLeaving: {
+      opacity: 0,
+      animation: "$exit ".concat(DURATION, "ms ").concat(theme.transitions.easing.easeInOut)
+    },
+
+    /* Styles applied to the internal `Ripple` components `childPulsate` class. */
+    childPulsate: {
+      position: 'absolute',
+      left: 0,
+      top: 0,
+      animation: "$pulsate 2500ms ".concat(theme.transitions.easing.easeInOut, " 200ms infinite")
+    },
+    '@keyframes enter': {
+      '0%': {
+        transform: 'scale(0)',
+        opacity: 0.1
+      },
+      '100%': {
+        transform: 'scale(1)',
+        opacity: 0.3
+      }
+    },
+    '@keyframes exit': {
+      '0%': {
+        opacity: 1
+      },
+      '100%': {
+        opacity: 0
+      }
+    },
+    '@keyframes pulsate': {
+      '0%': {
+        transform: 'scale(1)'
+      },
+      '50%': {
+        transform: 'scale(0.92)'
+      },
+      '100%': {
+        transform: 'scale(1)'
+      }
+    }
+  };
+};
+/**
+ * @ignore - internal component.
+ *
+ * TODO v5: Make private
+ */
+
+var TouchRipple_TouchRipple = /*#__PURE__*/external_React_["forwardRef"](function TouchRipple(props, ref) {
+  var _props$center = props.center,
+      centerProp = _props$center === void 0 ? false : _props$center,
+      classes = props.classes,
+      className = props.className,
+      other = Object(objectWithoutProperties["a" /* default */])(props, ["center", "classes", "className"]);
+
+  var _React$useState = external_React_["useState"]([]),
+      ripples = _React$useState[0],
+      setRipples = _React$useState[1];
+
+  var nextKey = external_React_["useRef"](0);
+  var rippleCallback = external_React_["useRef"](null);
+  external_React_["useEffect"](function () {
+    if (rippleCallback.current) {
+      rippleCallback.current();
+      rippleCallback.current = null;
+    }
+  }, [ripples]); // Used to filter out mouse emulated events on mobile.
+
+  var ignoringMouseDown = external_React_["useRef"](false); // We use a timer in order to only show the ripples for touch "click" like events.
+  // We don't want to display the ripple for touch scroll events.
+
+  var startTimer = external_React_["useRef"](null); // This is the hook called once the previous timeout is ready.
+
+  var startTimerCommit = external_React_["useRef"](null);
+  var container = external_React_["useRef"](null);
+  external_React_["useEffect"](function () {
+    return function () {
+      clearTimeout(startTimer.current);
+    };
+  }, []);
+  var startCommit = external_React_["useCallback"](function (params) {
+    var pulsate = params.pulsate,
+        rippleX = params.rippleX,
+        rippleY = params.rippleY,
+        rippleSize = params.rippleSize,
+        cb = params.cb;
+    setRipples(function (oldRipples) {
+      return [].concat(Object(toConsumableArray["a" /* default */])(oldRipples), [/*#__PURE__*/external_React_["createElement"](ButtonBase_Ripple, {
+        key: nextKey.current,
+        classes: classes,
+        timeout: DURATION,
+        pulsate: pulsate,
+        rippleX: rippleX,
+        rippleY: rippleY,
+        rippleSize: rippleSize
+      })]);
+    });
+    nextKey.current += 1;
+    rippleCallback.current = cb;
+  }, [classes]);
+  var start = external_React_["useCallback"](function () {
+    var event = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+    var cb = arguments.length > 2 ? arguments[2] : undefined;
+    var _options$pulsate = options.pulsate,
+        pulsate = _options$pulsate === void 0 ? false : _options$pulsate,
+        _options$center = options.center,
+        center = _options$center === void 0 ? centerProp || options.pulsate : _options$center,
+        _options$fakeElement = options.fakeElement,
+        fakeElement = _options$fakeElement === void 0 ? false : _options$fakeElement;
+
+    if (event.type === 'mousedown' && ignoringMouseDown.current) {
+      ignoringMouseDown.current = false;
+      return;
+    }
+
+    if (event.type === 'touchstart') {
+      ignoringMouseDown.current = true;
+    }
+
+    var element = fakeElement ? null : container.current;
+    var rect = element ? element.getBoundingClientRect() : {
+      width: 0,
+      height: 0,
+      left: 0,
+      top: 0
+    }; // Get the size of the ripple
+
+    var rippleX;
+    var rippleY;
+    var rippleSize;
+
+    if (center || event.clientX === 0 && event.clientY === 0 || !event.clientX && !event.touches) {
+      rippleX = Math.round(rect.width / 2);
+      rippleY = Math.round(rect.height / 2);
+    } else {
+      var _ref = event.touches ? event.touches[0] : event,
+          clientX = _ref.clientX,
+          clientY = _ref.clientY;
+
+      rippleX = Math.round(clientX - rect.left);
+      rippleY = Math.round(clientY - rect.top);
+    }
+
+    if (center) {
+      rippleSize = Math.sqrt((2 * Math.pow(rect.width, 2) + Math.pow(rect.height, 2)) / 3); // For some reason the animation is broken on Mobile Chrome if the size if even.
+
+      if (rippleSize % 2 === 0) {
+        rippleSize += 1;
+      }
+    } else {
+      var sizeX = Math.max(Math.abs((element ? element.clientWidth : 0) - rippleX), rippleX) * 2 + 2;
+      var sizeY = Math.max(Math.abs((element ? element.clientHeight : 0) - rippleY), rippleY) * 2 + 2;
+      rippleSize = Math.sqrt(Math.pow(sizeX, 2) + Math.pow(sizeY, 2));
+    } // Touche devices
+
+
+    if (event.touches) {
+      // check that this isn't another touchstart due to multitouch
+      // otherwise we will only clear a single timer when unmounting while two
+      // are running
+      if (startTimerCommit.current === null) {
+        // Prepare the ripple effect.
+        startTimerCommit.current = function () {
+          startCommit({
+            pulsate: pulsate,
+            rippleX: rippleX,
+            rippleY: rippleY,
+            rippleSize: rippleSize,
+            cb: cb
+          });
+        }; // Delay the execution of the ripple effect.
+
+
+        startTimer.current = setTimeout(function () {
+          if (startTimerCommit.current) {
+            startTimerCommit.current();
+            startTimerCommit.current = null;
+          }
+        }, DELAY_RIPPLE); // We have to make a tradeoff with this value.
+      }
+    } else {
+      startCommit({
+        pulsate: pulsate,
+        rippleX: rippleX,
+        rippleY: rippleY,
+        rippleSize: rippleSize,
+        cb: cb
+      });
+    }
+  }, [centerProp, startCommit]);
+  var pulsate = external_React_["useCallback"](function () {
+    start({}, {
+      pulsate: true
+    });
+  }, [start]);
+  var stop = external_React_["useCallback"](function (event, cb) {
+    clearTimeout(startTimer.current); // The touch interaction occurs too quickly.
+    // We still want to show ripple effect.
+
+    if (event.type === 'touchend' && startTimerCommit.current) {
+      event.persist();
+      startTimerCommit.current();
+      startTimerCommit.current = null;
+      startTimer.current = setTimeout(function () {
+        stop(event, cb);
+      });
+      return;
+    }
+
+    startTimerCommit.current = null;
+    setRipples(function (oldRipples) {
+      if (oldRipples.length > 0) {
+        return oldRipples.slice(1);
+      }
+
+      return oldRipples;
+    });
+    rippleCallback.current = cb;
+  }, []);
+  external_React_["useImperativeHandle"](ref, function () {
+    return {
+      pulsate: pulsate,
+      start: start,
+      stop: stop
+    };
+  }, [pulsate, start, stop]);
+  return /*#__PURE__*/external_React_["createElement"]("span", Object(esm_extends["a" /* default */])({
+    className: Object(clsx_m["a" /* default */])(classes.root, className),
+    ref: container
+  }, other), /*#__PURE__*/external_React_["createElement"](esm_TransitionGroup, {
+    component: null,
+    exit: true
+  }, ripples));
+});
+ false ? undefined : void 0;
+/* harmony default export */ var ButtonBase_TouchRipple = (Object(withStyles["a" /* default */])(TouchRipple_styles, {
+  flip: false,
+  name: 'MuiTouchRipple'
+})( /*#__PURE__*/external_React_["memo"](TouchRipple_TouchRipple)));
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/ButtonBase/ButtonBase.js
+
+
+
+
+
+
+
+
+
+
+
+
+var ButtonBase_styles = {
+  /* Styles applied to the root element. */
+  root: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'relative',
+    WebkitTapHighlightColor: 'transparent',
+    backgroundColor: 'transparent',
+    // Reset default value
+    // We disable the focus ring for mouse, touch and keyboard users.
+    outline: 0,
+    border: 0,
+    margin: 0,
+    // Remove the margin in Safari
+    borderRadius: 0,
+    padding: 0,
+    // Remove the padding in Firefox
+    cursor: 'pointer',
+    userSelect: 'none',
+    verticalAlign: 'middle',
+    '-moz-appearance': 'none',
+    // Reset
+    '-webkit-appearance': 'none',
+    // Reset
+    textDecoration: 'none',
+    // So we take precedent over the style of a native <a /> element.
+    color: 'inherit',
+    '&::-moz-focus-inner': {
+      borderStyle: 'none' // Remove Firefox dotted outline.
+
+    },
+    '&$disabled': {
+      pointerEvents: 'none',
+      // Disable link interactions
+      cursor: 'default'
+    },
+    '@media print': {
+      colorAdjust: 'exact'
+    }
+  },
+
+  /* Pseudo-class applied to the root element if `disabled={true}`. */
+  disabled: {},
+
+  /* Pseudo-class applied to the root element if keyboard focused. */
+  focusVisible: {}
+};
+/**
+ * `ButtonBase` contains as few styles as possible.
+ * It aims to be a simple building block for creating a button.
+ * It contains a load of style reset and some focus/ripple logic.
+ */
+
+var ButtonBase_ButtonBase = /*#__PURE__*/external_React_["forwardRef"](function ButtonBase(props, ref) {
+  var action = props.action,
+      buttonRefProp = props.buttonRef,
+      _props$centerRipple = props.centerRipple,
+      centerRipple = _props$centerRipple === void 0 ? false : _props$centerRipple,
+      children = props.children,
+      classes = props.classes,
+      className = props.className,
+      _props$component = props.component,
+      component = _props$component === void 0 ? 'button' : _props$component,
+      _props$disabled = props.disabled,
+      disabled = _props$disabled === void 0 ? false : _props$disabled,
+      _props$disableRipple = props.disableRipple,
+      disableRipple = _props$disableRipple === void 0 ? false : _props$disableRipple,
+      _props$disableTouchRi = props.disableTouchRipple,
+      disableTouchRipple = _props$disableTouchRi === void 0 ? false : _props$disableTouchRi,
+      _props$focusRipple = props.focusRipple,
+      focusRipple = _props$focusRipple === void 0 ? false : _props$focusRipple,
+      focusVisibleClassName = props.focusVisibleClassName,
+      onBlur = props.onBlur,
+      onClick = props.onClick,
+      onFocus = props.onFocus,
+      onFocusVisible = props.onFocusVisible,
+      onKeyDown = props.onKeyDown,
+      onKeyUp = props.onKeyUp,
+      onMouseDown = props.onMouseDown,
+      onMouseLeave = props.onMouseLeave,
+      onMouseUp = props.onMouseUp,
+      onTouchEnd = props.onTouchEnd,
+      onTouchMove = props.onTouchMove,
+      onTouchStart = props.onTouchStart,
+      onDragLeave = props.onDragLeave,
+      _props$tabIndex = props.tabIndex,
+      tabIndex = _props$tabIndex === void 0 ? 0 : _props$tabIndex,
+      TouchRippleProps = props.TouchRippleProps,
+      _props$type = props.type,
+      type = _props$type === void 0 ? 'button' : _props$type,
+      other = Object(objectWithoutProperties["a" /* default */])(props, ["action", "buttonRef", "centerRipple", "children", "classes", "className", "component", "disabled", "disableRipple", "disableTouchRipple", "focusRipple", "focusVisibleClassName", "onBlur", "onClick", "onFocus", "onFocusVisible", "onKeyDown", "onKeyUp", "onMouseDown", "onMouseLeave", "onMouseUp", "onTouchEnd", "onTouchMove", "onTouchStart", "onDragLeave", "tabIndex", "TouchRippleProps", "type"]);
+
+  var buttonRef = external_React_["useRef"](null);
+
+  function getButtonNode() {
+    // #StrictMode ready
+    return external_ReactDOM_["findDOMNode"](buttonRef.current);
+  }
+
+  var rippleRef = external_React_["useRef"](null);
+
+  var _React$useState = external_React_["useState"](false),
+      focusVisible = _React$useState[0],
+      setFocusVisible = _React$useState[1];
+
+  if (disabled && focusVisible) {
+    setFocusVisible(false);
+  }
+
+  var _useIsFocusVisible = Object(useIsFocusVisible["a" /* default */])(),
+      isFocusVisible = _useIsFocusVisible.isFocusVisible,
+      onBlurVisible = _useIsFocusVisible.onBlurVisible,
+      focusVisibleRef = _useIsFocusVisible.ref;
+
+  external_React_["useImperativeHandle"](action, function () {
+    return {
+      focusVisible: function focusVisible() {
+        setFocusVisible(true);
+        buttonRef.current.focus();
+      }
+    };
+  }, []);
+  external_React_["useEffect"](function () {
+    if (focusVisible && focusRipple && !disableRipple) {
+      rippleRef.current.pulsate();
+    }
+  }, [disableRipple, focusRipple, focusVisible]);
+
+  function useRippleHandler(rippleAction, eventCallback) {
+    var skipRippleAction = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : disableTouchRipple;
+    return Object(useEventCallback["a" /* default */])(function (event) {
+      if (eventCallback) {
+        eventCallback(event);
+      }
+
+      var ignore = skipRippleAction;
+
+      if (!ignore && rippleRef.current) {
+        rippleRef.current[rippleAction](event);
+      }
+
+      return true;
+    });
+  }
+
+  var handleMouseDown = useRippleHandler('start', onMouseDown);
+  var handleDragLeave = useRippleHandler('stop', onDragLeave);
+  var handleMouseUp = useRippleHandler('stop', onMouseUp);
+  var handleMouseLeave = useRippleHandler('stop', function (event) {
+    if (focusVisible) {
+      event.preventDefault();
+    }
+
+    if (onMouseLeave) {
+      onMouseLeave(event);
+    }
+  });
+  var handleTouchStart = useRippleHandler('start', onTouchStart);
+  var handleTouchEnd = useRippleHandler('stop', onTouchEnd);
+  var handleTouchMove = useRippleHandler('stop', onTouchMove);
+  var handleBlur = useRippleHandler('stop', function (event) {
+    if (focusVisible) {
+      onBlurVisible(event);
+      setFocusVisible(false);
+    }
+
+    if (onBlur) {
+      onBlur(event);
+    }
+  }, false);
+  var handleFocus = Object(useEventCallback["a" /* default */])(function (event) {
+    // Fix for https://github.com/facebook/react/issues/7769
+    if (!buttonRef.current) {
+      buttonRef.current = event.currentTarget;
+    }
+
+    if (isFocusVisible(event)) {
+      setFocusVisible(true);
+
+      if (onFocusVisible) {
+        onFocusVisible(event);
+      }
+    }
+
+    if (onFocus) {
+      onFocus(event);
+    }
+  });
+
+  var isNonNativeButton = function isNonNativeButton() {
+    var button = getButtonNode();
+    return component && component !== 'button' && !(button.tagName === 'A' && button.href);
+  };
+  /**
+   * IE 11 shim for https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/repeat
+   */
+
+
+  var keydownRef = external_React_["useRef"](false);
+  var handleKeyDown = Object(useEventCallback["a" /* default */])(function (event) {
+    // Check if key is already down to avoid repeats being counted as multiple activations
+    if (focusRipple && !keydownRef.current && focusVisible && rippleRef.current && event.key === ' ') {
+      keydownRef.current = true;
+      event.persist();
+      rippleRef.current.stop(event, function () {
+        rippleRef.current.start(event);
+      });
+    }
+
+    if (event.target === event.currentTarget && isNonNativeButton() && event.key === ' ') {
+      event.preventDefault();
+    }
+
+    if (onKeyDown) {
+      onKeyDown(event);
+    } // Keyboard accessibility for non interactive elements
+
+
+    if (event.target === event.currentTarget && isNonNativeButton() && event.key === 'Enter' && !disabled) {
+      event.preventDefault();
+
+      if (onClick) {
+        onClick(event);
+      }
+    }
+  });
+  var handleKeyUp = Object(useEventCallback["a" /* default */])(function (event) {
+    // calling preventDefault in keyUp on a <button> will not dispatch a click event if Space is pressed
+    // https://codesandbox.io/s/button-keyup-preventdefault-dn7f0
+    if (focusRipple && event.key === ' ' && rippleRef.current && focusVisible && !event.defaultPrevented) {
+      keydownRef.current = false;
+      event.persist();
+      rippleRef.current.stop(event, function () {
+        rippleRef.current.pulsate(event);
+      });
+    }
+
+    if (onKeyUp) {
+      onKeyUp(event);
+    } // Keyboard accessibility for non interactive elements
+
+
+    if (onClick && event.target === event.currentTarget && isNonNativeButton() && event.key === ' ' && !event.defaultPrevented) {
+      onClick(event);
+    }
+  });
+  var ComponentProp = component;
+
+  if (ComponentProp === 'button' && other.href) {
+    ComponentProp = 'a';
+  }
+
+  var buttonProps = {};
+
+  if (ComponentProp === 'button') {
+    buttonProps.type = type;
+    buttonProps.disabled = disabled;
+  } else {
+    if (ComponentProp !== 'a' || !other.href) {
+      buttonProps.role = 'button';
+    }
+
+    buttonProps['aria-disabled'] = disabled;
+  }
+
+  var handleUserRef = Object(useForkRef["a" /* default */])(buttonRefProp, ref);
+  var handleOwnRef = Object(useForkRef["a" /* default */])(focusVisibleRef, buttonRef);
+  var handleRef = Object(useForkRef["a" /* default */])(handleUserRef, handleOwnRef);
+
+  var _React$useState2 = external_React_["useState"](false),
+      mountedState = _React$useState2[0],
+      setMountedState = _React$useState2[1];
+
+  external_React_["useEffect"](function () {
+    setMountedState(true);
+  }, []);
+  var enableTouchRipple = mountedState && !disableRipple && !disabled;
+
+  if (false) {}
+
+  return /*#__PURE__*/external_React_["createElement"](ComponentProp, Object(esm_extends["a" /* default */])({
+    className: Object(clsx_m["a" /* default */])(classes.root, className, focusVisible && [classes.focusVisible, focusVisibleClassName], disabled && classes.disabled),
+    onBlur: handleBlur,
+    onClick: onClick,
+    onFocus: handleFocus,
+    onKeyDown: handleKeyDown,
+    onKeyUp: handleKeyUp,
+    onMouseDown: handleMouseDown,
+    onMouseLeave: handleMouseLeave,
+    onMouseUp: handleMouseUp,
+    onDragLeave: handleDragLeave,
+    onTouchEnd: handleTouchEnd,
+    onTouchMove: handleTouchMove,
+    onTouchStart: handleTouchStart,
+    ref: handleRef,
+    tabIndex: disabled ? -1 : tabIndex
+  }, buttonProps, other), children, enableTouchRipple ?
+  /*#__PURE__*/
+
+  /* TouchRipple is only needed client-side, x2 boost on the server. */
+  external_React_["createElement"](ButtonBase_TouchRipple, Object(esm_extends["a" /* default */])({
+    ref: rippleRef,
+    center: centerRipple
+  }, TouchRippleProps)) : null);
+});
+ false ? undefined : void 0;
+/* harmony default export */ var esm_ButtonBase_ButtonBase = (Object(withStyles["a" /* default */])(ButtonBase_styles, {
+  name: 'MuiButtonBase'
+})(ButtonBase_ButtonBase));
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/capitalize.js
-var capitalize = __webpack_require__(5);
+var capitalize = __webpack_require__(8);
 
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/IconButton/IconButton.js
+
+
+
+
+
+
+
+
+
+
+var IconButton_styles = function styles(theme) {
+  return {
+    /* Styles applied to the root element. */
+    root: {
+      textAlign: 'center',
+      flex: '0 0 auto',
+      fontSize: theme.typography.pxToRem(24),
+      padding: 12,
+      borderRadius: '50%',
+      overflow: 'visible',
+      // Explicitly set the default value to solve a bug on IE 11.
+      color: theme.palette.action.active,
+      transition: theme.transitions.create('background-color', {
+        duration: theme.transitions.duration.shortest
+      }),
+      '&:hover': {
+        backgroundColor: Object(colorManipulator["b" /* fade */])(theme.palette.action.active, theme.palette.action.hoverOpacity),
+        // Reset on touch devices, it doesn't add specificity
+        '@media (hover: none)': {
+          backgroundColor: 'transparent'
+        }
+      },
+      '&$disabled': {
+        backgroundColor: 'transparent',
+        color: theme.palette.action.disabled
+      }
+    },
+
+    /* Styles applied to the root element if `edge="start"`. */
+    edgeStart: {
+      marginLeft: -12,
+      '$sizeSmall&': {
+        marginLeft: -3
+      }
+    },
+
+    /* Styles applied to the root element if `edge="end"`. */
+    edgeEnd: {
+      marginRight: -12,
+      '$sizeSmall&': {
+        marginRight: -3
+      }
+    },
+
+    /* Styles applied to the root element if `color="inherit"`. */
+    colorInherit: {
+      color: 'inherit'
+    },
+
+    /* Styles applied to the root element if `color="primary"`. */
+    colorPrimary: {
+      color: theme.palette.primary.main,
+      '&:hover': {
+        backgroundColor: Object(colorManipulator["b" /* fade */])(theme.palette.primary.main, theme.palette.action.hoverOpacity),
+        // Reset on touch devices, it doesn't add specificity
+        '@media (hover: none)': {
+          backgroundColor: 'transparent'
+        }
+      }
+    },
+
+    /* Styles applied to the root element if `color="secondary"`. */
+    colorSecondary: {
+      color: theme.palette.secondary.main,
+      '&:hover': {
+        backgroundColor: Object(colorManipulator["b" /* fade */])(theme.palette.secondary.main, theme.palette.action.hoverOpacity),
+        // Reset on touch devices, it doesn't add specificity
+        '@media (hover: none)': {
+          backgroundColor: 'transparent'
+        }
+      }
+    },
+
+    /* Pseudo-class applied to the root element if `disabled={true}`. */
+    disabled: {},
+
+    /* Styles applied to the root element if `size="small"`. */
+    sizeSmall: {
+      padding: 3,
+      fontSize: theme.typography.pxToRem(18)
+    },
+
+    /* Styles applied to the children container element. */
+    label: {
+      width: '100%',
+      display: 'flex',
+      alignItems: 'inherit',
+      justifyContent: 'inherit'
+    }
+  };
+};
+/**
+ * Refer to the [Icons](/components/icons/) section of the documentation
+ * regarding the available icon options.
+ */
+
+var IconButton_IconButton = /*#__PURE__*/external_React_["forwardRef"](function IconButton(props, ref) {
+  var _props$edge = props.edge,
+      edge = _props$edge === void 0 ? false : _props$edge,
+      children = props.children,
+      classes = props.classes,
+      className = props.className,
+      _props$color = props.color,
+      color = _props$color === void 0 ? 'default' : _props$color,
+      _props$disabled = props.disabled,
+      disabled = _props$disabled === void 0 ? false : _props$disabled,
+      _props$disableFocusRi = props.disableFocusRipple,
+      disableFocusRipple = _props$disableFocusRi === void 0 ? false : _props$disableFocusRi,
+      _props$size = props.size,
+      size = _props$size === void 0 ? 'medium' : _props$size,
+      other = Object(objectWithoutProperties["a" /* default */])(props, ["edge", "children", "classes", "className", "color", "disabled", "disableFocusRipple", "size"]);
+
+  return /*#__PURE__*/external_React_["createElement"](esm_ButtonBase_ButtonBase, Object(esm_extends["a" /* default */])({
+    className: Object(clsx_m["a" /* default */])(classes.root, className, color !== 'default' && classes["color".concat(Object(capitalize["a" /* default */])(color))], disabled && classes.disabled, size === "small" && classes["size".concat(Object(capitalize["a" /* default */])(size))], {
+      'start': classes.edgeStart,
+      'end': classes.edgeEnd
+    }[edge]),
+    centerRipple: true,
+    focusRipple: !disableFocusRipple,
+    disabled: disabled,
+    ref: ref
+  }, other), /*#__PURE__*/external_React_["createElement"]("span", {
+    className: classes.label
+  }, children));
+});
+ false ? undefined : void 0;
+/* harmony default export */ var esm_IconButton_IconButton = (Object(withStyles["a" /* default */])(IconButton_styles, {
+  name: 'MuiIconButton'
+})(IconButton_IconButton));
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/icons/4.11.2_3335f0bfb61930572868dabe45efc2f7/node_modules/@material-ui/icons/Menu.js
+var Menu = __webpack_require__(36);
+var Menu_default = /*#__PURE__*/__webpack_require__.n(Menu);
+
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/makeStyles/makeStyles.js + 22 modules
+var makeStyles = __webpack_require__(73);
+
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/defaultTheme.js + 22 modules
+var defaultTheme = __webpack_require__(16);
+
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/makeStyles.js
+
+
+
+
+function makeStyles_makeStyles(stylesOrCreator) {
+  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  return Object(makeStyles["a" /* default */])(stylesOrCreator, Object(esm_extends["a" /* default */])({
+    defaultTheme: defaultTheme["a" /* default */]
+  }, options));
+}
+
+/* harmony default export */ var styles_makeStyles = (makeStyles_makeStyles);
+// CONCATENATED MODULE: ./src/app/components/Explorer/ExplorerHeader.js
+
+
+
+var useToggleButtonStyles = styles_makeStyles({
+  root: {
+    margin: "0 0 0 12px"
+  }
+});
+function ExplorerHeader(_ref) {
+  var isOpen = _ref.isOpen,
+      toggleOpen = _ref.toggleOpen;
+
+  var _useToggleButtonStyle = useToggleButtonStyles(),
+      root = _useToggleButtonStyle.root;
+
+  return React.createElement("section", {
+    className: "explorer__header" + (isOpen ? " explorer__header-opened" : " explorer__header-closed")
+  }, React.createElement(esm_IconButton_IconButton, {
+    "aria-label": "Toggle Explorer",
+    classes: {
+      root: root
+    },
+    onClick: toggleOpen
+  }, React.createElement(Menu_default.a, null)), React.createElement("span", {
+    className: "explorer__header__title"
+  }, "{ ", React.createElement("i", null, "webdoc"), " }"));
+}
 // CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/Typography/Typography.js
 
 
@@ -3346,25 +4680,12 @@ var Typography_Typography = /*#__PURE__*/external_React_["forwardRef"](function 
   name: 'MuiTypography'
 })(Typography_Typography));
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/slicedToArray.js + 3 modules
-var slicedToArray = __webpack_require__(9);
-
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js
-var objectWithoutPropertiesLoose = __webpack_require__(10);
-
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/inheritsLoose.js
-var inheritsLoose = __webpack_require__(14);
-
-// EXTERNAL MODULE: external "ReactDOM"
-var external_ReactDOM_ = __webpack_require__(7);
-var external_ReactDOM_default = /*#__PURE__*/__webpack_require__.n(external_ReactDOM_);
+var slicedToArray = __webpack_require__(14);
 
 // CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-transition-group/4.4.1_react-dom@16.14.0+react@16.14.0/node_modules/react-transition-group/esm/config.js
 /* harmony default export */ var config = ({
   disabled: false
 });
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-transition-group/4.4.1_react-dom@16.14.0+react@16.14.0/node_modules/react-transition-group/esm/TransitionGroupContext.js
-
-/* harmony default export */ var TransitionGroupContext = (external_React_default.a.createContext(null));
 // CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-transition-group/4.4.1_react-dom@16.14.0+react@16.14.0/node_modules/react-transition-group/esm/Transition.js
 
 
@@ -3797,7 +5118,7 @@ Transition_Transition.ENTERED = ENTERED;
 Transition_Transition.EXITING = EXITING;
 /* harmony default export */ var esm_Transition = (Transition_Transition);
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/transitions.js
-var transitions = __webpack_require__(21);
+var transitions = __webpack_require__(25);
 
 // CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/transitions/utils.js
 var reflow = function reflow(node) {
@@ -3813,10 +5134,7 @@ function getTransitionProps(props, options) {
   };
 }
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/useTheme/useTheme.js + 1 modules
-var useTheme = __webpack_require__(65);
-
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/defaultTheme.js + 22 modules
-var defaultTheme = __webpack_require__(11);
+var useTheme = __webpack_require__(74);
 
 // CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/useTheme.js
 
@@ -3829,9 +5147,6 @@ function useTheme_useTheme() {
 
   return theme;
 }
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/useForkRef.js
-var useForkRef = __webpack_require__(17);
-
 // CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/Collapse/Collapse.js
 
 
@@ -4055,9 +5370,6 @@ Collapse_Collapse.muiSupportAuto = true;
 /* harmony default export */ var esm_Collapse_Collapse = (Object(withStyles["a" /* default */])(Collapse_styles, {
   name: 'MuiCollapse'
 })(Collapse_Collapse));
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/colorManipulator.js
-var colorManipulator = __webpack_require__(23);
-
 // CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/lab/4.0.0-alpha.57_3335f0bfb61930572868dabe45efc2f7/node_modules/@material-ui/lab/esm/TreeView/TreeViewContext.js
 
 /**
@@ -4497,35 +5809,54 @@ var TreeItem_TreeItem = /*#__PURE__*/external_React_["forwardRef"](function Tree
   name: 'MuiTreeItem'
 })(TreeItem_TreeItem));
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/cuid/2.1.8/node_modules/cuid/index.js
-var cuid = __webpack_require__(19);
+var cuid = __webpack_require__(26);
 var cuid_default = /*#__PURE__*/__webpack_require__.n(cuid);
 
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/makeStyles/makeStyles.js + 23 modules
-var makeStyles = __webpack_require__(64);
-
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/makeStyles.js
-
-
-
-
-function makeStyles_makeStyles(stylesOrCreator) {
-  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  return Object(makeStyles["a" /* default */])(stylesOrCreator, Object(esm_extends["a" /* default */])({
-    defaultTheme: defaultTheme["a" /* default */]
-  }, options));
-}
-
-/* harmony default export */ var styles_makeStyles = (makeStyles_makeStyles);
 // CONCATENATED MODULE: ./src/app/components/Explorer/useExplorerStyles.js
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-var useExplorerStyles = styles_makeStyles({});
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+var itemStyle = {
+  label: {
+    alignItems: "center",
+    display: "flex",
+    color: "#333333",
+    fontSize: 12,
+    height: "24px",
+    lineHeight: "14px"
+  },
+  labelLinks: {
+    color: "#333333"
+  },
+  iconContainer: {
+    color: "#333333",
+    fontSize: 8,
+    marginRight: 0
+  },
+  selected: {
+    backgroundColor: "none"
+  },
+  root: {
+    padding: "0 8px"
+  }
+};
+var useExplorerStyles = styles_makeStyles(itemStyle);
+var useExplorerCategoryStyles = styles_makeStyles(_objectSpread(_objectSpread({}, itemStyle), {}, {
+  label: _objectSpread(_objectSpread({}, itemStyle.label), {}, {
+    fontWeight: "bold"
+  })
+}));
 // CONCATENATED MODULE: ./src/app/components/Explorer/ExplorerCategoryItem.js
 
 
 
 
 function ExplorerCategoryItem(props) {
-  var classes = useExplorerStyles();
+  var classes = useExplorerCategoryStyles();
 
   if (!props.data.nodeId) {
     props.data.nodeId = cuid_default()();
@@ -4535,6 +5866,7 @@ function ExplorerCategoryItem(props) {
     className: "explorer-tree__group",
     classes: {
       label: classes.label,
+      labelContainer: classes.labelContainer,
       iconContainer: classes.iconContainer,
       selected: classes.selected
     },
@@ -4547,9 +5879,6 @@ function ExplorerCategoryItem(props) {
     });
   }));
 }
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/useIsFocusVisible.js
-var useIsFocusVisible = __webpack_require__(18);
-
 // CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/Link/Link.js
 
 
@@ -4704,7 +6033,8 @@ function ExplorerItem(props) {
     props.data.nodeId = cuid_default()();
   }
 
-  var classes = useExplorerStyles();
+  var classesItem = useExplorerStyles();
+  var classesCategory = useExplorerCategoryStyles();
   var targetChildren = [];
   var i = 0;
 
@@ -4724,6 +6054,7 @@ function ExplorerItem(props) {
     i++;
   }
 
+  var classes = i > 0 ? classesCategory : classesItem;
   return React.createElement(esm_TreeItem_TreeItem, {
     className: "explorer-tree__target",
     classes: {
@@ -4742,7 +6073,7 @@ function ExplorerItem(props) {
   }, targetChildren);
 }
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/useControlled.js
-var useControlled = __webpack_require__(27);
+var useControlled = __webpack_require__(34);
 
 // CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/lab/4.0.0-alpha.57_3335f0bfb61930572868dabe45efc2f7/node_modules/@material-ui/lab/esm/TreeView/TreeView.js
 
@@ -5397,7 +6728,1929 @@ var TreeView_TreeView = /*#__PURE__*/external_React_["forwardRef"](function Tree
 /* harmony default export */ var esm_TreeView_TreeView = (Object(withStyles["a" /* default */])(TreeView_styles, {
   name: 'MuiTreeView'
 })(TreeView_TreeView));
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.2_bbabd8c34ea235719dc50e75b43f85a4/node_modules/react-redux/es/components/Context.js
+
+var ReactReduxContext = /*#__PURE__*/external_React_default.a.createContext(null);
+
+if (false) {}
+
+/* harmony default export */ var components_Context = (ReactReduxContext);
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.2_bbabd8c34ea235719dc50e75b43f85a4/node_modules/react-redux/es/utils/batch.js
+// Default to a dummy "batch" implementation that just runs the callback
+function defaultNoopBatch(callback) {
+  callback();
+}
+
+var batch_batch = defaultNoopBatch; // Allow injecting another batching function later
+
+var setBatch = function setBatch(newBatch) {
+  return batch_batch = newBatch;
+}; // Supply a getter just to skip dealing with ESM bindings
+
+var getBatch = function getBatch() {
+  return batch_batch;
+};
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.2_bbabd8c34ea235719dc50e75b43f85a4/node_modules/react-redux/es/utils/Subscription.js
+ // encapsulates the subscription logic for connecting a component to the redux store, as
+// well as nesting subscriptions of descendant components, so that we can ensure the
+// ancestor components re-render before descendants
+
+var nullListeners = {
+  notify: function notify() {}
+};
+
+function createListenerCollection() {
+  var batch = getBatch();
+  var first = null;
+  var last = null;
+  return {
+    clear: function clear() {
+      first = null;
+      last = null;
+    },
+    notify: function notify() {
+      batch(function () {
+        var listener = first;
+
+        while (listener) {
+          listener.callback();
+          listener = listener.next;
+        }
+      });
+    },
+    get: function get() {
+      var listeners = [];
+      var listener = first;
+
+      while (listener) {
+        listeners.push(listener);
+        listener = listener.next;
+      }
+
+      return listeners;
+    },
+    subscribe: function subscribe(callback) {
+      var isSubscribed = true;
+      var listener = last = {
+        callback: callback,
+        next: null,
+        prev: last
+      };
+
+      if (listener.prev) {
+        listener.prev.next = listener;
+      } else {
+        first = listener;
+      }
+
+      return function unsubscribe() {
+        if (!isSubscribed || first === null) return;
+        isSubscribed = false;
+
+        if (listener.next) {
+          listener.next.prev = listener.prev;
+        } else {
+          last = listener.prev;
+        }
+
+        if (listener.prev) {
+          listener.prev.next = listener.next;
+        } else {
+          first = listener.next;
+        }
+      };
+    }
+  };
+}
+
+var Subscription = /*#__PURE__*/function () {
+  function Subscription(store, parentSub) {
+    this.store = store;
+    this.parentSub = parentSub;
+    this.unsubscribe = null;
+    this.listeners = nullListeners;
+    this.handleChangeWrapper = this.handleChangeWrapper.bind(this);
+  }
+
+  var _proto = Subscription.prototype;
+
+  _proto.addNestedSub = function addNestedSub(listener) {
+    this.trySubscribe();
+    return this.listeners.subscribe(listener);
+  };
+
+  _proto.notifyNestedSubs = function notifyNestedSubs() {
+    this.listeners.notify();
+  };
+
+  _proto.handleChangeWrapper = function handleChangeWrapper() {
+    if (this.onStateChange) {
+      this.onStateChange();
+    }
+  };
+
+  _proto.isSubscribed = function isSubscribed() {
+    return Boolean(this.unsubscribe);
+  };
+
+  _proto.trySubscribe = function trySubscribe() {
+    if (!this.unsubscribe) {
+      this.unsubscribe = this.parentSub ? this.parentSub.addNestedSub(this.handleChangeWrapper) : this.store.subscribe(this.handleChangeWrapper);
+      this.listeners = createListenerCollection();
+    }
+  };
+
+  _proto.tryUnsubscribe = function tryUnsubscribe() {
+    if (this.unsubscribe) {
+      this.unsubscribe();
+      this.unsubscribe = null;
+      this.listeners.clear();
+      this.listeners = nullListeners;
+    }
+  };
+
+  return Subscription;
+}();
+
+
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.2_bbabd8c34ea235719dc50e75b43f85a4/node_modules/react-redux/es/components/Provider.js
+
+
+
+
+
+function Provider(_ref) {
+  var store = _ref.store,
+      context = _ref.context,
+      children = _ref.children;
+  var contextValue = Object(external_React_["useMemo"])(function () {
+    var subscription = new Subscription(store);
+    subscription.onStateChange = subscription.notifyNestedSubs;
+    return {
+      store: store,
+      subscription: subscription
+    };
+  }, [store]);
+  var previousState = Object(external_React_["useMemo"])(function () {
+    return store.getState();
+  }, [store]);
+  Object(external_React_["useEffect"])(function () {
+    var subscription = contextValue.subscription;
+    subscription.trySubscribe();
+
+    if (previousState !== store.getState()) {
+      subscription.notifyNestedSubs();
+    }
+
+    return function () {
+      subscription.tryUnsubscribe();
+      subscription.onStateChange = null;
+    };
+  }, [contextValue, previousState]);
+  var Context = context || ReactReduxContext;
+  return /*#__PURE__*/external_React_default.a.createElement(Context.Provider, {
+    value: contextValue
+  }, children);
+}
+
+if (false) {}
+
+/* harmony default export */ var components_Provider = (Provider);
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/hoist-non-react-statics/3.3.2/node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js
+var hoist_non_react_statics_cjs = __webpack_require__(22);
+var hoist_non_react_statics_cjs_default = /*#__PURE__*/__webpack_require__.n(hoist_non_react_statics_cjs);
+
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-is/16.13.1/node_modules/react-is/index.js
+var react_is = __webpack_require__(31);
+
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.2_bbabd8c34ea235719dc50e75b43f85a4/node_modules/react-redux/es/utils/useIsomorphicLayoutEffect.js
+ // React currently throws a warning when using useLayoutEffect on the server.
+// To get around it, we can conditionally useEffect on the server (no-op) and
+// useLayoutEffect in the browser. We need useLayoutEffect to ensure the store
+// subscription callback always has the selector from the latest render commit
+// available, otherwise a store update may happen between render and the effect,
+// which may cause missed updates; we also must ensure the store subscription
+// is created synchronously, otherwise a store update may occur before the
+// subscription is created and an inconsistent state may be observed
+
+var useIsomorphicLayoutEffect = typeof window !== 'undefined' && typeof window.document !== 'undefined' && typeof window.document.createElement !== 'undefined' ? external_React_["useLayoutEffect"] : external_React_["useEffect"];
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.2_bbabd8c34ea235719dc50e75b43f85a4/node_modules/react-redux/es/components/connectAdvanced.js
+
+
+
+
+
+
+
+ // Define some constant arrays just to avoid re-creating these
+
+var EMPTY_ARRAY = [];
+var NO_SUBSCRIPTION_ARRAY = [null, null];
+
+var stringifyComponent = function stringifyComponent(Comp) {
+  try {
+    return JSON.stringify(Comp);
+  } catch (err) {
+    return String(Comp);
+  }
+};
+
+function storeStateUpdatesReducer(state, action) {
+  var updateCount = state[1];
+  return [action.payload, updateCount + 1];
+}
+
+function useIsomorphicLayoutEffectWithArgs(effectFunc, effectArgs, dependencies) {
+  useIsomorphicLayoutEffect(function () {
+    return effectFunc.apply(void 0, effectArgs);
+  }, dependencies);
+}
+
+function captureWrapperProps(lastWrapperProps, lastChildProps, renderIsScheduled, wrapperProps, actualChildProps, childPropsFromStoreUpdate, notifyNestedSubs) {
+  // We want to capture the wrapper props and child props we used for later comparisons
+  lastWrapperProps.current = wrapperProps;
+  lastChildProps.current = actualChildProps;
+  renderIsScheduled.current = false; // If the render was from a store update, clear out that reference and cascade the subscriber update
+
+  if (childPropsFromStoreUpdate.current) {
+    childPropsFromStoreUpdate.current = null;
+    notifyNestedSubs();
+  }
+}
+
+function subscribeUpdates(shouldHandleStateChanges, store, subscription, childPropsSelector, lastWrapperProps, lastChildProps, renderIsScheduled, childPropsFromStoreUpdate, notifyNestedSubs, forceComponentUpdateDispatch) {
+  // If we're not subscribed to the store, nothing to do here
+  if (!shouldHandleStateChanges) return; // Capture values for checking if and when this component unmounts
+
+  var didUnsubscribe = false;
+  var lastThrownError = null; // We'll run this callback every time a store subscription update propagates to this component
+
+  var checkForUpdates = function checkForUpdates() {
+    if (didUnsubscribe) {
+      // Don't run stale listeners.
+      // Redux doesn't guarantee unsubscriptions happen until next dispatch.
+      return;
+    }
+
+    var latestStoreState = store.getState();
+    var newChildProps, error;
+
+    try {
+      // Actually run the selector with the most recent store state and wrapper props
+      // to determine what the child props should be
+      newChildProps = childPropsSelector(latestStoreState, lastWrapperProps.current);
+    } catch (e) {
+      error = e;
+      lastThrownError = e;
+    }
+
+    if (!error) {
+      lastThrownError = null;
+    } // If the child props haven't changed, nothing to do here - cascade the subscription update
+
+
+    if (newChildProps === lastChildProps.current) {
+      if (!renderIsScheduled.current) {
+        notifyNestedSubs();
+      }
+    } else {
+      // Save references to the new child props.  Note that we track the "child props from store update"
+      // as a ref instead of a useState/useReducer because we need a way to determine if that value has
+      // been processed.  If this went into useState/useReducer, we couldn't clear out the value without
+      // forcing another re-render, which we don't want.
+      lastChildProps.current = newChildProps;
+      childPropsFromStoreUpdate.current = newChildProps;
+      renderIsScheduled.current = true; // If the child props _did_ change (or we caught an error), this wrapper component needs to re-render
+
+      forceComponentUpdateDispatch({
+        type: 'STORE_UPDATED',
+        payload: {
+          error: error
+        }
+      });
+    }
+  }; // Actually subscribe to the nearest connected ancestor (or store)
+
+
+  subscription.onStateChange = checkForUpdates;
+  subscription.trySubscribe(); // Pull data from the store after first render in case the store has
+  // changed since we began.
+
+  checkForUpdates();
+
+  var unsubscribeWrapper = function unsubscribeWrapper() {
+    didUnsubscribe = true;
+    subscription.tryUnsubscribe();
+    subscription.onStateChange = null;
+
+    if (lastThrownError) {
+      // It's possible that we caught an error due to a bad mapState function, but the
+      // parent re-rendered without this component and we're about to unmount.
+      // This shouldn't happen as long as we do top-down subscriptions correctly, but
+      // if we ever do those wrong, this throw will surface the error in our tests.
+      // In that case, throw the error from here so it doesn't get lost.
+      throw lastThrownError;
+    }
+  };
+
+  return unsubscribeWrapper;
+}
+
+var initStateUpdates = function initStateUpdates() {
+  return [null, 0];
+};
+
+function connectAdvanced(
+/*
+  selectorFactory is a func that is responsible for returning the selector function used to
+  compute new props from state, props, and dispatch. For example:
+     export default connectAdvanced((dispatch, options) => (state, props) => ({
+      thing: state.things[props.thingId],
+      saveThing: fields => dispatch(actionCreators.saveThing(props.thingId, fields)),
+    }))(YourComponent)
+   Access to dispatch is provided to the factory so selectorFactories can bind actionCreators
+  outside of their selector as an optimization. Options passed to connectAdvanced are passed to
+  the selectorFactory, along with displayName and WrappedComponent, as the second argument.
+   Note that selectorFactory is responsible for all caching/memoization of inbound and outbound
+  props. Do not use connectAdvanced directly without memoizing results between calls to your
+  selector, otherwise the Connect component will re-render on every state or props change.
+*/
+selectorFactory, // options object:
+_ref) {
+  if (_ref === void 0) {
+    _ref = {};
+  }
+
+  var _ref2 = _ref,
+      _ref2$getDisplayName = _ref2.getDisplayName,
+      getDisplayName = _ref2$getDisplayName === void 0 ? function (name) {
+    return "ConnectAdvanced(" + name + ")";
+  } : _ref2$getDisplayName,
+      _ref2$methodName = _ref2.methodName,
+      methodName = _ref2$methodName === void 0 ? 'connectAdvanced' : _ref2$methodName,
+      _ref2$renderCountProp = _ref2.renderCountProp,
+      renderCountProp = _ref2$renderCountProp === void 0 ? undefined : _ref2$renderCountProp,
+      _ref2$shouldHandleSta = _ref2.shouldHandleStateChanges,
+      shouldHandleStateChanges = _ref2$shouldHandleSta === void 0 ? true : _ref2$shouldHandleSta,
+      _ref2$storeKey = _ref2.storeKey,
+      storeKey = _ref2$storeKey === void 0 ? 'store' : _ref2$storeKey,
+      _ref2$withRef = _ref2.withRef,
+      withRef = _ref2$withRef === void 0 ? false : _ref2$withRef,
+      _ref2$forwardRef = _ref2.forwardRef,
+      forwardRef = _ref2$forwardRef === void 0 ? false : _ref2$forwardRef,
+      _ref2$context = _ref2.context,
+      context = _ref2$context === void 0 ? ReactReduxContext : _ref2$context,
+      connectOptions = Object(objectWithoutPropertiesLoose["a" /* default */])(_ref2, ["getDisplayName", "methodName", "renderCountProp", "shouldHandleStateChanges", "storeKey", "withRef", "forwardRef", "context"]);
+
+  if (false) { var customStoreWarningMessage; }
+
+  var Context = context;
+  return function wrapWithConnect(WrappedComponent) {
+    if (false) {}
+
+    var wrappedComponentName = WrappedComponent.displayName || WrappedComponent.name || 'Component';
+    var displayName = getDisplayName(wrappedComponentName);
+
+    var selectorFactoryOptions = Object(esm_extends["a" /* default */])({}, connectOptions, {
+      getDisplayName: getDisplayName,
+      methodName: methodName,
+      renderCountProp: renderCountProp,
+      shouldHandleStateChanges: shouldHandleStateChanges,
+      storeKey: storeKey,
+      displayName: displayName,
+      wrappedComponentName: wrappedComponentName,
+      WrappedComponent: WrappedComponent
+    });
+
+    var pure = connectOptions.pure;
+
+    function createChildSelector(store) {
+      return selectorFactory(store.dispatch, selectorFactoryOptions);
+    } // If we aren't running in "pure" mode, we don't want to memoize values.
+    // To avoid conditionally calling hooks, we fall back to a tiny wrapper
+    // that just executes the given callback immediately.
+
+
+    var usePureOnlyMemo = pure ? external_React_["useMemo"] : function (callback) {
+      return callback();
+    };
+
+    function ConnectFunction(props) {
+      var _useMemo = Object(external_React_["useMemo"])(function () {
+        // Distinguish between actual "data" props that were passed to the wrapper component,
+        // and values needed to control behavior (forwarded refs, alternate context instances).
+        // To maintain the wrapperProps object reference, memoize this destructuring.
+        var reactReduxForwardedRef = props.reactReduxForwardedRef,
+            wrapperProps = Object(objectWithoutPropertiesLoose["a" /* default */])(props, ["reactReduxForwardedRef"]);
+
+        return [props.context, reactReduxForwardedRef, wrapperProps];
+      }, [props]),
+          propsContext = _useMemo[0],
+          reactReduxForwardedRef = _useMemo[1],
+          wrapperProps = _useMemo[2];
+
+      var ContextToUse = Object(external_React_["useMemo"])(function () {
+        // Users may optionally pass in a custom context instance to use instead of our ReactReduxContext.
+        // Memoize the check that determines which context instance we should use.
+        return propsContext && propsContext.Consumer && Object(react_is["isContextConsumer"])( /*#__PURE__*/external_React_default.a.createElement(propsContext.Consumer, null)) ? propsContext : Context;
+      }, [propsContext, Context]); // Retrieve the store and ancestor subscription via context, if available
+
+      var contextValue = Object(external_React_["useContext"])(ContextToUse); // The store _must_ exist as either a prop or in context.
+      // We'll check to see if it _looks_ like a Redux store first.
+      // This allows us to pass through a `store` prop that is just a plain value.
+
+      var didStoreComeFromProps = Boolean(props.store) && Boolean(props.store.getState) && Boolean(props.store.dispatch);
+      var didStoreComeFromContext = Boolean(contextValue) && Boolean(contextValue.store);
+
+      if (false) {} // Based on the previous check, one of these must be true
+
+
+      var store = didStoreComeFromProps ? props.store : contextValue.store;
+      var childPropsSelector = Object(external_React_["useMemo"])(function () {
+        // The child props selector needs the store reference as an input.
+        // Re-create this selector whenever the store changes.
+        return createChildSelector(store);
+      }, [store]);
+
+      var _useMemo2 = Object(external_React_["useMemo"])(function () {
+        if (!shouldHandleStateChanges) return NO_SUBSCRIPTION_ARRAY; // This Subscription's source should match where store came from: props vs. context. A component
+        // connected to the store via props shouldn't use subscription from context, or vice versa.
+
+        var subscription = new Subscription(store, didStoreComeFromProps ? null : contextValue.subscription); // `notifyNestedSubs` is duplicated to handle the case where the component is unmounted in
+        // the middle of the notification loop, where `subscription` will then be null. This can
+        // probably be avoided if Subscription's listeners logic is changed to not call listeners
+        // that have been unsubscribed in the  middle of the notification loop.
+
+        var notifyNestedSubs = subscription.notifyNestedSubs.bind(subscription);
+        return [subscription, notifyNestedSubs];
+      }, [store, didStoreComeFromProps, contextValue]),
+          subscription = _useMemo2[0],
+          notifyNestedSubs = _useMemo2[1]; // Determine what {store, subscription} value should be put into nested context, if necessary,
+      // and memoize that value to avoid unnecessary context updates.
+
+
+      var overriddenContextValue = Object(external_React_["useMemo"])(function () {
+        if (didStoreComeFromProps) {
+          // This component is directly subscribed to a store from props.
+          // We don't want descendants reading from this store - pass down whatever
+          // the existing context value is from the nearest connected ancestor.
+          return contextValue;
+        } // Otherwise, put this component's subscription instance into context, so that
+        // connected descendants won't update until after this component is done
+
+
+        return Object(esm_extends["a" /* default */])({}, contextValue, {
+          subscription: subscription
+        });
+      }, [didStoreComeFromProps, contextValue, subscription]); // We need to force this wrapper component to re-render whenever a Redux store update
+      // causes a change to the calculated child component props (or we caught an error in mapState)
+
+      var _useReducer = Object(external_React_["useReducer"])(storeStateUpdatesReducer, EMPTY_ARRAY, initStateUpdates),
+          _useReducer$ = _useReducer[0],
+          previousStateUpdateResult = _useReducer$[0],
+          forceComponentUpdateDispatch = _useReducer[1]; // Propagate any mapState/mapDispatch errors upwards
+
+
+      if (previousStateUpdateResult && previousStateUpdateResult.error) {
+        throw previousStateUpdateResult.error;
+      } // Set up refs to coordinate values between the subscription effect and the render logic
+
+
+      var lastChildProps = Object(external_React_["useRef"])();
+      var lastWrapperProps = Object(external_React_["useRef"])(wrapperProps);
+      var childPropsFromStoreUpdate = Object(external_React_["useRef"])();
+      var renderIsScheduled = Object(external_React_["useRef"])(false);
+      var actualChildProps = usePureOnlyMemo(function () {
+        // Tricky logic here:
+        // - This render may have been triggered by a Redux store update that produced new child props
+        // - However, we may have gotten new wrapper props after that
+        // If we have new child props, and the same wrapper props, we know we should use the new child props as-is.
+        // But, if we have new wrapper props, those might change the child props, so we have to recalculate things.
+        // So, we'll use the child props from store update only if the wrapper props are the same as last time.
+        if (childPropsFromStoreUpdate.current && wrapperProps === lastWrapperProps.current) {
+          return childPropsFromStoreUpdate.current;
+        } // TODO We're reading the store directly in render() here. Bad idea?
+        // This will likely cause Bad Things (TM) to happen in Concurrent Mode.
+        // Note that we do this because on renders _not_ caused by store updates, we need the latest store state
+        // to determine what the child props should be.
+
+
+        return childPropsSelector(store.getState(), wrapperProps);
+      }, [store, previousStateUpdateResult, wrapperProps]); // We need this to execute synchronously every time we re-render. However, React warns
+      // about useLayoutEffect in SSR, so we try to detect environment and fall back to
+      // just useEffect instead to avoid the warning, since neither will run anyway.
+
+      useIsomorphicLayoutEffectWithArgs(captureWrapperProps, [lastWrapperProps, lastChildProps, renderIsScheduled, wrapperProps, actualChildProps, childPropsFromStoreUpdate, notifyNestedSubs]); // Our re-subscribe logic only runs when the store/subscription setup changes
+
+      useIsomorphicLayoutEffectWithArgs(subscribeUpdates, [shouldHandleStateChanges, store, subscription, childPropsSelector, lastWrapperProps, lastChildProps, renderIsScheduled, childPropsFromStoreUpdate, notifyNestedSubs, forceComponentUpdateDispatch], [store, subscription, childPropsSelector]); // Now that all that's done, we can finally try to actually render the child component.
+      // We memoize the elements for the rendered child component as an optimization.
+
+      var renderedWrappedComponent = Object(external_React_["useMemo"])(function () {
+        return /*#__PURE__*/external_React_default.a.createElement(WrappedComponent, Object(esm_extends["a" /* default */])({}, actualChildProps, {
+          ref: reactReduxForwardedRef
+        }));
+      }, [reactReduxForwardedRef, WrappedComponent, actualChildProps]); // If React sees the exact same element reference as last time, it bails out of re-rendering
+      // that child, same as if it was wrapped in React.memo() or returned false from shouldComponentUpdate.
+
+      var renderedChild = Object(external_React_["useMemo"])(function () {
+        if (shouldHandleStateChanges) {
+          // If this component is subscribed to store updates, we need to pass its own
+          // subscription instance down to our descendants. That means rendering the same
+          // Context instance, and putting a different value into the context.
+          return /*#__PURE__*/external_React_default.a.createElement(ContextToUse.Provider, {
+            value: overriddenContextValue
+          }, renderedWrappedComponent);
+        }
+
+        return renderedWrappedComponent;
+      }, [ContextToUse, renderedWrappedComponent, overriddenContextValue]);
+      return renderedChild;
+    } // If we're in "pure" mode, ensure our wrapper component only re-renders when incoming props have changed.
+
+
+    var Connect = pure ? external_React_default.a.memo(ConnectFunction) : ConnectFunction;
+    Connect.WrappedComponent = WrappedComponent;
+    Connect.displayName = displayName;
+
+    if (forwardRef) {
+      var forwarded = external_React_default.a.forwardRef(function forwardConnectRef(props, ref) {
+        return /*#__PURE__*/external_React_default.a.createElement(Connect, Object(esm_extends["a" /* default */])({}, props, {
+          reactReduxForwardedRef: ref
+        }));
+      });
+      forwarded.displayName = displayName;
+      forwarded.WrappedComponent = WrappedComponent;
+      return hoist_non_react_statics_cjs_default()(forwarded, WrappedComponent);
+    }
+
+    return hoist_non_react_statics_cjs_default()(Connect, WrappedComponent);
+  };
+}
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.2_bbabd8c34ea235719dc50e75b43f85a4/node_modules/react-redux/es/utils/shallowEqual.js
+function is(x, y) {
+  if (x === y) {
+    return x !== 0 || y !== 0 || 1 / x === 1 / y;
+  } else {
+    return x !== x && y !== y;
+  }
+}
+
+function shallowEqual(objA, objB) {
+  if (is(objA, objB)) return true;
+
+  if (typeof objA !== 'object' || objA === null || typeof objB !== 'object' || objB === null) {
+    return false;
+  }
+
+  var keysA = Object.keys(objA);
+  var keysB = Object.keys(objB);
+  if (keysA.length !== keysB.length) return false;
+
+  for (var i = 0; i < keysA.length; i++) {
+    if (!Object.prototype.hasOwnProperty.call(objB, keysA[i]) || !is(objA[keysA[i]], objB[keysA[i]])) {
+      return false;
+    }
+  }
+
+  return true;
+}
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/symbol-observable/1.2.0/node_modules/symbol-observable/es/index.js
+var es = __webpack_require__(32);
+
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/redux/4.0.5/node_modules/redux/es/redux.js
+
+
+/**
+ * These are private action types reserved by Redux.
+ * For any unknown actions, you must return the current state.
+ * If the current state is undefined, you must return the initial state.
+ * Do not reference these action types directly in your code.
+ */
+var randomString = function randomString() {
+  return Math.random().toString(36).substring(7).split('').join('.');
+};
+
+var ActionTypes = {
+  INIT: "@@redux/INIT" + randomString(),
+  REPLACE: "@@redux/REPLACE" + randomString(),
+  PROBE_UNKNOWN_ACTION: function PROBE_UNKNOWN_ACTION() {
+    return "@@redux/PROBE_UNKNOWN_ACTION" + randomString();
+  }
+};
+
+/**
+ * @param {any} obj The object to inspect.
+ * @returns {boolean} True if the argument appears to be a plain object.
+ */
+function isPlainObject(obj) {
+  if (typeof obj !== 'object' || obj === null) return false;
+  var proto = obj;
+
+  while (Object.getPrototypeOf(proto) !== null) {
+    proto = Object.getPrototypeOf(proto);
+  }
+
+  return Object.getPrototypeOf(obj) === proto;
+}
+
+/**
+ * Creates a Redux store that holds the state tree.
+ * The only way to change the data in the store is to call `dispatch()` on it.
+ *
+ * There should only be a single store in your app. To specify how different
+ * parts of the state tree respond to actions, you may combine several reducers
+ * into a single reducer function by using `combineReducers`.
+ *
+ * @param {Function} reducer A function that returns the next state tree, given
+ * the current state tree and the action to handle.
+ *
+ * @param {any} [preloadedState] The initial state. You may optionally specify it
+ * to hydrate the state from the server in universal apps, or to restore a
+ * previously serialized user session.
+ * If you use `combineReducers` to produce the root reducer function, this must be
+ * an object with the same shape as `combineReducers` keys.
+ *
+ * @param {Function} [enhancer] The store enhancer. You may optionally specify it
+ * to enhance the store with third-party capabilities such as middleware,
+ * time travel, persistence, etc. The only store enhancer that ships with Redux
+ * is `applyMiddleware()`.
+ *
+ * @returns {Store} A Redux store that lets you read the state, dispatch actions
+ * and subscribe to changes.
+ */
+
+function createStore(reducer, preloadedState, enhancer) {
+  var _ref2;
+
+  if (typeof preloadedState === 'function' && typeof enhancer === 'function' || typeof enhancer === 'function' && typeof arguments[3] === 'function') {
+    throw new Error('It looks like you are passing several store enhancers to ' + 'createStore(). This is not supported. Instead, compose them ' + 'together to a single function.');
+  }
+
+  if (typeof preloadedState === 'function' && typeof enhancer === 'undefined') {
+    enhancer = preloadedState;
+    preloadedState = undefined;
+  }
+
+  if (typeof enhancer !== 'undefined') {
+    if (typeof enhancer !== 'function') {
+      throw new Error('Expected the enhancer to be a function.');
+    }
+
+    return enhancer(createStore)(reducer, preloadedState);
+  }
+
+  if (typeof reducer !== 'function') {
+    throw new Error('Expected the reducer to be a function.');
+  }
+
+  var currentReducer = reducer;
+  var currentState = preloadedState;
+  var currentListeners = [];
+  var nextListeners = currentListeners;
+  var isDispatching = false;
+  /**
+   * This makes a shallow copy of currentListeners so we can use
+   * nextListeners as a temporary list while dispatching.
+   *
+   * This prevents any bugs around consumers calling
+   * subscribe/unsubscribe in the middle of a dispatch.
+   */
+
+  function ensureCanMutateNextListeners() {
+    if (nextListeners === currentListeners) {
+      nextListeners = currentListeners.slice();
+    }
+  }
+  /**
+   * Reads the state tree managed by the store.
+   *
+   * @returns {any} The current state tree of your application.
+   */
+
+
+  function getState() {
+    if (isDispatching) {
+      throw new Error('You may not call store.getState() while the reducer is executing. ' + 'The reducer has already received the state as an argument. ' + 'Pass it down from the top reducer instead of reading it from the store.');
+    }
+
+    return currentState;
+  }
+  /**
+   * Adds a change listener. It will be called any time an action is dispatched,
+   * and some part of the state tree may potentially have changed. You may then
+   * call `getState()` to read the current state tree inside the callback.
+   *
+   * You may call `dispatch()` from a change listener, with the following
+   * caveats:
+   *
+   * 1. The subscriptions are snapshotted just before every `dispatch()` call.
+   * If you subscribe or unsubscribe while the listeners are being invoked, this
+   * will not have any effect on the `dispatch()` that is currently in progress.
+   * However, the next `dispatch()` call, whether nested or not, will use a more
+   * recent snapshot of the subscription list.
+   *
+   * 2. The listener should not expect to see all state changes, as the state
+   * might have been updated multiple times during a nested `dispatch()` before
+   * the listener is called. It is, however, guaranteed that all subscribers
+   * registered before the `dispatch()` started will be called with the latest
+   * state by the time it exits.
+   *
+   * @param {Function} listener A callback to be invoked on every dispatch.
+   * @returns {Function} A function to remove this change listener.
+   */
+
+
+  function subscribe(listener) {
+    if (typeof listener !== 'function') {
+      throw new Error('Expected the listener to be a function.');
+    }
+
+    if (isDispatching) {
+      throw new Error('You may not call store.subscribe() while the reducer is executing. ' + 'If you would like to be notified after the store has been updated, subscribe from a ' + 'component and invoke store.getState() in the callback to access the latest state. ' + 'See https://redux.js.org/api-reference/store#subscribelistener for more details.');
+    }
+
+    var isSubscribed = true;
+    ensureCanMutateNextListeners();
+    nextListeners.push(listener);
+    return function unsubscribe() {
+      if (!isSubscribed) {
+        return;
+      }
+
+      if (isDispatching) {
+        throw new Error('You may not unsubscribe from a store listener while the reducer is executing. ' + 'See https://redux.js.org/api-reference/store#subscribelistener for more details.');
+      }
+
+      isSubscribed = false;
+      ensureCanMutateNextListeners();
+      var index = nextListeners.indexOf(listener);
+      nextListeners.splice(index, 1);
+      currentListeners = null;
+    };
+  }
+  /**
+   * Dispatches an action. It is the only way to trigger a state change.
+   *
+   * The `reducer` function, used to create the store, will be called with the
+   * current state tree and the given `action`. Its return value will
+   * be considered the **next** state of the tree, and the change listeners
+   * will be notified.
+   *
+   * The base implementation only supports plain object actions. If you want to
+   * dispatch a Promise, an Observable, a thunk, or something else, you need to
+   * wrap your store creating function into the corresponding middleware. For
+   * example, see the documentation for the `redux-thunk` package. Even the
+   * middleware will eventually dispatch plain object actions using this method.
+   *
+   * @param {Object} action A plain object representing “what changed”. It is
+   * a good idea to keep actions serializable so you can record and replay user
+   * sessions, or use the time travelling `redux-devtools`. An action must have
+   * a `type` property which may not be `undefined`. It is a good idea to use
+   * string constants for action types.
+   *
+   * @returns {Object} For convenience, the same action object you dispatched.
+   *
+   * Note that, if you use a custom middleware, it may wrap `dispatch()` to
+   * return something else (for example, a Promise you can await).
+   */
+
+
+  function dispatch(action) {
+    if (!isPlainObject(action)) {
+      throw new Error('Actions must be plain objects. ' + 'Use custom middleware for async actions.');
+    }
+
+    if (typeof action.type === 'undefined') {
+      throw new Error('Actions may not have an undefined "type" property. ' + 'Have you misspelled a constant?');
+    }
+
+    if (isDispatching) {
+      throw new Error('Reducers may not dispatch actions.');
+    }
+
+    try {
+      isDispatching = true;
+      currentState = currentReducer(currentState, action);
+    } finally {
+      isDispatching = false;
+    }
+
+    var listeners = currentListeners = nextListeners;
+
+    for (var i = 0; i < listeners.length; i++) {
+      var listener = listeners[i];
+      listener();
+    }
+
+    return action;
+  }
+  /**
+   * Replaces the reducer currently used by the store to calculate the state.
+   *
+   * You might need this if your app implements code splitting and you want to
+   * load some of the reducers dynamically. You might also need this if you
+   * implement a hot reloading mechanism for Redux.
+   *
+   * @param {Function} nextReducer The reducer for the store to use instead.
+   * @returns {void}
+   */
+
+
+  function replaceReducer(nextReducer) {
+    if (typeof nextReducer !== 'function') {
+      throw new Error('Expected the nextReducer to be a function.');
+    }
+
+    currentReducer = nextReducer; // This action has a similiar effect to ActionTypes.INIT.
+    // Any reducers that existed in both the new and old rootReducer
+    // will receive the previous state. This effectively populates
+    // the new state tree with any relevant data from the old one.
+
+    dispatch({
+      type: ActionTypes.REPLACE
+    });
+  }
+  /**
+   * Interoperability point for observable/reactive libraries.
+   * @returns {observable} A minimal observable of state changes.
+   * For more information, see the observable proposal:
+   * https://github.com/tc39/proposal-observable
+   */
+
+
+  function observable() {
+    var _ref;
+
+    var outerSubscribe = subscribe;
+    return _ref = {
+      /**
+       * The minimal observable subscription method.
+       * @param {Object} observer Any object that can be used as an observer.
+       * The observer object should have a `next` method.
+       * @returns {subscription} An object with an `unsubscribe` method that can
+       * be used to unsubscribe the observable from the store, and prevent further
+       * emission of values from the observable.
+       */
+      subscribe: function subscribe(observer) {
+        if (typeof observer !== 'object' || observer === null) {
+          throw new TypeError('Expected the observer to be an object.');
+        }
+
+        function observeState() {
+          if (observer.next) {
+            observer.next(getState());
+          }
+        }
+
+        observeState();
+        var unsubscribe = outerSubscribe(observeState);
+        return {
+          unsubscribe: unsubscribe
+        };
+      }
+    }, _ref[es["a" /* default */]] = function () {
+      return this;
+    }, _ref;
+  } // When a store is created, an "INIT" action is dispatched so that every
+  // reducer returns their initial state. This effectively populates
+  // the initial state tree.
+
+
+  dispatch({
+    type: ActionTypes.INIT
+  });
+  return _ref2 = {
+    dispatch: dispatch,
+    subscribe: subscribe,
+    getState: getState,
+    replaceReducer: replaceReducer
+  }, _ref2[es["a" /* default */]] = observable, _ref2;
+}
+
+/**
+ * Prints a warning in the console if it exists.
+ *
+ * @param {String} message The warning message.
+ * @returns {void}
+ */
+function warning(message) {
+  /* eslint-disable no-console */
+  if (typeof console !== 'undefined' && typeof console.error === 'function') {
+    console.error(message);
+  }
+  /* eslint-enable no-console */
+
+
+  try {
+    // This error was thrown as a convenience so that if you enable
+    // "break on all exceptions" in your console,
+    // it would pause the execution at this line.
+    throw new Error(message);
+  } catch (e) {} // eslint-disable-line no-empty
+
+}
+
+function getUndefinedStateErrorMessage(key, action) {
+  var actionType = action && action.type;
+  var actionDescription = actionType && "action \"" + String(actionType) + "\"" || 'an action';
+  return "Given " + actionDescription + ", reducer \"" + key + "\" returned undefined. " + "To ignore an action, you must explicitly return the previous state. " + "If you want this reducer to hold no value, you can return null instead of undefined.";
+}
+
+function getUnexpectedStateShapeWarningMessage(inputState, reducers, action, unexpectedKeyCache) {
+  var reducerKeys = Object.keys(reducers);
+  var argumentName = action && action.type === ActionTypes.INIT ? 'preloadedState argument passed to createStore' : 'previous state received by the reducer';
+
+  if (reducerKeys.length === 0) {
+    return 'Store does not have a valid reducer. Make sure the argument passed ' + 'to combineReducers is an object whose values are reducers.';
+  }
+
+  if (!isPlainObject(inputState)) {
+    return "The " + argumentName + " has unexpected type of \"" + {}.toString.call(inputState).match(/\s([a-z|A-Z]+)/)[1] + "\". Expected argument to be an object with the following " + ("keys: \"" + reducerKeys.join('", "') + "\"");
+  }
+
+  var unexpectedKeys = Object.keys(inputState).filter(function (key) {
+    return !reducers.hasOwnProperty(key) && !unexpectedKeyCache[key];
+  });
+  unexpectedKeys.forEach(function (key) {
+    unexpectedKeyCache[key] = true;
+  });
+  if (action && action.type === ActionTypes.REPLACE) return;
+
+  if (unexpectedKeys.length > 0) {
+    return "Unexpected " + (unexpectedKeys.length > 1 ? 'keys' : 'key') + " " + ("\"" + unexpectedKeys.join('", "') + "\" found in " + argumentName + ". ") + "Expected to find one of the known reducer keys instead: " + ("\"" + reducerKeys.join('", "') + "\". Unexpected keys will be ignored.");
+  }
+}
+
+function assertReducerShape(reducers) {
+  Object.keys(reducers).forEach(function (key) {
+    var reducer = reducers[key];
+    var initialState = reducer(undefined, {
+      type: ActionTypes.INIT
+    });
+
+    if (typeof initialState === 'undefined') {
+      throw new Error("Reducer \"" + key + "\" returned undefined during initialization. " + "If the state passed to the reducer is undefined, you must " + "explicitly return the initial state. The initial state may " + "not be undefined. If you don't want to set a value for this reducer, " + "you can use null instead of undefined.");
+    }
+
+    if (typeof reducer(undefined, {
+      type: ActionTypes.PROBE_UNKNOWN_ACTION()
+    }) === 'undefined') {
+      throw new Error("Reducer \"" + key + "\" returned undefined when probed with a random type. " + ("Don't try to handle " + ActionTypes.INIT + " or other actions in \"redux/*\" ") + "namespace. They are considered private. Instead, you must return the " + "current state for any unknown actions, unless it is undefined, " + "in which case you must return the initial state, regardless of the " + "action type. The initial state may not be undefined, but can be null.");
+    }
+  });
+}
+/**
+ * Turns an object whose values are different reducer functions, into a single
+ * reducer function. It will call every child reducer, and gather their results
+ * into a single state object, whose keys correspond to the keys of the passed
+ * reducer functions.
+ *
+ * @param {Object} reducers An object whose values correspond to different
+ * reducer functions that need to be combined into one. One handy way to obtain
+ * it is to use ES6 `import * as reducers` syntax. The reducers may never return
+ * undefined for any action. Instead, they should return their initial state
+ * if the state passed to them was undefined, and the current state for any
+ * unrecognized action.
+ *
+ * @returns {Function} A reducer function that invokes every reducer inside the
+ * passed object, and builds a state object with the same shape.
+ */
+
+
+function combineReducers(reducers) {
+  var reducerKeys = Object.keys(reducers);
+  var finalReducers = {};
+
+  for (var i = 0; i < reducerKeys.length; i++) {
+    var key = reducerKeys[i];
+
+    if (false) {}
+
+    if (typeof reducers[key] === 'function') {
+      finalReducers[key] = reducers[key];
+    }
+  }
+
+  var finalReducerKeys = Object.keys(finalReducers); // This is used to make sure we don't warn about the same
+  // keys multiple times.
+
+  var unexpectedKeyCache;
+
+  if (false) {}
+
+  var shapeAssertionError;
+
+  try {
+    assertReducerShape(finalReducers);
+  } catch (e) {
+    shapeAssertionError = e;
+  }
+
+  return function combination(state, action) {
+    if (state === void 0) {
+      state = {};
+    }
+
+    if (shapeAssertionError) {
+      throw shapeAssertionError;
+    }
+
+    if (false) { var warningMessage; }
+
+    var hasChanged = false;
+    var nextState = {};
+
+    for (var _i = 0; _i < finalReducerKeys.length; _i++) {
+      var _key = finalReducerKeys[_i];
+      var reducer = finalReducers[_key];
+      var previousStateForKey = state[_key];
+      var nextStateForKey = reducer(previousStateForKey, action);
+
+      if (typeof nextStateForKey === 'undefined') {
+        var errorMessage = getUndefinedStateErrorMessage(_key, action);
+        throw new Error(errorMessage);
+      }
+
+      nextState[_key] = nextStateForKey;
+      hasChanged = hasChanged || nextStateForKey !== previousStateForKey;
+    }
+
+    hasChanged = hasChanged || finalReducerKeys.length !== Object.keys(state).length;
+    return hasChanged ? nextState : state;
+  };
+}
+
+function bindActionCreator(actionCreator, dispatch) {
+  return function () {
+    return dispatch(actionCreator.apply(this, arguments));
+  };
+}
+/**
+ * Turns an object whose values are action creators, into an object with the
+ * same keys, but with every function wrapped into a `dispatch` call so they
+ * may be invoked directly. This is just a convenience method, as you can call
+ * `store.dispatch(MyActionCreators.doSomething())` yourself just fine.
+ *
+ * For convenience, you can also pass an action creator as the first argument,
+ * and get a dispatch wrapped function in return.
+ *
+ * @param {Function|Object} actionCreators An object whose values are action
+ * creator functions. One handy way to obtain it is to use ES6 `import * as`
+ * syntax. You may also pass a single function.
+ *
+ * @param {Function} dispatch The `dispatch` function available on your Redux
+ * store.
+ *
+ * @returns {Function|Object} The object mimicking the original object, but with
+ * every action creator wrapped into the `dispatch` call. If you passed a
+ * function as `actionCreators`, the return value will also be a single
+ * function.
+ */
+
+
+function bindActionCreators(actionCreators, dispatch) {
+  if (typeof actionCreators === 'function') {
+    return bindActionCreator(actionCreators, dispatch);
+  }
+
+  if (typeof actionCreators !== 'object' || actionCreators === null) {
+    throw new Error("bindActionCreators expected an object or a function, instead received " + (actionCreators === null ? 'null' : typeof actionCreators) + ". " + "Did you write \"import ActionCreators from\" instead of \"import * as ActionCreators from\"?");
+  }
+
+  var boundActionCreators = {};
+
+  for (var key in actionCreators) {
+    var actionCreator = actionCreators[key];
+
+    if (typeof actionCreator === 'function') {
+      boundActionCreators[key] = bindActionCreator(actionCreator, dispatch);
+    }
+  }
+
+  return boundActionCreators;
+}
+
+function redux_defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+function redux_ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+
+  if (Object.getOwnPropertySymbols) {
+    keys.push.apply(keys, Object.getOwnPropertySymbols(object));
+  }
+
+  if (enumerableOnly) keys = keys.filter(function (sym) {
+    return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+  });
+  return keys;
+}
+
+function _objectSpread2(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+
+    if (i % 2) {
+      redux_ownKeys(source, true).forEach(function (key) {
+        redux_defineProperty(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      redux_ownKeys(source).forEach(function (key) {
+        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+      });
+    }
+  }
+
+  return target;
+}
+
+/**
+ * Composes single-argument functions from right to left. The rightmost
+ * function can take multiple arguments as it provides the signature for
+ * the resulting composite function.
+ *
+ * @param {...Function} funcs The functions to compose.
+ * @returns {Function} A function obtained by composing the argument functions
+ * from right to left. For example, compose(f, g, h) is identical to doing
+ * (...args) => f(g(h(...args))).
+ */
+function compose() {
+  for (var _len = arguments.length, funcs = new Array(_len), _key = 0; _key < _len; _key++) {
+    funcs[_key] = arguments[_key];
+  }
+
+  if (funcs.length === 0) {
+    return function (arg) {
+      return arg;
+    };
+  }
+
+  if (funcs.length === 1) {
+    return funcs[0];
+  }
+
+  return funcs.reduce(function (a, b) {
+    return function () {
+      return a(b.apply(void 0, arguments));
+    };
+  });
+}
+
+/**
+ * Creates a store enhancer that applies middleware to the dispatch method
+ * of the Redux store. This is handy for a variety of tasks, such as expressing
+ * asynchronous actions in a concise manner, or logging every action payload.
+ *
+ * See `redux-thunk` package as an example of the Redux middleware.
+ *
+ * Because middleware is potentially asynchronous, this should be the first
+ * store enhancer in the composition chain.
+ *
+ * Note that each middleware will be given the `dispatch` and `getState` functions
+ * as named arguments.
+ *
+ * @param {...Function} middlewares The middleware chain to be applied.
+ * @returns {Function} A store enhancer applying the middleware.
+ */
+
+function applyMiddleware() {
+  for (var _len = arguments.length, middlewares = new Array(_len), _key = 0; _key < _len; _key++) {
+    middlewares[_key] = arguments[_key];
+  }
+
+  return function (createStore) {
+    return function () {
+      var store = createStore.apply(void 0, arguments);
+
+      var _dispatch = function dispatch() {
+        throw new Error('Dispatching while constructing your middleware is not allowed. ' + 'Other middleware would not be applied to this dispatch.');
+      };
+
+      var middlewareAPI = {
+        getState: store.getState,
+        dispatch: function dispatch() {
+          return _dispatch.apply(void 0, arguments);
+        }
+      };
+      var chain = middlewares.map(function (middleware) {
+        return middleware(middlewareAPI);
+      });
+      _dispatch = compose.apply(void 0, chain)(store.dispatch);
+      return _objectSpread2({}, store, {
+        dispatch: _dispatch
+      });
+    };
+  };
+}
+
+/*
+ * This is a dummy function to check if the function name has been altered by minification.
+ * If the function has been minified and NODE_ENV !== 'production', warn the user.
+ */
+
+function isCrushed() {}
+
+if (false) {}
+
+
+
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.2_bbabd8c34ea235719dc50e75b43f85a4/node_modules/react-redux/es/utils/isPlainObject.js
+/**
+ * @param {any} obj The object to inspect.
+ * @returns {boolean} True if the argument appears to be a plain object.
+ */
+function isPlainObject_isPlainObject(obj) {
+  if (typeof obj !== 'object' || obj === null) return false;
+  var proto = Object.getPrototypeOf(obj);
+  if (proto === null) return true;
+  var baseProto = proto;
+
+  while (Object.getPrototypeOf(baseProto) !== null) {
+    baseProto = Object.getPrototypeOf(baseProto);
+  }
+
+  return proto === baseProto;
+}
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.2_bbabd8c34ea235719dc50e75b43f85a4/node_modules/react-redux/es/utils/warning.js
+/**
+ * Prints a warning in the console if it exists.
+ *
+ * @param {String} message The warning message.
+ * @returns {void}
+ */
+function warning_warning(message) {
+  /* eslint-disable no-console */
+  if (typeof console !== 'undefined' && typeof console.error === 'function') {
+    console.error(message);
+  }
+  /* eslint-enable no-console */
+
+
+  try {
+    // This error was thrown as a convenience so that if you enable
+    // "break on all exceptions" in your console,
+    // it would pause the execution at this line.
+    throw new Error(message);
+    /* eslint-disable no-empty */
+  } catch (e) {}
+  /* eslint-enable no-empty */
+
+}
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.2_bbabd8c34ea235719dc50e75b43f85a4/node_modules/react-redux/es/utils/verifyPlainObject.js
+
+
+function verifyPlainObject(value, displayName, methodName) {
+  if (!isPlainObject_isPlainObject(value)) {
+    warning_warning(methodName + "() in " + displayName + " must return a plain object. Instead received " + value + ".");
+  }
+}
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.2_bbabd8c34ea235719dc50e75b43f85a4/node_modules/react-redux/es/connect/wrapMapToProps.js
+
+function wrapMapToPropsConstant(getConstant) {
+  return function initConstantSelector(dispatch, options) {
+    var constant = getConstant(dispatch, options);
+
+    function constantSelector() {
+      return constant;
+    }
+
+    constantSelector.dependsOnOwnProps = false;
+    return constantSelector;
+  };
+} // dependsOnOwnProps is used by createMapToPropsProxy to determine whether to pass props as args
+// to the mapToProps function being wrapped. It is also used by makePurePropsSelector to determine
+// whether mapToProps needs to be invoked when props have changed.
+//
+// A length of one signals that mapToProps does not depend on props from the parent component.
+// A length of zero is assumed to mean mapToProps is getting args via arguments or ...args and
+// therefore not reporting its length accurately..
+
+function getDependsOnOwnProps(mapToProps) {
+  return mapToProps.dependsOnOwnProps !== null && mapToProps.dependsOnOwnProps !== undefined ? Boolean(mapToProps.dependsOnOwnProps) : mapToProps.length !== 1;
+} // Used by whenMapStateToPropsIsFunction and whenMapDispatchToPropsIsFunction,
+// this function wraps mapToProps in a proxy function which does several things:
+//
+//  * Detects whether the mapToProps function being called depends on props, which
+//    is used by selectorFactory to decide if it should reinvoke on props changes.
+//
+//  * On first call, handles mapToProps if returns another function, and treats that
+//    new function as the true mapToProps for subsequent calls.
+//
+//  * On first call, verifies the first result is a plain object, in order to warn
+//    the developer that their mapToProps function is not returning a valid result.
+//
+
+function wrapMapToPropsFunc(mapToProps, methodName) {
+  return function initProxySelector(dispatch, _ref) {
+    var displayName = _ref.displayName;
+
+    var proxy = function mapToPropsProxy(stateOrDispatch, ownProps) {
+      return proxy.dependsOnOwnProps ? proxy.mapToProps(stateOrDispatch, ownProps) : proxy.mapToProps(stateOrDispatch);
+    }; // allow detectFactoryAndVerify to get ownProps
+
+
+    proxy.dependsOnOwnProps = true;
+
+    proxy.mapToProps = function detectFactoryAndVerify(stateOrDispatch, ownProps) {
+      proxy.mapToProps = mapToProps;
+      proxy.dependsOnOwnProps = getDependsOnOwnProps(mapToProps);
+      var props = proxy(stateOrDispatch, ownProps);
+
+      if (typeof props === 'function') {
+        proxy.mapToProps = props;
+        proxy.dependsOnOwnProps = getDependsOnOwnProps(props);
+        props = proxy(stateOrDispatch, ownProps);
+      }
+
+      if (false) {}
+      return props;
+    };
+
+    return proxy;
+  };
+}
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.2_bbabd8c34ea235719dc50e75b43f85a4/node_modules/react-redux/es/connect/mapDispatchToProps.js
+
+
+function whenMapDispatchToPropsIsFunction(mapDispatchToProps) {
+  return typeof mapDispatchToProps === 'function' ? wrapMapToPropsFunc(mapDispatchToProps, 'mapDispatchToProps') : undefined;
+}
+function whenMapDispatchToPropsIsMissing(mapDispatchToProps) {
+  return !mapDispatchToProps ? wrapMapToPropsConstant(function (dispatch) {
+    return {
+      dispatch: dispatch
+    };
+  }) : undefined;
+}
+function whenMapDispatchToPropsIsObject(mapDispatchToProps) {
+  return mapDispatchToProps && typeof mapDispatchToProps === 'object' ? wrapMapToPropsConstant(function (dispatch) {
+    return bindActionCreators(mapDispatchToProps, dispatch);
+  }) : undefined;
+}
+/* harmony default export */ var connect_mapDispatchToProps = ([whenMapDispatchToPropsIsFunction, whenMapDispatchToPropsIsMissing, whenMapDispatchToPropsIsObject]);
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.2_bbabd8c34ea235719dc50e75b43f85a4/node_modules/react-redux/es/connect/mapStateToProps.js
+
+function whenMapStateToPropsIsFunction(mapStateToProps) {
+  return typeof mapStateToProps === 'function' ? wrapMapToPropsFunc(mapStateToProps, 'mapStateToProps') : undefined;
+}
+function whenMapStateToPropsIsMissing(mapStateToProps) {
+  return !mapStateToProps ? wrapMapToPropsConstant(function () {
+    return {};
+  }) : undefined;
+}
+/* harmony default export */ var connect_mapStateToProps = ([whenMapStateToPropsIsFunction, whenMapStateToPropsIsMissing]);
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.2_bbabd8c34ea235719dc50e75b43f85a4/node_modules/react-redux/es/connect/mergeProps.js
+
+
+function defaultMergeProps(stateProps, dispatchProps, ownProps) {
+  return Object(esm_extends["a" /* default */])({}, ownProps, stateProps, dispatchProps);
+}
+function wrapMergePropsFunc(mergeProps) {
+  return function initMergePropsProxy(dispatch, _ref) {
+    var displayName = _ref.displayName,
+        pure = _ref.pure,
+        areMergedPropsEqual = _ref.areMergedPropsEqual;
+    var hasRunOnce = false;
+    var mergedProps;
+    return function mergePropsProxy(stateProps, dispatchProps, ownProps) {
+      var nextMergedProps = mergeProps(stateProps, dispatchProps, ownProps);
+
+      if (hasRunOnce) {
+        if (!pure || !areMergedPropsEqual(nextMergedProps, mergedProps)) mergedProps = nextMergedProps;
+      } else {
+        hasRunOnce = true;
+        mergedProps = nextMergedProps;
+        if (false) {}
+      }
+
+      return mergedProps;
+    };
+  };
+}
+function whenMergePropsIsFunction(mergeProps) {
+  return typeof mergeProps === 'function' ? wrapMergePropsFunc(mergeProps) : undefined;
+}
+function whenMergePropsIsOmitted(mergeProps) {
+  return !mergeProps ? function () {
+    return defaultMergeProps;
+  } : undefined;
+}
+/* harmony default export */ var connect_mergeProps = ([whenMergePropsIsFunction, whenMergePropsIsOmitted]);
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.2_bbabd8c34ea235719dc50e75b43f85a4/node_modules/react-redux/es/connect/verifySubselectors.js
+
+
+function verify(selector, methodName, displayName) {
+  if (!selector) {
+    throw new Error("Unexpected value for " + methodName + " in " + displayName + ".");
+  } else if (methodName === 'mapStateToProps' || methodName === 'mapDispatchToProps') {
+    if (!Object.prototype.hasOwnProperty.call(selector, 'dependsOnOwnProps')) {
+      warning_warning("The selector for " + methodName + " of " + displayName + " did not specify a value for dependsOnOwnProps.");
+    }
+  }
+}
+
+function verifySubselectors(mapStateToProps, mapDispatchToProps, mergeProps, displayName) {
+  verify(mapStateToProps, 'mapStateToProps', displayName);
+  verify(mapDispatchToProps, 'mapDispatchToProps', displayName);
+  verify(mergeProps, 'mergeProps', displayName);
+}
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.2_bbabd8c34ea235719dc50e75b43f85a4/node_modules/react-redux/es/connect/selectorFactory.js
+
+
+function impureFinalPropsSelectorFactory(mapStateToProps, mapDispatchToProps, mergeProps, dispatch) {
+  return function impureFinalPropsSelector(state, ownProps) {
+    return mergeProps(mapStateToProps(state, ownProps), mapDispatchToProps(dispatch, ownProps), ownProps);
+  };
+}
+function pureFinalPropsSelectorFactory(mapStateToProps, mapDispatchToProps, mergeProps, dispatch, _ref) {
+  var areStatesEqual = _ref.areStatesEqual,
+      areOwnPropsEqual = _ref.areOwnPropsEqual,
+      areStatePropsEqual = _ref.areStatePropsEqual;
+  var hasRunAtLeastOnce = false;
+  var state;
+  var ownProps;
+  var stateProps;
+  var dispatchProps;
+  var mergedProps;
+
+  function handleFirstCall(firstState, firstOwnProps) {
+    state = firstState;
+    ownProps = firstOwnProps;
+    stateProps = mapStateToProps(state, ownProps);
+    dispatchProps = mapDispatchToProps(dispatch, ownProps);
+    mergedProps = mergeProps(stateProps, dispatchProps, ownProps);
+    hasRunAtLeastOnce = true;
+    return mergedProps;
+  }
+
+  function handleNewPropsAndNewState() {
+    stateProps = mapStateToProps(state, ownProps);
+    if (mapDispatchToProps.dependsOnOwnProps) dispatchProps = mapDispatchToProps(dispatch, ownProps);
+    mergedProps = mergeProps(stateProps, dispatchProps, ownProps);
+    return mergedProps;
+  }
+
+  function handleNewProps() {
+    if (mapStateToProps.dependsOnOwnProps) stateProps = mapStateToProps(state, ownProps);
+    if (mapDispatchToProps.dependsOnOwnProps) dispatchProps = mapDispatchToProps(dispatch, ownProps);
+    mergedProps = mergeProps(stateProps, dispatchProps, ownProps);
+    return mergedProps;
+  }
+
+  function handleNewState() {
+    var nextStateProps = mapStateToProps(state, ownProps);
+    var statePropsChanged = !areStatePropsEqual(nextStateProps, stateProps);
+    stateProps = nextStateProps;
+    if (statePropsChanged) mergedProps = mergeProps(stateProps, dispatchProps, ownProps);
+    return mergedProps;
+  }
+
+  function handleSubsequentCalls(nextState, nextOwnProps) {
+    var propsChanged = !areOwnPropsEqual(nextOwnProps, ownProps);
+    var stateChanged = !areStatesEqual(nextState, state);
+    state = nextState;
+    ownProps = nextOwnProps;
+    if (propsChanged && stateChanged) return handleNewPropsAndNewState();
+    if (propsChanged) return handleNewProps();
+    if (stateChanged) return handleNewState();
+    return mergedProps;
+  }
+
+  return function pureFinalPropsSelector(nextState, nextOwnProps) {
+    return hasRunAtLeastOnce ? handleSubsequentCalls(nextState, nextOwnProps) : handleFirstCall(nextState, nextOwnProps);
+  };
+} // TODO: Add more comments
+// If pure is true, the selector returned by selectorFactory will memoize its results,
+// allowing connectAdvanced's shouldComponentUpdate to return false if final
+// props have not changed. If false, the selector will always return a new
+// object and shouldComponentUpdate will always return true.
+
+function finalPropsSelectorFactory(dispatch, _ref2) {
+  var initMapStateToProps = _ref2.initMapStateToProps,
+      initMapDispatchToProps = _ref2.initMapDispatchToProps,
+      initMergeProps = _ref2.initMergeProps,
+      options = Object(objectWithoutPropertiesLoose["a" /* default */])(_ref2, ["initMapStateToProps", "initMapDispatchToProps", "initMergeProps"]);
+
+  var mapStateToProps = initMapStateToProps(dispatch, options);
+  var mapDispatchToProps = initMapDispatchToProps(dispatch, options);
+  var mergeProps = initMergeProps(dispatch, options);
+
+  if (false) {}
+
+  var selectorFactory = options.pure ? pureFinalPropsSelectorFactory : impureFinalPropsSelectorFactory;
+  return selectorFactory(mapStateToProps, mapDispatchToProps, mergeProps, dispatch, options);
+}
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.2_bbabd8c34ea235719dc50e75b43f85a4/node_modules/react-redux/es/connect/connect.js
+
+
+
+
+
+
+
+
+/*
+  connect is a facade over connectAdvanced. It turns its args into a compatible
+  selectorFactory, which has the signature:
+
+    (dispatch, options) => (nextState, nextOwnProps) => nextFinalProps
+  
+  connect passes its args to connectAdvanced as options, which will in turn pass them to
+  selectorFactory each time a Connect component instance is instantiated or hot reloaded.
+
+  selectorFactory returns a final props selector from its mapStateToProps,
+  mapStateToPropsFactories, mapDispatchToProps, mapDispatchToPropsFactories, mergeProps,
+  mergePropsFactories, and pure args.
+
+  The resulting final props selector is called by the Connect component instance whenever
+  it receives new props or store state.
+ */
+
+function match(arg, factories, name) {
+  for (var i = factories.length - 1; i >= 0; i--) {
+    var result = factories[i](arg);
+    if (result) return result;
+  }
+
+  return function (dispatch, options) {
+    throw new Error("Invalid value of type " + typeof arg + " for " + name + " argument when connecting component " + options.wrappedComponentName + ".");
+  };
+}
+
+function strictEqual(a, b) {
+  return a === b;
+} // createConnect with default args builds the 'official' connect behavior. Calling it with
+// different options opens up some testing and extensibility scenarios
+
+
+function createConnect(_temp) {
+  var _ref = _temp === void 0 ? {} : _temp,
+      _ref$connectHOC = _ref.connectHOC,
+      connectHOC = _ref$connectHOC === void 0 ? connectAdvanced : _ref$connectHOC,
+      _ref$mapStateToPropsF = _ref.mapStateToPropsFactories,
+      mapStateToPropsFactories = _ref$mapStateToPropsF === void 0 ? connect_mapStateToProps : _ref$mapStateToPropsF,
+      _ref$mapDispatchToPro = _ref.mapDispatchToPropsFactories,
+      mapDispatchToPropsFactories = _ref$mapDispatchToPro === void 0 ? connect_mapDispatchToProps : _ref$mapDispatchToPro,
+      _ref$mergePropsFactor = _ref.mergePropsFactories,
+      mergePropsFactories = _ref$mergePropsFactor === void 0 ? connect_mergeProps : _ref$mergePropsFactor,
+      _ref$selectorFactory = _ref.selectorFactory,
+      selectorFactory = _ref$selectorFactory === void 0 ? finalPropsSelectorFactory : _ref$selectorFactory;
+
+  return function connect(mapStateToProps, mapDispatchToProps, mergeProps, _ref2) {
+    if (_ref2 === void 0) {
+      _ref2 = {};
+    }
+
+    var _ref3 = _ref2,
+        _ref3$pure = _ref3.pure,
+        pure = _ref3$pure === void 0 ? true : _ref3$pure,
+        _ref3$areStatesEqual = _ref3.areStatesEqual,
+        areStatesEqual = _ref3$areStatesEqual === void 0 ? strictEqual : _ref3$areStatesEqual,
+        _ref3$areOwnPropsEqua = _ref3.areOwnPropsEqual,
+        areOwnPropsEqual = _ref3$areOwnPropsEqua === void 0 ? shallowEqual : _ref3$areOwnPropsEqua,
+        _ref3$areStatePropsEq = _ref3.areStatePropsEqual,
+        areStatePropsEqual = _ref3$areStatePropsEq === void 0 ? shallowEqual : _ref3$areStatePropsEq,
+        _ref3$areMergedPropsE = _ref3.areMergedPropsEqual,
+        areMergedPropsEqual = _ref3$areMergedPropsE === void 0 ? shallowEqual : _ref3$areMergedPropsE,
+        extraOptions = Object(objectWithoutPropertiesLoose["a" /* default */])(_ref3, ["pure", "areStatesEqual", "areOwnPropsEqual", "areStatePropsEqual", "areMergedPropsEqual"]);
+
+    var initMapStateToProps = match(mapStateToProps, mapStateToPropsFactories, 'mapStateToProps');
+    var initMapDispatchToProps = match(mapDispatchToProps, mapDispatchToPropsFactories, 'mapDispatchToProps');
+    var initMergeProps = match(mergeProps, mergePropsFactories, 'mergeProps');
+    return connectHOC(selectorFactory, Object(esm_extends["a" /* default */])({
+      // used in error messages
+      methodName: 'connect',
+      // used to compute Connect's displayName from the wrapped component's displayName.
+      getDisplayName: function getDisplayName(name) {
+        return "Connect(" + name + ")";
+      },
+      // if mapStateToProps is falsy, the Connect component doesn't subscribe to store state changes
+      shouldHandleStateChanges: Boolean(mapStateToProps),
+      // passed through to selectorFactory
+      initMapStateToProps: initMapStateToProps,
+      initMapDispatchToProps: initMapDispatchToProps,
+      initMergeProps: initMergeProps,
+      pure: pure,
+      areStatesEqual: areStatesEqual,
+      areOwnPropsEqual: areOwnPropsEqual,
+      areStatePropsEqual: areStatePropsEqual,
+      areMergedPropsEqual: areMergedPropsEqual
+    }, extraOptions));
+  };
+}
+/* harmony default export */ var connect_connect = (/*#__PURE__*/createConnect());
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.2_bbabd8c34ea235719dc50e75b43f85a4/node_modules/react-redux/es/hooks/useReduxContext.js
+
+
+/**
+ * A hook to access the value of the `ReactReduxContext`. This is a low-level
+ * hook that you should usually not need to call directly.
+ *
+ * @returns {any} the value of the `ReactReduxContext`
+ *
+ * @example
+ *
+ * import React from 'react'
+ * import { useReduxContext } from 'react-redux'
+ *
+ * export const CounterComponent = ({ value }) => {
+ *   const { store } = useReduxContext()
+ *   return <div>{store.getState()}</div>
+ * }
+ */
+
+function useReduxContext_useReduxContext() {
+  var contextValue = Object(external_React_["useContext"])(ReactReduxContext);
+
+  if (false) {}
+
+  return contextValue;
+}
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.2_bbabd8c34ea235719dc50e75b43f85a4/node_modules/react-redux/es/hooks/useStore.js
+
+
+
+/**
+ * Hook factory, which creates a `useStore` hook bound to a given context.
+ *
+ * @param {React.Context} [context=ReactReduxContext] Context passed to your `<Provider>`.
+ * @returns {Function} A `useStore` hook bound to the specified context.
+ */
+
+function createStoreHook(context) {
+  if (context === void 0) {
+    context = ReactReduxContext;
+  }
+
+  var useReduxContext = context === ReactReduxContext ? useReduxContext_useReduxContext : function () {
+    return Object(external_React_["useContext"])(context);
+  };
+  return function useStore() {
+    var _useReduxContext = useReduxContext(),
+        store = _useReduxContext.store;
+
+    return store;
+  };
+}
+/**
+ * A hook to access the redux store.
+ *
+ * @returns {any} the redux store
+ *
+ * @example
+ *
+ * import React from 'react'
+ * import { useStore } from 'react-redux'
+ *
+ * export const ExampleComponent = () => {
+ *   const store = useStore()
+ *   return <div>{store.getState()}</div>
+ * }
+ */
+
+var useStore_useStore = /*#__PURE__*/createStoreHook();
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.2_bbabd8c34ea235719dc50e75b43f85a4/node_modules/react-redux/es/hooks/useDispatch.js
+
+
+/**
+ * Hook factory, which creates a `useDispatch` hook bound to a given context.
+ *
+ * @param {React.Context} [context=ReactReduxContext] Context passed to your `<Provider>`.
+ * @returns {Function} A `useDispatch` hook bound to the specified context.
+ */
+
+function createDispatchHook(context) {
+  if (context === void 0) {
+    context = ReactReduxContext;
+  }
+
+  var useStore = context === ReactReduxContext ? useStore_useStore : createStoreHook(context);
+  return function useDispatch() {
+    var store = useStore();
+    return store.dispatch;
+  };
+}
+/**
+ * A hook to access the redux `dispatch` function.
+ *
+ * @returns {any|function} redux store's `dispatch` function
+ *
+ * @example
+ *
+ * import React, { useCallback } from 'react'
+ * import { useDispatch } from 'react-redux'
+ *
+ * export const CounterComponent = ({ value }) => {
+ *   const dispatch = useDispatch()
+ *   const increaseCounter = useCallback(() => dispatch({ type: 'increase-counter' }), [])
+ *   return (
+ *     <div>
+ *       <span>{value}</span>
+ *       <button onClick={increaseCounter}>Increase counter</button>
+ *     </div>
+ *   )
+ * }
+ */
+
+var useDispatch = /*#__PURE__*/createDispatchHook();
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.2_bbabd8c34ea235719dc50e75b43f85a4/node_modules/react-redux/es/hooks/useSelector.js
+
+
+
+
+
+
+var refEquality = function refEquality(a, b) {
+  return a === b;
+};
+
+function useSelectorWithStoreAndSubscription(selector, equalityFn, store, contextSub) {
+  var _useReducer = Object(external_React_["useReducer"])(function (s) {
+    return s + 1;
+  }, 0),
+      forceRender = _useReducer[1];
+
+  var subscription = Object(external_React_["useMemo"])(function () {
+    return new Subscription(store, contextSub);
+  }, [store, contextSub]);
+  var latestSubscriptionCallbackError = Object(external_React_["useRef"])();
+  var latestSelector = Object(external_React_["useRef"])();
+  var latestStoreState = Object(external_React_["useRef"])();
+  var latestSelectedState = Object(external_React_["useRef"])();
+  var storeState = store.getState();
+  var selectedState;
+
+  try {
+    if (selector !== latestSelector.current || storeState !== latestStoreState.current || latestSubscriptionCallbackError.current) {
+      selectedState = selector(storeState);
+    } else {
+      selectedState = latestSelectedState.current;
+    }
+  } catch (err) {
+    if (latestSubscriptionCallbackError.current) {
+      err.message += "\nThe error may be correlated with this previous error:\n" + latestSubscriptionCallbackError.current.stack + "\n\n";
+    }
+
+    throw err;
+  }
+
+  useIsomorphicLayoutEffect(function () {
+    latestSelector.current = selector;
+    latestStoreState.current = storeState;
+    latestSelectedState.current = selectedState;
+    latestSubscriptionCallbackError.current = undefined;
+  });
+  useIsomorphicLayoutEffect(function () {
+    function checkForUpdates() {
+      try {
+        var newSelectedState = latestSelector.current(store.getState());
+
+        if (equalityFn(newSelectedState, latestSelectedState.current)) {
+          return;
+        }
+
+        latestSelectedState.current = newSelectedState;
+      } catch (err) {
+        // we ignore all errors here, since when the component
+        // is re-rendered, the selectors are called again, and
+        // will throw again, if neither props nor store state
+        // changed
+        latestSubscriptionCallbackError.current = err;
+      }
+
+      forceRender();
+    }
+
+    subscription.onStateChange = checkForUpdates;
+    subscription.trySubscribe();
+    checkForUpdates();
+    return function () {
+      return subscription.tryUnsubscribe();
+    };
+  }, [store, subscription]);
+  return selectedState;
+}
+/**
+ * Hook factory, which creates a `useSelector` hook bound to a given context.
+ *
+ * @param {React.Context} [context=ReactReduxContext] Context passed to your `<Provider>`.
+ * @returns {Function} A `useSelector` hook bound to the specified context.
+ */
+
+
+function createSelectorHook(context) {
+  if (context === void 0) {
+    context = ReactReduxContext;
+  }
+
+  var useReduxContext = context === ReactReduxContext ? useReduxContext_useReduxContext : function () {
+    return Object(external_React_["useContext"])(context);
+  };
+  return function useSelector(selector, equalityFn) {
+    if (equalityFn === void 0) {
+      equalityFn = refEquality;
+    }
+
+    if (false) {}
+
+    var _useReduxContext = useReduxContext(),
+        store = _useReduxContext.store,
+        contextSub = _useReduxContext.subscription;
+
+    var selectedState = useSelectorWithStoreAndSubscription(selector, equalityFn, store, contextSub);
+    Object(external_React_["useDebugValue"])(selectedState);
+    return selectedState;
+  };
+}
+/**
+ * A hook to access the redux store's state. This hook takes a selector function
+ * as an argument. The selector is called with the store state.
+ *
+ * This hook takes an optional equality comparison function as the second parameter
+ * that allows you to customize the way the selected state is compared to determine
+ * whether the component needs to be re-rendered.
+ *
+ * @param {Function} selector the selector function
+ * @param {Function=} equalityFn the function that will be used to determine equality
+ *
+ * @returns {any} the selected state
+ *
+ * @example
+ *
+ * import React from 'react'
+ * import { useSelector } from 'react-redux'
+ *
+ * export const CounterComponent = () => {
+ *   const counter = useSelector(state => state.counter)
+ *   return <div>{counter}</div>
+ * }
+ */
+
+var useSelector_useSelector = /*#__PURE__*/createSelectorHook();
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.2_bbabd8c34ea235719dc50e75b43f85a4/node_modules/react-redux/es/utils/reactBatchedUpdates.js
+/* eslint-disable import/no-unresolved */
+
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.2_bbabd8c34ea235719dc50e75b43f85a4/node_modules/react-redux/es/index.js
+
+
+
+
+
+
+
+
+
+
+setBatch(external_ReactDOM_["unstable_batchedUpdates"]);
+
+// CONCATENATED MODULE: ./src/app/store.js
+function store_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function store_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { store_ownKeys(Object(source), true).forEach(function (key) { store_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { store_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function store_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+function globalReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case "setExplorerOpen":
+      return store_objectSpread(store_objectSpread({}, state), {}, {
+        explorerOpen: action.value
+      });
+
+    default:
+      return state;
+  }
+}
+
+/* harmony default export */ var app_store = (createStore(globalReducer, {
+  explorerOpen: true
+}));
 // CONCATENATED MODULE: ./src/app/components/Explorer/index.js
+function Explorer_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function Explorer_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { Explorer_ownKeys(Object(source), true).forEach(function (key) { Explorer_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { Explorer_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function Explorer_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function Explorer_slicedToArray(arr, i) { return Explorer_arrayWithHoles(arr) || Explorer_iterableToArrayLimit(arr, i) || Explorer_unsupportedIterableToArray(arr, i) || Explorer_nonIterableRest(); }
 
 function Explorer_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -5416,13 +8669,37 @@ function Explorer_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
+
+
+
 var fetched = false;
-function Explorer(props) {
+/* harmony default export */ var components_Explorer = (connect_connect(function (_ref) {
+  var explorerOpen = _ref.explorerOpen;
+  return {
+    isOpen: explorerOpen,
+    setOpen: function setOpen(isOpen) {
+      return app_store.dispatch({
+        type: "setExplorerOpen",
+        value: isOpen
+      });
+    }
+  };
+})(function Explorer(_ref2) {
+  var isOpen = _ref2.isOpen,
+      setOpen = _ref2.setOpen;
+
   var _React$useState = external_React_default.a.useState(null),
       _React$useState2 = Explorer_slicedToArray(_React$useState, 2),
       data = _React$useState2[0],
       setData = _React$useState2[1];
 
+  var _useExplorerStyles = useExplorerStyles(),
+      root = _useExplorerStyles.root;
+
+  var toggleOpen = external_React_default.a.useCallback(function () {
+    return setOpen(!isOpen);
+  }, [isOpen]);
   var children = [];
 
   if (!fetched) {
@@ -5464,13 +8741,31 @@ function Explorer(props) {
     }, "Loading..."));
   }
 
-  return external_React_default.a.createElement(esm_TreeView_TreeView, {
-    className: "explorer-tree",
+  return external_React_default.a.createElement("div", {
+    className: "explorer",
+    style: Explorer_objectSpread({
+      transition: "margin-left 200ms, width 200ms",
+      transform: "matrix(1, 0, 0, 1, 0, 0)"
+    }, !isOpen && {
+      marginLeft: "-291px",
+      minWidth: 0,
+      width: 291,
+      overflowX: "hidden"
+    })
+  }, external_React_default.a.createElement(ExplorerHeader, {
+    isOpen: isOpen,
+    toggleOpen: toggleOpen
+  }), external_React_default.a.createElement(esm_TreeView_TreeView, {
+    className: "explorer__tree " + (isOpen ? "explorer__tree-open" : "explorer__tree-open"),
+    classes: {
+      root: root
+    },
     defaultCollapseIcon: external_React_default.a.createElement(ArrowDropDown_default.a, null),
     defaultExpandIcon: external_React_default.a.createElement(ArrowRight_default.a, null),
     disableSelection: true
-  }, children);
-}
+  }, children));
+}));
+
 // CONCATENATED MODULE: ./src/app/components/Footer/Footer.js
 function Footer() {
   return React.createElement("div", {
@@ -5485,17 +8780,44 @@ function Footer() {
 
 /* harmony default export */ var components_Footer = (Footer);
 // CONCATENATED MODULE: ./src/app/components/Header/Header.js
-function Header() {
+
+
+
+/* harmony default export */ var Header_Header = (connect_connect(function (_ref) {
+  var explorerOpen = _ref.explorerOpen;
+  return {
+    explorerOpen: explorerOpen,
+    setExplorerOpen: function setExplorerOpen(isOpen) {
+      return app_store.dispatch({
+        type: "setExplorerOpen",
+        value: isOpen
+      });
+    }
+  };
+})(function Header(_ref2) {
+  var explorerOpen = _ref2.explorerOpen,
+      setExplorerOpen = _ref2.setExplorerOpen;
   return React.createElement("div", {
     className: "header__container"
-  }, React.createElement("h1", {
-    className: "header__title"
-  }, "@webdoc/example"));
-}
+  }, explorerOpen ? null : React.createElement(ExplorerHeader, {
+    isOpen: false,
+    toggleOpen: function toggleOpen() {
+      return setExplorerOpen(!explorerOpen);
+    }
+  }), React.createElement("div", {
+    className: "header__contents"
+  }, React.createElement("a", {
+    className: "header__link header__link__current"
+  }, "API Reference"), React.createElement("a", {
+    className: "header__link"
+  }, "Guides")));
+}));
 // CONCATENATED MODULE: ./src/app/components/Header/index.js
 
-/* harmony default export */ var components_Header = (Header);
+/* harmony default export */ var components_Header = (Header_Header);
 // CONCATENATED MODULE: ./src/app/index.js
+
+
 
 
 
@@ -5505,20 +8827,16 @@ window.onload = function () {
   var appBarRoot = document.getElementById("header-mount-point");
   var explorerRoot = document.getElementById("explorer-mount-point");
   var footerRoot = document.getElementById("footer-mount-point");
-  external_ReactDOM_default.a.render(React.createElement(components_Header, null), appBarRoot);
-  external_ReactDOM_default.a.render(React.createElement(Explorer, null), explorerRoot);
+  external_ReactDOM_default.a.render(React.createElement(components_Provider, {
+    store: app_store
+  }, React.createElement(components_Header, null)), appBarRoot);
+  external_ReactDOM_default.a.render(React.createElement(components_Provider, {
+    store: app_store
+  }, React.createElement(components_Explorer, null)), explorerRoot);
   external_ReactDOM_default.a.render(React.createElement(components_Footer, null), footerRoot);
 };
 
 /***/ }),
-/* 48 */,
-/* 49 */,
-/* 50 */,
-/* 51 */,
-/* 52 */,
-/* 53 */,
-/* 54 */,
-/* 55 */,
 /* 56 */,
 /* 57 */,
 /* 58 */,
@@ -5526,14 +8844,23 @@ window.onload = function () {
 /* 60 */,
 /* 61 */,
 /* 62 */,
-/* 63 */
+/* 63 */,
+/* 64 */,
+/* 65 */,
+/* 66 */,
+/* 67 */,
+/* 68 */,
+/* 69 */,
+/* 70 */,
+/* 71 */,
+/* 72 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* unused harmony export isPlainObject */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return deepmerge; });
 /* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _babel_runtime_helpers_esm_typeof__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(12);
+/* harmony import */ var _babel_runtime_helpers_esm_typeof__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(18);
 
 
 function isPlainObject(item) {
@@ -5564,7 +8891,7 @@ function deepmerge(target, source) {
 }
 
 /***/ }),
-/* 64 */
+/* 73 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5628,18 +8955,13 @@ function _createClass(Constructor, protoProps, staticProps) {
   return Constructor;
 }
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/inheritsLoose.js
-var inheritsLoose = __webpack_require__(14);
+var inheritsLoose = __webpack_require__(13);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js
+var assertThisInitialized = __webpack_require__(20);
 
-  return self;
-}
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js
-var objectWithoutPropertiesLoose = __webpack_require__(10);
+var objectWithoutPropertiesLoose = __webpack_require__(5);
 
 // CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/jss/10.5.0/node_modules/jss/dist/jss.esm.js
 
@@ -5894,7 +9216,7 @@ function (_BaseStyleRule) {
     if (selector) {
       _this.selectorText = selector;
     } else if (scoped !== false) {
-      _this.id = generateId(_assertThisInitialized(_assertThisInitialized(_this)), sheet);
+      _this.id = generateId(Object(assertThisInitialized["a" /* default */])(Object(assertThisInitialized["a" /* default */])(_this)), sheet);
       _this.selectorText = "." + jss_esm_escape(_this.id);
     }
 
@@ -7936,10 +11258,10 @@ var multiKeyStore = {
 };
 /* harmony default export */ var makeStyles_multiKeyStore = (multiKeyStore);
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/useTheme/useTheme.js + 1 modules
-var useTheme = __webpack_require__(65);
+var useTheme = __webpack_require__(74);
 
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/prop-types/15.7.2/node_modules/prop-types/index.js
-var prop_types = __webpack_require__(6);
+var prop_types = __webpack_require__(4);
 
 // CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/ThemeProvider/nested.js
 var hasSymbol = typeof Symbol === 'function' && Symbol.for;
@@ -8717,7 +12039,7 @@ function defaultUnit(options) {
 /* harmony default export */ var jss_plugin_default_unit_esm = (defaultUnit);
 
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/toConsumableArray.js + 3 modules
-var toConsumableArray = __webpack_require__(22);
+var toConsumableArray = __webpack_require__(17);
 
 // CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/css-vendor/2.0.8/node_modules/css-vendor/dist/css-vendor.esm.js
 
@@ -9492,10 +12814,10 @@ function increment() {
   return indexCounter;
 }
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/typeof.js
-var esm_typeof = __webpack_require__(12);
+var esm_typeof = __webpack_require__(18);
 
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/utils/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/utils/esm/deepmerge.js
-var deepmerge = __webpack_require__(63);
+var deepmerge = __webpack_require__(72);
 
 // CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/getStylesCreator/getStylesCreator.js
 
@@ -9802,7 +13124,7 @@ function makeStyles(stylesOrCreator) {
 }
 
 /***/ }),
-/* 65 */
+/* 74 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

@@ -15,7 +15,7 @@
 ?>
 
 <div class="page-members-explorer-category">
-  <h3 class="page-members-explorer-category__title"><?js= title ?></h3>
+  <section class="page-members-explorer-category__title"><?js= title ?></section>
   <ul class="page-members-explorer-category__items">
     <?js members.forEach((member) => { ?>
       <li class="page-members-explorer__item"><?js= this.linkTo(member.path, member.name) ?></li>
