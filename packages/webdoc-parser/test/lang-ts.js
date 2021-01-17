@@ -115,12 +115,35 @@ describe("@webdoc/parser.LanguageIntegration{@lang ts}", function() {
         num = 1;
         str = "string";
       }
-    `);
+    `, "*.ts");
 
     const [bool, num, str] = symtree.members[0].members;
 
     expect(bool.meta.dataType[0]).to.equal("boolean");
     expect(num.meta.dataType[0]).to.equal("number");
     expect(str.meta.dataType[0]).to.equal("string");
+  });
+
+  it("should parse extends, implements", function() {
+    const symtree = buildSymbolTree(`
+      interface IArrayBuffer extends ArrayBuffer {}
+      class ArrayBufferImpl implements ArrayBuffer {}
+      interface SpecializedArrayBuffer extends Special.IArrayBuffer {}
+      class SpecializedArrayBufferImpl extends Special.ArrayBuffer
+        implements Special.IArrayBuffer {}
+    `, "*.ts");
+
+    const [
+      iarrayBuffer,
+      arrayBufferImpl,
+      specializedArrayBuffer,
+      specializedArrayBufferImpl,
+    ] = symtree.members;
+
+    expect(iarrayBuffer.meta.extends[0]).to.equal("ArrayBuffer");
+    expect(arrayBufferImpl.meta.implements[0]).to.equal("ArrayBuffer");
+    expect(specializedArrayBuffer.meta.extends[0]).to.equal("Special.IArrayBuffer");
+    expect(specializedArrayBufferImpl.meta.implements[0]).to.equal("Special.IArrayBuffer");
+    expect(specializedArrayBufferImpl.meta.extends[0]).to.equal("Special.ArrayBuffer");
   });
 });

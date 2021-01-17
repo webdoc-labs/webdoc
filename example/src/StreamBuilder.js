@@ -767,3 +767,15 @@ export class ObjectRenderer {
     // render the object
   }
 }
+
+/**
+ * @memberof PIXI
+ * @typedef {object}
+ * @property {function} init - Called when Application is constructed, scoped to Application instance.
+ *  Passes in `options` as the only argument, which are Application constructor options.
+ * @property {function} destroy - Called when destroying Application, scoped to Application instance
+ */
+export interface IApplicationPlugin {
+    init: (...params: any[]) => any;
+    destroy: (...params: any[]) => any;
+}
