@@ -4505,6 +4505,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var itemStyle = {
   label: {
+<<<<<<< Updated upstream
     alignItems: "center",
     display: "flex",
     color: "#333333",
@@ -4514,6 +4515,17 @@ var itemStyle = {
   },
   labelLinks: {
     color: "#333333"
+=======
+    alignItems: "center !important",
+    display: "flex !important",
+    color: "#333333 !important",
+    fontSize: "12px !important",
+    height: "24px !important",
+    lineHeight: "14px !important"
+  },
+  labelLinks: {
+    color: "#333333 !important"
+>>>>>>> Stashed changes
   },
   iconContainer: {
     color: "#333333",
@@ -4530,7 +4542,11 @@ var itemStyle = {
 var useExplorerStyles = styles_makeStyles(itemStyle);
 var useExplorerCategoryStyles = styles_makeStyles(_objectSpread(_objectSpread({}, itemStyle), {}, {
   label: _objectSpread(_objectSpread({}, itemStyle.label), {}, {
+<<<<<<< Updated upstream
     fontWeight: "bold"
+=======
+    fontWeight: "bold !important"
+>>>>>>> Stashed changes
   })
 }));
 // CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/Typography/Typography.js
