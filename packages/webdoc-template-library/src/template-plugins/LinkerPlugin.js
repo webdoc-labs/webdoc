@@ -351,6 +351,10 @@ function LinkerPluginShell() {
       return this.processInternalURI(uri, {outputRelative});
     }
 
+    getResourceURI(subpath: string): string {
+      return this.processInternalURI(encodeURI(path.join("/<siteRoot>", subpath)));
+    }
+
     createURI(preferredUri: string, outputRelative?: boolean): string {
       const uri = this.generateBaseURI(preferredUri);
 
