@@ -22,9 +22,10 @@ export default connect(({explorerOpen}) => ({
   const {root} = useExplorerStyles();
   const toggleOpen = React.useCallback(() => setOpen(!isOpen), [isOpen]);
   const children = [];
+  const sitePrefix = window.appData.siteRoot ? "/" + window.appData.siteRoot + "/" : "/";
 
   if (!fetched) {
-    fetch("/" + window.appData.siteRoot + "/explorer/reference.json")
+    fetch(sitePrefix + "explorer/reference.json")
       .then((response) => {
         if (response.ok) {
           response.json().then((idata) => {

@@ -368,7 +368,9 @@ function LinkerPluginShell() {
      */
     processInternalURI(uri: string, options: { outputRelative?: boolean } = {}): string {
       if (!options.outputRelative) {
-        uri = uri.replace("%3CsiteRoot%3E", this.siteRoot);
+        uri = uri
+          .replace("%3CsiteRoot%3E", this.siteRoot)
+          .replace("//", "/");// needed if siteRoot = "";
       } else {
         uri = uri.replace("/%3CsiteRoot%3E/", "");
       }

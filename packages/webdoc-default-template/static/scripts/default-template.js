@@ -4495,6 +4495,44 @@ function ExplorerHeader(_ref) {
     className: "explorer__header__title"
   }, "{ ", React.createElement("i", null, "webdoc"), " }"));
 }
+// CONCATENATED MODULE: ./src/app/components/Explorer/useExplorerStyles.js
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+var itemStyle = {
+  label: {
+    alignItems: "center",
+    display: "flex",
+    color: "#333333",
+    fontSize: 12,
+    height: "24px",
+    lineHeight: "14px"
+  },
+  labelLinks: {
+    color: "#333333"
+  },
+  iconContainer: {
+    color: "#333333",
+    fontSize: 8,
+    marginRight: 0
+  },
+  selected: {
+    backgroundColor: "none"
+  },
+  root: {
+    padding: "0 8px"
+  }
+};
+var useExplorerStyles = styles_makeStyles(itemStyle);
+var useExplorerCategoryStyles = styles_makeStyles(_objectSpread(_objectSpread({}, itemStyle), {}, {
+  label: _objectSpread(_objectSpread({}, itemStyle.label), {}, {
+    fontWeight: "bold"
+  })
+}));
 // CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/Typography/Typography.js
 
 
@@ -5812,44 +5850,6 @@ var TreeItem_TreeItem = /*#__PURE__*/external_React_["forwardRef"](function Tree
 var cuid = __webpack_require__(26);
 var cuid_default = /*#__PURE__*/__webpack_require__.n(cuid);
 
-// CONCATENATED MODULE: ./src/app/components/Explorer/useExplorerStyles.js
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-var itemStyle = {
-  label: {
-    alignItems: "center",
-    display: "flex",
-    color: "#333333",
-    fontSize: 12,
-    height: "24px",
-    lineHeight: "14px"
-  },
-  labelLinks: {
-    color: "#333333"
-  },
-  iconContainer: {
-    color: "#333333",
-    fontSize: 8,
-    marginRight: 0
-  },
-  selected: {
-    backgroundColor: "none"
-  },
-  root: {
-    padding: "0 8px"
-  }
-};
-var useExplorerStyles = styles_makeStyles(itemStyle);
-var useExplorerCategoryStyles = styles_makeStyles(_objectSpread(_objectSpread({}, itemStyle), {}, {
-  label: _objectSpread(_objectSpread({}, itemStyle.label), {}, {
-    fontWeight: "bold"
-  })
-}));
 // CONCATENATED MODULE: ./src/app/components/Explorer/ExplorerCategoryItem.js
 
 
@@ -8701,9 +8701,10 @@ var fetched = false;
     return setOpen(!isOpen);
   }, [isOpen]);
   var children = [];
+  var sitePrefix = window.appData.siteRoot ? "/" + window.appData.siteRoot + "/" : "/";
 
   if (!fetched) {
-    fetch("/" + window.appData.siteRoot + "/explorer/reference.json").then(function (response) {
+    fetch(sitePrefix + "explorer/reference.json").then(function (response) {
       if (response.ok) {
         response.json().then(function (idata) {
           setData(idata || {});
