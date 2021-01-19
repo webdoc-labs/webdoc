@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <a href="https://www.codetriage.com/webdoc-js/webdoc"><img src="https://www.codetriage.com/webdoc-js/webdoc/badges/users.svg" /></a>
+  <a href="https://www.codetriage.com/webdoc-labs/webdoc"><img src="https://www.codetriage.com/webdoc-js/webdoc/badges/users.svg" /></a>
 </p>
 
 <table align="center">
@@ -30,7 +30,7 @@
 webdoc is the next generation documentation generator for the family of web languages. It supports the JSDoc notation
 and infers type data from TypeScript definitions.
 
-You can checkout the documentation for `example/` [here](https://webdoc-js.github.io/example-documentation/index.html)!
+You can checkout the documentation for `example/` [here](https://webdoc-labs.github.io/example-documentation/index.html)!
 
 ## Usage
 
