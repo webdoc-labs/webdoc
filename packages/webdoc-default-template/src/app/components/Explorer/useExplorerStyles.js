@@ -2,15 +2,15 @@ import {makeStyles} from "@material-ui/core/styles";
 
 const itemStyle = {
   label: {
-    alignItems: "center",
-    display: "flex",
-    color: "#333333",
-    fontSize: 12,
-    height: "24px",
-    lineHeight: "14px",
+    alignItems: "center !important",
+    display: "flex !important",
+    color: "#333333 !important",
+    fontSize: "12px !important",
+    height: "24px !important",
+    lineHeight: "14px !important",
   },
   labelLinks: {
-    color: "#333333",
+    color: "#333333 !important",
   },
   iconContainer: {
     color: "#333333",
@@ -31,6 +31,6 @@ export const useExplorerCategoryStyles = makeStyles({
   ...itemStyle,
   label: {
     ...itemStyle.label,
-    fontWeight: "bold",
+    fontWeight: "bold !important",
   },
 });

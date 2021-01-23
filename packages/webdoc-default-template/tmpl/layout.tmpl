@@ -4,6 +4,7 @@
  */
 const rootData = obj;
 const siteRoot = this.getPlugin("linker").siteRoot;
+const sitePrefix = siteRoot ? siteRoot + "/" : siteRoot;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +12,7 @@ const siteRoot = this.getPlugin("linker").siteRoot;
     <meta charset="utf-8" />
     <title>webdoc: <?js= title ?></title>
 
-    <link type="text/css" rel="stylesheet" href="/<?js= siteRoot ?>/styles/index.css" />
+    <link type="text/css" rel="stylesheet" href="/<?js= sitePrefix ?>styles/index.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono:300,400,500,700&display=swap" />
     <link type="text/css" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/googlecode.min.css">
@@ -23,7 +24,7 @@ const siteRoot = this.getPlugin("linker").siteRoot;
         siteRoot: "<?js= siteRoot ?>",
       };
     </script>
-    <script src="/<?js= siteRoot ?>/scripts/default-template.js"></script>
+    <script src="/<?js= sitePrefix ?>scripts/default-template.js"></script>
   </head>
   <body class="root">
     <div class="docs">

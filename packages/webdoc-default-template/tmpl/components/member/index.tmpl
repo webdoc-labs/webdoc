@@ -3,13 +3,14 @@
  * Object member render component.
  */
 const doc = obj;
+const linkSvg = this.getPlugin("linker").getResourceURI("icons/link.svg");
 ?>
 <div class="member" id="<?js= doc.name ?>">
   <?js if (doc.name !== "constructor") { ?>
     <section class="member__title">
       <a href="<?js= this.getPlugin("linker").getURI(doc) ?>">
         <img
-          src="/<?js= this.getPlugin("linker").siteRoot ?>/icons/link.svg"
+          src="<?js= linkSvg ?>"
           width="16px"
           height="16px"
         />

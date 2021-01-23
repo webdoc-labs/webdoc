@@ -1,13 +1,12 @@
 import {useExplorerCategoryStyles, useExplorerStyles} from "./useExplorerStyles";
-import ExplorerTargetGroup from "./ExplorerCategoryItem";
+import ExplorerCategoryItem from "./ExplorerCategoryItem";
 import Link from "@material-ui/core/Link";
-//import React from "react";
+import React from "react";
 import TreeItem from "@material-ui/lab/TreeItem";
-import cuid from "cuid";
 
 export default function ExplorerItem(props) {
-  if (!props.data.nodeId) {
-    props.data.nodeId = cuid();
+  if (!props.data.$nodeId) {
+    throw new Error("Ids must be assigned");
   }
 
   const classesItem = useExplorerStyles();
@@ -17,13 +16,23 @@ export default function ExplorerItem(props) {
   let i = 0;
   for (const [key, value] of Object.entries(props.data.children || {})) {
     targetChildren.push(Array.isArray(value) ?
-      (<ExplorerTargetGroup key={i} title={key} data={value} />) :
-      (<ExplorerItem key={i} data={value} />),
+      (<ExplorerCategoryItem key={i} title={key} data={value} toggle={props.toggle} />) :
+      (<ExplorerItem key={i} data={value} toggle={props.toggle} />),
     );
     i++;
   }
 
   const classes = i > 0 ? classesCategory : classesItem;
+  const nodeId = props.data.$nodeId;
+
+  const toggle = React.useCallback(
+    () => props.toggle(nodeId),
+    [nodeId],
+  );
+
+  if (props.data.title !== "(overview)" && props.data.$match === false) {
+    return null;
+  }
 
   return (
     <TreeItem
@@ -33,7 +42,8 @@ export default function ExplorerItem(props) {
         iconContainer: classes.iconContainer,
         selected: classes.selected,
       }}
-      nodeId={props.data.nodeId}
+      onClick={toggle}
+      nodeId={nodeId}
       label={
         props.data.page ?
           (
