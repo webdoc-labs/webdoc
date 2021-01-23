@@ -23,7 +23,9 @@ export default function ExplorerCategoryItem(props) {
       label={props.title}
     >
       {props.data.map(
-        (explorerTarget, i) => (<ExplorerItem key={i} data={explorerTarget} />),
+        (explorerTarget, i) => (
+          <ExplorerItem key={i} data={explorerTarget} toggle={props.toggle} />
+        ),
       )}
     </TreeItem>
   );

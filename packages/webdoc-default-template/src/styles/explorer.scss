@@ -15,6 +15,20 @@
     overflow: auto;
   }
 
+  input {
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    border-radius: 4px;
+    font: 12px Arial;
+    margin: 8px 24px 0 24px;
+    min-height: 32px;
+    padding: 0 8px;
+  }
+
+  input:focus {
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    outline: none;
+  }
+
   &__tree > *:first-child {
     margin-top: 8px;
   }
