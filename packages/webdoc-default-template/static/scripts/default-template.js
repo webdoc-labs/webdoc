@@ -8607,7 +8607,7 @@ var Link_Link = /*#__PURE__*/external_React_["forwardRef"](function Link(props, 
 })(Link_Link));
 // CONCATENATED MODULE: ./src/app/components/Explorer/helpers.js
 function isSamePage(data) {
-  var path = "".concat(window.location.pathname, ".html");
+  var path = window.location.pathname.includes(".html") ? window.location.pathname : "".concat(window.location.pathname, ".html");
 
   if (data.page.startsWith("/") && data.page === path) {
     return true;
