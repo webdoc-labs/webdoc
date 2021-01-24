@@ -24,7 +24,7 @@ window.onload = function() {
   ReactDOM.render(
     (
       <Provider store={store}>
-        <Explorer />
+        <Explorer rootRef={{current: explorerRoot}} />
       </Provider>
     ),
     explorerRoot,
@@ -44,7 +44,6 @@ function wakeAccordions() {
       const btn = accordion.querySelector(".accordion__toggle");
 
       btn.onclick = () => {
-        console.log("WTF");
         accordion.classList.toggle("accordion-active");
       };
     },

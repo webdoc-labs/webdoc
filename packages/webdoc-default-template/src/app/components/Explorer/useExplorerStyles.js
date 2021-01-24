@@ -34,3 +34,10 @@ export const useExplorerCategoryStyles = makeStyles({
     fontWeight: "bold !important",
   },
 });
+
+export const useExplorerPrimaryItemStyles = makeStyles({
+  labelLinks: {
+    ...itemStyle.labelLinks,
+    color: "#0066CD !important",
+  },
+});

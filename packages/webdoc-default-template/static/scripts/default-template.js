@@ -5802,6 +5802,11 @@ function globalReducer() {
         });
       }
 
+    case "setExpandedItems":
+      return _objectSpread(_objectSpread({}, state), {}, {
+        expandedItems: new Set(action.value)
+      });
+
     case "toggleItem":
       {
         var expandedItems = new Set(state.expandedItems);
@@ -7117,6 +7122,11 @@ var useExplorerCategoryStyles = styles_makeStyles(useExplorerStyles_objectSpread
     fontWeight: "bold !important"
   })
 }));
+var useExplorerPrimaryItemStyles = styles_makeStyles({
+  labelLinks: useExplorerStyles_objectSpread(useExplorerStyles_objectSpread({}, itemStyle.labelLinks), {}, {
+    color: "#0066CD !important"
+  })
+});
 // CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/Typography/Typography.js
 
 
@@ -8595,6 +8605,18 @@ var Link_Link = /*#__PURE__*/external_React_["forwardRef"](function Link(props, 
 /* harmony default export */ var esm_Link_Link = (Object(withStyles["a" /* default */])(Link_styles, {
   name: 'MuiLink'
 })(Link_Link));
+// CONCATENATED MODULE: ./src/app/components/Explorer/helpers.js
+function isSamePage(data) {
+  var path = "".concat(window.location.pathname, ".html");
+
+  if (data.page.startsWith("/") && data.page === path) {
+    return true;
+  } else if (!data.page.startsWith("/") && path.includes("/".concat(data.page))) {
+    return true;
+  }
+
+  return false;
+}
 // CONCATENATED MODULE: ./src/app/components/Explorer/ExplorerItem.js
 function ExplorerItem_slicedToArray(arr, i) { return ExplorerItem_arrayWithHoles(arr) || ExplorerItem_iterableToArrayLimit(arr, i) || ExplorerItem_unsupportedIterableToArray(arr, i) || ExplorerItem_nonIterableRest(); }
 
@@ -8613,6 +8635,7 @@ function ExplorerItem_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; 
 
 
 
+
 function ExplorerItem(props) {
   if (!props.data.$nodeId) {
     throw new Error("Ids must be assigned");
@@ -8620,6 +8643,7 @@ function ExplorerItem(props) {
 
   var classesItem = useExplorerStyles();
   var classesCategory = useExplorerCategoryStyles();
+  var classesPrimaryItem = useExplorerPrimaryItemStyles();
   var targetChildren = [];
   var i = 0;
 
@@ -8643,6 +8667,12 @@ function ExplorerItem(props) {
 
   var classes = i > 0 ? classesCategory : classesItem;
   var nodeId = props.data.$nodeId;
+  var primary = props.data.page && isSamePage(props.data);
+
+  if (primary) {
+    console.log(props.data);
+  }
+
   var toggle = external_React_default.a.useCallback(function () {
     return props.toggle(nodeId);
   }, [nodeId]);
@@ -8652,6 +8682,7 @@ function ExplorerItem(props) {
   }
 
   return external_React_default.a.createElement(esm_TreeItem_TreeItem, {
+    id: props.data.$nodeId,
     className: "explorer-tree__target",
     classes: {
       label: classes.label,
@@ -8662,7 +8693,7 @@ function ExplorerItem(props) {
     nodeId: nodeId,
     label: props.data.page ? external_React_default.a.createElement(esm_Link_Link, {
       classes: {
-        root: classes.labelLinks
+        root: primary ? classesPrimaryItem.labelLinks : classes.labelLinks
       },
       href: props.data.page,
       underline: "hover"
@@ -9356,19 +9387,36 @@ function Explorer_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var fetched = false;
 
-function makeIds(data) {
+function makeIds(data, collector) {
   data.$nodeId = cuid_default()();
+  var shouldBeExpanded = false;
+
+  if (data.page) {
+    shouldBeExpanded = isSamePage(data);
+  }
 
   if (data.children) {
     for (var _i = 0, _Object$entries = Object.entries(data.children); _i < _Object$entries.length; _i++) {
       var _Object$entries$_i = Explorer_slicedToArray(_Object$entries[_i], 2),
           value = _Object$entries$_i[1];
 
-      makeIds(value);
+      var childExpanded = makeIds(value, collector);
+
+      if (childExpanded) {
+        collector.add(data.$nodeId);
+        shouldBeExpanded = true;
+      }
     }
   }
+
+  if (shouldBeExpanded) {
+    collector.add(data.$nodeId);
+  }
+
+  return shouldBeExpanded;
 }
 
 /* harmony default export */ var components_Explorer = (connect_connect(function (_ref) {
@@ -9385,6 +9433,18 @@ function makeIds(data) {
       });
     },
     expandedItems: Array.from(expandedItems),
+    setAutoScrollTo: function setAutoScrollTo(value) {
+      return app_store.dispatch({
+        type: "setAutoScrollTo",
+        value: value
+      });
+    },
+    setExpandedItems: function setExpandedItems(value) {
+      return app_store.dispatch({
+        type: "setExpandedItems",
+        value: value
+      });
+    },
     toggleItem: function toggleItem(nodeId, optValue) {
       return app_store.dispatch({
         type: "toggleItem",
@@ -9397,12 +9457,19 @@ function makeIds(data) {
   var isOpen = _ref2.isOpen,
       setOpen = _ref2.setOpen,
       expandedItems = _ref2.expandedItems,
-      toggleItem = _ref2.toggleItem;
+      setExpandedItems = _ref2.setExpandedItems,
+      toggleItem = _ref2.toggleItem,
+      rootRef = _ref2.rootRef;
 
   var _React$useState = external_React_default.a.useState(null),
       _React$useState2 = Explorer_slicedToArray(_React$useState, 2),
       data = _React$useState2[0],
       setData = _React$useState2[1];
+
+  var _React$useState3 = external_React_default.a.useState(null),
+      _React$useState4 = Explorer_slicedToArray(_React$useState3, 2),
+      autoScrollTo = _React$useState4[0],
+      setAutoScrollTo = _React$useState4[1];
 
   var _useExplorerStyles = useExplorerStyles(),
       root = _useExplorerStyles.root;
@@ -9417,8 +9484,11 @@ function makeIds(data) {
     fetch(sitePrefix + "explorer/reference.json").then(function (response) {
       if (response.ok) {
         response.json().then(function (idata) {
-          makeIds(idata);
+          var defaultExpanded = new Set();
+          makeIds(idata, defaultExpanded);
           setData(idata || {});
+          setAutoScrollTo(defaultExpanded.values().next().value);
+          setExpandedItems(defaultExpanded);
         });
       } else {
         throw new Error("Can't fetch reference.json");
@@ -9459,6 +9529,21 @@ function makeIds(data) {
     }, "Loading..."));
   }
 
+  external_React_default.a.useEffect(function () {
+    setTimeout(function () {
+      var scrollEl = rootRef.current.querySelector(".MuiTreeView-root");
+      var toEl = document.getElementById(autoScrollTo);
+
+      if (scrollEl && toEl) {
+        var rect = toEl.getBoundingClientRect();
+        scrollEl.scrollTo({
+          left: rect.left,
+          top: rect.top - 124,
+          behavior: "smooth"
+        });
+      }
+    }, 400);
+  }, [autoScrollTo]);
   return external_React_default.a.createElement("div", {
     className: "explorer",
     style: Explorer_objectSpread({
@@ -9554,7 +9639,11 @@ window.onload = function () {
   }, React.createElement(components_Header, null)), appBarRoot);
   external_ReactDOM_default.a.render(React.createElement(components_Provider, {
     store: app_store
-  }, React.createElement(components_Explorer, null)), explorerRoot);
+  }, React.createElement(components_Explorer, {
+    rootRef: {
+      current: explorerRoot
+    }
+  })), explorerRoot);
   external_ReactDOM_default.a.render(React.createElement(components_Footer, null), footerRoot);
 };
 
@@ -9563,7 +9652,6 @@ function wakeAccordions() {
     var btn = accordion.querySelector(".accordion__toggle");
 
     btn.onclick = function () {
-      console.log("WTF");
       accordion.classList.toggle("accordion-active");
     };
   });
