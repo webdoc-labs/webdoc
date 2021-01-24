@@ -1,0 +1,41 @@
+<?js
+  /** Document inherited member summary */
+  const doc = obj
+?>
+
+<div class="members">
+  <h2 class="members__category">Summary</h2>
+  <hr />
+  <?js=
+    this.partial("components/summary/kind.tmpl", {
+        title: "Properties",
+        kind: "PropertyDoc",
+        doc,
+        inherited: false,
+    })
+  ?>
+  <?js=
+    this.partial("components/summary/kind.tmpl", {
+        title: "Methods",
+        kind: "MethodDoc",
+        doc,
+        inherited: false,
+    })
+  ?>
+  <?js=
+    this.partial("components/summary/kind.tmpl", {
+        title: "Properties inherited",
+        kind: "PropertyDoc",
+        doc,
+        inherited: true,
+    })
+  ?>
+  <?js=
+    this.partial("components/summary/kind.tmpl", {
+        title: "Methods inherited",
+        kind: "MethodDoc",
+        doc,
+        inherited: true,
+    })
+  ?>
+</div>

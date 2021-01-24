@@ -9545,6 +9545,7 @@ function Footer() {
 
 
 window.onload = function () {
+  wakeAccordions();
   var appBarRoot = document.getElementById("header-mount-point");
   var explorerRoot = document.getElementById("explorer-mount-point");
   var footerRoot = document.getElementById("footer-mount-point");
@@ -9556,6 +9557,17 @@ window.onload = function () {
   }, React.createElement(components_Explorer, null)), explorerRoot);
   external_ReactDOM_default.a.render(React.createElement(components_Footer, null), footerRoot);
 };
+
+function wakeAccordions() {
+  document.querySelectorAll(".accordion").forEach(function (accordion) {
+    var btn = accordion.querySelector(".accordion__toggle");
+
+    btn.onclick = function () {
+      console.log("WTF");
+      accordion.classList.toggle("accordion-active");
+    };
+  });
+}
 
 /***/ }),
 /* 68 */,

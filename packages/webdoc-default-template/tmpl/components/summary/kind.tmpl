@@ -1,0 +1,80 @@
+<?js
+  /** Summary table for the given list of members */
+  const { doc, title, kind, inherited } = obj;
+  const relations = this.getPlugin("relations");
+  const linker = this.getPlugin("linker");
+  const chevronDownSvg = linker.getResourceURI("icons/chevron-down.svg");
+  const chevronUpSvg = linker.getResourceURI("icons/chevron-up.svg");
+
+  const ancestors = inherited ? [
+    ...relations.getAncestorClasses(doc),
+    ...relations.getAncestorInterfaces(doc),
+  ] : [
+    doc
+  ];
+?>
+
+<?js ancestors.forEach((ancestor) => { ?>
+  <?js
+    const members = inherited ? doc.members.filter((member) =>
+      member.inherited &&
+      member.inherits &&
+      member.inherits.type === kind &&
+      !member.overrides &&
+      member.inherits.parent === ancestor  &&
+      member.access !== "private"
+    ) : doc.members.filter((member) =>
+      (!member.inherited || member.overrides) &&
+      member.type === kind &&
+      member.name !== "constructor" &&
+      member.access !== "private"
+    )
+
+    if (members.length === 0) {
+      return;
+    }
+  ?>
+  <div class="accordion<?js= !inherited ? " accordion-active" : "" ?>">
+    <section class="accordion__toggle">
+      <button>
+        <img class="accordion__bg-inactive" src="<?js= chevronDownSvg ?>"/>
+        <img class="accordion__bg-active" src="<?js= chevronUpSvg ?>"/>
+      </button>
+      <h3 class="members__subcategory"><?js= title + " from " + ancestor.name ?></h3>
+    </section>
+    <div class="accordion__content table-wrapper">
+      <table class="summary">
+        <tbody>
+          <?js members.forEach((member) => { ?>
+            <tr>
+              <td class="summary__signature">
+                <?js if (member.returns
+                    && member.returns.length > 0
+                    && member.returns[0].dataType) { ?>
+                  <?js= this.linkTo(member.returns[0].dataType) ?>
+                <?js } else if (member.dataType) { ?>
+                  <?js= this.linkTo(member.dataType) ?>
+                <?js } ?>
+              </td>
+              <td>
+                <section class="summary__signature">
+                  <?js=
+                    this.linkTo(
+                      member,
+                      this.plugins.signature.generateSignature(member, { noTail: true })
+                    )
+                  ?>
+                </section>
+                <section>
+                  <?js if (member.brief) { ?>
+                    <?js= member.brief ?>
+                  <?js } ?>
+                </section>
+              </td>
+            </tr>
+          <?js }) ?>
+        </tbody>
+      </table>
+    </div>
+  </div>
+<?js }) ?>

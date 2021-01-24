@@ -37,6 +37,8 @@ docList.forEach((doc) => {
       }) ?>
     <?js } ?>
 
+    <?js= this.partial("components/summary/index.tmpl", doc) ?>
+
     <?js= this.partial("components/members.tmpl", {
       title: "Public Properties",
       parent: doc,
@@ -70,6 +72,7 @@ docList.forEach((doc) => {
       }
     }) ?>
   </div>
+  <footer class="footer" id="footer-mount-point"></footer>
 </div>
 <?js= this.partial("components/members-explorer/index.tmpl", doc) ?>
 <?js }); ?>

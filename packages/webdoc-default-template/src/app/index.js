@@ -6,6 +6,8 @@ import ReactDOM from "react-dom";
 import store from "./store";
 
 window.onload = function() {
+  wakeAccordions();
+
   const appBarRoot = document.getElementById("header-mount-point");
   const explorerRoot = document.getElementById("explorer-mount-point");
   const footerRoot = document.getElementById("footer-mount-point");
@@ -35,3 +37,16 @@ window.onload = function() {
     footerRoot,
   );
 };
+
+function wakeAccordions() {
+  document.querySelectorAll(".accordion").forEach(
+    (accordion) => {
+      const btn = accordion.querySelector(".accordion__toggle");
+
+      btn.onclick = () => {
+        console.log("WTF");
+        accordion.classList.toggle("accordion-active");
+      };
+    },
+  );
+}
