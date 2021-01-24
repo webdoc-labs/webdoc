@@ -16,19 +16,21 @@
 
 <?js ancestors.forEach((ancestor) => { ?>
   <?js
-    const members = inherited ? doc.members.filter((member) =>
-      member.inherited &&
-      member.inherits &&
-      member.inherits.type === kind &&
-      !member.overrides &&
-      member.inherits.parent === ancestor  &&
-      member.access !== "private"
-    ) : doc.members.filter((member) =>
-      (!member.inherited || member.overrides) &&
-      member.type === kind &&
-      member.name !== "constructor" &&
-      member.access !== "private"
-    )
+    const members = inherited
+      ? doc.members.filter((member) =>
+        member.inherited &&
+        member.inherits &&
+        member.inherits.type === kind &&
+        !member.overrides &&
+        member.inherits.parent === ancestor  &&
+        member.access !== "private"
+      ).map(member => member.inherits)
+      : doc.members.filter((member) =>
+        (!member.inherited || member.overrides) &&
+          member.type === kind &&
+          member.name !== "constructor" &&
+          member.access !== "private"
+      )
 
     if (members.length === 0) {
       return;
