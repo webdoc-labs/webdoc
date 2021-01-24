@@ -1,4 +1,8 @@
-import {useExplorerCategoryStyles, useExplorerPrimaryItemStyles, useExplorerStyles} from "./useExplorerStyles";
+import {
+  useExplorerCategoryStyles,
+  useExplorerPrimaryItemStyles,
+  useExplorerStyles,
+} from "./useExplorerStyles";
 import ExplorerCategoryItem from "./ExplorerCategoryItem";
 import Link from "@material-ui/core/Link";
 import React from "react";
