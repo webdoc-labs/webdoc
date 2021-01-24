@@ -159,6 +159,7 @@ export class TemplateRenderer {
       docHTML = this.cache[filePath].call(this, data);
     } catch (e) {
       console.error(`Rendering template: ${filePath}`);
+      console.error(this.cache[filePath].source);
       throw e;
     }
 

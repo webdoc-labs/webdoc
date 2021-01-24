@@ -43,3 +43,40 @@ table {
   display: block;
   overflow-x: scroll;
 }
+
+table.summary {
+  margin-left: 40px;
+  padding: 18px auto;
+  table-layout: fixed;
+  width: calc(100% - 40px);
+
+  tbody {
+    margin: 18px auto;
+  }
+
+  td {
+    vertical-align: top;
+
+    section:last-child {
+      color: #333;
+      margin-top: 18px;
+    }
+  }
+
+  td:first-child {
+    width: 36%;
+  }
+
+  td:last-child {
+    width: 64%;
+  }
+
+  .summary__signature {
+    font-family: IBM Plex Mono, monospace;
+    font-weight: bold;
+
+    a {
+      text-decoration: underline;
+    }
+  }
+}

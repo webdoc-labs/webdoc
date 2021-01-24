@@ -8,19 +8,36 @@ import React from "react";
 import TreeView from "@material-ui/lab/TreeView";
 import {connect} from "react-redux";
 import cuid from "cuid";
+import {isSamePage} from "./helpers";
 import store from "../../store";
 import {useExplorerStyles} from "./useExplorerStyles";
 
 let fetched = false;
 
-function makeIds(data) {
+function makeIds(data, collector) {
   data.$nodeId = cuid();
+
+  let shouldBeExpanded = false;
+
+  if (data.page) {
+    shouldBeExpanded = isSamePage(data);
+  }
 
   if (data.children) {
     for (const [, value] of Object.entries(data.children)) {
-      makeIds(value);
+      const childExpanded = makeIds(value, collector);
+
+      if (childExpanded) {
+        collector.add(data.$nodeId);
+        shouldBeExpanded = true;
+      }
     }
   }
+  if (shouldBeExpanded) {
+    collector.add(data.$nodeId);
+  }
+
+  return shouldBeExpanded;
 }
 
 export default connect(({
@@ -35,6 +52,14 @@ export default connect(({
     value: isOpen,
   }),
   expandedItems: Array.from(expandedItems),
+  setAutoScrollTo: (value) => store.dispatch({
+    type: "setAutoScrollTo",
+    value,
+  }),
+  setExpandedItems: (value) => store.dispatch({
+    type: "setExpandedItems",
+    value,
+  }),
   toggleItem: (nodeId, optValue) => store.dispatch({
     type: "toggleItem",
     nodeId,
@@ -44,9 +69,12 @@ export default connect(({
   isOpen,
   setOpen,
   expandedItems,
+  setExpandedItems,
   toggleItem,
+  rootRef,
 }) {
   const [data, setData] = React.useState(null);
+  const [autoScrollTo, setAutoScrollTo] = React.useState(null);
   const {root} = useExplorerStyles();
   const toggleOpen = React.useCallback(() => setOpen(!isOpen), [isOpen]);
   const children = [];
@@ -57,8 +85,12 @@ export default connect(({
       .then((response) => {
         if (response.ok) {
           response.json().then((idata) => {
-            makeIds(idata);
+            const defaultExpanded = new Set();
+
+            makeIds(idata, defaultExpanded);
             setData(idata || {});
+            setAutoScrollTo(defaultExpanded.values().next().value);
+            setExpandedItems(defaultExpanded);
           });
         } else {
           throw new Error("Can't fetch reference.json");
@@ -86,6 +118,29 @@ export default connect(({
   } else {
     children.push(<span key={++i}>Loading...</span>);
   }
+
+  React.useEffect(
+    () => {
+      setTimeout(
+        () => {
+          const scrollEl = rootRef.current.querySelector(".MuiTreeView-root");
+          const toEl = document.getElementById(autoScrollTo);
+
+          if (scrollEl && toEl) {
+            const rect = toEl.getBoundingClientRect();
+
+            scrollEl.scrollTo({
+              left: rect.left,
+              top: rect.top - 124,
+              behavior: "smooth",
+            });
+          }
+        },
+        400,
+      );
+    },
+    [autoScrollTo],
+  );
 
   return (
     <div className="explorer" style={{

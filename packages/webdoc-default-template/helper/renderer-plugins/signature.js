@@ -5,7 +5,7 @@ import type {Doc} from "@webdoc/types";
 const {linker} = require("../linker");
 
 exports.signaturePlugin = {
-  generateSignature(doc /*: Doc */) {
+  generateSignature(doc /*: Doc */, options = {} /*: { noTail: boolean } */) {
     const mapDocTypeToKeyboard = {
       ClassDoc: "class",
       NSDoc: "namespace",
@@ -48,7 +48,7 @@ exports.signaturePlugin = {
             .join(", ")
         })`;
       }
-      if (doc.returns) {
+      if (!options.noTail && doc.returns) {
         signature += ` → {${
           (doc.returns || [])
             .map((returns) => (returns.dataType ?
@@ -59,7 +59,7 @@ exports.signaturePlugin = {
       }
       break;
     case "PropertyDoc":
-      if (doc.dataType) {
+      if (!options.noTail && doc.dataType) {
         signature += ": " + linker.linkTo(doc.dataType, undefined, {htmlSafe: false});
       }
       break;

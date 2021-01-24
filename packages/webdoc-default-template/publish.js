@@ -6,6 +6,7 @@ const path = require("path");
 const {traverse} = require("@webdoc/model");
 const {
   FlushToFile,
+  RelationsPlugin,
   TemplateRenderer,
   TemplatePipeline,
   TemplateTagsResolver,
@@ -62,10 +63,13 @@ exports.publish = (options /*: PublishOptions */) => {
     .installPlugin("linker", linker)
     .installPlugin("generateIndex", indexSorterPlugin)
     .installPlugin("signature", signaturePlugin)
-    .installPlugin("categoryFilter", categoryFilterPlugin);
+    .installPlugin("categoryFilter", categoryFilterPlugin)
+    .installPlugin("relations", RelationsPlugin);
   const pipeline = new TemplatePipeline(renderer)
     .pipe(new TemplateTagsResolver())
     .pipe(new FlushToFile({skipNullFile: false}));
+
+  renderer.getPlugin("relations").buildRelations();
 
   idToDoc = new Map();
 

@@ -1,8 +1,13 @@
-import {useExplorerCategoryStyles, useExplorerStyles} from "./useExplorerStyles";
+import {
+  useExplorerCategoryStyles,
+  useExplorerPrimaryItemStyles,
+  useExplorerStyles,
+} from "./useExplorerStyles";
 import ExplorerCategoryItem from "./ExplorerCategoryItem";
 import Link from "@material-ui/core/Link";
 import React from "react";
 import TreeItem from "@material-ui/lab/TreeItem";
+import {isSamePage} from "./helpers";
 
 export default function ExplorerItem(props) {
   if (!props.data.$nodeId) {
@@ -11,6 +16,7 @@ export default function ExplorerItem(props) {
 
   const classesItem = useExplorerStyles();
   const classesCategory = useExplorerCategoryStyles();
+  const classesPrimaryItem = useExplorerPrimaryItemStyles();
   const targetChildren = [];
 
   let i = 0;
@@ -24,6 +30,11 @@ export default function ExplorerItem(props) {
 
   const classes = i > 0 ? classesCategory : classesItem;
   const nodeId = props.data.$nodeId;
+  const primary = props.data.page && isSamePage(props.data);
+
+  if (primary) {
+    console.log(props.data);
+  }
 
   const toggle = React.useCallback(
     () => props.toggle(nodeId),
@@ -36,6 +47,7 @@ export default function ExplorerItem(props) {
 
   return (
     <TreeItem
+      id={props.data.$nodeId}
       className="explorer-tree__target"
       classes={{
         label: classes.label,
@@ -47,7 +59,7 @@ export default function ExplorerItem(props) {
       label={
         props.data.page ?
           (
-            <Link classes={{root: classes.labelLinks}}
+            <Link classes={{root: primary ? classesPrimaryItem.labelLinks : classes.labelLinks}}
               href={props.data.page}
               underline="hover"
             >

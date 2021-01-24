@@ -15,6 +15,9 @@ exports.categoryFilterPlugin = (doc /*: Doc */, constraints /*: CategoryConstrai
         return false;
       }
     }
+    if (child.inherited && !child.overrides) {
+      return;
+    }
 
     if (child.type === "MethodDoc" && child.name === "constructor") {
       return false;// Filter constructors always!

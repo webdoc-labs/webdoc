@@ -10,8 +10,17 @@
     padding: 8px;
   }
 
+  &__subcategory {
+    color: #333;
+    font-size: 1.125em;
+    font-weight: normal;
+    line-height: 1.4em;
+    margin: 14px 8px 14px 0;
+  }
+
   > hr {
-    border: 2px solid $colorSheetSecondary
+    border: 1px solid $colorSheetSecondary;
+    margin-bottom: 10px;
   }
 
   > * {
@@ -48,5 +57,59 @@
 
   & > .signature {
     margin-bottom: 8px;
+  }
+}
+
+.accordion {
+  &__toggle {
+    align-items: center;
+    border-radius: 8px;
+    display: flex;
+    transition-duration: 200ms;
+
+    button {
+      background: transparent;
+      border: none;
+      height: 40px;
+      padding: 0;
+      width: 40px;
+
+      .accordion__bg-active {
+        display: none;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.04);
+    }
+  }
+
+  &__content {
+    max-height: 0;
+    overflow: hidden;
+    visibility: hidden;
+  }
+}
+
+.accordion-active {
+  > .accordion__content {
+    max-height: max-content;
+    visibility: visible;
+  }
+
+  .accordion__toggle {
+    button {
+      .accordion__bg-inactive {
+        display: none;
+      }
+
+      .accordion__bg-active {
+        display: inline;
+      }
+    }
   }
 }

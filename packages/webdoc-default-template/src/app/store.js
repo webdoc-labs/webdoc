@@ -26,6 +26,11 @@ function globalReducer(state = {}, action) {
         query: action.value,
       };
     }
+  case "setExpandedItems":
+    return {
+      ...state,
+      expandedItems: new Set(action.value),
+    };
   case "toggleItem": {
     const expandedItems = new Set(state.expandedItems);
 
