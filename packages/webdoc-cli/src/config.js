@@ -105,30 +105,6 @@ export function loadConfig(file: string): ConfigSchema {
   return config;
 }
 
-export function getIncludePattern(config: ConfigSchema): string[] {
-  const source = config.source;
-
-  if (typeof source !== "undefined") {
-    if (typeof source.includePattern !== "undefined") {
-      if (Array.isArray(source.includePattern)) {
-        return source.includePattern;
-      } else if (typeof source.includePattern === "string") {
-        return [source.includePattern];
-      }
-    }
-
-    if (typeof source.include !== "undefined") {
-      if (Array.isArray(source.include)) {
-        return source.include;
-      } else if (typeof source.include === "string") {
-        return [source.include];
-      }
-    }
-  }
-
-  return [];
-}
-
 export function getTemplate(config: ConfigSchema): string {
   if (config.opts && config.opts.template) {
     return config.opts.template;

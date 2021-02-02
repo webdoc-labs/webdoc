@@ -59,7 +59,7 @@ async function main(argv: yargs.Argv) {
   global.Webdoc = global.Webdoc || {};
   registerWebdocParser();// global.Webdoc.Parser
 
-  const {loadConfig, getIncludePattern, getTemplate} = require("./config");
+  const {loadConfig, getTemplate} = require("./config");
   const config = loadConfig(argv.config);
   const tutorials = loadTutorials(argv.tutorials);
 
