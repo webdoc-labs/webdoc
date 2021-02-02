@@ -9,8 +9,11 @@ type ConfigSchema = {
     sort?: string
   },
   source?: {
+    // Declared in order of priority
+    include?: string | Array<string>,
     includePattern?: string | Array<string>,
-    include?: string | Array<string>
+    excludePattern?: string | Array<string>,
+    exclude?: string | Array<string>,
   },
   conf?: {
     tags?: {
@@ -52,7 +55,6 @@ const defaultConfig: ConfigSchema = {
     sort: "type, scope, access, name",                    // @webdoc/parser{mod:sort}
   },
   source: {
-    includePattern: "./**/*.js",                          // @webdoc/cli{main}
   },
   conf: {
     tags: {

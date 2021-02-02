@@ -79,13 +79,6 @@ async function main(argv: yargs.Argv) {
   global.Webdoc.env.conf = config;
   global.Webdoc.userConfig = config;
 
-  // TODO: excludePattern
-  const includePattern = getIncludePattern(config);
-
-  if (!includePattern) {
-    console.log("No source.include or source.includePattern found in config file");
-  }
-
   if (config.plugins) {
     for (const pluginPath of config.plugins) {
       if (pluginPath === "plugins/markdown") {
