@@ -123,4 +123,17 @@ describe("@webdoc/parser.LanguageIntegration{@lang js}", function() {
       `),
     ).to.not.throw();
   });
+
+  it("should work with decorators", function() {
+    const symtree = buildSymbolTree(`
+      class DecoratorGarden {
+        @decorator({ withParam: 'some-value' })
+        decorated() {
+
+        }
+      }
+    `);
+
+    expect(symtree.members[0].members.length).to.equal(1);
+  });
 });

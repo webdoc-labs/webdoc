@@ -146,4 +146,17 @@ describe("@webdoc/parser.LanguageIntegration{@lang ts}", function() {
     expect(specializedArrayBufferImpl.meta.implements[0]).to.equal("Special.IArrayBuffer");
     expect(specializedArrayBufferImpl.meta.extends[0]).to.equal("Special.ArrayBuffer");
   });
+
+  it("should work with decorators", function() {
+    const symtree = buildSymbolTree(`
+      class DecoratorGarden {
+        @decorator({ withParam: 'some-value' })
+        decorated() {
+
+        }
+      }
+    `, "*.ts");
+
+    expect(symtree.members[0].members.length).to.equal(1);
+  });
 });

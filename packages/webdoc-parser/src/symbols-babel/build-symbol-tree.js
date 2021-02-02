@@ -134,7 +134,7 @@ export default function buildSymbolTree(
   file: string,
   source: SourceFile,
   config: LanguageConfig,
-  plugins: string[],
+  plugins: Array<string | [string, any]>,
 ): Symbol {
   const moduleSymbol = SymbolUtils.createModuleSymbol();
   let ast;
