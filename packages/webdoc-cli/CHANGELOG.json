@@ -2,6 +2,18 @@
   "name": "@webdoc/cli",
   "entries": [
     {
+      "version": "1.1.6",
+      "tag": "@webdoc/cli_v1.1.6",
+      "date": "Tue, 02 Feb 2021 04:00:07 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "Match the behavior of JSDoc in terms of resolving source files with include/includePattern/excludePattern/exclude in the configuration file."
+          }
+        ]
+      }
+    },
+    {
       "version": "1.1.5",
       "tag": "@webdoc/cli_v1.1.5",
       "date": "Sun, 17 Jan 2021 16:21:24 GMT",

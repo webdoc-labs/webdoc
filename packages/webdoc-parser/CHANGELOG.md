@@ -1,6 +1,13 @@
 # Change Log - @webdoc/parser
 
-This log was last generated on Sun, 17 Jan 2021 16:21:24 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Feb 2021 04:00:07 GMT and should not be manually modified.
+
+## 1.1.6
+Tue, 02 Feb 2021 04:00:07 GMT
+
+### Updates
+
+- Fix crash when decorators are present in a source file.
 
 ## 1.1.5
 Sun, 17 Jan 2021 16:21:24 GMT

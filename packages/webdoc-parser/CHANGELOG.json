@@ -2,6 +2,18 @@
   "name": "@webdoc/parser",
   "entries": [
     {
+      "version": "1.1.6",
+      "tag": "@webdoc/parser_v1.1.6",
+      "date": "Tue, 02 Feb 2021 04:00:07 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fix crash when decorators are present in a source file."
+          }
+        ]
+      }
+    },
+    {
       "version": "1.1.5",
       "tag": "@webdoc/parser_v1.1.5",
       "date": "Sun, 17 Jan 2021 16:21:24 GMT",

@@ -1,6 +1,13 @@
 # Change Log - @webdoc/cli
 
-This log was last generated on Sun, 17 Jan 2021 16:21:24 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Feb 2021 04:00:07 GMT and should not be manually modified.
+
+## 1.1.6
+Tue, 02 Feb 2021 04:00:07 GMT
+
+### Updates
+
+- Match the behavior of JSDoc in terms of resolving source files with include/includePattern/excludePattern/exclude in the configuration file.
 
 ## 1.1.5
 Sun, 17 Jan 2021 16:21:24 GMT
