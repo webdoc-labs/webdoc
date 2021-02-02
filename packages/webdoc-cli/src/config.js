@@ -9,8 +9,11 @@ type ConfigSchema = {
     sort?: string
   },
   source?: {
+    // Declared in order of priority
+    include?: string | Array<string>,
     includePattern?: string | Array<string>,
-    include?: string | Array<string>
+    excludePattern?: string | Array<string>,
+    exclude?: string | Array<string>,
   },
   conf?: {
     tags?: {
@@ -52,7 +55,6 @@ const defaultConfig: ConfigSchema = {
     sort: "type, scope, access, name",                    // @webdoc/parser{mod:sort}
   },
   source: {
-    includePattern: "./**/*.js",                          // @webdoc/cli{main}
   },
   conf: {
     tags: {
@@ -101,30 +103,6 @@ export function loadConfig(file: string): ConfigSchema {
   }
 
   return config;
-}
-
-export function getIncludePattern(config: ConfigSchema): string[] {
-  const source = config.source;
-
-  if (typeof source !== "undefined") {
-    if (typeof source.includePattern !== "undefined") {
-      if (Array.isArray(source.includePattern)) {
-        return source.includePattern;
-      } else if (typeof source.includePattern === "string") {
-        return [source.includePattern];
-      }
-    }
-
-    if (typeof source.include !== "undefined") {
-      if (Array.isArray(source.include)) {
-        return source.include;
-      } else if (typeof source.include === "string") {
-        return [source.include];
-      }
-    }
-  }
-
-  return [];
 }
 
 export function getTemplate(config: ConfigSchema): string {

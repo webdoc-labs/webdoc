@@ -59,7 +59,7 @@ async function main(argv: yargs.Argv) {
   global.Webdoc = global.Webdoc || {};
   registerWebdocParser();// global.Webdoc.Parser
 
-  const {loadConfig, getIncludePattern, getTemplate} = require("./config");
+  const {loadConfig, getTemplate} = require("./config");
   const config = loadConfig(argv.config);
   const tutorials = loadTutorials(argv.tutorials);
 
@@ -78,13 +78,6 @@ async function main(argv: yargs.Argv) {
   // $FlowFixMe
   global.Webdoc.env.conf = config;
   global.Webdoc.userConfig = config;
-
-  // TODO: excludePattern
-  const includePattern = getIncludePattern(config);
-
-  if (!includePattern) {
-    console.log("No source.include or source.includePattern found in config file");
-  }
 
   if (config.plugins) {
     for (const pluginPath of config.plugins) {
