@@ -16,6 +16,7 @@ const defaultPreset = [
   "classPrivateMethods",
   "classPrivateProperties",
   "classProperties",
+  ["decorators", {decoratorsBeforeExport: true}],
   "doExpressions",
   "dynamicImport",
   "exportDefaultFrom",
