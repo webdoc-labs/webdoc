@@ -42,7 +42,10 @@ To get started, create a `webdoc.conf.json` file in your project directory.
 
 ```json
 {
-  "includePattern": ["src/**/*.js"],
+  "source": {
+    "include": "src/",
+    "excludePattern": "(node_modules|lib|test)"
+  },
   "plugins": [
     "plugins/markdown"
   ],
@@ -56,7 +59,7 @@ To get started, create a `webdoc.conf.json` file in your project directory.
 }
 ```
 
-The only required field is `includePattern` which tells webdoc where the documented code is located at.
+The only required field is `source.include` which tells webdoc where the source files are.
 
 You can now run `webdoc` in your terminal and documentation will be generated.
 
