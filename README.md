@@ -32,10 +32,10 @@ and infers type data from TypeScript definitions.
 
 You can checkout the documentation for `example/` [here](https://webdoc-labs.github.io/example-documentation/index.html)!
 
-## Usage
+## Usage :newspaper_roll:
 
 ```shell
-npm install -g @webdoc/cli
+npm install --save-dev @webdoc/cli
 ```
 
 To get started, create a `webdoc.conf.json` file in your project directory.
@@ -63,7 +63,7 @@ The only required field is `source.include` which tells webdoc where the source 
 
 You can now run `webdoc` in your terminal and documentation will be generated. Be sure to serve the documentation from the folder it is generated in. If you need to serve from an ancestor directory, provide the documentation path relative to the root using the `--site-root` option, e.g. `webdoc --site-root docs`.
 
-## Packages
+## Packages :package:
 
 | Packages                    | npm                                                              ||
 |-----------------------------|------------------------------------------------------------------|-|
@@ -76,7 +76,7 @@ You can now run `webdoc` in your terminal and documentation will be generated. B
 | [@webdoc/legacy-template](packages/webdoc-legacy-template)     | ![npm](https://img.shields.io/npm/v/@webdoc/legacy-template)     |![David (path)](https://img.shields.io/david/webdoc-labs/webdoc?path=packages%2Fwebdoc-legacy-template)|
 | [@webdoc/default-template](packages/webdoc-default-template)    | ![npm](https://img.shields.io/npm/v/@webdoc/default-template)    |![David (path)](https://img.shields.io/david/webdoc-labs/webdoc?path=packages%2Fwebdoc-default-template)|
 
-## Features
+## Features :tada:
 
 * Support for JavaScript, Flow, and TypeScript. The modular structure of @webdoc/parser allows you to integrate it with other languages as well.
 
