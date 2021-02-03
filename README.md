@@ -61,7 +61,7 @@ To get started, create a `webdoc.conf.json` file in your project directory.
 
 The only required field is `source.include` which tells webdoc where the source files are. [@webdoc/cli](packages/webdoc-cli)'s README details more configuration options
 
-You can now run `webdoc` in your terminal and documentation will be generated.
+You can now run `webdoc` in your terminal and documentation will be generated. Be sure to serve the documentation from the folder it is generated in. If you need to serve from an ancestor directory, provide the documentation path relative to the root using the `--site-root` option, e.g. `webdoc --site-root docs`.
 
 ## Packages
 
