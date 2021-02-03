@@ -6,7 +6,7 @@ import merge from "lodash.merge";
 type ConfigSchema = {
   plugins?: Array<string>,
   docs?: {
-    sort?: string
+    sort?: string | string[]
   },
   source?: {
     // Declared in order of priority
@@ -52,7 +52,7 @@ type ConfigSchema = {
 /* eslint-disable no-multi-spaces */
 const defaultConfig: ConfigSchema = {
   docs: {
-    sort: "type, scope, access, name",                    // @webdoc/parser{mod:sort}
+    sort: ["type", "scope", "access", "name"],                    // @webdoc/parser{mod:sort}
   },
   source: {
   },
