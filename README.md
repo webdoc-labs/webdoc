@@ -59,7 +59,7 @@ To get started, create a `webdoc.conf.json` file in your project directory.
 }
 ```
 
-The only required field is `source.include` which tells webdoc where the source files are.
+The only required field is `source.include` which tells webdoc where the source files are. [@webdoc/cli](packages/webdoc-cli)'s README details more configuration options
 
 You can now run `webdoc` in your terminal and documentation will be generated.
 
