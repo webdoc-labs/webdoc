@@ -8,7 +8,7 @@ describe("@webdoc/parser.LanguageIntegration{@lang ts}", function() {
   it("should parse classes correctly", function() {
     let symtree = buildSymbolTree(`
       class ClassName {
-        private readonly initProperty: number = 11;
+        private readonly initProperty: number = -11;
 
         constructor() {
           /**
@@ -47,7 +47,7 @@ describe("@webdoc/parser.LanguageIntegration{@lang ts}", function() {
     expect(symbolInitProperty.meta.dataType).to.not.equal(undefined);
     expect(symbolInitProperty.meta.dataType[0]).to.equal("number");
     expect(symbolInitProperty.meta.access).to.equal("private");
-    expect(symbolInitProperty.meta.defaultValue).to.equal("11");
+    expect(symbolInitProperty.meta.defaultValue).to.equal("-11");
     expect(symbolInitProperty.comment).to.not.equal("");
     expect(symbolInitProperty.meta.readonly).to.equal(true);
   });

@@ -5,6 +5,7 @@
 
 import {
   type ArrowFunctionExpression,
+  type BabelNodeExpression,
   type FunctionExpression,
   type MemberExpression,
   type Node,
@@ -18,6 +19,7 @@ import {
   isClassExpression,
   isClassMethod,
   isClassProperty,
+  isExpression,
   isExpressionStatement,
   isFunctionDeclaration,
   isFunctionExpression,
@@ -40,6 +42,7 @@ import {
   isTSPropertySignature,
   isTSTypeElement,
   isThisExpression,
+  isUnaryExpression,
   isVariableDeclarator,
 } from "@babel/types";
 
@@ -127,6 +130,16 @@ export default function extractSymbol(
           nodeSymbol.meta.dataType = createSimpleKeywordType("number");
         } else if (!nodeSymbol.meta.dataType && isBooleanLiteral(node.value)) {
           nodeSymbol.meta.dataType = createSimpleKeywordType("boolean");
+        }
+      }
+    } else if (isExpression(node.value)) {
+      const defaultValue = resolveExpression(node.value);
+
+      if (typeof defaultValue === "string") {
+        nodeSymbol.meta.defaultValue = defaultValue;
+
+        if (!isNaN(parseFloat(defaultValue))) {
+          nodeSymbol.meta.dataType = createSimpleKeywordType("number");
         }
       }
     }
@@ -389,6 +402,21 @@ function resolveRootObject(expression: MemberExpression): string {
   }
 
   return isThisExpression(expression) ? "this" : expression.name;
+}
+
+// Used to get default value
+// TODO: Resolve a lot more expressions
+function resolveExpression(expression: BabelNodeExpression): string | undefined {
+  if (isLiteral(expression)) {
+    if (isStringLiteral(expression)) {
+      return `"${expression.value}"`;
+    } else {
+      return `${expression.value}`;
+    }
+  }
+  if (isUnaryExpression(expression)) {
+    return `-${resolveExpression(expression.argument)}`;
+  }
 }
 
 // Whether the member expression assigns to this, e.g.

@@ -62,6 +62,9 @@ exports.signaturePlugin = {
       if (!options.noTail && doc.dataType) {
         signature += ": " + linker.linkTo(doc.dataType, undefined, {htmlSafe: false});
       }
+      if (doc.defaultValue) {
+        signature += " = " + doc.defaultValue;
+      }
       break;
     case "ClassDoc":
       if (doc.extends) {
