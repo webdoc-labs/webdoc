@@ -36,13 +36,11 @@ steps:
     rush flow
   displayName: "Type check"
   workingDirectory: webdoc
-  continueOnError: true
 
 - script: |
     rush lint
   displayName: "Lint"
   workingDirectory: webdoc
-  continueOnError: true
 
 - script: |
     rush unit-test
