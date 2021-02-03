@@ -406,7 +406,7 @@ function resolveRootObject(expression: MemberExpression): string {
 
 // Used to get default value
 // TODO: Resolve a lot more expressions
-function resolveExpression(expression: BabelNodeExpression): string | undefined {
+function resolveExpression(expression: BabelNodeExpression): string | void {
   if (isLiteral(expression)) {
     if (isStringLiteral(expression)) {
       return `"${expression.value}"`;
@@ -415,7 +415,7 @@ function resolveExpression(expression: BabelNodeExpression): string | undefined 
     }
   }
   if (isUnaryExpression(expression)) {
-    return `-${resolveExpression(expression.argument)}`;
+    return `-${resolveExpression(expression.argument) || ""}`;
   }
 }
 
