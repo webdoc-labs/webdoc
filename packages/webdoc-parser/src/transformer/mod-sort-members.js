@@ -60,12 +60,15 @@ export default function sort(rootDoc: Doc): void {
   }
 
   // The doc-tree is sorted by source already
-  if (!sortBasis || sortBasis.startsWith("source")) {
+  if (!sortBasis ||
+      (typeof sortBasis === "string" && sortBasis.startsWith("source")) ||
+      (Array.isArray(sortBasis) && sortBasis[0] === "source")) {
     return;
   }
 
   // Extract the doc properties used for sorting
-  const props = sortBasis.split(",").map((prop) => prop.trim());
+  const props = Array.isArray(sortBasis) ?
+    sortBasis : sortBasis.split(",").map((prop) => prop.trim());
 
   // Ensure all props are supported
   props.forEach((prop) => {
