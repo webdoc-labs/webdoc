@@ -1,8 +1,10 @@
 # @webdoc/cli
 
-This is the CLI program for webdoc.
+The CLI for [webdoc](https://github.com/webdoc-labs/webdoc/).
 
 ## Installation :package:
+
+This package shouldn't be a production dependency for most end-users.
 
 ```bash
 npm install --save-dev @webdoc/cli
