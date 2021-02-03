@@ -45,3 +45,21 @@ webdoc determines the list of source files as follows:
 2. Paths matching atleast one `source.includePattern` are kept (skipped if no include pattern is provided).
 3. Paths matching atleast one `source.excludePattern` are filtered out.
 4. All paths that equal or are inside a path in `source.exclude` are filtered out.
+
+#### docs
+
+The `docs` object has options to configure the generation of the document tree.
+
+```json
+{
+  "docs": {
+    "sort": ["type", "scope", "access", "name"]
+  }
+}
+```
+
+* `docs.sort`: The characteristics of documented symbols which are used for sorting them, in order of decreasing priority. The valid values are:
+  * `"type"`: Order by type as follows: namespaces, classes, enumerations, type definitions, properties, methods, events.
+  * `"scope"`: Order by scope as follows: static, instance, inner.
+  * `"access"`: Order by access as follows: public, protected, private.
+  * `"name"`: Order alphabetically by the simple-name.
