@@ -23,7 +23,7 @@
   },
   "scripts": {
     "unit-test": "",
-    "build": "webdoc --tutorials ./tutorials --site-root example-documentation --site-domain https://webdoc-labs.github.io/",
+    "build": "webdoc --tutorials ./tutorials --site-root example-documentation --site-domain https://webdoc-labs.github.io",
     "build-next": "cd .. && webdoc && cd example",
     "build-pixi-api": "cd ../../pixi-api && webdoc --site-root docs && cd ../webdoc/example",
     "build-pixi-api-prod": "cd ../../pixi-api && webdoc --site-root pixi-api && cd ../webdoc/example",

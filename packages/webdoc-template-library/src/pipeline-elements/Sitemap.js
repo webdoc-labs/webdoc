@@ -23,6 +23,10 @@ export class Sitemap implements TemplatePipelineElement<SitemapData> {
     this.dir = dir;
     this.domain = domain;
     this.root = root;
+
+    if (this.domain.charAt(this.domain.length - 1) !== "/") {
+      this.domain += "/";
+    }
   }
 
   run(input: string, pipelineData: SitemapData = {}) {
