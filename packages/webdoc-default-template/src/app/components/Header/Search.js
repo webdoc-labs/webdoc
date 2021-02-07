@@ -10,12 +10,15 @@ export default function Search({
   React.useEffect(
     () => {
       if (!ref.current || enabled.current) {
+        console.log("Input not found for search");
         return;
       }
       if (integration.provider === "algolia") {
         if (!window.docsearch) {
           throw new Error("docsearch should be in global scope");
         }
+
+        console.log("Initializing search");
 
         window.docsearch({
           apiKey: integration.apiKey,

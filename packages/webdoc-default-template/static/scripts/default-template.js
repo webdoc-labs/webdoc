@@ -9600,6 +9600,7 @@ function Search(_ref) {
   var enabled = external_React_default.a.useRef(false);
   external_React_default.a.useEffect(function () {
     if (!ref.current || enabled.current) {
+      console.log("Input not found for search");
       return;
     }
 
@@ -9608,6 +9609,7 @@ function Search(_ref) {
         throw new Error("docsearch should be in global scope");
       }
 
+      console.log("Initializing search");
       window.docsearch({
         apiKey: integration.apiKey,
         appId: integration.appId,
