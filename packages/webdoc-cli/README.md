@@ -14,6 +14,8 @@ npm install --save-dev @webdoc/cli
 
 ### Command-line arguments
 
+* `--site-domain <path>`: (optional) The domain of the website where you'll publish the documentation is used to
+generate the `sitemap.xml`. This is useful if you want to integrate with [Algolia and use its crawler](https://www.algolia.com/products/crawler/). You must include the protocol for this to work currently, e.g. `http://pixijs.webdoclabs.com`.
 * `--site-root <path>`: If using absolute links in a template, this will set the basepath. The basepath should the directory in which the documentation is being stored relative to where the server is running. The site root is "/" by default - which means that you'll need to serve the documentation directory as top-level. Note that @webdoc/default-template uses absolute links.
 * `-c <config-path>`: This sets the path of the configuration file webdoc uses.
 

@@ -31,6 +31,7 @@ type ConfigSchema = {
     template?: string,
   },
   template: {
+    siteDomain?: string,
     siteRoot: string,
     mainPage?: {
       title?: string

@@ -94,6 +94,8 @@ export class TemplateTagsResolver implements TemplatePipelineElement<{}> {
       linkClass: this.linkClass,
     });
   }
+
+  close() {}
 }
 
 // Helper function to check if link content is just a URL

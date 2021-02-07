@@ -26,6 +26,11 @@ export interface TemplatePipelineElement<T> {
    * Clones the element, less any pipeline-related state.
    */
   clone(): TemplatePipelineElement<T>;
+
+  /**
+   * Flush and close the pipeline's state.
+   */
+  close(): void;
 }
 
 /**
@@ -66,6 +71,15 @@ export class TemplatePipeline {
     }
 
     return output;
+  }
+
+  /**
+   * Close the template pipeline. Pipes can flush files at this stage.
+   */
+  close() {
+    for (const pe of this.elements) {
+      pe.close();
+    }
   }
 
   /**

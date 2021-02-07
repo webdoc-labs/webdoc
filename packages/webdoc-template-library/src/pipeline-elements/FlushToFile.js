@@ -55,4 +55,6 @@ export class FlushToFile implements TemplatePipelineElement<FlushData> {
       skipNullFile: this.skipNullFile,
     });
   }
+
+  close() {}
 }

@@ -66,6 +66,9 @@ async function main(argv: yargs.Argv) {
   if (argv.siteRoot) {
     config.template.siteRoot = argv.siteRoot;
   }
+  if (argv.siteDomain) {
+    config.template.siteDomain = argv.siteDomain;
+  }
   if (config.template.siteRoot[0] === "/") {
     config.template.siteRoot = config.template.siteRoot.slice(1);
   }
@@ -137,7 +140,11 @@ async function main(argv: yargs.Argv) {
   };
 
   if (template.publish && typeof template.publish === "function") {
-    template.publish(publishOptions);
+    const resolve = template.publish(publishOptions);
+
+    if (resolve) {
+      await resolve;
+    }
   } else {
     console.error("[Config]: ", `${getTemplate(config)} not found.`);
   }
@@ -146,7 +153,9 @@ async function main(argv: yargs.Argv) {
 }
 
 const argv = yargs.scriptName("@webdoc/cli")
-  .usage("$0 -c <configFile> -u <tutorialDir> --verbose --site-root <siteRoot>")
+  .usage("$0 -c <configFile> -u <tutorialDir> --verbose " +
+    "--site-root <siteRoot> " +
+    "--site-domain <siteDomain>")
   .default("config", path.join(process.cwd(), "webdoc.conf.json"), "webdoc config file")
   .alias("c", "config")
   .alias("u", "tutorials")

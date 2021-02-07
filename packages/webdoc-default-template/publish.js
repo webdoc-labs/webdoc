@@ -7,6 +7,7 @@ const {traverse} = require("@webdoc/model");
 const {
   FlushToFile,
   RelationsPlugin,
+  Sitemap,
   TemplateRenderer,
   TemplatePipeline,
   TemplateTagsResolver,
@@ -45,7 +46,7 @@ const PRETTIFIER_SCRIPT_FILES = [
 
 let idToDoc/*: Map<string, Doc> */;
 
-exports.publish = (options /*: PublishOptions */) => {
+exports.publish = async function publish(options /*: PublishOptions */) {
   const config = options.config;
 
   linker.siteRoot = config.template.siteRoot;
@@ -65,9 +66,17 @@ exports.publish = (options /*: PublishOptions */) => {
     .installPlugin("signature", signaturePlugin)
     .installPlugin("categoryFilter", categoryFilterPlugin)
     .installPlugin("relations", RelationsPlugin);
-  const pipeline = new TemplatePipeline(renderer)
-    .pipe(new TemplateTagsResolver())
-    .pipe(new FlushToFile({skipNullFile: false}));
+
+  const pipeline = new TemplatePipeline(renderer).pipe(new TemplateTagsResolver());
+
+  if (config.template.siteDomain) {
+    pipeline.pipe(new Sitemap(
+      outDir,
+      config.template.siteDomain,
+      config.template.siteRoot));
+  }
+
+  pipeline.pipe(new FlushToFile({skipNullFile: false}));
 
   renderer.getPlugin("relations").buildRelations();
 
@@ -87,6 +96,8 @@ exports.publish = (options /*: PublishOptions */) => {
   outMainPage(path.join(outDir, indexRelative), pipeline, options.config);
   outIndexes(outDir, pipeline, options.config, crawlData.index);
   outReference(outDir, pipeline, options.config, docTree);
+
+  pipeline.close();
 };
 
 // Copy the contents of ./static to the output directory
