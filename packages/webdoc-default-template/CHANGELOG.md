@@ -1,6 +1,13 @@
 # Change Log - @webdoc/default-template
 
-This log was last generated on Tue, 02 Feb 2021 04:00:07 GMT and should not be manually modified.
+This log was last generated on Sun, 07 Feb 2021 20:20:23 GMT and should not be manually modified.
+
+## 1.2.0
+Sun, 07 Feb 2021 20:20:23 GMT
+
+### Updates
+
+- Add global search (Algolia integration) and touchups for customization. Add support for configuring meta tags.
 
 ## 1.1.6
 Tue, 02 Feb 2021 04:00:07 GMT
