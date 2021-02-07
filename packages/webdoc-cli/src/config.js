@@ -31,11 +31,13 @@ type ConfigSchema = {
     template?: string,
   },
   template: {
+    applicationName: string,
     siteDomain?: string,
     siteRoot: string,
     mainPage?: {
       title?: string
     },
+    meta: any,
     default: {
       includeData?: true
     },
@@ -74,10 +76,12 @@ const defaultConfig: ConfigSchema = {
     template: "@webdoc/default-template",
   },
   template: {
+    applicationName: "{ <i>webdoc</i> }",
     siteRoot: "",
     mainPage: {
       title: "Main Page",
     },
+    meta: {},
     default: {
       includeDate: true,
     },

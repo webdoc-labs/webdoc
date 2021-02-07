@@ -86,6 +86,10 @@ export default function sort(rootDoc: Doc): void {
       return;
     }
 
+    if (doc.type === "RootDoc") {
+      doc.packages.sort(comparator);
+    }
+
     doc.members.sort(comparator);
   });
 }

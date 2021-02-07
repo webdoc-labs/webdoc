@@ -7037,6 +7037,17 @@ var IconButton_IconButton = /*#__PURE__*/external_React_["forwardRef"](function 
 var Menu = __webpack_require__(42);
 var Menu_default = /*#__PURE__*/__webpack_require__.n(Menu);
 
+// CONCATENATED MODULE: ./src/app/resource.js
+var appData = window.appData;
+function getResourceURI(path) {
+  var root = window.appData.siteRoot;
+
+  if (!path.startsWith("/")) {
+    path = "/".concat(path);
+  }
+
+  return root + path;
+}
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/makeStyles/makeStyles.js + 22 modules
 var makeStyles = __webpack_require__(85);
 
@@ -7057,6 +7068,7 @@ function makeStyles_makeStyles(stylesOrCreator) {
 
 /* harmony default export */ var styles_makeStyles = (makeStyles_makeStyles);
 // CONCATENATED MODULE: ./src/app/components/Explorer/ExplorerHeader.js
+
 
 
 
@@ -7081,8 +7093,11 @@ function ExplorerHeader(_ref) {
     },
     onClick: toggleOpen
   }, React.createElement(Menu_default.a, null)), React.createElement("span", {
-    className: "explorer__header__title"
-  }, "{ ", React.createElement("i", null, "webdoc"), " }"));
+    className: "explorer__header__title",
+    dangerouslySetInnerHTML: {
+      __html: appData.applicationName
+    }
+  }));
 }
 // CONCATENATED MODULE: ./src/app/components/Explorer/useExplorerStyles.js
 function useExplorerStyles_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
@@ -9580,17 +9595,6 @@ function Footer() {
 // CONCATENATED MODULE: ./src/app/components/Footer/index.js
 
 /* harmony default export */ var components_Footer = (Footer);
-// CONCATENATED MODULE: ./src/app/resource.js
-var appData = window.appData;
-function getResourceURI(path) {
-  var root = window.appData.siteRoot;
-
-  if (!path.startsWith("/")) {
-    path = "/".concat(path);
-  }
-
-  return root + path;
-}
 // CONCATENATED MODULE: ./src/app/components/Header/Search.js
 
 
@@ -9683,9 +9687,7 @@ function Search(_ref) {
     className: "header__contents"
   }, React.createElement("a", {
     className: "header__link header__link__current"
-  }, "API Reference"), React.createElement("a", {
-    className: "header__link"
-  }, "Guides"), appData.integrations.search && React.createElement(Search, {
+  }, "API Reference"), appData.integrations.search && React.createElement(Search, {
     integration: appData.integrations.search
   })));
 }));

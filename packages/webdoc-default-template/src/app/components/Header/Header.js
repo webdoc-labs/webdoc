@@ -20,7 +20,7 @@ export default connect(({explorerOpen}) => ({
         />}
       <div className="header__contents">
         <a className="header__link header__link__current">API Reference</a>
-        <a className="header__link">Guides</a>
+        {/* <a className="header__link">Guides</a> */ /* TODO: Add guides */}
         {appData.integrations.search && <Search integration={appData.integrations.search} />}
       </div>
     </div>

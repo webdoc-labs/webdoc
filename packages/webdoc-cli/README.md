@@ -90,6 +90,14 @@ The `template` object is used by the site template.
 
 ```json
 {
+  "applicationName": "{ <i>webdoc</i> }",
+  "meta": {
+    "og:title": "webdoc",
+    "og:description": "webdoc API documentation",
+    "og:image": "https://camo.githubusercontent.com/1427d2fdabd8790c93ca05cbfb653e2c6a8ab5694e671a04aa3af3fcef313539/68747470733a2f2f692e6962622e636f2f5a4850395044382f4c6f676f2d4672616d652d352e706e67",
+    "og:url": "{{url}}",
+    "og:site_name": "webdoclabs.com"
+  },
   "repository": "http://github.com/webdoc-labs/webdoc",
   "integrations": {
     "search": {
@@ -102,6 +110,9 @@ The `template` object is used by the site template.
 }
 ```
 
+* `template.applicationName`: The name of the documented software. This is usually used to fill the app bar and tab title.
+* `template.meta`: (optional) This can be used to define the `<meta>` key-value tags. The `{{url}}` variable can be used
+  to put in the site URL for each page (you have to provide the `siteDomain` and `siteRoot`).
 * `template.repository`: (optional) This can be used to link documents to their location in the source code. The only supported repository is GitHub.
 * `template.integrations`: (optional) Integrations with 3rd party solutions in your template. This object is dependent on which template you're using. For @webdoc/default-template, the following integrations are available:
   * `search`: This is used as the backend for the global site search. You'll need to create an Algolia account yourself and provide

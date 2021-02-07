@@ -177,7 +177,7 @@ async function outReadme(
   pipeline.render("pages/main-page.tmpl", {
     docs: [],
     readme,
-    title: "Test Template",
+    title: "Documentation",
     env: config,
   }, {outputFile});
 }
