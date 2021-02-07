@@ -22,6 +22,7 @@
   height: $header-height;
   top: 0;
   width: 100%;
+  z-index: 1;
 
   &__container {
     align-items: center;
@@ -40,7 +41,7 @@
     justify-content: flex-end;
     height: 100%;
 
-    * {
+    > * {
       margin-right: 42px;
     }
   }

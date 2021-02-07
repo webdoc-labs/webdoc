@@ -7037,6 +7037,17 @@ var IconButton_IconButton = /*#__PURE__*/external_React_["forwardRef"](function 
 var Menu = __webpack_require__(42);
 var Menu_default = /*#__PURE__*/__webpack_require__.n(Menu);
 
+// CONCATENATED MODULE: ./src/app/resource.js
+var appData = window.appData;
+function getResourceURI(path) {
+  var root = window.appData.siteRoot;
+
+  if (!path.startsWith("/")) {
+    path = "/".concat(path);
+  }
+
+  return root + path;
+}
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/makeStyles/makeStyles.js + 22 modules
 var makeStyles = __webpack_require__(85);
 
@@ -7057,6 +7068,7 @@ function makeStyles_makeStyles(stylesOrCreator) {
 
 /* harmony default export */ var styles_makeStyles = (makeStyles_makeStyles);
 // CONCATENATED MODULE: ./src/app/components/Explorer/ExplorerHeader.js
+
 
 
 
@@ -7081,8 +7093,11 @@ function ExplorerHeader(_ref) {
     },
     onClick: toggleOpen
   }, React.createElement(Menu_default.a, null)), React.createElement("span", {
-    className: "explorer__header__title"
-  }, "{ ", React.createElement("i", null, "webdoc"), " }"));
+    className: "explorer__header__title",
+    dangerouslySetInnerHTML: {
+      __html: appData.applicationName
+    }
+  }));
 }
 // CONCATENATED MODULE: ./src/app/components/Explorer/useExplorerStyles.js
 function useExplorerStyles_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
@@ -8668,11 +8683,6 @@ function ExplorerItem(props) {
   var classes = i > 0 ? classesCategory : classesItem;
   var nodeId = props.data.$nodeId;
   var primary = props.data.page && isSamePage(props.data);
-
-  if (primary) {
-    console.log(props.data);
-  }
-
   var toggle = external_React_default.a.useCallback(function () {
     return props.toggle(nodeId);
   }, [nodeId]);
@@ -9585,7 +9595,70 @@ function Footer() {
 // CONCATENATED MODULE: ./src/app/components/Footer/index.js
 
 /* harmony default export */ var components_Footer = (Footer);
+// CONCATENATED MODULE: ./src/app/components/Header/Search.js
+
+
+function Search(_ref) {
+  var integration = _ref.integration;
+  var ref = external_React_default.a.useRef(null);
+  var enabled = external_React_default.a.useRef(false);
+  external_React_default.a.useEffect(function () {
+    if (!ref.current || enabled.current) {
+      console.log("Input not found for search");
+      return;
+    }
+
+    if (integration.provider === "algolia") {
+      if (!window.docsearch) {
+        throw new Error("docsearch should be in global scope");
+      }
+
+      console.log("Initializing search");
+      window.docsearch({
+        apiKey: integration.apiKey,
+        appId: integration.appId,
+        indexName: integration.indexName,
+        inputSelector: "#search",
+        debug: false
+      });
+      enabled.current = true;
+    }
+  }, [ref.current]);
+  return external_React_default.a.createElement("div", {
+    ref: ref,
+    className: "search-container",
+    style: {
+      display: "grid"
+    }
+  }, external_React_default.a.createElement("input", {
+    id: "search",
+    placeholder: "Search",
+    style: {
+      backgroundColor: "#FBFBFB",
+      border: "1px solid rgba(0, 0, 0, .04)",
+      borderRadius: 4,
+      color: "rgba(0, 0, 0, 0.34)",
+      display: "flex",
+      fontSize: "12px",
+      height: "32px",
+      paddingLeft: "18px",
+      width: "240px"
+    }
+  }), external_React_default.a.createElement("img", {
+    src: getResourceURI("/icons/search.svg"),
+    style: {
+      alignSelf: "center",
+      justifySelf: "end",
+      marginTop: 2,
+      marginRight: 9,
+      pointerEvents: "none",
+      zIndex: 1
+    }
+  }));
+}
 // CONCATENATED MODULE: ./src/app/components/Header/Header.js
+
+
 
 
 
@@ -9614,9 +9687,9 @@ function Footer() {
     className: "header__contents"
   }, React.createElement("a", {
     className: "header__link header__link__current"
-  }, "API Reference"), React.createElement("a", {
-    className: "header__link"
-  }, "Guides")));
+  }, "API Reference"), appData.integrations.search && React.createElement(Search, {
+    integration: appData.integrations.search
+  })));
 }));
 // CONCATENATED MODULE: ./src/app/components/Header/index.js
 

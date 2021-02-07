@@ -37,6 +37,8 @@ export class Sitemap implements TemplatePipelineElement<SitemapData> {
     if (pipelineData.outputFile) {
       this.urls.push(pipelineData.outputFile);
     }
+
+    return input;
   }
 
   close() {
