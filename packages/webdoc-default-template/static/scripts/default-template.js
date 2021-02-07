@@ -8668,11 +8668,6 @@ function ExplorerItem(props) {
   var classes = i > 0 ? classesCategory : classesItem;
   var nodeId = props.data.$nodeId;
   var primary = props.data.page && isSamePage(props.data);
-
-  if (primary) {
-    console.log(props.data);
-  }
-
   var toggle = external_React_default.a.useCallback(function () {
     return props.toggle(nodeId);
   }, [nodeId]);
@@ -9585,7 +9580,79 @@ function Footer() {
 // CONCATENATED MODULE: ./src/app/components/Footer/index.js
 
 /* harmony default export */ var components_Footer = (Footer);
+// CONCATENATED MODULE: ./src/app/resource.js
+var appData = window.appData;
+function getResourceURI(path) {
+  var root = window.appData.siteRoot;
+
+  if (!path.startsWith("/")) {
+    path = "/".concat(path);
+  }
+
+  return root + path;
+}
+// CONCATENATED MODULE: ./src/app/components/Header/Search.js
+
+
+function Search(_ref) {
+  var integration = _ref.integration;
+  var ref = external_React_default.a.useRef(null);
+  var enabled = external_React_default.a.useRef(false);
+  external_React_default.a.useEffect(function () {
+    if (!ref.current || enabled.current) {
+      return;
+    }
+
+    if (integration.provider === "algolia") {
+      if (!window.docsearch) {
+        throw new Error("docsearch should be in global scope");
+      }
+
+      window.docsearch({
+        apiKey: integration.apiKey,
+        appId: integration.appId,
+        indexName: integration.indexName,
+        inputSelector: "#search",
+        debug: false
+      });
+      enabled.current = true;
+    }
+  }, [ref.current]);
+  return external_React_default.a.createElement("div", {
+    ref: ref,
+    className: "search-container",
+    style: {
+      display: "grid"
+    }
+  }, external_React_default.a.createElement("input", {
+    id: "search",
+    placeholder: "Search",
+    style: {
+      backgroundColor: "#FBFBFB",
+      border: "1px solid rgba(0, 0, 0, .04)",
+      borderRadius: 4,
+      color: "rgba(0, 0, 0, 0.34)",
+      display: "flex",
+      fontSize: "12px",
+      height: "32px",
+      paddingLeft: "18px",
+      width: "240px"
+    }
+  }), external_React_default.a.createElement("img", {
+    src: getResourceURI("/icons/search.svg"),
+    style: {
+      alignSelf: "center",
+      justifySelf: "end",
+      marginTop: 2,
+      marginRight: 9,
+      pointerEvents: "none",
+      zIndex: 1
+    }
+  }));
+}
 // CONCATENATED MODULE: ./src/app/components/Header/Header.js
+
+
 
 
 
@@ -9616,7 +9683,9 @@ function Footer() {
     className: "header__link header__link__current"
   }, "API Reference"), React.createElement("a", {
     className: "header__link"
-  }, "Guides")));
+  }, "Guides"), appData.integrations.search && React.createElement(Search, {
+    integration: appData.integrations.search
+  })));
 }));
 // CONCATENATED MODULE: ./src/app/components/Header/index.js
 

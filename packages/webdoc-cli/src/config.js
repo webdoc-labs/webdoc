@@ -43,7 +43,8 @@ type ConfigSchema = {
       mode?: string
     },
     repository?: string,
-    outputSourceFiles?: boolean
+    outputSourceFiles?: boolean,
+    integrations: any,
   },
   version: {
     number?: 1
@@ -85,6 +86,7 @@ const defaultConfig: ConfigSchema = {
     },
     repository: undefined, // ex. GitHub repo holding source files to link source files
     // should contain branch - https://github.com/webdoc-js/webdoc/blob/master/
+    integrations: {},
   },
   version: {
     number: 1,

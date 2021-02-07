@@ -65,3 +65,44 @@ The `docs` object has options to configure the generation of the document tree.
   * `"scope"`: Order by scope as follows: static, instance, inner.
   * `"access"`: Order by access as follows: public, protected, private.
   * `"name"`: Order alphabetically by the simple-name.
+
+### opts
+
+The `opts` object has additional CLI options.
+
+```json
+{
+  "opts": {
+    "destination": "docs",
+    "export": "api.json",
+    "template": "@webdoc/default-template"
+  }
+}
+```
+
+* `opts.destination`: (optional) The destination path for the generated documentation files.
+* `opts.export`: (optional) The file where the API schema is exported.
+* `opts.template`: (optional) The template package to use. This defaults to "@webdoc/default-template".
+
+#### template
+
+The `template` object is used by the site template.
+
+```json
+{
+  "repository": "http://github.com/webdoc-labs/webdoc",
+  "integrations": {
+    "search": {
+      "provider": "algolia",
+      "apiKey": "kadlfj232983lkqwem",
+      "indexName": "webdoc-example",
+      "appId": "349o39841;akdsfu"
+    }
+  }
+}
+```
+
+* `template.repository`: (optional) This can be used to link documents to their location in the source code. The only supported repository is GitHub.
+* `template.integrations`: (optional) Integrations with 3rd party solutions in your template. This object is dependent on which template you're using. For @webdoc/default-template, the following integrations are available:
+  * `search`: This is used as the backend for the global site search. You'll need to create an Algolia account yourself and provide
+    the `apiKey`, `appId`, `indexName`. (The only supported provider is "algolia" right now)

@@ -224,7 +224,6 @@ function outReference(
     }
 
     page = linker.processInternalURI(page, {outputRelative: true});
-
     let doc;
 
     try {

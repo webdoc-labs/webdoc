@@ -1,0 +1,59 @@
+.search-container > *:first-child > .ds-dropdown-menu {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 2px 24px 24px 2px rgba(0, 0, 0, 0.16);
+  display: block;
+  max-height: 75vh;
+  overflow-y: auto;
+  padding: 16px 18px;
+  position: fixed;
+  top: 106px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.ds-suggestion {
+  background-color: #F6F6F6;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  border-radius: 4px;
+  margin-bottom: 12px;
+  padding: 6px 16px;
+}
+
+/* Main dropdown wrapper */
+.algolia-autocomplete .ds-dropdown-menu {
+  width: 500px;
+}
+
+/* Main category (eg. Getting Started) */
+.algolia-autocomplete .algolia-docsearch-suggestion--category-header {
+  color: rgba(0, 0, 0, 0.67);;
+  font: 14px Arial, sans serif;
+  margin-bottom: 7px;
+}
+
+/* Category (eg. Downloads) */
+.algolia-autocomplete .algolia-docsearch-suggestion--subcategory-column {
+  color: black;
+}
+
+/* Title (eg. Bootstrap CDN) */
+.algolia-autocomplete .algolia-docsearch-suggestion--title {
+  color: black;
+}
+
+.algolia-autocomplete .algolia-docsearch-suggestion--wrapper {
+  color: black;
+  font: 9px Arial;
+  line-height: 14px;
+}
+
+/* Description description (eg. Bootstrap currently works...) */
+.algolia-autocomplete .algolia-docsearch-suggestion--text {
+  font-size: 9px;
+}
+
+/* Highlighted text */
+.algolia-autocomplete .algolia-docsearch-suggestion--highlight {
+  color: #0066CD;
+}

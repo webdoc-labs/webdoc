@@ -32,10 +32,6 @@ export default function ExplorerItem(props) {
   const nodeId = props.data.$nodeId;
   const primary = props.data.page && isSamePage(props.data);
 
-  if (primary) {
-    console.log(props.data);
-  }
-
   const toggle = React.useCallback(
     () => props.toggle(nodeId),
     [nodeId],

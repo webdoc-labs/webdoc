@@ -3,8 +3,10 @@
  * Global layout render component.
  */
 const rootData = obj;
+const config = rootData.env.template;
 const siteRoot = this.getPlugin("linker").siteRoot;
 const sitePrefix = siteRoot ? siteRoot + "/" : siteRoot;
+const integrations = JSON.stringify(config.integrations);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,13 +19,18 @@ const sitePrefix = siteRoot ? siteRoot + "/" : siteRoot;
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono:300,400,500,700&display=swap" />
     <link type="text/css" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/googlecode.min.css">
 
-    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
     <script>
       window.appData = {
         siteRoot: "<?js= siteRoot ?>",
+        integrations: JSON.parse(`<?js= integrations ?>`),
       };
     </script>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <?js if (config.integrations.search && config.integrations.search.provider === "algolia") { ?>
+      <script crossorigin src="https://cdn.jsdelivr.net/npm/docsearch.js@2.6.3/dist/cdn/docsearch.min.js"></script>
+      <link type="text/css" rel="stylesheet" href="/<?js= sitePrefix ?>styles/algolia.css" />
+    <?js } ?>
     <script src="/<?js= sitePrefix ?>scripts/default-template.js"></script>
   </head>
   <body class="root">

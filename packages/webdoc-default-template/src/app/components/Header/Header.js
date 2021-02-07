@@ -1,4 +1,6 @@
 import {ExplorerHeader} from "../Explorer";
+import Search from "./Search";
+import {appData} from "../../resource";
 import {connect} from "react-redux";
 import store from "../../store";
 
@@ -19,6 +21,7 @@ export default connect(({explorerOpen}) => ({
       <div className="header__contents">
         <a className="header__link header__link__current">API Reference</a>
         <a className="header__link">Guides</a>
+        {appData.integrations.search && <Search integration={appData.integrations.search} />}
       </div>
     </div>
   );
