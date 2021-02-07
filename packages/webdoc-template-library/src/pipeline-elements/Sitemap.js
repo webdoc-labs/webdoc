@@ -1,7 +1,7 @@
 // @flow
 
 import * as fse from "fs-extra";
-import type {TemplatePipelineElement} from "../TemplatePipeline";
+import type {TemplatePipeline, TemplatePipelineElement} from "../TemplatePipeline";
 import path from "path";
 
 type SitemapData = {
@@ -29,6 +29,10 @@ export class Sitemap implements TemplatePipelineElement<SitemapData> {
     }
   }
 
+  attachTo(pipeline: TemplatePipeline) {
+    // noop
+  }
+
   run(input: string, pipelineData: SitemapData = {}) {
     if (pipelineData.outputFile) {
       this.urls.push(pipelineData.outputFile);
@@ -54,7 +58,7 @@ ${this.urls.map((url) =>
   }
 
   clone() {
-    const clone = new Sitemap();
+    const clone = new Sitemap(this.dir, this.domain, this.root);
 
     clone.urls = [...this.urls];
 
