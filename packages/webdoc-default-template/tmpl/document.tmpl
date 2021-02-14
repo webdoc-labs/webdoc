@@ -27,6 +27,8 @@ docList.forEach((doc) => {
     <div class="document__brief"><?js= doc.brief ?></div>
     <div class="document__description"><?js= doc.description ?></div>
 
+    <?js= this.partial("components/member/see.tmpl", doc.see) ?>
+
     <?js if (doc.type === "ClassDoc") { ?>
       <?js= this.partial("components/members.tmpl", {
         title: "Constructor",

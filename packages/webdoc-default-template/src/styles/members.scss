@@ -51,12 +51,20 @@
     }
   }
 
-  &__brief, &__description, > .table-wrapper {
+  &__brief, &__description, > .table-wrapper, &__see {
     margin-left: 8px;
   }
 
   & > .signature {
     margin-bottom: 8px;
+  }
+
+  &__see > span:first-child {
+    font-weight: bold;
+  }
+
+  &__see > ul {
+    margin-top: 0;
   }
 }
 

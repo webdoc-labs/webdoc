@@ -30,4 +30,5 @@ const linkSvg = this.getPlugin("linker").getResourceURI("icons/link.svg");
   <?js if (doc.returns && doc.returns.length) { ?>
     <?js= this.partial("components/member/returns.tmpl", doc.returns) ?>
   <?js } ?>
+  <?js= this.partial("components/member/see.tmpl", doc.see) ?>
 </div>
