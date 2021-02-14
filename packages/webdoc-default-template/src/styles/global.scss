@@ -79,6 +79,15 @@ a {
       padding-left: 67px;
       padding-right: 83px;
       width: 0;
+
+      @media only screen and (max-width: 1025px) {
+        padding-left: 34px;
+        padding-right: 42px;
+      }
+      @media only screen and (max-width: 800px) {
+        padding-left: 17px;
+        padding-right: 21px;
+      }
     }
     &-content > *:first-child {
       margin-top: 24px;
