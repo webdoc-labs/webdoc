@@ -28,6 +28,7 @@
       access: "protected",
       type: "MethodDoc"
     });
+    const events = this.plugins.categoryFilter(doc, { type: "EventDoc" });
   ?>
 <hr class="page-r-divider" />
 <nav class="page-members-explorer">
@@ -51,5 +52,9 @@
   <?js= this.partial("components/members-explorer/category.tmpl", {
     title: "Protected Methods",
     members: protectedMethods
+  }) ?>
+  <?js= this.partial("components/members-explorer/category.tmpl", {
+    title: "Events",
+    members: events,
   }) ?>
 </nav>

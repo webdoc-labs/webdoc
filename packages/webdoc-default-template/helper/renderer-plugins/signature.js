@@ -19,7 +19,8 @@ exports.signaturePlugin = {
       signature += `${doc.access} `;
     }
 
-    if (doc.scope && doc.scope !== "instance") {
+    if (doc.scope && doc.scope !== "instance" &&
+      (doc.type === "PropertyDoc" || doc.type === "MethodDoc")) {
       signature += `${doc.scope} `;
     }
 

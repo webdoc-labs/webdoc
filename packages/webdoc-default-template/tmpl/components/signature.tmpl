@@ -3,5 +3,9 @@
  * Documentation object signature render component.
  */
 const doc = obj;
+
+if (doc.type === "EventDoc" && !doc.dataType) {
+  return;
+}
 ?>
 <pre class="signature__container"><code class="signature"><?js= this.plugins.signature.generateSignature(doc) ?></code></pre>

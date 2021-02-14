@@ -71,6 +71,13 @@ docList.forEach((doc) => {
         type: ["MethodDoc", "FunctionDoc"]
       }
     }) ?>
+    <?js= this.partial("components/members.tmpl", {
+      title: "Events",
+      parent: doc,
+      constraints: {
+        type: "EventDoc"
+      }
+    }) ?>
   </div>
   <footer class="footer" id="footer-mount-point"></footer>
 </div>
