@@ -79,7 +79,7 @@ function buildExplorerHierarchy(rootDoc /*: RootDoc */, multiPackage = false) /*
         }
       }
 
-      if (typeof parent === "number") {
+      if (typeof parent === "number" && doc.access !== "private") {
         const node = {doc, children: {}};
 
         // ExplorerNode is added to the hiearchy below the parent at index i
