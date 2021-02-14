@@ -43,4 +43,8 @@
       background-color: rgba(0, 0, 0, 0.04);
     }
   }
+
+  @media only screen and (max-width: 800px) {
+    display: none;
+  }
 }

@@ -19,7 +19,8 @@ exports.signaturePlugin = {
       signature += `${doc.access} `;
     }
 
-    if (doc.scope && doc.scope !== "instance") {
+    if (doc.scope && doc.scope !== "instance" &&
+      (doc.type === "PropertyDoc" || doc.type === "MethodDoc")) {
       signature += `${doc.scope} `;
     }
 
@@ -74,7 +75,7 @@ exports.signaturePlugin = {
         }`;
       }
       if (doc.implements) {
-        signature += `\nimplements ${
+        signature += ` implements ${
           (doc.implements || [])
             .map((ifc) => linker.linkTo(ifc, undefined, {htmlSafe: false})).join(", ")
         }`;

@@ -7,6 +7,9 @@ const
   docList = obj.docs;
 
 docList.forEach((doc) => {
+  const titleMods = [
+    doc.deprecated ? "document__title_deprecated" : ""
+  ].join(" ");
 ?>
 <div class="page-content">
   <div class="document">
@@ -21,11 +24,25 @@ docList.forEach((doc) => {
       <?js } ?>
       <span><?js= doc.name ?></span>
     </div>
-    <h1 class="document__title"><?js= doc.path ?></h1>
+    <section class="document__title <?js= titleMods ?>">
+      <h1>
+        <?js= doc.path ?>
+      </h1>
+      <?js if (doc.deprecated) { ?>
+        <?js if (typeof doc.deprecated === "string") { ?>
+          <section>(deprecated: <?js= doc.deprecated ?>)</section>
+        <?js } else { ?>
+          <h1>&nbsp;(deprecated)</h1>
+        <?js } ?>
+      <?js } ?>
+    </section>
+
     <?js= this.partial("components/signature.tmpl", doc) ?>
 
     <div class="document__brief"><?js= doc.brief ?></div>
     <div class="document__description"><?js= doc.description ?></div>
+
+    <?js= this.partial("components/member/see.tmpl", doc.see) ?>
 
     <?js if (doc.type === "ClassDoc") { ?>
       <?js= this.partial("components/members.tmpl", {
@@ -69,6 +86,13 @@ docList.forEach((doc) => {
       constraints: {
         access: "protected",
         type: ["MethodDoc", "FunctionDoc"]
+      }
+    }) ?>
+    <?js= this.partial("components/members.tmpl", {
+      title: "Events",
+      parent: doc,
+      constraints: {
+        type: "EventDoc"
       }
     }) ?>
   </div>

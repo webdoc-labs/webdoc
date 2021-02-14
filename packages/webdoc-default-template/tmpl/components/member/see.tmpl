@@ -1,0 +1,23 @@
+<?js
+/**
+ * Renders list of see references.
+ */
+const see = obj;
+
+if (!see || !see.length) {
+  return;
+}
+?>
+
+<section class="member__see">
+  <span>See: </span>
+  <?js if (see.length > 1) { ?>
+    <ul>
+      <?js see.forEach((specificSee) => { ?>
+        <li><?js= this.linkTo(specificSee) ?></li>
+      <?js }) ?>
+    </ul>
+  <?js } else { ?>
+    <span><?js= this.linkTo(see[0]) ?></span>
+  <?js } ?>
+</section>

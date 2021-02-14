@@ -44,6 +44,19 @@
     > * {
       margin-right: 42px;
     }
+
+    > *:last-child {
+      @media only screen and (max-width: 1025px) {
+        margin-right: 0;
+      }
+    }
+
+    @media only screen and (max-width: 1025px) {
+      padding-right: 10.7vw;
+    }
+    @media only screen and (max-width: 768px) {
+      padding-right: 5.3vw;
+    }
   }
 
   &__link {
