@@ -7,6 +7,9 @@ const
   docList = obj.docs;
 
 docList.forEach((doc) => {
+  const titleMods = [
+    doc.deprecated ? "document__title_deprecated" : ""
+  ].join(" ");
 ?>
 <div class="page-content">
   <div class="document">
@@ -21,7 +24,19 @@ docList.forEach((doc) => {
       <?js } ?>
       <span><?js= doc.name ?></span>
     </div>
-    <h1 class="document__title"><?js= doc.path ?></h1>
+    <section class="document__title <?js= titleMods ?>">
+      <h1>
+        <?js= doc.path ?>
+      </h1>
+      <?js if (doc.deprecated) { ?>
+        <?js if (typeof doc.deprecated === "string") { ?>
+          <section>(deprecated: <?js= doc.deprecated ?>)</section>
+        <?js } else { ?>
+          <h1>&nbsp;(deprecated)</h1>
+        <?js } ?>
+      <?js } ?>
+    </section>
+
     <?js= this.partial("components/signature.tmpl", doc) ?>
 
     <div class="document__brief"><?js= doc.brief ?></div>

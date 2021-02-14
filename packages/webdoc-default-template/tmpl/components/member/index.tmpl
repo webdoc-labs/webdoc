@@ -4,10 +4,14 @@
  */
 const doc = obj;
 const linkSvg = this.getPlugin("linker").getResourceURI("icons/link.svg");
+
+const modifiers = [
+  doc.deprecated ? "member__title_deprecated" : ""
+].join(" ");
 ?>
 <div class="member" id="<?js= doc.name ?>">
   <?js if (doc.name !== "constructor") { ?>
-    <section class="member__title">
+    <section class="member__title <?js= modifiers ?>">
       <a href="<?js= this.getPlugin("linker").getURI(doc) ?>">
         <img
           src="<?js= linkSvg ?>"
@@ -15,10 +19,22 @@ const linkSvg = this.getPlugin("linker").getResourceURI("icons/link.svg");
           height="16px"
         />
       </a>
-      <span><?js= doc.name ?></span>
+      <span class="member__title_content">
+        <span><?js= doc.name ?></span>
+        <?js if (doc.deprecated === true) { ?>
+          (deprecated)
+        <?js } ?>
+      </span>
     </section>
   <?js } ?>
   <?js= this.partial("components/signature.tmpl", doc) ?>
+  <section class="member__tags">
+    <?js if (typeof doc.deprecated === "string") { ?>
+      <div class="member__tag member__tag_red">
+        <b>Deprecated:</b> <?js= doc.deprecated ?>
+      </div>
+    <?js } ?>
+  </section>
 
   <div class="member__brief"><?js= doc.brief ?></div>
   <div class="member__description"><?js= doc.description ?></div>

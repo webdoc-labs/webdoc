@@ -17,9 +17,24 @@
   }
 
   > .document__title {
-    font-size: 3em;
-    line-height: 1.4em;
     margin: 18px 0;
+
+    > h1 {
+      font-size: 3em;
+      line-height: 1.4em;
+      margin: 0;
+    }
+
+    &_deprecated {
+      > h1 {
+        display: inline-block;
+      }
+
+      > h1:first-child {
+        color: #666;
+        text-decoration: line-through;
+      }
+    }
   }
 
   > .document__brief, > .document__description {

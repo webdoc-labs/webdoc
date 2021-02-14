@@ -75,7 +75,7 @@ exports.signaturePlugin = {
         }`;
       }
       if (doc.implements) {
-        signature += `\nimplements ${
+        signature += ` implements ${
           (doc.implements || [])
             .map((ifc) => linker.linkTo(ifc, undefined, {htmlSafe: false})).join(", ")
         }`;
