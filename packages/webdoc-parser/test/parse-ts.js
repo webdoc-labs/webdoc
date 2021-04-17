@@ -1,20 +1,21 @@
-const {createPackageDoc} = require("@webdoc/model");
+
+const {createPackageDoc, findDoc} = require("@webdoc/model");
 const {parse} = require("../lib/parse");
 
 const expect = require("chai").expect;
 
-describe("@webdoc/parser.parser", function() {
+describe("@webdoc/parser.parse (Typescript)", function() {
   it("should infer access, default value, and type for fields", function() {
     const docs = parse([{
       content: `
-/** Example class */
-class Example {
-  /**
-   * Field description
-   */
-  protected readonly field: boolean = true;
-}
-`,
+        /** Example class */
+        class Example {
+          /**
+           * Field description
+           */
+          protected readonly field: boolean = true;
+        }
+      `,
       path: ".ts",
       package: createPackageDoc(),
     }]);
@@ -32,5 +33,26 @@ class Example {
     // TODO: Fix this. No space should be there (added/not-fixed b/c this was
     // in a PR for different issue)
     expect(fieldDoc.brief).to.equal(" Field description");
+  });
+
+  it("should infer access, returns for methods", function() {
+    const docs = parse([{
+      content: `
+        class Resource {
+          /** Method */
+          protected onPlay(): void {
+            this._playing = true;
+          }
+        }
+      `,
+      path: ".ts",
+      package: createPackageDoc(),
+    }]);
+
+    const methodDoc = findDoc("Resource.onPlay", docs);
+
+    expect(methodDoc.name).to.equal("onPlay");
+    expect(methodDoc.access).to.equal("protected");
+    expect(methodDoc.returns[0].dataType[0]).to.equal("void");
   });
 });
