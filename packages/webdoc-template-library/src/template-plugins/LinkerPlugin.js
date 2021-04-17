@@ -201,7 +201,10 @@ function LinkerPluginShell() {
      * @param {boolean}[options.htmlSafe=true]
      * @return {string} the HTML link, or the link text if the link is not available.
      */
-    linkTo(docPath: any, linkText: string = docPath, options: LinkOptions = {}) {
+    linkTo(docPath: any, linkText: string = docPath, options: LinkOptions | null = {}) {
+      if (!options) {
+        options = {};
+      }
       if (!docPath) {
         return "";
       }
