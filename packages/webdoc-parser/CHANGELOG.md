@@ -1,6 +1,13 @@
 # Change Log - @webdoc/parser
 
-This log was last generated on Sun, 07 Feb 2021 20:20:23 GMT and should not be manually modified.
+This log was last generated on Sat, 17 Apr 2021 23:54:20 GMT and should not be manually modified.
+
+## 1.2.1
+Sat, 17 Apr 2021 23:54:20 GMT
+
+### Updates
+
+- Fix interface property inference (#100), fix method access inference (#101), potential fix of LinkerPlugin.linkTo crashing with @pixi/webdoc-template (#103)
 
 ## 1.2.0
 Sun, 07 Feb 2021 20:20:23 GMT
