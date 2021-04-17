@@ -94,7 +94,7 @@ export default function extractSymbol(
       nodeSymbol.meta.abstract = true;
     }
 
-    nodeSymbol.meta.access = node.access;
+    nodeSymbol.meta.access = node.access || node.accessibility;
     nodeSymbol.meta.scope = node.static ? "static" : "instance";
     nodeSymbol.meta.type = "MethodDoc";
 
