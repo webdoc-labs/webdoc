@@ -10,7 +10,7 @@ import type {
 } from "@webdoc/types";
 import {nanoid} from "nanoid";
 
-const CANONICAL_SEPARATOR = /([.#~$])/;
+const CANONICAL_SEPARATOR = /([.#~$])/g;
 
 function updateScope(doc: Doc, scopeStack: string[], scopePath: string): void {
   if (scopePath) {
