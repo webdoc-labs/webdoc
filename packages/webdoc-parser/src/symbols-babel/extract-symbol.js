@@ -308,7 +308,8 @@ export default function extractSymbol(
       nodeSymbol.meta.returns = extractReturns(node);
       nodeSymbol.meta.type = "MethodDoc";
     } else if (isTSPropertySignature(node)) {
-      // TODO: dataType
+      nodeSymbol.meta.readonly = node.readonly;
+      nodeSymbol.meta.dataType = extractType(node);
       nodeSymbol.meta.type = "PropertyDoc";
     }
 
