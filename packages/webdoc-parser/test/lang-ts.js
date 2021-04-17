@@ -52,6 +52,22 @@ describe("@webdoc/parser.LanguageIntegration{@lang ts}", function() {
     expect(symbolInitProperty.meta.readonly).to.equal(true);
   });
 
+  it("should parse interfaces correctly", function() {
+    const symbolTree = buildSymbolTree(`
+      interface IModelSchema {
+        readonly schemaId: string;        
+        serialize(): any;
+      }
+    `, "*.ts");
+
+    const schemaId = findSymbol("IModelSchema.schemaId", symbolTree);
+    const serialize = findSymbol("IModelSchema.serialize", symbolTree);
+
+    expect(schemaId.meta.readonly).to.equal(true);
+    expect(schemaId.meta.dataType[0]).to.equal("string");
+    expect(serialize.meta.returns[0].dataType[0]).to.equal("any");
+  });
+
   it("should be able to parse type-casted objects for property symbols", function() {
     const symtree = buildSymbolTree(`
       (objectName as ObjectType).propertyName = "dataValue";
