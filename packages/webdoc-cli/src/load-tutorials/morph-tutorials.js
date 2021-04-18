@@ -94,12 +94,12 @@ function resolveConfigurator(
 function tutorialDoc(name: string, configurator?: TutorialConfigurator): TutorialDoc {
   let tdoc = tutorialDB.get(name);
 
-  if (!tdoc && configurator?.kind !== "category") {
+  if (!tdoc && (!configurator || configurator.kind !== "category")) {
     throw new Error("There is no such tutorial '" + name + "'");
   }
   if (!tdoc) {
     // category tutorial
-    tdoc = createTutorialDoc(name, '');
+    tdoc = createTutorialDoc(name, "", "");
     tutorialDB.set(name, tdoc);
   }
   if (configurator) {

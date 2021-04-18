@@ -155,6 +155,16 @@ function traversePackage(doc /*: Doc | PackageDoc */, context /*: Object */, par
   context.exit(doc);
 }
 
+/*::
+export type ExplorerTarget = {
+  title: string,
+  page?: ?string,
+  children: {
+    [id: string]: ExplorerTarget,
+  }
+};
+ */
+
 function buildExplorerTargetsTree(
   node /*: ExplorerNode */,
   parentTitle /*: string */ = "",

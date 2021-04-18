@@ -100,14 +100,14 @@ async function main(argv: yargs.Argv) {
   const sourceFiles = sources(config, documentTree);
 
   documentTree.children = documentTree.members;
+  documentTree.tutorials.push(...tutorials);
 
   if (config.opts && config.opts.export) {
     fse.ensureFileSync(config.opts.export);
   }
 
   try {
-    if (!argv.skipAPI)
-      parse(sourceFiles, documentTree);
+    parse(sourceFiles, documentTree);
   } catch (e) {
     // Make sure we get that API structure out so the user can debug the problem!
     if (config.opts && config.opts.export) {

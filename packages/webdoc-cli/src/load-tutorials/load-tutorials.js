@@ -1,9 +1,10 @@
 // @flow
 
+import {log, tag} from "missionlog";
 import type {Tutorial} from "@webdoc/types";
+import {createTutorialDoc} from "@webdoc/model";
 import fs from "fs";
 import globby from "globby";
-import {log, tag} from "missionlog";
 import merge from "lodash.merge";
 import {morphTutorials} from "./morph-tutorials";
 import path from "path";
@@ -27,12 +28,12 @@ export function loadTutorials(tutorialsDir?: string): Tutorial[] {
 
   const tutorialFiles = globby.sync(path.join(tutorialsDir, "./**/*"));
   const webdocIgnoreExists = fs.existsSync(path.join(tutorialsDir, "./.webdocignore"));
-  const webdocIgnorePatterns: $ReadOnlyArray<string> = webdocIgnoreExists
-    ? fs.readFileSync(path.join(tutorialsDir, ".webdocignore"), 'utf8')
-      .split('\n')
+  const webdocIgnorePatterns: $ReadOnlyArray<string> = webdocIgnoreExists ?
+    fs.readFileSync(path.join(tutorialsDir, ".webdocignore"), "utf8")
+      .split("\n")
       .map((line) => line.trim())
-      .filter((line) => !line.startsWith('#'))
-    : [];
+      .filter((line) => !line.startsWith("#")) :
+    [];
 
   if (webdocIgnoreExists) {
     log.info(tag.CLI, "Found .webdocignore in the tutorials directory");
@@ -48,7 +49,7 @@ export function loadTutorials(tutorialsDir?: string): Tutorial[] {
 
     // Really simple check to ignore files using .webdocignore (undocumented feature)
     if (webdocIgnorePatterns.some(
-      (pattern) => relativePath.startsWith(pattern)
+      (pattern) => relativePath.startsWith(pattern),
     )) {
       continue;
     }
@@ -77,16 +78,14 @@ export function loadTutorials(tutorialsDir?: string): Tutorial[] {
     fileName = fileName.slice(0, fileName.lastIndexOf("."));
 
     // Tutorials can be part of the doc-tree!
-    tutorials.push({
-      id: `tutorial-${fileName}`,
-      name: fileName,
-      path: fileName,
-      stack: [fileName],
-      title: fileName,
-      content: fileContent,
-      members: [],
-      type: "TutorialDoc",
-    });
+    tutorials.push(createTutorialDoc(
+      fileName,
+      relativePath
+        .replace(".html", "")
+        .replace(".htm", "")
+        .replace(".md", ""),
+      fileContent,
+    ));
   }
 
   if (tutorialConf) {

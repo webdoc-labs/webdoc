@@ -21,9 +21,9 @@ const {categoryFilterPlugin} = require("./helper/renderer-plugins/category-filte
 
 /*::
 import type {
+  Doc,
   RootDoc
-} from "@webdoc/model";
-
+} from "@webdoc/types";
 */
 
 Object.assign(linker.standaloneDocTypes, [
@@ -101,7 +101,7 @@ exports.publish = async function publish(options /*: PublishOptions */) {
 };
 
 // Copy the contents of ./static to the output directory
-function outStaticFiles(outDir /*: string */) /*: Promise */ {
+function outStaticFiles(outDir /*: string */) /*: Promise<void> */ {
   const staticDir = path.join(__dirname, "./static");
 
   return fse.copy(staticDir, outDir)
@@ -137,7 +137,7 @@ function outExplorerData(outDir /*: string */, crawlData /*: CrawlData */) {
 async function outMainPage(
   outputFile /*: string */,
   pipeline /*: TemplatePipeline */,
-  config, /*: WebdocConfig */
+  config /*: WebdocConfig */,
 ) {
   if (config.template.readme) {
     const readmeFile = path.join(process.cwd(), config.template.readme);
@@ -155,7 +155,7 @@ async function outReadme(
   outputFile /*: string */,
   pipeline /*: TemplatePipeline */,
   config /*: WebdocConfig */,
-  readmeFile, /*: string */
+  readmeFile /*: string */,
 ) {
   if (!(await fse.pathExists(readmeFile))) {
     return;
@@ -186,7 +186,7 @@ function outIndexes(
   outDir /*: string */,
   pipeline /*: TemplatePipeline */,
   config /*: WebdocConfig */,
-  index, /*: Index */
+  index /*: Index */,
 ) {
   const KEY_TO_TITLE = {
     "classes": "Class Index",
@@ -214,7 +214,7 @@ function outReference(
   outDir /*: string */,
   pipeline /*: TemplatePipeline */,
   config /*: WebdocConfig */,
-  docTree, /*: RootDoc */
+  docTree /*: RootDoc */,
 ) {
   for (const [id, docRecord] of linker.documentRegistry) {
     let {uri: page} = docRecord;
