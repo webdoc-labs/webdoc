@@ -128,7 +128,14 @@ export class TemplateRenderer {
    */
   load(filePath: string) {
     templateLogger.info(tag.TemplateLibrary, `Loading template ${filePath}`);
-    return _.template(fs.readFileSync(filePath, "utf8"), this.settings);
+
+    try {
+      return _.template(fs.readFileSync(filePath, "utf8"), this.settings);
+    } catch (e) {
+      templateLogger.error(tag.TemplateLibrary, 'Failure loading template ' + filePath);
+      console.error(e);
+      throw e;
+    }
   }
 
   /**
@@ -159,7 +166,10 @@ export class TemplateRenderer {
       docHTML = this.cache[filePath].call(this, data);
     } catch (e) {
       console.error(`Rendering template: ${filePath}`);
-      console.error(this.cache[filePath].source);
+      console.error(this.cache[filePath].source
+        .split('\n')
+        .map((line, i) => `${i}: ${line}`)
+        .join('\n'));
       throw e;
     }
 

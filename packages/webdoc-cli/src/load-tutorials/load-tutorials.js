@@ -80,10 +80,10 @@ export function loadTutorials(tutorialsDir?: string): Tutorial[] {
     // Tutorials can be part of the doc-tree!
     tutorials.push(createTutorialDoc(
       fileName,
-      relativePath
+      path.join('tutorials', relativePath
         .replace(".html", "")
         .replace(".htm", "")
-        .replace(".md", ""),
+        .replace(".md", "")),
       fileContent,
     ));
   }

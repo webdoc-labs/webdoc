@@ -18,14 +18,17 @@ function crawlTutorials(docTree /*: RootDoc */)/*: ?ExplorerTarget */ {
     return null;
   }
 
-  const rootTarget = {
-    title: "Tutorials",
-    page: linker.createURI("tutorials/index.html"),
+  let rootTarget = {
     children: {},
   };
 
   for (const tutorial of docTree.tutorials) {
     buildTutorialTargets(tutorial, rootTarget);
+  }
+
+  // No need for single top-level item
+  if (Object.keys(rootTarget.children).length === 1) {
+    rootTarget = { children: rootTarget.children[Object.keys(rootTarget.children)[0]].children };
   }
 
   return rootTarget;
@@ -37,16 +40,24 @@ function buildTutorialTargets(
 )/*: ExplorerTarget */ {
   const tutorialTarget = {
     title: tutorial.title,
-    page: linker.createURI(tutorial.route),
+    page: tutorial.route ? linker.getURI(tutorial) : null,
     children: {},
   };
 
-  parent.title = tutorialTarget;
   parent.children[tutorialTarget.title] = tutorialTarget;
 
-  for (const childTutorial of tutorial.members) {
-    if (childTutorial.type === "TutorialDoc") {
-      buildTutorialTargets(childTutorial, tutorialTarget);
+  if (tutorial.members.length > 0) {
+    if (tutorialTarget.page) {
+      tutorialTarget.children.overview = {
+        title: '(overview)',
+        page: tutorialTarget.page,
+      };
+    }
+
+    for (const childTutorial of tutorial.members) {
+      if (childTutorial.type === "TutorialDoc") {
+        buildTutorialTargets(childTutorial, tutorialTarget);
+      }
     }
   }
 

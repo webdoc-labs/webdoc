@@ -506,6 +506,7 @@ function LinkerPluginShell() {
       // the doc gets its own HTML file
       if (standaloneDocTypes.includes(doc.type)) {
         let pathPrefix = "";
+        let route = docPath;
 
         if (doc.type !== "PackageDoc" && doc.loc) {
           const pkg = doc.loc.file.package;
@@ -515,8 +516,11 @@ function LinkerPluginShell() {
             pathPrefix = this.getURI(pkg, true).split(".").slice(0, -1).join(".");
           }
         }
+        if (doc.type === "TutorialDoc" && doc.route) {
+          route = doc.route;
+        }
 
-        baseURI = this.generateBaseURI(docPath, pathPrefix);
+        baseURI = this.generateBaseURI(route, pathPrefix);
 
         this.getFileRecord(baseURI);
       } else { // inside another HTML file

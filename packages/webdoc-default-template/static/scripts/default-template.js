@@ -9488,10 +9488,10 @@ function makeIds(data, collector) {
     return setOpen(!isOpen);
   }, [isOpen]);
   var children = [];
-  var sitePrefix = window.appData.siteRoot ? "/" + window.appData.siteRoot + "/" : "/";
+  var explorerTree = window.appData.explorerTree;
 
   if (!fetched) {
-    fetch(sitePrefix + "explorer/reference.json").then(function (response) {
+    fetch(explorerTree).then(function (response) {
       if (response.ok) {
         response.json().then(function (idata) {
           var defaultExpanded = new Set();

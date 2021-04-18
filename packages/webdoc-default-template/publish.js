@@ -22,8 +22,11 @@ const {categoryFilterPlugin} = require("./helper/renderer-plugins/category-filte
 /*::
 import type {
   Doc,
-  RootDoc
+  RootDoc,
+  TutorialDoc,
 } from "@webdoc/types";
+
+import type {CrawlData} from './crawl';
 */
 
 Object.assign(linker.standaloneDocTypes, [
@@ -96,6 +99,7 @@ exports.publish = async function publish(options /*: PublishOptions */) {
   outMainPage(path.join(outDir, indexRelative), pipeline, options.config);
   outIndexes(outDir, pipeline, options.config, crawlData.index);
   outReference(outDir, pipeline, options.config, docTree);
+  outTutorials(outDir, pipeline, options.config, docTree);
 
   pipeline.close();
 };
@@ -130,6 +134,17 @@ function outExplorerData(outDir /*: string */, crawlData /*: CrawlData */) {
       (err) => {
         if (err) throw err;
       });
+
+    if (crawlData.tutorials) {
+      fse.writeFile(
+        path.join(explorerDir, "./tutorials.json"),
+        JSON.stringify(crawlData.tutorials),
+        "utf8",
+        (err) => {
+          if (err) throw err;
+        },
+      );
+    }
   });
 }
 
@@ -175,7 +190,7 @@ async function outReadme(
   }
 
   pipeline.render("pages/main-page.tmpl", {
-    docs: [],
+    document: null,
     readme,
     title: "Documentation",
     env: config,
@@ -247,7 +262,7 @@ function outReference(
       );
     } else {
       pipeline.render("document.tmpl", {
-        docs: [doc],
+        document: doc,
         title: doc.name,
         env: config,
       }, {
@@ -255,4 +270,27 @@ function outReference(
       });
     }
   }
+}
+
+function outTutorials(
+  outDir /*: string */,
+  pipeline /*: TemplatePipeline */,
+  config /*: WebdocConfig */,
+  docTree /*: RootDoc */,
+) {
+  function out(tutorial /*: TutorialDoc */) {
+    const uri = linker.getURI(tutorial);
+
+    pipeline.render("tutorial.tmpl", {
+      document: tutorial,
+      title: tutorial.title,
+      env: config,
+    }, {
+      outputFile: path.join(outDir, uri),
+    });
+
+    tutorial.members.forEach((out /*: any */));
+  }
+
+  docTree.tutorials.forEach(out);
 }

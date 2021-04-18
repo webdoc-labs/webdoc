@@ -12,7 +12,7 @@ type TutorialConfigurator = {
     "title": ?string,
     "kind"?: "category",
     "children": TutorialConfigurator[] | {
-      [id: string]: TutorialReference
+      [id: string]: TutorialConfigurator
     }
 };
 
@@ -41,7 +41,7 @@ export function morphTutorials(
   tutorials.forEach((t) => tutorialDB.set(t.name, t));
 
   // This is the new list of tutorials
-  const rootTutorials = [];
+  let rootTutorials = [];
 
   // eslint-disable-next-line guard-for-in
   for (const [name, configurator] of Object.entries(tconf)) {
@@ -58,6 +58,12 @@ export function morphTutorials(
 
     rootTutorials.push(tdoc);
   }
+
+  // Go through rootTutorials and filter out any ones that became nested by a tutorial
+  // after they were declared.
+  rootTutorials = rootTutorials.filter((tutorial) => !nestedTutorials.has(tutorial.name));
+
+  console.log(rootTutorials.map((t) => t.name))
 
   return rootTutorials;
 }
@@ -83,6 +89,7 @@ function resolveConfigurator(
       // eslint-disable-next-line no-prototype-builtins
       if (configurator.children.hasOwnProperty(name)) {
         tdoc.members.push(tutorialDoc(name, (childConf: any)));
+        resolveConfigurator(name, (childConf: any));
       }
     }
   }
