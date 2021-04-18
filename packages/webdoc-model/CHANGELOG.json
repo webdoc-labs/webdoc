@@ -2,6 +2,18 @@
   "name": "@webdoc/model",
   "entries": [
     {
+      "version": "1.2.1",
+      "tag": "@webdoc/model_v1.2.1",
+      "date": "Sat, 17 Apr 2021 23:54:20 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fix scope inference on prototype-assigned members (#97)"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.2.0",
       "tag": "@webdoc/model_v1.2.0",
       "date": "Sun, 07 Feb 2021 20:20:23 GMT",
