@@ -7,6 +7,7 @@ import type {
   DocType,
   PackageDoc,
   RootDoc,
+  TutorialDoc,
 } from "@webdoc/types";
 import {nanoid} from "nanoid";
 
@@ -127,6 +128,31 @@ export function createPackageDoc(
     location: location || "nowhere",
     type: "PackageDoc",
   };
+}
+
+/**
+ * Creates a {@link TutorialDoc}.
+ *
+ * @param title - The title of the tutorial.
+ * @param content - The text-encoded content of the tutorial.
+ * @param data - Additional data about the tutorial.
+ */
+export function createTutorialDoc(
+  title: string,
+  content: string,
+  data?: $Shape<TutorialDoc>,
+): TutorialDoc {
+  return {
+    id: `tutorial-${title}`,
+    title,
+    content,
+    name: title,
+    path: title,
+    stack: [title],
+    members: [],
+    type: "TutorialDoc",
+    ...data,
+  }
 }
 
 /**

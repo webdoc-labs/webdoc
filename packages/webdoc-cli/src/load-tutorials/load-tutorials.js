@@ -3,6 +3,7 @@
 import type {Tutorial} from "@webdoc/types";
 import fs from "fs";
 import globby from "globby";
+import {log, tag} from "missionlog";
 import merge from "lodash.merge";
 import {morphTutorials} from "./morph-tutorials";
 import path from "path";
@@ -20,23 +21,51 @@ export function loadTutorials(tutorialsDir?: string): Tutorial[] {
     return [];
   }
 
+  if (!path.isAbsolute(tutorialsDir)) {
+    tutorialsDir = path.join(process.cwd(), tutorialsDir);
+  }
+
   const tutorialFiles = globby.sync(path.join(tutorialsDir, "./**/*"));
+  const webdocIgnoreExists = fs.existsSync(path.join(tutorialsDir, "./.webdocignore"));
+  const webdocIgnorePatterns: $ReadOnlyArray<string> = webdocIgnoreExists
+    ? fs.readFileSync(path.join(tutorialsDir, ".webdocignore"), 'utf8')
+      .split('\n')
+      .map((line) => line.trim())
+      .filter((line) => !line.startsWith('#'))
+    : [];
+
+  if (webdocIgnoreExists) {
+    log.info(tag.CLI, "Found .webdocignore in the tutorials directory");
+  }
+
   let tutorialConf = null;
   let tutorials: Tutorial[] = [];
 
   for (let i = 0; i < tutorialFiles.length; i++) {
     let fileName = tutorialFiles[i];
 
+    const relativePath = path.relative(tutorialsDir, fileName);
+
+    // Really simple check to ignore files using .webdocignore (undocumented feature)
+    if (webdocIgnorePatterns.some(
+      (pattern) => relativePath.startsWith(pattern)
+    )) {
+      continue;
+    }
+
     if (fileName.endsWith(".json")) {
       const fileJSON = JSON.parse(fs.readFileSync(fileName, "utf8"));
 
       tutorialConf = merge(tutorialConf || {}, fileJSON);
+      log.info(tag.CLI, "Found tutorial configuration: " + relativePath);
+
       continue;
     }
 
     if (!fileName.endsWith(".html") && !fileName.endsWith(".htm") && !fileName.endsWith(".md")) {
       continue;
     }
+    log.info(tag.CLI, "Found tutorial " + relativePath);
 
     let fileContent = fs.readFileSync(fileName, "utf8");
 

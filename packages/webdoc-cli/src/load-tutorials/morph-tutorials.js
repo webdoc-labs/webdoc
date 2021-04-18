@@ -1,6 +1,7 @@
 // @flow
 
 import type {TutorialDoc} from "@webdoc/types";
+import {createTutorialDoc} from "@webdoc/model";
 
 // This file morphs the tutorials hiearchy to that specified by the tutorial JSON configurations
 // provided by the user.
@@ -9,6 +10,7 @@ type TutorialReference = string;
 
 type TutorialConfigurator = {
     "title": ?string,
+    "kind"?: "category",
     "children": TutorialConfigurator[] | {
       [id: string]: TutorialReference
     }
@@ -90,14 +92,15 @@ function resolveConfigurator(
 
 // Fetch the tutorial-doc based off its name.
 function tutorialDoc(name: string, configurator?: TutorialConfigurator): TutorialDoc {
-  if (!tutorialDB.has(name)) {
+  let tdoc = tutorialDB.get(name);
+
+  if (!tdoc && configurator?.kind !== "category") {
     throw new Error("There is no such tutorial '" + name + "'");
   }
-
-  const tdoc = tutorialDB.get(name);
-
   if (!tdoc) {
-    throw new Error("NOT FOUND");
+    // category tutorial
+    tdoc = createTutorialDoc(name, '');
+    tutorialDB.set(name, tdoc);
   }
   if (configurator) {
     tdoc.title = configurator.title || name;

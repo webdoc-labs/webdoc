@@ -63,6 +63,7 @@ async function main(argv: yargs.Argv) {
   const config = loadConfig(argv.config);
   const tutorials = loadTutorials(argv.tutorials);
 
+
   if (argv.siteRoot) {
     config.template.siteRoot = argv.siteRoot;
   }
@@ -105,7 +106,8 @@ async function main(argv: yargs.Argv) {
   }
 
   try {
-    parse(sourceFiles, documentTree);
+    if (!argv.skipAPI)
+      parse(sourceFiles, documentTree);
   } catch (e) {
     // Make sure we get that API structure out so the user can debug the problem!
     if (config.opts && config.opts.export) {
