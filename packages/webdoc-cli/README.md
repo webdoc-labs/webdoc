@@ -18,6 +18,7 @@ npm install --save-dev @webdoc/cli
 generate the `sitemap.xml`. This is useful if you want to integrate with [Algolia and use its crawler](https://www.algolia.com/products/crawler/). You must include the protocol for this to work currently, e.g. `http://pixijs.webdoclabs.com`.
 * `--site-root <path>`: If using absolute links in a template, this will set the basepath. The basepath should the directory in which the documentation is being stored relative to where the server is running. The site root is "/" by default - which means that you'll need to serve the documentation directory as top-level. Note that @webdoc/default-template uses absolute links.
 * `-c <config-path>`: This sets the path of the configuration file webdoc uses.
+* `-u <tutorials-directory>` -  (optional) This should point to a directory containing tutorials written in Markdown (".md") or HTML ".html, ".htm". JSON files can be used to configure the hierarchy and naming of tutorials (see the Tutorial Configuration section).
 
 ### Configuration
 
@@ -90,21 +91,23 @@ The `template` object is used by the site template.
 
 ```json
 {
-  "applicationName": "{ <i>webdoc</i> }",
-  "meta": {
-    "og:title": "webdoc",
-    "og:description": "webdoc API documentation",
-    "og:image": "https://camo.githubusercontent.com/1427d2fdabd8790c93ca05cbfb653e2c6a8ab5694e671a04aa3af3fcef313539/68747470733a2f2f692e6962622e636f2f5a4850395044382f4c6f676f2d4672616d652d352e706e67",
-    "og:url": "{{url}}",
-    "og:site_name": "webdoclabs.com"
-  },
-  "repository": "http://github.com/webdoc-labs/webdoc",
-  "integrations": {
-    "search": {
-      "provider": "algolia",
-      "apiKey": "kadlfj232983lkqwem",
-      "indexName": "webdoc-example",
-      "appId": "349o39841;akdsfu"
+  "template": {
+    "applicationName": "{ <i>webdoc</i> }",
+    "meta": {
+      "og:title": "webdoc",
+      "og:description": "webdoc API documentation",
+      "og:image": "https://camo.githubusercontent.com/1427d2fdabd8790c93ca05cbfb653e2c6a8ab5694e671a04aa3af3fcef313539/68747470733a2f2f692e6962622e636f2f5a4850395044382f4c6f676f2d4672616d652d352e706e67",
+      "og:url": "{{url}}",
+      "og:site_name": "webdoclabs.com"
+    },
+    "repository": "http://github.com/webdoc-labs/webdoc",
+    "integrations": {
+      "search": {
+        "provider": "algolia",
+        "apiKey": "kadlfj232983lkqwem",
+        "indexName": "webdoc-example",
+        "appId": "349o39841;akdsfu"
+      }
     }
   }
 }
@@ -117,3 +120,107 @@ The `template` object is used by the site template.
 * `template.integrations`: (optional) Integrations with 3rd party solutions in your template. This object is dependent on which template you're using. For @webdoc/default-template, the following integrations are available:
   * `search`: This is used as the backend for the global site search. You'll need to create an Algolia account yourself and provide
     the `apiKey`, `appId`, `indexName`. (The only supported provider is "algolia" right now)
+
+### Tutorial configuration
+
+Tutorials can be structured in a hierarchy using JSON files in the tutorials directory. If you have multiple JSON configuration, they
+are deep-merged before being processed.
+
+#### Per-tutorial configuration
+
+Tutorials are referenced using their file name - so make sure all file names in the tutorial directory are unique. To configure a specific
+tutorial file, any configuration should reference it by the file name (excluding the extension). For example, to configure "hello-world.md":
+
+```json
+{
+  "hello-world": {
+    "title": "Hello world! by webdoc"
+  }
+}
+```
+
+* `title` - This is what the navigation sidebar will list the tutorial as.
+
+#### Defining a hierarchy
+
+You can also define children in tutorial configurators inline:
+
+```json
+{
+  "hello-world": {
+    "title": "Hello world! by webdoc",
+    "children": {
+      "chapter-1": {
+        "title": "Chapter 1"
+      },
+      "chapter-2": {
+        "title": "Chapter 2"
+      }
+    }
+  },
+  "next-steps": {
+    "title": "Next-steps"
+  }
+}
+```
+
+In this configuration, "Chapter 1" and "Chapter 2" will be items under the "Hello world!" category.
+
+#### Referencing other tutorials
+
+Instead of defining tutorials inline in the `children` object, you can add them to the root and then reference
+them by name in a `children` array.
+
+```json
+{
+  "hello-world": {
+    "title": "Hello world! by webdoc",
+    "children": [
+      "chapter-1",
+      "chapter-2"
+    ]
+  },
+  "chapter-1": {
+    "title": "Chapter 1"
+  },
+  "chapter-2": {
+    "title": "Chapter 2"
+  },
+  "next-steps": {
+    "title": "Next-steps"
+  }
+}
+```
+
+The above configuration is equivalent to the one defining "Chapter 1" and "Chapter 2" children inline "Hello world!". This way,
+you can also split the configuration into multiple files:
+
+**main.json**
+
+```json
+{
+  "hello-world": {
+    "title": "Hello world! by webdoc",
+    "children": [
+      "chapter-1",
+      "chapter-2"
+    ]
+  },
+  "next-steps": {
+    "title": "Next-steps"
+  }
+}
+```
+
+**chapters.json**
+
+```json
+{
+  "chapter-1": {
+    "title": "Chapter 1"
+  },
+  "chapter-2": {
+    "title": "Chapter 2"
+  }
+}
+```
