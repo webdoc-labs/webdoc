@@ -27,6 +27,16 @@ import type {
 } from "@webdoc/types";
 
 import type {CrawlData} from './crawl';
+
+type AppBarItem = {
+  name: string;
+  uri: string;
+};
+
+type AppBarData = {
+  current: string;
+  items: { [id: string]: AppBarItem };
+};
 */
 
 Object.assign(linker.standaloneDocTypes, [
@@ -62,13 +72,31 @@ exports.publish = async function publish(options /*: PublishOptions */) {
   fse.ensureDir(outDir);
 
   const crawlData = crawl(docTree, index);
+  const appBarItems = {
+    "reference": {
+      name: "API Reference",
+      uri: index,
+    },
+    ...(crawlData.tutorials && {
+      "tutorials": {
+        name: "Tutorials",
+        uri: crawlData.tutorials.page ||
+          crawlData.tutorials.children[Object.keys(crawlData.tutorials.children)[0]].page,
+      },
+    }),
+  };
   const renderer = new TemplateRenderer(path.join(__dirname, "tmpl"), null, docTree)
     .setLayoutTemplate("layout.tmpl")
     .installPlugin("linker", linker)
     .installPlugin("generateIndex", indexSorterPlugin)
     .installPlugin("signature", signaturePlugin)
     .installPlugin("categoryFilter", categoryFilterPlugin)
-    .installPlugin("relations", RelationsPlugin);
+    .installPlugin("relations", RelationsPlugin)
+    .setGlobalTemplateData({
+      appBar: {
+        items: appBarItems,
+      },
+    });
 
   const pipeline = new TemplatePipeline(renderer).pipe(new TemplateTagsResolver());
 
@@ -190,6 +218,7 @@ async function outReadme(
   }
 
   pipeline.render("pages/main-page.tmpl", {
+    appBar: {current: "reference"},
     document: null,
     readme,
     title: "Documentation",
@@ -212,6 +241,7 @@ function outIndexes(
     const url = linker.processInternalURI(indexList.url, {outputRelative: true});
 
     pipeline.render("pages/api-index.tmpl", {
+      appBar: {current: "reference"},
       documentList: indexList,
       title,
       env: config,
@@ -262,6 +292,7 @@ function outReference(
       );
     } else {
       pipeline.render("document.tmpl", {
+        appBar: {current: "reference"},
         document: doc,
         title: doc.name,
         env: config,
@@ -282,6 +313,7 @@ function outTutorials(
     const uri = linker.getURI(tutorial);
 
     pipeline.render("tutorial.tmpl", {
+      appBar: {current: "tutorials"},
       document: tutorial,
       title: tutorial.title,
       env: config,

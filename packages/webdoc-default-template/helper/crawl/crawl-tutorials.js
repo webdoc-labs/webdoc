@@ -28,7 +28,12 @@ function crawlTutorials(docTree /*: RootDoc */)/*: ?ExplorerTarget */ {
 
   // No need for single top-level item
   if (Object.keys(rootTarget.children).length === 1) {
-    rootTarget = { children: rootTarget.children[Object.keys(rootTarget.children)[0]].children };
+    const implicitRootTarget = rootTarget.children[Object.keys(rootTarget.children)[0]];
+
+    rootTarget = {
+      page: implicitRootTarget.page,
+      children: implicitRootTarget.children,
+    };
   }
 
   return rootTarget;
@@ -49,7 +54,7 @@ function buildTutorialTargets(
   if (tutorial.members.length > 0) {
     if (tutorialTarget.page) {
       tutorialTarget.children.overview = {
-        title: '(overview)',
+        title: "(overview)",
         page: tutorialTarget.page,
       };
     }

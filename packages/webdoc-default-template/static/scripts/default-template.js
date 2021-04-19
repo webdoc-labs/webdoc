@@ -9657,6 +9657,18 @@ function Search(_ref) {
   }));
 }
 // CONCATENATED MODULE: ./src/app/components/Header/Header.js
+function Header_slicedToArray(arr, i) { return Header_arrayWithHoles(arr) || Header_iterableToArrayLimit(arr, i) || Header_unsupportedIterableToArray(arr, i) || Header_nonIterableRest(); }
+
+function Header_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function Header_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return Header_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return Header_arrayLikeToArray(o, minLen); }
+
+function Header_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function Header_iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function Header_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -9676,6 +9688,8 @@ function Search(_ref) {
 })(function Header(_ref2) {
   var explorerOpen = _ref2.explorerOpen,
       setExplorerOpen = _ref2.setExplorerOpen;
+  var items = Object.entries(appData.appBar.items);
+  var currentItemId = appData.appBar.current;
   return React.createElement("div", {
     className: "header__container"
   }, explorerOpen ? null : React.createElement(ExplorerHeader, {
@@ -9685,9 +9699,16 @@ function Search(_ref) {
     }
   }), React.createElement("div", {
     className: "header__contents"
-  }, React.createElement("a", {
-    className: "header__link header__link__current"
-  }, "API Reference"), appData.integrations.search && React.createElement(Search, {
+  }, items.map(function (_ref3, i) {
+    var _ref4 = Header_slicedToArray(_ref3, 2),
+        id = _ref4[0],
+        appBarItem = _ref4[1];
+
+    return React.createElement("a", {
+      className: "header__link".concat(id === currentItemId ? " header__link__current" : ""),
+      href: appBarItem.uri
+    }, appBarItem.name);
+  }), appData.integrations.search && React.createElement(Search, {
     integration: appData.integrations.search
   })));
 }));
