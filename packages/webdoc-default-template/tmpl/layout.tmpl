@@ -3,6 +3,8 @@
  * Global layout render component.
  */
 const rootData = obj;
+const appBar = rootData.appBar;
+const document = rootData.document;
 const config = rootData.env.template;
 const siteRoot = this.getPlugin("linker").siteRoot;
 const sitePrefix = siteRoot ? siteRoot + "/" : siteRoot;
@@ -26,6 +28,8 @@ const integrations = JSON.stringify(config.integrations);
     <script>
       window.appData = {
         applicationName: "<?js= config.applicationName ?>",
+        appBar: JSON.parse(`<?js= JSON.stringify(appBar) ?>`),
+        explorerTree: "<?js= siteRoot + "/explorer/" + (document && document.type === "TutorialDoc" ? "tutorials" : "reference") + ".json" ?>",
         siteRoot: "<?js= siteRoot ?>",
         integrations: JSON.parse(`<?js= integrations ?>`),
       };

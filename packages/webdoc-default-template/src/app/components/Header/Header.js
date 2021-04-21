@@ -11,6 +11,9 @@ export default connect(({explorerOpen}) => ({
   explorerOpen,
   setExplorerOpen,
 }) {
+  const items = Object.entries(appData.appBar.items);
+  const currentItemId = appData.appBar.current;
+
   return (
     <div className="header__container">
       {explorerOpen ? null :
@@ -19,8 +22,14 @@ export default connect(({explorerOpen}) => ({
           toggleOpen={() => setExplorerOpen(!explorerOpen)}
         />}
       <div className="header__contents">
-        <a className="header__link header__link__current">API Reference</a>
-        {/* <a className="header__link">Guides</a> */ /* TODO: Add guides */}
+        {items.map(([id, appBarItem], i) => (
+          <a
+            className={`header__link${id === currentItemId ? " header__link__current" : ""}`}
+            href={appBarItem.uri}
+          >
+            {appBarItem.name}
+          </a>
+        ))}
         {appData.integrations.search && <Search integration={appData.integrations.search} />}
       </div>
     </div>

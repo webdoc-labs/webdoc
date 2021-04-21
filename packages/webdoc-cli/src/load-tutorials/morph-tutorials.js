@@ -1,6 +1,7 @@
 // @flow
 
 import type {TutorialDoc} from "@webdoc/types";
+import {createTutorialDoc} from "@webdoc/model";
 
 // This file morphs the tutorials hiearchy to that specified by the tutorial JSON configurations
 // provided by the user.
@@ -9,8 +10,9 @@ type TutorialReference = string;
 
 type TutorialConfigurator = {
     "title": ?string,
-    "children": TutorialConfigurator[] | {
-      [id: string]: TutorialReference
+    "kind"?: "category",
+    "children": TutorialReference[] | {
+      [id: string]: TutorialConfigurator
     }
 };
 
@@ -39,7 +41,7 @@ export function morphTutorials(
   tutorials.forEach((t) => tutorialDB.set(t.name, t));
 
   // This is the new list of tutorials
-  const rootTutorials = [];
+  let rootTutorials = [];
 
   // eslint-disable-next-line guard-for-in
   for (const [name, configurator] of Object.entries(tconf)) {
@@ -57,6 +59,10 @@ export function morphTutorials(
     rootTutorials.push(tdoc);
   }
 
+  // Go through rootTutorials and filter out any ones that became nested by a tutorial
+  // after they were declared.
+  rootTutorials = rootTutorials.filter((tutorial) => !nestedTutorials.has(tutorial.name));
+
   return rootTutorials;
 }
 
@@ -73,7 +79,7 @@ function resolveConfigurator(
 
   if (Array.isArray(configurator.children)) {
     configurator.children.forEach((childRef) => {
-      nestedTutorials.add((childRef: any));
+      nestedTutorials.add(childRef);
       tdoc.members.push(tutorialDoc((childRef: any)));
     });
   } else {
@@ -81,6 +87,7 @@ function resolveConfigurator(
       // eslint-disable-next-line no-prototype-builtins
       if (configurator.children.hasOwnProperty(name)) {
         tdoc.members.push(tutorialDoc(name, (childConf: any)));
+        resolveConfigurator(name, (childConf: any));
       }
     }
   }
@@ -90,14 +97,15 @@ function resolveConfigurator(
 
 // Fetch the tutorial-doc based off its name.
 function tutorialDoc(name: string, configurator?: TutorialConfigurator): TutorialDoc {
-  if (!tutorialDB.has(name)) {
+  let tdoc = tutorialDB.get(name);
+
+  if (!tdoc && (!configurator || configurator.kind !== "category")) {
     throw new Error("There is no such tutorial '" + name + "'");
   }
-
-  const tdoc = tutorialDB.get(name);
-
   if (!tdoc) {
-    throw new Error("NOT FOUND");
+    // category tutorial
+    tdoc = createTutorialDoc(name, "", "");
+    tutorialDB.set(name, tdoc);
   }
   if (configurator) {
     tdoc.title = configurator.title || name;

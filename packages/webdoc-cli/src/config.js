@@ -1,5 +1,6 @@
 // @flow
-import {log, tags} from "missionlog";
+
+import {log, tag} from "missionlog";
 import fs from "fs";
 import merge from "lodash.merge";
 
@@ -102,12 +103,14 @@ export function loadConfig(file: string): ConfigSchema {
   let config;
 
   if (!fs.existsSync(file)) {
-    log.warn(tags.Config, `Configuration file not found at: ${file}`);
+    log.warn(tag.Config, `Configuration file not found at: ${file}`);
     config = defaultConfig;
   } else {
     const userConfig = JSON.parse(fs.readFileSync(file, "utf8"));
     config = merge(defaultConfig, userConfig);
   }
+
+  log.info(tag.CLI, "Loaded configuration");
 
   return config;
 }

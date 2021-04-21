@@ -1,6 +1,7 @@
 // @flow
 
 const {crawlReference} = require("./crawl-reference-explorer");
+const {crawlTutorials} = require("./crawl-tutorials");
 const {traverse} = require("@webdoc/model");
 const {linker} = require("../linker");
 
@@ -14,20 +15,33 @@ import type {
   DocType
 } from "@webdoc/model";
 
+import type {ExplorerTarget} from './crawl-reference-explorer';
+
 export type CategorizedDocumentList = {
   [id: DocType]: ?(Doc[])
 }
+
+export type CrawlData = {
+  index: { [id: string]: [] & { url: string } };
+  reference: ExplorerTarget;
+  tutorials: ?ExplorerTarget;
+};
+
+declare function crawl(tree: RootDoc, index: string): CrawlData;
 */
 
 
-exports.crawl = function crawl(tree /*: RootDoc */, index /*: string */) {
+function crawl(tree /*: RootDoc */, index /*: string */)/*: CrawlData */ {
   buildLinks(tree);
 
   return {
     index: buildIndex(tree),
     reference: crawlReference(tree, index),
+    tutorials: crawlTutorials(tree),
   };
-};
+}
+
+module.exports = ({crawl}/*: {crawl: typeof crawl} */);
 
 function buildLinks(tree /*: RootDoc */) /*: void */ {
   traverse(tree, (doc) => {

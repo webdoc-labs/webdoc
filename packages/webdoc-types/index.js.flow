@@ -131,6 +131,7 @@ export type DocShape =
 export type RootDoc = {
   ...BaseDoc,
   packages: PackageDoc[],
+  tutorials: TutorialDoc[],
   type: "RootDoc"
 };
 
@@ -220,6 +221,7 @@ export type Tutorial = {
   ...BaseDoc,
   title: string,
   content: string,
+  route: string,
   type: "TutorialDoc"
 };
 

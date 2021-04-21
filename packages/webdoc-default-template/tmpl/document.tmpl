@@ -1,12 +1,9 @@
 <?js
-/**
- * Documentation object render component.
- */
-const
-  docData = obj,
-  docList = obj.docs;
+  /**
+   * Documentation object render component.
+   */
+  const doc = obj.document;
 
-docList.forEach((doc) => {
   const titleMods = [
     doc.deprecated ? "document__title_deprecated" : ""
   ].join(" ");
@@ -99,4 +96,3 @@ docList.forEach((doc) => {
   <footer class="footer" id="footer-mount-point"></footer>
 </div>
 <?js= this.partial("components/members-explorer/index.tmpl", doc) ?>
-<?js }); ?>

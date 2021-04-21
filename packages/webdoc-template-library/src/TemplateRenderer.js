@@ -8,6 +8,7 @@ import type {
 import {tag, templateLogger} from "./Logger";
 import {SymbolLinks} from "./SymbolLinks";
 import fs from "fs";
+import {merge} from "lodash";
 import path from "path";
 
 let printedDefaultLinker = false;
@@ -63,6 +64,11 @@ export class TemplateRenderer {
       interpolate: /<\?js=([\s\S]+?)\?>/g,
       escape: /<\?js~([\s\S]+?)\?>/g,
     };
+  }
+
+  setGlobalTemplateData(data: any): TemplateRenderer {
+    Object.assign(this.data, data);
+    return this;
   }
 
   setLayoutTemplate(templateFile: string) /*: TemplateRenderer */ {
@@ -128,7 +134,14 @@ export class TemplateRenderer {
    */
   load(filePath: string) {
     templateLogger.info(tag.TemplateLibrary, `Loading template ${filePath}`);
-    return _.template(fs.readFileSync(filePath, "utf8"), this.settings);
+
+    try {
+      return _.template(fs.readFileSync(filePath, "utf8"), this.settings);
+    } catch (e) {
+      templateLogger.error(tag.TemplateLibrary, "Failure loading template " + filePath);
+      console.error(e);
+      throw e;
+    }
   }
 
   /**
@@ -159,7 +172,10 @@ export class TemplateRenderer {
       docHTML = this.cache[filePath].call(this, data);
     } catch (e) {
       console.error(`Rendering template: ${filePath}`);
-      console.error(this.cache[filePath].source);
+      console.error(this.cache[filePath].source
+        .split("\n")
+        .map((line, i) => `${i}: ${line}`)
+        .join("\n"));
       throw e;
     }
 
@@ -172,7 +188,8 @@ export class TemplateRenderer {
    * This method automaticaly applies layout if set.
    *
    * @param {string} filePath - file path of the template
-   * @param {object} data - dictionary of all the variables & their values used in the template
+   * @param {object} data - dictionary of all the variables & their values used in the template.
+   *  For the layout, this is deep merged with {@link TemplateRenderer#data}.
    * @return {string} Rendered template.
    */
   render(filePath: string, data: any) {
@@ -185,9 +202,17 @@ export class TemplateRenderer {
 
     // apply layout
     if (this.layout) {
-      data.content = content;
+      const templateData = Array.isArray(data) ? [...data] : {...data};
+
+      for (const key in this.data) {
+        if ("key" in this.data) {
+          templateData[key] = merge({}, this.data[key], templateData[key] || {});
+        }
+      }
+
+      templateData.content = content;
       templateLogger.info(tag.TemplateLibrary, `Request layout ${filePath} ${data}`);
-      content = this.partial(this.layout, data);
+      content = this.partial(this.layout, templateData);
     }
 
     templateLogger.info(tag.TemplateLibrary, `Rendering2 template ${filePath} ${data}`);

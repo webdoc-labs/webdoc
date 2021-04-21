@@ -63,6 +63,7 @@ async function main(argv: yargs.Argv) {
   const config = loadConfig(argv.config);
   const tutorials = loadTutorials(argv.tutorials);
 
+
   if (argv.siteRoot) {
     config.template.siteRoot = argv.siteRoot;
   }
@@ -99,6 +100,7 @@ async function main(argv: yargs.Argv) {
   const sourceFiles = sources(config, documentTree);
 
   documentTree.children = documentTree.members;
+  documentTree.tutorials.push(...tutorials);
 
   if (config.opts && config.opts.export) {
     fse.ensureFileSync(config.opts.export);
