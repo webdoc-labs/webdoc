@@ -37,9 +37,9 @@ describe("load-tutorials", () => {
     expect(tutorials[2].title).to.equal("<C>");
     expect(tutorials[3].title).to.equal("<D>");
 
-    expect(rootTutorials.length).to.equal(2);
+    expect(rootTutorials.length).to.equal(1);
 
-    const tutorialA = rootTutorials[1];
+    const tutorialA = rootTutorials[0];
 
     expect(tutorialA.title).to.equal("<A>");
     expect(tutorialA.members.length).to.equal(2);
