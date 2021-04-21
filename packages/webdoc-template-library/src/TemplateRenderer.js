@@ -175,7 +175,7 @@ export class TemplateRenderer {
       console.error(this.cache[filePath].source
         .split("\n")
         .map((line, i) => `${i}: ${line}`)
-        .join('\n'));
+        .join("\n"));
       throw e;
     }
 
@@ -188,8 +188,8 @@ export class TemplateRenderer {
    * This method automaticaly applies layout if set.
    *
    * @param {string} filePath - file path of the template
-   * @param {object} data - dictionary of all the variables & their values used in the template. For the
-   *  layout, this is deep merged with {@link TemplateRenderer#data}.
+   * @param {object} data - dictionary of all the variables & their values used in the template.
+   *  For the layout, this is deep merged with {@link TemplateRenderer#data}.
    * @return {string} Rendered template.
    */
   render(filePath: string, data: any) {
@@ -202,10 +202,12 @@ export class TemplateRenderer {
 
     // apply layout
     if (this.layout) {
-      const templateData = Array.isArray(data) ? [...data] : { ...data };
+      const templateData = Array.isArray(data) ? [...data] : {...data};
 
       for (const key in this.data) {
-        templateData[key] = merge({}, this.data[key], templateData[key] || {});
+        if ("key" in this.data) {
+          templateData[key] = merge({}, this.data[key], templateData[key] || {});
+        }
       }
 
       templateData.content = content;

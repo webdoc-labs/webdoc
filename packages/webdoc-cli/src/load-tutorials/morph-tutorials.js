@@ -11,7 +11,7 @@ type TutorialReference = string;
 type TutorialConfigurator = {
     "title": ?string,
     "kind"?: "category",
-    "children": TutorialConfigurator[] | {
+    "children": TutorialReference[] | {
       [id: string]: TutorialConfigurator
     }
 };
@@ -63,8 +63,6 @@ export function morphTutorials(
   // after they were declared.
   rootTutorials = rootTutorials.filter((tutorial) => !nestedTutorials.has(tutorial.name));
 
-  console.log(rootTutorials.map((t) => t.name))
-
   return rootTutorials;
 }
 
@@ -81,7 +79,7 @@ function resolveConfigurator(
 
   if (Array.isArray(configurator.children)) {
     configurator.children.forEach((childRef) => {
-      nestedTutorials.add((childRef: any));
+      nestedTutorials.add(childRef);
       tdoc.members.push(tutorialDoc((childRef: any)));
     });
   } else {
