@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@webdoc/cli",
+      "comment": "Add experimental support for adding stylesheets for @webdoc/default-template",
+      "type": "none"
+    }
+  ],
+  "packageName": "@webdoc/cli",
+  "email": "sukantk2002@outlook.com"
+}
