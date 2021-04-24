@@ -1,6 +1,6 @@
 {
   "name": "@webdoc/plugin-markdown",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Use markdown syntax in your documentation",
   "keywords": [
     "webdoc",
