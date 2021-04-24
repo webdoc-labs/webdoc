@@ -67,7 +67,6 @@ export default connect(({
   }),
 }))(function Explorer({
   isOpen,
-  setOpen,
   expandedItems,
   setExpandedItems,
   toggleItem,
@@ -76,7 +75,6 @@ export default connect(({
   const [data, setData] = React.useState(null);
   const [autoScrollTo, setAutoScrollTo] = React.useState(null);
   const {root} = useExplorerStyles();
-  const toggleOpen = React.useCallback(() => setOpen(!isOpen), [isOpen]);
   const children = [];
   const explorerTree = window.appData.explorerTree;
 
@@ -153,7 +151,6 @@ export default connect(({
         overflowX: "hidden",
       }),
     }}>
-      <ExplorerHeader isOpen={isOpen} toggleOpen={toggleOpen} />
       {data && <ExplorerFilter data={data} />}
       <TreeView
         expanded={expandedItems}

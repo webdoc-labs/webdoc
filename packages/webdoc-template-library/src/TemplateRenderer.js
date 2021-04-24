@@ -205,7 +205,7 @@ export class TemplateRenderer {
       const templateData = Array.isArray(data) ? [...data] : {...data};
 
       for (const key in this.data) {
-        if ("key" in this.data) {
+        if (key in this.data) {
           templateData[key] = merge({}, this.data[key], templateData[key] || {});
         }
       }

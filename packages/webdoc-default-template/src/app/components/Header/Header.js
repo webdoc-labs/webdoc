@@ -16,11 +16,10 @@ export default connect(({explorerOpen}) => ({
 
   return (
     <div className="header__container">
-      {explorerOpen ? null :
-        <ExplorerHeader
-          isOpen={false}
-          toggleOpen={() => setExplorerOpen(!explorerOpen)}
-        />}
+      {<ExplorerHeader
+        isOpen={false}
+        toggleOpen={() => setExplorerOpen(!explorerOpen)}
+      />}
       <div className="header__contents">
         {items.map(([id, appBarItem], i) => (
           <a

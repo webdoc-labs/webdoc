@@ -122,7 +122,7 @@ exports.publish = async function publish(options /*: PublishOptions */) {
     idToDoc.set(doc.id, doc);
   });
 
-  outStaticFiles(outDir);
+  await outStaticFiles(outDir, config);
   outExplorerData(outDir, crawlData);
   outMainPage(path.join(outDir, indexRelative), pipeline, options.config);
   outIndexes(outDir, pipeline, options.config, crawlData.index);
@@ -133,11 +133,16 @@ exports.publish = async function publish(options /*: PublishOptions */) {
 };
 
 // Copy the contents of ./static to the output directory
-function outStaticFiles(outDir /*: string */) /*: Promise<void> */ {
+async function outStaticFiles(
+  outDir /*: string */,
+  config /*: ConfigSchema */,
+) /*: Promise<void> */ {
   const staticDir = path.join(__dirname, "./static");
 
-  return fse.copy(staticDir, outDir)
-    .then(() => {
+  await fse.copy(staticDir, outDir);
+
+  await Promise.all([
+    (async () => {
       // Copy the prettify script to outDir
       PRETTIFIER_SCRIPT_FILES.forEach((fileName) => {
         const toPath = path.join(outDir, "scripts", path.basename(fileName));
@@ -147,7 +152,28 @@ function outStaticFiles(outDir /*: string */) /*: Promise<void> */ {
           toPath,
         );
       });
-    });
+    })(),
+    (() => {
+      // Copy the stylesheets
+      const stylesheets = config.template.stylesheets;
+      const copyPromises = [];
+      const resolved = [];
+
+      for (const file of stylesheets) {
+        const out = path.join(outDir, file);
+
+        resolved.push(path.relative(outDir, out));
+        copyPromises.push(fse.copy(
+          path.join(process.cwd(), file),
+          out,
+        ));
+      }
+
+      config.template.stylesheets = resolved;
+
+      return Promise.all(copyPromises);
+    })(),
+  ]);
 }
 
 // Write the explorer JSON data in the output directory
