@@ -44,7 +44,11 @@ export default function ExplorerItem(props) {
   return (
     <TreeItem
       id={props.data.$nodeId}
-      className="explorer-tree__target"
+      className={`explorer-tree__target${
+        targetChildren.length > 0 ? " explorer-tree__parent" : ""
+      }${
+        primary ? " explorer-tree__selected" : ""
+      }`}
       classes={{
         label: classes.label,
         iconContainer: classes.iconContainer,

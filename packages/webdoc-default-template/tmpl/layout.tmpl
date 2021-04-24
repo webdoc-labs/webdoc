@@ -50,10 +50,10 @@ const integrations = JSON.stringify(config.integrations);
   <body class="root">
     <div class="docs <?js= document && document.type === "TutorialDoc" ? "tutorials" : "api-docs" ?>">
       <article class="page">
-        <div class="page-explorer" id="explorer-mount-point"></div>
         <div class="header-content-container">
           <section class="header" id="header-mount-point"></section>
           <div class="header-content-container__content">
+            <div class="page-explorer" id="explorer-mount-point"></div>
             <?js /* Includes content and member-explorer. */ ?>
             <?js= content ?>
             <!-- footer in content -->

@@ -5,6 +5,7 @@ import {makeStyles} from "@material-ui/core/styles";
 
 const useToggleButtonStyles = makeStyles({
   root: {
+    color: "var(--color-primary-text)",
     margin: "0 0 0 12px",
   },
 });

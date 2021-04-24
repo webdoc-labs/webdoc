@@ -153,7 +153,6 @@ export default connect(({
         overflowX: "hidden",
       }),
     }}>
-      <ExplorerHeader isOpen={isOpen} toggleOpen={toggleOpen} />
       {data && <ExplorerFilter data={data} />}
       <TreeView
         expanded={expandedItems}

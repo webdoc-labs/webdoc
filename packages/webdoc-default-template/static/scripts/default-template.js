@@ -7074,6 +7074,7 @@ function makeStyles_makeStyles(stylesOrCreator) {
 
 var useToggleButtonStyles = styles_makeStyles({
   root: {
+    color: "var(--color-primary-text)",
     margin: "0 0 0 12px"
   }
 });
@@ -8693,7 +8694,7 @@ function ExplorerItem(props) {
 
   return external_React_default.a.createElement(esm_TreeItem_TreeItem, {
     id: props.data.$nodeId,
-    className: "explorer-tree__target",
+    className: "explorer-tree__target".concat(targetChildren.length > 0 ? " explorer-tree__parent" : "").concat(primary ? " explorer-tree__selected" : ""),
     classes: {
       label: classes.label,
       iconContainer: classes.iconContainer,
@@ -9565,10 +9566,7 @@ function makeIds(data, collector) {
       width: 291,
       overflowX: "hidden"
     })
-  }, external_React_default.a.createElement(ExplorerHeader, {
-    isOpen: isOpen,
-    toggleOpen: toggleOpen
-  }), data && external_React_default.a.createElement(Explorer_ExplorerFilter, {
+  }, data && external_React_default.a.createElement(Explorer_ExplorerFilter, {
     data: data
   }), external_React_default.a.createElement(esm_TreeView_TreeView, {
     expanded: expandedItems,
@@ -9692,7 +9690,7 @@ function Header_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
   var currentItemId = appData.appBar.current;
   return React.createElement("div", {
     className: "header__container"
-  }, explorerOpen ? null : React.createElement(ExplorerHeader, {
+  }, React.createElement(ExplorerHeader, {
     isOpen: false,
     toggleOpen: function toggleOpen() {
       return setExplorerOpen(!explorerOpen);

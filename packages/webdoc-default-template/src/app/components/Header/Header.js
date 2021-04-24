@@ -16,8 +16,7 @@ export default connect(({explorerOpen}) => ({
 
   return (
     <div className="header__container">
-      {explorerOpen ? null :
-        <ExplorerHeader
+      {<ExplorerHeader
           isOpen={false}
           toggleOpen={() => setExplorerOpen(!explorerOpen)}
         />}
