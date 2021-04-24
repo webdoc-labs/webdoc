@@ -133,10 +133,13 @@ exports.publish = async function publish(options /*: PublishOptions */) {
 };
 
 // Copy the contents of ./static to the output directory
-async function outStaticFiles(outDir /*: string */, config /*: ConfigSchema */) /*: Promise<void> */ {
+async function outStaticFiles(
+  outDir /*: string */,
+  config /*: ConfigSchema */,
+) /*: Promise<void> */ {
   const staticDir = path.join(__dirname, "./static");
 
-  await fse.copy(staticDir, outDir)
+  await fse.copy(staticDir, outDir);
 
   await Promise.all([
     (async () => {
@@ -148,13 +151,13 @@ async function outStaticFiles(outDir /*: string */, config /*: ConfigSchema */) 
           path.join(require.resolve("code-prettify"), "..", fileName),
           toPath,
         );
-      })
+      });
     })(),
     (() => {
       // Copy the stylesheets
       const stylesheets = config.template.stylesheets;
-      let copyPromises = [];
-      let resolved = [];
+      const copyPromises = [];
+      const resolved = [];
 
       for (const file of stylesheets) {
         const out = path.join(outDir, file);
