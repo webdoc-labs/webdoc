@@ -33,6 +33,7 @@ type ConfigSchema = {
   },
   template: {
     applicationName: string,
+    stylesheets: Array<string>,
     siteDomain?: string,
     siteRoot: string,
     mainPage?: {
@@ -79,6 +80,7 @@ const defaultConfig: ConfigSchema = {
   template: {
     applicationName: "{ <i>webdoc</i> }",
     siteRoot: "",
+    stylesheets: [],
     mainPage: {
       title: "Main Page",
     },
