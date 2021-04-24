@@ -1,6 +1,13 @@
 # Change Log - @webdoc/template-library
 
-This log was last generated on Sat, 17 Apr 2021 23:54:20 GMT and should not be manually modified.
+This log was last generated on Sat, 24 Apr 2021 13:49:33 GMT and should not be manually modified.
+
+## 1.2.2
+Sat, 24 Apr 2021 13:49:33 GMT
+
+### Updates
+
+- Fix 1.2.1 release not getting #105's changes
 
 ## 1.2.1
 Sat, 17 Apr 2021 23:54:20 GMT
