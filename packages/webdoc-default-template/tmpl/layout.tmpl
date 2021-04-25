@@ -34,7 +34,7 @@ const integrations = JSON.stringify(config.integrations);
       window.appData = {
         applicationName: "<?js= config.applicationName ?>",
         appBar: JSON.parse(`<?js= JSON.stringify(appBar) ?>`),
-        explorerTree: "<?js= siteRoot + "/explorer/" + (document && document.type === "TutorialDoc" ? "tutorials" : "reference") + ".json" ?>",
+        explorerTree: "<?js= (siteRoot ? "/" + siteRoot : "") + "/explorer/" + (document && document.type === "TutorialDoc" ? "tutorials" : "reference") + ".json" ?>",
         siteRoot: "<?js= siteRoot ?>",
         integrations: JSON.parse(`<?js= integrations ?>`),
       };
