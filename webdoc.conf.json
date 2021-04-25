@@ -1,6 +1,6 @@
 {
     "source": {
-        "includePattern": [
+        "include": [
           "packages/webdoc-cli/src/**/*.js",
           "packages/webdoc-externalize/src/**/*.js",
           "packages/webdoc-model/src/**/*.js",

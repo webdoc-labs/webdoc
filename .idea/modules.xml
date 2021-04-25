@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/webdoc.iml" filepath="$PROJECT_DIR$/webdoc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/webdoc.iml" filepath="$PROJECT_DIR$/.idea/webdoc.iml" />
     </modules>
   </component>
 </project>

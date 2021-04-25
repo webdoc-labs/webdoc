@@ -186,6 +186,12 @@
 			"description": ""
 		},
 		{
+			"name": "createTutorialDoc",
+			"type": "FunctionDoc",
+			"brief": "<p>Creates a {@link TutorialDoc}.</p>",
+			"description": ""
+		},
+		{
 			"name": "declareParameter",
 			"type": "FunctionDoc",
 			"brief": "",
@@ -246,12 +252,6 @@
 			"description": ""
 		},
 		{
-			"name": "extractSymbol",
-			"type": "FunctionDoc",
-			"brief": "",
-			"description": ""
-		},
-		{
 			"name": "extractTypeFailsafe",
 			"type": "FunctionDoc",
 			"brief": "",
@@ -276,13 +276,7 @@
 			"description": ""
 		},
 		{
-			"name": "getIncludePattern",
-			"type": "FunctionDoc",
-			"brief": "",
-			"description": ""
-		},
-		{
-			"name": "initLogger",
+			"name": "getTemplate",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
@@ -336,7 +330,7 @@
 			"description": ""
 		},
 		{
-			"name": "loadTutorials",
+			"name": "main",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
@@ -361,6 +355,12 @@
 		},
 		{
 			"name": "modAssembly",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "morphTutorials",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
@@ -462,7 +462,7 @@
 			"description": ""
 		},
 		{
-			"name": "parseSince",
+			"name": "parseSee",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
@@ -492,6 +492,12 @@
 			"description": ""
 		},
 		{
+			"name": "parseTypedef",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
 			"name": "query",
 			"type": "FunctionDoc",
 			"brief": "",
@@ -508,6 +514,18 @@
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": "<p>Imports the doctree from the JSON format string-data. This will not recover all of the\ninformation in the original doctree.</p>"
+		},
+		{
+			"name": "reduceMemberExpression",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "reduceTSQualifiedName",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
 		},
 		{
 			"name": "registerDoctreeMod",
@@ -555,19 +573,19 @@
 			"description": ""
 		},
 		{
-			"name": "resolveConfigurator",
-			"type": "FunctionDoc",
-			"brief": "",
-			"description": ""
-		},
-		{
 			"name": "resolvedThis",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
 		},
 		{
-			"name": "resolveFlowDataType",
+			"name": "resolveExpression",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "resolveInit",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
@@ -579,25 +597,25 @@
 			"description": ""
 		},
 		{
+			"name": "resolveObject",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
 			"name": "resolveRelated",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": "<ul>\n<li>\n<p>Resolves all docs listed in the &quot;extends&quot;, &quot;implements&quot;, &quot;mixes&quot;. This prevent redundant\nsearches to extended/implemented/mixed symbols.</p>\n</li>\n<li>\n<p>Replaces the &quot;default&quot; scopes for properties with a good guess. (The @property tag parser puts\n&quot;default&quot; scope on the PropertyDocs it creates)</p>\n</li>\n<li>\n<p>Brings down any methods/properties coming from parent classes &amp; mixins. Adds the implementation\nproperty to methods/properties that come from interfaces.</p>\n</li>\n</ul>"
 		},
 		{
-			"name": "resolveReturn",
-			"type": "FunctionDoc",
-			"brief": "",
-			"description": ""
-		},
-		{
-			"name": "resolveRootObject",
-			"type": "FunctionDoc",
-			"brief": "",
-			"description": ""
-		},
-		{
 			"name": "resolveToObject",
+			"type": "FunctionDoc",
+			"brief": "",
+			"description": ""
+		},
+		{
+			"name": "resolveTSDataType",
 			"type": "FunctionDoc",
 			"brief": "",
 			"description": ""
@@ -654,6 +672,12 @@
 			"name": "traverse",
 			"type": "FunctionDoc",
 			"brief": "<p>Preorder traversal of all the docs</p>",
+			"description": ""
+		},
+		{
+			"name": "tutorialDoc",
+			"type": "FunctionDoc",
+			"brief": "",
 			"description": ""
 		},
 		{
