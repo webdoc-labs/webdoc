@@ -21,7 +21,7 @@ describe("@webdoc/parser.parse (Typescript)", function() {
     }]);
 
     expect(docs.members.length).to.equal(1);
-    expect(docs.members[0].members.length).to.equal(1);
+    expect(docs.members[0].members.length).to.be.gte(1);
 
     const fieldDoc = docs.members[0].members[0];
 
