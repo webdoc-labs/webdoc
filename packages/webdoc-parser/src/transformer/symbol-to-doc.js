@@ -12,6 +12,7 @@ import {
   parseAbstract,
   parseAccess,
   parseAuthor,
+  parseClassDesc,
   parseCopyright,
   parseDefault,
   parseDeprecated,
@@ -69,6 +70,7 @@ const TAG_PARSERS: { [id: string]: TagParser } = {
   "access": parseAccess,
   "augments": parseExtends, // alias @extends
   "author": parseAuthor,
+  "classdesc": parseClassDesc,
   "copyright": parseCopyright,
   "default": parseDefault,
   "deprecated": parseDeprecated,

@@ -55,6 +55,7 @@ import {
   extractReturns,
   extractType,
 } from "./extract-metadata";
+import type {DataType} from "@webdoc/types";
 import {createSimpleKeywordType} from "@webdoc/model";
 
 // + Extract the symbol name, type from the Node
@@ -115,32 +116,13 @@ export default function extractSymbol(
     nodeSymbol.meta.scope = node.static ? "static" : "instance";
     nodeSymbol.meta.type = "PropertyDoc";
 
-    if (isLiteral(node.value)) {
-      if (isStringLiteral(node.value)) {
-        // Quotes for strings
-        nodeSymbol.meta.defaultValue = `"${node.value.value}"`;
+    const [defaultValue, dataType] = resolveDefaultValue(node.value);
 
-        if (!nodeSymbol.meta.dataType) {
-          nodeSymbol.meta.dataType = createSimpleKeywordType("string");
-        }
-      } else {
-        nodeSymbol.meta.defaultValue = `${node.value.value}`;
+    if (typeof defaultValue === "string") {
+      nodeSymbol.meta.defaultValue = defaultValue;
 
-        if (!nodeSymbol.meta.dataType && isNumericLiteral(node.value)) {
-          nodeSymbol.meta.dataType = createSimpleKeywordType("number");
-        } else if (!nodeSymbol.meta.dataType && isBooleanLiteral(node.value)) {
-          nodeSymbol.meta.dataType = createSimpleKeywordType("boolean");
-        }
-      }
-    } else if (isExpression(node.value)) {
-      const defaultValue = resolveExpression(node.value);
-
-      if (typeof defaultValue === "string") {
-        nodeSymbol.meta.defaultValue = defaultValue;
-
-        if (!isNaN(parseFloat(defaultValue))) {
-          nodeSymbol.meta.dataType = createSimpleKeywordType("number");
-        }
+      if (!nodeSymbol.meta.dataType) {
+        nodeSymbol.meta.dataType = dataType;
       }
     }
   } else if (isClassDeclaration(node) || isClassExpression(node)) {
@@ -229,8 +211,20 @@ export default function extractSymbol(
         nodeSymbol.meta.type = "PropertyDoc";
       }
 
+      // Resolve property default
+      if (!isInit && init) {
+        const [defaultValue, dataType] = resolveDefaultValue(init);
+
+        nodeSymbol.meta.defaultValue = defaultValue;
+        nodeSymbol.meta.dataType = dataType;
+      }
+
+      let isExpression = false;
+
       if (isExpressionStatement(node)) {
         // Literal property
+
+        isExpression = true;
 
         const object = resolveObject(node.expression.left);
         const scope = isInstancePropertyAssignment(node.expression.left) ?
@@ -251,7 +245,7 @@ export default function extractSymbol(
       }
 
       if (isFunctionExpression(init) || isArrowFunctionExpression(init)) {
-        nodeSymbol.meta.type = isObjectProperty(node) ? "MethodDoc" : "FunctionDoc";
+        nodeSymbol.meta.type = isObjectProperty(node) || isExpression ? "MethodDoc" : "FunctionDoc";
 
         nodeSymbol.meta.params = extractParams(init);
         nodeSymbol.meta.returns = extractReturns(init);
@@ -418,6 +412,38 @@ function resolveExpression(expression: BabelNodeExpression): string | void {
   if (isUnaryExpression(expression)) {
     return `-${resolveExpression(expression.argument) || ""}`;
   }
+}
+
+function resolveDefaultValue(node: BabelNodeExpression): [?string, ?DataType] {
+  let defaultValue: ?string;
+  let dataType: ?DataType;
+
+  if (isLiteral(node)) {
+    if (isStringLiteral(node)) {
+      // Quotes for strings
+      defaultValue = `"${node.value}"`;
+
+      dataType = createSimpleKeywordType("string");
+    } else {
+      defaultValue = `${node.value}`;
+
+      if (isNumericLiteral(node)) {
+        dataType = createSimpleKeywordType("number");
+      } else if (isBooleanLiteral(node)) {
+        dataType = createSimpleKeywordType("boolean");
+      }
+    }
+  } else if (isExpression(node)) {
+    defaultValue = resolveExpression(node);
+
+    if (typeof defaultValue === "string") {
+      if (!isNaN(parseFloat(defaultValue))) {
+        dataType = createSimpleKeywordType("number");
+      }
+    }
+  }
+
+  return [defaultValue, dataType];
 }
 
 // Whether the member expression assigns to this, e.g.

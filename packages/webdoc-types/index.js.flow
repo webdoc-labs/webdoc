@@ -140,6 +140,7 @@ export type ClassDoc = {
   params?: Param[],
   implements?: DocLink[],
   mixes?: [],
+  returns?: Return[],
   type: "ClassDoc"
 };
 
@@ -273,6 +274,7 @@ export type Tag =
   AbstractTag |
   AccessTag |
   AuthorTag |
+  ClassDescTag |
   CopyrightTag |
   DefaultTag |
   DeprecatedTag |
@@ -302,6 +304,7 @@ export type TagShape =
   $Shape<AbstractTag> |
   $Shape<AccessTag> |
   $Shape<AuthorTag> |
+  $Shape<ClassDescTag> |
   $Shape<CopyrightTag> |
   $Shape<DefaultTag> |
   $Shape<DeprecatedTag> |
@@ -341,6 +344,11 @@ export type AccessTag = {
 export type AuthorTag = {
   ...BaseTag,
   type: "AuthorTag",
+};
+
+export type ClassDescTag = {
+  ...BaseTag,
+  type: "ClassDescTag",
 };
 
 export type CopyrightTag = {

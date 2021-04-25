@@ -4,6 +4,7 @@ import type {
   AbstractTag,
   AuthorTag,
   BaseDoc,
+  ClassDescTag,
   CopyrightTag,
   DataType,
   DefaultTag,
@@ -55,6 +56,13 @@ export function parseAuthor(value: string, doc: $Shape<BaseDoc>): $Shape<AuthorT
   return {
     value,
     type: "AuthorTag",
+  };
+}
+
+export function parseClassDesc(value: string, _doc: $Shape<BaseDoc>): $Shape<ClassDescTag> {
+  return {
+    value,
+    type: "ClassDescTag",
   };
 }
 
