@@ -11,7 +11,7 @@ import type {
 } from "@webdoc/types";
 import {nanoid} from "nanoid";
 
-const CANONICAL_SEPARATOR = /([.#~$])/g;
+export const CANONICAL_SEPARATOR = /([.#~$])/g;
 
 function updateScope(doc: Doc, scopeStack: string[], scopePath: string): void {
   if (scopePath) {
@@ -75,7 +75,7 @@ export const createDoc = (
 
     // Sad: splitting will include the separators so filter them
     const path = doc.name.split(CANONICAL_SEPARATOR)
-      .filter((ch) => ch !== "." && ch !== "#" && ch !== "#");
+      .filter((ch) => ch !== "." && ch !== "#" && ch !== "~");
     const parserOpts = doc.parserOpts || {};
 
     doc.name = path[path.length - 1];
