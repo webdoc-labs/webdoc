@@ -1,6 +1,14 @@
 # Change Log - @webdoc/cli
 
-This log was last generated on Sat, 24 Apr 2021 13:49:32 GMT and should not be manually modified.
+This log was last generated on Sun, 25 Apr 2021 20:31:03 GMT and should not be manually modified.
+
+## 1.3.0
+Sun, 25 Apr 2021 20:31:03 GMT
+
+### Updates
+
+- Add experimental support for adding stylesheets for @webdoc/default-template
+- Fix tutorials hierarchy resolution in some cases
 
 ## 1.2.2
 Sat, 24 Apr 2021 13:49:32 GMT

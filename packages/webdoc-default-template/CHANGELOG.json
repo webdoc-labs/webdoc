@@ -2,6 +2,21 @@
   "name": "@webdoc/default-template",
   "entries": [
     {
+      "version": "1.3.0",
+      "tag": "@webdoc/default-template_v1.3.0",
+      "date": "Sun, 25 Apr 2021 20:31:03 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "Add experimental support for adding stylesheets. Separate explorer from its header, and move header to always be in the app bar (even when explorer is closed)."
+          },
+          {
+            "comment": "Add support for tutorials"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.2.2",
       "tag": "@webdoc/default-template_v1.2.2",
       "date": "Sat, 24 Apr 2021 13:49:32 GMT",
