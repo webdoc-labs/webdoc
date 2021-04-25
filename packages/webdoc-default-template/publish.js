@@ -336,7 +336,7 @@ function outTutorials(
   docTree /*: RootDoc */,
 ) {
   function out(tutorial /*: TutorialDoc */) {
-    const uri = linker.getURI(tutorial);
+    const uri = linker.getURI(tutorial, true);
 
     pipeline.render("tutorial.tmpl", {
       appBar: {current: "tutorials"},
