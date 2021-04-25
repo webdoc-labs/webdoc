@@ -2,6 +2,18 @@
   "name": "@webdoc/default-template",
   "entries": [
     {
+      "version": "1.3.1",
+      "tag": "@webdoc/default-template_v1.3.1",
+      "date": "Sun, 25 Apr 2021 21:01:31 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fix issues with --site-root was defined with tutorials and the explorer"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.3.0",
       "tag": "@webdoc/default-template_v1.3.0",
       "date": "Sun, 25 Apr 2021 20:31:03 GMT",
