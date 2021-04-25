@@ -2,7 +2,7 @@
   {
    "definitionName": "lockStepVersion",
    "policyName": "webdoc",
-   "version": "1.3.0",
-   "nextBump": "minor"
+   "version": "1.3.1",
+   "nextBump": "patch"
   }
 ]

@@ -1,6 +1,6 @@
 {
   "name": "@webdoc/default-template",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "webdoc's default template",
   "keywords": [
     "webdoc",
@@ -41,9 +41,9 @@
   "dependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-react": "^7.10.1",
-    "@webdoc/model": "^1.3.0",
-    "@webdoc/template-library": "^1.3.0",
-    "@webdoc/types": "^1.3.0",
+    "@webdoc/model": "^1.3.1",
+    "@webdoc/template-library": "^1.3.1",
+    "@webdoc/types": "^1.3.1",
     "code-prettify": "^0.1.0",
     "fs-extra": "^9.0.1",
     "markdown-it": "^11.0.0",
