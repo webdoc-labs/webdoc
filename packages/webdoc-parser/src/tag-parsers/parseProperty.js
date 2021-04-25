@@ -1,7 +1,7 @@
 // @flow
 import type {BaseDoc, PropertyTag} from "@webdoc/types";
+import {CANONICAL_SEPARATOR, createDoc, findDoc} from "@webdoc/model";
 import {StringUtils, matchDataTypeClosure, matchDefaultValueClosure} from "./helper";
-import {createDoc, findDoc, CANONICAL_SEPARATOR} from "@webdoc/model";
 import {parseDataType} from "@webdoc/model";
 
 // @property {<DATA_TYPE>} <NAME>                      - <DESC>
@@ -126,7 +126,8 @@ export function parseProperty(value: string, doc: $Shape<BaseDoc>): PropertyTag 
   if (parent) {
     doc.members.push(propertyDoc);
   } else {
-    throw new Error('Property ' + name + '\'s parent cannot be located. Did you declare parent properties?');
+    throw new Error("Property " + name +
+      "'s parent cannot be located. Did you declare parent properties?'");
   }
 
   return {
