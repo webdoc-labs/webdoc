@@ -20,7 +20,7 @@ function validateParameters(doc: DocShape, meta: SymbolSignature): void {
     const name = param.identifier;
 
     if (!name) {
-      throw new Error("Anonymous documented parameters are not supported");
+      console.warn("Anonymous documented parameters are not supported");
     }
 
     const dotIndex = name.indexOf(".");
@@ -33,14 +33,14 @@ function validateParameters(doc: DocShape, meta: SymbolSignature): void {
       // @param {string} string
       // @param {string} options.title
       if (firstId !== lastParam) {
-        throw new Error(`Object property ${name} parameter must be placed` +
+        console.warn(`Object property ${name} parameter must be placed` +
               `directly after object parameter ${firstId}`);
       }
 
       continue;
     }
     if (j >= metaParams.length) {
-      throw new Error(`"${name}" is not a parameter & cannot` +
+      console.warn(`"${name}" is not a parameter & cannot` +
             ` come after the last parameter "${lastParam || ""}"`);
     }
 

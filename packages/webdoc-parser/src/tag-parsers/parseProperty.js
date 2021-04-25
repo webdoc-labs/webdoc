@@ -1,7 +1,7 @@
 // @flow
 import type {BaseDoc, PropertyTag} from "@webdoc/types";
 import {StringUtils, matchDataTypeClosure, matchDefaultValueClosure} from "./helper";
-import {createDoc} from "@webdoc/model";
+import {createDoc, findDoc, CANONICAL_SEPARATOR} from "@webdoc/model";
 import {parseDataType} from "@webdoc/model";
 
 // @property {<DATA_TYPE>} <NAME>                      - <DESC>
@@ -103,7 +103,7 @@ export function parseProperty(value: string, doc: $Shape<BaseDoc>): PropertyTag 
     doc.members = [];
   }
 
-  doc.members.push(createDoc(name, "PropertyDoc", {
+  const propertyDoc = createDoc(name, "PropertyDoc", {
     object: null,
     constant: !!dataValue,
     dataType: dataType ? parseDataType(dataType) : undefined,
@@ -113,7 +113,21 @@ export function parseProperty(value: string, doc: $Shape<BaseDoc>): PropertyTag 
     optional,
     scope: "default", // related-resolution doctree-mod will resolve this
     loc: doc.loc,
-  }));
+  });
+  let parent = doc;
+
+  // Properties cannot be relocated. Attempt to do it locally
+  if (propertyDoc.parserOpts && propertyDoc.parserOpts.memberof) {
+    delete propertyDoc.parserOpts.memberof;
+
+    parent = findDoc(name.split(CANONICAL_SEPARATOR).slice(0, -2).join("."), doc);
+  }
+
+  if (parent) {
+    doc.members.push(propertyDoc);
+  } else {
+    throw new Error('Property ' + name + '\'s parent cannot be located. Did you declare parent properties?');
+  }
 
   return {
     name: "property",
