@@ -2,7 +2,7 @@
 
 import type {Doc, RootDoc} from "@webdoc/types";
 import modDiscoverMembers from "./mod-discover-members";
-import modES5Constructor from './mod-es5-constructor';
+import modES5Constructor from "./mod-es5-constructor";
 import modPackageApi from "./mod-package-api";
 import modPrune from "./mod-prune";// Next line is f'd up b/c the compiler ran on that file
 import modResolveMemberof from "./mod-resolve-memberof"; // eslint-disable-line
