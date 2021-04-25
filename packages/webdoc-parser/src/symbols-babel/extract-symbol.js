@@ -229,8 +229,12 @@ export default function extractSymbol(
         nodeSymbol.meta.type = "PropertyDoc";
       }
 
+      let isExpression = false;
+
       if (isExpressionStatement(node)) {
         // Literal property
+
+        isExpression = true;
 
         const object = resolveObject(node.expression.left);
         const scope = isInstancePropertyAssignment(node.expression.left) ?
@@ -251,7 +255,7 @@ export default function extractSymbol(
       }
 
       if (isFunctionExpression(init) || isArrowFunctionExpression(init)) {
-        nodeSymbol.meta.type = isObjectProperty(node) ? "MethodDoc" : "FunctionDoc";
+        nodeSymbol.meta.type = isObjectProperty(node) || isExpression ? "MethodDoc" : "FunctionDoc";
 
         nodeSymbol.meta.params = extractParams(init);
         nodeSymbol.meta.returns = extractReturns(init);

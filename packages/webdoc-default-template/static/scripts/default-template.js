@@ -9466,7 +9466,6 @@ function makeIds(data, collector) {
   };
 })(function Explorer(_ref2) {
   var isOpen = _ref2.isOpen,
-      setOpen = _ref2.setOpen,
       expandedItems = _ref2.expandedItems,
       setExpandedItems = _ref2.setExpandedItems,
       toggleItem = _ref2.toggleItem,
@@ -9485,9 +9484,6 @@ function makeIds(data, collector) {
   var _useExplorerStyles = useExplorerStyles(),
       root = _useExplorerStyles.root;
 
-  var toggleOpen = external_React_default.a.useCallback(function () {
-    return setOpen(!isOpen);
-  }, [isOpen]);
   var children = [];
   var explorerTree = window.appData.explorerTree;
 

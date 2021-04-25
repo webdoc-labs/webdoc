@@ -11,6 +11,7 @@ export {parseExtends, parseImplements, parseMixes} from "./parseExtendsImplement
 export {
   parseAbstract,
   parseAuthor,
+  parseClassDesc,
   parseCopyright,
   parseDefault,
   parseDeprecated,

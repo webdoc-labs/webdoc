@@ -2,6 +2,7 @@
 
 import type {Doc, RootDoc} from "@webdoc/types";
 import modDiscoverMembers from "./mod-discover-members";
+import modES5Constructor from './mod-es5-constructor';
 import modPackageApi from "./mod-package-api";
 import modPrune from "./mod-prune";// Next line is f'd up b/c the compiler ran on that file
 import modResolveMemberof from "./mod-resolve-memberof"; // eslint-disable-line
@@ -52,7 +53,7 @@ export const STAGE_AST_LIKE = 100;
 
 /**
  * The doctree-mod should run when symbols are placed in their documented parents. The
- * `@modResolveMemberof` tag is resolved in this stage. This occurs after {@code STAGE_AST_LIKE}.
+ * `@memberof` tag is resolved in this stage. This occurs after {@code STAGE_AST_LIKE}.
  *
  * Example:
  * ```js
@@ -125,6 +126,7 @@ export function registerDoctreeMod(
 }
 
 // These are the in-built doctree-mods.
+registerDoctreeMod("ASTMemberResolution", STAGE_AST_LIKE, modES5Constructor);
 registerDoctreeMod("ASTMemberResolution", STAGE_AST_LIKE, modResolveMembers);
 registerDoctreeMod("MemberOfResolution", STAGE_SYMBOLS_RESOLVED, modResolveMemberof);
 registerDoctreeMod("ExtendsImplementsMixesResolution", STAGE_SYMBOLS_RESOLVED, modResolveRelated);

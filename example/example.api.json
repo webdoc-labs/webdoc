@@ -28,7 +28,17 @@
 					"type": "ClassDoc",
 					"scope": "static",
 					"brief": "",
-					"description": ""
+					"description": "",
+					"members": [
+						{
+							"name": "constructor",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": "",
+							"description": ""
+						}
+					]
 				},
 				{
 					"name": "AbstractRenderer",
@@ -41,6 +51,14 @@
 							"type": "PropertyDoc",
 							"scope": "instance",
 							"brief": "<p>The background color to fill if not transparent</p>",
+							"description": ""
+						},
+						{
+							"name": "constructor",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": "",
 							"description": ""
 						}
 					]
@@ -475,13 +493,17 @@
 					"name": "Road",
 					"type": "ClassDoc",
 					"brief": "<p>This is another road class.</p>",
-					"description": ""
-				},
-				{
-					"name": "Road",
-					"type": "ClassDoc",
-					"brief": "<p>Road represents a drivable 2D path for vehicles.</p>",
-					"description": ""
+					"description": "",
+					"members": [
+						{
+							"name": "constructor",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": "<p>This is another road class.</p>",
+							"description": ""
+						}
+					]
 				},
 				{
 					"name": "DEFAULT_LANES",
@@ -509,7 +531,17 @@
 					"name": "Transaction",
 					"type": "ClassDoc",
 					"brief": "",
-					"description": ""
+					"description": "",
+					"members": [
+						{
+							"name": "constructor",
+							"type": "MethodDoc",
+							"access": "public",
+							"scope": "instance",
+							"brief": "",
+							"description": ""
+						}
+					]
 				}
 			]
 		},
@@ -519,6 +551,14 @@
 			"brief": "<p>Bean class</p>",
 			"description": "",
 			"members": [
+				{
+					"name": "constructor",
+					"type": "MethodDoc",
+					"access": "public",
+					"scope": "instance",
+					"brief": "<p>Bean class</p>",
+					"description": ""
+				},
 				{
 					"name": "roast",
 					"type": "MethodDoc",
@@ -591,6 +631,14 @@
 					"description": ""
 				},
 				{
+					"name": "constructor",
+					"type": "MethodDoc",
+					"access": "public",
+					"scope": "instance",
+					"brief": "<p><em>Simulation</em> for a automobile that can drive on a manifold surface.</p>",
+					"description": ""
+				},
+				{
 					"name": "onCrash",
 					"type": "MethodDoc",
 					"scope": "instance",
@@ -636,11 +684,55 @@
 			]
 		},
 		{
+			"name": "ExampleFactory",
+			"type": "ClassDoc",
+			"description": "<p>{@link ExampleFactory} can be used to build examples.</p>\n<pre><code class=\"hljs language-js\"><span class=\"hljs-comment\">// <span class=\"hljs-doctag\">TODO:</span> Make the API interesting</span>\nExampleFactory.getInstance()\n .build()\n</code></pre>",
+			"members": [
+				{
+					"name": "getInstance",
+					"type": "MethodDoc",
+					"scope": "static",
+					"brief": "<p>Gets a lazily-initialized, shared singleton instance of {@link ExampleFactory}.</p>",
+					"description": ""
+				},
+				{
+					"name": "build",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": "<p>Build the road.</p>",
+					"description": ""
+				},
+				{
+					"name": "constructor",
+					"type": "MethodDoc",
+					"access": "public",
+					"scope": "instance",
+					"brief": "<p>This constructor should only be used for custom contexts.</p>",
+					"description": ""
+				},
+				{
+					"name": "getContext",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": "<p>Get the context of this factory.</p>",
+					"description": ""
+				}
+			]
+		},
+		{
 			"name": "Gravity",
 			"type": "ClassDoc",
 			"brief": "<p>This class shouldn't be documented!</p>",
 			"description": "",
 			"members": [
+				{
+					"name": "constructor",
+					"type": "MethodDoc",
+					"access": "public",
+					"scope": "instance",
+					"brief": "<p>This class shouldn't be documented!</p>",
+					"description": ""
+				},
 				{
 					"name": "force",
 					"type": "MethodDoc",
