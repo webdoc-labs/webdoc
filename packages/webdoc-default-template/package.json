@@ -47,7 +47,7 @@
     "fs-extra": "^9.0.1",
     "markdown-it": "^11.0.0",
     "markdown-it-highlightjs": "^3.1.0",
-    "@webdoc/types": "~1.2.1"
+    "@webdoc/types": "^1.2.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
