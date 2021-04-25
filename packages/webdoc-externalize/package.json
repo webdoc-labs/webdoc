@@ -1,6 +1,6 @@
 {
   "name": "@webdoc/externalize",
-  "version": "1.2.2",
+  "version": "1.3.0",
   "description": "Links your documentation to external APIs and vice versa!",
   "keywords": [
     "json",
@@ -39,8 +39,8 @@
   },
   "dependencies": {
     "@babel/core": "^7.9.0",
-    "@webdoc/model": "^1.2.2",
-    "@webdoc/types": "^1.2.2"
+    "@webdoc/model": "^1.3.0",
+    "@webdoc/types": "^1.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
