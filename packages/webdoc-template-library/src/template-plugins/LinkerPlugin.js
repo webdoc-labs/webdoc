@@ -355,7 +355,7 @@ function LinkerPluginShell() {
     }
 
     getResourceURI(subpath: string): string {
-      return this.processInternalURI(encodeURI(path.join("/<siteRoot>", subpath)));
+      return this.processInternalURI(path.join("/<siteRoot>", subpath));
     }
 
     createURI(preferredUri: string, outputRelative?: boolean): string {
@@ -374,15 +374,8 @@ function LinkerPluginShell() {
      * @return {string} uri with siteRoot
      */
     processInternalURI(uri: string, options: { outputRelative?: boolean } = {}): string {
-      if (!options.outputRelative) {
-        uri = uri
-          .replace("%3CsiteRoot%3E", this.siteRoot)
-          .replace("//", "/");// needed if siteRoot = "";
-      } else {
-        uri = uri.replace("/%3CsiteRoot%3E/", "");
-      }
-
-      return uri;
+      return uri.replaceAll("<siteRoot>", options.outputRelative ? (this.siteRoot || "") : "")
+        .replace(/\/+/g, "/");
     }
 
     /**
@@ -445,7 +438,7 @@ function LinkerPluginShell() {
         }
       }
 
-      return encodeURI(probeURI);
+      return probeURI;
     }
 
     /**

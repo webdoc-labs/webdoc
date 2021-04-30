@@ -286,7 +286,7 @@ const createLink = (doc: any) => {
     }
   }
 
-  return encodeURI(filename || "") + fragmentHash(fragment);
+  return (filename || "") + fragmentHash(fragment);
 };
 
 /**
