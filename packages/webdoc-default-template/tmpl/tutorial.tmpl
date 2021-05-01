@@ -1,10 +1,65 @@
 <?js
     /** Tutorial rendering component */
     const document = obj.document;
+
+    // Navigation to next, previous tutorials (if any)
+    const { next, previous } = obj.navigation;
  ?>
-<div class="page-content">
+<main class="page-content">
   <div class="document">
     <?js /* Simplicity, at its finest! */ ?>
     <?js= document.content ?>
   </div>
-</div>
+  <?js if (next || previous) { ?>
+    <div class="tutorial--navigation">
+      <?js if (previous) { ?>
+        <a class="tutorial--navigation-previous" href="<?js= this.getPlugin("linker").getURI(previous) ?>">
+          <section>
+            <svg
+              class="tutorial--navigation-arrow"
+              version="1.1" xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              x="0px"
+              y="0px"
+              viewBox="0 0 23 14"
+              xml:space="preserve"
+            >
+              <line x1="0" y1="7" x2="6" y2="1" />
+              <line x1="0" y1="7" x2="6" y2="13" />
+              <line x1="0" y1="7" x2="23" y2="7" />
+            </svg>
+          </section>
+          <section>
+            <span>PREVIOUS GUIDE</span>
+            <?js= previous.title ?>
+          </section>
+        </a>
+      <?js } ?>
+      <?js if (previous && next) { ?>
+        <hr />
+      <?js } ?>
+      <?js if (next) { ?>
+        <a class="tutorial--navigation-next" href="<?js= this.getPlugin("linker").getURI(next) ?>">
+          <section>
+            <span>NEXT GUIDE</span>
+            <svg
+              class="tutorial--navigation-arrow"
+              version="1.1" xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              x="0px"
+              y="0px"
+              viewBox="0 0 23 14"
+              xml:space="preserve"
+            >
+              <line x1="22" y1="7" x2="16" y2="1" />
+              <line x1="22" y1="7" x2="16" y2="13" />
+              <line x1="0" y1="7" x2="23" y2="7" />
+            </svg>
+          </section>
+          <section><?js= next.title ?></section>
+        </a>
+      <?js } ?>
+    </div>
+  <?js } ?>
+  <div class="footer-gap" style="min-height: 48px;"></div>
+</main>

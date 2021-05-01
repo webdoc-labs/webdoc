@@ -1,0 +1,61 @@
+@import "themes";
+
+.tutorial {
+  &--navigation {
+    display: flex;
+    margin-top: 24px;
+    padding-bottom: 16px;
+
+    > a {
+      cursor: pointer;
+      color: $colorSecondaryText;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    &-previous {
+      display: flex;
+
+      > section:last-child {
+        display: flex;
+        flex-direction: column;
+
+        > *:first-child {
+          margin-bottom: 6px;
+        }
+      }
+
+      svg {
+        margin-right: 14px;
+      }
+    }
+
+    &-next {
+      display: block;
+
+      > section:first-child {
+        display: flex;
+        margin-bottom: 6px;
+      }
+
+      svg {
+        margin-left: 14px;
+      }
+    }
+
+    > hr {
+      border: 1px solid $colorSecondaryText;
+      height: 41px;
+      margin: 0 28px;
+    }
+
+    &-arrow {
+      stroke: $colorSecondaryText;
+      stroke-width: 2px;
+      width: 27px;
+      height: 14px;
+    }
+  }
+}

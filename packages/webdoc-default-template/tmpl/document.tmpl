@@ -8,7 +8,7 @@
     doc.deprecated ? "document__title_deprecated" : ""
   ].join(" ");
 ?>
-<div class="page-content">
+<main class="page-content">
   <div class="document">
     <div class="document__breadcrumb">
       <?js if (doc.loc.file.package) { ?>
@@ -93,6 +93,7 @@
       }
     }) ?>
   </div>
+  <div class="footer-gap" style="min-height: 48px;"></div>
   <footer class="footer" id="footer-mount-point"></footer>
-</div>
+</main>
 <?js= this.partial("components/members-explorer/index.tmpl", doc) ?>
