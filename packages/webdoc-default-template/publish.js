@@ -335,20 +335,28 @@ function outTutorials(
   config /*: WebdocConfig */,
   docTree /*: RootDoc */,
 ) {
-  function out(tutorial /*: TutorialDoc */) {
-    const uri = linker.getURI(tutorial, true);
+  function out(parent /*: ?TutorialDoc */) {
+    return function renderRecursive(tutorial /*: TutorialDoc */, i /*: number */) {
+      const uri = linker.getURI(tutorial, true);
 
-    pipeline.render("tutorial.tmpl", {
-      appBar: {current: "tutorials"},
-      document: tutorial,
-      title: tutorial.title,
-      env: config,
-    }, {
-      outputFile: path.join(outDir, uri),
-    });
+      pipeline.render("tutorial.tmpl", {
+        appBar: {current: "tutorials"},
+        document: tutorial,
+        title: tutorial.title,
+        env: config,
+        navigation: {
+          next: parent && parent.members[i + 1],
+          previous: parent && parent.members[i - 1],
+        },
+      }, {
+        outputFile: path.join(outDir, uri),
+      });
 
-    tutorial.members.forEach((out /*: any */));
+      if (tutorial.members.length > 0) {
+        tutorial.members.forEach((out(tutorial) /*: any */));
+      }
+    };
   }
 
-  docTree.tutorials.forEach(out);
+  docTree.tutorials.forEach((out(null) /*: any */));
 }
