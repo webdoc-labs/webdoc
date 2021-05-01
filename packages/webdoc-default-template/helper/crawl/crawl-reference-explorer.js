@@ -31,6 +31,10 @@ const HINTS = {
 
 // Crawls the tree searching for the API reference
 function crawlReference(doc /*: Doc */, index /*: string */) {
+  if (!doc.members.length) {
+    return null;
+  }
+
   const explorerHierarchy =
     buildExplorerHierarchy(doc, doc.packages ? (doc.packages.length > 1) : false);
   const tree = buildExplorerTargetsTree(explorerHierarchy, "", index);
@@ -191,17 +195,10 @@ function buildExplorerTargetsTree(
   if (HIERARCHY_SPECIFIERS[doc.type]) {
     node.children = {};
 
-    node.children["(overview)"] = {
-      title: "(overview)",
-      page,
-    };
-
-    if (node.doc.type === "RootDoc") {
-      node.children["(overview)"].page = index;
-
-      node.children.ClassIndex = {
-        title: "Class Index",
-        page: linker.createURI("Class-Index"),
+    if (page) {
+      node.children["(overview)"] = {
+        title: "(overview)",
+        page,
       };
     }
 
