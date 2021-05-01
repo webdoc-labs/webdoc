@@ -22,12 +22,15 @@ export default connect(({explorerOpen}) => ({
       />}
       <div className="header__contents">
         {items.map(([id, appBarItem], i) => (
-          <a
-            className={`header__link${id === currentItemId ? " header__link__current" : ""}`}
-            href={appBarItem.uri}
-          >
-            {appBarItem.name}
-          </a>
+          appBarItem.kind === "divider" ?
+            <section className={`header--divider header--item-${id}`}
+              dangerouslySetInnerHTML={{__html: appBarItem.content}}
+            /> :
+            <a
+              className={`header__link${id === currentItemId ? " header__link__current" : ""}`}
+              href={appBarItem.uri}
+              dangerouslySetInnerHTML={{__html: appBarItem.name}}
+            />
         ))}
         {appData.integrations.search && <Search integration={appData.integrations.search} />}
       </div>

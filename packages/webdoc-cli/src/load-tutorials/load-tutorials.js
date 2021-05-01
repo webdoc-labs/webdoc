@@ -17,7 +17,7 @@ const renderer = require("markdown-it")({
   .use(require("markdown-it-highlightjs"));
 
 // Loads & parses all the tutorials in the given directory
-export function loadTutorials(tutorialsDir?: string): Tutorial[] {
+export function loadTutorials(tutorialsDir?: string, tutorialsRoute?: string): Tutorial[] {
   if (!tutorialsDir) {
     return [];
   }
@@ -80,10 +80,12 @@ export function loadTutorials(tutorialsDir?: string): Tutorial[] {
     // Tutorials can be part of the doc-tree!
     tutorials.push(createTutorialDoc(
       fileName,
-      path.join("tutorials", relativePath
-        .replace(".html", "")
-        .replace(".htm", "")
-        .replace(".md", "")),
+      path.join(
+        typeof tutorialsRoute === "string" ? tutorialsRoute : "tutorials",
+        relativePath
+          .replace(".html", "")
+          .replace(".htm", "")
+          .replace(".md", "")),
       fileContent,
     ));
   }

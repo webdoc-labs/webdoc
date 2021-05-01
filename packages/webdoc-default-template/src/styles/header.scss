@@ -68,6 +68,10 @@
   &__link {
     color: black;
     text-decoration: underline;
+
+    &:hover {
+      color: $colorPrimary;
+    }
   }
 
   &__link__current {
