@@ -61,7 +61,7 @@ async function main(argv: yargs.Argv) {
 
   const {loadConfig, getTemplate} = require("./config");
   const config = loadConfig(argv.config);
-  const tutorials = loadTutorials(argv.tutorials);
+  const tutorials = loadTutorials(argv.tutorials, config.template.routes.tutorials);
 
 
   if (argv.siteRoot) {
