@@ -13,6 +13,7 @@ const {
   TemplateTagsResolver,
 } = require("@webdoc/template-library");
 const {linker} = require("./helper/linker");
+const _ = require("lodash");
 
 // Plugins
 const {indexSorterPlugin} = require("./helper/renderer-plugins/index-sorter");
@@ -72,7 +73,9 @@ exports.publish = async function publish(options /*: PublishOptions */) {
   fse.ensureDir(outDir);
 
   const crawlData = crawl(docTree, index);
-  const appBarItems = {
+  const appBarItems = _.merge(config.template.appBar.items, {
+    /* NOTE: config.template.appBar.items is the primary object so we retain the order as the user
+        desires. */
     ...(crawlData.reference && {
       "reference": {
         name: "API Reference",
@@ -86,7 +89,7 @@ exports.publish = async function publish(options /*: PublishOptions */) {
           crawlData.tutorials.children[Object.keys(crawlData.tutorials.children)[0]].page,
       },
     }),
-  };
+  });
   const renderer = new TemplateRenderer(path.join(__dirname, "tmpl"), null, docTree)
     .setLayoutTemplate("layout.tmpl")
     .installPlugin("linker", linker)

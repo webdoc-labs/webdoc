@@ -32,6 +32,14 @@ type ConfigSchema = {
     template?: string,
   },
   template: {
+    appBar: {
+      items: {
+        [string]: {
+          name: string,
+          uri: string,
+        }
+      }
+    },
     applicationName: string,
     routes: {
       tutorials: string,
@@ -81,6 +89,9 @@ const defaultConfig: ConfigSchema = {
     template: "@webdoc/default-template",
   },
   template: {
+    appBar: {
+      items: {},
+    },
     applicationName: "{ <i>webdoc</i> }",
     routes: {
       tutorials: "tutorials",
