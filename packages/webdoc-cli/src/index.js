@@ -1,5 +1,6 @@
 // @flow
 
+import * as external from "@webdoc/externalize";
 import * as yargs from "yargs";
 import {LogLevel, log, tag} from "missionlog";
 import {createRootDoc, exportTaffy} from "@webdoc/model";
@@ -12,7 +13,6 @@ import path from "path";
 // $FlowFixMe
 import {performance} from "perf_hooks";
 import {sources} from "./sources";
-import {writeDoctree} from "@webdoc/externalize";
 
 require("./shims");// Node v10 support
 
@@ -111,7 +111,7 @@ async function main(argv: yargs.Argv) {
   } catch (e) {
     // Make sure we get that API structure out so the user can debug the problem!
     if (config.opts && config.opts.export) {
-      fs.writeFileSync(config.opts.export, writeDoctree(documentTree));
+      fs.writeFileSync(config.opts.export, external.write(external.fromTree(documentTree), true));
     }
 
     throw e;
@@ -119,10 +119,7 @@ async function main(argv: yargs.Argv) {
 
   log.info(tag.Parser, "Parsing stage finished!");
 
-  if (config.opts && config.opts.export) {
-    fs.writeFileSync(config.opts.export, writeDoctree(documentTree));
-  }
-
+  const documentedInterface = external.fromTree(documentTree);
   const db = exportTaffy(documentTree);
 
   const _path = `${getTemplate(config)}/publish`;
@@ -135,6 +132,7 @@ async function main(argv: yargs.Argv) {
     config,
     doctree: documentTree,
     documentTree,
+    documentedInterface,
     docDatabase: db,
     opts: config.opts,
     tutorials,
@@ -149,6 +147,10 @@ async function main(argv: yargs.Argv) {
     }
   } else {
     console.error("[Config]: ", `${getTemplate(config)} not found.`);
+  }
+
+  if (config.opts && config.opts.export) {
+    fs.writeFileSync(config.opts.export, external.write(documentedInterface, argv.verbose));
   }
 
   console.log(`@webdoc took ${Math.ceil(performance.now() - start)}ms to run!`);

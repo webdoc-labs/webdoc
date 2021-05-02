@@ -13,21 +13,27 @@ function deserializeTree(serialized: any, parent: ?Doc): Doc {
 
   const doc: $Shape<Doc> = _.pick(serialized, BASE_PROPS);
 
-  doc.stack = parent ? [...parent.stack, doc.name] : [doc.name];
+  doc.members = [];
+  doc.children = doc.members;
+
+  if (doc.type === "RootDoc") {
+    doc.packages = [];
+    doc.tutorials = [];
+  }
+
+  if (!parent) {
+    doc.stack = [doc.name];
+  }
 
   if (serialized.description) {
     doc.description = serialized.description;
   }
   if (serialized.members) {
-    doc.members = new Array<Doc>(serialized.members.length);
-
     for (let i = 0; i < serialized.members.length; i++) {
-      doc.members[i] = deserializeTree(serialized.members[i], (doc: any));
-    }
-  }
+      const child = deserializeTree(serialized.members[i], (doc: any));
 
-  if (parent) {
-    model.addChildDoc(doc, parent);
+      model.addChildDoc(child, doc);
+    }
   }
 
   return (doc: any);

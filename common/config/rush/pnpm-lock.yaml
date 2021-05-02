@@ -32,7 +32,6 @@ dependencies:
   babel-loader: 8.2.2_80cd7b8149d93293e480a9a7c4e34482
   bluebird: 3.7.2
   catharsis: 0.8.11
-  chai: 4.2.0
   code-prettify: 0.1.0
   color-themes-for-google-code-prettify: 2.0.4
   common-path-prefix: 3.0.0
@@ -2963,6 +2962,19 @@ packages:
       node: '>=4'
     resolution:
       integrity: sha512-XQU3bhBukrOsQCuwZndwGcCVQHyZi53fQ6Ys1Fym7E4olpIqqZZhhoFJoaKVvV17lWQoXYwgWN2nF5crA8J2jw==
+  /chai/4.3.4:
+    dependencies:
+      assertion-error: 1.1.0
+      check-error: 1.0.2
+      deep-eql: 3.0.1
+      get-func-name: 2.0.0
+      pathval: 1.1.1
+      type-detect: 4.0.8
+    dev: false
+    engines:
+      node: '>=4'
+    resolution:
+      integrity: sha512-yS5H68VYOCtN1cjfwumDSuzn/9c+yza4f3reKXlE5rUg7SFcCEy90gJvydNgOYtblyf4Zi6jIWRnXOgErta0KA==
   /chainsaw/0.1.0:
     dependencies:
       traverse: 0.3.9
@@ -7366,6 +7378,10 @@ packages:
     dev: false
     resolution:
       integrity: sha1-uULm1L3mUwBe9rcTYd74cn0GReA=
+  /pathval/1.1.1:
+    dev: false
+    resolution:
+      integrity: sha512-Dp6zGqpTdETdR63lehJYPeIOqpiNBNtc7BpWSLrOje7UaIsE5aY92r/AunQA7rsXvet3lrJ3JnZX29UPTKXyKQ==
   /pbkdf2/3.1.1:
     dependencies:
       create-hash: 1.2.0
@@ -10067,7 +10083,7 @@ packages:
     dev: false
     name: '@rush-temp/cli'
     resolution:
-      integrity: sha512-1A31QytqJBffkdM0wvDLReTPRK3GOEpT8I3q/4rLBHLArgL6iKy4b9QcwXCK4CQ4XhRD+Mt9Y5K0eLLNNhAWEw==
+      integrity: sha512-Fyd/o9Q54rjltQS4U7kvLCbOvHQxPYNQCrm/+otT8EvIqR+QFZQsOC5p9xrMNz77rl2GEUfMCPMpAKSkECYlZQ==
       tarball: 'file:projects/cli.tgz'
     version: 0.0.0
   'file:projects/default-template.tgz':
@@ -10096,6 +10112,7 @@ packages:
       gulp: 4.0.2
       gulp-babel: 8.0.0_@babel+core@7.12.10
       gulp-util: 3.0.8
+      lodash: 4.17.20
       markdown-it: 11.0.1
       markdown-it-highlightjs: 3.4.0
       mini-css-extract-plugin: 0.9.0_webpack@4.46.0
@@ -10111,7 +10128,7 @@ packages:
     dev: false
     name: '@rush-temp/default-template'
     resolution:
-      integrity: sha512-3VQYDkXEPOJ6WvsBsAq9PcKNaQEHV79g4zWnBnT38i6f+umXQstMfYCLdyvbhIjCoUukBGnFtATXwk32ZuRW4g==
+      integrity: sha512-Sm/HG8WAxIsDEM2fJQiPDx0S7A5M5ConbOg6ta9ylXuhQZ6+DRuNwYmZc6chKo3vjQ/CEAZvBz7i2aUdY8k/kQ==
       tarball: 'file:projects/default-template.tgz'
     version: 0.0.0
   'file:projects/eslint-config.tgz':
@@ -10143,7 +10160,7 @@ packages:
     dev: false
     name: '@rush-temp/example'
     resolution:
-      integrity: sha512-tlJshpuGAHXrQFR1hxWJv/Z1ZwDe1I68QpUkw4GXILjF3p+DwdKmiLH0aTrsnqAoR+h1rDsIuGjDNezqUBG4sA==
+      integrity: sha512-nYwtUMEikEZKn+5JHt0rEjYdSaPGK/cVrohKqyviWcmDZMAQuIUcuPQpm8sA1tguvriWJ7TxUb/D9gQA7C7VBw==
       tarball: 'file:projects/example.tgz'
     version: 0.0.0
   'file:projects/externalize.tgz':
@@ -10155,6 +10172,7 @@ packages:
       '@babel/preset-flow': 7.12.1_@babel+core@7.12.10
       '@babel/preset-react': 7.12.10_@babel+core@7.12.10
       '@babel/register': 7.12.10_@babel+core@7.12.10
+      chai: 4.3.4
       del: 5.1.0
       eslint: 6.8.0
       flow-bin: 0.130.0
@@ -10162,10 +10180,11 @@ packages:
       gulp: 4.0.2
       gulp-babel: 8.0.0_@babel+core@7.12.10
       gulp-util: 3.0.8
+      lodash: 4.17.20
     dev: false
     name: '@rush-temp/externalize'
     resolution:
-      integrity: sha512-4cKqcXTXbLPhrO2eH/UXxzCeCw1RVHWY9WpjCXaOpXdP+9FVQkeESZ5cY+5ECO4i5xZZEV8wt8v9UGcw9fN7jw==
+      integrity: sha512-/etmlJNaqhjIIzc4NsNiPDGO6TP/xHQmegxT9O9aXr40Fky3Vi5Bfc0Z9Lpj40n9IXtTWrFDcEk5KbqiD3azHg==
       tarball: 'file:projects/externalize.tgz'
     version: 0.0.0
   'file:projects/legacy-template.tgz':
@@ -10188,7 +10207,7 @@ packages:
     dev: false
     name: '@rush-temp/legacy-template'
     resolution:
-      integrity: sha512-fb2MbgxzTn3poBEWy3DHlEPj4FTKHTzXukzkki/AC14DpbQRrBUqi3InwifOpIJVlxXpdHawhfaCVeKmfe0yFw==
+      integrity: sha512-8qe/I48jYkplQC6MTipiZNK8ycCAmFYzKgJu6zzdxDiBKXQWrTKt6qpWRUSxpJ4WXv4QyczamUVpLQ+iGwwVag==
       tarball: 'file:projects/legacy-template.tgz'
     version: 0.0.0
   'file:projects/model.tgz':
@@ -10215,7 +10234,7 @@ packages:
     dev: false
     name: '@rush-temp/model'
     resolution:
-      integrity: sha512-7kbxvAEVt84uFg5xlaentpuQWLEW9xD5/w6VT+NZM+ajb6rcxNTbx6CWiXuj6nyetBCeE+mSTIXp/WoHnwxBGQ==
+      integrity: sha512-0NpQj0OkYssmGYQfRjA/8cSqMydGH0a10rSImXnGxTn0b/7sSCfiMw96v4/O/oq1awFKIutS1mKrjmmKOdps1Q==
       tarball: 'file:projects/model.tgz'
     version: 0.0.0
   'file:projects/parser.tgz':
@@ -10245,7 +10264,7 @@ packages:
     dev: false
     name: '@rush-temp/parser'
     resolution:
-      integrity: sha512-zxm4VBRKFH+eDEjKuefEi+LYVOhIoAxR/NuJqQODDh9BN+0JZndNTCvLTugeBTz3P+k0CGZOWNF06Qk1a9z+6g==
+      integrity: sha512-kRvi1ha5skDgdgxMdCIS+lvQUJ7V8liCvTG0z9cjuJV0dC8YmxQYbkw5CPzRtktM6WfM4bDfyS7dB7lnWcMUDQ==
       tarball: 'file:projects/parser.tgz'
     version: 0.0.0
   'file:projects/plugin-markdown.tgz':
@@ -10300,7 +10319,7 @@ packages:
     dev: false
     name: '@rush-temp/template-library'
     resolution:
-      integrity: sha512-mvUeEAaXnRzs0IjV196vBSyqMhfBN9+0P0Ek9md5/H5Li7rczdaIV0ExOYIOsHFLDIpKjuDA7Aev4stA8S9uWQ==
+      integrity: sha512-oJ0imzWt/nVX9/WCwTBNvllypn2DuNRwQGHvb/cOLv1+Y7QWzVSNBucS2zBmgX0+ii7wCv8JPnaqsCCqbnAXaQ==
       tarball: 'file:projects/template-library.tgz'
     version: 0.0.0
   'file:projects/tests.tgz':
@@ -10309,7 +10328,7 @@ packages:
     dev: false
     name: '@rush-temp/tests'
     resolution:
-      integrity: sha512-iqXI/obPhSDrxgJ6ki0hmH7jAXZdXNz9xJeiVpEzOM8Wg5pNmfePe/LBhVmcHaN4b2XHATeYjWWjx4ig34XAog==
+      integrity: sha512-zR07mBPDkIVllQg90B5drrmWJ83EYQL5+/XNqut/KszZ4w7ZZFU5DyeG+uTPSnSK+1cKW+dMfly0iOVm9LRU0Q==
       tarball: 'file:projects/tests.tgz'
     version: 0.0.0
   'file:projects/types.tgz':
@@ -10319,6 +10338,7 @@ packages:
       integrity: sha512-maxudznjgJEhASCC8FSBY42y0jNeTsC8qD+VqHy4OwuohcnBX0UtjTX4e3yJauqjefEzEwQbGTP3ZninK/VazQ==
       tarball: 'file:projects/types.tgz'
     version: 0.0.0
+registry: ''
 specifiers:
   '@babel/cli': ^7.8.4
   '@babel/core': ^7.9.0
@@ -10353,7 +10373,6 @@ specifiers:
   babel-loader: ^8.1.0
   bluebird: ^3.7.2
   catharsis: 0.8.11
-  chai: ^4.2.0
   code-prettify: ^0.1.0
   color-themes-for-google-code-prettify: ^2.0.4
   common-path-prefix: ^3.0.0
@@ -10377,7 +10396,7 @@ specifiers:
   gulp-babel: ^8.0.0
   gulp-util: ^3.0.8
   klaw-sync: 6.0.0
-  lodash: ^4.17.15
+  lodash: ^4.17.20
   lodash.merge: 4.6.2
   markdown-it: ^11.0.0
   markdown-it-highlightjs: ^3.1.0
@@ -10394,9 +10413,9 @@ specifiers:
   pkg-up: ~3.1.0
   react: ^16.8.0
   react-dom: ^16.8.0
-  react-redux: ~7.2.2
+  react-redux: ^7.2.2
   read-pkg-up: ~7.0.1
-  redux: ~4.0.5
+  redux: ^4.0.5
   sass: ^1.26.10
   sass-loader: ^9.0.3
   taffydb: 2.7.3

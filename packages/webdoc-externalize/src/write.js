@@ -94,15 +94,16 @@ function serializeTree(doc: Doc): any {
   if (doc.description) {
     serialized.description = _.truncate(doc.description, TRUNCATE_128);
   }
-  if ("params" in doc) {
+  if ("params" in doc && doc.params) {
     serialized.params = serializeParams(((doc: any).params: Param[]));
   }
-  if ("returns" in doc) {
+  if ("returns" in doc && doc.returns) {
     serialized.returns = serializeReturns(((doc: any).returns: Return[]));
   }
   for (const linkProp of LINK_PROPS) {
-    if (linkProp in doc) {
-      serialized[linkProp] = serializeDocumentLinks(((doc: any): $ReadOnlyArray<DocLink>));
+    if (linkProp in doc && doc[linkProp]) {
+      serialized[linkProp] = serializeDocumentLinks(
+        ((doc: any)[linkProp]: $ReadOnlyArray<DocLink>));
     }
   }
   if (doc.members.length) {
@@ -123,22 +124,25 @@ function serializeTree(doc: Doc): any {
  * @return {DocumentedInterface}
  */
 export function fromTree(documentTree: RootDoc): DocumentedInterface {
-  return {
+  const documentedInterface = {
     version: LATEST_VERSION,
     metadata: {},
     root: documentTree,
     registry: {},
   };
+
+  return documentedInterface;
 }
 
 /**
  * Serialize the documented interface into a JSON string.
  *
  * @param {DocumentedInterface} documentedInterface
+ * @param {boolean}[indent=false] - Whether to indent
  * @return {string} - Serialized JSON string
  * @see serializeTree
  */
-export default function write(documentedInterface: DocumentedInterface): string {
+export default function write(documentedInterface: DocumentedInterface, indent?: boolean): string {
   return JSON.stringify(
     {
       version: documentedInterface.version,
@@ -147,6 +151,6 @@ export default function write(documentedInterface: DocumentedInterface): string 
       registry: documentedInterface.registry,
     },
     null,
-    "\t",
+    indent ? "\t" : "",
   );
 }

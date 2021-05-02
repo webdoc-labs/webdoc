@@ -34,12 +34,12 @@ describe("@webdoc/externalize (read-write test)", function() {
     `);
 
     const documentedInterface = external.fromTree(inputTree);
-    const outputTree = external.read(external.write(documentedInterface));
+    const {root: outputTree} = external.read(external.write(documentedInterface));
 
     expect(outputTree.members.length).to.equal(2);
 
-    const [symbol0] = [model.doc("Symbol0")];
+    const [symbol0] = [model.doc("Symbol0", outputTree)];
 
-    expect(symbol0).brief.to.include("Symbol 0");
+    expect(symbol0.brief).to.include("Symbol 0");
   });
 });
