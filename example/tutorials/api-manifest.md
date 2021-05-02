@@ -64,6 +64,8 @@ as your documentation (so it is available publicly on your site!):
 }
 ```
 
+The manifest for this example site is here {@link https://webdoc-labs.github.io/example-documentation/webdoc.api.json}
+
 ### Importing external projects into your documentation
 
 If you maintain a multi-repository project, you'd want to be able to use the API manifests exported by webdoc
