@@ -1,6 +1,11 @@
 # Change Log - @webdoc/types
 
-This log was last generated on Sat, 01 May 2021 23:21:56 GMT and should not be manually modified.
+This log was last generated on Sun, 02 May 2021 22:03:03 GMT and should not be manually modified.
+
+## 1.3.3
+Sun, 02 May 2021 22:03:03 GMT
+
+*Version update only*
 
 ## 1.3.2
 Sat, 01 May 2021 23:21:56 GMT

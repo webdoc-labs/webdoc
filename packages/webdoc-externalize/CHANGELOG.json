@@ -2,6 +2,18 @@
   "name": "@webdoc/externalize",
   "entries": [
     {
+      "version": "1.3.3",
+      "tag": "@webdoc/externalize_v1.3.3",
+      "date": "Sun, 02 May 2021 22:03:03 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "Export manifests instead of just document trees, with additional metadata. (new format)"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.3.2",
       "tag": "@webdoc/externalize_v1.3.2",
       "date": "Sat, 01 May 2021 23:21:56 GMT",
