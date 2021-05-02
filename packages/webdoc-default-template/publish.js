@@ -13,6 +13,7 @@ const {
   TemplateTagsResolver,
 } = require("@webdoc/template-library");
 const {linker} = require("./helper/linker");
+const _ = require("lodash");
 
 // Plugins
 const {indexSorterPlugin} = require("./helper/renderer-plugins/index-sorter");
@@ -26,7 +27,7 @@ import type {
   TutorialDoc,
 } from "@webdoc/types";
 
-import type {CrawlData} from './crawl';
+import type {CrawlData} from './helper/crawl';
 
 type AppBarItem = {
   name: string;
@@ -66,17 +67,21 @@ exports.publish = async function publish(options /*: PublishOptions */) {
 
   const docTree = options.documentTree;
   const outDir = path.normalize(options.config.opts.destination);
-  const index = linker.createURI("index");
-  const indexRelative = index.replace(`/${linker.siteRoot}/`, "");
+  const index = config.template.readme ? linker.createURI("index") : null;
+  const indexRelative = index ? index.replace(`/${linker.siteRoot}/`, "") : null;
 
   fse.ensureDir(outDir);
 
   const crawlData = crawl(docTree, index);
-  const appBarItems = {
-    "reference": {
-      name: "API Reference",
-      uri: index,
-    },
+  const appBarItems = _.merge(config.template.appBar.items, {
+    /* NOTE: config.template.appBar.items is the primary object so we retain the order as the user
+        desires. */
+    ...(crawlData.reference && {
+      "reference": {
+        name: "API Reference",
+        uri: index,
+      },
+    }),
     ...(crawlData.tutorials && {
       "tutorials": {
         name: "Tutorials",
@@ -84,7 +89,7 @@ exports.publish = async function publish(options /*: PublishOptions */) {
           crawlData.tutorials.children[Object.keys(crawlData.tutorials.children)[0]].page,
       },
     }),
-  };
+  });
   const renderer = new TemplateRenderer(path.join(__dirname, "tmpl"), null, docTree)
     .setLayoutTemplate("layout.tmpl")
     .installPlugin("linker", linker)
@@ -124,7 +129,7 @@ exports.publish = async function publish(options /*: PublishOptions */) {
 
   await outStaticFiles(outDir, config);
   outExplorerData(outDir, crawlData);
-  outMainPage(path.join(outDir, indexRelative), pipeline, options.config);
+  outMainPage(indexRelative ? path.join(outDir, indexRelative) : null, pipeline, options.config);
   outIndexes(outDir, pipeline, options.config, crawlData.index);
   outReference(outDir, pipeline, options.config, docTree);
   outTutorials(outDir, pipeline, options.config, docTree);
@@ -204,11 +209,11 @@ function outExplorerData(outDir /*: string */, crawlData /*: CrawlData */) {
 
 // Render the main-page into index.html (outputFile)
 async function outMainPage(
-  outputFile /*: string */,
+  outputFile /*: ?string */,
   pipeline /*: TemplatePipeline */,
   config /*: WebdocConfig */,
 ) {
-  if (config.template.readme) {
+  if (outputFile && config.template.readme) {
     const readmeFile = path.join(process.cwd(), config.template.readme);
 
     outReadme(
@@ -262,18 +267,20 @@ function outIndexes(
     "classes": "Class Index",
   };
 
-  function outIndex(indexKey, indexList) {
-    const title = KEY_TO_TITLE[indexKey];
-    const url = linker.processInternalURI(indexList.url, {outputRelative: true});
+  function outIndex(indexKey, indexList /*: Array<Doc> */) {
+    if (indexList.length > 0) {
+      const title = KEY_TO_TITLE[indexKey];
+      const url = linker.processInternalURI(indexList.url, {outputRelative: true});
 
-    pipeline.render("pages/api-index.tmpl", {
-      appBar: {current: "reference"},
-      documentList: indexList,
-      title,
-      env: config,
-    }, {
-      outputFile: path.join(outDir, url),
-    });
+      pipeline.render("pages/api-index.tmpl", {
+        appBar: {current: "reference"},
+        documentList: indexList,
+        title,
+        env: config,
+      }, {
+        outputFile: path.join(outDir, url),
+      });
+    }
   }
 
   for (const [key, list] of Object.entries(index)) {
@@ -287,6 +294,11 @@ function outReference(
   config /*: WebdocConfig */,
   docTree /*: RootDoc */,
 ) {
+  // Don't output if nothing's there
+  if (!docTree.members.length) {
+    return;
+  }
+
   for (const [id, docRecord] of linker.documentRegistry) {
     let {uri: page} = docRecord;
 
@@ -335,20 +347,28 @@ function outTutorials(
   config /*: WebdocConfig */,
   docTree /*: RootDoc */,
 ) {
-  function out(tutorial /*: TutorialDoc */) {
-    const uri = linker.getURI(tutorial, true);
+  function out(parent /*: ?TutorialDoc */) {
+    return function renderRecursive(tutorial /*: TutorialDoc */, i /*: number */) {
+      const uri = linker.getURI(tutorial, true);
 
-    pipeline.render("tutorial.tmpl", {
-      appBar: {current: "tutorials"},
-      document: tutorial,
-      title: tutorial.title,
-      env: config,
-    }, {
-      outputFile: path.join(outDir, uri),
-    });
+      pipeline.render("tutorial.tmpl", {
+        appBar: {current: "tutorials"},
+        document: tutorial,
+        title: tutorial.title,
+        env: config,
+        navigation: {
+          next: parent && parent.members[i + 1],
+          previous: parent && parent.members[i - 1],
+        },
+      }, {
+        outputFile: path.join(outDir, uri),
+      });
 
-    tutorial.members.forEach((out /*: any */));
+      if (tutorial.members.length > 0) {
+        tutorial.members.forEach((out(tutorial) /*: any */));
+      }
+    };
   }
 
-  docTree.tutorials.forEach(out);
+  docTree.tutorials.forEach((out(null) /*: any */));
 }

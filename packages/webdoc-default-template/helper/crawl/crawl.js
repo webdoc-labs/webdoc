@@ -12,8 +12,8 @@ const {linker} = require("../linker");
 /*::
 import type {
   RootDoc,
-  DocType
-} from "@webdoc/model";
+  DocType,
+} from "@webdoc/types";
 
 import type {ExplorerTarget} from './crawl-reference-explorer';
 
@@ -23,7 +23,7 @@ export type CategorizedDocumentList = {
 
 export type CrawlData = {
   index: { [id: string]: [] & { url: string } };
-  reference: ExplorerTarget;
+  reference: ?ExplorerTarget;
   tutorials: ?ExplorerTarget;
 };
 
@@ -34,11 +34,31 @@ declare function crawl(tree: RootDoc, index: string): CrawlData;
 function crawl(tree /*: RootDoc */, index /*: string */)/*: CrawlData */ {
   buildLinks(tree);
 
-  return {
+  const crawlData /*: CrawlData */ = {
     index: buildIndex(tree),
     reference: crawlReference(tree, index),
     tutorials: crawlTutorials(tree),
   };
+
+  if (crawlData.reference) {
+    // Add ClassIndex into explorer after (overview), while preserving order
+    // $FlowFixMe
+    crawlData.reference.children = Object.assign(...[
+      ...crawlData.reference.children["(overview)"] ? [{
+        "(overview)": crawlData.reference.children["(overview)"],
+      }] : [],
+      ...crawlData.index.classes.length > 0 ? [{
+        ClassIndex: {
+          title: "Class Index",
+          page: crawlData.index.classes.url,
+        },
+      }] : [], {
+        ...crawlData.reference.children,
+      },
+    ]);
+  }
+
+  return crawlData;
 }
 
 module.exports = ({crawl}/*: {crawl: typeof crawl} */);
@@ -57,14 +77,14 @@ function buildLinks(tree /*: RootDoc */) /*: void */ {
   });
 }
 
-function buildIndex(tree /*: RootDoc */) /*: [id: string]: [] & { url: string } */ {
+function buildIndex(
+  tree /*: RootDoc */,
+)/*: { [string]: $ReadOnlyArray<Doc> & { url: string } } */ {
   const classIndexUrl = linker.createURI("Class-Index", true);
 
-  const index /*: [id: string]: [] & { url: string } */ = {
-    classes: [],
+  const index /*: {[string]: Array<any> & {url: string}} */ = {
+    classes: Object.assign(([] /*: any */), {url: classIndexUrl}),
   };
-
-  index.classes.url = classIndexUrl;
 
   traverse(tree, (doc) => {
     switch (doc.type) {

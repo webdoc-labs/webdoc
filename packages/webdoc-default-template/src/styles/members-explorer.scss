@@ -48,3 +48,9 @@
     display: none;
   }
 }
+
+.page-r-divider {
+  @media only screen and (max-width: 800px) {
+    display: none;
+  }
+}

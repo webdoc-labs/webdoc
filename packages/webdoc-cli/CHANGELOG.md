@@ -1,6 +1,13 @@
 # Change Log - @webdoc/cli
 
-This log was last generated on Sun, 25 Apr 2021 21:01:31 GMT and should not be manually modified.
+This log was last generated on Sat, 01 May 2021 23:21:56 GMT and should not be manually modified.
+
+## 1.3.2
+Sat, 01 May 2021 23:21:56 GMT
+
+### Updates
+
+- Add configuration for custom app bar items and overriding the route for tutorials in @webdoc/default-template
 
 ## 1.3.1
 Sun, 25 Apr 2021 21:01:31 GMT
