@@ -350,7 +350,7 @@ function outTutorials(
   config /*: WebdocConfig */,
   docTree /*: RootDoc */,
 ) {
-  function out(parent /*: ?TutorialDoc */) {
+  function out(parent /*: { members: any[] } */) {
     return function renderRecursive(tutorial /*: TutorialDoc */, i /*: number */) {
       const uri = linker.getURI(tutorial, true);
 
@@ -373,5 +373,5 @@ function outTutorials(
     };
   }
 
-  docTree.tutorials.forEach((out(null) /*: any */));
+  docTree.tutorials.forEach((out({members: docTree.tutorials}) /*: any */));
 }

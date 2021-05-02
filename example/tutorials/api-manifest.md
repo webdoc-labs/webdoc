@@ -1,6 +1,6 @@
-# { _webdoc_ }
+## webdoc
 
-## API Manifest (experimental)
+### API Manifest (experimental)
 
 * alpha
 * since: webdoc 1.3.3
@@ -51,7 +51,7 @@ you can allow other projects to link their documentation to your API. The format
 };
 ```
 
-## Exporting a manifest
+### Exporting a manifest
 
 The `opts.export` field sets the path of the exported manifest. You should export this into the same folder
 as your documentation (so it is available publicly on your site!):
@@ -64,7 +64,7 @@ as your documentation (so it is available publicly on your site!):
 }
 ```
 
-## Importing external projects into your documentation
+### Importing external projects into your documentation
 
 If you maintain a multi-repository project, you'd want to be able to use the API manifests exported by webdoc
 for dependencies. For example, if you were making a tutorial about a separately maintained webdoc plugin,
@@ -81,4 +81,10 @@ You can do so by adding manifest URLs to `opts.import` in your configuration:
     ]
   }
 }
+```
+
+As an example, this documentation was generated with a local manifest for gl-matrix:
+
+```json
+{\@link glMatrix.equals} = {@link glMatrix.equals}!
 ```

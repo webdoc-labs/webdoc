@@ -7,7 +7,12 @@
   ],
   "template": {
     "readme": "./README.md",
-    "outputSourceFiles": true
+    "outputSourceFiles": true,
+    "meta": {
+      "og:title": "webdoc",
+      "og:description": "The documentation for webdoc, by webdoc!",
+      "title": "webdoc"
+    }
   },
   "opts": {
     "destination": "example-documentation",

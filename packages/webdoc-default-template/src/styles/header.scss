@@ -13,7 +13,7 @@
     display: grid;
     grid-template-rows: 100%;
     grid-template-columns: fit-content(100%) minmax(0, max-content) fit-content(100%) minmax(0, 1fr);
-    max-height: 100%;
+    height: 100vh;
     overflow: hidden;/* child element must overflow/scroll on their own */
 
     @media only screen and (max-width: 800px) {
