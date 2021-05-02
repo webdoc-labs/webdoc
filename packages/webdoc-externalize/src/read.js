@@ -11,7 +11,7 @@ function deserializeTree(serialized: any, parent: ?Doc): Doc {
     throw new Error("Tree root must declare type RootDoc!");
   }
 
-  const doc: $Shape<Doc> = _.pick(serialized, BASE_PROPS);
+  const doc: any = _.pick(serialized, BASE_PROPS);
 
   doc.members = [];
   doc.children = doc.members;
@@ -61,6 +61,6 @@ export default function read(data: string): DocumentedInterface {
     version: documentedInterface.version,
     metadata: documentedInterface.metadata,
     root: (deserializeTree(documentedInterface.root, null): any),
-    registry: {},
+    registry: documentedInterface.registry,
   };
 }

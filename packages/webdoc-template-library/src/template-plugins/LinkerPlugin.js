@@ -1,5 +1,8 @@
 // @flow
+import * as external from "@webdoc/externalize";
 import type {Doc, DocType} from "@webdoc/types";
+import fetch from "node-fetch";
+import {promises as fs} from "fs";
 import {isDataType} from "@webdoc/model";
 import {templateLogger} from "../Logger";
 
@@ -124,6 +127,56 @@ function LinkerPluginShell() {
      * Cache of DPL queries to their URIs.
      */
     queryCache = new Map<string, string>();
+
+    /**
+     * Loaded documented interfaces that can be used to resolve links to external APIs.
+     * @type {DocumentedInterface[]}
+     */
+    loadedInterfaces = [];
+
+    /**
+     * Load the documented interface into this linker so you can resolve links to those documents.
+     *
+     * @param {string} uri - The URI to the JSON file (can be URL, i.e. https://example.com/api.json
+     *   or a file ./apis/lib.json)
+     * @return {Promise<void>}
+     */
+    async loadDocumentedInterface(uri: string) {
+      let isURL = true;
+
+      try {
+        new URL(uri);
+      } catch (e) {
+        isURL = false;
+      }
+
+      let contents: string;
+
+      if (isURL) {
+        contents = await fetch(uri).then((res) => res.text());
+      } else {
+        contents = await fs.readFile(path.join(process.cwd(), uri), "utf8");
+      }
+
+      const documentedInterface = external.read(contents);
+      const {registry} = documentedInterface;
+      const {siteDomain, siteRoot} = documentedInterface.metadata;
+
+      if (!siteDomain) {
+        throw new Error("Imported documented interfaces must have a siteDomain!");
+      }
+
+      for (const id in registry) {
+        if (registry[id].uri) {
+          const internalUri = registry[id].uri;
+          const baseRelativeUri = path.join(siteRoot || "", internalUri);
+
+          this.getDocumentRecord(id).uri = new URL(baseRelativeUri, siteDomain).toString();
+        }
+      }
+
+      this.loadedInterfaces.push(documentedInterface);
+    }
 
     /**
      * Returns the linker's record on a specific document, creating a new one if one does not exist
@@ -257,18 +310,36 @@ function LinkerPluginShell() {
       } else {
         const doc = query(docPath, this.renderer.docTree)[0];
 
-        if (!doc) {
-          return linkText || docPath;
+        if (doc) {
+          const rec = this.documentRegistry.get(doc.id);
+
+          fileUrl = rec && rec.uri ? this.processInternalURI(rec.uri) : this.getURI(doc);
+
+          // Cache this query
+          if (fileUrl) {
+            this.queryCache.set(docPath, fileUrl);
+          }
+        } else {
+          for (let i = 0; i < this.loadedInterfaces.length && !fileUrl; i++) {
+            const externalInterface = this.loadedInterfaces[i];
+            const doc = query(docPath, externalInterface.root)[0];
+
+            if (doc) {
+              const {uri} = this.getDocumentRecord(doc.id);
+
+              if (uri) {
+                fileUrl = uri;
+                this.queryCache.set(docPath, fileUrl);
+              }
+            }
+          }
+
+          // Unresolved links do not get wrapped in <a>
+          if (!fileUrl) {
+            return linkText || docPath;
+          }
         }
 
-        const rec = this.documentRegistry.get(doc.id);
-
-        fileUrl = rec && rec.uri ? this.processInternalURI(rec.uri) : this.getURI(doc);
-
-        // Cache this query
-        if (fileUrl) {
-          this.queryCache.set(docPath, fileUrl);
-        }
         text = linkText || (options.shortenName ? getShortName(docPath) : docPath);
       }
 

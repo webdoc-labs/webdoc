@@ -1,12 +1,17 @@
 {
-    "source": {
-        "include": "./src/**/*"
-    },
-    "plugins": [
-      "plugins/markdown"
-    ],
-    "template": {
-      "readme": "./README.md",
-      "outputSourceFiles": true
-    }
+  "source": {
+      "include": "./src/**/*"
+  },
+  "plugins": [
+    "plugins/markdown"
+  ],
+  "template": {
+    "readme": "./README.md",
+    "outputSourceFiles": true
+  },
+  "opts": {
+    "destination": "example-documentation",
+    "import": ["./gl-matrix.api.json"],
+    "export": "./example-documentation/webdoc.api.json"
+  }
 }

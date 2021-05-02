@@ -3,6 +3,8 @@
 A car is an automobile generally used to transport people on roads. This example package contains
 an API to simulate cars via the {@link Car} class.
 
+HERE: {@link glMatrix.equals}
+
 ## How to get a Car instance
 
 ```js

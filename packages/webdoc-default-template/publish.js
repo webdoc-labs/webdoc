@@ -12,7 +12,7 @@ const {
   TemplatePipeline,
   TemplateTagsResolver,
 } = require("@webdoc/template-library");
-const {linker} = require("./helper/linker");
+const {linker, prepareLinker} = require("./helper/linker");
 const _ = require("lodash");
 
 // Plugins
@@ -63,8 +63,7 @@ let idToDoc/*: Map<string, Doc> */;
 exports.publish = async function publish(options /*: PublishOptions */) {
   const config = options.config;
 
-  linker.siteRoot = config.template.siteRoot;
-  options.documentedInterface.metadata.linker = "require('@webdoc/template-library').LinkerPlugin";
+  await prepareLinker(config);
 
   const docTree = options.documentTree;
   const outDir = path.normalize(options.config.opts.destination);

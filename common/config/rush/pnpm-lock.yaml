@@ -64,6 +64,7 @@ dependencies:
   missionlog: 1.6.0
   mocha: 7.2.0
   nanoid: 3.1.20
+  node-fetch: 2.6.1
   object.fromentries: 2.0.3
   open-sans-fonts: 1.6.2
   optimize-css-assets-webpack-plugin: 5.0.4_webpack@4.46.0
@@ -10315,11 +10316,12 @@ packages:
       missionlog: 1.6.0
       mocha: 7.2.0
       nanoid: 3.1.20
+      node-fetch: 2.6.1
       parse-github-url: 1.0.2
     dev: false
     name: '@rush-temp/template-library'
     resolution:
-      integrity: sha512-oJ0imzWt/nVX9/WCwTBNvllypn2DuNRwQGHvb/cOLv1+Y7QWzVSNBucS2zBmgX0+ii7wCv8JPnaqsCCqbnAXaQ==
+      integrity: sha512-SdoUJb+6UC1r0cXJmEkEDO9OeTxAG0P0soqyOa9hg3YhOgjzniQHHvBVJpiehx9xeYgphe+yy0Z6F1xshVGpEQ==
       tarball: 'file:projects/template-library.tgz'
     version: 0.0.0
   'file:projects/tests.tgz':
@@ -10405,6 +10407,7 @@ specifiers:
   missionlog: 1.6.0
   mocha: ^7.1.1
   nanoid: ~3.1.16
+  node-fetch: ~2.6.1
   object.fromentries: ^2.0.2
   open-sans-fonts: ^1.6.2
   optimize-css-assets-webpack-plugin: ^5.0.3
