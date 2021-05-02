@@ -12,6 +12,10 @@ declare module "@webdoc/template-library" {
     shortenName?: boolean
   };
 
+  declare type LinkTable = {
+    [string]: string;
+  };
+
   declare var SymbolLinks: {
     pathToUrl: Map<string, string>;
     urlToPath: Map<String, string>;

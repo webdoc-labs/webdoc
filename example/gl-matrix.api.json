@@ -1,0 +1,43 @@
+{
+  "version": "1.0.0",
+  "metadata": {
+    "linker": "(manual)",
+    "siteDomain": "https://glmatrix.net",
+    "siteRoot": "docs"
+  },
+  "root": {
+    "id": "example-manual-1223487asdljfasf",
+    "name": "",
+    "type": "RootDoc",
+    "members": [
+      {
+        "id": "gl-matrix-adlfkjadf",
+        "name": "glMatrix",
+        "brief": "",
+        "type": "NSDoc",
+        "members": [
+          {
+            "id": "9alkdfjalkdsfjapoiueas324fdr",
+            "name": "equals",
+            "scope": "static",
+            "type": "FunctionDoc"
+          },
+          {
+            "id": "247987asdfjasdliruojknjk,m.kljj",
+            "name": "setMatrixArrayType",
+            "scope": "static",
+            "type": "FunctionDoc"
+          }
+        ]
+      }
+    ]
+  },
+  "registry": {
+    "9alkdfjalkdsfjapoiueas324fdr": {
+      "uri": "/module-glMatrix.html"
+    },
+    "247987asdfjasdliruojknjk,m.kljj": {
+      "uri": "/module-glMatrix.html"
+    }
+  }
+}

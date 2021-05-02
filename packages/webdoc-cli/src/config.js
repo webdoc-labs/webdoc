@@ -30,6 +30,7 @@ type ConfigSchema = {
     destination?: string,
     export?: string,
     template?: string,
+    import?: string[],
   },
   template: {
     appBar: {

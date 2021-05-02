@@ -12,7 +12,7 @@ const {
   TemplatePipeline,
   TemplateTagsResolver,
 } = require("@webdoc/template-library");
-const {linker} = require("./helper/linker");
+const {linker, prepareLinker} = require("./helper/linker");
 const _ = require("lodash");
 
 // Plugins
@@ -63,7 +63,7 @@ let idToDoc/*: Map<string, Doc> */;
 exports.publish = async function publish(options /*: PublishOptions */) {
   const config = options.config;
 
-  linker.siteRoot = config.template.siteRoot;
+  await prepareLinker(config);
 
   const docTree = options.documentTree;
   const outDir = path.normalize(options.config.opts.destination);
@@ -72,7 +72,7 @@ exports.publish = async function publish(options /*: PublishOptions */) {
 
   fse.ensureDir(outDir);
 
-  const crawlData = crawl(docTree, index);
+  const crawlData = crawl(options.manifest, index);
   const appBarItems = _.merge(config.template.appBar.items, {
     /* NOTE: config.template.appBar.items is the primary object so we retain the order as the user
         desires. */
@@ -89,7 +89,10 @@ exports.publish = async function publish(options /*: PublishOptions */) {
           crawlData.tutorials.children[Object.keys(crawlData.tutorials.children)[0]].page,
       },
     }),
-  });
+  }, _.pick(config.template.appBar.items, [
+    "reference",
+    "tutorials",
+  ]));
   const renderer = new TemplateRenderer(path.join(__dirname, "tmpl"), null, docTree)
     .setLayoutTemplate("layout.tmpl")
     .installPlugin("linker", linker)
@@ -347,7 +350,7 @@ function outTutorials(
   config /*: WebdocConfig */,
   docTree /*: RootDoc */,
 ) {
-  function out(parent /*: ?TutorialDoc */) {
+  function out(parent /*: { members: any[] } */) {
     return function renderRecursive(tutorial /*: TutorialDoc */, i /*: number */) {
       const uri = linker.getURI(tutorial, true);
 
@@ -370,5 +373,5 @@ function outTutorials(
     };
   }
 
-  docTree.tutorials.forEach((out(null) /*: any */));
+  docTree.tutorials.forEach((out({members: docTree.tutorials}) /*: any */));
 }

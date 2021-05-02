@@ -8,5 +8,8 @@
   },
   "road": {
     "title": "Road 101"
+  },
+  "api-manifest": {
+    "title": "API Manifest"
   }
 }

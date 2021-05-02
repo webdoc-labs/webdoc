@@ -2,7 +2,7 @@
 
 const {crawlReference} = require("./crawl-reference-explorer");
 const {crawlTutorials} = require("./crawl-tutorials");
-const {traverse} = require("@webdoc/model");
+const model = require("@webdoc/model");
 const {linker} = require("../linker");
 
 // This file crawls the document tree to:
@@ -14,7 +14,7 @@ import type {
   RootDoc,
   DocType,
 } from "@webdoc/types";
-
+import type {Manifest} from "@webdoc/externalize";
 import type {ExplorerTarget} from './crawl-reference-explorer';
 
 export type CategorizedDocumentList = {
@@ -30,9 +30,13 @@ export type CrawlData = {
 declare function crawl(tree: RootDoc, index: string): CrawlData;
 */
 
+function crawl(
+  manifest /*: Manifest */,
+  index /*: string */,
+)/*: CrawlData */ {
+  const tree = manifest.root;
 
-function crawl(tree /*: RootDoc */, index /*: string */)/*: CrawlData */ {
-  buildLinks(tree);
+  buildLinks(manifest);
 
   const crawlData /*: CrawlData */ = {
     index: buildIndex(tree),
@@ -42,7 +46,7 @@ function crawl(tree /*: RootDoc */, index /*: string */)/*: CrawlData */ {
 
   if (crawlData.reference) {
     // Add ClassIndex into explorer after (overview), while preserving order
-    // $FlowFixMe
+    // $FlowFixMe[unsupported-syntax]
     crawlData.reference.children = Object.assign(...[
       ...crawlData.reference.children["(overview)"] ? [{
         "(overview)": crawlData.reference.children["(overview)"],
@@ -63,17 +67,27 @@ function crawl(tree /*: RootDoc */, index /*: string */)/*: CrawlData */ {
 
 module.exports = ({crawl}/*: {crawl: typeof crawl} */);
 
-function buildLinks(tree /*: RootDoc */) /*: void */ {
-  traverse(tree, (doc) => {
+function buildLinks(manifest /*: Manifest */) /*: void */ {
+  const registry = manifest.registry;
+
+  model.traverse(manifest.root, (doc) => {
     if (doc.type === "RootDoc") {
       doc.packages.forEach((packageDoc) => {
-        linker.getURI(packageDoc);
+        if (!registry[packageDoc.id]) {
+          registry[packageDoc.id] = {};
+        }
+
+        registry[packageDoc.id].uri = linker.getURI(packageDoc);
       });
 
       return;
     }
 
-    linker.getURI(doc);
+    if (!registry[doc.id]) {
+      registry[doc.id] = {};
+    }
+
+    registry[doc.id].uri = linker.getURI(doc);
   });
 }
 
@@ -86,7 +100,7 @@ function buildIndex(
     classes: Object.assign(([] /*: any */), {url: classIndexUrl}),
   };
 
-  traverse(tree, (doc) => {
+  model.traverse(tree, (doc) => {
     switch (doc.type) {
     case "ClassDoc":
       index.classes.push(doc);

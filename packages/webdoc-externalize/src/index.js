@@ -1,9 +1,18 @@
-import readDoctree from "./readDoctree";
-import writeDoctree from "./writeDoctree";
+import write, {fromTree} from "./write";
+import read from "./read";
 
 export default {
-  readDoctree,
-  writeDoctree,
+  fromTree,
+  readDoctree: read,
+  read,
+  writeDoctree: write,
+  write,
 };
 
-export {readDoctree, writeDoctree};
+export {
+  fromTree,
+  read,
+  read as readDoctree,
+  write,
+  write as writeDoctree,
+};
