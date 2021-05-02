@@ -24,7 +24,7 @@ export type SerializedReturn = {
   dataType: SerializedDataType,
 };
 
-export type DocumentedInterface = {
+export type Manifest = {
   version: string;
   metadata: {
     siteRoot?: string;

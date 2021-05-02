@@ -3,7 +3,7 @@
 import * as model from "@webdoc/model";
 import {BASE_PROPS} from "./const";
 import type {Doc} from "@webdoc/types";
-import type {DocumentedInterface} from "./types";
+import type {Manifest} from "./types";
 import _ from "lodash";
 
 function deserializeTree(serialized: any, parent: ?Doc): Doc {
@@ -45,22 +45,22 @@ function deserializeTree(serialized: any, parent: ?Doc): Doc {
  * @param {string} data
  * @return {RootDoc}
  */
-export default function read(data: string): DocumentedInterface {
-  const documentedInterface = (JSON.parse(data): any);
+export default function read(data: string): Manifest {
+  const manifest = (JSON.parse(data): any);
 
-  if (!("version" in documentedInterface)) {
+  if (!("version" in manifest)) {
     return ({
       version: "0.0.0",
       metadata: {},
-      root: (deserializeTree(documentedInterface.root, null): any),
+      root: (deserializeTree(manifest.root, null): any),
       registry: {},
-    }: DocumentedInterface);
+    }: Manifest);
   }
 
   return {
-    version: documentedInterface.version,
-    metadata: documentedInterface.metadata,
-    root: (deserializeTree(documentedInterface.root, null): any),
-    registry: documentedInterface.registry,
+    version: manifest.version,
+    metadata: manifest.metadata,
+    root: (deserializeTree(manifest.root, null): any),
+    registry: manifest.registry,
   };
 }

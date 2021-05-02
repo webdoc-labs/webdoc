@@ -14,7 +14,7 @@ import type {
   RootDoc,
 } from "@webdoc/types";
 import type {
-  DocumentedInterface,
+  Manifest,
   SerializedDataType,
   SerializedParam,
   SerializedReturn,
@@ -121,34 +121,34 @@ function serializeTree(doc: Doc): any {
  * Create an documented interface the document tree, with no metadata.
  *
  * @param {RootDoc} documentTree
- * @return {DocumentedInterface}
+ * @return {Manifest}
  */
-export function fromTree(documentTree: RootDoc): DocumentedInterface {
-  const documentedInterface = {
+export function fromTree(documentTree: RootDoc): Manifest {
+  const manifest = {
     version: LATEST_VERSION,
     metadata: {},
     root: documentTree,
     registry: {},
   };
 
-  return documentedInterface;
+  return manifest;
 }
 
 /**
  * Serialize the documented interface into a JSON string.
  *
- * @param {DocumentedInterface} documentedInterface
+ * @param {Manifest} manifest
  * @param {boolean}[indent=false] - Whether to indent
  * @return {string} - Serialized JSON string
  * @see serializeTree
  */
-export default function write(documentedInterface: DocumentedInterface, indent?: boolean): string {
+export default function write(manifest: Manifest, indent?: boolean): string {
   return JSON.stringify(
     {
-      version: documentedInterface.version,
-      metadata: documentedInterface.metadata,
-      root: serializeTree(documentedInterface.root),
-      registry: documentedInterface.registry,
+      version: manifest.version,
+      metadata: manifest.metadata,
+      root: serializeTree(manifest.root),
+      registry: manifest.registry,
     },
     null,
     indent ? "\t" : "",

@@ -8,7 +8,7 @@ exports.prepareLinker = async function(config) {
 
   if (Array.isArray(config.opts.import)) {
     for (const importUri of config.opts.import) {
-      await linker.loadDocumentedInterface(importUri);
+      await linker.loadManifest(importUri);
     }
   }
 };

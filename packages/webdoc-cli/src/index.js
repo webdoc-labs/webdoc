@@ -119,12 +119,12 @@ async function main(argv: yargs.Argv) {
 
   log.info(tag.Parser, "Parsing stage finished!");
 
-  const documentedInterface = external.fromTree(documentTree);
+  const manifest = external.fromTree(documentTree);
   const db = exportTaffy(documentTree);
 
-  documentedInterface.metadata.linker = "(unsigned)";
-  documentedInterface.metadata.siteDomain = config.template.siteDomain;
-  documentedInterface.metadata.siteRoot = config.template.siteRoot;
+  manifest.metadata.linker = "(unsigned)";
+  manifest.metadata.siteDomain = config.template.siteDomain;
+  manifest.metadata.siteRoot = config.template.siteRoot;
 
   const _path = `${getTemplate(config)}/publish`;
   // $FlowFixMe[unsupported-syntax]
@@ -136,7 +136,7 @@ async function main(argv: yargs.Argv) {
     config,
     doctree: documentTree,
     documentTree,
-    documentedInterface,
+    manifest,
     docDatabase: db,
     opts: config.opts,
     tutorials,
@@ -154,7 +154,7 @@ async function main(argv: yargs.Argv) {
   }
 
   if (config.opts && config.opts.export) {
-    fs.writeFileSync(config.opts.export, external.write(documentedInterface, argv.verbose));
+    fs.writeFileSync(config.opts.export, external.write(manifest, argv.verbose));
   }
 
   console.log(`@webdoc took ${Math.ceil(performance.now() - start)}ms to run!`);

@@ -1,7 +1,7 @@
 declare module "@webdoc/externalize" {
   import type {RootDoc} from "@webdoc/types";
 
-  declare export type DocumentedInterface = {
+  declare export type Manifest = {
     version: string;
     metadata: {
       linker?: "require('@webdoc/template-library').LinkerPlugin" | string;
@@ -15,9 +15,9 @@ declare module "@webdoc/externalize" {
     };
   };
 
-  declare export function fromTree(tree: RootDoc): DocumentedInterface;
-  declare export function read(data: string): DocumentedInterface;
-  declare export function write(doc: DocumentedInterface): string;
+  declare export function fromTree(tree: RootDoc): Manifest;
+  declare export function read(data: string): Manifest;
+  declare export function write(doc: Manifest): string;
 
   declare export default {
     fromTree,

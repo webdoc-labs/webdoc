@@ -14,7 +14,7 @@ import type {
   RootDoc,
   DocType,
 } from "@webdoc/types";
-import type {DocumentedInterface} from "@webdoc/externalize";
+import type {Manifest} from "@webdoc/externalize";
 import type {ExplorerTarget} from './crawl-reference-explorer';
 
 export type CategorizedDocumentList = {
@@ -31,12 +31,12 @@ declare function crawl(tree: RootDoc, index: string): CrawlData;
 */
 
 function crawl(
-  documentedInterface /*: DocumentedInterface */,
+  manifest /*: Manifest */,
   index /*: string */,
 )/*: CrawlData */ {
-  const tree = documentedInterface.root;
+  const tree = manifest.root;
 
-  buildLinks(documentedInterface);
+  buildLinks(manifest);
 
   const crawlData /*: CrawlData */ = {
     index: buildIndex(tree),
@@ -67,10 +67,10 @@ function crawl(
 
 module.exports = ({crawl}/*: {crawl: typeof crawl} */);
 
-function buildLinks(documentedInterface /*: DocumentedInterface */) /*: void */ {
-  const registry = documentedInterface.registry;
+function buildLinks(manifest /*: Manifest */) /*: void */ {
+  const registry = manifest.registry;
 
-  model.traverse(documentedInterface.root, (doc) => {
+  model.traverse(manifest.root, (doc) => {
     if (doc.type === "RootDoc") {
       doc.packages.forEach((packageDoc) => {
         if (!registry[packageDoc.id]) {

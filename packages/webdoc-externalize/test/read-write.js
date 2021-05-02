@@ -33,8 +33,8 @@ describe("@webdoc/externalize (read-write test)", function() {
        */
     `);
 
-    const documentedInterface = external.fromTree(inputTree);
-    const {root: outputTree} = external.read(external.write(documentedInterface));
+    const manifest = external.fromTree(inputTree);
+    const {root: outputTree} = external.read(external.write(manifest));
 
     expect(outputTree.members.length).to.equal(2);
 

@@ -130,9 +130,9 @@ function LinkerPluginShell() {
 
     /**
      * Loaded documented interfaces that can be used to resolve links to external APIs.
-     * @type {DocumentedInterface[]}
+     * @type {Manifest[]}
      */
-    loadedInterfaces = [];
+    importedManifests = [];
 
     /**
      * Load the documented interface into this linker so you can resolve links to those documents.
@@ -141,7 +141,7 @@ function LinkerPluginShell() {
      *   or a file ./apis/lib.json)
      * @return {Promise<void>}
      */
-    async loadDocumentedInterface(uri: string) {
+    async loadManifest(uri: string) {
       let isURL = true;
 
       try {
@@ -158,9 +158,9 @@ function LinkerPluginShell() {
         contents = await fs.readFile(path.join(process.cwd(), uri), "utf8");
       }
 
-      const documentedInterface = external.read(contents);
-      const {registry} = documentedInterface;
-      const {siteDomain, siteRoot} = documentedInterface.metadata;
+      const manifest = external.read(contents);
+      const {registry} = manifest;
+      const {siteDomain, siteRoot} = manifest.metadata;
 
       if (!siteDomain) {
         throw new Error("Imported documented interfaces must have a siteDomain!");
@@ -175,7 +175,7 @@ function LinkerPluginShell() {
         }
       }
 
-      this.loadedInterfaces.push(documentedInterface);
+      this.importedManifests.push(manifest);
     }
 
     /**
@@ -320,8 +320,8 @@ function LinkerPluginShell() {
             this.queryCache.set(docPath, fileUrl);
           }
         } else {
-          for (let i = 0; i < this.loadedInterfaces.length && !fileUrl; i++) {
-            const externalInterface = this.loadedInterfaces[i];
+          for (let i = 0; i < this.importedManifests.length && !fileUrl; i++) {
+            const externalInterface = this.importedManifests[i];
             const doc = query(docPath, externalInterface.root)[0];
 
             if (doc) {
