@@ -30,9 +30,8 @@
   "scripts": {
     "build": "gulp build",
     "flow": "flow check",
-    "unit-test": "",
-    "lint": "eslint -c .eslintrc.json .",
-    "unit-test": "mocha ./test/* --require ../../scripts/configureWebdocTesting"
+    "unit-test": "mocha ./test/* --require ../../scripts/configureWebdocTesting",
+    "lint": "eslint -c .eslintrc.json ."
   },
   "bugs": {
     "url": "https://github.com/SukantPal/webdoc/issues"
@@ -54,14 +53,14 @@
     "@webdoc/babel-preset": "^1.0.0",
     "@webdoc/eslint-config": "^1.0.0",
     "@webdoc/parser": "^1.3.3",
+    "chai": "~4.3.4",
     "del": "5.1.0",
     "eslint": "^6.8.0",
     "flow-bin": "^0.130.0",
     "flow-typed": "^3.2.1",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
-    "gulp-util": "^3.0.8",
-    "chai": "~4.3.4"
+    "gulp-util": "^3.0.8"
   },
   "gitHead": "326306f477098182404f813337c0c67cc90263c6"
 }
