@@ -14,11 +14,7 @@ import type {
   RootDoc,
   DocType,
 } from "@webdoc/types";
-
-import type {
-  LinkTable,
-} from "@webdoc/template-library";
-
+import type {DocumentedInterface} from "@webdoc/externalize";
 import type {ExplorerTarget} from './crawl-reference-explorer';
 
 export type CategorizedDocumentList = {
@@ -34,9 +30,13 @@ export type CrawlData = {
 declare function crawl(tree: RootDoc, index: string): CrawlData;
 */
 
+function crawl(
+  documentedInterface /*: DocumentedInterface */,
+  index /*: string */,
+)/*: CrawlData */ {
+  const tree = documentedInterface.root;
 
-function crawl(tree /*: RootDoc */, index /*: string */)/*: CrawlData */ {
-  buildLinks(tree);
+  buildLinks(documentedInterface);
 
   const crawlData /*: CrawlData */ = {
     index: buildIndex(tree),
@@ -46,7 +46,7 @@ function crawl(tree /*: RootDoc */, index /*: string */)/*: CrawlData */ {
 
   if (crawlData.reference) {
     // Add ClassIndex into explorer after (overview), while preserving order
-    // $FlowFixMe
+    // $FlowFixMe[unsupported-syntax]
     crawlData.reference.children = Object.assign(...[
       ...crawlData.reference.children["(overview)"] ? [{
         "(overview)": crawlData.reference.children["(overview)"],
@@ -67,22 +67,28 @@ function crawl(tree /*: RootDoc */, index /*: string */)/*: CrawlData */ {
 
 module.exports = ({crawl}/*: {crawl: typeof crawl} */);
 
-function buildLinks(tree /*: RootDoc */) /*: LinkTable */ {
-  const linkTable = {};
+function buildLinks(documentedInterface /*: DocumentedInterface */) /*: void */ {
+  const registry = documentedInterface.registry;
 
-  model.traverse(tree, (doc) => {
+  model.traverse(documentedInterface.root, (doc) => {
     if (doc.type === "RootDoc") {
       doc.packages.forEach((packageDoc) => {
-        linkTable[packageDoc.path] = linker.getURI(packageDoc);
+        if (!registry[packageDoc.id]) {
+          registry[packageDoc.id] = {};
+        }
+
+        registry[packageDoc.id].uri = linker.getURI(packageDoc);
       });
 
       return;
     }
 
-    linkTable[doc.path] = linker.getURI(doc);
-  });
+    if (!registry[doc.id]) {
+      registry[doc.id] = {};
+    }
 
-  return linkTable;
+    registry[doc.id].uri = linker.getURI(doc);
+  });
 }
 
 function buildIndex(

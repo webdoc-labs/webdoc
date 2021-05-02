@@ -27,6 +27,8 @@ export type SerializedReturn = {
 export type DocumentedInterface = {
   version: string;
   metadata: {
+    siteRoot?: string;
+    siteDomain?: string;
     linker?: "require('@webdoc/template-library').LinkerPlugin" | string;
     [string]: string;
   };

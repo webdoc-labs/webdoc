@@ -64,6 +64,7 @@ exports.publish = async function publish(options /*: PublishOptions */) {
   const config = options.config;
 
   linker.siteRoot = config.template.siteRoot;
+  options.documentedInterface.metadata.linker = "require('@webdoc/template-library').LinkerPlugin";
 
   const docTree = options.documentTree;
   const outDir = path.normalize(options.config.opts.destination);
@@ -72,7 +73,7 @@ exports.publish = async function publish(options /*: PublishOptions */) {
 
   fse.ensureDir(outDir);
 
-  const crawlData = crawl(docTree, index);
+  const crawlData = crawl(options.documentedInterface, index);
   const appBarItems = _.merge(config.template.appBar.items, {
     /* NOTE: config.template.appBar.items is the primary object so we retain the order as the user
         desires. */

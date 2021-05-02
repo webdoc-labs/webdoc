@@ -122,6 +122,10 @@ async function main(argv: yargs.Argv) {
   const documentedInterface = external.fromTree(documentTree);
   const db = exportTaffy(documentTree);
 
+  documentedInterface.metadata.linker = "(unsigned)";
+  documentedInterface.metadata.siteDomain = config.template.siteDomain;
+  documentedInterface.metadata.siteRoot = config.template.siteRoot;
+
   const _path = `${getTemplate(config)}/publish`;
   // $FlowFixMe[unsupported-syntax]
   const template = require(_path);
