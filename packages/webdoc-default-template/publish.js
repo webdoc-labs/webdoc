@@ -89,7 +89,10 @@ exports.publish = async function publish(options /*: PublishOptions */) {
           crawlData.tutorials.children[Object.keys(crawlData.tutorials.children)[0]].page,
       },
     }),
-  });
+  }, _.pick(config.template.appBar.items, [
+    "reference",
+    "tutorials",
+  ]));
   const renderer = new TemplateRenderer(path.join(__dirname, "tmpl"), null, docTree)
     .setLayoutTemplate("layout.tmpl")
     .installPlugin("linker", linker)

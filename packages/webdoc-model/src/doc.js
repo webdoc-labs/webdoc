@@ -15,7 +15,9 @@ export const CANONICAL_SEPARATOR = /([.#~$])/g;
 
 function updateScope(doc: Doc, scopeStack: string[], scopePath: string): void {
   if (scopePath) {
-    doc.stack = [...scopeStack, doc.name];
+    if (scopeStack) {
+      doc.stack = [...scopeStack, doc.name];
+    }
     doc.path = `${scopePath}.${doc.name}`;
   } else {
     doc.stack = [doc.name];

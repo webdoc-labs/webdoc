@@ -2,7 +2,7 @@
 
 const {crawlReference} = require("./crawl-reference-explorer");
 const {crawlTutorials} = require("./crawl-tutorials");
-const {traverse} = require("@webdoc/model");
+const model = require("@webdoc/model");
 const {linker} = require("../linker");
 
 // This file crawls the document tree to:
@@ -14,6 +14,10 @@ import type {
   RootDoc,
   DocType,
 } from "@webdoc/types";
+
+import type {
+  LinkTable,
+} from "@webdoc/template-library";
 
 import type {ExplorerTarget} from './crawl-reference-explorer';
 
@@ -63,18 +67,22 @@ function crawl(tree /*: RootDoc */, index /*: string */)/*: CrawlData */ {
 
 module.exports = ({crawl}/*: {crawl: typeof crawl} */);
 
-function buildLinks(tree /*: RootDoc */) /*: void */ {
-  traverse(tree, (doc) => {
+function buildLinks(tree /*: RootDoc */) /*: LinkTable */ {
+  const linkTable = {};
+
+  model.traverse(tree, (doc) => {
     if (doc.type === "RootDoc") {
       doc.packages.forEach((packageDoc) => {
-        linker.getURI(packageDoc);
+        linkTable[packageDoc.path] = linker.getURI(packageDoc);
       });
 
       return;
     }
 
-    linker.getURI(doc);
+    linkTable[doc.path] = linker.getURI(doc);
   });
+
+  return linkTable;
 }
 
 function buildIndex(
@@ -86,7 +94,7 @@ function buildIndex(
     classes: Object.assign(([] /*: any */), {url: classIndexUrl}),
   };
 
-  traverse(tree, (doc) => {
+  model.traverse(tree, (doc) => {
     switch (doc.type) {
     case "ClassDoc":
       index.classes.push(doc);

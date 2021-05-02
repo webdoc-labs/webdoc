@@ -126,7 +126,7 @@ async function main(argv: yargs.Argv) {
   const db = exportTaffy(documentTree);
 
   const _path = `${getTemplate(config)}/publish`;
-  // $FlowFixMe
+  // $FlowFixMe[unsupported-syntax]
   const template = require(_path);
 
   log.info(tag.CLI, "Executing template");
