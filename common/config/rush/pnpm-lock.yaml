@@ -32,6 +32,7 @@ dependencies:
   babel-loader: 8.2.2_80cd7b8149d93293e480a9a7c4e34482
   bluebird: 3.7.2
   catharsis: 0.8.11
+  chai: 4.3.4
   code-prettify: 0.1.0
   color-themes-for-google-code-prettify: 2.0.4
   common-path-prefix: 3.0.0
@@ -2950,19 +2951,6 @@ packages:
       node: '>= 8'
     resolution:
       integrity: sha512-a+xUyMV7hD1BrDQA/3iPV7oc+6W26BgVJO05PGEoatMyIuPScQKsde6i3YorWX1qs+AZjnJ18NqdKoCtKiNh1g==
-  /chai/4.2.0:
-    dependencies:
-      assertion-error: 1.1.0
-      check-error: 1.0.2
-      deep-eql: 3.0.1
-      get-func-name: 2.0.0
-      pathval: 1.1.0
-      type-detect: 4.0.8
-    dev: false
-    engines:
-      node: '>=4'
-    resolution:
-      integrity: sha512-XQU3bhBukrOsQCuwZndwGcCVQHyZi53fQ6Ys1Fym7E4olpIqqZZhhoFJoaKVvV17lWQoXYwgWN2nF5crA8J2jw==
   /chai/4.3.4:
     dependencies:
       assertion-error: 1.1.0
@@ -7375,10 +7363,6 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==
-  /pathval/1.1.0:
-    dev: false
-    resolution:
-      integrity: sha1-uULm1L3mUwBe9rcTYd74cn0GReA=
   /pathval/1.1.1:
     dev: false
     resolution:
@@ -10061,7 +10045,7 @@ packages:
       '@babel/preset-react': 7.12.10_@babel+core@7.12.10
       '@babel/register': 7.12.10_@babel+core@7.12.10
       array.prototype.flatmap: 1.2.4
-      chai: 4.2.0
+      chai: 4.3.4
       del: 5.1.0
       eslint: 6.8.0
       flow-bin: 0.130.0
@@ -10084,7 +10068,7 @@ packages:
     dev: false
     name: '@rush-temp/cli'
     resolution:
-      integrity: sha512-Fyd/o9Q54rjltQS4U7kvLCbOvHQxPYNQCrm/+otT8EvIqR+QFZQsOC5p9xrMNz77rl2GEUfMCPMpAKSkECYlZQ==
+      integrity: sha512-tDr2B2/m0OehOJSNUrH6iXUBz4HTsOmDON8kyIjUOl4acBxO+cOmKo4ktdLre8XvETdDjFkucx07p/VMh4FbPA==
       tarball: 'file:projects/cli.tgz'
     version: 0.0.0
   'file:projects/default-template.tgz':
@@ -10221,7 +10205,7 @@ packages:
       '@babel/preset-react': 7.12.10_@babel+core@7.12.10
       '@babel/register': 7.12.10_@babel+core@7.12.10
       catharsis: 0.8.11
-      chai: 4.2.0
+      chai: 4.3.4
       del: 5.1.0
       eslint: 6.8.0
       flow-bin: 0.130.0
@@ -10235,7 +10219,7 @@ packages:
     dev: false
     name: '@rush-temp/model'
     resolution:
-      integrity: sha512-0NpQj0OkYssmGYQfRjA/8cSqMydGH0a10rSImXnGxTn0b/7sSCfiMw96v4/O/oq1awFKIutS1mKrjmmKOdps1Q==
+      integrity: sha512-m+Lj8uJWGgUiPi0VPbJPdLovoIZ/RY6ijSO8yImt5LSETzr6B4npEGZsoI88OOvgp7MRg9s8J5AzNutEa0mE/g==
       tarball: 'file:projects/model.tgz'
     version: 0.0.0
   'file:projects/parser.tgz':
@@ -10250,7 +10234,7 @@ packages:
       '@babel/register': 7.12.10_@babel+core@7.12.10
       '@babel/traverse': 7.9.5
       '@babel/types': 7.9.5
-      chai: 4.2.0
+      chai: 4.3.4
       del: 5.1.0
       eslint: 6.8.0
       flow-bin: 0.130.0
@@ -10265,7 +10249,7 @@ packages:
     dev: false
     name: '@rush-temp/parser'
     resolution:
-      integrity: sha512-kRvi1ha5skDgdgxMdCIS+lvQUJ7V8liCvTG0z9cjuJV0dC8YmxQYbkw5CPzRtktM6WfM4bDfyS7dB7lnWcMUDQ==
+      integrity: sha512-RWYZMu4K06MDJCpafucioUajwpqOMXLG3IuX9danpqu8rgeLBml+Ej0axLQ0JjFdTcbL7EN+z5RG/zPcIH/6WA==
       tarball: 'file:projects/parser.tgz'
     version: 0.0.0
   'file:projects/plugin-markdown.tgz':
@@ -10302,7 +10286,7 @@ packages:
       '@babel/preset-react': 7.12.10_@babel+core@7.12.10
       '@babel/register': 7.12.10_@babel+core@7.12.10
       catharsis: 0.8.11
-      chai: 4.2.0
+      chai: 4.3.4
       del: 5.1.0
       eslint: 6.8.0
       flow-bin: 0.130.0
@@ -10321,7 +10305,7 @@ packages:
     dev: false
     name: '@rush-temp/template-library'
     resolution:
-      integrity: sha512-SdoUJb+6UC1r0cXJmEkEDO9OeTxAG0P0soqyOa9hg3YhOgjzniQHHvBVJpiehx9xeYgphe+yy0Z6F1xshVGpEQ==
+      integrity: sha512-OjMrpo4wobgxJnd2eOK2u8DA/USwPAbQdnrUMC/4IHgWbNt4idtnCp2bkWbU3eSdswAbngD7/K/zLJnX0yFfAQ==
       tarball: 'file:projects/template-library.tgz'
     version: 0.0.0
   'file:projects/tests.tgz':
@@ -10375,6 +10359,7 @@ specifiers:
   babel-loader: ^8.1.0
   bluebird: ^3.7.2
   catharsis: 0.8.11
+  chai: ~4.3.4
   code-prettify: ^0.1.0
   color-themes-for-google-code-prettify: ^2.0.4
   common-path-prefix: ^3.0.0
