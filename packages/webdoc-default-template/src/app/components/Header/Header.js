@@ -25,12 +25,18 @@ export default connect(({explorerOpen}) => ({
           appBarItem.kind === "divider" ?
             <section className={`header--divider header--item-${id}`}
               dangerouslySetInnerHTML={{__html: appBarItem.content}}
-            /> :
-            <a
-              className={`header__link${id === currentItemId ? " header__link__current" : ""}`}
-              href={appBarItem.uri}
-              dangerouslySetInnerHTML={{__html: appBarItem.name}}
-            />
+            /> : (
+              <>
+                <a
+                  className={`header__link${id === currentItemId ? " header__link__current" : ""}`}
+                  href={appBarItem.uri}
+                  dangerouslySetInnerHTML={{__html: appBarItem.name}}
+                />
+                {i < items.length - 1 && (
+                  <div className="header--gap" />
+                )}
+              </>
+            )
         ))}
         {appData.integrations.search && <Search integration={appData.integrations.search} />}
       </div>

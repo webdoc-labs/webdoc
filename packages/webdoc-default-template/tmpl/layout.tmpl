@@ -15,7 +15,7 @@ const integrations = JSON.stringify(config.integrations);
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title><?js= config.applicationName ?>: <?js= title ?></title>
+    <title><?js= config.title || config.applicationName ?>: <?js= title ?></title>
 
     <link type="text/css" rel="stylesheet" href="/<?js= sitePrefix ?>styles/index.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
@@ -32,7 +32,7 @@ const integrations = JSON.stringify(config.integrations);
 
     <script>
       window.appData = {
-        applicationName: "<?js= config.applicationName ?>",
+        applicationName: `<?js= config.applicationName ?>`,
         appBar: <?js= JSON.stringify(appBar) ?>,
         explorerTree: "<?js= (siteRoot ? "/" + siteRoot : "") + "/explorer/" + (document && document.type === "TutorialDoc" ? "tutorials" : "reference") + ".json" ?>",
         siteRoot: "<?js= siteRoot ?>",

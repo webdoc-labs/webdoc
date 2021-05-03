@@ -9703,13 +9703,15 @@ function Header_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       dangerouslySetInnerHTML: {
         __html: appBarItem.content
       }
-    }) : React.createElement("a", {
+    }) : React.createElement(React.Fragment, null, React.createElement("a", {
       className: "header__link".concat(id === currentItemId ? " header__link__current" : ""),
       href: appBarItem.uri,
       dangerouslySetInnerHTML: {
         __html: appBarItem.name
       }
-    });
+    }), i < items.length - 1 && React.createElement("div", {
+      className: "header--gap"
+    }));
   }), appData.integrations.search && React.createElement(Search, {
     integration: appData.integrations.search
   })));

@@ -73,7 +73,7 @@ exports.publish = async function publish(options /*: PublishOptions */) {
   fse.ensureDir(outDir);
 
   const crawlData = crawl(options.manifest, index);
-  const appBarItems = _.merge(config.template.appBar.items, {
+  const appBarItems = _.merge({}, config.template.appBar.items, {
     /* NOTE: config.template.appBar.items is the primary object so we retain the order as the user
         desires. */
     ...(crawlData.reference && {
@@ -93,6 +93,7 @@ exports.publish = async function publish(options /*: PublishOptions */) {
     "reference",
     "tutorials",
   ]));
+
   const renderer = new TemplateRenderer(path.join(__dirname, "tmpl"), null, docTree)
     .setLayoutTemplate("layout.tmpl")
     .installPlugin("linker", linker)
