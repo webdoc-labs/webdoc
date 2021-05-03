@@ -30,12 +30,14 @@ window.onload = function() {
     explorerRoot,
   );
 
-  ReactDOM.render(
-    (
-      <Footer />
-    ),
-    footerRoot,
-  );
+  if (footerRoot) {
+    ReactDOM.render(
+      (
+        <Footer/>
+      ),
+      footerRoot,
+    );
+  }
 };
 
 function wakeAccordions() {

@@ -2,6 +2,7 @@
 
 .tutorial {
   &--navigation {
+    color: $colorSecondaryText;
     display: flex;
     margin-top: 24px;
     padding-bottom: 16px;
@@ -17,6 +18,7 @@
 
     &-previous {
       display: flex;
+      transition: 300ms color;
 
       > section:last-child {
         display: flex;
@@ -30,10 +32,15 @@
       svg {
         margin-right: 14px;
       }
+
+      &:hover {
+        color: $colorPrimaryText;
+      }
     }
 
     &-next {
       display: block;
+      transition: 300ms color;
 
       > section:first-child {
         display: flex;
@@ -42,6 +49,10 @@
 
       svg {
         margin-left: 14px;
+      }
+
+      &:hover {
+        color: $colorPrimaryText;
       }
     }
 
@@ -52,7 +63,7 @@
     }
 
     &-arrow {
-      stroke: $colorSecondaryText;
+      stroke: currentColor;
       stroke-width: 2px;
       width: 27px;
       height: 14px;
