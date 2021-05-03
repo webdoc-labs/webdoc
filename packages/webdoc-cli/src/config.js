@@ -48,6 +48,7 @@ type ConfigSchema = {
     stylesheets: Array<string>,
     siteDomain?: string,
     siteRoot: string,
+    title?: string,
     mainPage?: {
       title?: string
     },

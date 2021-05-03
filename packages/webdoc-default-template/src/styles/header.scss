@@ -47,10 +47,6 @@
     justify-content: flex-end;
     height: 100%;
 
-    > * {
-      margin-right: 42px;
-    }
-
     > *:last-child {
       @media only screen and (max-width: 1025px) {
         margin-right: 0;
@@ -83,5 +79,10 @@
     @include normalize();
     max-width: 80%;
     width: 100%;
+  }
+
+  &--gap {
+    flex-grow: 1;
+    max-width: 42px;
   }
 }
