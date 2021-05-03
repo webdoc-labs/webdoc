@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@webdoc/cli",
+      "comment": "Add config.template.title for plaintext title that can be used by browser tab.",
+      "type": "none"
+    }
+  ],
+  "packageName": "@webdoc/cli",
+  "email": "sukantk2002@outlook.com"
+}
