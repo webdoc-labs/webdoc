@@ -361,8 +361,8 @@ function outTutorials(
         title: tutorial.title,
         env: config,
         navigation: {
-          next: parent && parent.members[i + 1],
-          previous: parent && parent.members[i - 1],
+          next: parent && parent.members[i + 1].route && parent.members[i + 1],
+          previous: parent && parent.members[i - 1].route && parent.members[i - 1],
         },
       }, {
         outputFile: path.join(outDir, uri),

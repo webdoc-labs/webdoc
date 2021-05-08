@@ -11,9 +11,9 @@
     <?js= document.content ?>
   </div>
   <?js if (next || previous) { ?>
-    <div class="tutorial--navigation">
+    <div class="serial-navigation">
       <?js if (previous) { ?>
-        <a class="tutorial--navigation-previous" href="<?js= this.getPlugin("linker").getURI(previous) ?>">
+        <a class="serial-navigation__previous" href="<?js= this.getPlugin("linker").getURI(previous) ?>">
           <section>
             <svg
               class="tutorial--navigation-arrow"
@@ -39,7 +39,7 @@
         <hr />
       <?js } ?>
       <?js if (next) { ?>
-        <a class="tutorial--navigation-next" href="<?js= this.getPlugin("linker").getURI(next) ?>">
+        <a class="serial-navigation__next" href="<?js= this.getPlugin("linker").getURI(next) ?>">
           <section>
             <span>NEXT GUIDE</span>
             <svg
