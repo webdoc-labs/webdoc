@@ -1,0 +1,29 @@
+<?js
+  /** This component renders explorer-item groups */
+  const { title, group } = obj;
+
+  // Don't render anything if the group has no items!
+  if (!group.length) {
+    return;
+  }
+?>
+
+<li class="explorer-tree__group">
+  <div>
+    <div>
+      <input type="checkbox" checked="true">
+        <?js= this.partial("components/explorer/icon.tmpl") ?>
+      </input>
+    </div>
+    <div>
+      <?js= title ?>
+    </div>
+    <div>
+      <ul role="group">
+        <?js group.forEach((item) => { ?>
+          <?js= this.partial("components/explorer/item.tmpl", { item }) ?>
+        <?js }); ?>
+      </ul>
+    </div>
+  </div>
+</li>

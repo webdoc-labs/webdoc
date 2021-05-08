@@ -9700,20 +9700,20 @@ function Header_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
     return appBarItem.kind === "divider" ? React.createElement("section", {
       key: id,
-      className: "header--divider header--item-".concat(id),
+      className: "header__divider header__item-".concat(id),
       dangerouslySetInnerHTML: {
         __html: appBarItem.content
       }
     }) : React.createElement(React.Fragment, {
       key: id
     }, React.createElement("a", {
-      className: "header__link".concat(id === currentItemId ? " header__link__current" : ""),
+      className: "header__link".concat(id === currentItemId ? " header__link--current" : ""),
       href: appBarItem.uri,
       dangerouslySetInnerHTML: {
         __html: appBarItem.name
       }
     }), i < items.length - 1 && React.createElement("div", {
-      className: "header--gap"
+      className: "header__gap"
     }));
   }), appData.integrations.search && React.createElement(Search, {
     integration: appData.integrations.search

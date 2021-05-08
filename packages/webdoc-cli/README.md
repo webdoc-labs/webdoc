@@ -140,7 +140,8 @@ The `template` object is used by the site template.
 * `template.integrations`: (optional) Integrations with 3rd party solutions in your template. This object is dependent on which template you're using. For @webdoc/default-template, the following integrations are available:
   * `search`: This is used as the backend for the global site search. You'll need to create an Algolia account yourself and provide
     the `apiKey`, `appId`, `indexName`. (The only supported provider is "algolia" right now)
-
+* `template.variant` - If the template supports different modes or variants for the generated site,
+    it should use this field. @webdoc/default-template supports "normal", "plain" (no CSS, JS).
 ### Tutorial configuration
 
 Tutorials can be structured in a hierarchy using JSON files in the tutorials directory. If you have multiple JSON configuration, they

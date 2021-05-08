@@ -68,11 +68,11 @@
     &:hover {
       color: $colorPrimary;
     }
-  }
 
-  &__link__current {
-    color: $colorPrimary;
-    text-decoration: none;
+    &--current {
+      color: $colorPrimary;
+      text-decoration: none;
+    }
   }
 
   &__title {
@@ -81,7 +81,7 @@
     width: 100%;
   }
 
-  &--gap {
+  &__gap {
     flex-grow: 1;
     max-width: 42px;
   }

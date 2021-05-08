@@ -1,0 +1,14 @@
+<?js
+    const { explorerData } = obj;
+?>
+<div class="explorer">
+  <ul role="tree" class="explorer__tree explorer__tree-open">
+    <?js Object.entries(explorerData.children).forEach(([id, child]) => { ?>
+      <?js if (Array.isArray(child)) { ?>
+        <?js= this.partial("components/explorer/group.tmpl", { title: id, group: child }) ?>
+      <?js } else { ?>
+        <?js= this.partial("components/explorer/item.tmpl", { item: child }) ?>
+      <?js } ?>
+    <?js }); ?>
+  </ul>
+</div>
