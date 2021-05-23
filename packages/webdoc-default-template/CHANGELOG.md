@@ -1,6 +1,13 @@
 # Change Log - @webdoc/default-template
 
-This log was last generated on Mon, 03 May 2021 14:30:44 GMT and should not be manually modified.
+This log was last generated on Sun, 23 May 2021 21:16:03 GMT and should not be manually modified.
+
+## 1.4.0
+Sun, 23 May 2021 21:16:03 GMT
+
+### Updates
+
+- Add "plain" variant". Expose alias for "header", "footer", "explorer", and "bottom-banner". The first 3 are for the plain variant (only).
 
 ## 1.3.4
 Mon, 03 May 2021 14:30:44 GMT
