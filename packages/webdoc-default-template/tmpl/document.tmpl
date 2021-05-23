@@ -10,7 +10,7 @@
 ?>
 <main class="page-content">
   <div class="document">
-    <div class="document__breadcrumb">
+    <div class="breadcrumb">
       <?js if (doc.loc.file.package) { ?>
         <?js= this.linkTo(doc.loc.file.package) ?>
         &gt;
@@ -94,6 +94,6 @@
     }) ?>
   </div>
   <div class="footer-gap" style="min-height: 48px;"></div>
-  <footer class="footer" id="footer-mount-point"></footer>
+  <?js= this.partial("footer") ?>
 </main>
 <?js= this.partial("components/members-explorer/index.tmpl", doc) ?>

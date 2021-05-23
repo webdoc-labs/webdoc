@@ -5,17 +5,6 @@
   line-height: 1.4em;
   width: 100%;
 
-  &__breadcrumb {
-    a {
-      color: $colorText;
-      text-decoration: underline;
-    }
-
-    > *:last-child {
-      color: $colorPrimary;
-    }
-  }
-
   > .document__title {
     margin: 18px 0;
 
@@ -43,5 +32,16 @@
 
   > * {
     margin: 10px 0;
+  }
+}
+
+.breadcrumb {
+  a {
+    color: $colorText;
+    text-decoration: underline;
+  }
+
+  > *:last-child {
+    color: $colorPrimary;
   }
 }

@@ -177,7 +177,7 @@ function linktoExternal(longName, name) {
 // Builds the navigation sidebar's HTML content
 function buildNav(members /*: TypedMembers */) /*: string */ {
   let globalNav;
-  let nav = "<h2><a href=\"index.html\">Home</a></h2>";
+  let nav = "<h2><a href=\"index.tmpl\">Home</a></h2>";
   const seen = {};
 
   nav += buildMemberNav(members.tutorials, "Tutorials", seen, SymbolLinks.linkTo);

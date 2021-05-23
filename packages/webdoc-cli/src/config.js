@@ -33,6 +33,9 @@ type ConfigSchema = {
     import?: string[],
   },
   template: {
+    alias: {
+      [string]: string;
+    },
     appBar: {
       items: {
         [string]: {
@@ -62,6 +65,7 @@ type ConfigSchema = {
     repository?: string,
     outputSourceFiles?: boolean,
     integrations: any,
+    variant: string,
   },
   version: {
     number?: 1
@@ -91,6 +95,7 @@ const defaultConfig: ConfigSchema = {
     template: "@webdoc/default-template",
   },
   template: {
+    alias: {},
     appBar: {
       items: {},
     },
@@ -113,6 +118,7 @@ const defaultConfig: ConfigSchema = {
     repository: undefined, // ex. GitHub repo holding source files to link source files
     // should contain branch - https://github.com/webdoc-js/webdoc/blob/master/
     integrations: {},
+    variant: "normal",
   },
   version: {
     number: 1,

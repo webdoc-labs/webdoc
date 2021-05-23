@@ -23,17 +23,17 @@ export default connect(({explorerOpen}) => ({
       <div className="header__contents">
         {items.map(([id, appBarItem], i) => (
           appBarItem.kind === "divider" ?
-            <section key={id} className={`header--divider header--item-${id}`}
+            <section key={id} className={`header__divider header__item-${id}`}
               dangerouslySetInnerHTML={{__html: appBarItem.content}}
             /> : (
               <React.Fragment key={id}>
                 <a
-                  className={`header__link${id === currentItemId ? " header__link__current" : ""}`}
+                  className={`header__link${id === currentItemId ? " header__link--current" : ""}`}
                   href={appBarItem.uri}
                   dangerouslySetInnerHTML={{__html: appBarItem.name}}
                 />
                 {i < items.length - 1 && (
-                  <div className="header--gap" />
+                  <div className="header__gap" />
                 )}
               </React.Fragment>
             )

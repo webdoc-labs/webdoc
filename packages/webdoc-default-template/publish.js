@@ -73,6 +73,15 @@ exports.publish = async function publish(options /*: PublishOptions */) {
   fse.ensureDir(outDir);
 
   const crawlData = crawl(options.manifest, index);
+  const alias = _.merge(
+    {
+      "bottom-banner": path.join(__dirname, "tmpl/components/bottom-banner/index.tmpl"),
+      "explorer": path.join(__dirname, "tmpl/components/explorer/index.tmpl"),
+      "footer": path.join(__dirname, "tmpl/components/footer/index.tmpl"),
+      "header": path.join(__dirname, "tmpl/components/header/index.tmpl"),
+    },
+    config.template.alias,
+  );
   const appBarItems = _.merge({}, config.template.appBar.items, {
     /* NOTE: config.template.appBar.items is the primary object so we retain the order as the user
         desires. */
@@ -93,9 +102,13 @@ exports.publish = async function publish(options /*: PublishOptions */) {
     "reference",
     "tutorials",
   ]));
+  const layoutTemplate = config.template.alias.layout ?
+    path.resolve(process.cwd(), config.template.alias.layout) :
+    "layout.tmpl";
 
   const renderer = new TemplateRenderer(path.join(__dirname, "tmpl"), null, docTree)
-    .setLayoutTemplate("layout.tmpl")
+    .alias(alias)
+    .setLayoutTemplate(layoutTemplate)
     .installPlugin("linker", linker)
     .installPlugin("generateIndex", indexSorterPlugin)
     .installPlugin("signature", signaturePlugin)
@@ -105,6 +118,7 @@ exports.publish = async function publish(options /*: PublishOptions */) {
       appBar: {
         items: appBarItems,
       },
+      variant: config.template.variant,
     });
 
   const pipeline = new TemplatePipeline(renderer).pipe(new TemplateTagsResolver());
@@ -135,8 +149,8 @@ exports.publish = async function publish(options /*: PublishOptions */) {
   outExplorerData(outDir, crawlData);
   outMainPage(indexRelative ? path.join(outDir, indexRelative) : null, pipeline, options.config);
   outIndexes(outDir, pipeline, options.config, crawlData.index);
-  outReference(outDir, pipeline, options.config, docTree);
-  outTutorials(outDir, pipeline, options.config, docTree);
+  outReference(outDir, pipeline, options.config, docTree, crawlData.reference);
+  outTutorials(outDir, pipeline, options.config, docTree, crawlData.tutorials);
 
   pipeline.close();
 };
@@ -146,21 +160,25 @@ async function outStaticFiles(
   outDir /*: string */,
   config /*: ConfigSchema */,
 ) /*: Promise<void> */ {
-  const staticDir = path.join(__dirname, "./static");
+  if (config.template.variant !== "plain") {
+    const staticDir = path.join(__dirname, "./static");
 
-  await fse.copy(staticDir, outDir);
+    await fse.copy(staticDir, outDir);
+  }
 
   await Promise.all([
     (async () => {
-      // Copy the prettify script to outDir
-      PRETTIFIER_SCRIPT_FILES.forEach((fileName) => {
-        const toPath = path.join(outDir, "scripts", path.basename(fileName));
+      if (config.variant !== "plain") {
+        // Copy the prettify script to outDir
+        PRETTIFIER_SCRIPT_FILES.forEach((fileName) => {
+          const toPath = path.join(outDir, "scripts", path.basename(fileName));
 
-        fse.copyFileSync(
-          path.join(require.resolve("code-prettify"), "..", fileName),
-          toPath,
-        );
-      });
+          fse.copyFileSync(
+            path.join(require.resolve("code-prettify"), "..", fileName),
+            toPath,
+          );
+        });
+      }
     })(),
     (() => {
       // Copy the stylesheets
@@ -211,7 +229,7 @@ function outExplorerData(outDir /*: string */, crawlData /*: CrawlData */) {
   });
 }
 
-// Render the main-page into index.html (outputFile)
+// Render the main-page into index.tmpl (outputFile)
 async function outMainPage(
   outputFile /*: ?string */,
   pipeline /*: TemplatePipeline */,
@@ -297,6 +315,7 @@ function outReference(
   pipeline /*: TemplatePipeline */,
   config /*: WebdocConfig */,
   docTree /*: RootDoc */,
+  explorerData /* any */,
 ) {
   // Don't output if nothing's there
   if (!docTree.members.length) {
@@ -336,6 +355,7 @@ function outReference(
       pipeline.render("document.tmpl", {
         appBar: {current: "reference"},
         document: doc,
+        explorerData,
         title: doc.name,
         env: config,
       }, {
@@ -350,6 +370,7 @@ function outTutorials(
   pipeline /*: TemplatePipeline */,
   config /*: WebdocConfig */,
   docTree /*: RootDoc */,
+  explorerData /* any */,
 ) {
   function out(parent /*: { members: any[] } */) {
     return function renderRecursive(tutorial /*: TutorialDoc */, i /*: number */) {
@@ -358,11 +379,14 @@ function outTutorials(
       pipeline.render("tutorial.tmpl", {
         appBar: {current: "tutorials"},
         document: tutorial,
+        explorerData,
         title: tutorial.title,
         env: config,
         navigation: {
-          next: parent && parent.members[i + 1],
-          previous: parent && parent.members[i - 1],
+          next: parent && parent.members[i + 1] && parent.members[i + 1].route ?
+            parent.members[i + 1] : null,
+          previous: parent && parent.members[i - 1] && parent.members[i - 1].route ?
+            parent.members[i - 1] : null,
         },
       }, {
         outputFile: path.join(outDir, uri),

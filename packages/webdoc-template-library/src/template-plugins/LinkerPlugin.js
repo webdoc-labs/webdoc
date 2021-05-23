@@ -604,6 +604,20 @@ function LinkerPluginShell() {
 
       return `${baseURI}${fragment ? "#" + fragment : ""}`;
     }
+
+    static async from(config: any) {
+      const linkerPlugin = new LinkerPlugin();
+
+      linkerPlugin.siteRoot = config.template.siteRoot;
+
+      if (Array.isArray(config.template.import)) {
+        for (const manifestURI of config.template.import) {
+          await linkerPlugin.load(manifestURI);
+        }
+      }
+
+      return linkerPlugin;
+    }
   }
 
   return LinkerPluginImpl;

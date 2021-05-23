@@ -33,7 +33,7 @@ export class Sitemap implements TemplatePipelineElement<SitemapData> {
     // noop
   }
 
-  run(input: string, pipelineData: SitemapData = {}) {
+  run(input: string, pipelineData: SitemapData = {}): string {
     if (pipelineData.outputFile) {
       this.urls.push(pipelineData.outputFile);
     }
@@ -41,7 +41,7 @@ export class Sitemap implements TemplatePipelineElement<SitemapData> {
     return input;
   }
 
-  close() {
+  close(): void {
     /* eslint-disable max-len */
     const xml =
 `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
@@ -59,7 +59,7 @@ ${this.urls.map((url) =>
     });
   }
 
-  clone() {
+  clone(): Sitemap {
     const clone = new Sitemap(this.dir, this.domain, this.root);
 
     clone.urls = [...this.urls];
