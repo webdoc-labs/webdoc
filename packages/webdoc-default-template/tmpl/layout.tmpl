@@ -27,7 +27,7 @@ const integrations = JSON.stringify(config.integrations);
     <link type="text/css" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/googlecode.min.css">
 
     <?js Object.keys(config.meta).forEach((key) => { ?>
-      <meta property="<?js= key ?>" content="<?js= config.meta[key].replace("{{url}}", `${config.siteDomain}`) ?>" />
+      <meta name="<?js= key ?>" content="<?js= config.meta[key].replace("{{url}}", `${config.siteDomain}`) ?>" />
     <?js }); ?>
 
     <?js config.stylesheets.forEach((file) => { ?>
@@ -60,9 +60,10 @@ const integrations = JSON.stringify(config.integrations);
           <section class="header" id="header-mount-point">
             <?js if (config.variant === "plain") { ?>
               <?js=
-                this.partial("components/header/index.tmpl", {
+                this.partial("header", {
                   appBar,
-                  applicationName: config.applicationName
+                  applicationName: config.applicationName,
+                  explorerData,
                 })
               ?>
             <?js } ?>
@@ -71,7 +72,7 @@ const integrations = JSON.stringify(config.integrations);
             <div class="page-explorer" id="explorer-mount-point">
               <?js if (config.variant === "plain") { ?>
                   <?js=
-                    this.partial("components/explorer/index.tmpl", {
+                    this.partial("explorer", {
                       explorerData,
                     })
                   ?>
@@ -80,6 +81,9 @@ const integrations = JSON.stringify(config.integrations);
             <?js /* Includes content and member-explorer. */ ?>
             <?js= content ?>
             <!-- footer in content -->
+          </div>
+          <div class="bottom-banner">
+              <?js= this.partial("bottom-banner", { appBar, explorerData }) ?>
           </div>
         </div>
       </article>

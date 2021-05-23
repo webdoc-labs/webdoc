@@ -29,6 +29,7 @@ let printedDefaultLinker = false;
  */
 /* eslint-enable valid-jsdoc */
 export class TemplateRenderer {
+  aliases: Map<string, string>;
   templateDir: string;
   docDatabase: any;
   docTree: RootDoc;
@@ -44,6 +45,7 @@ export class TemplateRenderer {
    * @param {RootDoc} [docTree]
    */
   constructor(templateDir: string, docDatabase: any, docTree: RootDoc) {
+    this.aliases = new Map<string, string>();
     this.templateDir = templateDir;
     this.docDatabase = docDatabase;
     this.docTree = docTree;
@@ -109,7 +111,7 @@ export class TemplateRenderer {
     return this;
   }
 
-  linkTo(...args: any[]) {
+  linkTo(...args: any[]): string {
     if (!printedDefaultLinker) {
       console.warn("The default linker is the deprecated SymbolLinks API. " +
         "Upgrade to the LinkerPlugin!");
@@ -122,8 +124,29 @@ export class TemplateRenderer {
     return SymbolLinks.linkTo(...args);
   }
 
-  find(spec: any) {
+  find(spec: any): any {
     return this.docDatabase(spec).get();
+  }
+
+  /**
+   * Add an alias for template files.
+   *
+   * @param {string} name - The alias used to import the file.
+   * @param {string} fpath - The actual path to the file (can be relative).
+   * @return {TemplateRenderer} this.
+   */
+  alias(name: string | { [string]: string }, fpath?: string): this {
+    if (typeof name === "object") {
+      Object.keys(name).forEach((key) => this.alias(key, name[key]));
+    } else {
+      if (typeof fpath !== "string") {
+        throw new Error("Path to alias must be a string");
+      }
+
+      this.aliases.set(name, path.resolve(process.cwd(), fpath));
+    }
+
+    return this;
   }
 
   /**
@@ -132,7 +155,7 @@ export class TemplateRenderer {
    * @param {string} filePath - Template filename.
    * @return {function} Returns template closure.
    */
-  load(filePath: string) {
+  load(filePath: string): void {
     templateLogger.info(tag.TemplateLibrary, `Loading template ${filePath}`);
 
     try {
@@ -155,7 +178,11 @@ export class TemplateRenderer {
    * dictionary is best way and most common use).
    * @return {string} Rendered template.
    */
-  partial(filePath: string, data: string) {
+  partial(filePath: string, data: string): string {
+    if (this.aliases.has(filePath)) {
+      filePath = (this.aliases.get(filePath): any);
+    }
+
     filePath = path.resolve(this.templateDir, filePath);
 
     // load template into cache
@@ -192,7 +219,11 @@ export class TemplateRenderer {
    *  For the layout, this is deep merged with {@link TemplateRenderer#data}.
    * @return {string} Rendered template.
    */
-  render(filePath: string, data: any) {
+  render(filePath: string, data: any): string {
+    if (this.aliases.has(filePath)) {
+      filePath = (this.aliases.get(filePath): any);
+    }
+
     // main content
     templateLogger.info(tag.TemplateLibrary, `Requested template ${filePath} ${data}`);
 

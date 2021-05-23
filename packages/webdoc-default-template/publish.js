@@ -73,6 +73,15 @@ exports.publish = async function publish(options /*: PublishOptions */) {
   fse.ensureDir(outDir);
 
   const crawlData = crawl(options.manifest, index);
+  const alias = _.merge(
+    {
+      "bottom-banner": path.join(__dirname, "tmpl/components/bottom-banner/index.tmpl"),
+      "explorer": path.join(__dirname, "tmpl/components/explorer/index.tmpl"),
+      "footer": path.join(__dirname, "tmpl/components/footer/index.tmpl"),
+      "header": path.join(__dirname, "tmpl/components/header/index.tmpl"),
+    },
+    config.template.alias,
+  );
   const appBarItems = _.merge({}, config.template.appBar.items, {
     /* NOTE: config.template.appBar.items is the primary object so we retain the order as the user
         desires. */
@@ -93,9 +102,13 @@ exports.publish = async function publish(options /*: PublishOptions */) {
     "reference",
     "tutorials",
   ]));
+  const layoutTemplate = config.template.alias.layout ?
+    path.resolve(process.cwd(), config.template.alias.layout) :
+    "layout.tmpl";
 
   const renderer = new TemplateRenderer(path.join(__dirname, "tmpl"), null, docTree)
-    .setLayoutTemplate("layout.tmpl")
+    .alias(alias)
+    .setLayoutTemplate(layoutTemplate)
     .installPlugin("linker", linker)
     .installPlugin("generateIndex", indexSorterPlugin)
     .installPlugin("signature", signaturePlugin)
@@ -105,6 +118,7 @@ exports.publish = async function publish(options /*: PublishOptions */) {
       appBar: {
         items: appBarItems,
       },
+      variant: config.template.variant,
     });
 
   const pipeline = new TemplatePipeline(renderer).pipe(new TemplateTagsResolver());

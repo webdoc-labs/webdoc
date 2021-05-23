@@ -4,6 +4,14 @@
 
     // Navigation to next, previous tutorials (if any)
     const { next, previous } = obj.navigation;
+    const onlyNext = next && !previous;
+    const onlyPrevious = previous && !next;
+    const both = next && previous;
+    let modifier;
+
+    if (onlyNext) modifier = "serial-navigation--only-next";
+    else if (onlyPrevious) modifier = "serial-navigation--only-previous";
+    else if (both) modifier = "serial-navigation--both";
  ?>
 <main class="page-content">
   <div class="document">
@@ -11,7 +19,7 @@
     <?js= document.content ?>
   </div>
   <?js if (next || previous) { ?>
-    <div class="serial-navigation">
+    <div class="serial-navigation <?js= modifier ?>">
       <?js if (previous) { ?>
         <a class="serial-navigation__previous" href="<?js= this.getPlugin("linker").getURI(previous) ?>">
           <section>
@@ -66,4 +74,5 @@
     </div>
   <?js } ?>
   <div class="footer-gap" style="min-height: 48px;"></div>
+  <?js= this.partial("footer") ?>
 </main>

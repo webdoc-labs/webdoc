@@ -92,6 +92,9 @@ The `template` object is used by the site template.
 ```json
 {
   "template": {
+    "alias": {
+      "header": "./overrides/header.tmpl"
+    },
     "applicationName": "{ <i>webdoc</i> }",
     "appBar": {
       "items": {
@@ -125,6 +128,8 @@ The `template` object is used by the site template.
 }
 ```
 
+* `template.alias`: Dictionary of template files you want to alias. Depending on the template you use, you can override specific
+    template/components (like header/footer).
 * `template.applicationName`: The name of the documented software. This is usually used to fill the app bar and tab title.
 * `template.appBar.items`: This key-value object can be used to configure the items in the app bar. The key is an identifier
     and to override a built-in item, you'll need to use its specific key (if you're adding more items, the key's specific value

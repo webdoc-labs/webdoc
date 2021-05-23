@@ -33,6 +33,9 @@ type ConfigSchema = {
     import?: string[],
   },
   template: {
+    alias: {
+      [string]: string;
+    },
     appBar: {
       items: {
         [string]: {
@@ -92,6 +95,7 @@ const defaultConfig: ConfigSchema = {
     template: "@webdoc/default-template",
   },
   template: {
+    alias: {},
     appBar: {
       items: {},
     },
