@@ -4,8 +4,8 @@ const {parse} = require("../lib/parse");
 const expect = require("chai").expect;
 
 describe("@webdoc/parser.parse (ES5 classes)", function() {
-  it("should correctly infer ES5 classes", function() {
-    const docTree = parse(`      
+  it("should correctly infer ES5 classes", async function() {
+    const docTree = await parse(`      
       /**
        * ES5 constructor
        * @classdesc
