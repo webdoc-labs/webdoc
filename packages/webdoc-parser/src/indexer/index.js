@@ -1,10 +1,10 @@
 // @flow
 
 import type {LanguageConfig, LanguageIntegration} from "../types/LanguageIntegration";
+import {parserLogger, tag} from "../Logger";
 import {IndexerWorkerPool} from "./IndexerWorkerPool";
 import {type SourceFile} from "@webdoc/types";
 import {type Symbol} from "../types/Symbol";
-import {parserLogger} from "../Logger";
 import path from "path";
 
 declare var globalThis: any;
@@ -26,9 +26,12 @@ export function register(lang: LanguageIntegration): void {
 }
 
 export async function run(files: SourceFile[], config: LanguageConfig): Promise<Symbol[]> {
+  const startTime = Date.now();
   const symbolTrees: Array<Symbol> = new Array(files.length);
   const symbolIndexingOperations: Array<Promise<void>> = new Array(files.length);
-  const workerPool = new IndexerWorkerPool();
+  const workerPool = new IndexerWorkerPool(Math.floor(files.length / 125));
+
+  parserLogger.info(tag.Indexer, "Indexing " + files.length + " files");
 
   for (let i = 0; i < files.length; i++) {
     const fileName = files[i].path;
@@ -54,6 +57,10 @@ export async function run(files: SourceFile[], config: LanguageConfig): Promise<
   await Promise.all(symbolIndexingOperations);
 
   workerPool.destroy();
+
+  const endTime = Date.now();
+
+  parserLogger.info(tag.Indexer, "Indexing took " + (endTime - startTime) + "ms");
 
   return symbolTrees;
 }

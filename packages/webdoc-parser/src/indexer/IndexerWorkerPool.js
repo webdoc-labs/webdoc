@@ -1,5 +1,6 @@
 // @flow
 
+import {parserLogger, tag} from "../Logger";
 import EventEmitter from "events";
 import type {LanguageConfig} from "../types/LanguageIntegration";
 import {type SourceFile} from "@webdoc/types";
@@ -67,9 +68,11 @@ export class IndexerWorkerPool {
   ptr: number = 0;
 
   constructor(limit?: number) {
-    const workerPoolSize = Math.min(os.cpus().length, limit || Infinity);
+    const workerPoolSize = Math.min(os.cpus().length, limit || 4);
     const workers = new Array<Worker>(workerPoolSize);
     const workerPath = path.resolve(__dirname, "./worker.js");
+
+    parserLogger.info(tag.Indexer, "Using " + workerPoolSize + " worker threads for indexing");
 
     for (let i = 0; i < workerPoolSize; i++) {
       workers[i] = new IndexerWorker(new Worker(workerPath));
