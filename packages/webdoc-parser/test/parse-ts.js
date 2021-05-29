@@ -5,8 +5,8 @@ const {parse} = require("../lib/parse");
 const expect = require("chai").expect;
 
 describe("@webdoc/parser.parse (Typescript)", function() {
-  it("should infer access, default value, and type for fields", function() {
-    const docs = parse([{
+  it("should infer access, default value, and type for fields", async function() {
+    const docs = await parse([{
       content: `
         /** Example class */
         class Example {
@@ -35,8 +35,8 @@ describe("@webdoc/parser.parse (Typescript)", function() {
     expect(fieldDoc.brief).to.equal(" Field description");
   });
 
-  it("should infer access, returns for methods", function() {
-    const docs = parse([{
+  it("should infer access, returns for methods", async function() {
+    const docs = await parse([{
       content: `
         class Resource {
           /** Method */

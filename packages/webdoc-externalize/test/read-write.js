@@ -5,8 +5,8 @@ const parser = require("@webdoc/parser");
 const expect = require("chai").expect;
 
 describe("@webdoc/externalize (read-write test)", function() {
-  it("should deserialize a serialized documented interface properly", function() {
-    const inputTree = parser.parse(`
+  it("should deserialize a serialized documented interface properly", async function() {
+    const inputTree = await parser.parse(`
       /** Symbol 0 */
       class Symbol0 {
         /** Symbol 1 */

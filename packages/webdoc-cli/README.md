@@ -19,6 +19,7 @@ generate the `sitemap.xml`. This is useful if you want to integrate with [Algoli
 * `--site-root <path>`: If using absolute links in a template, this will set the basepath. The basepath should the directory in which the documentation is being stored relative to where the server is running. The site root is "/" by default - which means that you'll need to serve the documentation directory as top-level. Note that @webdoc/default-template uses absolute links.
 * `-c <config-path>`: This sets the path of the configuration file webdoc uses.
 * `-u <tutorials-directory>` -  (optional) This should point to a directory containing tutorials written in Markdown (".md") or HTML ".html, ".htm". JSON files can be used to configure the hierarchy and naming of tutorials (see the Tutorial Configuration section).
+* `--no-workers` - Disables usage of worker threads to parallelize parsing.
 
 ### Configuration
 
