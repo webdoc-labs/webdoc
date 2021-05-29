@@ -80,11 +80,16 @@ export function buildSymbolTree(
  *
  * @param {string | SourceFile[]} target
  * @param {RootDoc} root
+ * @param {object}[options]
+ * @param {boolean}[options.mainThread] - Force the indexer to run on the main thread.
  * @return {RootDoc}
  */
 export async function parse(
   target: string | SourceFile[],
   root?: RootDoc = createRootDoc(),
+  options?: $Shape<{
+    mainThread: boolean
+  }>,
 ): Promise<RootDoc> {
   if (typeof target === "string") {
     target = [{
@@ -94,7 +99,7 @@ export async function parse(
     }];
   }
 
-  const perFileSymbolTrees = await Indexer.run(target, Webdoc.DEFAULT_LANG_CONFIG);
+  const perFileSymbolTrees = await Indexer.run(target, Webdoc.DEFAULT_LANG_CONFIG, options);
   const fullSymbolTree = assemble(perFileSymbolTrees);
 
   root.children = root.members;

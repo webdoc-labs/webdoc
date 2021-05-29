@@ -2,6 +2,7 @@
 
 import * as Indexer from "./";
 import type {JobData, JobResult} from "./IndexerWorkerPool";
+// $FlowFixMe
 import {isMainThread, parentPort} from "worker_threads";
 import fs from "fs";
 

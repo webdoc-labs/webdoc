@@ -5,6 +5,7 @@ import {parserLogger, tag} from "../Logger";
 import EventEmitter from "events";
 import type {LanguageConfig} from "../types/LanguageIntegration";
 import {type Symbol} from "../types/Symbol";
+// $FlowFixMe
 import {Worker} from "worker_threads";
 import os from "os";
 import path from "path";
@@ -83,7 +84,7 @@ export class IndexerWorkerPool {
 
   repair(symbol: Symbol, packages: { [id: string]: PackageDoc }): Symbol {
     const file = symbol.loc.file;
-    const pkgId = file?.package.id;
+    const pkgId = file && file.package.id;
 
     if (file && pkgId && packages[pkgId]) {
       file.package = packages[pkgId];
