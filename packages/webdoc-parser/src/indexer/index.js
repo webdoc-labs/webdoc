@@ -5,6 +5,9 @@ import {parserLogger, tag} from "../Logger";
 import {IndexerWorkerPool} from "./IndexerWorkerPool";
 import {type SourceFile} from "@webdoc/types";
 import {type Symbol} from "../types/Symbol";
+import _ from "lodash";
+import fs from "fs";
+import os from "os";
 import path from "path";
 
 declare var globalThis: any;
@@ -27,36 +30,51 @@ export function register(lang: LanguageIntegration): void {
 
 export async function run(files: SourceFile[], config: LanguageConfig): Promise<Symbol[]> {
   const startTime = Date.now();
-  const symbolTrees: Array<Symbol> = new Array(files.length);
-  const symbolIndexingOperations: Array<Promise<void>> = new Array(files.length);
-  const workerPool = new IndexerWorkerPool(Math.floor(files.length / 125));
+  const maxThreads = Math.min(os.cpus().length, 1 + Math.floor(files.length / 125));
 
   parserLogger.info(tag.Indexer, "Indexing " + files.length + " files");
 
-  for (let i = 0; i < files.length; i++) {
-    const fileName = files[i].path;
-    const extension = fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length);
+  const symbolTrees: Array<Symbol> = new Array(files.length);
 
-    if (!(extension in languages)) {
-      throw new Error(`.${extension} language is not registered with the Indexer!`);
+  if (maxThreads > 1) {
+    const packages = _.keyBy(
+      files.map((file) => file.package),
+      (pkg) => pkg.id,
+    );
+    const symbolIndexingOperations: Array<Promise<void>> = new Array(files.length);
+    const workerPool = new IndexerWorkerPool(maxThreads);
+
+    for (let i = 0; i < files.length; i++) {
+      const fileName = files[i].path;
+      const extension = fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length);
+
+      if (!(extension in languages)) {
+        throw new Error(`.${extension} language is not registered with the Indexer!`);
+      }
+
+      const file = {
+        ...files[i],
+        path: path.resolve(globalThis.process.cwd(), files[i].path),
+      };
+      const lang = languages[extension].module;
+
+      symbolIndexingOperations[i] = workerPool.index(lang, file, config, packages).then(
+        (symbolTree: Symbol): void => {
+          symbolTrees[i] = symbolTree;
+        },
+      );
     }
 
-    const file = {
-      ...files[i],
-      path: path.resolve(globalThis.process.cwd(), files[i].path),
-    };
-    const lang = languages[extension].module;
+    await Promise.all(symbolIndexingOperations);
+    workerPool.destroy();
+  } else {
+    for (let i = 0; i < files.length; i++) {
+      const filePath = path.resolve(globalThis.process.cwd(), files[i].path);
+      const fileContent = files[i].content || fs.readFileSync(filePath, "utf8");
 
-    symbolIndexingOperations[i] = workerPool.index(lang, file, config).then(
-      (symbolTree: Symbol): void => {
-        symbolTrees[i] = symbolTree;
-      },
-    );
+      symbolTrees[i] = process(fileContent, files[i], config);
+    }
   }
-
-  await Promise.all(symbolIndexingOperations);
-
-  workerPool.destroy();
 
   const endTime = Date.now();
 

@@ -1,9 +1,9 @@
 // @flow
 
+import {type PackageDoc, type SourceFile} from "@webdoc/types";
 import {parserLogger, tag} from "../Logger";
 import EventEmitter from "events";
 import type {LanguageConfig} from "../types/LanguageIntegration";
-import {type SourceFile} from "@webdoc/types";
 import {type Symbol} from "../types/Symbol";
 import {Worker} from "worker_threads";
 import os from "os";
@@ -81,15 +81,37 @@ export class IndexerWorkerPool {
     this.workers = workers;
   }
 
-  index(langIntegrationModule: string, file: SourceFile, config: LanguageConfig): Promise<Symbol> {
+  repair(symbol: Symbol, packages: { [id: string]: PackageDoc }): Symbol {
+    const file = symbol.loc.file;
+    const pkgId = file?.package.id;
+
+    if (file && pkgId && packages[pkgId]) {
+      file.package = packages[pkgId];
+    }
+    for (const child of symbol.members) {
+      this.repair(child, packages);
+    }
+
+    return symbol;
+  }
+
+  index(
+    langIntegrationModule: string,
+    file: SourceFile,
+    config: LanguageConfig,
+    packages: { [id: string]: PackageDoc },
+  ): Promise<Symbol> {
     return new Promise<Symbol>((resolve, reject) => {
       const jobId = this.ptr++;
       const worker = this.workers[jobId % this.workers.length];
 
       worker.send(jobId, langIntegrationModule, file, config);
       worker.on(`response-${jobId}`, (jobResult: Symbol, jobError: any): void => {
-        if (jobResult) resolve(jobResult);
-        else reject(jobError);
+        if (jobResult) {
+          resolve(this.repair(jobResult, packages));
+        } else {
+          reject(jobError);
+        }
       });
     });
   }
