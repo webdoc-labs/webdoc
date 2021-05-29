@@ -28,7 +28,13 @@ export function register(lang: LanguageIntegration): void {
   }
 }
 
-export async function run(files: SourceFile[], config: LanguageConfig): Promise<Symbol[]> {
+export async function run(
+  files: SourceFile[],
+  config: LanguageConfig,
+  options?: $Shape<{
+    mainThread: boolean,
+  }>,
+): Promise<Symbol[]> {
   const startTime = Date.now();
   const maxThreads = Math.min(os.cpus().length, 1 + Math.floor(files.length / 125));
 
@@ -36,7 +42,7 @@ export async function run(files: SourceFile[], config: LanguageConfig): Promise<
 
   const symbolTrees: Array<Symbol> = new Array(files.length);
 
-  if (maxThreads > 1) {
+  if (maxThreads > 1 && !options?.mainThread) {
     const packages = _.keyBy(
       files.map((file) => file.package),
       (pkg) => pkg.id,

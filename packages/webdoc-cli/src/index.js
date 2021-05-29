@@ -63,7 +63,6 @@ async function main(argv: yargs.Argv) {
   const config = loadConfig(argv.config);
   const tutorials = loadTutorials(argv.tutorials, config.template.routes.tutorials);
 
-
   if (argv.siteRoot) {
     config.template.siteRoot = argv.siteRoot;
   }
@@ -107,7 +106,10 @@ async function main(argv: yargs.Argv) {
   }
 
   try {
-    await parse(sourceFiles, documentTree);
+    console.log(argv);
+    await parse(sourceFiles, documentTree, {
+      mainThread: !argv.workers,
+    });
   } catch (e) {
     // Make sure we get that API structure out so the user can debug the problem!
     if (config.opts && config.opts.export) {
@@ -163,7 +165,9 @@ async function main(argv: yargs.Argv) {
 const argv = yargs.scriptName("@webdoc/cli")
   .usage("$0 -c <configFile> -u <tutorialDir> --verbose " +
     "--site-root <siteRoot> " +
-    "--site-domain <siteDomain>")
+    "--site-domain <siteDomain>" +
+    "--no-workers")
+  .default("workers", true)
   .default("config", path.join(process.cwd(), "webdoc.conf.json"), "webdoc config file")
   .alias("c", "config")
   .alias("u", "tutorials")
