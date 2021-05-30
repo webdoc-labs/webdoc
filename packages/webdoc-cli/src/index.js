@@ -143,6 +143,9 @@ async function main(argv: yargs.Argv) {
     tutorials,
     source: sourceFiles,
     verbose: !!argv.verbose,
+    cmdLine: {
+      mainThread: argv.mainThread,
+    },
   };
 
   if (template.publish && typeof template.publish === "function") {

@@ -1,9 +1,12 @@
 // @flow
 
+// $FlowFixMe
+const {Worker} = require("worker_threads");
 const {crawl} = require("./helper/crawl");
 const fs = require("fs");
 const fse = require("fs-extra");
 const hljs = require("highlight.js");
+const os = require("os");
 const path = require("path");
 const {traverse} = require("@webdoc/model");
 const {
@@ -150,12 +153,14 @@ exports.publish = async function publish(options /*: PublishOptions */) {
   });
 
   await outStaticFiles(outDir, config);
-  outSource(outDir, pipeline, options.config, source);
-  outExplorerData(outDir, crawlData);
-  outMainPage(indexRelative ? path.join(outDir, indexRelative) : null, pipeline, options.config);
-  outIndexes(outDir, pipeline, options.config, crawlData.index);
-  outReference(outDir, pipeline, options.config, docTree, crawlData.reference);
-  outTutorials(outDir, pipeline, options.config, docTree, crawlData.tutorials);
+  await Promise.all([
+    outSource(outDir, pipeline, options.config, source, options.cmdLine.mainThread || false),
+    outExplorerData(outDir, crawlData),
+    outMainPage(indexRelative ? path.join(outDir, indexRelative) : null, pipeline, options.config),
+    outIndexes(outDir, pipeline, options.config, crawlData.index),
+    outReference(outDir, pipeline, options.config, docTree, crawlData.reference),
+    outTutorials(outDir, pipeline, options.config, docTree, crawlData.tutorials),
+  ]);
 
   pipeline.close();
 };
@@ -209,10 +214,13 @@ async function outStaticFiles(
 }
 
 // Write the explorer JSON data in the output directory
-function outExplorerData(outDir /*: string */, crawlData /*: CrawlData */) {
+async function outExplorerData(
+  outDir /*: string */,
+  crawlData /*: CrawlData */,
+) /*: Promise<void> */ {
   const explorerDir = path.join(outDir, "./explorer");
 
-  fse.ensureDir(explorerDir).then(() => {
+  return fse.ensureDir(explorerDir).then(() => new Promise((resolve) => {
     fse.writeFile(
       path.join(explorerDir, "./reference.json"),
       JSON.stringify(crawlData.reference),
@@ -228,10 +236,13 @@ function outExplorerData(outDir /*: string */, crawlData /*: CrawlData */) {
         "utf8",
         (err) => {
           if (err) throw err;
+          resolve();
         },
       );
+    } else {
+      resolve();
     }
-  });
+  }));
 }
 
 // Render the main-page into index.tmpl (outputFile)
@@ -239,7 +250,7 @@ async function outMainPage(
   outputFile /*: ?string */,
   pipeline /*: TemplatePipeline */,
   config /*: WebdocConfig */,
-) {
+)/*: Promise<void> */ {
   if (outputFile && config.template.readme) {
     const readmeFile = path.join(process.cwd(), config.template.readme);
 
@@ -252,28 +263,97 @@ async function outMainPage(
   }
 }
 
-function outSource(
+async function outSource(
   outDir /*: string */,
   pipeline /*: TemplatePipeline */,
   config /*: ConfigSchema */,
   source /*: ?$ReadOnlyArray<SourceFile> */,
-) {
-  if (source) {
+  mainThread /*:: ?: boolean */,
+)/*: Promise<void> */ {
+  if (!source) return;
+
+  function renderSource(file /*: SourceFile */, raw /*: string */) {
+    const pkgName = file.package.name || "";
+    const pkgRelativePath = path.relative(file.package.location || "", file.path);
+    const outFile = path.join(pkgName, pkgRelativePath + ".html");
+
+    pipeline.render("source.tmpl", {
+      appBar: {current: "sources"},
+      env: config,
+      raw,
+      title: path.basename(file.path),
+    }, {
+      outputFile: path.join(outDir, outFile),
+    });
+  }
+
+  const workerCount = Math.min(os.cpus().length, 1 + Math.floor(source.length / 32));
+
+  if (workerCount > 1 && !mainThread) {
+    const workers = new Array(workerCount);
+    const renderJobs/*: Array<{
+      resolve: Function,
+      reject: Function,
+      promise: Promise<void>,
+    }> */ = new Array(source.length);// eslint-disable-line operator-linebreak
+
+    const onMessage = function onMessage(
+      {
+        id,
+        file,
+        error,
+        result,
+      } /*: {
+        id: number,
+        file: string,
+        error: boolean,
+        result: ?string }
+      */,
+    ) {
+      if (error || typeof result !== "string") {
+        renderJobs[id].reject("Error in highlighting worker");
+      } else {
+        const raw = result;
+        const sourceFile = source[id];
+
+        renderSource(sourceFile, raw);
+        renderJobs[id].resolve();
+      }
+    };
+
+    const startTime = Date.now();
+    console.log("Creating " + workerCount + " workers for highlighting source code.");
+
+    for (let i = 0; i < workers.length; i++) {
+      workers[i] = new Worker(path.resolve(__dirname, "./helper/workers/hl.js"));
+      workers[i].on("message", onMessage);
+    }
+
+    for (let i = 0; i < source.length; i++) {
+      let resolveFn/*: () => void */;
+      let rejectFn/*: () => void */;
+      const promise = new Promise((resolve, reject) => {
+        resolveFn = resolve;
+        rejectFn = reject;
+      });
+      renderJobs[i] = {resolve: resolveFn, reject: rejectFn, promise};
+
+      workers[i % workers.length].postMessage({
+        id: i,
+        file: source[i].path,
+      });
+    }
+
+    await Promise.all(renderJobs.map((job) => job.promise));
+    await Promise.all(workers.map((worker) => worker.terminate()));
+
+    console.log("Rendering sources took " + (Date.now() - startTime) + "ms time!");
+  } else {
     for (const file of source) {
       const raw = hljs.highlightAuto(
         fs.readFileSync(path.resolve(process.cwd(), file.path), "utf8"),
       ).value;
-      const pkgName = file.package.name || "";
-      const outFile = path.join(pkgName, file.path + ".html");
-
-      pipeline.render("source.tmpl", {
-        appBar: {current: "sources"},
-        env: config,
-        raw,
-        title: path.basename(file.path),
-      }, {
-        outputFile: path.join(outDir, outFile),
-      });
+      renderSource(file, raw);
     }
   }
 }
@@ -283,7 +363,7 @@ async function outReadme(
   pipeline /*: TemplatePipeline */,
   config /*: WebdocConfig */,
   readmeFile /*: string */,
-) {
+)/*: Promise<void> */ {
   if (!(await fse.pathExists(readmeFile))) {
     return;
   }
@@ -310,12 +390,12 @@ async function outReadme(
   }, {outputFile});
 }
 
-function outIndexes(
+async function outIndexes(
   outDir /*: string */,
   pipeline /*: TemplatePipeline */,
   config /*: WebdocConfig */,
   index /*: Index */,
-) {
+)/*: Promise<void> */ {
   const KEY_TO_TITLE = {
     "classes": "Class Index",
   };
@@ -341,13 +421,13 @@ function outIndexes(
   }
 }
 
-function outReference(
+async function outReference(
   outDir /*: string */,
   pipeline /*: TemplatePipeline */,
   config /*: WebdocConfig */,
   docTree /*: RootDoc */,
   explorerData /* any */,
-) {
+)/*: Promise<void> */ {
   // Don't output if nothing's there
   if (!docTree.members.length) {
     return;
@@ -397,13 +477,13 @@ function outReference(
   }
 }
 
-function outTutorials(
+async function outTutorials(
   outDir /*: string */,
   pipeline /*: TemplatePipeline */,
   config /*: WebdocConfig */,
   docTree /*: RootDoc */,
   explorerData /* any */,
-) {
+)/*: Promise<void> */ {
   function out(parent /*: { members: any[] } */) {
     return function renderRecursive(tutorial /*: TutorialDoc */, i /*: number */) {
       const uri = linker.getURI(tutorial, true);

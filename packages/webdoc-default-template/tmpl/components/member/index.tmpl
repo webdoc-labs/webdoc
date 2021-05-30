@@ -5,8 +5,10 @@
 const { doc, require } = obj;
 const linkSvg = this.getPlugin("linker").getResourceURI("icons/link.svg");
 const pkgName = doc.loc && doc.loc.file && doc.loc.file.package && doc.loc.file.package.name || "";
+const pkgRelativePath = (doc.loc && doc.loc.file && doc.loc.file.package
+    && require("path").relative(doc.loc.file.package.location || "", doc.loc.file.path));
 const source = doc.loc && doc.loc.file && doc.loc.file.path
-    && this.getPlugin("linker").getResourceURI(require("path").join(pkgName, doc.loc.file.path + ".html"));
+    && this.getPlugin("linker").getResourceURI(require("path").join(pkgName, pkgRelativePath + ".html"));
 const sourceName = source && require("path").basename(doc.loc.file.path);
 const sourceStart = source && doc.loc.start ? ":" + doc.loc.start.line : "";
 const sourceLinkFragment = source && doc.loc.start ? "#" + doc.loc.start.line : "";

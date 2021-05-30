@@ -28,6 +28,7 @@
     "build-pixi-api": "cd ../../pixi-api && webdoc --verbose && cd ../webdoc/example",
     "build-pixi-api-prod": "cd ../../pixi-api && webdoc --site-root pixi-api && cd ../webdoc/example",
     "build-pixi-api-gcp": "cd ../../pixi-api && webdoc --tutorials ./projects/guides --verbose && cd ../webdoc/example",
+    "build-pixi-api-gcp-inspect": "cd ../../pixi-api && node --inspect-brk --trace-warnings ../webdoc/example/node_modules/@webdoc/cli/cli.js --tutorials ./projects/guides --verbose && cd ../webdoc/example",
     "build-pixi-guides": "cd ../../guides && webdoc --tutorials docs && cd ../webdoc/example",
     "build-mongodb": "cd ../../node-mongodb-native && webdoc --verbose && cd ../webdoc/example"
   },
