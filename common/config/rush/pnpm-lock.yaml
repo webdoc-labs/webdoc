@@ -55,6 +55,7 @@ dependencies:
   gulp: 4.0.2
   gulp-babel: 8.0.0_@babel+core@7.12.10
   gulp-util: 3.0.8
+  highlight.js: 10.7.2
   klaw-sync: 6.0.0
   lodash: 4.17.20
   lodash.merge: 4.6.2
@@ -5250,6 +5251,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-xTmvd9HiIHR6L53TMC7TKolEj65zG1XU+Onr8oi86mYa+nLcIbxTTWkpW7CsEwv/vK7u1zb8alZIMLDqqN6KTw==
+  /highlight.js/10.7.2:
+    dev: false
+    resolution:
+      integrity: sha512-oFLl873u4usRM9K63j4ME9u3etNF0PLiJhSQ8rdfuL51Wn3zkD6drf9ZW0dOzjnZI22YYG24z30JcmfCZjMgYg==
   /hmac-drbg/1.0.1:
     dependencies:
       hash.js: 1.1.7
@@ -10068,7 +10073,7 @@ packages:
     dev: false
     name: '@rush-temp/cli'
     resolution:
-      integrity: sha512-tDr2B2/m0OehOJSNUrH6iXUBz4HTsOmDON8kyIjUOl4acBxO+cOmKo4ktdLre8XvETdDjFkucx07p/VMh4FbPA==
+      integrity: sha512-iEOxw9+hsYw+OcN0VpDUMvyFRD0EsCpDeYOg7DqjDBz4A84h3SX48LXB2MYNuhZ/hfEqmtlqpotdlf4iqYUPfg==
       tarball: 'file:projects/cli.tgz'
     version: 0.0.0
   'file:projects/default-template.tgz':
@@ -10097,6 +10102,7 @@ packages:
       gulp: 4.0.2
       gulp-babel: 8.0.0_@babel+core@7.12.10
       gulp-util: 3.0.8
+      highlight.js: 10.7.2
       lodash: 4.17.20
       markdown-it: 11.0.1
       markdown-it-highlightjs: 3.4.0
@@ -10113,7 +10119,7 @@ packages:
     dev: false
     name: '@rush-temp/default-template'
     resolution:
-      integrity: sha512-Sm/HG8WAxIsDEM2fJQiPDx0S7A5M5ConbOg6ta9ylXuhQZ6+DRuNwYmZc6chKo3vjQ/CEAZvBz7i2aUdY8k/kQ==
+      integrity: sha512-68K0Yx7C4rxoQenEXWAmgfOVKTVDN4fqB7q0usjLtq5RjJDfb2o5+iTTGQ85uqc6rZpYuRuSWL/wNewjbAbsbQ==
       tarball: 'file:projects/default-template.tgz'
     version: 0.0.0
   'file:projects/eslint-config.tgz':
@@ -10145,7 +10151,7 @@ packages:
     dev: false
     name: '@rush-temp/example'
     resolution:
-      integrity: sha512-nYwtUMEikEZKn+5JHt0rEjYdSaPGK/cVrohKqyviWcmDZMAQuIUcuPQpm8sA1tguvriWJ7TxUb/D9gQA7C7VBw==
+      integrity: sha512-d20rgi4oGj4VDSm7d/DWhaBbUwA5vpfH/Zobj/0DTs/4TKotrpAu+qHeFyqrqFlGTcta2Z3ytyaTV6Wsc+K9Yg==
       tarball: 'file:projects/example.tgz'
     version: 0.0.0
   'file:projects/externalize.tgz':
@@ -10169,7 +10175,7 @@ packages:
     dev: false
     name: '@rush-temp/externalize'
     resolution:
-      integrity: sha512-/etmlJNaqhjIIzc4NsNiPDGO6TP/xHQmegxT9O9aXr40Fky3Vi5Bfc0Z9Lpj40n9IXtTWrFDcEk5KbqiD3azHg==
+      integrity: sha512-Jm05/vcVFszM1/MZkWhwsh2fEQwd3Kjtu4cCnMesYs17K3gH6yDpkrDf8cRTdYjrWiHm7f2TA74z3lKFlXhsew==
       tarball: 'file:projects/externalize.tgz'
     version: 0.0.0
   'file:projects/legacy-template.tgz':
@@ -10192,7 +10198,7 @@ packages:
     dev: false
     name: '@rush-temp/legacy-template'
     resolution:
-      integrity: sha512-8qe/I48jYkplQC6MTipiZNK8ycCAmFYzKgJu6zzdxDiBKXQWrTKt6qpWRUSxpJ4WXv4QyczamUVpLQ+iGwwVag==
+      integrity: sha512-9TJ992iHJxPjm0HVEuWlgPPmWKKaQzJmoFPL4O5kuaBxpLqOeaTiUhwSzOrvZi7sAVK5geq/BRzqxAhvoKTBfw==
       tarball: 'file:projects/legacy-template.tgz'
     version: 0.0.0
   'file:projects/model.tgz':
@@ -10219,7 +10225,7 @@ packages:
     dev: false
     name: '@rush-temp/model'
     resolution:
-      integrity: sha512-m+Lj8uJWGgUiPi0VPbJPdLovoIZ/RY6ijSO8yImt5LSETzr6B4npEGZsoI88OOvgp7MRg9s8J5AzNutEa0mE/g==
+      integrity: sha512-nBA+24rIzHganFLAqFEPHKGMjFhUO7TLqVaSwvI9LOCaVZLYmZHhTPzw/vZlOoRl1snPR/sUX2sX6TMwrXze7g==
       tarball: 'file:projects/model.tgz'
     version: 0.0.0
   'file:projects/parser.tgz':
@@ -10249,7 +10255,7 @@ packages:
     dev: false
     name: '@rush-temp/parser'
     resolution:
-      integrity: sha512-RWYZMu4K06MDJCpafucioUajwpqOMXLG3IuX9danpqu8rgeLBml+Ej0axLQ0JjFdTcbL7EN+z5RG/zPcIH/6WA==
+      integrity: sha512-qQ2dbP7eeMbzdpwt3QCKAYEdddgK9Ls9yOA5aa8ZJYXmX8JB3DAgdab0aPR+6g1RPlxrWLHeJHsp2KcAwkkcYg==
       tarball: 'file:projects/parser.tgz'
     version: 0.0.0
   'file:projects/plugin-markdown.tgz':
@@ -10305,7 +10311,7 @@ packages:
     dev: false
     name: '@rush-temp/template-library'
     resolution:
-      integrity: sha512-OjMrpo4wobgxJnd2eOK2u8DA/USwPAbQdnrUMC/4IHgWbNt4idtnCp2bkWbU3eSdswAbngD7/K/zLJnX0yFfAQ==
+      integrity: sha512-6V0J7/V3PsWdKNPmYhWiJUSnCO3t5skWv10C0VwWzDrtkNk3P4a21nSa+0akSG3jmc0sweFWClKxf676G3Ik/Q==
       tarball: 'file:projects/template-library.tgz'
     version: 0.0.0
   'file:projects/tests.tgz':
@@ -10314,7 +10320,7 @@ packages:
     dev: false
     name: '@rush-temp/tests'
     resolution:
-      integrity: sha512-zR07mBPDkIVllQg90B5drrmWJ83EYQL5+/XNqut/KszZ4w7ZZFU5DyeG+uTPSnSK+1cKW+dMfly0iOVm9LRU0Q==
+      integrity: sha512-hUdLn5vXqLcchVmfLi+6P1pa3whFaYd9+EUn8KFntdOjaXMMnqddCYe09PbV0RDPLZ8XW3Uw8WyMgec0VZUH9g==
       tarball: 'file:projects/tests.tgz'
     version: 0.0.0
   'file:projects/types.tgz':
@@ -10382,6 +10388,7 @@ specifiers:
   gulp: ^4.0.2
   gulp-babel: ^8.0.0
   gulp-util: ^3.0.8
+  highlight.js: ~10.7.2
   klaw-sync: 6.0.0
   lodash: ^4.17.20
   lodash.merge: 4.6.2

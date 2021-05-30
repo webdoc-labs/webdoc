@@ -141,7 +141,11 @@ async function main(argv: yargs.Argv) {
     docDatabase: db,
     opts: config.opts,
     tutorials,
+    source: sourceFiles,
     verbose: !!argv.verbose,
+    cmdLine: {
+      mainThread: argv.mainThread,
+    },
   };
 
   if (template.publish && typeof template.publish === "function") {

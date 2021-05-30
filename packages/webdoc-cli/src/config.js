@@ -48,6 +48,7 @@ type ConfigSchema = {
     routes: {
       tutorials: string,
     },
+    sources: boolean,
     stylesheets: Array<string>,
     siteDomain?: string,
     siteRoot: string,
@@ -104,6 +105,7 @@ const defaultConfig: ConfigSchema = {
       tutorials: "tutorials",
     },
     siteRoot: "",
+    sources: true,
     stylesheets: [],
     mainPage: {
       title: "Main Page",
