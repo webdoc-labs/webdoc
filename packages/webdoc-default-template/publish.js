@@ -270,7 +270,7 @@ async function outSource(
   source /*: ?$ReadOnlyArray<SourceFile> */,
   mainThread /*:: ?: boolean */,
 )/*: Promise<void> */ {
-  if (!source) return;
+  if (!source || !config.template.sources) return;
 
   function renderSource(file /*: SourceFile */, raw /*: string */) {
     const pkgName = file.package.name || "";
@@ -467,6 +467,7 @@ async function outReference(
         appBar: {current: "reference"},
         document: doc,
         explorerData,
+        sources: config.template.sources,
         title: doc.name,
         require,
         env: config,

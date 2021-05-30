@@ -4,6 +4,7 @@
    */
   const doc = obj.document;
   const require = obj.require;
+  const sources = obj.sources;
 
   const titleMods = [
     doc.deprecated ? "document__title_deprecated" : ""
@@ -50,6 +51,7 @@
           type: "constructor",
         },
         require,
+        sources,
       }) ?>
     <?js } ?>
 
@@ -63,6 +65,7 @@
         type: "PropertyDoc",
       },
       require,
+      sources,
     }) ?>
     <?js= this.partial("components/members.tmpl", {
       title: "Protected Properties",
@@ -72,6 +75,7 @@
         type: "PropertyDoc"
       },
       require,
+      sources,
     }) ?>
     <?js= this.partial("components/members.tmpl", {
       title: "Public Methods",
@@ -81,6 +85,7 @@
         type: ["MethodDoc", "FunctionDoc"],
       },
       require,
+      sources,
     }) ?>
     <?js= this.partial("components/members.tmpl", {
       title: "Protected Methods",
@@ -90,6 +95,7 @@
         type: ["MethodDoc", "FunctionDoc"]
       },
       require,
+      sources,
     }) ?>
     <?js= this.partial("components/members.tmpl", {
       title: "Events",
@@ -98,6 +104,7 @@
         type: "EventDoc"
       },
       require,
+      sources,
     }) ?>
   </div>
   <div class="footer-gap" style="min-height: 48px;"></div>

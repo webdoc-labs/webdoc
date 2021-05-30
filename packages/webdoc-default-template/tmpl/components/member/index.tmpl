@@ -2,7 +2,7 @@
 /**
  * Object member render component.
  */
-const { doc, require } = obj;
+const { doc, require, sources } = obj;
 const linkSvg = this.getPlugin("linker").getResourceURI("icons/link.svg");
 const pkgName = doc.loc && doc.loc.file && doc.loc.file.package && doc.loc.file.package.name || "";
 const pkgRelativePath = (doc.loc && doc.loc.file && doc.loc.file.package
@@ -33,7 +33,7 @@ const modifiers = [
           (deprecated)
         <?js } ?>
       </span>
-      <?js if (source) { ?>
+      <?js if (source && sources) { ?>
         <span class="tag--source">
             <a href="<?js= source + sourceLinkFragment ?>">
               <?js= sourceName + sourceStart ?>

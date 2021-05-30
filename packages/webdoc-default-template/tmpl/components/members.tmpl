@@ -39,6 +39,7 @@ const
       return true;
     });
 const require = obj.require;
+const sources = obj.sources;
 
 if (categoryMembers.length === 0) {
   return;
@@ -49,6 +50,6 @@ if (categoryMembers.length === 0) {
   <hr />
 
   <?js categoryMembers.forEach((member) => { ?>
-    <?js= this.partial("components/member/index.tmpl", { doc: member, require }) ?>
+    <?js= this.partial("components/member/index.tmpl", { doc: member, require, sources }) ?>
   <?js }) ?>
 </div>
