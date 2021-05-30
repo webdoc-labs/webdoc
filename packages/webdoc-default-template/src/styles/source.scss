@@ -1,0 +1,38 @@
+.sources .page-content {
+  max-width: 100%;
+}
+
+.sources .page-content .source {
+  margin: 24px 0 !important;
+}
+
+.source {
+  border: 1px solid #999;
+  padding: 8px 8px 48px 8px;
+  max-width: 100%;
+  overflow-x: auto;
+
+  &__split {
+    display: flex;
+    flex-direction: row;
+
+    ul {
+      font-size: 14px;
+      line-height: 24px;
+      height: 100%;
+      list-style: none;
+      padding-top: 24px;
+      width: 48px;
+    }
+  }
+
+  pre {
+    background-color: white !important;
+
+    code {
+      background-color: white !important;
+      font-size: 14px;
+      line-height: 24px;
+    }
+  }
+}

@@ -1,0 +1,19 @@
+<?js
+    const { raw } = obj;
+    const lines = raw.split("\n");
+?>
+
+<main class="page-content">
+  <div class="source">
+    <div class="source__split">
+      <ul>
+        <?js lines.forEach((line, i) => { ?>
+          <li id="<?js= i ?>">
+            <a href="#<?js= i ?>"><?js= i ?></a>
+          </li>
+        <?js }); ?>
+      </ul>
+      <pre><code><?js= raw ?></code></pre>
+    </div>
+  </div>
+</main>

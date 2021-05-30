@@ -1,7 +1,9 @@
 // @flow
 
 const {crawl} = require("./helper/crawl");
+const fs = require("fs");
 const fse = require("fs-extra");
+const hljs = require("highlight.js");
 const path = require("path");
 const {traverse} = require("@webdoc/model");
 const {
@@ -24,6 +26,7 @@ const {categoryFilterPlugin} = require("./helper/renderer-plugins/category-filte
 import type {
   Doc,
   RootDoc,
+  SourceFile,
   TutorialDoc,
 } from "@webdoc/types";
 
@@ -62,6 +65,7 @@ let idToDoc/*: Map<string, Doc> */;
 
 exports.publish = async function publish(options /*: PublishOptions */) {
   const config = options.config;
+  const source = options.source;
 
   await prepareLinker(config);
 
@@ -146,6 +150,7 @@ exports.publish = async function publish(options /*: PublishOptions */) {
   });
 
   await outStaticFiles(outDir, config);
+  outSource(outDir, pipeline, options.config, source);
   outExplorerData(outDir, crawlData);
   outMainPage(indexRelative ? path.join(outDir, indexRelative) : null, pipeline, options.config);
   outIndexes(outDir, pipeline, options.config, crawlData.index);
@@ -244,6 +249,32 @@ async function outMainPage(
       config,
       readmeFile,
     );
+  }
+}
+
+function outSource(
+  outDir /*: string */,
+  pipeline /*: TemplatePipeline */,
+  config /*: ConfigSchema */,
+  source /*: ?$ReadOnlyArray<SourceFile> */,
+) {
+  if (source) {
+    for (const file of source) {
+      const raw = hljs.highlightAuto(
+        fs.readFileSync(path.resolve(process.cwd(), file.path), "utf8"),
+      ).value;
+      const pkgName = file.package.name || "";
+      const outFile = path.join(pkgName, file.path + ".html");
+
+      pipeline.render("source.tmpl", {
+        appBar: {current: "sources"},
+        env: config,
+        raw,
+        title: path.basename(file.path),
+      }, {
+        outputFile: path.join(outDir, outFile),
+      });
+    }
   }
 }
 
@@ -357,6 +388,7 @@ function outReference(
         document: doc,
         explorerData,
         title: doc.name,
+        require,
         env: config,
       }, {
         outputFile: path.join(outDir, page),

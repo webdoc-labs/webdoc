@@ -45,6 +45,7 @@
     }
 
     &_content {
+      flex-grow: 1;
       font-size: 1.3em;
       margin-left: 8px;
       line-height: 1.4em;
@@ -93,6 +94,10 @@
   &__see > ul {
     margin-top: 0;
   }
+}
+
+.tag--source {
+  font-size: 14px;
 }
 
 .accordion {

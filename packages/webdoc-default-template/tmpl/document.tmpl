@@ -3,6 +3,7 @@
    * Documentation object render component.
    */
   const doc = obj.document;
+  const require = obj.require;
 
   const titleMods = [
     doc.deprecated ? "document__title_deprecated" : ""
@@ -48,6 +49,7 @@
         constraints: {
           type: "constructor",
         },
+        require,
       }) ?>
     <?js } ?>
 
@@ -60,6 +62,7 @@
         access: "public",
         type: "PropertyDoc",
       },
+      require,
     }) ?>
     <?js= this.partial("components/members.tmpl", {
       title: "Protected Properties",
@@ -67,7 +70,8 @@
       constraints: {
         access: "protected",
         type: "PropertyDoc"
-      }
+      },
+      require,
     }) ?>
     <?js= this.partial("components/members.tmpl", {
       title: "Public Methods",
@@ -76,6 +80,7 @@
         access: "public",
         type: ["MethodDoc", "FunctionDoc"],
       },
+      require,
     }) ?>
     <?js= this.partial("components/members.tmpl", {
       title: "Protected Methods",
@@ -83,14 +88,16 @@
       constraints: {
         access: "protected",
         type: ["MethodDoc", "FunctionDoc"]
-      }
+      },
+      require,
     }) ?>
     <?js= this.partial("components/members.tmpl", {
       title: "Events",
       parent: doc,
       constraints: {
         type: "EventDoc"
-      }
+      },
+      require,
     }) ?>
   </div>
   <div class="footer-gap" style="min-height: 48px;"></div>
