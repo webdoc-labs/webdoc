@@ -64,8 +64,6 @@ export function buildSymbolTree(
   return Indexer.process(file, source, config);
 }
 
-// TODO: Asynchronous API for parsing
-
 /**
  * Parses the file(s) into a doc-tree. This consists of the following phases:
  *
