@@ -86,6 +86,7 @@ exports.publish = async function publish(options /*: PublishOptions */) {
       "explorer": path.join(__dirname, "tmpl/components/explorer/index.tmpl"),
       "footer": path.join(__dirname, "tmpl/components/footer/index.tmpl"),
       "header": path.join(__dirname, "tmpl/components/header/index.tmpl"),
+      "tutorial": path.join(__dirname, "tmpl/tutorial.tmpl"),
     },
     config.template.alias,
   );
@@ -489,7 +490,7 @@ async function outTutorials(
     return function renderRecursive(tutorial /*: TutorialDoc */, i /*: number */) {
       const uri = linker.getURI(tutorial, true);
 
-      pipeline.render("tutorial.tmpl", {
+      pipeline.render("tutorial", {
         appBar: {current: "tutorials"},
         document: tutorial,
         explorerData,
