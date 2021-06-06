@@ -1,0 +1,32 @@
+<?js
+    const { templateConfig } = obj;
+    const analyticsIntegration = templateConfig.integrations.analytics;
+
+    if (!analyticsIntegration) return;
+?>
+
+<?js if (analyticsIntegration.provider === "google-analytics") {
+        const trackingID = analyticsIntegration.trackingID;
+
+        if (!trackingID)
+          throw new Error("For Google Analytics, provide config.template.integrations.analytics.trackingID");
+    ?>
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', '<?js= trackingID ?>']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+<?js } else if (analyticsIntegration.provider === "plausible") {
+        const nakedDomain = analyticsIntegration.nakedDomain;
+
+        if (!nakedDomain)
+          throw new Error("For plausible analytics, provide template.integrations.analytics.nakedDomain");
+    ?>
+    <script async defer data-domain="<?js= nakedDomain ?>" src="https://plausible.io/js/plausible.js"></script>
+<?js } ?>
