@@ -147,6 +147,7 @@ export default function symbolToDoc(symbol: Symbol): ?Doc {
   options.parserOpts = {
     object: symbol.meta.object,
     undocumented: symbol.meta.undocumented,
+    undocumentedAnchored: symbol.meta.undocumentedAnchored,
   };
 
   const tags: Tag[] = [];

@@ -10,7 +10,8 @@ export type SourceFile = {
 export type ParserOpts = {
   memberof?: string[],
   object?: string,
-  undocumented?: boolean
+  undocumented?: boolean,
+  undocumentedAnchored?: boolean
 };
 
 export type Param = {

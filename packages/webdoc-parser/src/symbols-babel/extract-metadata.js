@@ -67,6 +67,7 @@ import {
   isTSNullKeyword,
   isTSNumberKeyword,
   isTSObjectKeyword,
+  isTSParameterProperty,
   isTSParenthesizedType,
   isTSPropertySignature,
   isTSQualifiedName,
@@ -191,9 +192,12 @@ export function extractParams(
   const params: Param[] = [];
 
   for (let i = 0; i < nodeParams.length; i++) {
-    const paramNode = nodeParams[i];
-
+    let paramNode = nodeParams[i];
     let param: ?$Shape<Param>;
+
+    if (isTSParameterProperty(paramNode)) {
+      paramNode = paramNode.parameter;
+    }
 
     // TODO: Infer types
     if (isIdentifier(paramNode)) {
@@ -208,10 +212,12 @@ export function extractParams(
         variadic: true,
       };
     } else if (isAssignmentPattern(paramNode)) {
+      const extraRaw = paramNode.right.extra && paramNode.right.extra.raw;
+
       param = {
         identifier: paramNode.left.name,
         optional: paramNode.optional || false,
-        default: paramNode.right.raw,
+        default: paramNode.right.raw || extraRaw,
       };
     } else if (isObjectExpression(paramNode)) {
       // TODO: Find a way to document {x, y, z} parameters
