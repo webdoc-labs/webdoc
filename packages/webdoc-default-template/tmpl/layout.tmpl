@@ -23,6 +23,8 @@ const cssPageKind =
     <meta charset="utf-8" />
     <title><?js= config.title || config.applicationName ?>: <?js= title ?></title>
 
+    <?js= this.partial("snippets/analytics.tmpl", { templateConfig: config }) ?>
+
     <?js if (config.variant !== "plain") { ?>
         <link type="text/css" rel="stylesheet" href="/<?js= sitePrefix ?>styles/index.css" />
     <?js } ?>
@@ -30,7 +32,6 @@ const cssPageKind =
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Roboto+Mono&family=Source+Code+Pro&display=swap" />
     <link type="text/css" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/googlecode.min.css">
-
     <?js Object.keys(config.meta).forEach((key) => { ?>
       <meta name="<?js= key ?>" content="<?js= config.meta[key].replace("{{url}}", `${config.siteDomain}`) ?>" />
     <?js }); ?>
