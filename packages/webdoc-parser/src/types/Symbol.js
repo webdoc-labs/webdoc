@@ -36,7 +36,8 @@ export type SymbolSignature = {
   value?: ?string,
   type?: ?DocType,
   typeParameters?: ?Array<string>,
-  undocumented?: boolean
+  undocumented?: boolean,
+  undocumentedAnchored?: boolean, // Prevent pruning of symbol if parent is retained
 }
 
 // The location of a symbol

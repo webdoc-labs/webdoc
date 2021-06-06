@@ -27,6 +27,7 @@ import {
   isObjectPattern,
   isRestElement,
   isScope,
+  isTSParameterProperty,
   isVariableDeclaration,
 } from "@babel/types";
 import {
@@ -295,7 +296,14 @@ function captureSymbols(nodePath: NodePath, parent: Symbol): ?Symbol {
 
   // leadingComments -> documented
   // isScope -> children may be documented even if node is not
-  if (leadingComments.length || isScope(node) || reportUndocumented) {
+  // TSParameterProperty -> They don't have doc-comments but the @param tag for the parameter
+  //  covers it so we always include them.
+  if (
+    leadingComments.length ||
+    isScope(node) ||
+    isTSParameterProperty(node) ||
+    reportUndocumented
+  ) {
     if (!initComment && leadingComments.length && simpleName) {
       nodeDocIndex = SymbolUtils.commentIndex(leadingComments);
     }
@@ -304,6 +312,10 @@ function captureSymbols(nodePath: NodePath, parent: Symbol): ?Symbol {
 
     if (!comment) {
       nodeSymbol.meta.undocumented = true;
+
+      if (isTSParameterProperty(node)) {
+        nodeSymbol.meta.undocumentedAnchored = true;
+      }
     }
 
     // Does user want to document as a property? Then remove VIRTUAL flag
@@ -320,7 +332,11 @@ function captureSymbols(nodePath: NodePath, parent: Symbol): ?Symbol {
         path: [...parent.path, simpleName],
         comment,
         members: [],
-        loc: _createLoc(nodeDoc ? nodeDoc.loc : null),
+        loc: _createLoc(
+          nodeDoc ? nodeDoc.loc :
+            node.loc ? node.loc : // Needed for undocumented symbols
+              null,
+        ),
       }, nodeSymbol);
 
       nodeSymbol = SymbolUtils.addChild(nodeSymbol, parent);

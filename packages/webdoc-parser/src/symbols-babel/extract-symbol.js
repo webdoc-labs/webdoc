@@ -13,6 +13,7 @@ import {
   type VariableDeclarator,
   isArrowFunctionExpression,
   isAssignmentExpression,
+  isAssignmentPattern,
   isBooleanLiteral,
   isCallExpression,
   isClassDeclaration,
@@ -23,6 +24,7 @@ import {
   isExpressionStatement,
   isFunctionDeclaration,
   isFunctionExpression,
+  isIdentifier,
   isInterfaceDeclaration,
   isLiteral,
   isMemberExpression,
@@ -39,6 +41,7 @@ import {
   isTSEnumMember,
   isTSInterfaceDeclaration,
   isTSMethodSignature,
+  isTSParameterProperty,
   isTSPropertySignature,
   isTSTypeElement,
   isThisExpression,
@@ -125,6 +128,31 @@ export default function extractSymbol(
         nodeSymbol.meta.dataType = dataType;
       }
     }
+  } else if (isTSParameterProperty(node)) {
+    // Example:
+    // constructor(private readonly param: Type) {}
+
+    const parameter = node.parameter;
+
+    if (isIdentifier(parameter)) {
+      name = parameter.name;
+    } else if (isAssignmentPattern(parameter)) {
+      name = parameter.left.name;
+      nodeSymbol.meta.defaultValue = parameter.right.raw ||
+        (parameter.right.extra && parameter.right.extra.raw);
+    }
+
+    nodeSymbol.meta.access = node.accessibility;
+    nodeSymbol.meta.object = "this";// Assembly-mods will resolve to the parent class symbol
+    nodeSymbol.meta.readonly = node.readonly;
+    nodeSymbol.meta.scope = "instance";
+    nodeSymbol.meta.type = "PropertyDoc";
+
+    if (parameter.typeAnnotation) {
+      nodeSymbol.meta.dataType = extractType(parameter.typeAnnotation);
+    }
+
+    flags |= OBLIGATE_LEAF;
   } else if (isClassDeclaration(node) || isClassExpression(node)) {
     // Example:
     // class ClassName {}

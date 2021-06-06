@@ -83,6 +83,12 @@ export class Car extends PhysicalObject {
   static DEFAULT_DRIVE_SHIFT = "manual"
 
   /**
+   */
+  constructor(public model: string = "TEST") {
+    super();
+  }
+
+  /**
    * @member {number}
    */
   vin = 0
