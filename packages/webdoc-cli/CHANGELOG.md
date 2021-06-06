@@ -1,6 +1,13 @@
 # Change Log - @webdoc/cli
 
-This log was last generated on Sun, 23 May 2021 21:16:03 GMT and should not be manually modified.
+This log was last generated on Sun, 06 Jun 2021 19:52:29 GMT and should not be manually modified.
+
+## 1.5.0
+Sun, 06 Jun 2021 19:52:29 GMT
+
+### Updates
+
+- Added configuration for sources publishing and analytics integrations in @webdoc/cli
 
 ## 1.4.0
 Sun, 23 May 2021 21:16:03 GMT

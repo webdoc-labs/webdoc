@@ -1,6 +1,6 @@
 {
   "name": "@webdoc/externalize",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Links your documentation to external APIs and vice versa!",
   "keywords": [
     "json",
@@ -38,8 +38,8 @@
   },
   "dependencies": {
     "@babel/core": "^7.9.0",
-    "@webdoc/model": "^1.4.0",
-    "@webdoc/types": "^1.4.0",
+    "@webdoc/model": "^1.5.0",
+    "@webdoc/types": "^1.5.0",
     "lodash": "^4.17.20"
   },
   "devDependencies": {
@@ -52,7 +52,7 @@
     "@babel/register": "^7.9.0",
     "@webdoc/babel-preset": "^1.0.0",
     "@webdoc/eslint-config": "^1.0.0",
-    "@webdoc/parser": "^1.4.0",
+    "@webdoc/parser": "^1.5.0",
     "chai": "~4.3.4",
     "del": "5.1.0",
     "eslint": "^6.8.0",

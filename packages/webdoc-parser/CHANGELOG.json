@@ -2,6 +2,18 @@
   "name": "@webdoc/parser",
   "entries": [
     {
+      "version": "1.5.0",
+      "tag": "@webdoc/parser_v1.5.0",
+      "date": "Sun, 06 Jun 2021 19:52:30 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "Indexer (symbol-tree generator) is now parallelized. To disable multithreading, pass --no-workers to the CLI."
+          }
+        ]
+      }
+    },
+    {
       "version": "1.4.0",
       "tag": "@webdoc/parser_v1.4.0",
       "date": "Sun, 23 May 2021 21:16:03 GMT",

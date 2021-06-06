@@ -1,6 +1,13 @@
 # Change Log - @webdoc/default-template
 
-This log was last generated on Sun, 23 May 2021 21:16:03 GMT and should not be manually modified.
+This log was last generated on Sun, 06 Jun 2021 19:52:29 GMT and should not be manually modified.
+
+## 1.5.0
+Sun, 06 Jun 2021 19:52:29 GMT
+
+### Updates
+
+- Publish source files and link properties/methods to them with config.template.sources = true! New analytics integration with support for Google Analytics and Plausible as well.
 
 ## 1.4.0
 Sun, 23 May 2021 21:16:03 GMT

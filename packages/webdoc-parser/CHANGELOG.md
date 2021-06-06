@@ -1,6 +1,13 @@
 # Change Log - @webdoc/parser
 
-This log was last generated on Sun, 23 May 2021 21:16:03 GMT and should not be manually modified.
+This log was last generated on Sun, 06 Jun 2021 19:52:30 GMT and should not be manually modified.
+
+## 1.5.0
+Sun, 06 Jun 2021 19:52:30 GMT
+
+### Updates
+
+- Indexer (symbol-tree generator) is now parallelized. To disable multithreading, pass --no-workers to the CLI.
 
 ## 1.4.0
 Sun, 23 May 2021 21:16:03 GMT

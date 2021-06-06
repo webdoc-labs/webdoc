@@ -2,6 +2,12 @@
   "name": "@webdoc/template-library",
   "entries": [
     {
+      "version": "1.5.0",
+      "tag": "@webdoc/template-library_v1.5.0",
+      "date": "Sun, 06 Jun 2021 19:52:30 GMT",
+      "comments": {}
+    },
+    {
       "version": "1.4.0",
       "tag": "@webdoc/template-library_v1.4.0",
       "date": "Sun, 23 May 2021 21:16:03 GMT",

@@ -2,6 +2,18 @@
   "name": "@webdoc/default-template",
   "entries": [
     {
+      "version": "1.5.0",
+      "tag": "@webdoc/default-template_v1.5.0",
+      "date": "Sun, 06 Jun 2021 19:52:29 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "Publish source files and link properties/methods to them with config.template.sources = true! New analytics integration with support for Google Analytics and Plausible as well."
+          }
+        ]
+      }
+    },
+    {
       "version": "1.4.0",
       "tag": "@webdoc/default-template_v1.4.0",
       "date": "Sun, 23 May 2021 21:16:03 GMT",
