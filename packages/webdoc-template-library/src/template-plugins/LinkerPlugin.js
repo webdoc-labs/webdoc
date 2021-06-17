@@ -165,7 +165,7 @@ function LinkerPluginShell() {
       
       // Provide fallback if URL
       if (siteDomain === undefined && isURL) {
-        const { origin, pathname } = new URL(uri);
+        const {origin, pathname} = new URL(uri);
 
         siteDomain = origin;
         siteRoot = path.dirname(pathname);
