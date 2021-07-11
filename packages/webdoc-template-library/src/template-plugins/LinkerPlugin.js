@@ -3,7 +3,6 @@ import * as external from "@webdoc/externalize";
 import type {Doc, DocType} from "@webdoc/types";
 import fetch from "node-fetch";
 import {promises as fs} from "fs";
-import * as path from "path";
 import {isDataType} from "@webdoc/model";
 import {templateLogger} from "../Logger";
 
@@ -162,7 +161,7 @@ function LinkerPluginShell() {
       const manifest = external.read(contents);
       const {registry} = manifest;
       let {siteDomain, siteRoot} = manifest.metadata;
-      
+
       // Provide fallback if URL
       if (siteDomain === undefined && isURL) {
         const {origin, pathname} = new URL(uri);
