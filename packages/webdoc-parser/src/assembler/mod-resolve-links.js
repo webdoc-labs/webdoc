@@ -30,6 +30,9 @@ export default function resolveLinksRecursive(
       resolveLinkArray(dataType, symbol, 1);
     }
   }
+  if (symbol.meta.dataType) {
+    resolveLinkArray(symbol.meta.dataType, symbol, 1);
+  }
 
   for (let i = 0; i < symbol.members.length; i++) {
     resolveLinksRecursive(symbol.members[i], tree);

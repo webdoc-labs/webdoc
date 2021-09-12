@@ -15,6 +15,7 @@
   "homepage": "https://github.com/SukantPal/webdoc/tree/master/packages/webdoc-types#readme",
   "license": "MIT",
   "main": "index.js",
+  "types": "index.js.flow",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
