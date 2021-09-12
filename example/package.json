@@ -36,7 +36,7 @@
     "url": "https://github.com/SukantPal/webdoc/issues"
   },
   "dependencies": {
-    "@webdoc/cli": "^1.5.1"
+    "@webdoc/cli": "^1.5.2"
   },
   "gitHead": "a2866c1a42f60180a74add7bc1b0f42d8bb16330",
   "devDependencies": {
