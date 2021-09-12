@@ -2,6 +2,18 @@
   "name": "@webdoc/types",
   "entries": [
     {
+      "version": "1.5.3",
+      "tag": "@webdoc/types_v1.5.3",
+      "date": "Sun, 12 Sep 2021 19:13:46 GMT",
+      "comments": {}
+    },
+    {
+      "version": "1.5.2",
+      "tag": "@webdoc/types_v1.5.2",
+      "date": "Sun, 12 Sep 2021 19:13:02 GMT",
+      "comments": {}
+    },
+    {
       "version": "1.5.1",
       "tag": "@webdoc/types_v1.5.1",
       "date": "Sat, 10 Jul 2021 01:54:14 GMT",
