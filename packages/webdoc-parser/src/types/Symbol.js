@@ -264,7 +264,7 @@ export function coalescePair(symbol: Symbol, pair: Symbol): Symbol {
   symbol.members = members;
   symbol.flags = flags ? flags | pair.flags : pair.flags;
   symbol.meta = _.assignWith(symbol.meta, pair.meta, (objValue, srcValue) =>
-    _.isUndefined(srcValue) ? objValue : srcValue);
+    _.isNil(srcValue) ? objValue : srcValue);
   symbol.loc = symbol.loc || pair.loc;
   symbol.simpleName = symbol.simpleName || pair.simpleName;
 

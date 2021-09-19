@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 50);
+/******/ 	return __webpack_require__(__webpack_require__.s = 49);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -120,11 +120,11 @@ function _extends() {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _objectWithoutProperties; });
-/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5);
+/* harmony import */ var _objectWithoutPropertiesLoose_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
 
 function _objectWithoutProperties(source, excluded) {
   if (source == null) return {};
-  var target = Object(_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(source, excluded);
+  var target = Object(_objectWithoutPropertiesLoose_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(source, excluded);
   var key, i;
 
   if (Object.getOwnPropertySymbols) {
@@ -202,12 +202,13 @@ function toVal(mix) {
 if (false) { var throwOnDirectAccess, ReactIs; } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(51)();
+  module.exports = __webpack_require__(50)();
 }
 
 
 /***/ }),
-/* 5 */
+/* 5 */,
+/* 6 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -228,15 +229,15 @@ function _objectWithoutPropertiesLoose(source, excluded) {
 }
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/extends.js
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.14.6/node_modules/@babel/runtime/helpers/esm/extends.js
 var esm_extends = __webpack_require__(1);
 
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.14.6/node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js
 var objectWithoutProperties = __webpack_require__(2);
 
 // EXTERNAL MODULE: external "React"
@@ -247,13 +248,13 @@ var external_React_default = /*#__PURE__*/__webpack_require__.n(external_React_)
 var prop_types = __webpack_require__(4);
 
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/hoist-non-react-statics/3.3.2/node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js
-var hoist_non_react_statics_cjs = __webpack_require__(20);
+var hoist_non_react_statics_cjs = __webpack_require__(21);
 var hoist_non_react_statics_cjs_default = /*#__PURE__*/__webpack_require__.n(hoist_non_react_statics_cjs);
 
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/makeStyles/makeStyles.js + 22 modules
-var makeStyles = __webpack_require__(85);
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.4_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/makeStyles/makeStyles.js + 22 modules
+var makeStyles = __webpack_require__(86);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/getThemeProps/getThemeProps.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.4_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/getThemeProps/getThemeProps.js
 /* eslint-disable no-restricted-syntax */
 function getThemeProps(params) {
   var theme = params.theme,
@@ -277,10 +278,10 @@ function getThemeProps(params) {
 
   return props;
 }
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/useTheme/useTheme.js + 1 modules
-var useTheme = __webpack_require__(86);
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.4_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/useTheme/useTheme.js + 1 modules
+var useTheme = __webpack_require__(87);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/withStyles/withStyles.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.4_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/withStyles/withStyles.js
 
 
 
@@ -364,10 +365,10 @@ var withStyles_withStyles = function withStyles(stylesOrCreator) {
 };
 
 /* harmony default export */ var esm_withStyles_withStyles = (withStyles_withStyles);
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/defaultTheme.js + 22 modules
-var styles_defaultTheme = __webpack_require__(16);
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/defaultTheme.js + 21 modules
+var styles_defaultTheme = __webpack_require__(17);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/withStyles.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/withStyles.js
 
 
 
@@ -381,18 +382,18 @@ function styles_withStyles_withStyles(stylesOrCreator, options) {
 /* harmony default export */ var styles_withStyles = __webpack_exports__["a"] = (styles_withStyles_withStyles);
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports) {
 
 module.exports = ReactDOM;
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return capitalize; });
-/* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(45);
+/* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(44);
 
 // It should to be noted that this function isn't equivalent to `text-transform: capitalize`.
 //
@@ -407,7 +408,6 @@ function capitalize(string) {
 }
 
 /***/ }),
-/* 9 */,
 /* 10 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -441,7 +441,7 @@ function useEventCallback(fn) {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return useForkRef; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _setRef__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(19);
+/* harmony import */ var _setRef__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(20);
 
 
 function useForkRef(refA, refB) {
@@ -475,10 +475,11 @@ function useForkRef(refA, refB) {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return getContrastRatio; });
 /* unused harmony export getLuminance */
 /* unused harmony export emphasize */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return fade; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return darken; });
+/* unused harmony export fade */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return alpha; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return darken; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return lighten; });
-/* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(45);
+/* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(44);
 
 
 /* eslint-disable no-use-before-define */
@@ -691,6 +692,7 @@ function emphasize(color) {
   var coefficient = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0.15;
   return getLuminance(color) > 0.5 ? darken(color, coefficient) : lighten(color, coefficient);
 }
+var warnedOnce = false;
 /**
  * Set the absolute transparency of a color.
  * Any existing alpha values are overwritten.
@@ -698,9 +700,26 @@ function emphasize(color) {
  * @param {string} color - CSS color, i.e. one of: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla()
  * @param {number} value - value to set the alpha channel to in the range 0 -1
  * @returns {string} A CSS color string. Hex input values are returned as rgb
+ *
+ * @deprecated
+ * Use `import { alpha } from '@material-ui/core/styles'` instead.
  */
 
 function fade(color, value) {
+  if (false) {}
+
+  return alpha(color, value);
+}
+/**
+ * Set the absolute transparency of a color.
+ * Any existing alpha value is overwritten.
+ *
+ * @param {string} color - CSS color, i.e. one of: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla()
+ * @param {number} value - value to set the alpha channel to in the range 0-1
+ * @returns {string} A CSS color string. Hex input values are returned as rgb
+ */
+
+function alpha(color, value) {
   color = decomposeColor(color);
   value = clamp(value);
 
@@ -761,11 +780,20 @@ function lighten(color, coefficient) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _inheritsLoose; });
-function _inheritsLoose(subClass, superClass) {
-  subClass.prototype = Object.create(superClass.prototype);
-  subClass.prototype.constructor = subClass;
-  subClass.__proto__ = superClass;
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _defineProperty; });
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
 }
 
 /***/ }),
@@ -777,20 +805,23 @@ function _inheritsLoose(subClass, superClass) {
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, "a", function() { return /* binding */ _slicedToArray; });
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/arrayWithHoles.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.14.6/node_modules/@babel/runtime/helpers/esm/arrayWithHoles.js
 function _arrayWithHoles(arr) {
   if (Array.isArray(arr)) return arr;
 }
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/iterableToArrayLimit.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.14.6/node_modules/@babel/runtime/helpers/esm/iterableToArrayLimit.js
 function _iterableToArrayLimit(arr, i) {
-  if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;
+  var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
+
+  if (_i == null) return;
   var _arr = [];
   var _n = true;
   var _d = false;
-  var _e = undefined;
+
+  var _s, _e;
 
   try {
-    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+    for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) {
       _arr.push(_s.value);
 
       if (i && _arr.length === i) break;
@@ -808,14 +839,14 @@ function _iterableToArrayLimit(arr, i) {
 
   return _arr;
 }
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/unsupportedIterableToArray.js
-var unsupportedIterableToArray = __webpack_require__(24);
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.14.6/node_modules/@babel/runtime/helpers/esm/unsupportedIterableToArray.js
+var unsupportedIterableToArray = __webpack_require__(26);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/nonIterableRest.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.14.6/node_modules/@babel/runtime/helpers/esm/nonIterableRest.js
 function _nonIterableRest() {
   throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/slicedToArray.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.14.6/node_modules/@babel/runtime/helpers/esm/slicedToArray.js
 
 
 
@@ -829,11 +860,37 @@ function _slicedToArray(arr, i) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, "a", function() { return /* binding */ _inheritsLoose; });
+
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.14.6/node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js
+function _setPrototypeOf(o, p) {
+  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+
+  return _setPrototypeOf(o, p);
+}
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.14.6/node_modules/@babel/runtime/helpers/esm/inheritsLoose.js
+
+function _inheritsLoose(subClass, superClass) {
+  subClass.prototype = Object.create(superClass.prototype);
+  subClass.prototype.constructor = subClass;
+  _setPrototypeOf(subClass, superClass);
+}
+
+/***/ }),
+/* 16 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* unused harmony export teardown */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return useIsFocusVisible; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(8);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 // based on https://github.com/WICG/focus-visible/blob/v4.1.5/src/focus-visible.js
 
@@ -990,36 +1047,24 @@ function useIsFocusVisible() {
 }
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/defineProperty.js
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.14.6/node_modules/@babel/runtime/helpers/esm/defineProperty.js
+var defineProperty = __webpack_require__(13);
 
-  return obj;
-}
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.14.6/node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js
 var objectWithoutProperties = __webpack_require__(2);
 
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/utils/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/utils/esm/deepmerge.js
-var deepmerge = __webpack_require__(84);
+var deepmerge = __webpack_require__(85);
 
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/extends.js
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.14.6/node_modules/@babel/runtime/helpers/esm/extends.js
 var esm_extends = __webpack_require__(1);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/createBreakpoints.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/createBreakpoints.js
 
 
 // Sorted ASC by size. That's important.
@@ -1073,7 +1118,11 @@ function createBreakpoints(breakpoints) {
     return between(key, key);
   }
 
+  var warnedOnce = false;
+
   function width(key) {
+    if (false) {}
+
     return values[key];
   }
 
@@ -1087,7 +1136,7 @@ function createBreakpoints(breakpoints) {
     width: width
   }, other);
 }
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/createMixins.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/createMixins.js
 
 
 function createMixins(breakpoints, spacing, mixins) {
@@ -1096,49 +1145,34 @@ function createMixins(breakpoints, spacing, mixins) {
   return Object(esm_extends["a" /* default */])({
     gutters: function gutters() {
       var styles = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-      // To deprecate in v4.1
-      //       warning(
-      //         false,
-      //         [
-      //           'Material-UI: Theme.mixins.gutters() is deprecated.',
-      //           'You can use the source of the mixin directly:',
-      //           `
-      // paddingLeft: theme.spacing(2),
-      // paddingRight: theme.spacing(2),
-      // [theme.breakpoints.up('sm')]: {
-      //   paddingLeft: theme.spacing(3),
-      //   paddingRight: theme.spacing(3),
-      // },
-      // `,
-      //         ].join('\n'),
-      //       );
+      console.warn(['Material-UI: theme.mixins.gutters() is deprecated.', 'You can use the source of the mixin directly:', "\n      paddingLeft: theme.spacing(2),\n      paddingRight: theme.spacing(2),\n      [theme.breakpoints.up('sm')]: {\n        paddingLeft: theme.spacing(3),\n        paddingRight: theme.spacing(3),\n      },\n      "].join('\n'));
       return Object(esm_extends["a" /* default */])({
         paddingLeft: spacing(2),
         paddingRight: spacing(2)
-      }, styles, _defineProperty({}, breakpoints.up('sm'), Object(esm_extends["a" /* default */])({
+      }, styles, Object(defineProperty["a" /* default */])({}, breakpoints.up('sm'), Object(esm_extends["a" /* default */])({
         paddingLeft: spacing(3),
         paddingRight: spacing(3)
       }, styles[breakpoints.up('sm')])));
     },
     toolbar: (_toolbar = {
       minHeight: 56
-    }, _defineProperty(_toolbar, "".concat(breakpoints.up('xs'), " and (orientation: landscape)"), {
+    }, Object(defineProperty["a" /* default */])(_toolbar, "".concat(breakpoints.up('xs'), " and (orientation: landscape)"), {
       minHeight: 48
-    }), _defineProperty(_toolbar, breakpoints.up('sm'), {
+    }), Object(defineProperty["a" /* default */])(_toolbar, breakpoints.up('sm'), {
       minHeight: 64
     }), _toolbar)
   }, mixins);
 }
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/utils/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/utils/esm/formatMuiErrorMessage.js
-var formatMuiErrorMessage = __webpack_require__(45);
+var formatMuiErrorMessage = __webpack_require__(44);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/colors/common.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/colors/common.js
 var common = {
   black: '#000',
   white: '#fff'
 };
 /* harmony default export */ var colors_common = (common);
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/colors/grey.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/colors/grey.js
 var grey = {
   50: '#fafafa',
   100: '#f5f5f5',
@@ -1156,7 +1190,7 @@ var grey = {
   A700: '#616161'
 };
 /* harmony default export */ var colors_grey = (grey);
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/colors/indigo.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/colors/indigo.js
 var indigo = {
   50: '#e8eaf6',
   100: '#c5cae9',
@@ -1174,7 +1208,7 @@ var indigo = {
   A700: '#304ffe'
 };
 /* harmony default export */ var colors_indigo = (indigo);
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/colors/pink.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/colors/pink.js
 var pink = {
   50: '#fce4ec',
   100: '#f8bbd0',
@@ -1192,7 +1226,7 @@ var pink = {
   A700: '#c51162'
 };
 /* harmony default export */ var colors_pink = (pink);
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/colors/red.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/colors/red.js
 var red = {
   50: '#ffebee',
   100: '#ffcdd2',
@@ -1210,7 +1244,7 @@ var red = {
   A700: '#d50000'
 };
 /* harmony default export */ var colors_red = (red);
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/colors/orange.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/colors/orange.js
 var orange = {
   50: '#fff3e0',
   100: '#ffe0b2',
@@ -1228,7 +1262,7 @@ var orange = {
   A700: '#ff6d00'
 };
 /* harmony default export */ var colors_orange = (orange);
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/colors/blue.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/colors/blue.js
 var blue = {
   50: '#e3f2fd',
   100: '#bbdefb',
@@ -1246,7 +1280,7 @@ var blue = {
   A700: '#2962ff'
 };
 /* harmony default export */ var colors_blue = (blue);
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/colors/green.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/colors/green.js
 var green = {
   50: '#e8f5e9',
   100: '#c8e6c9',
@@ -1264,10 +1298,10 @@ var green = {
   A700: '#00c853'
 };
 /* harmony default export */ var colors_green = (green);
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/colorManipulator.js
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/colorManipulator.js
 var colorManipulator = __webpack_require__(12);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/createPalette.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/createPalette.js
 
 
 
@@ -1359,7 +1393,7 @@ function addLightOrDark(intent, direction, shade, tonalOffset) {
     } else if (direction === 'light') {
       intent.light = Object(colorManipulator["d" /* lighten */])(intent.main, tonalOffsetLight);
     } else if (direction === 'dark') {
-      intent.dark = Object(colorManipulator["a" /* darken */])(intent.main, tonalOffsetDark);
+      intent.dark = Object(colorManipulator["b" /* darken */])(intent.main, tonalOffsetDark);
     }
   }
 }
@@ -1488,13 +1522,21 @@ function createPalette(palette) {
   }, types[type]), other);
   return paletteOutput;
 }
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/createTypography.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/createTypography.js
 
 
 
 
 function round(value) {
   return Math.round(value * 1e5) / 1e5;
+}
+
+var createTypography_warnedOnce = false;
+
+function roundWithDeprecationWarning(value) {
+  if (false) {}
+
+  return round(value);
 }
 
 var caseAllCaps = {
@@ -1564,7 +1606,7 @@ function createTypography(palette, typography) {
   return Object(deepmerge["a" /* default */])(Object(esm_extends["a" /* default */])({
     htmlFontSize: htmlFontSize,
     pxToRem: pxToRem,
-    round: round,
+    round: roundWithDeprecationWarning,
     // TODO v5: remove
     fontFamily: fontFamily,
     fontSize: fontSize,
@@ -1577,7 +1619,7 @@ function createTypography(palette, typography) {
 
   });
 }
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/shadows.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/shadows.js
 var shadowKeyUmbraOpacity = 0.2;
 var shadowKeyPenumbraOpacity = 0.14;
 var shadowAmbientShadowOpacity = 0.12;
@@ -1589,24 +1631,24 @@ function createShadow() {
 
 var shadows = ['none', createShadow(0, 2, 1, -1, 0, 1, 1, 0, 0, 1, 3, 0), createShadow(0, 3, 1, -2, 0, 2, 2, 0, 0, 1, 5, 0), createShadow(0, 3, 3, -2, 0, 3, 4, 0, 0, 1, 8, 0), createShadow(0, 2, 4, -1, 0, 4, 5, 0, 0, 1, 10, 0), createShadow(0, 3, 5, -1, 0, 5, 8, 0, 0, 1, 14, 0), createShadow(0, 3, 5, -1, 0, 6, 10, 0, 0, 1, 18, 0), createShadow(0, 4, 5, -2, 0, 7, 10, 1, 0, 2, 16, 1), createShadow(0, 5, 5, -3, 0, 8, 10, 1, 0, 3, 14, 2), createShadow(0, 5, 6, -3, 0, 9, 12, 1, 0, 3, 16, 2), createShadow(0, 6, 6, -3, 0, 10, 14, 1, 0, 4, 18, 3), createShadow(0, 6, 7, -4, 0, 11, 15, 1, 0, 4, 20, 3), createShadow(0, 7, 8, -4, 0, 12, 17, 2, 0, 5, 22, 4), createShadow(0, 7, 8, -4, 0, 13, 19, 2, 0, 5, 24, 4), createShadow(0, 7, 9, -4, 0, 14, 21, 2, 0, 5, 26, 4), createShadow(0, 8, 9, -5, 0, 15, 22, 2, 0, 6, 28, 5), createShadow(0, 8, 10, -5, 0, 16, 24, 2, 0, 6, 30, 5), createShadow(0, 8, 11, -5, 0, 17, 26, 2, 0, 6, 32, 5), createShadow(0, 9, 11, -5, 0, 18, 28, 2, 0, 7, 34, 6), createShadow(0, 9, 12, -6, 0, 19, 29, 2, 0, 7, 36, 6), createShadow(0, 10, 13, -6, 0, 20, 31, 3, 0, 8, 38, 7), createShadow(0, 10, 13, -6, 0, 21, 33, 3, 0, 8, 40, 7), createShadow(0, 10, 14, -6, 0, 22, 35, 3, 0, 8, 42, 7), createShadow(0, 11, 14, -7, 0, 23, 36, 3, 0, 9, 44, 8), createShadow(0, 11, 15, -7, 0, 24, 38, 3, 0, 9, 46, 8)];
 /* harmony default export */ var styles_shadows = (shadows);
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/shape.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/shape.js
 var shape = {
   borderRadius: 4
 };
 /* harmony default export */ var styles_shape = (shape);
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/slicedToArray.js + 3 modules
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.14.6/node_modules/@babel/runtime/helpers/esm/slicedToArray.js + 3 modules
 var slicedToArray = __webpack_require__(14);
 
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/toConsumableArray.js + 3 modules
-var toConsumableArray = __webpack_require__(17);
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.14.6/node_modules/@babel/runtime/helpers/esm/toConsumableArray.js + 3 modules
+var toConsumableArray = __webpack_require__(18);
 
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/typeof.js
-var esm_typeof = __webpack_require__(18);
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.14.6/node_modules/@babel/runtime/helpers/esm/typeof.js
+var esm_typeof = __webpack_require__(19);
 
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/prop-types/15.7.2/node_modules/prop-types/index.js
 var prop_types = __webpack_require__(4);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/system/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/system/esm/merge.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/system/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/system/esm/merge.js
 
 
 function merge(acc, item) {
@@ -1621,7 +1663,7 @@ function merge(acc, item) {
 }
 
 /* harmony default export */ var esm_merge = (merge);
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/system/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/system/esm/breakpoints.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/system/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/system/esm/breakpoints.js
 
 
 
@@ -1691,7 +1733,7 @@ function breakpoints_breakpoints(styleFunction) {
 }
 
 /* harmony default export */ var esm_breakpoints = (breakpoints_breakpoints);
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/system/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/system/esm/memoize.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/system/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/system/esm/memoize.js
 function memoize(fn) {
   var cache = {};
   return function (arg) {
@@ -1702,7 +1744,7 @@ function memoize(fn) {
     return cache[arg];
   };
 }
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/system/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/system/esm/spacing.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/system/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/system/esm/spacing.js
 
 
 
@@ -1782,7 +1824,7 @@ function createUnarySpacing(theme) {
 }
 
 function getValue(transformer, propValue) {
-  if (typeof propValue === 'string') {
+  if (typeof propValue === 'string' || propValue == null) {
     return propValue;
   }
 
@@ -1829,7 +1871,7 @@ function spacing_spacing(props) {
 spacing_spacing.propTypes =  false ? undefined : {};
 spacing_spacing.filterProps = spacingKeys;
 /* harmony default export */ var esm_spacing = (spacing_spacing);
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/createSpacing.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/createSpacing.js
 
 var warnOnce;
 function createSpacing() {
@@ -1883,10 +1925,10 @@ function createSpacing() {
   spacing.mui = true;
   return spacing;
 }
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/transitions.js
-var transitions = __webpack_require__(25);
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/transitions.js
+var transitions = __webpack_require__(27);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/zIndex.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/zIndex.js
 // We need to centralize the zIndex definitions as they work
 // like global values in the browser.
 var zIndex = {
@@ -1899,7 +1941,7 @@ var zIndex = {
   tooltip: 1500
 };
 /* harmony default export */ var styles_zIndex = (zIndex);
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/createMuiTheme.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/createTheme.js
 
 
 
@@ -1913,7 +1955,7 @@ var zIndex = {
 
 
 
-function createMuiTheme() {
+function createTheme() {
   var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
   var _options$breakpoints = options.breakpoints,
@@ -1960,14 +2002,20 @@ function createMuiTheme() {
   return muiTheme;
 }
 
-/* harmony default export */ var styles_createMuiTheme = (createMuiTheme);
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/defaultTheme.js
+var createTheme_warnedOnce = false;
+function createMuiTheme() {
+  if (false) {}
 
-var defaultTheme = styles_createMuiTheme();
+  return createTheme.apply(void 0, arguments);
+}
+/* harmony default export */ var styles_createTheme = (createTheme);
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/defaultTheme.js
+
+var defaultTheme = styles_createTheme();
 /* harmony default export */ var styles_defaultTheme = __webpack_exports__["a"] = (defaultTheme);
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1975,26 +2023,26 @@ var defaultTheme = styles_createMuiTheme();
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, "a", function() { return /* binding */ _toConsumableArray; });
 
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/arrayLikeToArray.js
-var arrayLikeToArray = __webpack_require__(22);
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.14.6/node_modules/@babel/runtime/helpers/esm/arrayLikeToArray.js
+var arrayLikeToArray = __webpack_require__(23);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/arrayWithoutHoles.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.14.6/node_modules/@babel/runtime/helpers/esm/arrayWithoutHoles.js
 
 function _arrayWithoutHoles(arr) {
   if (Array.isArray(arr)) return Object(arrayLikeToArray["a" /* default */])(arr);
 }
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/iterableToArray.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.14.6/node_modules/@babel/runtime/helpers/esm/iterableToArray.js
 function _iterableToArray(iter) {
-  if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);
+  if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
 }
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/unsupportedIterableToArray.js
-var unsupportedIterableToArray = __webpack_require__(24);
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.14.6/node_modules/@babel/runtime/helpers/esm/unsupportedIterableToArray.js
+var unsupportedIterableToArray = __webpack_require__(26);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/nonIterableSpread.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.14.6/node_modules/@babel/runtime/helpers/esm/nonIterableSpread.js
 function _nonIterableSpread() {
   throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/toConsumableArray.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.14.6/node_modules/@babel/runtime/helpers/esm/toConsumableArray.js
 
 
 
@@ -2004,7 +2052,7 @@ function _toConsumableArray(arr) {
 }
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2026,7 +2074,7 @@ function _typeof(obj) {
 }
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2041,13 +2089,13 @@ function setRef(ref, value) {
 }
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var reactIs = __webpack_require__(31);
+var reactIs = __webpack_require__(33);
 
 /**
  * Copyright 2015, Yahoo! Inc.
@@ -2151,7 +2199,7 @@ module.exports = hoistNonReactStatics;
 
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2165,7 +2213,7 @@ function _assertThisInitialized(self) {
 }
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2181,7 +2229,32 @@ function _arrayLikeToArray(arr, len) {
 }
 
 /***/ }),
-/* 23 */
+/* 24 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return deprecatedPropType; });
+function deprecatedPropType(validator, reason) {
+  if (true) {
+    return function () {
+      return null;
+    };
+  }
+
+  return function (props, propName, componentName, location, propFullName) {
+    var componentNameSafe = componentName || '<<anonymous>>';
+    var propFullNameSafe = propFullName || propName;
+
+    if (typeof props[propName] !== 'undefined') {
+      return new Error("The ".concat(location, " `").concat(propFullNameSafe, "` of ") + "`".concat(componentNameSafe, "` is deprecated. ").concat(reason));
+    }
+
+    return null;
+  };
+}
+
+/***/ }),
+/* 25 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2193,7 +2266,7 @@ __webpack_require__.d(__webpack_exports__, "capitalize", function() { return /* 
 __webpack_require__.d(__webpack_exports__, "createChainedFunction", function() { return /* reexport */ createChainedFunction; });
 __webpack_require__.d(__webpack_exports__, "createSvgIcon", function() { return /* reexport */ createSvgIcon; });
 __webpack_require__.d(__webpack_exports__, "debounce", function() { return /* reexport */ debounce; });
-__webpack_require__.d(__webpack_exports__, "deprecatedPropType", function() { return /* reexport */ deprecatedPropType; });
+__webpack_require__.d(__webpack_exports__, "deprecatedPropType", function() { return /* reexport */ deprecatedPropType["a" /* default */]; });
 __webpack_require__.d(__webpack_exports__, "isMuiElement", function() { return /* reexport */ isMuiElement; });
 __webpack_require__.d(__webpack_exports__, "ownerDocument", function() { return /* reexport */ ownerDocument; });
 __webpack_require__.d(__webpack_exports__, "ownerWindow", function() { return /* reexport */ ownerWindow; });
@@ -2206,10 +2279,10 @@ __webpack_require__.d(__webpack_exports__, "useForkRef", function() { return /* 
 __webpack_require__.d(__webpack_exports__, "unstable_useId", function() { return /* reexport */ useId; });
 __webpack_require__.d(__webpack_exports__, "useIsFocusVisible", function() { return /* reexport */ useIsFocusVisible["a" /* default */]; });
 
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/capitalize.js
-var capitalize = __webpack_require__(8);
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/capitalize.js
+var capitalize = __webpack_require__(9);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/createChainedFunction.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/createChainedFunction.js
 /**
  * Safe chained function
  *
@@ -2241,14 +2314,14 @@ function createChainedFunction() {
     };
   }, function () {});
 }
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/extends.js
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.14.6/node_modules/@babel/runtime/helpers/esm/extends.js
 var esm_extends = __webpack_require__(1);
 
 // EXTERNAL MODULE: external "React"
 var external_React_ = __webpack_require__(0);
 var external_React_default = /*#__PURE__*/__webpack_require__.n(external_React_);
 
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.14.6/node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js
 var objectWithoutProperties = __webpack_require__(2);
 
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/prop-types/15.7.2/node_modules/prop-types/index.js
@@ -2257,10 +2330,11 @@ var prop_types = __webpack_require__(4);
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/clsx/1.1.1/node_modules/clsx/dist/clsx.m.js
 var clsx_m = __webpack_require__(3);
 
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/withStyles.js + 2 modules
-var withStyles = __webpack_require__(6);
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/withStyles.js + 2 modules
+var withStyles = __webpack_require__(7);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/SvgIcon/SvgIcon.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/SvgIcon/SvgIcon.js
+
 
 
 
@@ -2334,7 +2408,7 @@ var SvgIcon_SvgIcon = /*#__PURE__*/external_React_["forwardRef"](function SvgIco
       _props$component = props.component,
       Component = _props$component === void 0 ? 'svg' : _props$component,
       _props$fontSize = props.fontSize,
-      fontSize = _props$fontSize === void 0 ? 'default' : _props$fontSize,
+      fontSize = _props$fontSize === void 0 ? 'medium' : _props$fontSize,
       htmlColor = props.htmlColor,
       titleAccess = props.titleAccess,
       _props$viewBox = props.viewBox,
@@ -2342,7 +2416,7 @@ var SvgIcon_SvgIcon = /*#__PURE__*/external_React_["forwardRef"](function SvgIco
       other = Object(objectWithoutProperties["a" /* default */])(props, ["children", "classes", "className", "color", "component", "fontSize", "htmlColor", "titleAccess", "viewBox"]);
 
   return /*#__PURE__*/external_React_["createElement"](Component, Object(esm_extends["a" /* default */])({
-    className: Object(clsx_m["a" /* default */])(classes.root, className, color !== 'inherit' && classes["color".concat(Object(capitalize["a" /* default */])(color))], fontSize !== 'default' && classes["fontSize".concat(Object(capitalize["a" /* default */])(fontSize))]),
+    className: Object(clsx_m["a" /* default */])(classes.root, className, color !== 'inherit' && classes["color".concat(Object(capitalize["a" /* default */])(color))], fontSize !== 'default' && fontSize !== 'medium' && classes["fontSize".concat(Object(capitalize["a" /* default */])(fontSize))]),
     focusable: "false",
     viewBox: viewBox,
     color: htmlColor,
@@ -2356,7 +2430,7 @@ SvgIcon_SvgIcon.muiName = 'SvgIcon';
 /* harmony default export */ var esm_SvgIcon_SvgIcon = (Object(withStyles["a" /* default */])(styles, {
   name: 'MuiSvgIcon'
 })(SvgIcon_SvgIcon));
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/createSvgIcon.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/createSvgIcon.js
 
 
 
@@ -2376,7 +2450,7 @@ function createSvgIcon(path, displayName) {
   Component.muiName = esm_SvgIcon_SvgIcon.muiName;
   return /*#__PURE__*/external_React_default.a.memo( /*#__PURE__*/external_React_default.a.forwardRef(Component));
 }
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/debounce.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/debounce.js
 // Corresponds to 10 frames at 60 Hz.
 // A few bytes payload overhead when lodash/debounce is ~3 kB and debounce ~300 B.
 function debounce(func) {
@@ -2405,41 +2479,25 @@ function debounce(func) {
 
   return debounced;
 }
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/deprecatedPropType.js
-function deprecatedPropType(validator, reason) {
-  if (true) {
-    return function () {
-      return null;
-    };
-  }
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/deprecatedPropType.js
+var deprecatedPropType = __webpack_require__(24);
 
-  return function (props, propName, componentName, location, propFullName) {
-    var componentNameSafe = componentName || '<<anonymous>>';
-    var propFullNameSafe = propFullName || propName;
-
-    if (typeof props[propName] !== 'undefined') {
-      return new Error("The ".concat(location, " `").concat(propFullNameSafe, "` of ") + "`".concat(componentNameSafe, "` is deprecated. ").concat(reason));
-    }
-
-    return null;
-  };
-}
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/isMuiElement.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/isMuiElement.js
 
 function isMuiElement(element, muiNames) {
   return /*#__PURE__*/external_React_["isValidElement"](element) && muiNames.indexOf(element.type.muiName) !== -1;
 }
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/ownerDocument.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/ownerDocument.js
 function ownerDocument(node) {
   return node && node.ownerDocument || document;
 }
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/ownerWindow.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/ownerWindow.js
 
 function ownerWindow(node) {
   var doc = ownerDocument(node);
   return doc.defaultView || window;
 }
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/requirePropFactory.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/requirePropFactory.js
 function requirePropFactory(componentNameInError) {
   if (true) {
     return function () {
@@ -2461,10 +2519,10 @@ function requirePropFactory(componentNameInError) {
 
   return requireProp;
 }
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/setRef.js
-var setRef = __webpack_require__(19);
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/setRef.js
+var setRef = __webpack_require__(20);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/unsupportedProp.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/unsupportedProp.js
 function unsupportedProp(props, propName, componentName, location, propFullName) {
   if (true) {
     return null;
@@ -2478,16 +2536,16 @@ function unsupportedProp(props, propName, componentName, location, propFullName)
 
   return null;
 }
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/useControlled.js
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/useControlled.js
 var useControlled = __webpack_require__(38);
 
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/useEventCallback.js
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/useEventCallback.js
 var useEventCallback = __webpack_require__(10);
 
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/useForkRef.js
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/useForkRef.js
 var useForkRef = __webpack_require__(11);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/unstable_useId.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/unstable_useId.js
 
 /**
  * Private module reserved for @material-ui/x packages.
@@ -2509,10 +2567,10 @@ function useId(idOverride) {
   }, [defaultId]);
   return id;
 }
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/useIsFocusVisible.js
-var useIsFocusVisible = __webpack_require__(15);
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/useIsFocusVisible.js
+var useIsFocusVisible = __webpack_require__(16);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/index.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/index.js
 
 
 
@@ -2532,24 +2590,24 @@ var useIsFocusVisible = __webpack_require__(15);
 
 
 /***/ }),
-/* 24 */
+/* 26 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _unsupportedIterableToArray; });
-/* harmony import */ var _babel_runtime_helpers_esm_arrayLikeToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(22);
+/* harmony import */ var _arrayLikeToArray_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(23);
 
 function _unsupportedIterableToArray(o, minLen) {
   if (!o) return;
-  if (typeof o === "string") return Object(_babel_runtime_helpers_esm_arrayLikeToArray__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(o, minLen);
+  if (typeof o === "string") return Object(_arrayLikeToArray_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(o, minLen);
   var n = Object.prototype.toString.call(o).slice(8, -1);
   if (n === "Object" && o.constructor) n = o.constructor.name;
   if (n === "Map" || n === "Set") return Array.from(o);
-  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return Object(_babel_runtime_helpers_esm_arrayLikeToArray__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(o, minLen);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return Object(_arrayLikeToArray_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(o, minLen);
 }
 
 /***/ }),
-/* 25 */
+/* 27 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2632,7 +2690,7 @@ function formatMs(milliseconds) {
 });
 
 /***/ }),
-/* 26 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -2647,9 +2705,9 @@ function formatMs(milliseconds) {
  * MIT License
  */
 
-var fingerprint = __webpack_require__(64);
+var fingerprint = __webpack_require__(65);
 var pad = __webpack_require__(39);
-var getRandomValue = __webpack_require__(65);
+var getRandomValue = __webpack_require__(66);
 
 var c = 0,
   blockSize = 4,
@@ -2722,8 +2780,8 @@ module.exports = cuid;
 
 
 /***/ }),
-/* 27 */,
-/* 28 */
+/* 29 */,
+/* 30 */
 /***/ (function(module, exports) {
 
 function _interopRequireDefault(obj) {
@@ -2733,26 +2791,25 @@ function _interopRequireDefault(obj) {
 }
 
 module.exports = _interopRequireDefault;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
 
 /***/ }),
-/* 29 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var _typeof = __webpack_require__(63);
+var _typeof = __webpack_require__(64)["default"];
 
-function _getRequireWildcardCache() {
+function _getRequireWildcardCache(nodeInterop) {
   if (typeof WeakMap !== "function") return null;
-  var cache = new WeakMap();
-
-  _getRequireWildcardCache = function _getRequireWildcardCache() {
-    return cache;
-  };
-
-  return cache;
+  var cacheBabelInterop = new WeakMap();
+  var cacheNodeInterop = new WeakMap();
+  return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
+    return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
+  })(nodeInterop);
 }
 
-function _interopRequireWildcard(obj) {
-  if (obj && obj.__esModule) {
+function _interopRequireWildcard(obj, nodeInterop) {
+  if (!nodeInterop && obj && obj.__esModule) {
     return obj;
   }
 
@@ -2762,7 +2819,7 @@ function _interopRequireWildcard(obj) {
     };
   }
 
-  var cache = _getRequireWildcardCache();
+  var cache = _getRequireWildcardCache(nodeInterop);
 
   if (cache && cache.has(obj)) {
     return cache.get(obj);
@@ -2772,7 +2829,7 @@ function _interopRequireWildcard(obj) {
   var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
 
   for (var key in obj) {
-    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+    if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
       var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
 
       if (desc && (desc.get || desc.set)) {
@@ -2793,9 +2850,10 @@ function _interopRequireWildcard(obj) {
 }
 
 module.exports = _interopRequireWildcard;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
 
 /***/ }),
-/* 30 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2811,74 +2869,22 @@ Object.defineProperty(exports, "default", {
   }
 });
 
-var _utils = __webpack_require__(23);
+var _utils = __webpack_require__(25);
 
 /***/ }),
-/* 31 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 if (true) {
-  module.exports = __webpack_require__(53);
+  module.exports = __webpack_require__(52);
 } else {}
 
 
 /***/ }),
-/* 32 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(global, module) {/* harmony import */ var _ponyfill_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(40);
-/* global window */
-
-
-var root;
-
-if (typeof self !== 'undefined') {
-  root = self;
-} else if (typeof window !== 'undefined') {
-  root = window;
-} else if (typeof global !== 'undefined') {
-  root = global;
-} else if (true) {
-  root = module;
-} else {}
-
-var result = Object(_ponyfill_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(root);
-/* harmony default export */ __webpack_exports__["a"] = (result);
-
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(34), __webpack_require__(54)(module)))
-
-/***/ }),
-/* 33 */,
-/* 34 */
-/***/ (function(module, exports) {
-
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || new Function("return this")();
-} catch (e) {
-	// This works if the window reference is available
-	if (typeof window === "object") g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ }),
+/* 34 */,
 /* 35 */
 /***/ (function(module, exports) {
 
@@ -2919,7 +2925,7 @@ module.exports = isObject;
 /* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var freeGlobal = __webpack_require__(56);
+var freeGlobal = __webpack_require__(54);
 
 /** Detect free variable `self`. */
 var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
@@ -2990,36 +2996,11 @@ module.exports = function pad (num, size) {
 
 /***/ }),
 /* 40 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return symbolObservablePonyfill; });
-function symbolObservablePonyfill(root) {
-	var result;
-	var Symbol = root.Symbol;
-
-	if (typeof Symbol === 'function') {
-		if (Symbol.observable) {
-			result = Symbol.observable;
-		} else {
-			result = Symbol('observable');
-			Symbol.observable = result;
-		}
-	} else {
-		result = '@@observable';
-	}
-
-	return result;
-};
-
-
-/***/ }),
-/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(35),
-    now = __webpack_require__(55),
-    toNumber = __webpack_require__(57);
+    now = __webpack_require__(53),
+    toNumber = __webpack_require__(56);
 
 /** Error message constants. */
 var FUNC_ERROR_TEXT = 'Expected a function';
@@ -3211,15 +3192,15 @@ module.exports = debounce;
 
 
 /***/ }),
-/* 42 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(28);
+var _interopRequireDefault = __webpack_require__(30);
 
-var _interopRequireWildcard = __webpack_require__(29);
+var _interopRequireWildcard = __webpack_require__(31);
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -3228,11 +3209,37 @@ exports.default = void 0;
 
 var React = _interopRequireWildcard(__webpack_require__(0));
 
-var _createSvgIcon = _interopRequireDefault(__webpack_require__(30));
+var _createSvgIcon = _interopRequireDefault(__webpack_require__(32));
 
 var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
   d: "M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
 }), 'Menu');
+
+exports.default = _default;
+
+/***/ }),
+/* 42 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(30);
+
+var _interopRequireWildcard = __webpack_require__(31);
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var React = _interopRequireWildcard(__webpack_require__(0));
+
+var _createSvgIcon = _interopRequireDefault(__webpack_require__(32));
+
+var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
+  d: "M7 10l5 5 5-5z"
+}), 'ArrowDropDown');
 
 exports.default = _default;
 
@@ -3243,35 +3250,9 @@ exports.default = _default;
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(28);
+var _interopRequireDefault = __webpack_require__(30);
 
-var _interopRequireWildcard = __webpack_require__(29);
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var React = _interopRequireWildcard(__webpack_require__(0));
-
-var _createSvgIcon = _interopRequireDefault(__webpack_require__(30));
-
-var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
-  d: "M7 10l5 5 5-5z"
-}), 'ArrowDropDown');
-
-exports.default = _default;
-
-/***/ }),
-/* 44 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _interopRequireDefault = __webpack_require__(28);
-
-var _interopRequireWildcard = __webpack_require__(29);
+var _interopRequireWildcard = __webpack_require__(31);
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -3280,7 +3261,7 @@ exports.default = void 0;
 
 var React = _interopRequireWildcard(__webpack_require__(0));
 
-var _createSvgIcon = _interopRequireDefault(__webpack_require__(30));
+var _createSvgIcon = _interopRequireDefault(__webpack_require__(32));
 
 var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
   d: "M10 17l5-5-5-5v10z"
@@ -3289,7 +3270,7 @@ var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("pa
 exports.default = _default;
 
 /***/ }),
-/* 45 */
+/* 44 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3318,19 +3299,19 @@ function formatMuiErrorMessage(code) {
 }
 
 /***/ }),
+/* 45 */,
 /* 46 */,
 /* 47 */,
 /* 48 */,
-/* 49 */,
-/* 50 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(67);
-module.exports = __webpack_require__(66);
+__webpack_require__(68);
+module.exports = __webpack_require__(67);
 
 
 /***/ }),
-/* 51 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3343,7 +3324,7 @@ module.exports = __webpack_require__(66);
 
 
 
-var ReactPropTypesSecret = __webpack_require__(52);
+var ReactPropTypesSecret = __webpack_require__(51);
 
 function emptyFunction() {}
 function emptyFunctionWithReset() {}
@@ -3401,7 +3382,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 52 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3420,7 +3401,7 @@ module.exports = ReactPropTypesSecret;
 
 
 /***/ }),
-/* 53 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3442,37 +3423,7 @@ exports.isValidElementType=function(a){return"string"===typeof a||"function"===t
 
 
 /***/ }),
-/* 54 */
-/***/ (function(module, exports) {
-
-module.exports = function(originalModule) {
-	if (!originalModule.webpackPolyfill) {
-		var module = Object.create(originalModule);
-		// module.parent = undefined by default
-		if (!module.children) module.children = [];
-		Object.defineProperty(module, "loaded", {
-			enumerable: true,
-			get: function() {
-				return module.l;
-			}
-		});
-		Object.defineProperty(module, "id", {
-			enumerable: true,
-			get: function() {
-				return module.i;
-			}
-		});
-		Object.defineProperty(module, "exports", {
-			enumerable: true
-		});
-		module.webpackPolyfill = 1;
-	}
-	return module;
-};
-
-
-/***/ }),
-/* 55 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var root = __webpack_require__(36);
@@ -3501,7 +3452,7 @@ module.exports = now;
 
 
 /***/ }),
-/* 56 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {/** Detect free variable `global` from Node.js. */
@@ -3509,20 +3460,44 @@ var freeGlobal = typeof global == 'object' && global && global.Object === Object
 
 module.exports = freeGlobal;
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(34)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(55)))
 
 /***/ }),
-/* 57 */
+/* 55 */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || new Function("return this")();
+} catch (e) {
+	// This works if the window reference is available
+	if (typeof window === "object") g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+
+/***/ }),
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(35),
-    isSymbol = __webpack_require__(58);
+var baseTrim = __webpack_require__(57),
+    isObject = __webpack_require__(35),
+    isSymbol = __webpack_require__(59);
 
 /** Used as references for various `Number` constants. */
 var NAN = 0 / 0;
-
-/** Used to match leading and trailing whitespace. */
-var reTrim = /^\s+|\s+$/g;
 
 /** Used to detect bad signed hexadecimal string values. */
 var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
@@ -3573,7 +3548,7 @@ function toNumber(value) {
   if (typeof value != 'string') {
     return value === 0 ? value : +value;
   }
-  value = value.replace(reTrim, '');
+  value = baseTrim(value);
   var isBinary = reIsBinary.test(value);
   return (isBinary || reIsOctal.test(value))
     ? freeParseInt(value.slice(2), isBinary ? 2 : 8)
@@ -3584,11 +3559,61 @@ module.exports = toNumber;
 
 
 /***/ }),
-/* 58 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGetTag = __webpack_require__(59),
-    isObjectLike = __webpack_require__(62);
+var trimmedEndIndex = __webpack_require__(58);
+
+/** Used to match leading whitespace. */
+var reTrimStart = /^\s+/;
+
+/**
+ * The base implementation of `_.trim`.
+ *
+ * @private
+ * @param {string} string The string to trim.
+ * @returns {string} Returns the trimmed string.
+ */
+function baseTrim(string) {
+  return string
+    ? string.slice(0, trimmedEndIndex(string) + 1).replace(reTrimStart, '')
+    : string;
+}
+
+module.exports = baseTrim;
+
+
+/***/ }),
+/* 58 */
+/***/ (function(module, exports) {
+
+/** Used to match a single whitespace character. */
+var reWhitespace = /\s/;
+
+/**
+ * Used by `_.trim` and `_.trimEnd` to get the index of the last non-whitespace
+ * character of `string`.
+ *
+ * @private
+ * @param {string} string The string to inspect.
+ * @returns {number} Returns the index of the last non-whitespace character.
+ */
+function trimmedEndIndex(string) {
+  var index = string.length;
+
+  while (index-- && reWhitespace.test(string.charAt(index))) {}
+  return index;
+}
+
+module.exports = trimmedEndIndex;
+
+
+/***/ }),
+/* 59 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var baseGetTag = __webpack_require__(60),
+    isObjectLike = __webpack_require__(63);
 
 /** `Object#toString` result references. */
 var symbolTag = '[object Symbol]';
@@ -3619,12 +3644,12 @@ module.exports = isSymbol;
 
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(37),
-    getRawTag = __webpack_require__(60),
-    objectToString = __webpack_require__(61);
+    getRawTag = __webpack_require__(61),
+    objectToString = __webpack_require__(62);
 
 /** `Object#toString` result references. */
 var nullTag = '[object Null]',
@@ -3653,7 +3678,7 @@ module.exports = baseGetTag;
 
 
 /***/ }),
-/* 60 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(37);
@@ -3705,7 +3730,7 @@ module.exports = getRawTag;
 
 
 /***/ }),
-/* 61 */
+/* 62 */
 /***/ (function(module, exports) {
 
 /** Used for built-in method references. */
@@ -3733,7 +3758,7 @@ module.exports = objectToString;
 
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, exports) {
 
 /**
@@ -3768,7 +3793,7 @@ module.exports = isObjectLike;
 
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, exports) {
 
 function _typeof(obj) {
@@ -3778,19 +3803,24 @@ function _typeof(obj) {
     module.exports = _typeof = function _typeof(obj) {
       return typeof obj;
     };
+
+    module.exports["default"] = module.exports, module.exports.__esModule = true;
   } else {
     module.exports = _typeof = function _typeof(obj) {
       return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
     };
+
+    module.exports["default"] = module.exports, module.exports.__esModule = true;
   }
 
   return _typeof(obj);
 }
 
 module.exports = _typeof;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pad = __webpack_require__(39);
@@ -3808,7 +3838,7 @@ module.exports = function fingerprint () {
 
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, exports) {
 
 
@@ -3832,7 +3862,7 @@ module.exports = getRandomValue;
 
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3840,19 +3870,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "../styles/index.css");
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/icons/4.11.2_3335f0bfb61930572868dabe45efc2f7/node_modules/@material-ui/icons/ArrowDropDown.js
-var ArrowDropDown = __webpack_require__(43);
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/icons/4.11.2_4fdd20d49e0c3af05a3d84031cd7e30c/node_modules/@material-ui/icons/ArrowDropDown.js
+var ArrowDropDown = __webpack_require__(42);
 var ArrowDropDown_default = /*#__PURE__*/__webpack_require__.n(ArrowDropDown);
 
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/icons/4.11.2_3335f0bfb61930572868dabe45efc2f7/node_modules/@material-ui/icons/ArrowRight.js
-var ArrowRight = __webpack_require__(44);
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/icons/4.11.2_4fdd20d49e0c3af05a3d84031cd7e30c/node_modules/@material-ui/icons/ArrowRight.js
+var ArrowRight = __webpack_require__(43);
 var ArrowRight_default = /*#__PURE__*/__webpack_require__.n(ArrowRight);
 
 // EXTERNAL MODULE: external "React"
@@ -3862,14 +3892,14 @@ var external_React_default = /*#__PURE__*/__webpack_require__.n(external_React_)
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/prop-types/15.7.2/node_modules/prop-types/index.js
 var prop_types = __webpack_require__(4);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.2_bbabd8c34ea235719dc50e75b43f85a4/node_modules/react-redux/es/components/Context.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.4_react-dom@16.14.0+react@16.14.0/node_modules/react-redux/es/components/Context.js
 
 var ReactReduxContext = /*#__PURE__*/external_React_default.a.createContext(null);
 
 if (false) {}
 
 /* harmony default export */ var components_Context = (ReactReduxContext);
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.2_bbabd8c34ea235719dc50e75b43f85a4/node_modules/react-redux/es/utils/batch.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.4_react-dom@16.14.0+react@16.14.0/node_modules/react-redux/es/utils/batch.js
 // Default to a dummy "batch" implementation that just runs the callback
 function defaultNoopBatch(callback) {
   callback();
@@ -3884,7 +3914,7 @@ var setBatch = function setBatch(newBatch) {
 var getBatch = function getBatch() {
   return batch_batch;
 };
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.2_bbabd8c34ea235719dc50e75b43f85a4/node_modules/react-redux/es/utils/Subscription.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.4_react-dom@16.14.0+react@16.14.0/node_modules/react-redux/es/utils/Subscription.js
  // encapsulates the subscription logic for connecting a component to the redux store, as
 // well as nesting subscriptions of descendant components, so that we can ensure the
 // ancestor components re-render before descendants
@@ -4007,7 +4037,19 @@ var Subscription = /*#__PURE__*/function () {
 }();
 
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.2_bbabd8c34ea235719dc50e75b43f85a4/node_modules/react-redux/es/components/Provider.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.4_react-dom@16.14.0+react@16.14.0/node_modules/react-redux/es/utils/useIsomorphicLayoutEffect.js
+ // React currently throws a warning when using useLayoutEffect on the server.
+// To get around it, we can conditionally useEffect on the server (no-op) and
+// useLayoutEffect in the browser. We need useLayoutEffect to ensure the store
+// subscription callback always has the selector from the latest render commit
+// available, otherwise a store update may happen between render and the effect,
+// which may cause missed updates; we also must ensure the store subscription
+// is created synchronously, otherwise a store update may occur before the
+// subscription is created and an inconsistent state may be observed
+
+var useIsomorphicLayoutEffect = typeof window !== 'undefined' && typeof window.document !== 'undefined' && typeof window.document.createElement !== 'undefined' ? external_React_["useLayoutEffect"] : external_React_["useEffect"];
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.4_react-dom@16.14.0+react@16.14.0/node_modules/react-redux/es/components/Provider.js
+
 
 
 
@@ -4028,7 +4070,7 @@ function Provider(_ref) {
   var previousState = Object(external_React_["useMemo"])(function () {
     return store.getState();
   }, [store]);
-  Object(external_React_["useEffect"])(function () {
+  useIsomorphicLayoutEffect(function () {
     var subscription = contextValue.subscription;
     subscription.trySubscribe();
 
@@ -4050,31 +4092,20 @@ function Provider(_ref) {
 if (false) {}
 
 /* harmony default export */ var components_Provider = (Provider);
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/extends.js
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.14.6/node_modules/@babel/runtime/helpers/esm/extends.js
 var esm_extends = __webpack_require__(1);
 
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js
-var objectWithoutPropertiesLoose = __webpack_require__(5);
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.14.6/node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js
+var objectWithoutPropertiesLoose = __webpack_require__(6);
 
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/hoist-non-react-statics/3.3.2/node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js
-var hoist_non_react_statics_cjs = __webpack_require__(20);
+var hoist_non_react_statics_cjs = __webpack_require__(21);
 var hoist_non_react_statics_cjs_default = /*#__PURE__*/__webpack_require__.n(hoist_non_react_statics_cjs);
 
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-is/16.13.1/node_modules/react-is/index.js
-var react_is = __webpack_require__(31);
+var react_is = __webpack_require__(33);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.2_bbabd8c34ea235719dc50e75b43f85a4/node_modules/react-redux/es/utils/useIsomorphicLayoutEffect.js
- // React currently throws a warning when using useLayoutEffect on the server.
-// To get around it, we can conditionally useEffect on the server (no-op) and
-// useLayoutEffect in the browser. We need useLayoutEffect to ensure the store
-// subscription callback always has the selector from the latest render commit
-// available, otherwise a store update may happen between render and the effect,
-// which may cause missed updates; we also must ensure the store subscription
-// is created synchronously, otherwise a store update may occur before the
-// subscription is created and an inconsistent state may be observed
-
-var useIsomorphicLayoutEffect = typeof window !== 'undefined' && typeof window.document !== 'undefined' && typeof window.document.createElement !== 'undefined' ? external_React_["useLayoutEffect"] : external_React_["useEffect"];
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.2_bbabd8c34ea235719dc50e75b43f85a4/node_modules/react-redux/es/components/connectAdvanced.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.4_react-dom@16.14.0+react@16.14.0/node_modules/react-redux/es/components/connectAdvanced.js
 
 
 
@@ -4204,14 +4235,14 @@ function connectAdvanced(
 /*
   selectorFactory is a func that is responsible for returning the selector function used to
   compute new props from state, props, and dispatch. For example:
-     export default connectAdvanced((dispatch, options) => (state, props) => ({
+      export default connectAdvanced((dispatch, options) => (state, props) => ({
       thing: state.things[props.thingId],
       saveThing: fields => dispatch(actionCreators.saveThing(props.thingId, fields)),
     }))(YourComponent)
-   Access to dispatch is provided to the factory so selectorFactories can bind actionCreators
+    Access to dispatch is provided to the factory so selectorFactories can bind actionCreators
   outside of their selector as an optimization. Options passed to connectAdvanced are passed to
   the selectorFactory, along with displayName and WrappedComponent, as the second argument.
-   Note that selectorFactory is responsible for all caching/memoization of inbound and outbound
+    Note that selectorFactory is responsible for all caching/memoization of inbound and outbound
   props. Do not use connectAdvanced directly without memoizing results between calls to your
   selector, otherwise the Connect component will re-render on every state or props change.
 */
@@ -4410,7 +4441,7 @@ _ref) {
 
     var Connect = pure ? external_React_default.a.memo(ConnectFunction) : ConnectFunction;
     Connect.WrappedComponent = WrappedComponent;
-    Connect.displayName = displayName;
+    Connect.displayName = ConnectFunction.displayName = displayName;
 
     if (forwardRef) {
       var forwarded = external_React_default.a.forwardRef(function forwardConnectRef(props, ref) {
@@ -4426,7 +4457,7 @@ _ref) {
     return hoist_non_react_statics_cjs_default()(Connect, WrappedComponent);
   };
 }
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.2_bbabd8c34ea235719dc50e75b43f85a4/node_modules/react-redux/es/utils/shallowEqual.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.4_react-dom@16.14.0+react@16.14.0/node_modules/react-redux/es/utils/shallowEqual.js
 function is(x, y) {
   if (x === y) {
     return x !== 0 || y !== 0 || 1 / x === 1 / y;
@@ -4454,319 +4485,44 @@ function shallowEqual(objA, objB) {
 
   return true;
 }
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/symbol-observable/1.2.0/node_modules/symbol-observable/es/index.js
-var es = __webpack_require__(32);
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.4_react-dom@16.14.0+react@16.14.0/node_modules/react-redux/es/utils/bindActionCreators.js
+function bindActionCreators(actionCreators, dispatch) {
+  var boundActionCreators = {};
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/redux/4.0.5/node_modules/redux/es/redux.js
+  var _loop = function _loop(key) {
+    var actionCreator = actionCreators[key];
 
+    if (typeof actionCreator === 'function') {
+      boundActionCreators[key] = function () {
+        return dispatch(actionCreator.apply(void 0, arguments));
+      };
+    }
+  };
 
-/**
- * These are private action types reserved by Redux.
- * For any unknown actions, you must return the current state.
- * If the current state is undefined, you must return the initial state.
- * Do not reference these action types directly in your code.
- */
-var randomString = function randomString() {
-  return Math.random().toString(36).substring(7).split('').join('.');
-};
-
-var ActionTypes = {
-  INIT: "@@redux/INIT" + randomString(),
-  REPLACE: "@@redux/REPLACE" + randomString(),
-  PROBE_UNKNOWN_ACTION: function PROBE_UNKNOWN_ACTION() {
-    return "@@redux/PROBE_UNKNOWN_ACTION" + randomString();
+  for (var key in actionCreators) {
+    _loop(key);
   }
-};
 
+  return boundActionCreators;
+}
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.4_react-dom@16.14.0+react@16.14.0/node_modules/react-redux/es/utils/isPlainObject.js
 /**
  * @param {any} obj The object to inspect.
  * @returns {boolean} True if the argument appears to be a plain object.
  */
 function isPlainObject(obj) {
   if (typeof obj !== 'object' || obj === null) return false;
-  var proto = obj;
+  var proto = Object.getPrototypeOf(obj);
+  if (proto === null) return true;
+  var baseProto = proto;
 
-  while (Object.getPrototypeOf(proto) !== null) {
-    proto = Object.getPrototypeOf(proto);
+  while (Object.getPrototypeOf(baseProto) !== null) {
+    baseProto = Object.getPrototypeOf(baseProto);
   }
 
-  return Object.getPrototypeOf(obj) === proto;
+  return proto === baseProto;
 }
-
-/**
- * Creates a Redux store that holds the state tree.
- * The only way to change the data in the store is to call `dispatch()` on it.
- *
- * There should only be a single store in your app. To specify how different
- * parts of the state tree respond to actions, you may combine several reducers
- * into a single reducer function by using `combineReducers`.
- *
- * @param {Function} reducer A function that returns the next state tree, given
- * the current state tree and the action to handle.
- *
- * @param {any} [preloadedState] The initial state. You may optionally specify it
- * to hydrate the state from the server in universal apps, or to restore a
- * previously serialized user session.
- * If you use `combineReducers` to produce the root reducer function, this must be
- * an object with the same shape as `combineReducers` keys.
- *
- * @param {Function} [enhancer] The store enhancer. You may optionally specify it
- * to enhance the store with third-party capabilities such as middleware,
- * time travel, persistence, etc. The only store enhancer that ships with Redux
- * is `applyMiddleware()`.
- *
- * @returns {Store} A Redux store that lets you read the state, dispatch actions
- * and subscribe to changes.
- */
-
-function createStore(reducer, preloadedState, enhancer) {
-  var _ref2;
-
-  if (typeof preloadedState === 'function' && typeof enhancer === 'function' || typeof enhancer === 'function' && typeof arguments[3] === 'function') {
-    throw new Error('It looks like you are passing several store enhancers to ' + 'createStore(). This is not supported. Instead, compose them ' + 'together to a single function.');
-  }
-
-  if (typeof preloadedState === 'function' && typeof enhancer === 'undefined') {
-    enhancer = preloadedState;
-    preloadedState = undefined;
-  }
-
-  if (typeof enhancer !== 'undefined') {
-    if (typeof enhancer !== 'function') {
-      throw new Error('Expected the enhancer to be a function.');
-    }
-
-    return enhancer(createStore)(reducer, preloadedState);
-  }
-
-  if (typeof reducer !== 'function') {
-    throw new Error('Expected the reducer to be a function.');
-  }
-
-  var currentReducer = reducer;
-  var currentState = preloadedState;
-  var currentListeners = [];
-  var nextListeners = currentListeners;
-  var isDispatching = false;
-  /**
-   * This makes a shallow copy of currentListeners so we can use
-   * nextListeners as a temporary list while dispatching.
-   *
-   * This prevents any bugs around consumers calling
-   * subscribe/unsubscribe in the middle of a dispatch.
-   */
-
-  function ensureCanMutateNextListeners() {
-    if (nextListeners === currentListeners) {
-      nextListeners = currentListeners.slice();
-    }
-  }
-  /**
-   * Reads the state tree managed by the store.
-   *
-   * @returns {any} The current state tree of your application.
-   */
-
-
-  function getState() {
-    if (isDispatching) {
-      throw new Error('You may not call store.getState() while the reducer is executing. ' + 'The reducer has already received the state as an argument. ' + 'Pass it down from the top reducer instead of reading it from the store.');
-    }
-
-    return currentState;
-  }
-  /**
-   * Adds a change listener. It will be called any time an action is dispatched,
-   * and some part of the state tree may potentially have changed. You may then
-   * call `getState()` to read the current state tree inside the callback.
-   *
-   * You may call `dispatch()` from a change listener, with the following
-   * caveats:
-   *
-   * 1. The subscriptions are snapshotted just before every `dispatch()` call.
-   * If you subscribe or unsubscribe while the listeners are being invoked, this
-   * will not have any effect on the `dispatch()` that is currently in progress.
-   * However, the next `dispatch()` call, whether nested or not, will use a more
-   * recent snapshot of the subscription list.
-   *
-   * 2. The listener should not expect to see all state changes, as the state
-   * might have been updated multiple times during a nested `dispatch()` before
-   * the listener is called. It is, however, guaranteed that all subscribers
-   * registered before the `dispatch()` started will be called with the latest
-   * state by the time it exits.
-   *
-   * @param {Function} listener A callback to be invoked on every dispatch.
-   * @returns {Function} A function to remove this change listener.
-   */
-
-
-  function subscribe(listener) {
-    if (typeof listener !== 'function') {
-      throw new Error('Expected the listener to be a function.');
-    }
-
-    if (isDispatching) {
-      throw new Error('You may not call store.subscribe() while the reducer is executing. ' + 'If you would like to be notified after the store has been updated, subscribe from a ' + 'component and invoke store.getState() in the callback to access the latest state. ' + 'See https://redux.js.org/api-reference/store#subscribelistener for more details.');
-    }
-
-    var isSubscribed = true;
-    ensureCanMutateNextListeners();
-    nextListeners.push(listener);
-    return function unsubscribe() {
-      if (!isSubscribed) {
-        return;
-      }
-
-      if (isDispatching) {
-        throw new Error('You may not unsubscribe from a store listener while the reducer is executing. ' + 'See https://redux.js.org/api-reference/store#subscribelistener for more details.');
-      }
-
-      isSubscribed = false;
-      ensureCanMutateNextListeners();
-      var index = nextListeners.indexOf(listener);
-      nextListeners.splice(index, 1);
-      currentListeners = null;
-    };
-  }
-  /**
-   * Dispatches an action. It is the only way to trigger a state change.
-   *
-   * The `reducer` function, used to create the store, will be called with the
-   * current state tree and the given `action`. Its return value will
-   * be considered the **next** state of the tree, and the change listeners
-   * will be notified.
-   *
-   * The base implementation only supports plain object actions. If you want to
-   * dispatch a Promise, an Observable, a thunk, or something else, you need to
-   * wrap your store creating function into the corresponding middleware. For
-   * example, see the documentation for the `redux-thunk` package. Even the
-   * middleware will eventually dispatch plain object actions using this method.
-   *
-   * @param {Object} action A plain object representing “what changed”. It is
-   * a good idea to keep actions serializable so you can record and replay user
-   * sessions, or use the time travelling `redux-devtools`. An action must have
-   * a `type` property which may not be `undefined`. It is a good idea to use
-   * string constants for action types.
-   *
-   * @returns {Object} For convenience, the same action object you dispatched.
-   *
-   * Note that, if you use a custom middleware, it may wrap `dispatch()` to
-   * return something else (for example, a Promise you can await).
-   */
-
-
-  function dispatch(action) {
-    if (!isPlainObject(action)) {
-      throw new Error('Actions must be plain objects. ' + 'Use custom middleware for async actions.');
-    }
-
-    if (typeof action.type === 'undefined') {
-      throw new Error('Actions may not have an undefined "type" property. ' + 'Have you misspelled a constant?');
-    }
-
-    if (isDispatching) {
-      throw new Error('Reducers may not dispatch actions.');
-    }
-
-    try {
-      isDispatching = true;
-      currentState = currentReducer(currentState, action);
-    } finally {
-      isDispatching = false;
-    }
-
-    var listeners = currentListeners = nextListeners;
-
-    for (var i = 0; i < listeners.length; i++) {
-      var listener = listeners[i];
-      listener();
-    }
-
-    return action;
-  }
-  /**
-   * Replaces the reducer currently used by the store to calculate the state.
-   *
-   * You might need this if your app implements code splitting and you want to
-   * load some of the reducers dynamically. You might also need this if you
-   * implement a hot reloading mechanism for Redux.
-   *
-   * @param {Function} nextReducer The reducer for the store to use instead.
-   * @returns {void}
-   */
-
-
-  function replaceReducer(nextReducer) {
-    if (typeof nextReducer !== 'function') {
-      throw new Error('Expected the nextReducer to be a function.');
-    }
-
-    currentReducer = nextReducer; // This action has a similiar effect to ActionTypes.INIT.
-    // Any reducers that existed in both the new and old rootReducer
-    // will receive the previous state. This effectively populates
-    // the new state tree with any relevant data from the old one.
-
-    dispatch({
-      type: ActionTypes.REPLACE
-    });
-  }
-  /**
-   * Interoperability point for observable/reactive libraries.
-   * @returns {observable} A minimal observable of state changes.
-   * For more information, see the observable proposal:
-   * https://github.com/tc39/proposal-observable
-   */
-
-
-  function observable() {
-    var _ref;
-
-    var outerSubscribe = subscribe;
-    return _ref = {
-      /**
-       * The minimal observable subscription method.
-       * @param {Object} observer Any object that can be used as an observer.
-       * The observer object should have a `next` method.
-       * @returns {subscription} An object with an `unsubscribe` method that can
-       * be used to unsubscribe the observable from the store, and prevent further
-       * emission of values from the observable.
-       */
-      subscribe: function subscribe(observer) {
-        if (typeof observer !== 'object' || observer === null) {
-          throw new TypeError('Expected the observer to be an object.');
-        }
-
-        function observeState() {
-          if (observer.next) {
-            observer.next(getState());
-          }
-        }
-
-        observeState();
-        var unsubscribe = outerSubscribe(observeState);
-        return {
-          unsubscribe: unsubscribe
-        };
-      }
-    }, _ref[es["a" /* default */]] = function () {
-      return this;
-    }, _ref;
-  } // When a store is created, an "INIT" action is dispatched so that every
-  // reducer returns their initial state. This effectively populates
-  // the initial state tree.
-
-
-  dispatch({
-    type: ActionTypes.INIT
-  });
-  return _ref2 = {
-    dispatch: dispatch,
-    subscribe: subscribe,
-    getState: getState,
-    replaceReducer: replaceReducer
-  }, _ref2[es["a" /* default */]] = observable, _ref2;
-}
-
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.4_react-dom@16.14.0+react@16.14.0/node_modules/react-redux/es/utils/warning.js
 /**
  * Prints a warning in the console if it exists.
  *
@@ -4786,379 +4542,20 @@ function warning(message) {
     // "break on all exceptions" in your console,
     // it would pause the execution at this line.
     throw new Error(message);
-  } catch (e) {} // eslint-disable-line no-empty
-
-}
-
-function getUndefinedStateErrorMessage(key, action) {
-  var actionType = action && action.type;
-  var actionDescription = actionType && "action \"" + String(actionType) + "\"" || 'an action';
-  return "Given " + actionDescription + ", reducer \"" + key + "\" returned undefined. " + "To ignore an action, you must explicitly return the previous state. " + "If you want this reducer to hold no value, you can return null instead of undefined.";
-}
-
-function getUnexpectedStateShapeWarningMessage(inputState, reducers, action, unexpectedKeyCache) {
-  var reducerKeys = Object.keys(reducers);
-  var argumentName = action && action.type === ActionTypes.INIT ? 'preloadedState argument passed to createStore' : 'previous state received by the reducer';
-
-  if (reducerKeys.length === 0) {
-    return 'Store does not have a valid reducer. Make sure the argument passed ' + 'to combineReducers is an object whose values are reducers.';
-  }
-
-  if (!isPlainObject(inputState)) {
-    return "The " + argumentName + " has unexpected type of \"" + {}.toString.call(inputState).match(/\s([a-z|A-Z]+)/)[1] + "\". Expected argument to be an object with the following " + ("keys: \"" + reducerKeys.join('", "') + "\"");
-  }
-
-  var unexpectedKeys = Object.keys(inputState).filter(function (key) {
-    return !reducers.hasOwnProperty(key) && !unexpectedKeyCache[key];
-  });
-  unexpectedKeys.forEach(function (key) {
-    unexpectedKeyCache[key] = true;
-  });
-  if (action && action.type === ActionTypes.REPLACE) return;
-
-  if (unexpectedKeys.length > 0) {
-    return "Unexpected " + (unexpectedKeys.length > 1 ? 'keys' : 'key') + " " + ("\"" + unexpectedKeys.join('", "') + "\" found in " + argumentName + ". ") + "Expected to find one of the known reducer keys instead: " + ("\"" + reducerKeys.join('", "') + "\". Unexpected keys will be ignored.");
-  }
-}
-
-function assertReducerShape(reducers) {
-  Object.keys(reducers).forEach(function (key) {
-    var reducer = reducers[key];
-    var initialState = reducer(undefined, {
-      type: ActionTypes.INIT
-    });
-
-    if (typeof initialState === 'undefined') {
-      throw new Error("Reducer \"" + key + "\" returned undefined during initialization. " + "If the state passed to the reducer is undefined, you must " + "explicitly return the initial state. The initial state may " + "not be undefined. If you don't want to set a value for this reducer, " + "you can use null instead of undefined.");
-    }
-
-    if (typeof reducer(undefined, {
-      type: ActionTypes.PROBE_UNKNOWN_ACTION()
-    }) === 'undefined') {
-      throw new Error("Reducer \"" + key + "\" returned undefined when probed with a random type. " + ("Don't try to handle " + ActionTypes.INIT + " or other actions in \"redux/*\" ") + "namespace. They are considered private. Instead, you must return the " + "current state for any unknown actions, unless it is undefined, " + "in which case you must return the initial state, regardless of the " + "action type. The initial state may not be undefined, but can be null.");
-    }
-  });
-}
-/**
- * Turns an object whose values are different reducer functions, into a single
- * reducer function. It will call every child reducer, and gather their results
- * into a single state object, whose keys correspond to the keys of the passed
- * reducer functions.
- *
- * @param {Object} reducers An object whose values correspond to different
- * reducer functions that need to be combined into one. One handy way to obtain
- * it is to use ES6 `import * as reducers` syntax. The reducers may never return
- * undefined for any action. Instead, they should return their initial state
- * if the state passed to them was undefined, and the current state for any
- * unrecognized action.
- *
- * @returns {Function} A reducer function that invokes every reducer inside the
- * passed object, and builds a state object with the same shape.
- */
-
-
-function combineReducers(reducers) {
-  var reducerKeys = Object.keys(reducers);
-  var finalReducers = {};
-
-  for (var i = 0; i < reducerKeys.length; i++) {
-    var key = reducerKeys[i];
-
-    if (false) {}
-
-    if (typeof reducers[key] === 'function') {
-      finalReducers[key] = reducers[key];
-    }
-  }
-
-  var finalReducerKeys = Object.keys(finalReducers); // This is used to make sure we don't warn about the same
-  // keys multiple times.
-
-  var unexpectedKeyCache;
-
-  if (false) {}
-
-  var shapeAssertionError;
-
-  try {
-    assertReducerShape(finalReducers);
-  } catch (e) {
-    shapeAssertionError = e;
-  }
-
-  return function combination(state, action) {
-    if (state === void 0) {
-      state = {};
-    }
-
-    if (shapeAssertionError) {
-      throw shapeAssertionError;
-    }
-
-    if (false) { var warningMessage; }
-
-    var hasChanged = false;
-    var nextState = {};
-
-    for (var _i = 0; _i < finalReducerKeys.length; _i++) {
-      var _key = finalReducerKeys[_i];
-      var reducer = finalReducers[_key];
-      var previousStateForKey = state[_key];
-      var nextStateForKey = reducer(previousStateForKey, action);
-
-      if (typeof nextStateForKey === 'undefined') {
-        var errorMessage = getUndefinedStateErrorMessage(_key, action);
-        throw new Error(errorMessage);
-      }
-
-      nextState[_key] = nextStateForKey;
-      hasChanged = hasChanged || nextStateForKey !== previousStateForKey;
-    }
-
-    hasChanged = hasChanged || finalReducerKeys.length !== Object.keys(state).length;
-    return hasChanged ? nextState : state;
-  };
-}
-
-function bindActionCreator(actionCreator, dispatch) {
-  return function () {
-    return dispatch(actionCreator.apply(this, arguments));
-  };
-}
-/**
- * Turns an object whose values are action creators, into an object with the
- * same keys, but with every function wrapped into a `dispatch` call so they
- * may be invoked directly. This is just a convenience method, as you can call
- * `store.dispatch(MyActionCreators.doSomething())` yourself just fine.
- *
- * For convenience, you can also pass an action creator as the first argument,
- * and get a dispatch wrapped function in return.
- *
- * @param {Function|Object} actionCreators An object whose values are action
- * creator functions. One handy way to obtain it is to use ES6 `import * as`
- * syntax. You may also pass a single function.
- *
- * @param {Function} dispatch The `dispatch` function available on your Redux
- * store.
- *
- * @returns {Function|Object} The object mimicking the original object, but with
- * every action creator wrapped into the `dispatch` call. If you passed a
- * function as `actionCreators`, the return value will also be a single
- * function.
- */
-
-
-function bindActionCreators(actionCreators, dispatch) {
-  if (typeof actionCreators === 'function') {
-    return bindActionCreator(actionCreators, dispatch);
-  }
-
-  if (typeof actionCreators !== 'object' || actionCreators === null) {
-    throw new Error("bindActionCreators expected an object or a function, instead received " + (actionCreators === null ? 'null' : typeof actionCreators) + ". " + "Did you write \"import ActionCreators from\" instead of \"import * as ActionCreators from\"?");
-  }
-
-  var boundActionCreators = {};
-
-  for (var key in actionCreators) {
-    var actionCreator = actionCreators[key];
-
-    if (typeof actionCreator === 'function') {
-      boundActionCreators[key] = bindActionCreator(actionCreator, dispatch);
-    }
-  }
-
-  return boundActionCreators;
-}
-
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-}
-
-function ownKeys(object, enumerableOnly) {
-  var keys = Object.keys(object);
-
-  if (Object.getOwnPropertySymbols) {
-    keys.push.apply(keys, Object.getOwnPropertySymbols(object));
-  }
-
-  if (enumerableOnly) keys = keys.filter(function (sym) {
-    return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-  });
-  return keys;
-}
-
-function _objectSpread2(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? arguments[i] : {};
-
-    if (i % 2) {
-      ownKeys(source, true).forEach(function (key) {
-        _defineProperty(target, key, source[key]);
-      });
-    } else if (Object.getOwnPropertyDescriptors) {
-      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
-    } else {
-      ownKeys(source).forEach(function (key) {
-        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-      });
-    }
-  }
-
-  return target;
-}
-
-/**
- * Composes single-argument functions from right to left. The rightmost
- * function can take multiple arguments as it provides the signature for
- * the resulting composite function.
- *
- * @param {...Function} funcs The functions to compose.
- * @returns {Function} A function obtained by composing the argument functions
- * from right to left. For example, compose(f, g, h) is identical to doing
- * (...args) => f(g(h(...args))).
- */
-function compose() {
-  for (var _len = arguments.length, funcs = new Array(_len), _key = 0; _key < _len; _key++) {
-    funcs[_key] = arguments[_key];
-  }
-
-  if (funcs.length === 0) {
-    return function (arg) {
-      return arg;
-    };
-  }
-
-  if (funcs.length === 1) {
-    return funcs[0];
-  }
-
-  return funcs.reduce(function (a, b) {
-    return function () {
-      return a(b.apply(void 0, arguments));
-    };
-  });
-}
-
-/**
- * Creates a store enhancer that applies middleware to the dispatch method
- * of the Redux store. This is handy for a variety of tasks, such as expressing
- * asynchronous actions in a concise manner, or logging every action payload.
- *
- * See `redux-thunk` package as an example of the Redux middleware.
- *
- * Because middleware is potentially asynchronous, this should be the first
- * store enhancer in the composition chain.
- *
- * Note that each middleware will be given the `dispatch` and `getState` functions
- * as named arguments.
- *
- * @param {...Function} middlewares The middleware chain to be applied.
- * @returns {Function} A store enhancer applying the middleware.
- */
-
-function applyMiddleware() {
-  for (var _len = arguments.length, middlewares = new Array(_len), _key = 0; _key < _len; _key++) {
-    middlewares[_key] = arguments[_key];
-  }
-
-  return function (createStore) {
-    return function () {
-      var store = createStore.apply(void 0, arguments);
-
-      var _dispatch = function dispatch() {
-        throw new Error('Dispatching while constructing your middleware is not allowed. ' + 'Other middleware would not be applied to this dispatch.');
-      };
-
-      var middlewareAPI = {
-        getState: store.getState,
-        dispatch: function dispatch() {
-          return _dispatch.apply(void 0, arguments);
-        }
-      };
-      var chain = middlewares.map(function (middleware) {
-        return middleware(middlewareAPI);
-      });
-      _dispatch = compose.apply(void 0, chain)(store.dispatch);
-      return _objectSpread2({}, store, {
-        dispatch: _dispatch
-      });
-    };
-  };
-}
-
-/*
- * This is a dummy function to check if the function name has been altered by minification.
- * If the function has been minified and NODE_ENV !== 'production', warn the user.
- */
-
-function isCrushed() {}
-
-if (false) {}
-
-
-
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.2_bbabd8c34ea235719dc50e75b43f85a4/node_modules/react-redux/es/utils/isPlainObject.js
-/**
- * @param {any} obj The object to inspect.
- * @returns {boolean} True if the argument appears to be a plain object.
- */
-function isPlainObject_isPlainObject(obj) {
-  if (typeof obj !== 'object' || obj === null) return false;
-  var proto = Object.getPrototypeOf(obj);
-  if (proto === null) return true;
-  var baseProto = proto;
-
-  while (Object.getPrototypeOf(baseProto) !== null) {
-    baseProto = Object.getPrototypeOf(baseProto);
-  }
-
-  return proto === baseProto;
-}
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.2_bbabd8c34ea235719dc50e75b43f85a4/node_modules/react-redux/es/utils/warning.js
-/**
- * Prints a warning in the console if it exists.
- *
- * @param {String} message The warning message.
- * @returns {void}
- */
-function warning_warning(message) {
-  /* eslint-disable no-console */
-  if (typeof console !== 'undefined' && typeof console.error === 'function') {
-    console.error(message);
-  }
-  /* eslint-enable no-console */
-
-
-  try {
-    // This error was thrown as a convenience so that if you enable
-    // "break on all exceptions" in your console,
-    // it would pause the execution at this line.
-    throw new Error(message);
     /* eslint-disable no-empty */
   } catch (e) {}
   /* eslint-enable no-empty */
 
 }
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.2_bbabd8c34ea235719dc50e75b43f85a4/node_modules/react-redux/es/utils/verifyPlainObject.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.4_react-dom@16.14.0+react@16.14.0/node_modules/react-redux/es/utils/verifyPlainObject.js
 
 
 function verifyPlainObject(value, displayName, methodName) {
-  if (!isPlainObject_isPlainObject(value)) {
-    warning_warning(methodName + "() in " + displayName + " must return a plain object. Instead received " + value + ".");
+  if (!isPlainObject(value)) {
+    warning(methodName + "() in " + displayName + " must return a plain object. Instead received " + value + ".");
   }
 }
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.2_bbabd8c34ea235719dc50e75b43f85a4/node_modules/react-redux/es/connect/wrapMapToProps.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.4_react-dom@16.14.0+react@16.14.0/node_modules/react-redux/es/connect/wrapMapToProps.js
 
 function wrapMapToPropsConstant(getConstant) {
   return function initConstantSelector(dispatch, options) {
@@ -5223,7 +4620,7 @@ function wrapMapToPropsFunc(mapToProps, methodName) {
     return proxy;
   };
 }
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.2_bbabd8c34ea235719dc50e75b43f85a4/node_modules/react-redux/es/connect/mapDispatchToProps.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.4_react-dom@16.14.0+react@16.14.0/node_modules/react-redux/es/connect/mapDispatchToProps.js
 
 
 function whenMapDispatchToPropsIsFunction(mapDispatchToProps) {
@@ -5242,7 +4639,7 @@ function whenMapDispatchToPropsIsObject(mapDispatchToProps) {
   }) : undefined;
 }
 /* harmony default export */ var connect_mapDispatchToProps = ([whenMapDispatchToPropsIsFunction, whenMapDispatchToPropsIsMissing, whenMapDispatchToPropsIsObject]);
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.2_bbabd8c34ea235719dc50e75b43f85a4/node_modules/react-redux/es/connect/mapStateToProps.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.4_react-dom@16.14.0+react@16.14.0/node_modules/react-redux/es/connect/mapStateToProps.js
 
 function whenMapStateToPropsIsFunction(mapStateToProps) {
   return typeof mapStateToProps === 'function' ? wrapMapToPropsFunc(mapStateToProps, 'mapStateToProps') : undefined;
@@ -5253,7 +4650,7 @@ function whenMapStateToPropsIsMissing(mapStateToProps) {
   }) : undefined;
 }
 /* harmony default export */ var connect_mapStateToProps = ([whenMapStateToPropsIsFunction, whenMapStateToPropsIsMissing]);
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.2_bbabd8c34ea235719dc50e75b43f85a4/node_modules/react-redux/es/connect/mergeProps.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.4_react-dom@16.14.0+react@16.14.0/node_modules/react-redux/es/connect/mergeProps.js
 
 
 function defaultMergeProps(stateProps, dispatchProps, ownProps) {
@@ -5290,7 +4687,7 @@ function whenMergePropsIsOmitted(mergeProps) {
   } : undefined;
 }
 /* harmony default export */ var connect_mergeProps = ([whenMergePropsIsFunction, whenMergePropsIsOmitted]);
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.2_bbabd8c34ea235719dc50e75b43f85a4/node_modules/react-redux/es/connect/verifySubselectors.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.4_react-dom@16.14.0+react@16.14.0/node_modules/react-redux/es/connect/verifySubselectors.js
 
 
 function verify(selector, methodName, displayName) {
@@ -5298,7 +4695,7 @@ function verify(selector, methodName, displayName) {
     throw new Error("Unexpected value for " + methodName + " in " + displayName + ".");
   } else if (methodName === 'mapStateToProps' || methodName === 'mapDispatchToProps') {
     if (!Object.prototype.hasOwnProperty.call(selector, 'dependsOnOwnProps')) {
-      warning_warning("The selector for " + methodName + " of " + displayName + " did not specify a value for dependsOnOwnProps.");
+      warning("The selector for " + methodName + " of " + displayName + " did not specify a value for dependsOnOwnProps.");
     }
   }
 }
@@ -5308,7 +4705,7 @@ function verifySubselectors(mapStateToProps, mapDispatchToProps, mergeProps, dis
   verify(mapDispatchToProps, 'mapDispatchToProps', displayName);
   verify(mergeProps, 'mergeProps', displayName);
 }
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.2_bbabd8c34ea235719dc50e75b43f85a4/node_modules/react-redux/es/connect/selectorFactory.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.4_react-dom@16.14.0+react@16.14.0/node_modules/react-redux/es/connect/selectorFactory.js
 
 
 function impureFinalPropsSelectorFactory(mapStateToProps, mapDispatchToProps, mergeProps, dispatch) {
@@ -5394,7 +4791,7 @@ function finalPropsSelectorFactory(dispatch, _ref2) {
   var selectorFactory = options.pure ? pureFinalPropsSelectorFactory : impureFinalPropsSelectorFactory;
   return selectorFactory(mapStateToProps, mapDispatchToProps, mergeProps, dispatch, options);
 }
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.2_bbabd8c34ea235719dc50e75b43f85a4/node_modules/react-redux/es/connect/connect.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.4_react-dom@16.14.0+react@16.14.0/node_modules/react-redux/es/connect/connect.js
 
 
 
@@ -5493,7 +4890,7 @@ function createConnect(_temp) {
   };
 }
 /* harmony default export */ var connect_connect = (/*#__PURE__*/createConnect());
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.2_bbabd8c34ea235719dc50e75b43f85a4/node_modules/react-redux/es/hooks/useReduxContext.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.4_react-dom@16.14.0+react@16.14.0/node_modules/react-redux/es/hooks/useReduxContext.js
 
 
 /**
@@ -5520,7 +4917,7 @@ function useReduxContext_useReduxContext() {
 
   return contextValue;
 }
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.2_bbabd8c34ea235719dc50e75b43f85a4/node_modules/react-redux/es/hooks/useStore.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.4_react-dom@16.14.0+react@16.14.0/node_modules/react-redux/es/hooks/useStore.js
 
 
 
@@ -5563,7 +4960,7 @@ function createStoreHook(context) {
  */
 
 var useStore_useStore = /*#__PURE__*/createStoreHook();
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.2_bbabd8c34ea235719dc50e75b43f85a4/node_modules/react-redux/es/hooks/useDispatch.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.4_react-dom@16.14.0+react@16.14.0/node_modules/react-redux/es/hooks/useDispatch.js
 
 
 /**
@@ -5607,7 +5004,7 @@ function createDispatchHook(context) {
  */
 
 var useDispatch = /*#__PURE__*/createDispatchHook();
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.2_bbabd8c34ea235719dc50e75b43f85a4/node_modules/react-redux/es/hooks/useSelector.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.4_react-dom@16.14.0+react@16.14.0/node_modules/react-redux/es/hooks/useSelector.js
 
 
 
@@ -5636,7 +5033,13 @@ function useSelectorWithStoreAndSubscription(selector, equalityFn, store, contex
 
   try {
     if (selector !== latestSelector.current || storeState !== latestStoreState.current || latestSubscriptionCallbackError.current) {
-      selectedState = selector(storeState);
+      var newSelectedState = selector(storeState); // ensure latest selected state is reused so that a custom equality function can result in identical references
+
+      if (latestSelectedState.current === undefined || !equalityFn(newSelectedState, latestSelectedState.current)) {
+        selectedState = newSelectedState;
+      } else {
+        selectedState = latestSelectedState.current;
+      }
     } else {
       selectedState = latestSelectedState.current;
     }
@@ -5657,13 +5060,16 @@ function useSelectorWithStoreAndSubscription(selector, equalityFn, store, contex
   useIsomorphicLayoutEffect(function () {
     function checkForUpdates() {
       try {
-        var newSelectedState = latestSelector.current(store.getState());
+        var newStoreState = store.getState();
 
-        if (equalityFn(newSelectedState, latestSelectedState.current)) {
+        var _newSelectedState = latestSelector.current(newStoreState);
+
+        if (equalityFn(_newSelectedState, latestSelectedState.current)) {
           return;
         }
 
-        latestSelectedState.current = newSelectedState;
+        latestSelectedState.current = _newSelectedState;
+        latestStoreState.current = newStoreState;
       } catch (err) {
         // we ignore all errors here, since when the component
         // is re-rendered, the selectors are called again, and
@@ -5742,13 +5148,13 @@ function createSelectorHook(context) {
 
 var useSelector_useSelector = /*#__PURE__*/createSelectorHook();
 // EXTERNAL MODULE: external "ReactDOM"
-var external_ReactDOM_ = __webpack_require__(7);
+var external_ReactDOM_ = __webpack_require__(8);
 var external_ReactDOM_default = /*#__PURE__*/__webpack_require__.n(external_ReactDOM_);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.2_bbabd8c34ea235719dc50e75b43f85a4/node_modules/react-redux/es/utils/reactBatchedUpdates.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.4_react-dom@16.14.0+react@16.14.0/node_modules/react-redux/es/utils/reactBatchedUpdates.js
 /* eslint-disable import/no-unresolved */
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.2_bbabd8c34ea235719dc50e75b43f85a4/node_modules/react-redux/es/index.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-redux/7.2.4_react-dom@16.14.0+react@16.14.0/node_modules/react-redux/es/index.js
 
 
 
@@ -5761,16 +5167,680 @@ var external_ReactDOM_default = /*#__PURE__*/__webpack_require__.n(external_Reac
 
 setBatch(external_ReactDOM_["unstable_batchedUpdates"]);
 
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/lodash/4.17.20/node_modules/lodash/debounce.js
-var debounce = __webpack_require__(41);
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/lodash/4.17.21/node_modules/lodash/debounce.js
+var debounce = __webpack_require__(40);
 var debounce_default = /*#__PURE__*/__webpack_require__.n(debounce);
 
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.14.6/node_modules/@babel/runtime/helpers/esm/defineProperty.js
+var defineProperty = __webpack_require__(13);
+
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.14.6/node_modules/@babel/runtime/helpers/esm/objectSpread2.js
+
+
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+
+    if (enumerableOnly) {
+      symbols = symbols.filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+      });
+    }
+
+    keys.push.apply(keys, symbols);
+  }
+
+  return keys;
+}
+
+function _objectSpread2(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+
+    if (i % 2) {
+      ownKeys(Object(source), true).forEach(function (key) {
+        Object(defineProperty["a" /* default */])(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(Object(source)).forEach(function (key) {
+        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+      });
+    }
+  }
+
+  return target;
+}
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/redux/4.1.0/node_modules/redux/es/redux.js
+
+
+/**
+ * Adapted from React: https://github.com/facebook/react/blob/master/packages/shared/formatProdErrorMessage.js
+ *
+ * Do not require this module directly! Use normal throw error calls. These messages will be replaced with error codes
+ * during build.
+ * @param {number} code
+ */
+function formatProdErrorMessage(code) {
+  return "Minified Redux error #" + code + "; visit https://redux.js.org/Errors?code=" + code + " for the full message or " + 'use the non-minified dev environment for full errors. ';
+}
+
+// Inlined version of the `symbol-observable` polyfill
+var $$observable = (function () {
+  return typeof Symbol === 'function' && Symbol.observable || '@@observable';
+})();
+
+/**
+ * These are private action types reserved by Redux.
+ * For any unknown actions, you must return the current state.
+ * If the current state is undefined, you must return the initial state.
+ * Do not reference these action types directly in your code.
+ */
+var randomString = function randomString() {
+  return Math.random().toString(36).substring(7).split('').join('.');
+};
+
+var ActionTypes = {
+  INIT: "@@redux/INIT" + randomString(),
+  REPLACE: "@@redux/REPLACE" + randomString(),
+  PROBE_UNKNOWN_ACTION: function PROBE_UNKNOWN_ACTION() {
+    return "@@redux/PROBE_UNKNOWN_ACTION" + randomString();
+  }
+};
+
+/**
+ * @param {any} obj The object to inspect.
+ * @returns {boolean} True if the argument appears to be a plain object.
+ */
+function redux_isPlainObject(obj) {
+  if (typeof obj !== 'object' || obj === null) return false;
+  var proto = obj;
+
+  while (Object.getPrototypeOf(proto) !== null) {
+    proto = Object.getPrototypeOf(proto);
+  }
+
+  return Object.getPrototypeOf(obj) === proto;
+}
+
+function kindOf(val) {
+  var typeOfVal = typeof val;
+
+  if (false) {}
+
+  return typeOfVal;
+}
+
+/**
+ * Creates a Redux store that holds the state tree.
+ * The only way to change the data in the store is to call `dispatch()` on it.
+ *
+ * There should only be a single store in your app. To specify how different
+ * parts of the state tree respond to actions, you may combine several reducers
+ * into a single reducer function by using `combineReducers`.
+ *
+ * @param {Function} reducer A function that returns the next state tree, given
+ * the current state tree and the action to handle.
+ *
+ * @param {any} [preloadedState] The initial state. You may optionally specify it
+ * to hydrate the state from the server in universal apps, or to restore a
+ * previously serialized user session.
+ * If you use `combineReducers` to produce the root reducer function, this must be
+ * an object with the same shape as `combineReducers` keys.
+ *
+ * @param {Function} [enhancer] The store enhancer. You may optionally specify it
+ * to enhance the store with third-party capabilities such as middleware,
+ * time travel, persistence, etc. The only store enhancer that ships with Redux
+ * is `applyMiddleware()`.
+ *
+ * @returns {Store} A Redux store that lets you read the state, dispatch actions
+ * and subscribe to changes.
+ */
+
+function redux_createStore(reducer, preloadedState, enhancer) {
+  var _ref2;
+
+  if (typeof preloadedState === 'function' && typeof enhancer === 'function' || typeof enhancer === 'function' && typeof arguments[3] === 'function') {
+    throw new Error( true ? formatProdErrorMessage(0) : undefined);
+  }
+
+  if (typeof preloadedState === 'function' && typeof enhancer === 'undefined') {
+    enhancer = preloadedState;
+    preloadedState = undefined;
+  }
+
+  if (typeof enhancer !== 'undefined') {
+    if (typeof enhancer !== 'function') {
+      throw new Error( true ? formatProdErrorMessage(1) : undefined);
+    }
+
+    return enhancer(redux_createStore)(reducer, preloadedState);
+  }
+
+  if (typeof reducer !== 'function') {
+    throw new Error( true ? formatProdErrorMessage(2) : undefined);
+  }
+
+  var currentReducer = reducer;
+  var currentState = preloadedState;
+  var currentListeners = [];
+  var nextListeners = currentListeners;
+  var isDispatching = false;
+  /**
+   * This makes a shallow copy of currentListeners so we can use
+   * nextListeners as a temporary list while dispatching.
+   *
+   * This prevents any bugs around consumers calling
+   * subscribe/unsubscribe in the middle of a dispatch.
+   */
+
+  function ensureCanMutateNextListeners() {
+    if (nextListeners === currentListeners) {
+      nextListeners = currentListeners.slice();
+    }
+  }
+  /**
+   * Reads the state tree managed by the store.
+   *
+   * @returns {any} The current state tree of your application.
+   */
+
+
+  function getState() {
+    if (isDispatching) {
+      throw new Error( true ? formatProdErrorMessage(3) : undefined);
+    }
+
+    return currentState;
+  }
+  /**
+   * Adds a change listener. It will be called any time an action is dispatched,
+   * and some part of the state tree may potentially have changed. You may then
+   * call `getState()` to read the current state tree inside the callback.
+   *
+   * You may call `dispatch()` from a change listener, with the following
+   * caveats:
+   *
+   * 1. The subscriptions are snapshotted just before every `dispatch()` call.
+   * If you subscribe or unsubscribe while the listeners are being invoked, this
+   * will not have any effect on the `dispatch()` that is currently in progress.
+   * However, the next `dispatch()` call, whether nested or not, will use a more
+   * recent snapshot of the subscription list.
+   *
+   * 2. The listener should not expect to see all state changes, as the state
+   * might have been updated multiple times during a nested `dispatch()` before
+   * the listener is called. It is, however, guaranteed that all subscribers
+   * registered before the `dispatch()` started will be called with the latest
+   * state by the time it exits.
+   *
+   * @param {Function} listener A callback to be invoked on every dispatch.
+   * @returns {Function} A function to remove this change listener.
+   */
+
+
+  function subscribe(listener) {
+    if (typeof listener !== 'function') {
+      throw new Error( true ? formatProdErrorMessage(4) : undefined);
+    }
+
+    if (isDispatching) {
+      throw new Error( true ? formatProdErrorMessage(5) : undefined);
+    }
+
+    var isSubscribed = true;
+    ensureCanMutateNextListeners();
+    nextListeners.push(listener);
+    return function unsubscribe() {
+      if (!isSubscribed) {
+        return;
+      }
+
+      if (isDispatching) {
+        throw new Error( true ? formatProdErrorMessage(6) : undefined);
+      }
+
+      isSubscribed = false;
+      ensureCanMutateNextListeners();
+      var index = nextListeners.indexOf(listener);
+      nextListeners.splice(index, 1);
+      currentListeners = null;
+    };
+  }
+  /**
+   * Dispatches an action. It is the only way to trigger a state change.
+   *
+   * The `reducer` function, used to create the store, will be called with the
+   * current state tree and the given `action`. Its return value will
+   * be considered the **next** state of the tree, and the change listeners
+   * will be notified.
+   *
+   * The base implementation only supports plain object actions. If you want to
+   * dispatch a Promise, an Observable, a thunk, or something else, you need to
+   * wrap your store creating function into the corresponding middleware. For
+   * example, see the documentation for the `redux-thunk` package. Even the
+   * middleware will eventually dispatch plain object actions using this method.
+   *
+   * @param {Object} action A plain object representing “what changed”. It is
+   * a good idea to keep actions serializable so you can record and replay user
+   * sessions, or use the time travelling `redux-devtools`. An action must have
+   * a `type` property which may not be `undefined`. It is a good idea to use
+   * string constants for action types.
+   *
+   * @returns {Object} For convenience, the same action object you dispatched.
+   *
+   * Note that, if you use a custom middleware, it may wrap `dispatch()` to
+   * return something else (for example, a Promise you can await).
+   */
+
+
+  function dispatch(action) {
+    if (!redux_isPlainObject(action)) {
+      throw new Error( true ? formatProdErrorMessage(7) : undefined);
+    }
+
+    if (typeof action.type === 'undefined') {
+      throw new Error( true ? formatProdErrorMessage(8) : undefined);
+    }
+
+    if (isDispatching) {
+      throw new Error( true ? formatProdErrorMessage(9) : undefined);
+    }
+
+    try {
+      isDispatching = true;
+      currentState = currentReducer(currentState, action);
+    } finally {
+      isDispatching = false;
+    }
+
+    var listeners = currentListeners = nextListeners;
+
+    for (var i = 0; i < listeners.length; i++) {
+      var listener = listeners[i];
+      listener();
+    }
+
+    return action;
+  }
+  /**
+   * Replaces the reducer currently used by the store to calculate the state.
+   *
+   * You might need this if your app implements code splitting and you want to
+   * load some of the reducers dynamically. You might also need this if you
+   * implement a hot reloading mechanism for Redux.
+   *
+   * @param {Function} nextReducer The reducer for the store to use instead.
+   * @returns {void}
+   */
+
+
+  function replaceReducer(nextReducer) {
+    if (typeof nextReducer !== 'function') {
+      throw new Error( true ? formatProdErrorMessage(10) : undefined);
+    }
+
+    currentReducer = nextReducer; // This action has a similiar effect to ActionTypes.INIT.
+    // Any reducers that existed in both the new and old rootReducer
+    // will receive the previous state. This effectively populates
+    // the new state tree with any relevant data from the old one.
+
+    dispatch({
+      type: ActionTypes.REPLACE
+    });
+  }
+  /**
+   * Interoperability point for observable/reactive libraries.
+   * @returns {observable} A minimal observable of state changes.
+   * For more information, see the observable proposal:
+   * https://github.com/tc39/proposal-observable
+   */
+
+
+  function observable() {
+    var _ref;
+
+    var outerSubscribe = subscribe;
+    return _ref = {
+      /**
+       * The minimal observable subscription method.
+       * @param {Object} observer Any object that can be used as an observer.
+       * The observer object should have a `next` method.
+       * @returns {subscription} An object with an `unsubscribe` method that can
+       * be used to unsubscribe the observable from the store, and prevent further
+       * emission of values from the observable.
+       */
+      subscribe: function subscribe(observer) {
+        if (typeof observer !== 'object' || observer === null) {
+          throw new Error( true ? formatProdErrorMessage(11) : undefined);
+        }
+
+        function observeState() {
+          if (observer.next) {
+            observer.next(getState());
+          }
+        }
+
+        observeState();
+        var unsubscribe = outerSubscribe(observeState);
+        return {
+          unsubscribe: unsubscribe
+        };
+      }
+    }, _ref[$$observable] = function () {
+      return this;
+    }, _ref;
+  } // When a store is created, an "INIT" action is dispatched so that every
+  // reducer returns their initial state. This effectively populates
+  // the initial state tree.
+
+
+  dispatch({
+    type: ActionTypes.INIT
+  });
+  return _ref2 = {
+    dispatch: dispatch,
+    subscribe: subscribe,
+    getState: getState,
+    replaceReducer: replaceReducer
+  }, _ref2[$$observable] = observable, _ref2;
+}
+
+/**
+ * Prints a warning in the console if it exists.
+ *
+ * @param {String} message The warning message.
+ * @returns {void}
+ */
+function redux_warning(message) {
+  /* eslint-disable no-console */
+  if (typeof console !== 'undefined' && typeof console.error === 'function') {
+    console.error(message);
+  }
+  /* eslint-enable no-console */
+
+
+  try {
+    // This error was thrown as a convenience so that if you enable
+    // "break on all exceptions" in your console,
+    // it would pause the execution at this line.
+    throw new Error(message);
+  } catch (e) {} // eslint-disable-line no-empty
+
+}
+
+function getUnexpectedStateShapeWarningMessage(inputState, reducers, action, unexpectedKeyCache) {
+  var reducerKeys = Object.keys(reducers);
+  var argumentName = action && action.type === ActionTypes.INIT ? 'preloadedState argument passed to createStore' : 'previous state received by the reducer';
+
+  if (reducerKeys.length === 0) {
+    return 'Store does not have a valid reducer. Make sure the argument passed ' + 'to combineReducers is an object whose values are reducers.';
+  }
+
+  if (!redux_isPlainObject(inputState)) {
+    return "The " + argumentName + " has unexpected type of \"" + kindOf(inputState) + "\". Expected argument to be an object with the following " + ("keys: \"" + reducerKeys.join('", "') + "\"");
+  }
+
+  var unexpectedKeys = Object.keys(inputState).filter(function (key) {
+    return !reducers.hasOwnProperty(key) && !unexpectedKeyCache[key];
+  });
+  unexpectedKeys.forEach(function (key) {
+    unexpectedKeyCache[key] = true;
+  });
+  if (action && action.type === ActionTypes.REPLACE) return;
+
+  if (unexpectedKeys.length > 0) {
+    return "Unexpected " + (unexpectedKeys.length > 1 ? 'keys' : 'key') + " " + ("\"" + unexpectedKeys.join('", "') + "\" found in " + argumentName + ". ") + "Expected to find one of the known reducer keys instead: " + ("\"" + reducerKeys.join('", "') + "\". Unexpected keys will be ignored.");
+  }
+}
+
+function assertReducerShape(reducers) {
+  Object.keys(reducers).forEach(function (key) {
+    var reducer = reducers[key];
+    var initialState = reducer(undefined, {
+      type: ActionTypes.INIT
+    });
+
+    if (typeof initialState === 'undefined') {
+      throw new Error( true ? formatProdErrorMessage(12) : undefined);
+    }
+
+    if (typeof reducer(undefined, {
+      type: ActionTypes.PROBE_UNKNOWN_ACTION()
+    }) === 'undefined') {
+      throw new Error( true ? formatProdErrorMessage(13) : undefined);
+    }
+  });
+}
+/**
+ * Turns an object whose values are different reducer functions, into a single
+ * reducer function. It will call every child reducer, and gather their results
+ * into a single state object, whose keys correspond to the keys of the passed
+ * reducer functions.
+ *
+ * @param {Object} reducers An object whose values correspond to different
+ * reducer functions that need to be combined into one. One handy way to obtain
+ * it is to use ES6 `import * as reducers` syntax. The reducers may never return
+ * undefined for any action. Instead, they should return their initial state
+ * if the state passed to them was undefined, and the current state for any
+ * unrecognized action.
+ *
+ * @returns {Function} A reducer function that invokes every reducer inside the
+ * passed object, and builds a state object with the same shape.
+ */
+
+
+function combineReducers(reducers) {
+  var reducerKeys = Object.keys(reducers);
+  var finalReducers = {};
+
+  for (var i = 0; i < reducerKeys.length; i++) {
+    var key = reducerKeys[i];
+
+    if (false) {}
+
+    if (typeof reducers[key] === 'function') {
+      finalReducers[key] = reducers[key];
+    }
+  }
+
+  var finalReducerKeys = Object.keys(finalReducers); // This is used to make sure we don't warn about the same
+  // keys multiple times.
+
+  var unexpectedKeyCache;
+
+  if (false) {}
+
+  var shapeAssertionError;
+
+  try {
+    assertReducerShape(finalReducers);
+  } catch (e) {
+    shapeAssertionError = e;
+  }
+
+  return function combination(state, action) {
+    if (state === void 0) {
+      state = {};
+    }
+
+    if (shapeAssertionError) {
+      throw shapeAssertionError;
+    }
+
+    if (false) { var warningMessage; }
+
+    var hasChanged = false;
+    var nextState = {};
+
+    for (var _i = 0; _i < finalReducerKeys.length; _i++) {
+      var _key = finalReducerKeys[_i];
+      var reducer = finalReducers[_key];
+      var previousStateForKey = state[_key];
+      var nextStateForKey = reducer(previousStateForKey, action);
+
+      if (typeof nextStateForKey === 'undefined') {
+        var actionType = action && action.type;
+        throw new Error( true ? formatProdErrorMessage(14) : undefined);
+      }
+
+      nextState[_key] = nextStateForKey;
+      hasChanged = hasChanged || nextStateForKey !== previousStateForKey;
+    }
+
+    hasChanged = hasChanged || finalReducerKeys.length !== Object.keys(state).length;
+    return hasChanged ? nextState : state;
+  };
+}
+
+function bindActionCreator(actionCreator, dispatch) {
+  return function () {
+    return dispatch(actionCreator.apply(this, arguments));
+  };
+}
+/**
+ * Turns an object whose values are action creators, into an object with the
+ * same keys, but with every function wrapped into a `dispatch` call so they
+ * may be invoked directly. This is just a convenience method, as you can call
+ * `store.dispatch(MyActionCreators.doSomething())` yourself just fine.
+ *
+ * For convenience, you can also pass an action creator as the first argument,
+ * and get a dispatch wrapped function in return.
+ *
+ * @param {Function|Object} actionCreators An object whose values are action
+ * creator functions. One handy way to obtain it is to use ES6 `import * as`
+ * syntax. You may also pass a single function.
+ *
+ * @param {Function} dispatch The `dispatch` function available on your Redux
+ * store.
+ *
+ * @returns {Function|Object} The object mimicking the original object, but with
+ * every action creator wrapped into the `dispatch` call. If you passed a
+ * function as `actionCreators`, the return value will also be a single
+ * function.
+ */
+
+
+function redux_bindActionCreators(actionCreators, dispatch) {
+  if (typeof actionCreators === 'function') {
+    return bindActionCreator(actionCreators, dispatch);
+  }
+
+  if (typeof actionCreators !== 'object' || actionCreators === null) {
+    throw new Error( true ? formatProdErrorMessage(16) : undefined);
+  }
+
+  var boundActionCreators = {};
+
+  for (var key in actionCreators) {
+    var actionCreator = actionCreators[key];
+
+    if (typeof actionCreator === 'function') {
+      boundActionCreators[key] = bindActionCreator(actionCreator, dispatch);
+    }
+  }
+
+  return boundActionCreators;
+}
+
+/**
+ * Composes single-argument functions from right to left. The rightmost
+ * function can take multiple arguments as it provides the signature for
+ * the resulting composite function.
+ *
+ * @param {...Function} funcs The functions to compose.
+ * @returns {Function} A function obtained by composing the argument functions
+ * from right to left. For example, compose(f, g, h) is identical to doing
+ * (...args) => f(g(h(...args))).
+ */
+function compose() {
+  for (var _len = arguments.length, funcs = new Array(_len), _key = 0; _key < _len; _key++) {
+    funcs[_key] = arguments[_key];
+  }
+
+  if (funcs.length === 0) {
+    return function (arg) {
+      return arg;
+    };
+  }
+
+  if (funcs.length === 1) {
+    return funcs[0];
+  }
+
+  return funcs.reduce(function (a, b) {
+    return function () {
+      return a(b.apply(void 0, arguments));
+    };
+  });
+}
+
+/**
+ * Creates a store enhancer that applies middleware to the dispatch method
+ * of the Redux store. This is handy for a variety of tasks, such as expressing
+ * asynchronous actions in a concise manner, or logging every action payload.
+ *
+ * See `redux-thunk` package as an example of the Redux middleware.
+ *
+ * Because middleware is potentially asynchronous, this should be the first
+ * store enhancer in the composition chain.
+ *
+ * Note that each middleware will be given the `dispatch` and `getState` functions
+ * as named arguments.
+ *
+ * @param {...Function} middlewares The middleware chain to be applied.
+ * @returns {Function} A store enhancer applying the middleware.
+ */
+
+function applyMiddleware() {
+  for (var _len = arguments.length, middlewares = new Array(_len), _key = 0; _key < _len; _key++) {
+    middlewares[_key] = arguments[_key];
+  }
+
+  return function (createStore) {
+    return function () {
+      var store = createStore.apply(void 0, arguments);
+
+      var _dispatch = function dispatch() {
+        throw new Error( true ? formatProdErrorMessage(15) : undefined);
+      };
+
+      var middlewareAPI = {
+        getState: store.getState,
+        dispatch: function dispatch() {
+          return _dispatch.apply(void 0, arguments);
+        }
+      };
+      var chain = middlewares.map(function (middleware) {
+        return middleware(middlewareAPI);
+      });
+      _dispatch = compose.apply(void 0, chain)(store.dispatch);
+      return _objectSpread2(_objectSpread2({}, store), {}, {
+        dispatch: _dispatch
+      });
+    };
+  };
+}
+
+/*
+ * This is a dummy function to check if the function name has been altered by minification.
+ * If the function has been minified and NODE_ENV !== 'production', warn the user.
+ */
+
+function isCrushed() {}
+
+if (false) {}
+
+
+
 // CONCATENATED MODULE: ./src/app/store.js
-function store_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function store_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { store_ownKeys(Object(source), true).forEach(function (key) { store_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { store_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { store_ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { store_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
-function store_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
@@ -5827,7 +5897,7 @@ function globalReducer() {
   }
 }
 
-/* harmony default export */ var app_store = (createStore(globalReducer, {
+/* harmony default export */ var app_store = (redux_createStore(globalReducer, {
   expandedItems: new Set(),
   explorerOpen: true,
   expandedItemsBeforeQuery: new Set(),
@@ -5842,7 +5912,7 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
@@ -5904,40 +5974,40 @@ function filterTree(query, collector, data) {
     type: "text"
   });
 }));
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.14.6/node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js
 var objectWithoutProperties = __webpack_require__(2);
 
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/clsx/1.1.1/node_modules/clsx/dist/clsx.m.js
 var clsx_m = __webpack_require__(3);
 
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/withStyles.js + 2 modules
-var withStyles = __webpack_require__(6);
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/withStyles.js + 2 modules
+var withStyles = __webpack_require__(7);
 
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/colorManipulator.js
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/colorManipulator.js
 var colorManipulator = __webpack_require__(12);
 
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/useForkRef.js
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/useForkRef.js
 var useForkRef = __webpack_require__(11);
 
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/useEventCallback.js
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/useEventCallback.js
 var useEventCallback = __webpack_require__(10);
 
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/useIsFocusVisible.js
-var useIsFocusVisible = __webpack_require__(15);
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/useIsFocusVisible.js
+var useIsFocusVisible = __webpack_require__(16);
 
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/toConsumableArray.js + 3 modules
-var toConsumableArray = __webpack_require__(17);
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.14.6/node_modules/@babel/runtime/helpers/esm/toConsumableArray.js + 3 modules
+var toConsumableArray = __webpack_require__(18);
 
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js
-var assertThisInitialized = __webpack_require__(21);
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.14.6/node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js
+var assertThisInitialized = __webpack_require__(22);
 
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/inheritsLoose.js
-var inheritsLoose = __webpack_require__(13);
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.14.6/node_modules/@babel/runtime/helpers/esm/inheritsLoose.js + 1 modules
+var inheritsLoose = __webpack_require__(15);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-transition-group/4.4.1_react-dom@16.14.0+react@16.14.0/node_modules/react-transition-group/esm/TransitionGroupContext.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-transition-group/4.4.2_react-dom@16.14.0+react@16.14.0/node_modules/react-transition-group/esm/TransitionGroupContext.js
 
 /* harmony default export */ var TransitionGroupContext = (external_React_default.a.createContext(null));
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-transition-group/4.4.1_react-dom@16.14.0+react@16.14.0/node_modules/react-transition-group/esm/utils/ChildMapping.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-transition-group/4.4.2_react-dom@16.14.0+react@16.14.0/node_modules/react-transition-group/esm/utils/ChildMapping.js
 
 /**
  * Given `this.props.children`, return an object mapping key to child.
@@ -6078,7 +6148,7 @@ function getNextChildMapping(nextProps, prevChildMapping, onExited) {
   });
   return children;
 }
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-transition-group/4.4.1_react-dom@16.14.0+react@16.14.0/node_modules/react-transition-group/esm/TransitionGroup.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-transition-group/4.4.2_react-dom@16.14.0+react@16.14.0/node_modules/react-transition-group/esm/TransitionGroup.js
 
 
 
@@ -6211,7 +6281,7 @@ var TransitionGroup_TransitionGroup = /*#__PURE__*/function (_React$Component) {
 TransitionGroup_TransitionGroup.propTypes =  false ? undefined : {};
 TransitionGroup_TransitionGroup.defaultProps = defaultProps;
 /* harmony default export */ var esm_TransitionGroup = (TransitionGroup_TransitionGroup);
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/ButtonBase/Ripple.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/ButtonBase/Ripple.js
 
 
 
@@ -6270,7 +6340,7 @@ function Ripple(props) {
 
  false ? undefined : void 0;
 /* harmony default export */ var ButtonBase_Ripple = (Ripple);
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/ButtonBase/TouchRipple.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/ButtonBase/TouchRipple.js
 
 
 
@@ -6567,7 +6637,8 @@ var TouchRipple_TouchRipple = /*#__PURE__*/external_React_["forwardRef"](functio
   flip: false,
   name: 'MuiTouchRipple'
 })( /*#__PURE__*/external_React_["memo"](TouchRipple_TouchRipple)));
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/ButtonBase/ButtonBase.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/ButtonBase/ButtonBase.js
+
 
 
 
@@ -6890,10 +6961,10 @@ var ButtonBase_ButtonBase = /*#__PURE__*/external_React_["forwardRef"](function 
 /* harmony default export */ var esm_ButtonBase_ButtonBase = (Object(withStyles["a" /* default */])(ButtonBase_styles, {
   name: 'MuiButtonBase'
 })(ButtonBase_ButtonBase));
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/capitalize.js
-var capitalize = __webpack_require__(8);
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/capitalize.js
+var capitalize = __webpack_require__(9);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/IconButton/IconButton.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/IconButton/IconButton.js
 
 
 
@@ -6920,7 +6991,7 @@ var IconButton_styles = function styles(theme) {
         duration: theme.transitions.duration.shortest
       }),
       '&:hover': {
-        backgroundColor: Object(colorManipulator["b" /* fade */])(theme.palette.action.active, theme.palette.action.hoverOpacity),
+        backgroundColor: Object(colorManipulator["a" /* alpha */])(theme.palette.action.active, theme.palette.action.hoverOpacity),
         // Reset on touch devices, it doesn't add specificity
         '@media (hover: none)': {
           backgroundColor: 'transparent'
@@ -6957,7 +7028,7 @@ var IconButton_styles = function styles(theme) {
     colorPrimary: {
       color: theme.palette.primary.main,
       '&:hover': {
-        backgroundColor: Object(colorManipulator["b" /* fade */])(theme.palette.primary.main, theme.palette.action.hoverOpacity),
+        backgroundColor: Object(colorManipulator["a" /* alpha */])(theme.palette.primary.main, theme.palette.action.hoverOpacity),
         // Reset on touch devices, it doesn't add specificity
         '@media (hover: none)': {
           backgroundColor: 'transparent'
@@ -6969,7 +7040,7 @@ var IconButton_styles = function styles(theme) {
     colorSecondary: {
       color: theme.palette.secondary.main,
       '&:hover': {
-        backgroundColor: Object(colorManipulator["b" /* fade */])(theme.palette.secondary.main, theme.palette.action.hoverOpacity),
+        backgroundColor: Object(colorManipulator["a" /* alpha */])(theme.palette.secondary.main, theme.palette.action.hoverOpacity),
         // Reset on touch devices, it doesn't add specificity
         '@media (hover: none)': {
           backgroundColor: 'transparent'
@@ -7033,8 +7104,8 @@ var IconButton_IconButton = /*#__PURE__*/external_React_["forwardRef"](function 
 /* harmony default export */ var esm_IconButton_IconButton = (Object(withStyles["a" /* default */])(IconButton_styles, {
   name: 'MuiIconButton'
 })(IconButton_IconButton));
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/icons/4.11.2_3335f0bfb61930572868dabe45efc2f7/node_modules/@material-ui/icons/Menu.js
-var Menu = __webpack_require__(42);
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/icons/4.11.2_4fdd20d49e0c3af05a3d84031cd7e30c/node_modules/@material-ui/icons/Menu.js
+var Menu = __webpack_require__(41);
 var Menu_default = /*#__PURE__*/__webpack_require__.n(Menu);
 
 // CONCATENATED MODULE: ./src/app/resource.js
@@ -7048,13 +7119,13 @@ function getResourceURI(path) {
 
   return root + path;
 }
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/makeStyles/makeStyles.js + 22 modules
-var makeStyles = __webpack_require__(85);
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.4_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/makeStyles/makeStyles.js + 22 modules
+var makeStyles = __webpack_require__(86);
 
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/defaultTheme.js + 22 modules
-var defaultTheme = __webpack_require__(16);
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/defaultTheme.js + 21 modules
+var defaultTheme = __webpack_require__(17);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/makeStyles.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/makeStyles.js
 
 
 
@@ -7101,7 +7172,7 @@ function ExplorerHeader(_ref) {
   }));
 }
 // CONCATENATED MODULE: ./src/app/components/Explorer/useExplorerStyles.js
-function useExplorerStyles_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function useExplorerStyles_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function useExplorerStyles_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { useExplorerStyles_ownKeys(Object(source), true).forEach(function (key) { useExplorerStyles_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { useExplorerStyles_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -7143,7 +7214,7 @@ var useExplorerPrimaryItemStyles = styles_makeStyles({
     color: "#0066CD !important"
   })
 });
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/Typography/Typography.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/Typography/Typography.js
 
 
 
@@ -7327,14 +7398,14 @@ var Typography_Typography = /*#__PURE__*/external_React_["forwardRef"](function 
 /* harmony default export */ var esm_Typography_Typography = (Object(withStyles["a" /* default */])(Typography_styles, {
   name: 'MuiTypography'
 })(Typography_Typography));
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/slicedToArray.js + 3 modules
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.14.6/node_modules/@babel/runtime/helpers/esm/slicedToArray.js + 3 modules
 var slicedToArray = __webpack_require__(14);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-transition-group/4.4.1_react-dom@16.14.0+react@16.14.0/node_modules/react-transition-group/esm/config.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-transition-group/4.4.2_react-dom@16.14.0+react@16.14.0/node_modules/react-transition-group/esm/config.js
 /* harmony default export */ var config = ({
   disabled: false
 });
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-transition-group/4.4.1_react-dom@16.14.0+react@16.14.0/node_modules/react-transition-group/esm/Transition.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/react-transition-group/4.4.2_react-dom@16.14.0+react@16.14.0/node_modules/react-transition-group/esm/Transition.js
 
 
 
@@ -7765,10 +7836,10 @@ Transition_Transition.ENTERING = ENTERING;
 Transition_Transition.ENTERED = ENTERED;
 Transition_Transition.EXITING = EXITING;
 /* harmony default export */ var esm_Transition = (Transition_Transition);
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/transitions.js
-var transitions = __webpack_require__(25);
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/transitions.js
+var transitions = __webpack_require__(27);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/transitions/utils.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/transitions/utils.js
 var reflow = function reflow(node) {
   return node.scrollTop;
 };
@@ -7781,10 +7852,10 @@ function getTransitionProps(props, options) {
     delay: style.transitionDelay
   };
 }
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/useTheme/useTheme.js + 1 modules
-var useTheme = __webpack_require__(86);
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.4_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/useTheme/useTheme.js + 1 modules
+var useTheme = __webpack_require__(87);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/useTheme.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/styles/useTheme.js
 
 
 
@@ -7795,7 +7866,9 @@ function useTheme_useTheme() {
 
   return theme;
 }
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/Collapse/Collapse.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/Collapse/Collapse.js
+
+
 
 
 
@@ -7810,20 +7883,20 @@ function useTheme_useTheme() {
 
 var Collapse_styles = function styles(theme) {
   return {
-    /* Styles applied to the container element. */
-    container: {
+    /* Styles applied to the root element. */
+    root: {
       height: 0,
       overflow: 'hidden',
       transition: theme.transitions.create('height')
     },
 
-    /* Styles applied to the container element when the transition has entered. */
+    /* Styles applied to the root element when the transition has entered. */
     entered: {
       height: 'auto',
       overflow: 'visible'
     },
 
-    /* Styles applied to the container element when the transition has exited and `collapsedHeight` != 0px. */
+    /* Styles applied to the root element when the transition has exited and `collapsedSize` != 0px. */
     hidden: {
       visibility: 'hidden'
     },
@@ -7850,8 +7923,9 @@ var Collapse_Collapse = /*#__PURE__*/external_React_["forwardRef"](function Coll
   var children = props.children,
       classes = props.classes,
       className = props.className,
-      _props$collapsedHeigh = props.collapsedHeight,
-      collapsedHeightProp = _props$collapsedHeigh === void 0 ? '0px' : _props$collapsedHeigh,
+      collapsedHeight = props.collapsedHeight,
+      _props$collapsedSize = props.collapsedSize,
+      collapsedSizeProp = _props$collapsedSize === void 0 ? '0px' : _props$collapsedSize,
       _props$component = props.component,
       Component = _props$component === void 0 ? 'div' : _props$component,
       _props$disableStrictM = props.disableStrictModeCompat,
@@ -7868,13 +7942,13 @@ var Collapse_Collapse = /*#__PURE__*/external_React_["forwardRef"](function Coll
       timeout = _props$timeout === void 0 ? transitions["b" /* duration */].standard : _props$timeout,
       _props$TransitionComp = props.TransitionComponent,
       TransitionComponent = _props$TransitionComp === void 0 ? esm_Transition : _props$TransitionComp,
-      other = Object(objectWithoutProperties["a" /* default */])(props, ["children", "classes", "className", "collapsedHeight", "component", "disableStrictModeCompat", "in", "onEnter", "onEntered", "onEntering", "onExit", "onExited", "onExiting", "style", "timeout", "TransitionComponent"]);
+      other = Object(objectWithoutProperties["a" /* default */])(props, ["children", "classes", "className", "collapsedHeight", "collapsedSize", "component", "disableStrictModeCompat", "in", "onEnter", "onEntered", "onEntering", "onExit", "onExited", "onExiting", "style", "timeout", "TransitionComponent"]);
 
   var theme = useTheme_useTheme();
   var timer = external_React_["useRef"]();
   var wrapperRef = external_React_["useRef"](null);
   var autoTransitionDuration = external_React_["useRef"]();
-  var collapsedHeight = typeof collapsedHeightProp === 'number' ? "".concat(collapsedHeightProp, "px") : collapsedHeightProp;
+  var collapsedSize = typeof (collapsedHeight || collapsedSizeProp) === 'number' ? "".concat(collapsedHeight || collapsedSizeProp, "px") : collapsedHeight || collapsedSizeProp;
   external_React_["useEffect"](function () {
     return function () {
       clearTimeout(timer.current);
@@ -7903,7 +7977,7 @@ var Collapse_Collapse = /*#__PURE__*/external_React_["forwardRef"](function Coll
   };
 
   var handleEnter = normalizedTransitionCallback(function (node, isAppearing) {
-    node.style.height = collapsedHeight;
+    node.style.height = collapsedSize;
 
     if (onEnter) {
       onEnter(node, isAppearing);
@@ -7969,7 +8043,7 @@ var Collapse_Collapse = /*#__PURE__*/external_React_["forwardRef"](function Coll
       node.style.transitionDuration = typeof transitionDuration === 'string' ? transitionDuration : "".concat(transitionDuration, "ms");
     }
 
-    node.style.height = collapsedHeight;
+    node.style.height = collapsedSize;
 
     if (onExiting) {
       onExiting(node);
@@ -7997,12 +8071,12 @@ var Collapse_Collapse = /*#__PURE__*/external_React_["forwardRef"](function Coll
     timeout: timeout === 'auto' ? null : timeout
   }, other), function (state, childProps) {
     return /*#__PURE__*/external_React_["createElement"](Component, Object(esm_extends["a" /* default */])({
-      className: Object(clsx_m["a" /* default */])(classes.container, className, {
+      className: Object(clsx_m["a" /* default */])(classes.root, classes.container, className, {
         'entered': classes.entered,
-        'exited': !inProp && collapsedHeight === '0px' && classes.hidden
+        'exited': !inProp && collapsedSize === '0px' && classes.hidden
       }[state]),
       style: Object(esm_extends["a" /* default */])({
-        minHeight: collapsedHeight
+        minHeight: collapsedSize
       }, style),
       ref: handleRef
     }, childProps), /*#__PURE__*/external_React_["createElement"]("div", {
@@ -8018,7 +8092,7 @@ Collapse_Collapse.muiSupportAuto = true;
 /* harmony default export */ var esm_Collapse_Collapse = (Object(withStyles["a" /* default */])(Collapse_styles, {
   name: 'MuiCollapse'
 })(Collapse_Collapse));
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/lab/4.0.0-alpha.57_3335f0bfb61930572868dabe45efc2f7/node_modules/@material-ui/lab/esm/TreeView/TreeViewContext.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/lab/4.0.0-alpha.60_4fdd20d49e0c3af05a3d84031cd7e30c/node_modules/@material-ui/lab/esm/TreeView/TreeViewContext.js
 
 /**
  * @ignore - internal component.
@@ -8029,7 +8103,7 @@ var TreeViewContext = external_React_["createContext"]({});
 if (false) {}
 
 /* harmony default export */ var TreeView_TreeViewContext = (TreeViewContext);
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/lab/4.0.0-alpha.57_3335f0bfb61930572868dabe45efc2f7/node_modules/@material-ui/lab/esm/TreeItem/TreeItem.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/lab/4.0.0-alpha.60_4fdd20d49e0c3af05a3d84031cd7e30c/node_modules/@material-ui/lab/esm/TreeItem/TreeItem.js
 
 
 
@@ -8055,10 +8129,10 @@ var TreeItem_styles = function styles(theme) {
         backgroundColor: theme.palette.action.hover
       },
       '&$selected > $content $label': {
-        backgroundColor: Object(colorManipulator["b" /* fade */])(theme.palette.primary.main, theme.palette.action.selectedOpacity)
+        backgroundColor: Object(colorManipulator["a" /* alpha */])(theme.palette.primary.main, theme.palette.action.selectedOpacity)
       },
       '&$selected > $content $label:hover, &$selected:focus > $content $label': {
-        backgroundColor: Object(colorManipulator["b" /* fade */])(theme.palette.primary.main, theme.palette.action.selectedOpacity + theme.palette.action.hoverOpacity),
+        backgroundColor: Object(colorManipulator["a" /* alpha */])(theme.palette.primary.main, theme.palette.action.selectedOpacity + theme.palette.action.hoverOpacity),
         // Reset on touch devices, it doesn't add specificity
         '@media (hover: none)': {
           backgroundColor: 'transparent'
@@ -8457,7 +8531,7 @@ var TreeItem_TreeItem = /*#__PURE__*/external_React_["forwardRef"](function Tree
   name: 'MuiTreeItem'
 })(TreeItem_TreeItem));
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/cuid/2.1.8/node_modules/cuid/index.js
-var cuid = __webpack_require__(26);
+var cuid = __webpack_require__(28);
 var cuid_default = /*#__PURE__*/__webpack_require__.n(cuid);
 
 // CONCATENATED MODULE: ./src/app/components/Explorer/ExplorerCategoryItem.js
@@ -8490,7 +8564,7 @@ function ExplorerCategoryItem(props) {
     });
   }));
 }
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/Link/Link.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/Link/Link.js
 
 
 
@@ -8642,7 +8716,7 @@ function ExplorerItem_unsupportedIterableToArray(o, minLen) { if (!o) return; if
 
 function ExplorerItem_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-function ExplorerItem_iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+function ExplorerItem_iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function ExplorerItem_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
@@ -8711,10 +8785,10 @@ function ExplorerItem(props) {
     }, props.data.title) : props.data.title
   }, targetChildren);
 }
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/useControlled.js
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/core/4.12.1_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/core/esm/utils/useControlled.js
 var useControlled = __webpack_require__(38);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/lab/4.0.0-alpha.57_3335f0bfb61930572868dabe45efc2f7/node_modules/@material-ui/lab/esm/TreeView/TreeView.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/lab/4.0.0-alpha.60_4fdd20d49e0c3af05a3d84031cd7e30c/node_modules/@material-ui/lab/esm/TreeView/TreeView.js
 
 
 
@@ -9368,7 +9442,7 @@ var TreeView_TreeView = /*#__PURE__*/external_React_["forwardRef"](function Tree
   name: 'MuiTreeView'
 })(TreeView_TreeView));
 // CONCATENATED MODULE: ./src/app/components/Explorer/index.js
-function Explorer_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function Explorer_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function Explorer_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { Explorer_ownKeys(Object(source), true).forEach(function (key) { Explorer_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { Explorer_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -9382,7 +9456,7 @@ function Explorer_unsupportedIterableToArray(o, minLen) { if (!o) return; if (ty
 
 function Explorer_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-function Explorer_iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+function Explorer_iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function Explorer_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
@@ -9659,7 +9733,7 @@ function Header_unsupportedIterableToArray(o, minLen) { if (!o) return; if (type
 
 function Header_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-function Header_iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+function Header_iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function Header_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
@@ -9762,7 +9836,6 @@ function wakeAccordions() {
 }
 
 /***/ }),
-/* 68 */,
 /* 69 */,
 /* 70 */,
 /* 71 */,
@@ -9778,14 +9851,15 @@ function wakeAccordions() {
 /* 81 */,
 /* 82 */,
 /* 83 */,
-/* 84 */
+/* 84 */,
+/* 85 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* unused harmony export isPlainObject */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return deepmerge; });
 /* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _babel_runtime_helpers_esm_typeof__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(18);
+/* harmony import */ var _babel_runtime_helpers_esm_typeof__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(19);
 
 
 function isPlainObject(item) {
@@ -9816,7 +9890,7 @@ function deepmerge(target, source) {
 }
 
 /***/ }),
-/* 85 */
+/* 86 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9824,10 +9898,10 @@ function deepmerge(target, source) {
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, "a", function() { return /* binding */ makeStyles; });
 
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.14.6/node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js
 var objectWithoutProperties = __webpack_require__(2);
 
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/extends.js
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.14.6/node_modules/@babel/runtime/helpers/esm/extends.js
 var esm_extends = __webpack_require__(1);
 
 // EXTERNAL MODULE: external "React"
@@ -9863,7 +9937,7 @@ function warning(condition, message) {
 
 /* harmony default export */ var tiny_warning_esm = (warning);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/createClass.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.14.6/node_modules/@babel/runtime/helpers/esm/createClass.js
 function _defineProperties(target, props) {
   for (var i = 0; i < props.length; i++) {
     var descriptor = props[i];
@@ -9879,16 +9953,16 @@ function _createClass(Constructor, protoProps, staticProps) {
   if (staticProps) _defineProperties(Constructor, staticProps);
   return Constructor;
 }
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/inheritsLoose.js
-var inheritsLoose = __webpack_require__(13);
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.14.6/node_modules/@babel/runtime/helpers/esm/inheritsLoose.js + 1 modules
+var inheritsLoose = __webpack_require__(15);
 
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js
-var assertThisInitialized = __webpack_require__(21);
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.14.6/node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js
+var assertThisInitialized = __webpack_require__(22);
 
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js
-var objectWithoutPropertiesLoose = __webpack_require__(5);
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.14.6/node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js
+var objectWithoutPropertiesLoose = __webpack_require__(6);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/jss/10.5.0/node_modules/jss/dist/jss.esm.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/jss/10.7.1/node_modules/jss/dist/jss.esm.js
 
 
 
@@ -10019,7 +10093,7 @@ function toCss(selector, style, options) {
 
           if (value != null) {
             if (result) result += '\n';
-            result += "" + indentStr(prop + ": " + toCssValue(value) + ";", indent);
+            result += indentStr(prop + ": " + toCssValue(value) + ";", indent);
           }
         }
       }
@@ -10030,7 +10104,7 @@ function toCss(selector, style, options) {
 
         if (_value != null) {
           if (result) result += '\n';
-          result += "" + indentStr(_prop + ": " + toCssValue(_value) + ";", indent);
+          result += indentStr(_prop + ": " + toCssValue(_value) + ";", indent);
         }
       }
     }
@@ -10041,7 +10115,7 @@ function toCss(selector, style, options) {
 
     if (_value2 != null && _prop2 !== 'fallbacks') {
       if (result) result += '\n';
-      result += "" + indentStr(_prop2 + ": " + toCssValue(_value2) + ";", indent);
+      result += indentStr(_prop2 + ": " + toCssValue(_value2) + ";", indent);
     }
   } // Allow empty style in this case, because properties will be added dynamically.
 
@@ -11338,16 +11412,26 @@ function () {
 var registry = new jss_esm_SheetsRegistry();
 
 /* eslint-disable */
-// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
-var globalThis = typeof window != 'undefined' && window.Math == Math ? window : typeof self != 'undefined' && self.Math == Math ? self : Function('return this')();
+
+/**
+ * Now that `globalThis` is available on most platforms
+ * (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/globalThis#browser_compatibility)
+ * we check for `globalThis` first. `globalThis` is necessary for jss
+ * to run in Agoric's secure version of JavaScript (SES). Under SES,
+ * `globalThis` exists, but `window`, `self`, and `Function('return
+ * this')()` are all undefined for security reasons.
+ *
+ * https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
+ */
+var globalThis$1 = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' && window.Math === Math ? window : typeof self !== 'undefined' && self.Math === Math ? self : Function('return this')();
 
 var ns = '2f1acc6c3a606b082e5eef5e54414ffb';
-if (globalThis[ns] == null) globalThis[ns] = 0; // Bundle may contain multiple JSS versions at the same time. In order to identify
+if (globalThis$1[ns] == null) globalThis$1[ns] = 0; // Bundle may contain multiple JSS versions at the same time. In order to identify
 // the current version with just one short number and use it for classes generation
 // we use a counter. Also it is more accurate, because user can manually reevaluate
 // the module.
 
-var moduleId = globalThis[ns]++;
+var moduleId = globalThis$1[ns]++;
 
 var maxRules = 1e10;
 
@@ -11362,7 +11446,8 @@ var createGenerateId = function createGenerateId(options) {
   }
 
   var ruleCounter = 0;
-  return function (rule, sheet) {
+
+  var generateId = function generateId(rule, sheet) {
     ruleCounter += 1;
 
     if (ruleCounter > maxRules) {
@@ -11389,6 +11474,8 @@ var createGenerateId = function createGenerateId(options) {
 
     return prefix + rule.key + "-" + moduleId + (jssId ? "-" + jssId : '') + "-" + ruleCounter;
   };
+
+  return generateId;
 };
 
 /**
@@ -11858,7 +11945,7 @@ var jss_esm_Jss =
 function () {
   function Jss(options) {
     this.id = instanceCounter++;
-    this.version = "10.5.0";
+    this.version = "10.7.1";
     this.plugins = new PluginsRegistry();
     this.options = {
       id: {
@@ -12133,7 +12220,7 @@ var jss_esm_jss = jss_esm_create();
 /* harmony default export */ var jss_esm = (jss_esm_jss);
 
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/mergeClasses/mergeClasses.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.4_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/mergeClasses/mergeClasses.js
 
 
 function mergeClasses() {
@@ -12159,7 +12246,7 @@ function mergeClasses() {
   });
   return nextClasses;
 }
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/makeStyles/multiKeyStore.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.4_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/makeStyles/multiKeyStore.js
 // Used https://github.com/thinkloop/multi-key-cache as inspiration
 var multiKeyStore = {
   set: function set(cache, key1, key2, value) {
@@ -12182,16 +12269,16 @@ var multiKeyStore = {
   }
 };
 /* harmony default export */ var makeStyles_multiKeyStore = (multiKeyStore);
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/useTheme/useTheme.js + 1 modules
-var useTheme = __webpack_require__(86);
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.4_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/useTheme/useTheme.js + 1 modules
+var useTheme = __webpack_require__(87);
 
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/prop-types/15.7.2/node_modules/prop-types/index.js
 var prop_types = __webpack_require__(4);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/ThemeProvider/nested.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.4_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/ThemeProvider/nested.js
 var hasSymbol = typeof Symbol === 'function' && Symbol.for;
 /* harmony default export */ var nested = (hasSymbol ? Symbol.for('mui.nested') : '__THEME_NESTED__');
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/createGenerateClassName/createGenerateClassName.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.4_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/createGenerateClassName/createGenerateClassName.js
 
 /**
  * This is the list of the style rule name we use as drop in replacement for the built-in
@@ -12260,7 +12347,7 @@ function createGenerateClassName() {
     return "".concat(seedPrefix).concat(suffix);
   };
 }
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/jss-plugin-rule-value-function/10.5.0/node_modules/jss-plugin-rule-value-function/dist/jss-plugin-rule-value-function.esm.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/jss-plugin-rule-value-function/10.7.1/node_modules/jss-plugin-rule-value-function/dist/jss-plugin-rule-value-function.esm.js
 
 
 
@@ -12323,7 +12410,7 @@ var jss_plugin_rule_value_function_esm_functionPlugin = function functionPlugin(
 
 /* harmony default export */ var jss_plugin_rule_value_function_esm = (jss_plugin_rule_value_function_esm_functionPlugin);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/jss-plugin-global/10.5.0/node_modules/jss-plugin-global/dist/jss-plugin-global.esm.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/jss-plugin-global/10.7.1/node_modules/jss-plugin-global/dist/jss-plugin-global.esm.js
 
 
 
@@ -12510,7 +12597,7 @@ function jssGlobal() {
 
 /* harmony default export */ var jss_plugin_global_esm = (jssGlobal);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/jss-plugin-nested/10.5.0/node_modules/jss-plugin-nested/dist/jss-plugin-nested.esm.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/jss-plugin-nested/10.7.1/node_modules/jss-plugin-nested/dist/jss-plugin-nested.esm.js
 
 
 
@@ -12646,7 +12733,7 @@ function hyphenateStyleName(name) {
 
 /* harmony default export */ var hyphenate_style_name = (hyphenateStyleName);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/jss-plugin-camel-case/10.5.0/node_modules/jss-plugin-camel-case/dist/jss-plugin-camel-case.esm.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/jss-plugin-camel-case/10.7.1/node_modules/jss-plugin-camel-case/dist/jss-plugin-camel-case.esm.js
 
 
 /**
@@ -12712,7 +12799,7 @@ function camelCase() {
 
 /* harmony default export */ var jss_plugin_camel_case_esm = (camelCase);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/jss-plugin-default-unit/10.5.0/node_modules/jss-plugin-default-unit/dist/jss-plugin-default-unit.esm.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/jss-plugin-default-unit/10.7.1/node_modules/jss-plugin-default-unit/dist/jss-plugin-default-unit.esm.js
 
 
 var px = hasCSSTOMSupport && CSS ? CSS.px : 'px';
@@ -12824,6 +12911,7 @@ var defaultUnits = {
   'font-size': px,
   'font-size-delta': px,
   'letter-spacing': px,
+  'text-decoration-thickness': px,
   'text-indent': px,
   'text-stroke': px,
   'text-stroke-width': px,
@@ -12857,6 +12945,7 @@ var defaultUnits = {
   // Grid properties
   grid: px,
   'grid-gap': px,
+  'row-gap': px,
   'grid-row-gap': px,
   'grid-column-gap': px,
   'grid-template-rows': px,
@@ -12916,8 +13005,9 @@ function iterate(prop, value, options) {
       for (var _innerProp in value) {
         value[_innerProp] = iterate(prop + "-" + _innerProp, value[_innerProp], options);
       }
-    }
-  } else if (typeof value === 'number') {
+    } // eslint-disable-next-line no-restricted-globals
+
+  } else if (typeof value === 'number' && isNaN(value) === false) {
     var unit = options[prop] || units[prop]; // Add the unit if available, except for the special case of 0px.
 
     if (unit && !(value === 0 && unit === px)) {
@@ -12963,8 +13053,8 @@ function defaultUnit(options) {
 
 /* harmony default export */ var jss_plugin_default_unit_esm = (defaultUnit);
 
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/toConsumableArray.js + 3 modules
-var toConsumableArray = __webpack_require__(17);
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.14.6/node_modules/@babel/runtime/helpers/esm/toConsumableArray.js + 3 modules
+var toConsumableArray = __webpack_require__(18);
 
 // CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/css-vendor/2.0.8/node_modules/css-vendor/dist/css-vendor.esm.js
 
@@ -13541,7 +13631,7 @@ function supportedValue(property, value) {
 
 
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/jss-plugin-vendor-prefixer/10.5.0/node_modules/jss-plugin-vendor-prefixer/dist/jss-plugin-vendor-prefixer.esm.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/jss-plugin-vendor-prefixer/10.7.1/node_modules/jss-plugin-vendor-prefixer/dist/jss-plugin-vendor-prefixer.esm.js
 
 
 
@@ -13602,7 +13692,7 @@ function jssVendorPrefixer() {
 
 /* harmony default export */ var jss_plugin_vendor_prefixer_esm = (jssVendorPrefixer);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/jss-plugin-props-sort/10.5.0/node_modules/jss-plugin-props-sort/dist/jss-plugin-props-sort.esm.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/jss-plugin-props-sort/10.7.1/node_modules/jss-plugin-props-sort/dist/jss-plugin-props-sort.esm.js
 /**
  * Sort props by length.
  */
@@ -13632,7 +13722,7 @@ function jssPropsSort() {
 
 /* harmony default export */ var jss_plugin_props_sort_esm = (jssPropsSort);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/jssPreset/jssPreset.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.4_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/jssPreset/jssPreset.js
 
 
 
@@ -13649,7 +13739,7 @@ function jssPreset() {
     typeof window === 'undefined' ? null : jss_plugin_vendor_prefixer_esm(), jss_plugin_props_sort_esm()]
   };
 }
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/StylesProvider/StylesProvider.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.4_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/StylesProvider/StylesProvider.js
 
 
 
@@ -13720,7 +13810,7 @@ function StylesProvider(props) {
  false ? undefined : void 0;
 
 if (false) {}
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/makeStyles/indexCounter.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.4_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/makeStyles/indexCounter.js
 /* eslint-disable import/prefer-default-export */
 // Global index counter to preserve source order.
 // We create the style sheet during the creation of the component,
@@ -13738,13 +13828,13 @@ function increment() {
 
   return indexCounter;
 }
-// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.12.5/node_modules/@babel/runtime/helpers/esm/typeof.js
-var esm_typeof = __webpack_require__(18);
+// EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@babel/runtime/7.14.6/node_modules/@babel/runtime/helpers/esm/typeof.js
+var esm_typeof = __webpack_require__(19);
 
 // EXTERNAL MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/utils/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/utils/esm/deepmerge.js
-var deepmerge = __webpack_require__(84);
+var deepmerge = __webpack_require__(85);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/getStylesCreator/getStylesCreator.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.4_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/getStylesCreator/getStylesCreator.js
 
 
 
@@ -13784,11 +13874,11 @@ function getStylesCreator(stylesOrCreator) {
     options: {}
   };
 }
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/getStylesCreator/noopTheme.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.4_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/getStylesCreator/noopTheme.js
 // We use the same empty object to ref count the styles that don't need a theme object.
 var noopTheme = {};
 /* harmony default export */ var getStylesCreator_noopTheme = (noopTheme);
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/makeStyles/makeStyles.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.4_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/makeStyles/makeStyles.js
 
 
 
@@ -14049,7 +14139,7 @@ function makeStyles(stylesOrCreator) {
 }
 
 /***/ }),
-/* 86 */
+/* 87 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14061,14 +14151,14 @@ __webpack_require__.d(__webpack_exports__, "a", function() { return /* binding *
 var external_React_ = __webpack_require__(0);
 var external_React_default = /*#__PURE__*/__webpack_require__.n(external_React_);
 
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/useTheme/ThemeContext.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.4_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/useTheme/ThemeContext.js
 
 var ThemeContext = external_React_default.a.createContext(null);
 
 if (false) {}
 
 /* harmony default export */ var useTheme_ThemeContext = (ThemeContext);
-// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.2_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/useTheme/useTheme.js
+// CONCATENATED MODULE: /Users/shukantpal/Web Projects/webdoc/common/temp/node_modules/.pnpm/registry.npmjs.org/@material-ui/styles/4.11.4_react-dom@16.14.0+react@16.14.0/node_modules/@material-ui/styles/esm/useTheme/useTheme.js
 
 
 function useTheme() {

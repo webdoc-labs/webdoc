@@ -107,4 +107,49 @@ describe("@webdoc/parser.parse (Typescript)", function() {
     expect(rootProperty.defaultValue).to.equal("\"null\"");
     expect(ctor.params[0].default).to.equal("\"null\"");
   });
+
+  it("should work with getter-only properties", async function() {
+    const documentTree = await parse([{
+      content: `
+        class TheEmptyList {
+          /** Empty list has 0 length!  */
+          get length(): number {
+            return 0;
+          }
+        }
+      `,
+      path: ".ts",
+      package: createPackageDoc(),
+    }]);
+
+    const lengthProperty = findDoc("TheEmptyList.length", documentTree);
+
+    expect(lengthProperty).to.not.equal(null);
+    expect(lengthProperty.dataType).to.not.equal(undefined);
+    expect(lengthProperty.dataType[0]).to.equal("number");
+  });
+
+  it("should work with getter-setter properties", async function() {
+    const documentTree = await parse([{
+      content: `
+        class TheEmptyList {
+          /** Empty list has 0 length!  */
+          get length(): number {
+            return 0;
+          }
+          set length(value: number) {
+            throw new Error('TheEmptyList will always remain empty');
+          }
+        }
+      `,
+      path: ".ts",
+      package: createPackageDoc(),
+    }]);
+
+    const lengthProperty = findDoc("TheEmptyList.length", documentTree);
+
+    expect(lengthProperty).to.not.equal(null);
+    expect(lengthProperty.dataType).to.not.equal(undefined);
+    expect(lengthProperty.dataType[0]).to.equal("number");
+  });
 });
