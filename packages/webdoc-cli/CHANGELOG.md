@@ -1,6 +1,11 @@
 # Change Log - @webdoc/cli
 
-This log was last generated on Sun, 12 Sep 2021 19:13:46 GMT and should not be manually modified.
+This log was last generated on Sun, 19 Sep 2021 16:37:03 GMT and should not be manually modified.
+
+## 1.5.4
+Sun, 19 Sep 2021 16:37:03 GMT
+
+*Version update only*
 
 ## 1.5.3
 Sun, 12 Sep 2021 19:13:46 GMT

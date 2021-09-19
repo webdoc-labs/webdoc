@@ -1,6 +1,6 @@
 {
   "name": "@webdoc/legacy-template",
-  "version": "1.5.3",
+  "version": "1.5.4",
   "description": "Port of the JSDoc default template to webdoc!",
   "keywords": [
     "webdoc",
@@ -40,8 +40,8 @@
     "url": "https://github.com/SukantPal/webdoc/issues"
   },
   "dependencies": {
-    "@webdoc/model": "^1.5.3",
-    "@webdoc/template-library": "^1.5.3",
+    "@webdoc/model": "^1.5.4",
+    "@webdoc/template-library": "^1.5.4",
     "bluebird": "^3.7.2",
     "code-prettify": "^0.1.0",
     "color-themes-for-google-code-prettify": "^2.0.4",
