@@ -175,4 +175,18 @@ describe("@webdoc/parser.LanguageIntegration{@lang ts}", function() {
 
     expect(symtree.members[0].members.length).to.equal(1);
   });
+
+  it("should parse type parameters", function() {
+    const symbolTree = buildSymbolTree(`
+      class Builder {
+        /** Resources in the builder's account. */
+        resources: Array<T>;
+        /** Metadata */
+        pairs: Map<K, V>;
+      }
+    `, ".ts");
+
+    expect(symbolTree.members[0].members[0].meta.dataType[0]).to.equal("Array<T>");
+    expect(symbolTree.members[0].members[1].meta.dataType[0]).to.equal("Map<K, V>");
+  });
 });
