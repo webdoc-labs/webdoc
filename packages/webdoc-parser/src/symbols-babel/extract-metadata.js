@@ -80,6 +80,7 @@ import {
   isTSTypeAnnotation,
   isTSTypeLiteral,
   isTSTypeOperator,
+  isTSTypeParameterInstantiation,
   isTSTypePredicate,
   isTSTypeQuery,
   isTSTypeReference,
@@ -91,6 +92,7 @@ import {
   isThisTypeAnnotation,
   isTupleTypeAnnotation,
   isTypeAnnotation,
+  isTypeParameterInstantiation,
   isTypeofTypeAnnotation,
   isUnionTypeAnnotation,
   isVoidTypeAnnotation,
@@ -360,7 +362,28 @@ function resolveFlowDataType(type: BabelNodeTypeAnnotation | BabelNodeFlow | any
     return dataType;
   }
   if (isGenericTypeAnnotation(type)) {
-    return resolveFlowDataType(type.id);
+    let dataType = resolveFlowDataType(type.id);
+
+    if (type.typeParameters) {
+      const typeParamsDataType = resolveFlowDataType(type.typeParameters);
+
+      console.log(typeParamsDataType);
+
+      if (typeParamsDataType) {
+        dataType = createComplexType("", dataType, typeParamsDataType);
+      }
+    }
+
+    return dataType;
+  }
+  if (isTypeParameterInstantiation(type)) {
+    const dataType = createComplexType(", ",
+      ...type.params.map((param) => resolveFlowDataType(param)));
+
+    dataType[0] = `<${dataType[0]}>`;
+    dataType.template = `<${dataType.template}>`;
+
+    return dataType;
   }
   if (isObjectTypeProperty(type)) {
     const key = isStringLiteral(type) ? `"${type.key.value}"` : type.key.name;
@@ -520,7 +543,17 @@ function resolveTSDataType(type: TSTypeAnnotation | TSType | any): DataType {
 
   if (isTSType(type)) {
     if (isTSTypeReference(type)) {
-      return resolveTSDataType(type.typeName);
+      let dataType = resolveTSDataType(type.typeName);
+
+      if (type.typeParameters) {
+        const typeParamsDataType = resolveTSDataType(type.typeParameters);
+
+        if (typeParamsDataType) {
+          dataType = createComplexType("", dataType, typeParamsDataType);
+        }
+      }
+
+      return dataType;
     }
 
     if (isTSAnyKeyword(type)) {
@@ -685,9 +718,8 @@ function resolveTSDataType(type: TSTypeAnnotation | TSType | any): DataType {
     return dataType;
   }
   if (isTSConstructSignatureDeclaration(type)) {
-    const params = createComplexType(", ", ...type.parameters.map((param) => {
-      return resolveTSDataType(param);
-    }));
+    const params = createComplexType(", ", ...type.parameters
+      .map((param) => resolveTSDataType(param)));
 
     params[0] = `new (${params[0]})`;
     params.template = `new (${params.template})`;
@@ -702,6 +734,15 @@ function resolveTSDataType(type: TSTypeAnnotation | TSType | any): DataType {
     if (type.operator) {
       return createSimpleKeywordType(type.operator);
     }
+  }
+  if (isTSTypeParameterInstantiation(type)) {
+    const typeParams = createComplexType(", ", ...type.params
+      .map((param) => resolveTSDataType(param)));
+
+    typeParams[0] = `<${typeParams[0]}>`;
+    typeParams.template = `<${typeParams.template}>`;
+
+    return typeParams;
   }
 
   if (isVoidTypeAnnotation(type)) {

@@ -58,9 +58,10 @@ export function createComplexType(operator: string, ...subtypes: DataType): Data
     const subtype = subtypes[j];
     let subtypeTemplate = subtype.template;
 
+    raw += (j ? operator : "") + subtype[0];
+
     for (let k = 1; k < subtype.length; k++, i++) {
       dataType[i] = subtype[k];
-      raw += (j ? operator : "") + subtype[0];
 
       subtypeTemplate = subtypeTemplate.replace(`%${k}`, `%${i}`);
     }

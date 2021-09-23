@@ -23,4 +23,15 @@ describe("@webdoc/parser.LanguageIntegration{@lang flow}", function() {
     expect(specializedArrayBuffer.meta.extends[0]).to.equal("Special.ArrayBuffer");
     expect(specializedArrayBufferImpl.meta.extends[0]).to.equal("Special.ArrayBuffer");
   });
+
+  it("should parse type parameters", function() {
+    const symbolTree = buildSymbolTree(`
+      class Builder {
+        /** Resources, duh! */
+        resources: Array<T>;
+      }
+    `, ".js");
+
+    expect(symbolTree.members[0].members[0].meta.dataType[0]).to.equal("Array<T>");
+  });
 });
