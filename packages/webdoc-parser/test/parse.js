@@ -144,4 +144,25 @@ describe("@webdoc/parser.parse", function() {
     expect(docNS1.members.length).to.equal(1);
     expect(docNS1.members[0].name).to.equal("PROP_NAME");
   });
+
+  it("should respect ignore tags on all classes", async function() {
+    const documentTree = await parse(`
+      /**
+       * @ignore
+       */
+      export class FirstIgnoreClass {}
+      
+      /**
+       * @ignore
+       */
+      export class SecondIgnoreClass {}
+      
+      /**
+       * @ignore
+       */
+      export class ThirdIgnoreClass {}
+    `);
+
+    expect(documentTree.members.length).to.equal(0);
+  });
 });

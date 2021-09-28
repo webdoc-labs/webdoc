@@ -10,8 +10,10 @@ export default function prune(doc: Doc, root: RootDoc) {
     removeChildDoc(doc);
     return;
   } else {
-    for (let i = 0; i < doc.members.length; i++) {
-      const member = doc.members[i];
+    const membersCopy = doc.members.slice(0);
+
+    for (let i = 0; i < membersCopy.length; i++) {
+      const member = membersCopy[i];
 
       prune(member, root);
 
