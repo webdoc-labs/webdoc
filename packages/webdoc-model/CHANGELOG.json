@@ -2,6 +2,12 @@
   "name": "@webdoc/model",
   "entries": [
     {
+      "version": "1.5.5",
+      "tag": "@webdoc/model_v1.5.5",
+      "date": "Tue, 28 Sep 2021 01:43:51 GMT",
+      "comments": {}
+    },
+    {
       "version": "1.5.4",
       "tag": "@webdoc/model_v1.5.4",
       "date": "Sun, 19 Sep 2021 16:37:03 GMT",

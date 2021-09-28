@@ -1,6 +1,11 @@
 # Change Log - @webdoc/model
 
-This log was last generated on Sun, 19 Sep 2021 16:37:03 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Sep 2021 01:43:51 GMT and should not be manually modified.
+
+## 1.5.5
+Tue, 28 Sep 2021 01:43:51 GMT
+
+*Version update only*
 
 ## 1.5.4
 Sun, 19 Sep 2021 16:37:03 GMT

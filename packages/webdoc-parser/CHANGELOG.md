@@ -1,6 +1,13 @@
 # Change Log - @webdoc/parser
 
-This log was last generated on Sun, 19 Sep 2021 16:37:03 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Sep 2021 01:43:51 GMT and should not be manually modified.
+
+## 1.5.5
+Tue, 28 Sep 2021 01:43:51 GMT
+
+### Updates
+
+- Added support for parsing type parameters. Fixes related to type inference and @ignore included.
 
 ## 1.5.4
 Sun, 19 Sep 2021 16:37:03 GMT
