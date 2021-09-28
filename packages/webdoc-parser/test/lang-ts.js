@@ -50,6 +50,11 @@ describe("@webdoc/parser.LanguageIntegration{@lang ts}", function() {
     expect(symbolInitProperty.meta.defaultValue).to.equal("9");
     expect(symbolInitProperty.comment).to.not.equal("");
     expect(symbolInitProperty.meta.readonly).to.equal(true);
+
+    const symbolClassProperty = findSymbol("ClassName.classProperty", symtree);
+
+    expect(symbolClassProperty.meta.dataType).to.not.equal(undefined);
+    expect(symbolClassProperty.meta.dataType[0]).to.equal("number");
   });
 
   it("should parse interfaces correctly", function() {
