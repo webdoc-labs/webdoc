@@ -2,7 +2,12 @@
 <module type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
-    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/packages/webdoc-cli/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/webdoc-externalize/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/webdoc-model/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/webdoc-parser/lib" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
