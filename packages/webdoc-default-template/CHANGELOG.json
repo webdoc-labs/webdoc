@@ -2,6 +2,18 @@
   "name": "@webdoc/default-template",
   "entries": [
     {
+      "version": "1.5.6",
+      "tag": "@webdoc/default-template_v1.5.6",
+      "date": "Sat, 12 Feb 2022 19:48:05 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "MUCH better styling for DocSearch."
+          }
+        ]
+      }
+    },
+    {
       "version": "1.5.5",
       "tag": "@webdoc/default-template_v1.5.5",
       "date": "Tue, 28 Sep 2021 01:43:51 GMT",
