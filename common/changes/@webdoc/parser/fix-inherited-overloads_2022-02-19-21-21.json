@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@webdoc/parser",
+      "comment": "Fix inheritance of overloaded methods. Prior to this fix, only the first overload was automatically inherited.",
+      "type": "none"
+    }
+  ],
+  "packageName": "@webdoc/parser",
+  "email": "sukantk2002@outlook.com"
+}

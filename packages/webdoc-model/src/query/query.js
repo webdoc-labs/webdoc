@@ -1,7 +1,7 @@
 // @flow
 
 import type {Doc} from "@webdoc/types";
-import type {Query} from "./types";
+import type {QueryExpr} from "./types";
 import {parse} from "./parse";
 import {step} from "./step";
 import {variant} from "./variant";
@@ -14,14 +14,14 @@ import {variant} from "./variant";
  * @param {Doc} docTree - The root of the document tree to be queried.
  * @return {Doc[]} The list of documents matching the query.
  */
-export function query(queryExpr: string | Query, docTree: Doc): Doc[] {
+export function query(queryExpr: string | QueryExpr, docTree: Doc): Doc[] {
   queryExpr = typeof queryExpr === "string" ? parse(queryExpr) : queryExpr;
   let results: Doc[] = [docTree];
 
   queryExpr.steps.forEach((stepExpr) => {
     results = results
       .flatMap((doc) => step(stepExpr, doc))
-      .filter((doc) => variant(stepExpr.variant, doc));
+      .filter((doc) => stepExpr.variant ? variant(stepExpr.variant, doc) : true);
   });
 
   return results;

@@ -1,9 +1,11 @@
+// @flow
+
 export type Op =
   "=" |
   ">=" |
   "<=" |
   ">" |
-  ">" |
+  "<" |
   "";
 
 export type AttributeName = string;

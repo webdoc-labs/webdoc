@@ -1,19 +1,13 @@
 // @flow
 // This file parses a raw query into a query model, as typed in types.js
 
-import type {
-  QueryExpr,
-  StepExpr,
-  StepType,
-  VariantCondition,
-  VariantExpr,
-} from "./types";
+import type {Op, QueryExpr, StepExpr, StepType, VariantCondition, VariantExpr} from "./types";
 
 // Regex to match step expression delimiters.
 const STEP_EXPR_DELIMITER = /(?:[.][.][.])|(?:[.#~])/g;
 
 // Regex to match variant expressions: [contents]
-const VARIANT_EXPR = /\[([^\]]+)\]/g;
+const VARIANT_EXPR = /\[([^\n]+)\]$/g;
 
 // Condition operators
 const OP = /(?:=)|(?:>=)|(?:<=)|(?:>)|(?:<)/g;
@@ -23,10 +17,10 @@ function parseCondition(condition: string): VariantCondition {
   const opPattern = new RegExp(OP).exec(condition);
 
   const op = opPattern ? opPattern[0] : "";
-  const [attribute, value] = condition.split(OP);
+  const [attribute, value] = condition.split(OP).map((expr) => expr.trim());
 
   return {
-    op,
+    op: ((op: any): Op),
     attribute,
     value,
   };

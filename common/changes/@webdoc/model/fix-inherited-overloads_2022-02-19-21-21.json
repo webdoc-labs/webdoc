@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@webdoc/model",
+      "comment": "Support for advanced variants in query API. For example, \"ns.className#method[params[0][dataType] = string]\" to get a specific method overload!",
+      "type": "none"
+    }
+  ],
+  "packageName": "@webdoc/model",
+  "email": "sukantk2002@outlook.com"
+}
