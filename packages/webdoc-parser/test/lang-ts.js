@@ -203,4 +203,13 @@ describe("@webdoc/parser.LanguageIntegration{@lang ts}", function() {
 
     expect(symbolTree.members[0].meta.params[0].dataType[0]).to.equal("object | string");
   });
+
+  it("should infer primitive parameter types", function() {
+    const symbolTree = buildSymbolTree(`
+      function mark(what = 'test') {
+      }
+    `);
+
+    expect(symbolTree.members[0].meta.params[0].dataType[0]).to.equal("string");
+  });
 });

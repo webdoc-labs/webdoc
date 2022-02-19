@@ -5,7 +5,6 @@
 
 import {
   type ArrowFunctionExpression,
-  type BabelNodeExpression,
   type FunctionExpression,
   type MemberExpression,
   type Node,
@@ -14,13 +13,11 @@ import {
   isArrowFunctionExpression,
   isAssignmentExpression,
   isAssignmentPattern,
-  isBooleanLiteral,
   isCallExpression,
   isClassDeclaration,
   isClassExpression,
   isClassMethod,
   isClassProperty,
-  isExpression,
   isExpressionStatement,
   isFunctionDeclaration,
   isFunctionExpression,
@@ -28,12 +25,10 @@ import {
   isInterfaceDeclaration,
   isLiteral,
   isMemberExpression,
-  isNumericLiteral,
   isObjectExpression,
   isObjectMethod,
   isObjectProperty,
   isReturnStatement,
-  isStringLiteral,
   isTSAsExpression,
   isTSDeclareFunction,
   isTSDeclareMethod,
@@ -45,21 +40,19 @@ import {
   isTSPropertySignature,
   isTSTypeElement,
   isThisExpression,
-  isUnaryExpression,
   isVariableDeclarator,
 } from "@babel/types";
 
 import {OBLIGATE_LEAF, PASS_THROUGH, type Symbol, VIRTUAL, isVirtual} from "../types/Symbol";
 import {PARAMETER, queryType} from "../types/VariableRegistry";
 import {
+  extractAssignedValue,
   extractExtends,
   extractImplements,
   extractParams,
   extractReturns,
   extractType,
 } from "./extract-metadata";
-import type {DataType} from "@webdoc/types";
-import {createSimpleKeywordType} from "@webdoc/model";
 
 // + Extract the symbol name, type from the Node
 // + Set the appopriate flags
@@ -121,7 +114,7 @@ export default function extractSymbol(
     nodeSymbol.meta.scope = node.static ? "static" : "instance";
     nodeSymbol.meta.type = "PropertyDoc";
 
-    const [defaultValue, dataType] = resolveDefaultValue(node.value);
+    const [defaultValue, dataType] = extractAssignedValue(node.value);
 
     if (typeof defaultValue === "string") {
       nodeSymbol.meta.defaultValue = defaultValue;
@@ -243,7 +236,7 @@ export default function extractSymbol(
 
       // Resolve property default
       if (!isInit && init) {
-        const [defaultValue, dataType] = resolveDefaultValue(init);
+        const [defaultValue, dataType] = extractAssignedValue(init);
 
         nodeSymbol.meta.defaultValue = defaultValue;
         nodeSymbol.meta.dataType = dataType;
@@ -427,53 +420,6 @@ function resolveRootObject(expression: MemberExpression): string {
   }
 
   return isThisExpression(expression) ? "this" : expression.name;
-}
-
-// Used to get default value
-// TODO: Resolve a lot more expressions
-function resolveExpression(expression: BabelNodeExpression): string | void {
-  if (isLiteral(expression)) {
-    if (isStringLiteral(expression)) {
-      return `"${expression.value}"`;
-    } else {
-      return `${expression.value}`;
-    }
-  }
-  if (isUnaryExpression(expression)) {
-    return `-${resolveExpression(expression.argument) || ""}`;
-  }
-}
-
-function resolveDefaultValue(node: BabelNodeExpression): [?string, ?DataType] {
-  let defaultValue: ?string;
-  let dataType: ?DataType;
-
-  if (isLiteral(node)) {
-    if (isStringLiteral(node)) {
-      // Quotes for strings
-      defaultValue = `"${node.value}"`;
-
-      dataType = createSimpleKeywordType("string");
-    } else {
-      defaultValue = `${node.value}`;
-
-      if (isNumericLiteral(node)) {
-        dataType = createSimpleKeywordType("number");
-      } else if (isBooleanLiteral(node)) {
-        dataType = createSimpleKeywordType("boolean");
-      }
-    }
-  } else if (isExpression(node)) {
-    defaultValue = resolveExpression(node);
-
-    if (typeof defaultValue === "string") {
-      if (!isNaN(parseFloat(defaultValue))) {
-        dataType = createSimpleKeywordType("number");
-      }
-    }
-  }
-
-  return [defaultValue, dataType];
 }
 
 // Whether the member expression assigns to this, e.g.

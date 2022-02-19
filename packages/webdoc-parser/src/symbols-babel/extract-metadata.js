@@ -3,6 +3,7 @@
 // This file has helper functions for extracting metadata from AST nodes.
 
 import {
+  type BabelNodeExpression,
   type BabelNodeFlow,
   type BabelNodeMemberExpression,
   type BabelNodeQualifiedName,
@@ -24,23 +25,27 @@ import {
   isAnyTypeAnnotation,
   isArrayTypeAnnotation,
   isAssignmentPattern,
+  isBooleanLiteral,
   isBooleanLiteralTypeAnnotation,
   isBooleanTypeAnnotation,
   isClassDeclaration,
   isClassExpression,
   isClassImplements,
+  isExpression,
   isFlowType,
   isFunctionTypeAnnotation,
   isFunctionTypeParam,
   isGenericTypeAnnotation,
   isIdentifier,
   isIntersectionTypeAnnotation,
+  isLiteral,
   isMemberExpression,
   isMixedTypeAnnotation,
   isNullLiteralTypeAnnotation,
   isNullableTypeAnnotation,
   isNumberLiteralTypeAnnotation,
   isNumberTypeAnnotation,
+  isNumericLiteral,
   isObjectExpression,
   isObjectTypeAnnotation,
   isObjectTypeIndexer,
@@ -95,6 +100,7 @@ import {
   isTypeAnnotation,
   isTypeParameterInstantiation,
   isTypeofTypeAnnotation,
+  isUnaryExpression,
   isUnionTypeAnnotation,
   isVoidTypeAnnotation,
 } from "@babel/types";
@@ -217,13 +223,18 @@ export function extractParams(
       };
     } else if (isAssignmentPattern(paramNode)) {
       const extraRaw = paramNode.right.extra && paramNode.right.extra.raw;
+      const [defaultValue, dataType] = extractAssignedValue(paramNode.right);
 
-      paramTypeAnnotation = paramNode.left.typeAnnotation;
       param = {
         identifier: paramNode.left.name,
         optional: paramNode.optional || false,
         default: paramNode.right.raw || extraRaw,
+        dataType,
+        defaultValue,
       };
+
+      // This will override the inferred data type.
+      paramTypeAnnotation = paramNode.left.typeAnnotation;
     } else if (isObjectExpression(paramNode)) {
       // TODO: Find a way to document {x, y, z} parameters
       // e.g. function ({x, y, z}), you would need to give the object pattern an anonymous like
@@ -262,6 +273,53 @@ export function extractReturns(
   }
 
   return [];
+}
+
+// Used to get default value
+// TODO: Resolve a lot more expressions
+export function extractRawExpression(expression: BabelNodeExpression): string | void {
+  if (isLiteral(expression)) {
+    if (isStringLiteral(expression)) {
+      return `"${expression.value}"`;
+    } else {
+      return `${expression.value}`;
+    }
+  }
+  if (isUnaryExpression(expression)) {
+    return `-${extractRawExpression(expression.argument) || ""}`;
+  }
+}
+
+export function extractAssignedValue(node: BabelNodeExpression): [?string, ?DataType] {
+  let defaultValue: ?string;
+  let dataType: ?DataType;
+
+  if (isLiteral(node)) {
+    if (isStringLiteral(node)) {
+      // Quotes for strings
+      defaultValue = `"${node.value}"`;
+
+      dataType = createSimpleKeywordType("string");
+    } else {
+      defaultValue = `${node.value}`;
+
+      if (isNumericLiteral(node)) {
+        dataType = createSimpleKeywordType("number");
+      } else if (isBooleanLiteral(node)) {
+        dataType = createSimpleKeywordType("boolean");
+      }
+    }
+  } else if (isExpression(node)) {
+    defaultValue = extractRawExpression(node);
+
+    if (typeof defaultValue === "string") {
+      if (!isNaN(parseFloat(defaultValue))) {
+        dataType = createSimpleKeywordType("number");
+      }
+    }
+  }
+
+  return [defaultValue, dataType];
 }
 
 // Failsafe
