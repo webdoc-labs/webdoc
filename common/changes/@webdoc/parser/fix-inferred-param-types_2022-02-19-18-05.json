@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@webdoc/parser",
+      "comment": "Fix parameter type annotation parsing when parameter is assigned a default value (https://github.com/webdoc-labs/webdoc/issues/144)",
+      "type": "none"
+    }
+  ],
+  "packageName": "@webdoc/parser",
+  "email": "sukantk2002@outlook.com"
+}
