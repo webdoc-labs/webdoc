@@ -228,9 +228,8 @@ export function extractParams(
       param = {
         identifier: paramNode.left.name,
         optional: paramNode.optional || false,
-        default: paramNode.right.raw || extraRaw,
+        default: paramNode.right.raw || extraRaw || defaultValue,
         dataType,
-        defaultValue,
       };
 
       // This will override the inferred data type.
