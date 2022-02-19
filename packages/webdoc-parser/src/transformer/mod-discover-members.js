@@ -3,7 +3,7 @@
 // The discover-members mod imports member symbols from extended classes, implemented interfaces,
 // and mixed mixins.
 
-import {addChildDoc, cloneDoc} from "@webdoc/model";
+import {addChildDoc, cloneDoc, mangled} from "@webdoc/model";
 import type {Doc} from "@webdoc/types";
 
 // The set of docs that discoverMembers has run on
@@ -48,13 +48,15 @@ function discoverMembers(doc: Doc, depsChain = new Set<Doc>()): void {
 
   // This maps symbol names to the members of doc, so that the same symbol is not
   // inherited/overriden multiple times.
-  const memberMap: { [id: string]: any } = {};
+  const membersByMangledName: { [id: string]: any } = {};
+  const membersByName: { [id: string]: any } = {};
 
   // Prevent overridding symbols from being replaced by adding them beforehand.
   for (let i = 0; i < doc.members.length; i++) {
     const directMember = doc.members[i];
 
-    memberMap[directMember.name] = directMember;
+    membersByMangledName[mangled(directMember)] = directMember;
+    membersByName[directMember.name] = directMember;
   }
 
   const parents = [];
@@ -83,6 +85,7 @@ function discoverMembers(doc: Doc, depsChain = new Set<Doc>()): void {
 
     for (let i = 0; i < parent.members.length; i++) {
       const member = parent.members[i];
+      const memberMangled = mangled(member);
 
       // Only methods/properties/events are inheritable
       if (member.type !== "MethodDoc" &&
@@ -98,14 +101,23 @@ function discoverMembers(doc: Doc, depsChain = new Set<Doc>()): void {
       }
 
       // Parent symbols are hidden by inherited/implemented symbols
-      if (memberMap[member.name]) {
-        memberMap[member.name].overrides = member;
+      // Use mangled-map to try to find the most specific override
+      if (membersByMangledName[memberMangled]) {
+        membersByMangledName[memberMangled].overrides = member;
+        continue;
+      }
+      // TODO: We might want to skip setting "overrides" in this case if it already overrides a
+      //  more important / primary signature.
+      // Otherwise find by name
+      // If the child class has another member with a different signature but same number
+      if (membersByName[member.name]) {
+        membersByName[member.name].overrides = member;
         continue;
       }
 
-      memberMap[member.name] = member;
-
+      // Only add an inherited member if the child has no member with the same name
       const temp = cloneDoc(member);
+      membersByMangledName[memberMangled] = temp;
 
       temp.overrides = false;
       temp.inherited = true;

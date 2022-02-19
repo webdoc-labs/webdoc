@@ -1,14 +1,6 @@
 // @flow
 
-import type {
-  BaseDoc,
-  Doc,
-  DocLink,
-  DocType,
-  PackageDoc,
-  RootDoc,
-  TutorialDoc,
-} from "@webdoc/types";
+import type {BaseDoc, Doc, DocLink, DocType, PackageDoc, RootDoc, TutorialDoc} from "@webdoc/types";
 import {nanoid} from "nanoid";
 
 export const CANONICAL_SEPARATOR = /([.#~$])/g;
@@ -343,6 +335,22 @@ export function cloneDoc<T: Doc>(doc: T): T {
     members: [],
     parent: undefined,
   });
+}
+
+/**
+ * Mangle the document name. If two documents have the same mangled name, then they shouldn't be
+ * siblings (indicating a duplication).
+ *
+ * @param {Doc} doc
+ * @return {string} - The mangled string name.
+ */
+export function mangled(doc: Doc): string {
+  if (doc.type === "MethodDoc") {
+    return `${doc.type}:${doc.name}:${
+      doc.params.map((p) => p.dataType ? p.dataType[0] : "unknown").join("-")}`;
+  }
+
+  return `${doc.type}:${doc.name}`;
 }
 
 /**

@@ -14,7 +14,7 @@ export default function es5Constructor(doc: Doc) {
     const constructorDoc = createDoc("constructor", "MethodDoc", {
       brief: doc.brief,
       description: classDescTag ? doc.description : "",
-      params: doc.params,
+      params: doc.params ?? [],
       returns: doc.returns,
     });
 
