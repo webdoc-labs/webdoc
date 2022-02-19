@@ -194,4 +194,13 @@ describe("@webdoc/parser.LanguageIntegration{@lang ts}", function() {
     expect(symbolTree.members[0].members[0].meta.dataType[0]).to.equal("Array<T>");
     expect(symbolTree.members[0].members[1].meta.dataType[0]).to.equal("Map<K, V>");
   });
+
+  it("should parse parameter types", function() {
+    const symbolTree = buildSymbolTree(`
+      function mark(what: object | string = 'test') {
+      }
+    `);
+
+    expect(symbolTree.members[0].meta.params[0].dataType[0]).to.equal("object | string");
+  });
 });
