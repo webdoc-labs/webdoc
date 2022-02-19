@@ -8,6 +8,7 @@ import {
   type BabelNodeQualifiedName,
   type BabelNodeTSTypeAnnotation,
   type BabelNodeTypeAnnotation,
+  type BabelTSTypeAnnotation,
   type ClassDeclaration,
   type ClassExpression,
   type ClassMethod,
@@ -196,6 +197,7 @@ export function extractParams(
   for (let i = 0; i < nodeParams.length; i++) {
     let paramNode = nodeParams[i];
     let param: ?$Shape<Param>;
+    let paramTypeAnnotation: ?BabelTSTypeAnnotation;
 
     if (isTSParameterProperty(paramNode)) {
       paramNode = paramNode.parameter;
@@ -216,6 +218,7 @@ export function extractParams(
     } else if (isAssignmentPattern(paramNode)) {
       const extraRaw = paramNode.right.extra && paramNode.right.extra.raw;
 
+      paramTypeAnnotation = paramNode.left.typeAnnotation;
       param = {
         identifier: paramNode.left.name,
         optional: paramNode.optional || false,
@@ -233,9 +236,12 @@ export function extractParams(
       console.error("Parameter node couldn't be parsed");
     }
 
-    if (param && paramNode.typeAnnotation) {
+    if (param && paramTypeAnnotation) {
+      param.dataType = extractType(paramTypeAnnotation);
+    } else if (param && paramNode.typeAnnotation) {
       param.dataType = extractType(paramNode.typeAnnotation);
     }
+
     if (param) {
       params.push(param);
     }
