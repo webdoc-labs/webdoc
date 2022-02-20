@@ -2,6 +2,12 @@
   "name": "@webdoc/externalize",
   "entries": [
     {
+      "version": "1.5.7",
+      "tag": "@webdoc/externalize_v1.5.7",
+      "date": "Sun, 20 Feb 2022 18:11:30 GMT",
+      "comments": {}
+    },
+    {
       "version": "1.5.6",
       "tag": "@webdoc/externalize_v1.5.6",
       "date": "Sat, 12 Feb 2022 19:48:05 GMT",

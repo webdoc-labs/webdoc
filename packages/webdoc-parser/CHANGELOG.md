@@ -1,6 +1,16 @@
 # Change Log - @webdoc/parser
 
-This log was last generated on Sat, 12 Feb 2022 19:48:05 GMT and should not be manually modified.
+This log was last generated on Sun, 20 Feb 2022 18:11:30 GMT and should not be manually modified.
+
+## 1.5.7
+Sun, 20 Feb 2022 18:11:30 GMT
+
+### Updates
+
+- Fix parameter type annotation parsing when parameter is assigned a default value (https://github.com/webdoc-labs/webdoc/issues/144)
+- Add primitive type inference for untyped parameters with a default value (https://github.com/webdoc-labs/webdoc/issues/138)
+- Fix inheritance of overloaded methods. Prior to this fix, only the first overload was automatically inherited.
+- Fix issues with spread tuples in vararg parameters
 
 ## 1.5.6
 Sat, 12 Feb 2022 19:48:05 GMT

@@ -1,6 +1,13 @@
 # Change Log - @webdoc/model
 
-This log was last generated on Sat, 12 Feb 2022 19:48:05 GMT and should not be manually modified.
+This log was last generated on Sun, 20 Feb 2022 18:11:30 GMT and should not be manually modified.
+
+## 1.5.7
+Sun, 20 Feb 2022 18:11:30 GMT
+
+### Updates
+
+- Support for advanced variants in query API. For example, "ns.className#method[params[0][dataType] = string]" to get a specific method overload!
 
 ## 1.5.6
 Sat, 12 Feb 2022 19:48:05 GMT

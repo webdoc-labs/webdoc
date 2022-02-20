@@ -2,6 +2,18 @@
   "name": "@webdoc/model",
   "entries": [
     {
+      "version": "1.5.7",
+      "tag": "@webdoc/model_v1.5.7",
+      "date": "Sun, 20 Feb 2022 18:11:30 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "Support for advanced variants in query API. For example, \"ns.className#method[params[0][dataType] = string]\" to get a specific method overload!"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.5.6",
       "tag": "@webdoc/model_v1.5.6",
       "date": "Sat, 12 Feb 2022 19:48:05 GMT",
