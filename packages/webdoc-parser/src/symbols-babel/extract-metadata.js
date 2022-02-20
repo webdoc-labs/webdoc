@@ -216,8 +216,10 @@ export function extractParams(
         optional: paramNode.optional || false,
       };
     } else if (isRestElement(paramNode)) {
+      const argument = paramNode.argument;
+
       param = {
-        identifier: paramNode.argument.name,
+        identifier: isIdentifier(argument) ? argument.name : "rest_args",
         optional: paramNode.optional || false,
         variadic: true,
       };
