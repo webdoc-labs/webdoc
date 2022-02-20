@@ -181,6 +181,32 @@ describe("@webdoc/parser.LanguageIntegration{@lang ts}", function() {
     expect(symtree.members[0].members.length).to.equal(1);
   });
 
+  // it("should work with spread object parameters", function() {
+  //   const symbolTree = buildSymbolTree(`
+  //     /** Build */
+  //     class Factory {
+  //       /** Build with options. */
+  //       build({ arg0, arg1, arg2 }: Opts) { }
+  //     }
+  //   `);
+  //   const build = symbolTree.members[0].members[0];
+  //
+  //   expect(build.meta.params.length).to.equal(4);// implicit param!
+  // });
+
+  it("should work with spread tuple parameters", function() {
+    const symbolTree = buildSymbolTree(`
+       /** Figure it out. */
+       function dynamic_call(...[a0, a1]: [string, number] | [number, string]) {
+       }
+    `);
+    const dynamicCall = symbolTree.members[0];
+
+    expect(dynamicCall.meta.params.length).to.equal(1);
+    expect(dynamicCall.meta.params[0].identifier).to.not.equal(undefined);
+    expect(dynamicCall.meta.params[0].dataType[0]).to.equal("[string, number] | [number, string]");
+  });
+
   it("should parse type parameters", function() {
     const symbolTree = buildSymbolTree(`
       class Builder {
@@ -195,7 +221,7 @@ describe("@webdoc/parser.LanguageIntegration{@lang ts}", function() {
     expect(symbolTree.members[0].members[1].meta.dataType[0]).to.equal("Map<K, V>");
   });
 
-  it("should parse parameter types", function() {
+  it("should parse parameter types with default values", function() {
     const symbolTree = buildSymbolTree(`
       function mark(what: object | string = 'test') {
       }

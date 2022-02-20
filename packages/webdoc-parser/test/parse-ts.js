@@ -154,6 +154,27 @@ describe("@webdoc/parser.parse (Typescript)", function() {
     expect(lengthProperty.dataType[0]).to.equal("number");
   });
 
+  it("should work with arrow function properties", async function() {
+    const documentTree = await parse([{
+      content: `
+        class Factory {
+          /**
+           * Build the object.
+           * @param args - Args.
+           */
+          create = (args: Opts) => undefined
+        }
+      `,
+      path: "*.ts",
+      package: createPackageDoc(),
+    }]);
+    const createMethod = findDoc("Factory.create", documentTree);
+
+    // expect(createMethod.type).to.equal("MethodDoc");
+    expect(createMethod.params.length).to.equal(1);
+    expect(createMethod.params[0].dataType[0]).to.equal("Opts");
+  });
+
   it("should properly inherit all method overloads", async function() {
     const documentTree = await parse([{
       content: `

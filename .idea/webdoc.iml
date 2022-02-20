@@ -23,6 +23,7 @@
       <excludeFolder url="file://$MODULE_DIR$/packages/webdoc-parser/lib" />
       <excludeFolder url="file://$MODULE_DIR$/packages/webdoc-plugin-markdown/lib" />
       <excludeFolder url="file://$MODULE_DIR$/packages/webdoc-template-library/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/common/temp" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
