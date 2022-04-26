@@ -3,7 +3,8 @@
       "include": "./src/**/*"
   },
   "plugins": [
-    "plugins/markdown"
+    "plugins/markdown",
+    "./plugins/plugin-hello-world.js"
   ],
   "template": {
     "readme": "./README.md",

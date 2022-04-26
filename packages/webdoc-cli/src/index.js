@@ -90,8 +90,17 @@ async function main(argv: yargs.Argv) {
       }
 
       // Plugin should invoke installPlugin to whatever APIs it uses.
-      // $FlowFixMe
-      require(pluginPath);
+      try {
+        // $FlowFixMe
+        require(pluginPath);
+      } catch {
+        try {
+          // $FlowFixMe
+          require(path.join(path.dirname(argv.config), pluginPath));
+        } catch {
+          log.error(tag.CLI, `Failed to resolve plugin: ${pluginPath}`);
+        }
+      }
     }
   }
 
