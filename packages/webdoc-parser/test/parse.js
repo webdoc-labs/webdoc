@@ -165,4 +165,24 @@ describe("@webdoc/parser.parse", function() {
 
     expect(documentTree.members.length).to.equal(0);
   });
+
+  it("resolve @classdesc even for ES6 classes", async function() {
+    const documentTree = await parse(`
+      /**
+       * Brief.
+       *
+       * Good evening!
+       * @classdesc
+       * Hello world!
+       */
+       class Engine {
+         constructor() {}
+       }
+    `);
+
+    const engineClass = documentTree.members[0];
+
+    expect(engineClass.description).to.include("Good evening!");
+    expect(engineClass.description).to.include("Hello world!");
+  });
 });
