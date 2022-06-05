@@ -46,13 +46,13 @@ import {
   removeBlock,
 } from "../types/VariableRegistry";
 
+import {parserLogger, tag} from "../Logger";
 import traverse, {type NodePath} from "@babel/traverse";
 import type {LanguageConfig} from "../types/LanguageIntegration";
 import type {SourceFile} from "@webdoc/types";
 import extract from "../extract";
 import {extractParams} from "./extract-metadata";
 import extractSymbol from "./extract-symbol";
-import {parserLogger} from "../Logger";
 
 // TODO: This shouldn't really be a part of symbols-babel but rather should live with Symbol.js
 // in SymbolUtils.js
@@ -277,6 +277,11 @@ function captureSymbols(nodePath: NodePath, parent: Symbol): ?Symbol {
 
     for (let i = 0, j = params.length; i < j; i++) {
       declareParameter(params[i].identifier);
+    }
+
+    if (params.flawed) {
+      console.error(tag.Indexer, "^^^ Errors in parsing a parameter near " +
+        fileName + ":" + (node && node.start ? node.start.line : "?"));
     }
   } else if (node.params) {
     registerParameters(node);
