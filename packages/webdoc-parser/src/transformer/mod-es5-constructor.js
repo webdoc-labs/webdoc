@@ -27,7 +27,7 @@ export default function es5Constructor(doc: Doc) {
 
       addChildDoc(constructorDoc, doc);
     } else if (classDescTag) {
-      doc.description += classDescTag.value;
+      doc.description = doc.description ? doc.description + classDescTag.value : classDescTag.value;
     }
   }
 
