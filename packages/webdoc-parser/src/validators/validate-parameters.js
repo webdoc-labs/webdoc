@@ -1,6 +1,7 @@
 // @flow
 
 import type {DocShape, Param} from "@webdoc/types";
+import {parserLogger, tag} from "../Logger";
 import type {SymbolSignature} from "../types/Symbol";
 
 // Validate the parameters are structurally (not nominally) correct
@@ -20,7 +21,7 @@ function validateParameters(doc: DocShape, meta: SymbolSignature): void {
     const name = param.identifier;
 
     if (!name) {
-      console.warn("Anonymous documented parameters are not supported");
+      parserLogger.error(tag.Validator, "Anonymous documented parameters are not supported");
     }
 
     const dotIndex = name.indexOf(".");
@@ -33,14 +34,14 @@ function validateParameters(doc: DocShape, meta: SymbolSignature): void {
       // @param {string} string
       // @param {string} options.title
       if (firstId !== lastParam) {
-        console.warn(`Object property ${name} parameter must be placed` +
+        parserLogger.warn(tag.Validator, `Object property ${name} parameter must be placed` +
               `directly after object parameter ${firstId}`);
       }
 
       continue;
     }
     if (j >= metaParams.length) {
-      console.warn(`"${name}" is not a parameter & cannot` +
+      parserLogger.warn(tag.Validator, `"${name}" is not a parameter & cannot` +
             ` come after the last parameter "${lastParam || ""}"`);
     }
 

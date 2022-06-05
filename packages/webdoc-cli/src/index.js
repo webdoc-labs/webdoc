@@ -18,8 +18,8 @@ require("./shims");// Node v10 support
 
 declare var global: Object;
 
-export function initLogger(verbose: boolean = false) {
-  const defaultLevel = verbose ? "INFO" : "WARN";
+export function initLogger(verbose: boolean = false, quiet: boolean = false) {
+  const defaultLevel = verbose ? "INFO" : quiet ? "ERROR" : "WARN";
 
   log.init(
     {
@@ -44,15 +44,13 @@ export function initLogger(verbose: boolean = false) {
         break;
       }
     });
+
+  initParserLogger(defaultLevel);
 }
 
 // main() is the default command.
 async function main(argv: yargs.Argv) {
-  initLogger(!!argv.verbose);
-
-  if (argv.verbose) {
-    initParserLogger("INFO");
-  }
+  initLogger(!!argv.verbose, !!argv.quiet);
 
   const start = performance.now();
 
@@ -184,6 +182,7 @@ const argv = yargs.scriptName("@webdoc/cli")
   .alias("c", "config")
   .alias("u", "tutorials")
   .alias("v", "verbose")
+  .alias("q", "quiet")
   .command("$0", "Run webdoc", () => {})
   .argv;
 
