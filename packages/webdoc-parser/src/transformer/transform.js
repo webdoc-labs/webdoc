@@ -1,8 +1,8 @@
 // @flow
 
 import {type Doc, type RootDoc} from "@webdoc/types";
+import {type Symbol, printSourceLocation} from "../types/Symbol";
 import {parserLogger, tag} from "../Logger";
-import {type Symbol} from "../types/Symbol";
 import {addChildDoc} from "@webdoc/model";
 import symbolToDoc from "./symbol-to-doc";
 
@@ -18,9 +18,7 @@ export function transformRecursive(symbol: Symbol, root: RootDoc): ?Doc {
   if (!doc && !symbol.isRoot) {
     parserLogger.error(tag.DocParser,
       `Failed to parse doc for ${symbol.simpleName}(@${symbol.canonicalName || "Unnamed"})` +
-      `{@${symbol.loc.fileName || "<UNKNOWN_FILE>"}` +
-      `<${symbol.loc.start ? symbol.loc.start.line : "NaN"},` +
-      ` ${symbol.loc.start ? symbol.loc.start.column : "NaN"}>}`);
+     printSourceLocation(symbol));
     return;
   }
 

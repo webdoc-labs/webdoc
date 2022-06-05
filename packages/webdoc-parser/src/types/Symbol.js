@@ -282,6 +282,12 @@ export function coalescePair(symbol: Symbol, pair: Symbol): Symbol {
   return symbol;
 }
 
+export function printSourceLocation(symbol: Symbol): string {
+  return `(in ${symbol.loc.fileName ?? "an unknown file"} at ` +
+    `${symbol.loc.start ? symbol.loc.start.line : "NaN"}:` +
+    `${symbol.loc.start ? symbol.loc.start.column : "NaN"})`;
+}
+
 function areEqualLoc(doc1: Symbol, doc2: Symbol): boolean {
   return doc1.loc.fileName === doc2.loc.fileName &&
     doc1.loc.start && doc2.loc.start &&
