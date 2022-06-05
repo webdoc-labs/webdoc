@@ -116,6 +116,7 @@ import {
   createSimpleKeywordType,
 } from "@webdoc/model";
 
+import {parserLogger, tag} from "../Logger";
 import type {Symbol} from "../types/Symbol";
 
 export const mode: {
@@ -242,10 +243,13 @@ export function extractParams(
       // "", " ", "  ",  "    " or using &zwnj; because it is truly invisible
 
       ((params: any)).flawed = true;
-      console.error("Object patterns as parameters can't be documented");
+      parserLogger.error(tag.Indexer, "Object patterns as parameters can't be documented, at line");
+      parserLogger.warn(tag.Indexer, JSON.stringify(paramNode, null, 2));
     } else {
       ((params: any)).flawed = true;
-      console.error("Parameter node couldn't be parsed");
+      parserLogger.error(tag.Indexer, "Parameter node couldn't be parsed, " +
+          "enable warning logs for more detail");
+      parserLogger.warn(tag.Indexer, JSON.stringify(paramNode, null, 2));
     }
 
     if (param && paramTypeAnnotation) {
