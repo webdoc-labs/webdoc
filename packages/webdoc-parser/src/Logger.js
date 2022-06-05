@@ -36,6 +36,7 @@ export function initLogger(defaultLevel: string = "INFO") {
       DocParser: defaultLevel,
       DocumentTreeModifier: defaultLevel,
       Indexer: defaultLevel,
+      Validator: defaultLevel,
     },
     (level, tag, msg, params) => {
       let tagPrefix = `[${tag}]:`;
