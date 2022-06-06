@@ -20,6 +20,7 @@ import {
   type FunctionExpression,
   type InterfaceDeclaration,
   type ObjectMethod,
+  type ObjectPattern,
   type TSInterfaceDeclaration,
   type TSMethodSignature,
   type TSQualifiedName,
@@ -49,7 +50,6 @@ import {
   isNumberLiteralTypeAnnotation,
   isNumberTypeAnnotation,
   isNumericLiteral,
-  isObjectExpression,
   isObjectPattern,
   isObjectProperty,
   isObjectTypeAnnotation,
@@ -121,7 +121,6 @@ import {
 
 import {parserLogger, tag} from "../Logger";
 import type {Symbol} from "../types/Symbol";
-import {ObjectPattern} from "@babel/types";
 
 export const mode: {
   current: "typescript" | "flow",
