@@ -29,6 +29,7 @@ import {
   isObjectMethod,
   isObjectProperty,
   isReturnStatement,
+  isStringLiteral,
   isTSAsExpression,
   isTSDeclareFunction,
   isTSDeclareMethod,
@@ -39,8 +40,7 @@ import {
   isTSParameterProperty,
   isTSPropertySignature,
   isTSTypeElement,
-  isThisExpression,
-  isVariableDeclarator,
+  isThisExpression, isVariableDeclarator,
 } from "@babel/types";
 
 import {OBLIGATE_LEAF, PASS_THROUGH, type Symbol, VIRTUAL, isVirtual} from "../types/Symbol";
@@ -184,6 +184,7 @@ export default function extractSymbol(
     // let symbolName = (() => <ClassExpression> | <FunctionExpression)();
     // let symbolName = (function() { class symbolName {}; return symbolName; })();
     // propertyName:           <Literal> | <ClassExpression> | <FunctionExpression>,
+    // "propertyName":         <Literal> | <ClassExpression> | <FunctionExpression>,
 
     // NOTE: If this type of symbol is initialized to a <ClassExpression> or <FunctionExpression>,
     // it treated as a virtual symbol so that the assigned class/function (i.e. initially a child
@@ -214,7 +215,7 @@ export default function extractSymbol(
         nodeSymbol.meta.readonly = true;
       }
     } else {// ObjectProperty
-      name = node.key.name;
+      name = isStringLiteral(node.key) ? node.key.value : node.key.name;
       init = node.value;
     }
 

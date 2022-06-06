@@ -115,7 +115,7 @@ const TAG_PARSERS: { [id: string]: TagParser } = {
 const TAG_OVERRIDES: { [id: string]: string | any } = { // replace any, no lazy
   "class": "ClassDoc",
   "interface": "InterfaceDoc",
-  //  "enum": "PropertyDoc",
+  "enum": "EnumDoc",
   "member": "PropertyDoc",
   "method": "MethodDoc",
   "mixin": "MixinDoc",
