@@ -6,7 +6,10 @@ import {
   type BabelNodeExpression,
   type BabelNodeFlow,
   type BabelNodeMemberExpression,
+  type BabelNodeObjectExpression,
+  type BabelNodeObjectTypeAnnotation,
   type BabelNodeQualifiedName,
+  type BabelNodeTSLiteralType,
   type BabelNodeTSTypeAnnotation,
   type BabelNodeTypeAnnotation,
   type BabelTSTypeAnnotation,
@@ -17,6 +20,7 @@ import {
   type FunctionExpression,
   type InterfaceDeclaration,
   type ObjectMethod,
+  type ObjectPattern,
   type TSInterfaceDeclaration,
   type TSMethodSignature,
   type TSQualifiedName,
@@ -46,7 +50,8 @@ import {
   isNumberLiteralTypeAnnotation,
   isNumberTypeAnnotation,
   isNumericLiteral,
-  isObjectExpression,
+  isObjectPattern,
+  isObjectProperty,
   isObjectTypeAnnotation,
   isObjectTypeIndexer,
   isObjectTypeProperty,
@@ -100,9 +105,7 @@ import {
   isTypeAnnotation,
   isTypeParameterInstantiation,
   isTypeofTypeAnnotation,
-  isUnaryExpression,
-  isUnionTypeAnnotation,
-  isVoidTypeAnnotation,
+  isUnaryExpression, isUnionTypeAnnotation, isVoidTypeAnnotation,
 } from "@babel/types";
 
 import type {DataType, Param, Return} from "@webdoc/types";
@@ -228,23 +231,52 @@ export function extractParams(
       const extraRaw = paramNode.right.extra && paramNode.right.extra.raw;
       const [defaultValue, dataType] = extractAssignedValue(paramNode.right);
 
-      param = {
-        identifier: paramNode.left.name,
-        optional: paramNode.optional || false,
-        default: paramNode.right.raw || extraRaw || defaultValue,
-        dataType,
-      };
-
-      // This will override the inferred data type.
-      paramTypeAnnotation = paramNode.left.typeAnnotation;
-    } else if (isObjectExpression(paramNode)) {
+      if (isObjectPattern(paramNode.left)) {
+        try {
+          params.push(({
+            identifier: `__arg${i}`,
+            optional: false,
+            ...(paramNode.left.typeAnnotation && {
+              dataType: extractType(paramNode.left.typeAnnotation),
+            }),
+          }: $Shape<Param>));
+          params.push(...extractParamsFromObjectPatternRecursive(
+            paramNode.left, paramNode.right,
+            paramNode.left.typeAnnotation ? paramNode.left.typeAnnotation.typeAnnotation : null));
+        } catch (e) {
+          ((params: any)).flawed = true;
+          parserLogger.error(tag.Indexer, `Failed parse param: ${e}`);
+        }
+      } else {
+        param = {
+          identifier: paramNode.left.name,
+          optional: paramNode.optional || false,
+          default: paramNode.right.raw || extraRaw || defaultValue,
+          dataType,
+        };
+        // This will override the inferred data type.
+        paramTypeAnnotation = paramNode.left.typeAnnotation;
+      }
+    } else if (isObjectPattern(paramNode)) {
       // TODO: Find a way to document {x, y, z} parameters
       // e.g. function ({x, y, z}), you would need to give the object pattern an anonymous like
       // "", " ", "  ",  "    " or using &zwnj; because it is truly invisible
 
-      ((params: any)).flawed = true;
-      parserLogger.error(tag.Indexer, "Object patterns as parameters can't be documented, at line");
-      parserLogger.warn(tag.Indexer, JSON.stringify(paramNode, null, 2));
+      try {
+        params.push(({
+          identifier: `__arg${i}`,
+          optional: false,
+          ...(paramNode.typeAnnotation && {
+            dataType: extractType(paramNode.typeAnnotation),
+          }),
+        }: $Shape<Param>));
+        params.push(...extractParamsFromObjectPatternRecursive(
+          paramNode, null,
+          paramNode.typeAnnotation ? paramNode.typeAnnotation.typeAnnotation : null));
+      } catch (e) {
+        ((params: any)).flawed = true;
+        parserLogger.error(tag.Indexer, `Failed parse param: ${e}`);
+      }
     } else {
       ((params: any)).flawed = true;
       parserLogger.error(tag.Indexer, "Parameter node couldn't be parsed, " +
@@ -260,6 +292,80 @@ export function extractParams(
 
     if (param) {
       params.push(param);
+    }
+  }
+
+  return params;
+}
+
+function extractParamsFromObjectPatternRecursive(
+  left: ObjectPattern,
+  right?: ?BabelNodeObjectExpression,
+  typeAnnotation?: BabelNodeObjectTypeAnnotation | BabelNodeTSLiteralType,
+): Param[] {
+  const params: Param[] = [];
+
+  for (const prop of left.properties) {
+    if (isObjectProperty(prop)) {
+      let defaultValue: any;
+
+      if (isAssignmentPattern(prop.value)) {
+        defaultValue = prop.value.right;
+      } else if (right) {
+        for (const defaultValueProp of right.properties) {
+          if (defaultValueProp.key && defaultValueProp.key.name === prop.key.name) {
+            defaultValue = defaultValueProp.value;
+            break;
+          }
+        }
+      }
+
+      let valueTypeAnnotation: any;
+
+      if (typeAnnotation && isObjectTypeAnnotation(typeAnnotation)) {
+        for (const typeProp of typeAnnotation.properties) {
+          if (isIdentifier(typeProp.key) && typeProp.key.name === prop.key.name) {
+            valueTypeAnnotation = {typeAnnotation: typeProp.value};
+            break;
+          }
+        }
+      } else if (typeAnnotation && isTSTypeLiteral(typeAnnotation)) {
+        for (const typeProp of typeAnnotation.members) {
+          if (isIdentifier(typeProp.key) && typeProp.key.name === prop.key.name) {
+            valueTypeAnnotation = typeProp.typeAnnotation;
+            break;
+          }
+        }
+      }
+
+      if (isObjectPattern(prop.value)) {
+        const embeddedParams = extractParamsFromObjectPatternRecursive(
+          prop.value,
+          defaultValue,
+          valueTypeAnnotation ? valueTypeAnnotation.typeAnnotation : null,
+        );
+        const prefix = isIdentifier(prop.key) ? prop.key.name : "$error$";
+
+        for (const embeddedParam of embeddedParams) {
+          embeddedParam.identifier = `.${prefix}${embeddedParam.identifier}`;
+        }
+
+        params.push(...embeddedParams);
+      } else if (isIdentifier(prop.key)) {
+        const [defaultValueRaw, impliedDataType] = defaultValue ?
+          extractAssignedValue(defaultValue) : [null, null];
+
+        // Prefix with dot so it's implied to be not top-level
+        const param: $Shape<Param> = {
+          identifier: "." + prop.key.name,
+          optional: valueTypeAnnotation && valueTypeAnnotation.optional,
+          variadic: false,
+          ...(defaultValueRaw && {default: defaultValueRaw}),
+          dataType: valueTypeAnnotation ? extractType(valueTypeAnnotation) : impliedDataType,
+        };
+
+        params.push(param);
+      }
     }
   }
 
