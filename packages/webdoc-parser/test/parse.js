@@ -185,4 +185,29 @@ describe("@webdoc/parser.parse", function() {
     expect(engineClass.description).to.include("Good evening!");
     expect(engineClass.description).to.include("Hello world!");
   });
+
+  it("should resolve objects properties using string literals as keys correctly", async function() {
+    const documentTree = await parse(`
+      /** @namespace input */
+      /**
+       * standard keyboard constants
+       * @public
+       * @enum {number}
+       * @namespace KEY
+       * @memberof input
+       */
+      const KEY = {
+          /** @memberof input.KEY */      
+          "BACKSPACE" : 8,
+          /** @memberof input.KEY */
+          "TAB" : 9,
+          /** @memberof input.KEY */
+          "ENTER" : 13,
+      };
+    `);
+
+    const docKeyEnum = findDoc("input.KEY", documentTree);
+
+    expect(docKeyEnum.members.length).to.equal(3);
+  });
 });
