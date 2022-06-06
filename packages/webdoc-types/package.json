@@ -1,6 +1,6 @@
 {
   "name": "@webdoc/types",
-  "version": "1.5.7",
+  "version": "1.6.0",
   "description": "Type definitions for @webdoc/model",
   "keywords": [
     "flow",

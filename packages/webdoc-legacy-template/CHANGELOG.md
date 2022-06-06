@@ -1,6 +1,11 @@
 # Change Log - @webdoc/legacy-template
 
-This log was last generated on Sun, 20 Feb 2022 18:11:30 GMT and should not be manually modified.
+This log was last generated on Mon, 06 Jun 2022 00:15:27 GMT and should not be manually modified.
+
+## 1.6.0
+Mon, 06 Jun 2022 00:15:27 GMT
+
+*Version update only*
 
 ## 1.5.7
 Sun, 20 Feb 2022 18:11:30 GMT
