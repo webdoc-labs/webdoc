@@ -12,6 +12,8 @@
     const doc = obj;
     const members = doc.members;
 
+    if (members.length === 0) return;
+
     const publicProperties = this.plugins.categoryFilter(doc, {
       access: "public",
       type: "PropertyDoc"

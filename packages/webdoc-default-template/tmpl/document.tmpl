@@ -53,9 +53,14 @@
         require,
         sources,
       }) ?>
+    <?js } else if (doc.type === "FunctionDoc") { ?>
+       <?js if (doc.params) { ?><?js= this.partial("components/member/params.tmpl", doc.params) ?><?js } ?>
+       <?js if (doc.returns) { ?><?js= this.partial("components/member/returns.tmpl", doc.returns) ?><?js } ?>
     <?js } ?>
 
-    <?js= this.partial("components/summary/index.tmpl", doc) ?>
+    <?js if (doc.members.length > 0) { ?>
+      <?js= this.partial("components/summary/index.tmpl", doc) ?>
+    <?js } ?>
 
     <?js= this.partial("components/members.tmpl", {
       title: "Public Properties",
