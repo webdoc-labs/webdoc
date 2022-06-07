@@ -1,0 +1,8 @@
+<?js
+  let code = obj;
+
+  if (this.plugins.hljs) {
+    code = this.plugins.hljs.highlightAuto(code).value;
+  }
+?>
+<pre><code><?js= code ?></code></pre>

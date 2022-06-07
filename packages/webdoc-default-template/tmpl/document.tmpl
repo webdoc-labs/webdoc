@@ -41,6 +41,10 @@
     <div class="document__brief"><?js= doc.brief ?></div>
     <div class="document__description"><?js= doc.description ?></div>
 
+    <?js for (const example of doc.examples ?? []) { ?>
+      <?js= this.partial("components/content/example.tmpl", example.code) ?>
+    <?js } ?>
+
     <?js= this.partial("components/member/see.tmpl", doc.see) ?>
 
     <?js if (doc.type === "ClassDoc") { ?>
