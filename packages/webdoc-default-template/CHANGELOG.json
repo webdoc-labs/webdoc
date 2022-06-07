@@ -2,6 +2,18 @@
   "name": "@webdoc/default-template",
   "entries": [
     {
+      "version": "1.6.1",
+      "tag": "@webdoc/default-template_v1.6.1",
+      "date": "Tue, 07 Jun 2022 02:12:51 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "Add a \"properties\" table for showing the subproperties of class members. Fixed pages for functions being generated without parameter or return data."
+          }
+        ]
+      }
+    },
+    {
       "version": "1.6.0",
       "tag": "@webdoc/default-template_v1.6.0",
       "date": "Mon, 06 Jun 2022 00:15:27 GMT",

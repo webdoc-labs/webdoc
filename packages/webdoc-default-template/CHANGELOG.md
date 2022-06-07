@@ -1,6 +1,13 @@
 # Change Log - @webdoc/default-template
 
-This log was last generated on Mon, 06 Jun 2022 00:15:27 GMT and should not be manually modified.
+This log was last generated on Tue, 07 Jun 2022 02:12:51 GMT and should not be manually modified.
+
+## 1.6.1
+Tue, 07 Jun 2022 02:12:51 GMT
+
+### Updates
+
+- Add a "properties" table for showing the subproperties of class members. Fixed pages for functions being generated without parameter or return data.
 
 ## 1.6.0
 Mon, 06 Jun 2022 00:15:27 GMT
