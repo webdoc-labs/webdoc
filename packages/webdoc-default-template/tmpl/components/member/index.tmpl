@@ -12,6 +12,7 @@ const source = doc.loc && doc.loc.file && doc.loc.file.path
 const sourceName = source && require("path").basename(doc.loc.file.path);
 const sourceStart = source && doc.loc.start ? ":" + doc.loc.start.line : "";
 const sourceLinkFragment = source && doc.loc.start ? "#" + doc.loc.start.line : "";
+const properties = doc.members.filter(child => child.type === "PropertyDoc");
 
 const modifiers = [
   doc.deprecated ? "member__title_deprecated" : ""
@@ -53,6 +54,10 @@ const modifiers = [
 
   <div class="member__brief"><?js= doc.brief ?></div>
   <div class="member__description"><?js= doc.description ?></div>
+
+  <?js if (properties.length) { ?>
+    <?js= this.partial("components/member/properties.tmpl", properties) ?>
+  <?js } ?>
 
   <?js if (doc.params && doc.params.length) { ?>
     <?js= this.partial("components/member/params.tmpl", doc.params) ?>
