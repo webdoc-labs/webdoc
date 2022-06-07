@@ -122,6 +122,7 @@ exports.publish = async function publish(options /*: PublishOptions */) {
     .installPlugin("signature", signaturePlugin)
     .installPlugin("categoryFilter", categoryFilterPlugin)
     .installPlugin("relations", RelationsPlugin)
+    .installPlugin("hljs", hljs)
     .setGlobalTemplateData({
       appBar: {
         items: appBarItems,
