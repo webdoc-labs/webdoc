@@ -122,6 +122,7 @@ const TAG_OVERRIDES: { [id: string]: string | any } = { // replace any, no lazy
   "typedef": "TypedefDoc",
   "namespace": "NSDoc",
   "event": "EventDoc",
+  "function": "FunctionDoc",
 };
 
 // Tags that end only when another tag is found or two lines are blank for consecutively
