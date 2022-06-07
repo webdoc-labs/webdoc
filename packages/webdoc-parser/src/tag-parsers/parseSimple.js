@@ -123,6 +123,7 @@ export function parseName(value: string, doc: $Shape<BaseDoc>): $Shape<NameTag> 
   return {
     alias: value,
     type: "NameTag",
+    value,
   };
 }
 

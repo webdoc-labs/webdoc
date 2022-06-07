@@ -210,4 +210,42 @@ describe("@webdoc/parser.parse", function() {
 
     expect(docKeyEnum.members.length).to.equal(3);
   });
+
+  it("should parse method overloads in orphan doc comments", async function() {
+    const documentTree = await parse(`
+      /** Rectangle */
+      class Rect {
+        /**
+         * Returns true if the rectangle contains the given rectangle
+         * @name contains
+         * @memberof Rect
+         * @function
+         * @param {Rect} rect
+         * @returns {boolean} true if contains
+         */
+    
+        /**
+         * Returns true if the rectangle contains the given point
+         * @name contains
+         * @memberof Rect
+         * @function
+         * @param  {number} x - x coordinate
+         * @param  {number} y - y coordinate
+         * @returns {boolean} true if contains
+         */
+    
+        /**
+         * Returns true if the rectangle contains the given point
+         * @name contains
+         * @memberof Rect
+         * @function
+         * @param {Vector2d} point
+         * @returns {boolean} true if contains
+         */
+        contains() { }
+      }
+    `);
+
+    expect(findDoc("Rect", documentTree).members.length).to.equal(4);
+  });
 });
