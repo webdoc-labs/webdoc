@@ -37,9 +37,13 @@ const modifiers = [
       </span>
       <?js if (source && sources) { ?>
         <span class="tag--source">
+          <?js if (this.plugins.repository) { ?>
+            <?js= this.plugins.repository.linkTo(doc) ?>
+          <?js } else { ?>
             <a href="<?js= source + sourceLinkFragment ?>">
               <?js= sourceName + sourceStart ?>
             </a>
+          <?js } ?>
         </span>
       <?js } ?>
     </section>
