@@ -1,7 +1,7 @@
 const path = require("path");
 
 // Regex for matching <img> element with a capturing group for src attribute
-const IMG_REGEX = /(<img [^\<]*src=")([-\]_.~!*'();:@&=+$,/?%#[A-z0-9]*)("[^\<]*>)/g;
+const IMG_REGEX = /(<img [^<]*src=")([-\]_.~!*'();:@&=+$,/?%#[A-z0-9]*)("[^<]*>)/g;
 
 exports.preprocessMarkupPlugin = ({
   assetsDir,
