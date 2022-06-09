@@ -15,7 +15,8 @@ const {
   Sitemap,
   TemplateRenderer,
   TemplatePipeline,
-  TemplateTagsResolver, RepositoryPlugin,
+  TemplateTagsResolver,
+  RepositoryPlugin,
 } = require("@webdoc/template-library");
 const {linker, prepareLinker} = require("./helper/linker");
 const _ = require("lodash");
@@ -24,7 +25,7 @@ const _ = require("lodash");
 const {indexSorterPlugin} = require("./helper/renderer-plugins/index-sorter");
 const {signaturePlugin} = require("./helper/renderer-plugins/signature");
 const {categoryFilterPlugin} = require("./helper/renderer-plugins/category-filter");
-
+const {preprocessMarkupPlugin} = require("./helper/renderer-plugins/preprocess");
 /*::
 import type {
   Doc,
@@ -74,6 +75,7 @@ exports.publish = async function publish(options /*: PublishOptions */) {
 
   const docTree = options.documentTree;
   const outDir = path.normalize(options.config.opts.destination);
+  const assetsDir = path.join(outDir, "./assets");
   const index = config.template.readme ? linker.createURI("index") : null;
   const indexRelative = index ? index.replace(`/${linker.siteRoot}/`, "") : null;
 
@@ -123,6 +125,9 @@ exports.publish = async function publish(options /*: PublishOptions */) {
     .installPlugin("categoryFilter", categoryFilterPlugin)
     .installPlugin("relations", RelationsPlugin)
     .installPlugin("hljs", hljs)
+    .installPlugin("preprocess", preprocessMarkupPlugin({
+      assetsDir: path.relative(outDir, assetsDir),
+    }))
     .setGlobalTemplateData({
       appBar: {
         items: appBarItems,
@@ -158,7 +163,7 @@ exports.publish = async function publish(options /*: PublishOptions */) {
     idToDoc.set(doc.id, doc);
   });
 
-  await outStaticFiles(outDir, config);
+  await outStaticFiles(outDir, assetsDir, config);
   await Promise.all([
     outSource(outDir, pipeline, options.config, source, options.cmdLine.mainThread || false),
     outExplorerData(outDir, crawlData),
@@ -174,6 +179,7 @@ exports.publish = async function publish(options /*: PublishOptions */) {
 // Copy the contents of ./static to the output directory
 async function outStaticFiles(
   outDir /*: string */,
+  assetsDir /*: string */,
   config /*: ConfigSchema */,
 ) /*: Promise<void> */ {
   if (config.template.variant !== "plain") {
@@ -213,6 +219,20 @@ async function outStaticFiles(
       }
 
       config.template.stylesheets = resolved;
+
+      return Promise.all(copyPromises);
+    })(),
+    (() => {
+      const assets = typeof config.template.assets === "string" ?
+        [config.template.assets] : config.template.assets;
+      const copyPromises = [];
+
+      for (const asset of assets) {
+        copyPromises.push(fse.copy(
+          path.join(process.cwd(), asset),
+          assetsDir,
+        ));
+      }
 
       return Promise.all(copyPromises);
     })(),

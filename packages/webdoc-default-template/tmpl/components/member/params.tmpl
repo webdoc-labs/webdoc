@@ -55,7 +55,7 @@ params.forEach((param) => {
         <?js if (hasDefault) {?><td class="member-parameter__default">
           <?js if (typeof param.default !== 'undefined') { ?><?js= this.htmlText(param.default) ?><?js } ?>
         </td><?js } ?>
-        <td class="member-parameter__description"><?js= param.description ?></td>
+        <td class="member-parameter__description"><?js= this.partial("components/content/text.tmpl", param.description) ?></td>
       </tr><?js }); ?>
     </tbody>
   </table>

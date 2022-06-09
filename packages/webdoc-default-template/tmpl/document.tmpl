@@ -38,8 +38,8 @@
 
     <?js= this.partial("components/signature.tmpl", doc) ?>
 
-    <div class="document__brief"><?js= doc.brief ?></div>
-    <div class="document__description"><?js= doc.description ?></div>
+    <div class="document__brief"><?js= this.partial("components/content/text.tmpl", doc.brief) ?></div>
+    <div class="document__description"><?js= this.partial("components/content/text.tmpl", doc.description) ?></div>
 
     <?js for (const example of doc.examples ?? []) { ?>
       <?js= this.partial("components/content/example.tmpl", example.code) ?>
