@@ -1,6 +1,13 @@
 # Change Log - @webdoc/default-template
 
-This log was last generated on Tue, 07 Jun 2022 02:12:51 GMT and should not be manually modified.
+This log was last generated on Thu, 09 Jun 2022 03:55:26 GMT and should not be manually modified.
+
+## 1.6.2
+Thu, 09 Jun 2022 03:55:26 GMT
+
+### Updates
+
+- Add support for copying static assets into the website using template.assets in the configuration file. A preprocessor is used to detect file usage in img "src" attributes and replace them with the final link.
 
 ## 1.6.1
 Tue, 07 Jun 2022 02:12:51 GMT

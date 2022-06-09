@@ -2,6 +2,18 @@
   "name": "@webdoc/default-template",
   "entries": [
     {
+      "version": "1.6.2",
+      "tag": "@webdoc/default-template_v1.6.2",
+      "date": "Thu, 09 Jun 2022 03:55:26 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "Add support for copying static assets into the website using template.assets in the configuration file. A preprocessor is used to detect file usage in img \"src\" attributes and replace them with the final link."
+          }
+        ]
+      }
+    },
+    {
       "version": "1.6.1",
       "tag": "@webdoc/default-template_v1.6.1",
       "date": "Tue, 07 Jun 2022 02:12:51 GMT",
