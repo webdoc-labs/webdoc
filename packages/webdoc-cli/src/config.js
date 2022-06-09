@@ -33,6 +33,7 @@ type ConfigSchema = {
     import?: string[],
   },
   template: {
+    assets: Array<string>,
     alias: {
       [string]: string;
     },
@@ -96,6 +97,7 @@ const defaultConfig: ConfigSchema = {
     template: "@webdoc/default-template",
   },
   template: {
+    assets: [],
     alias: {},
     appBar: {
       items: {},

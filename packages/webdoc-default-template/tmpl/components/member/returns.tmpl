@@ -18,7 +18,9 @@ const returns = obj || [];
         <td class="member-return__type">
           <?js if (returnElement.dataType) { ?><?js= this.linkTo(returnElement.dataType) ?><?js } ?>
         </td>
-        <td class="member-return__description"><?js if (returnElement.description) { ?><?js= returnElement.description ?><?js } ?></td>
+        <td class="member-return__description"><?js if (returnElement.description) { ?>
+          <?js= this.partial("components/content/text.tmpl", returnElement.description) ?><?js } ?>
+        </td>
       </tr><?js }); ?>
     </tbody>
   </table>
