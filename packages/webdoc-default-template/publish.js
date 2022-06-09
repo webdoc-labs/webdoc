@@ -15,7 +15,7 @@ const {
   Sitemap,
   TemplateRenderer,
   TemplatePipeline,
-  TemplateTagsResolver,
+  TemplateTagsResolver, RepositoryPlugin,
 } = require("@webdoc/template-library");
 const {linker, prepareLinker} = require("./helper/linker");
 const _ = require("lodash");
@@ -129,6 +129,10 @@ exports.publish = async function publish(options /*: PublishOptions */) {
       },
       variant: config.template.variant,
     });
+  if (config.template.repository) {
+    renderer.installPlugin("repository", RepositoryPlugin);
+    renderer.plugins.repository.buildRepository(config.template.repository);
+  }
 
   const pipeline = new TemplatePipeline(renderer).pipe(new TemplateTagsResolver());
 
