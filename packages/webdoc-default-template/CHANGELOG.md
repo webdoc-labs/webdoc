@@ -1,6 +1,13 @@
 # Change Log - @webdoc/default-template
 
-This log was last generated on Thu, 09 Jun 2022 03:55:26 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Jun 2022 00:19:18 GMT and should not be manually modified.
+
+## 1.6.3
+Fri, 10 Jun 2022 00:19:18 GMT
+
+### Updates
+
+- Fix image "src" attributes not being prefixed by site root.
 
 ## 1.6.2
 Thu, 09 Jun 2022 03:55:26 GMT

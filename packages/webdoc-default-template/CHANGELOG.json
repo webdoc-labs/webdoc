@@ -2,6 +2,18 @@
   "name": "@webdoc/default-template",
   "entries": [
     {
+      "version": "1.6.3",
+      "tag": "@webdoc/default-template_v1.6.3",
+      "date": "Fri, 10 Jun 2022 00:19:18 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fix image \"src\" attributes not being prefixed by site root."
+          }
+        ]
+      }
+    },
+    {
       "version": "1.6.2",
       "tag": "@webdoc/default-template_v1.6.2",
       "date": "Thu, 09 Jun 2022 03:55:26 GMT",

@@ -2,6 +2,12 @@
   "name": "@webdoc/plugin-markdown",
   "entries": [
     {
+      "version": "1.6.3",
+      "tag": "@webdoc/plugin-markdown_v1.6.3",
+      "date": "Fri, 10 Jun 2022 00:19:18 GMT",
+      "comments": {}
+    },
+    {
       "version": "1.6.2",
       "tag": "@webdoc/plugin-markdown_v1.6.2",
       "date": "Thu, 09 Jun 2022 03:55:26 GMT",
