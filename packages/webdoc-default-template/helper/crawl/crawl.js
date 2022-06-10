@@ -94,7 +94,7 @@ function buildLinks(manifest /*: Manifest */) /*: void */ {
 function buildIndex(
   tree /*: RootDoc */,
 )/*: { [string]: $ReadOnlyArray<Doc> & { url: string } } */ {
-  const classIndexUrl = linker.createURI("Class-Index", true);
+  const classIndexUrl = linker.createURI("Class-Index");
 
   const index /*: {[string]: Array<any> & {url: string}} */ = {
     classes: Object.assign(([] /*: any */), {url: classIndexUrl}),
