@@ -127,6 +127,7 @@ exports.publish = async function publish(options /*: PublishOptions */) {
     .installPlugin("hljs", hljs)
     .installPlugin("preprocess", preprocessMarkupPlugin({
       assetsDir: path.relative(outDir, assetsDir),
+      siteRoot: config.template.siteRoot,
     }))
     .setGlobalTemplateData({
       appBar: {

@@ -5,11 +5,12 @@ const IMG_REGEX = /(<img [^<]*src=")([-\]_.~!*'();:@&=+$,/?%#[A-z0-9]*)("[^<]*>)
 
 exports.preprocessMarkupPlugin = ({
   assetsDir,
+  siteRoot,
 }) => function preprocessMarkup(
   markup /*: string */,
 ) /*: string */ {
   return markup.replace(IMG_REGEX,
     function(_, prefix /*: string */, src /*: string */, suffix /*: string */) {
-      return `${prefix}/${path.join(assetsDir, String(src).trim())}${suffix}`;
+      return `${prefix}/${path.join(siteRoot, assetsDir, String(src).trim())}${suffix}`;
     });
 };
