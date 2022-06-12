@@ -16,7 +16,7 @@
 <main class="page-content">
   <div class="document">
     <?js /* Simplicity, at its finest! */ ?>
-    <?js= document.content ?>
+    <?js= this.partial("components/content/text.tmpl", document.content) ?>
   </div>
   <?js if (next || previous) { ?>
     <div class="serial-navigation <?js= modifier ?>">

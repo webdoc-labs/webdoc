@@ -1,10 +1,17 @@
 // @flow
 
-import type {Doc} from "@webdoc/types";
+import type {Doc, RootDoc} from "@webdoc/types";
 import type {StepExpr} from "./types";
 
 function stepMember(qualifier: string, doc: Doc): Doc[] {
-  return doc.members.filter((child) => child.name === qualifier);
+  let stepMembers = doc.members.filter((child) => child.name === qualifier);
+
+  if (doc.type === "RootDoc") {
+    stepMembers = stepMembers.concat((doc: RootDoc).tutorials
+      .filter((child) => child.name === qualifier));
+  }
+
+  return stepMembers;
 }
 
 function stepInstanceMember(qualifier: string, doc: Doc): Doc[] {

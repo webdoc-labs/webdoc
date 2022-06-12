@@ -252,6 +252,7 @@ export type TagType =
   "ExampleTag" |
   "EnumTag" |
   "ExtendsTag" |
+  "GroupTag" |
   "InnerTag" |
   "InterfaceTag" |
   "MemberTag" |
@@ -282,6 +283,7 @@ export type Tag =
   ExampleTag |
   EnumTag |
   ExtendsTag |
+  GroupTag |
   InnerTag |
   InterfaceTag |
   MemberTag |
@@ -312,6 +314,7 @@ export type TagShape =
   $Shape<ExampleTag> |
   $Shape<EnumTag> |
   $Shape<ExtendsTag> |
+  $Shape<GroupTag> |
   $Shape<InnerTag> |
   $Shape<InterfaceTag> |
   $Shape<MemberTag> |
@@ -394,6 +397,11 @@ export type FiresTag = {
   ...BaseTag,
   event: string,
   type: "FiresTag"
+};
+
+export type GroupTag = {
+  ...BaseTag,
+  type: "GroupTag"
 };
 
 export type ImplementsTag = {

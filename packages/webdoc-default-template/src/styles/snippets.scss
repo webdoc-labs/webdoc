@@ -2,7 +2,7 @@
 
 @import "vars";
 
-pre {
+pre.hljs, pre.signature__container {
   @include normalize();
 
   width: 100%;
@@ -14,15 +14,20 @@ pre {
   overflow-x: auto;
 }
 
-pre, code {
-  font-family: "IBM Plex Mono", "Consolas", "Roboto Mono", monospace;
+pre.hljs, pre.signature__container, code {
+  font-family: "Roboto Mono", monospace;
   font-size: $textSizeCode;
+  line-height: 1.4em;
 
-  background-color: $colorSheetSecondary !important;
   border-radius: 8px;
 
   vertical-align: baseline;
   word-break: keep-all;
+}
+
+pre.hljs {
+  background-color: $colorSheetSecondary !important;
+  padding: 28px;
 }
 
 .hljs { /* Override markdown highlight-js */
@@ -32,11 +37,16 @@ pre, code {
 .signature {
   border-radius: 3px;
   padding: 6px;
-  padding-left: 24px;
 
   &__container {
+    background-color: white !important;
     min-height: 42px;/* 48px minus 6px padding */
     overflow-x: scroll;
     overflow-y: visible;
   }
+}
+
+.language-mermaid {
+  background-color: $colorSheetPrimary;
+  text-align: center;
 }

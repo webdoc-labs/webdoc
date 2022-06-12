@@ -230,12 +230,21 @@ export function doc(path: string | string[], root: Doc): ?Doc {
   // Packages
   if (root.type === "RootDoc") {
     const packages: PackageDoc[] = (root: RootDoc).packages;
+    const tutorials: TutorialDoc[] = (root: RootDoc).tutorials;
 
     for (let i = 0; i < packages.length; i++) {
       const pkg = packages[i];
 
       if (pkg.name === path) {
         return pkg;
+      }
+    }
+
+    for (let i = 0; i < tutorials.length; i++) {
+      const tutorial = tutorials[i];
+
+      if (tutorial.name === path) {
+        return tutorial;
       }
     }
   }

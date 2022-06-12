@@ -91,8 +91,17 @@ const cssPageKind =
           <div class="bottom-banner">
               <?js= this.partial("bottom-banner", { appBar, explorerData }) ?>
           </div>
+          <div class="watermark">
+            <span class="watermark-text">
+              Powered by <a href="https://www.webdoclabs.com">webdoc</a>!
+             </span>
+          </div>
         </div>
       </article>
     </body>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({ startOnLoad: true, theme: 'base' });
+  </script>
 </html>

@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@webdoc/default-template",
+      "comment": "Add support for the @group tag for grouping different documents in the explorer. For example, if A and B have \"@group Alphabet\" they will appear under an \"Alphabet\" item in the explorer on the left side.",
+      "type": "none"
+    }
+  ],
+  "packageName": "@webdoc/default-template",
+  "email": "sukantk2002@outlook.com"
+}

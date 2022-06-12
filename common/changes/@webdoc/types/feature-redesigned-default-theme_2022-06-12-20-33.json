@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@webdoc/types",
+      "comment": "GroupTag type.",
+      "type": "none"
+    }
+  ],
+  "packageName": "@webdoc/types",
+  "email": "sukantk2002@outlook.com"
+}

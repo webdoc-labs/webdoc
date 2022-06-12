@@ -4,7 +4,7 @@
 @import "vars";
 
 :root {
-  -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: subpixel-antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
@@ -28,7 +28,7 @@ a {
 
   color: $colorPrimaryText;
 
-  font-family: Roboto, Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: system-ui, sans-serif;
   font-size: $textSizeMain;
 
   height: 100%;
@@ -84,7 +84,7 @@ a {
       display: flex;
       flex-direction: column;
       color: $colorText;
-      font-family: Arial, Roboto, sans-serif;
+      font-family: system-ui, sans-serif;
       flex-grow: 2;
       flex-shrink: 1;
       height: 100%;
@@ -124,4 +124,20 @@ a {
 
 .search-container {
   margin-left: 12px;
+}
+
+.watermark {
+  bottom: 0;
+  padding: 4px 4px 4px 4px;
+  position: fixed;
+  right: 0;
+
+  &-text {
+    font-size: .875em;
+
+    > a {
+      color: inherit;
+      text-decoration: underline;
+    }
+  }
 }

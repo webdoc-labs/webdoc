@@ -203,11 +203,34 @@ function buildExplorerTargetsTree(
     }
 
     for (const [, value] of Object.entries(childNodes)) {
+      const groups = value
+        .map((cn) => cn.doc.tags?.find((tag) => tag.name === "group")?.value)
+        .sort();
+
+      for (const group of groups) {
+        if (group) {
+          node.children[group] = {
+            title: group,
+            children: {},
+          };
+        }
+      }
+    }
+
+    for (const [, value] of Object.entries(childNodes)) {
+      const groups = value.map((cn) => cn.doc.tags?.find((tag) => tag.name === "group")?.value);
       const children = value.map((cn) => buildExplorerTargetsTree(cn, title, index));
 
-      children.forEach((child) => {
-        node.children[child.title] = child;
-      });
+      for (let i = 0; i < children.length; i++) {
+        const child = children[i];
+        const group = groups[i];
+
+        if (group) {
+          node.children[group].children[child.title] = child;
+        } else {
+          node.children[child.title] = child;
+        }
+      }
     }
 
     node.page = null;
