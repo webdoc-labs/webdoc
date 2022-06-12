@@ -35,8 +35,8 @@
     "url": "https://github.com/SukantPal/webdoc/issues"
   },
   "dependencies": {
-    "markdown-it": "^11.0.0",
-    "highlight.js": "~10.7.2"
+    "highlight.js": "~10.7.2",
+    "markdown-it": "^11.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
