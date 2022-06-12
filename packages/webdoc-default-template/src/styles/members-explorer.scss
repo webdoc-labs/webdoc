@@ -3,9 +3,9 @@
 
 
 .page-members-explorer {
-  font-family: Arial, sans-serif;
-  font-size: 12px;
-  line-height: 14px;
+  font-family: system-ui, sans-serif;
+  font-size: .875em;
+  line-height: 1.4em;
 
   &-category {
     margin-left: 16px;
@@ -30,8 +30,7 @@
     border-radius: 8px 0 0 8px;
     display: flex;
     font-weight: 400;
-    height: 15px;
-    line-height: 1.5;
+    line-height: 1.4em;
     padding-left: 2px;
     vertical-align: middle;
 

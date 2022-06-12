@@ -36,7 +36,7 @@
   },
   "dependencies": {
     "markdown-it": "^11.0.0",
-    "markdown-it-highlightjs": "^3.1.0"
+    "highlight.js": "~10.7.2"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",

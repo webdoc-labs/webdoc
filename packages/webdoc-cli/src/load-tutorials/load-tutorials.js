@@ -8,13 +8,28 @@ import globby from "globby";
 import merge from "lodash.merge";
 import {morphTutorials} from "./morph-tutorials";
 import path from "path";
+import * as hljs from "highlight.js";
 
 // Markdown rendering
 const renderer = require("markdown-it")({
   breaks: true,
   html: true,
-})
-  .use(require("markdown-it-highlightjs"));
+  highlight: function(str, lang) {
+    if (lang === "mermaid") {
+      try {
+        return "<div class=\"mermaid\">\n" + str + "\n</div>";
+      } catch (__) {}
+    } else if (lang && hljs.getLanguage(lang)) {
+      try {
+        return "<pre class=\"hljs\"><code>" +
+          hljs.highlight(str, {language: lang, ignoreIllegals: true}).value +
+          "</code></pre>";
+      } catch (__) {}
+    }
+
+    return "<pre class=\"hljs\"><code>" + (str) + "</code></pre>";
+  },
+});
 
 // Loads & parses all the tutorials in the given directory
 export function loadTutorials(tutorialsDir?: string, tutorialsRoute?: string): Tutorial[] {

@@ -401,8 +401,22 @@ async function outReadme(
     const markdownRenderer = require("markdown-it")({
       breaks: false,
       html: true,
-    })
-      .use(require("markdown-it-highlightjs"));
+      highlight: function(str, lang) {
+        if (lang === "mermaid") {
+          try {
+            return "<div class=\"mermaid\">\n" + str + "\n</div>";
+          } catch (__) {}
+        } else if (lang && hljs.getLanguage(lang)) {
+          try {
+            return "<pre class=\"hljs\"><code>" +
+              hljs.highlight(str, {language: lang, ignoreIllegals: true}).value +
+              "</code></pre>";
+          } catch (__) {}
+        }
+
+        return "<pre class=\"hljs\"><code>" + (str) + "</code></pre>";
+      },
+    });
     const markdownSource = await fse.readFile(readmeFile, "utf8");
 
     readme = markdownRenderer.render(markdownSource);

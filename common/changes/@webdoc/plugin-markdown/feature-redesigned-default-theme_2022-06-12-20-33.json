@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@webdoc/plugin-markdown",
+      "comment": "Add support for mermaid diagrams in markdown.",
+      "type": "none"
+    }
+  ],
+  "packageName": "@webdoc/plugin-markdown",
+  "email": "sukantk2002@outlook.com"
+}

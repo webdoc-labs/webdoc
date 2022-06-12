@@ -23,11 +23,27 @@ function shouldProcessString(tagName, text) {
   return shouldProcess;
 }
 
+const hljs = require("highlight.js");
+
 const renderer = require("markdown-it")({
   breaks: !!config.hardwrap,
   html: true,
-})
-  .use(require("markdown-it-highlightjs"));
+  highlight: function(str, lang) {
+    if (lang === "mermaid") {
+      try {
+        return "<div class=\"mermaid\">\n" + str + "\n</div>";
+      } catch (__) {}
+    } else if (lang && hljs.getLanguage(lang)) {
+      try {
+        return "<pre class=\"hljs\"><code>" +
+          hljs.highlight(str, {language: lang, ignoreIllegals: true}).value +
+          "</code></pre>";
+      } catch (__) {}
+    }
+
+    return "<pre class=\"hljs\"><code>" + (str) + "</code></pre>";
+  },
+});
 
 // Process the markdown source in a doc. The properties that should be processed are
 // configurable, but always include "author", "classdesc", "description", "exceptions", "params",

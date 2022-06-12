@@ -4,16 +4,16 @@ const itemStyle = {
   label: {
     alignItems: "center !important",
     display: "flex !important",
-    color: "#333333 !important",
-    fontSize: "12px !important",
-    height: "24px !important",
-    lineHeight: "14px !important",
+    color: "#222 !important",
+    fontSize: ".875em !important",
+    lineHeight: "2.5em !important",
+    paddingLeft: "0",
   },
   labelLinks: {
-    color: "#333333 !important",
+    color: "#222 !important",
   },
   iconContainer: {
-    color: "#333333",
+    color: "#222",
     fontSize: 8,
     marginRight: 0,
   },
@@ -27,13 +27,7 @@ const itemStyle = {
 
 export const useExplorerStyles = makeStyles(itemStyle);
 
-export const useExplorerCategoryStyles = makeStyles({
-  ...itemStyle,
-  label: {
-    ...itemStyle.label,
-    fontWeight: "bold !important",
-  },
-});
+export const useExplorerCategoryStyles = makeStyles(itemStyle);
 
 export const useExplorerPrimaryItemStyles = makeStyles({
   labelLinks: {

@@ -24,6 +24,12 @@ table {
     }
   }
 
+  tr:nth-child(even) {
+    background-color: rgb(246, 248, 250);
+    border-top: 1px solid rgb(216, 222, 228);
+    border-bottom: 1px solid rgb(216, 222, 228);
+  }
+
   td {
     word-break: normal;
 
@@ -42,13 +48,16 @@ table {
 .table-wrapper {
   display: block;
   overflow-x: scroll;
+
+  > table {
+    min-width: 100%;
+  }
 }
 
 table.summary {
-  margin-left: 40px;
   padding: 18px auto;
   table-layout: fixed;
-  width: calc(100% - 40px);
+  width: 100%;
 
   tbody {
     margin: 18px auto;
@@ -72,9 +81,6 @@ table.summary {
   }
 
   .summary__signature {
-    font-family: IBM Plex Mono, monospace;
-    font-weight: bold;
-
     a {
       text-decoration: underline;
     }
