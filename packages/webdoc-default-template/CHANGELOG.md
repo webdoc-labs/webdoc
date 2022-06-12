@@ -1,6 +1,14 @@
 # Change Log - @webdoc/default-template
 
-This log was last generated on Fri, 10 Jun 2022 00:19:18 GMT and should not be manually modified.
+This log was last generated on Sun, 12 Jun 2022 20:53:46 GMT and should not be manually modified.
+
+## 1.6.5
+Sun, 12 Jun 2022 20:53:46 GMT
+
+### Updates
+
+- Add support for the @group tag for grouping different documents in the explorer. For example, if A and B have "@group Alphabet" they will appear under an "Alphabet" item in the explorer on the left side.
+- Move "Powered by webdoc!" out of the footer and into a watermark element. Add mermaid diagrams support.
 
 ## 1.6.3
 Fri, 10 Jun 2022 00:19:18 GMT

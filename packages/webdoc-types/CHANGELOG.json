@@ -2,6 +2,18 @@
   "name": "@webdoc/types",
   "entries": [
     {
+      "version": "1.6.5",
+      "tag": "@webdoc/types_v1.6.5",
+      "date": "Sun, 12 Jun 2022 20:53:46 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "GroupTag type."
+          }
+        ]
+      }
+    },
+    {
       "version": "1.6.3",
       "tag": "@webdoc/types_v1.6.3",
       "date": "Fri, 10 Jun 2022 00:19:18 GMT",

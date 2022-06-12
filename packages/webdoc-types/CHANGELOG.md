@@ -1,6 +1,13 @@
 # Change Log - @webdoc/types
 
-This log was last generated on Fri, 10 Jun 2022 00:19:18 GMT and should not be manually modified.
+This log was last generated on Sun, 12 Jun 2022 20:53:46 GMT and should not be manually modified.
+
+## 1.6.5
+Sun, 12 Jun 2022 20:53:46 GMT
+
+### Updates
+
+- GroupTag type.
 
 ## 1.6.3
 Fri, 10 Jun 2022 00:19:18 GMT

@@ -2,6 +2,18 @@
   "name": "@webdoc/plugin-markdown",
   "entries": [
     {
+      "version": "1.6.5",
+      "tag": "@webdoc/plugin-markdown_v1.6.5",
+      "date": "Sun, 12 Jun 2022 20:53:46 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "Add support for mermaid diagrams in markdown."
+          }
+        ]
+      }
+    },
+    {
       "version": "1.6.3",
       "tag": "@webdoc/plugin-markdown_v1.6.3",
       "date": "Fri, 10 Jun 2022 00:19:18 GMT",

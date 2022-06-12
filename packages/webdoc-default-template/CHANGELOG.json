@@ -2,6 +2,21 @@
   "name": "@webdoc/default-template",
   "entries": [
     {
+      "version": "1.6.5",
+      "tag": "@webdoc/default-template_v1.6.5",
+      "date": "Sun, 12 Jun 2022 20:53:46 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "Add support for the @group tag for grouping different documents in the explorer. For example, if A and B have \"@group Alphabet\" they will appear under an \"Alphabet\" item in the explorer on the left side."
+          },
+          {
+            "comment": "Move \"Powered by webdoc!\" out of the footer and into a watermark element. Add mermaid diagrams support."
+          }
+        ]
+      }
+    },
+    {
       "version": "1.6.3",
       "tag": "@webdoc/default-template_v1.6.3",
       "date": "Fri, 10 Jun 2022 00:19:18 GMT",

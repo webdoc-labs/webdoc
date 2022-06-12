@@ -2,6 +2,18 @@
   "name": "@webdoc/cli",
   "entries": [
     {
+      "version": "1.6.5",
+      "tag": "@webdoc/cli_v1.6.5",
+      "date": "Sun, 12 Jun 2022 20:53:46 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "Add mermaid support to README generated home pages."
+          }
+        ]
+      }
+    },
+    {
       "version": "1.6.3",
       "tag": "@webdoc/cli_v1.6.3",
       "date": "Fri, 10 Jun 2022 00:19:18 GMT",
