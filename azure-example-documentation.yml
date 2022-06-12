@@ -38,7 +38,7 @@ steps:
 - script: |
     rm -rf ./example/docs
     rush rebuild -t @webdoc/example
-    cp -r ./example/example-documentation/** ../example-documentation/
+    cp -r ./example/example-documentation/* ../example-documentation/
   displayName: "Generate example documentation & copy to webdoc-js/example-documentation"
   workingDirectory: webdoc
 
