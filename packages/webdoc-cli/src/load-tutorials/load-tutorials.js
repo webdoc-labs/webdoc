@@ -1,5 +1,6 @@
 // @flow
 
+import * as hljs from "highlight.js";
 import {log, tag} from "missionlog";
 import type {Tutorial} from "@webdoc/types";
 import {createTutorialDoc} from "@webdoc/model";
@@ -8,7 +9,6 @@ import globby from "globby";
 import merge from "lodash.merge";
 import {morphTutorials} from "./morph-tutorials";
 import path from "path";
-import * as hljs from "highlight.js";
 
 // Markdown rendering
 const renderer = require("markdown-it")({
@@ -18,13 +18,13 @@ const renderer = require("markdown-it")({
     if (lang === "mermaid") {
       try {
         return "<div class=\"mermaid\">\n" + str + "\n</div>";
-      } catch (__) {}
+      } catch (__) {/* noop */}
     } else if (lang && hljs.getLanguage(lang)) {
       try {
         return "<pre class=\"hljs\"><code>" +
           hljs.highlight(str, {language: lang, ignoreIllegals: true}).value +
           "</code></pre>";
-      } catch (__) {}
+      } catch (__) {/* noop */}
     }
 
     return "<pre class=\"hljs\"><code>" + (str) + "</code></pre>";

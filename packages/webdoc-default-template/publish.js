@@ -405,13 +405,13 @@ async function outReadme(
         if (lang === "mermaid") {
           try {
             return "<div class=\"mermaid\">\n" + str + "\n</div>";
-          } catch (__) {}
+          } catch (__) {/* noop */}
         } else if (lang && hljs.getLanguage(lang)) {
           try {
             return "<pre class=\"hljs\"><code>" +
               hljs.highlight(str, {language: lang, ignoreIllegals: true}).value +
               "</code></pre>";
-          } catch (__) {}
+          } catch (__) {/* noop */}
         }
 
         return "<pre class=\"hljs\"><code>" + (str) + "</code></pre>";
