@@ -3,6 +3,11 @@ import {Vector} from "./Vector";
 /**
  * Represents a physical-object and its intrinsic properties. This is useful for approximating
  * extended objects as a uniform, continous body mass (ignoring its particulate composition).
+ *
+ * ```mermaid
+ * flowchart TD
+ * PhysicalObject --> position
+ * ```
  */
 export class PhysicalObject {
   constructor() {
