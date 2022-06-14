@@ -24,7 +24,7 @@
     });
     const publicMethods = this.plugins.categoryFilter(doc, {
       access: "public",
-      type: "MethodDoc"
+      type: ["FunctionDoc", "MethodDoc"]
     });
     const protectedMethods = this.plugins.categoryFilter(doc, {
       access: "protected",
