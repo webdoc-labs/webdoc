@@ -1,6 +1,11 @@
 # Change Log - @webdoc/template-library
 
-This log was last generated on Sun, 12 Jun 2022 20:53:46 GMT and should not be manually modified.
+This log was last generated on Tue, 14 Jun 2022 01:01:45 GMT and should not be manually modified.
+
+## 1.6.6
+Tue, 14 Jun 2022 01:01:45 GMT
+
+*Version update only*
 
 ## 1.6.5
 Sun, 12 Jun 2022 20:53:46 GMT
