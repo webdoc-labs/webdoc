@@ -3,7 +3,7 @@ import type {Doc, DocType} from "@webdoc/types";
 
 type CategoryConstraints = {
   access?: "public" | "protected" | "private";
-  type?: DocType;
+  type?: DocType | DocType[];
 };
 */
 
