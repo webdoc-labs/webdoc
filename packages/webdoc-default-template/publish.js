@@ -444,7 +444,7 @@ async function outIndexes(
   function outIndex(indexKey, indexList /*: Array<Doc> */) {
     if (indexList.length > 0) {
       const title = KEY_TO_TITLE[indexKey];
-      const url = linker.processInternalURI(indexList.url, {outputRelative: true});
+      const url = linker.getFileSystemPath(indexList.url);
 
       pipeline.render("pages/api-index.tmpl", {
         appBar: {current: "reference"},
