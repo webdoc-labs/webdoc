@@ -1,3 +1,5 @@
+© 2020-2022 webdoc Labs
+
 # @webdoc/types
 
 This package contains all of the type definitions for docs (documentation blocks) and tags (@tag

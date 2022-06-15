@@ -10,7 +10,7 @@
   ],
   "author": "Shukant Pal <shukantpal@outlook.com>",
   "homepage": "https://github.com/SukantPal/webdoc/tree/master/packages/test#readme",
-  "license": "MIT",
+  "license": "Polyform Shield",
   "main": "webdoc.js",
   "directories": {
     "lib": "lib",

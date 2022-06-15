@@ -1,3 +1,5 @@
+© 2020-2022 webdoc Labs
+
 # @webdoc/template-library
 
 This package is useful for webdoc template authors and largely brings the functionality of JSDoc's template
