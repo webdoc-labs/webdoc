@@ -437,6 +437,12 @@ function LinkerPluginShell() {
       return this.processInternalURI(path.join("/<siteRoot>", subpath));
     }
 
+    getFileSystemPath(uri: string): string {
+      return this.siteRoot ?
+        uri.replace(this.siteRoot, "").replace("//", "/") :
+        uri;
+    }
+
     createURI(preferredUri: string, outputRelative?: boolean): string {
       const uri = this.generateBaseURI(preferredUri);
 
