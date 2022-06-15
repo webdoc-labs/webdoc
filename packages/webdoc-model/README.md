@@ -1,3 +1,5 @@
+© 2020-2022 webdoc Labs
+
 # @webdoc/model
 
 This package is the API for editing and querying in-memory documentation tree models.  [@webdoc/types](/packages/webdoc-types) defines the node structure.

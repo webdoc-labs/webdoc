@@ -1,3 +1,5 @@
+© 2020-2022 webdoc Labs
+
 # @webdoc/example
 
 Example documented package.

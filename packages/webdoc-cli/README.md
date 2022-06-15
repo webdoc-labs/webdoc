@@ -1,3 +1,5 @@
+© 2020-2022 webdoc Labs
+
 # @webdoc/cli
 
 The CLI for [webdoc](https://github.com/webdoc-labs/webdoc/).

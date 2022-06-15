@@ -9,7 +9,7 @@
   ],
   "author": "Shukant Pal <shukantpal@outlook.com>",
   "homepage": "https://github.com/SukantPal/webdoc/tree/master/packages/webdoc-plugin-markdown#readme",
-  "license": "MIT",
+  "license": "Polyform Shield",
   "main": "lib/index.js",
   "directories": {
     "lib": "lib",

@@ -1,3 +1,5 @@
+© 2020-2022 webdoc Labs
+
 # @webdoc/plugin-markdown
 
 This plugin will replace markdown syntax in your document descriptions with HTML markup. You don't need to explicity install this plugin because @webdoc/cli has a dependency on it.

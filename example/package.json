@@ -8,7 +8,7 @@
   ],
   "author": "Shukant Pal <shukantpal@outlook.com>",
   "homepage": "https://github.com/SukantPal/webdoc/tree/master/packages/example#readme",
-  "license": "MIT",
+  "license": "Polyform Shield",
   "main": "lib/example.js",
   "directories": {
     "lib": "lib",

@@ -1,3 +1,5 @@
+© 2020-2022 webdoc Labs
+
 # @webdoc/legacy-template
 
 This package is a direct port of JSDoc's default template to webdoc. The `publish` script has significant changes

@@ -9,7 +9,7 @@
   ],
   "author": "Shukant Pal <shukantpal@outlook.com>",
   "homepage": "https://github.com/SukantPal/webdoc/tree/master/packages/js-docmodel#readme",
-  "license": "MIT",
+  "license": "Polyform Shield",
   "main": "index.js",
   "directories": {
     "lib": "lib",

@@ -12,7 +12,7 @@
   ],
   "author": "Shukant Pal <shukantpal@outlook.com>",
   "homepage": "https://github.com/webdoc-js/webdoc/tree/master/packages/webdoc-legacy-template#readme",
-  "license": "MIT",
+  "license": "Polyform Shield",
   "main": "publish.js",
   "directories": {
     "lib": "lib",
