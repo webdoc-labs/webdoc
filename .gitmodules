@@ -1,0 +1,3 @@
+[submodule "foss"]
+	path = foss
+	url = https://github.com/webdoc-labs/webdoc

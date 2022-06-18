@@ -1,0 +1,4 @@
+rush lint
+rush build
+rush flow
+rush unit-test

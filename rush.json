@@ -1,0 +1,114 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/rush.schema.json",
+  "rushVersion": "5.62.3",
+  "pnpmVersion": "6.7.1",
+  "pnpmOptions": {
+    "pnpmStore": "global",
+    "strictPeerDependencies": false,
+    "resolutionStrategy": "fast",
+    "preventManualShrinkwrapChanges": true,
+  },
+  "nodeSupportedVersionRange": ">=12.13.0 <13.0.0 || >=14.15.0 <15.0.0 || >=16.13.0 <17.0.0",
+  "ensureConsistentVersions": true,
+  "projectFolderMinDepth": 1,
+  "projectFolderMaxDepth": 3,
+  "approvedPackagesPolicy": {
+     "reviewCategories": [
+       "production",
+       "tools",
+       "prototypes",
+       "proprietary"
+     ],
+     "ignoredNpmScopes": ["@types"]
+  },
+  "gitPolicy": {
+    "versionBumpCommitMessage": "Bump versions",
+    "changeLogUpdateCommitMessage": "Update changelogs"
+  },
+  "repository": {
+    "url": "https://source.webdoclabs.com/webdoc-labs/monorepo",
+    "defaultBranch": "release",
+    "defaultRemote": "origin"
+  },
+  "eventHooks": {
+    "preRushInstall": [],
+    "postRushInstall": [],
+    "preRushBuild": [],
+    "postRushBuild": []
+  },
+  "telemetryEnabled": false,
+  "projects": [
+    {
+      "packageName": "@webdoc/cli",
+      "projectFolder": "foss/packages/webdoc-cli",
+      "reviewCategory": "production",
+      "versionPolicyName": "webdoc"
+    },
+    {
+      "packageName": "@webdoc/default-template",
+      "projectFolder": "foss/packages/webdoc-default-template",
+      "reviewCategory": "production",
+      "versionPolicyName": "webdoc"
+    },
+    {
+      "packageName": "@webdoc/externalize",
+      "projectFolder": "foss/packages/webdoc-externalize",
+      "reviewCategory": "production",
+      "versionPolicyName": "webdoc"
+    },
+    {
+      "packageName": "@webdoc/legacy-template",
+      "projectFolder": "foss/packages/webdoc-legacy-template",
+      "reviewCategory": "production",
+      "versionPolicyName": "webdoc"
+    },
+    {
+      "packageName": "@webdoc/model",
+      "projectFolder": "foss/packages/webdoc-model",
+      "reviewCategory": "production",
+      "versionPolicyName": "webdoc"
+    },
+    {
+      "packageName": "@webdoc/parser",
+      "projectFolder": "foss/packages/webdoc-parser",
+      "reviewCategory": "production",
+      "versionPolicyName": "webdoc"
+    },
+    {
+      "packageName": "@webdoc/plugin-markdown",
+      "projectFolder": "foss/packages/webdoc-plugin-markdown",
+      "reviewCategory": "production",
+      "versionPolicyName": "webdoc"
+    },
+    {
+      "packageName": "@webdoc/template-library",
+      "projectFolder": "foss/packages/webdoc-template-library",
+      "reviewCategory": "production",
+      "versionPolicyName": "webdoc"
+    },
+    {
+      "packageName": "@webdoc/types",
+      "projectFolder": "foss/packages/webdoc-types",
+      "reviewCategory": "production",
+      "versionPolicyName": "webdoc"
+    },
+    {
+      "packageName": "@webdoc/example",
+      "projectFolder": "foss/example",
+      "reviewCategory": "production",
+      "shouldPublish": false
+    },
+    {
+      "packageName": "@webdoc/eslint-config",
+      "projectFolder": "foss/packages/eslint-config",
+      "reviewCategory": "production",
+      "shouldPublish": false
+    },
+    {
+      "packageName": "@webdoc/babel-preset",
+      "projectFolder": "foss/packages/babel-preset",
+      "reviewCategory": "production",
+      "shouldPublish": false
+    }
+  ]
+}

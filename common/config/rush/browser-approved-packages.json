@@ -1,0 +1,338 @@
+// DO NOT ADD COMMENTS IN THIS FILE.  They will be lost when the Rush tool resaves it.
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/approved-packages.schema.json",
+  "packages": [
+    {
+      "name": "@babel/cli",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@babel/core",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@babel/parser",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@babel/plugin-proposal-class-properties",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@babel/plugin-transform-flow-comments",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@babel/preset-env",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@babel/preset-flow",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@babel/preset-react",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@babel/register",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@babel/traverse",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@babel/types",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@material-ui/core",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@material-ui/icons",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@material-ui/lab",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@rushstack/eslint-patch",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@webdoc/babel-preset",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@webdoc/cli",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@webdoc/default-template",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@webdoc/eslint-config",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@webdoc/externalize",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@webdoc/legacy-template",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@webdoc/model",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@webdoc/parser",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@webdoc/plugin-markdown",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@webdoc/template-library",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@webdoc/types",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "array.prototype.flatmap",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "babel-eslint",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "babel-loader",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "bluebird",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "catharsis",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "chai",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "code-prettify",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "color-themes-for-google-code-prettify",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "common-path-prefix",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "css-loader",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "cuid",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "del",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "escape-string-regexp",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "eslint",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "eslint-config-google",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "eslint-plugin-flow",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "eslint-plugin-import",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "eslint-plugin-react",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "extract-loader",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "file-loader",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "flow-bin",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "flow-typed",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "fs-extra",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "git-branch",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "globby",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "gulp",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "gulp-babel",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "gulp-util",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "highlight.js",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "klaw-sync",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "lodash",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "lodash.merge",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "markdown-it",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "markdown-it-highlightjs",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "marked",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "mini-css-extract-plugin",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "missionlog",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "mocha",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "nanoid",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "node-fetch",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "object.fromentries",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "open-sans-fonts",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "optimize-css-assets-webpack-plugin",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "parse-github-url",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "perf_hooks",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "pkg-up",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "react",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "react-dom",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "react-redux",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "read-pkg-up",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "redux",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "sass",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "sass-loader",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "taffydb",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "webpack",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "webpack-stream",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "yargs",
+      "allowedCategories": [ "production" ]
+    }
+  ]
+}
