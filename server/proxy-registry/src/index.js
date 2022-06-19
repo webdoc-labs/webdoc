@@ -21,7 +21,7 @@ const PAT_B64 = Buffer.from(`:${PAT}`).toString("base64");
 
 const app = express();
 
-app.get('/@:scope/:name/versions/@:version', async function (req: $Request, res: $Response) {
+app.get('/@:scope/:name/versions/:version', async function (req: $Request, res: $Response) {
   const eula = req.header('X-EULA');
 
   if (!VALID_EULAS.includes(eula)) {
