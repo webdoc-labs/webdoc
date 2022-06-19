@@ -8,43 +8,43 @@
     },
     {
       "name": "@babel/core",
-      "allowedCategories": [ "production" ]
+      "allowedCategories": [ "production", "proprietary" ]
     },
     {
       "name": "@babel/parser",
-      "allowedCategories": [ "production" ]
+      "allowedCategories": [ "production", "proprietary" ]
     },
     {
       "name": "@babel/plugin-proposal-class-properties",
-      "allowedCategories": [ "production" ]
+      "allowedCategories": [ "production", "proprietary" ]
     },
     {
       "name": "@babel/plugin-transform-flow-comments",
-      "allowedCategories": [ "production" ]
+      "allowedCategories": [ "production", "proprietary" ]
     },
     {
       "name": "@babel/preset-env",
-      "allowedCategories": [ "production" ]
+      "allowedCategories": [ "production", "proprietary" ]
     },
     {
       "name": "@babel/preset-flow",
-      "allowedCategories": [ "production" ]
+      "allowedCategories": [ "production", "proprietary" ]
     },
     {
       "name": "@babel/preset-react",
-      "allowedCategories": [ "production" ]
+      "allowedCategories": [ "production", "proprietary" ]
     },
     {
       "name": "@babel/register",
-      "allowedCategories": [ "production" ]
+      "allowedCategories": [ "production", "proprietary" ]
     },
     {
       "name": "@babel/traverse",
-      "allowedCategories": [ "production" ]
+      "allowedCategories": [ "production", "proprietary" ]
     },
     {
       "name": "@babel/types",
-      "allowedCategories": [ "production" ]
+      "allowedCategories": [ "production", "proprietary" ]
     },
     {
       "name": "@material-ui/core",
@@ -59,12 +59,24 @@
       "allowedCategories": [ "production" ]
     },
     {
+      "name": "@rollup/plugin-babel",
+      "allowedCategories": [ "proprietary" ]
+    },
+    {
+      "name": "@rollup/plugin-commonjs",
+      "allowedCategories": [ "proprietary" ]
+    },
+    {
+      "name": "@rollup/plugin-node-resolve",
+      "allowedCategories": [ "proprietary" ]
+    },
+    {
       "name": "@rushstack/eslint-patch",
       "allowedCategories": [ "production" ]
     },
     {
       "name": "@webdoc/babel-preset",
-      "allowedCategories": [ "production" ]
+      "allowedCategories": [ "production", "proprietary" ]
     },
     {
       "name": "@webdoc/cli",
@@ -76,7 +88,7 @@
     },
     {
       "name": "@webdoc/eslint-config",
-      "allowedCategories": [ "production" ]
+      "allowedCategories": [ "production", "proprietary" ]
     },
     {
       "name": "@webdoc/externalize",
@@ -88,7 +100,7 @@
     },
     {
       "name": "@webdoc/model",
-      "allowedCategories": [ "production" ]
+      "allowedCategories": [ "production", "proprietary" ]
     },
     {
       "name": "@webdoc/parser",
@@ -104,7 +116,7 @@
     },
     {
       "name": "@webdoc/types",
-      "allowedCategories": [ "production" ]
+      "allowedCategories": [ "production", "proprietary" ]
     },
     {
       "name": "array.prototype.flatmap",
@@ -128,7 +140,7 @@
     },
     {
       "name": "chai",
-      "allowedCategories": [ "production" ]
+      "allowedCategories": [ "production", "proprietary" ]
     },
     {
       "name": "code-prettify",
@@ -152,7 +164,7 @@
     },
     {
       "name": "del",
-      "allowedCategories": [ "production" ]
+      "allowedCategories": [ "production", "proprietary" ]
     },
     {
       "name": "escape-string-regexp",
@@ -160,7 +172,7 @@
     },
     {
       "name": "eslint",
-      "allowedCategories": [ "production" ]
+      "allowedCategories": [ "production", "proprietary" ]
     },
     {
       "name": "eslint-config-google",
@@ -188,11 +200,11 @@
     },
     {
       "name": "flow-bin",
-      "allowedCategories": [ "production" ]
+      "allowedCategories": [ "production", "proprietary" ]
     },
     {
       "name": "flow-typed",
-      "allowedCategories": [ "production" ]
+      "allowedCategories": [ "production", "proprietary" ]
     },
     {
       "name": "fs-extra",
@@ -208,15 +220,27 @@
     },
     {
       "name": "gulp",
-      "allowedCategories": [ "production" ]
+      "allowedCategories": [ "production", "proprietary" ]
     },
     {
       "name": "gulp-babel",
-      "allowedCategories": [ "production" ]
+      "allowedCategories": [ "production", "proprietary" ]
+    },
+    {
+      "name": "gulp-rollup",
+      "allowedCategories": [ "proprietary" ]
+    },
+    {
+      "name": "gulp-rollup-2",
+      "allowedCategories": [ "proprietary" ]
+    },
+    {
+      "name": "gulp-rollup-lightweight",
+      "allowedCategories": [ "proprietary" ]
     },
     {
       "name": "gulp-util",
-      "allowedCategories": [ "production" ]
+      "allowedCategories": [ "production", "proprietary" ]
     },
     {
       "name": "highlight.js",
@@ -228,7 +252,7 @@
     },
     {
       "name": "lodash",
-      "allowedCategories": [ "production" ]
+      "allowedCategories": [ "production", "proprietary" ]
     },
     {
       "name": "lodash.merge",
@@ -252,15 +276,15 @@
     },
     {
       "name": "missionlog",
-      "allowedCategories": [ "production" ]
+      "allowedCategories": [ "production", "proprietary" ]
     },
     {
       "name": "mocha",
-      "allowedCategories": [ "production" ]
+      "allowedCategories": [ "production", "proprietary" ]
     },
     {
       "name": "nanoid",
-      "allowedCategories": [ "production" ]
+      "allowedCategories": [ "production", "proprietary" ]
     },
     {
       "name": "node-fetch",
@@ -309,6 +333,26 @@
     {
       "name": "redux",
       "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "rollup",
+      "allowedCategories": [ "proprietary" ]
+    },
+    {
+      "name": "rollup-plugin-node-resolve",
+      "allowedCategories": [ "proprietary" ]
+    },
+    {
+      "name": "rollup-plugin-sourcemaps",
+      "allowedCategories": [ "proprietary" ]
+    },
+    {
+      "name": "rollup-plugin-terser",
+      "allowedCategories": [ "proprietary" ]
+    },
+    {
+      "name": "rollup-terser-plugin",
+      "allowedCategories": [ "proprietary" ]
     },
     {
       "name": "sass",

@@ -109,6 +109,12 @@
       "projectFolder": "foss/packages/babel-preset",
       "reviewCategory": "production",
       "shouldPublish": false
+    },
+    {
+      "packageName": "@webdoc/language-parser",
+      "projectFolder": "language/language-parser",
+      "reviewCategory": "proprietary",
+      "shouldPublish": true
     }
   ]
 }
