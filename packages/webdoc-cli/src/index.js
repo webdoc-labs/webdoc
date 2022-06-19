@@ -1,10 +1,12 @@
 // @flow
 
+import * as Sentry from "@sentry/node";
 import * as external from "@webdoc/externalize";
 import * as yargs from "yargs";
 import {LogLevel, log, tag} from "missionlog";
 import {createRootDoc, exportTaffy} from "@webdoc/model";
 import {parse, registerWebdocParser} from "@webdoc/parser";
+import {RewriteFrames} from "@sentry/integrations";
 import fs from "fs";
 import fse from "fs-extra";
 import {initLogger as initParserLogger} from "@webdoc/parser";
@@ -13,6 +15,12 @@ import path from "path";
 // $FlowFixMe
 import {performance} from "perf_hooks";
 import {sources} from "./sources";
+
+Sentry.init({
+  dsn: "https://58a75d0c31524766b288a61751fd6690@o1292855.ingest.sentry.io/6514486",
+  integrations: [new RewriteFrames()],
+  tracesSampleRate: 1,
+});
 
 require("./shims");// Node v10 support
 

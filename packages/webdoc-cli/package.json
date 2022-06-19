@@ -40,6 +40,8 @@
     "url": "https://github.com/SukantPal/webdoc/issues"
   },
   "dependencies": {
+    "@sentry/node": "7.2.0",
+    "@sentry/integrations": "7.2.0",
     "@webdoc/default-template": "^1.6.6",
     "@webdoc/externalize": "^1.6.6",
     "@webdoc/legacy-template": "^1.6.6",
