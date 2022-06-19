@@ -1,5 +1,5 @@
 const {findDoc} = require("@webdoc/model");
-const {parse} = require("../lib/parse");
+const {parse} = require("../src/parse");
 
 const expect = require("chai").expect;
 

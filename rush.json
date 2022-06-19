@@ -117,6 +117,12 @@
       "shouldPublish": true
     },
     {
+      "packageName": "@webdoc/proxy-registry",
+      "projectFolder": "server/proxy-registry",
+      "reviewCategory": "proprietary",
+      "shouldPublish": false
+    },
+    {
       "packageName": "@webdoc/configure-rollup",
       "projectFolder": "tool/configure-rollup",
       "reviewCategory": "tools",

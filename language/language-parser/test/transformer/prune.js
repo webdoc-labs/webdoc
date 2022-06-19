@@ -1,4 +1,4 @@
-const prune = require("../../lib/transformer/mod-prune").default;
+const prune = require("../../src/transformer/mod-prune").default;
 
 const expect = require("chai").expect;
 

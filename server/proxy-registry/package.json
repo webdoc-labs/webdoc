@@ -1,0 +1,33 @@
+{
+  "name": "@webdoc/proxy-registry",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Proxy server to webdoc's private registry",
+  "author": "Shukant Pal <shukant@webdoclabs.com>",
+  "homepage": "https://source.webdoclabs.com/webdoc-labs/monorepo",
+  "license": "UNLICENSED",
+  "main": "lib/index.js",
+  "files": ["lib"],
+  "repository": {
+    "type": "git",
+    "url": "git+https://source.webdoclabs.com/webdoc-labs/monorepo.git"
+  },
+  "scripts": {
+    "flow": "flow check",
+    "build": "rollup -c rollup.config.mjs",
+    "lint": "eslint -c .eslintrc.json .",
+    "unit-test": ""
+  },
+  "dependencies": {
+    "express": "4.18.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/register": "^7.9.0",
+    "@webdoc/babel-preset": "^1.0.0",
+    "@webdoc/eslint-config": "^1.0.0",
+    "@webdoc/configure-rollup": "^1.6.1",
+    "flow-bin": "^0.130.0",
+    "flow-typed": "^3.2.1"
+  }
+}

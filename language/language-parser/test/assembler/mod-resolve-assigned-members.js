@@ -1,6 +1,6 @@
-const {buildSymbolTree} = require("../../lib/parse.js");
+const {buildSymbolTree} = require("../../src/parse.js");
 const resolveAssignedMembersRecursive =
-  require("../../lib/assembler/mod-resolve-assigned-members.js").default;
+  require("../../src/assembler/mod-resolve-assigned-members.js").default;
 const expect = require("chai").expect;
 
 describe("@webdoc/parser.assemble{@assembly-mod resolve-assigned-members}", function() {

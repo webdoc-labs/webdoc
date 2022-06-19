@@ -1,0 +1,3 @@
+{
+  "presets": [ "@webdoc/babel-preset" ]
+}

@@ -1,5 +1,5 @@
-const {buildSymbolTree} = require("../../lib/parse");
-const resolveLinks = require("../../lib/assembler/mod-resolve-links").default;
+const {buildSymbolTree} = require("../../src/parse");
+const resolveLinks = require("../../src/assembler/mod-resolve-links").default;
 const expect = require("chai").expect;
 
 describe("@webdoc/parser.assemble{@assembly-mod resolve-link}", function() {

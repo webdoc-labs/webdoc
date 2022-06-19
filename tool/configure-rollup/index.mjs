@@ -10,6 +10,7 @@ import {terser} from "rollup-plugin-terser";
 
 export async function configureRollup({
   packageDirectory,
+  bundle = false,
   minify = true,
   sourcemaps: _sourcemaps
 }) {
@@ -23,9 +24,11 @@ export async function configureRollup({
       exports: "auto",
       file: "lib/index.js",
       format: "cjs",
-      sourcemap: true,
+      sourcemap: _sourcemaps,
     },
-    external: Object.keys(dependencies || {}).concat(Object.keys(peerDependencies || {})),
+    external: !bundle ? [] :
+      Object.keys(dependencies || {})
+        .concat(Object.keys(peerDependencies || {})),
     plugins: [
       replace({
         preventAssignment: true,

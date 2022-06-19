@@ -1,4 +1,4 @@
-const {parseParam} = require("../../lib/tag-parsers/parseParam");
+const {parseParam} = require("../../src/tag-parsers/parseParam");
 
 const expect = require("chai").expect;
 

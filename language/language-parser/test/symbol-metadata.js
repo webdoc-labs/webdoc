@@ -1,4 +1,4 @@
-const {buildSymbolTree} = require("../lib/parse");
+const {buildSymbolTree} = require("../src/parse");
 
 const expect = require("chai").expect;
 

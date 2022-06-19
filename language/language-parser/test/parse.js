@@ -1,4 +1,4 @@
-const {parse} = require("../lib/parse");
+const {parse} = require("../src/parse");
 const {doc: findDoc} = require("@webdoc/model");
 
 const expect = require("chai").expect;

@@ -1,4 +1,4 @@
-const mergeParams = require("../../lib/transformer/merge-params").default;
+const mergeParams = require("../../src/transformer/merge-params").default;
 
 const expect = require("chai").expect;
 

@@ -219,6 +219,10 @@
       "allowedCategories": [ "production" ]
     },
     {
+      "name": "express",
+      "allowedCategories": [ "proprietary" ]
+    },
+    {
       "name": "extract-loader",
       "allowedCategories": [ "production" ]
     },

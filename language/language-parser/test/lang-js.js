@@ -1,5 +1,5 @@
-const {buildSymbolTree} = require("../lib/parse");
-const {findSymbol} = require("../lib/types/Symbol");
+const {buildSymbolTree} = require("../src/parse");
+const {findSymbol} = require("../src/types/Symbol");
 
 const expect = require("chai").expect;
 

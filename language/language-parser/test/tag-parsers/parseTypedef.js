@@ -1,4 +1,4 @@
-const {parseTypedef} = require("../../lib/tag-parsers/parseTypedef");
+const {parseTypedef} = require("../../src/tag-parsers/parseTypedef");
 
 const expect = require("chai").expect;
 

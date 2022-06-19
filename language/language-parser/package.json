@@ -30,7 +30,7 @@
     "flow": "flow check",
     "build": "rollup -c rollup.config.mjs",
     "lint": "eslint -c .eslintrc.json .",
-    "unit-test": "mocha ./test/* --require ../../scripts/configureWebdocTesting",
+    "unit-test": "export PARSER_DIR=$(pwd); mocha ./test/* --require @babel/register --require ../../foss/scripts/configureWebdocTesting.js",
     "test": "echo \"Error: run tests from root\" && exit 1",
     "prepublishOnly": "stub --publish"
   },
