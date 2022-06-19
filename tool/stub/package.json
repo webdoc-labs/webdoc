@@ -1,0 +1,55 @@
+{
+  "name": "@webdoc/stub",
+  "private": true,
+  "version": "1.6.6",
+  "description": "Stub for private webdoc packages",
+  "keywords": [
+    "parser",
+    "jsdoc",
+    "doctree"
+  ],
+  "author": "Shukant Pal <shukant@webdoclabs.com>",
+  "homepage": "https://www.webdoclabs.com",
+  "license": "UNLICENSED",
+  "bin": {
+    "stub": "./cli.js"
+  },
+  "main": "lib/index.js",
+  "files": [
+    "lib/index.js"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SukantPal/webdoc.git"
+  },
+  "scripts": {
+    "flow": "flow check",
+    "build": "rollup -c rollup.config.mjs",
+    "lint": "eslint -c .eslintrc.json .",
+    "unit-test": "mocha ./test/* --require ../../scripts/configureWebdocTesting",
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://source.webdoclabs.com/webdoc-labs/monorepo/issues"
+  },
+  "dependencies": {
+    "@babel/parser": "^7.9.4",
+    "@babel/traverse": "7.9.5",
+    "@babel/types": "7.9.5",
+    "@webdoc/model": "^1.6.6",
+    "@webdoc/types": "^1.6.6",
+    "lodash": "^4.17.20",
+    "missionlog": "1.6.0",
+    "nanoid": "~3.1.16"
+  },
+  "devDependencies": {
+    "@webdoc/babel-preset": "^1.0.0",
+    "@webdoc/configure-rollup": "^1.6.1",
+    "@webdoc/eslint-config": "^1.0.0",
+    "flow-bin": "^0.130.0",
+    "flow-typed": "^3.2.1"
+  }
+}

@@ -12,7 +12,7 @@
     },
     {
       "name": "@babel/parser",
-      "allowedCategories": [ "production", "proprietary" ]
+      "allowedCategories": [ "production", "proprietary", "tools" ]
     },
     {
       "name": "@babel/plugin-proposal-class-properties",
@@ -40,11 +40,11 @@
     },
     {
       "name": "@babel/traverse",
-      "allowedCategories": [ "production", "proprietary" ]
+      "allowedCategories": [ "production", "proprietary", "tools" ]
     },
     {
       "name": "@babel/types",
-      "allowedCategories": [ "production", "proprietary" ]
+      "allowedCategories": [ "production", "proprietary", "tools" ]
     },
     {
       "name": "@material-ui/core",
@@ -60,27 +60,51 @@
     },
     {
       "name": "@rollup/plugin-babel",
-      "allowedCategories": [ "proprietary" ]
+      "allowedCategories": [ "proprietary", "tools" ]
     },
     {
       "name": "@rollup/plugin-commonjs",
-      "allowedCategories": [ "proprietary" ]
+      "allowedCategories": [ "proprietary", "tools" ]
+    },
+    {
+      "name": "@rollup/plugin-json",
+      "allowedCategories": [ "tools" ]
     },
     {
       "name": "@rollup/plugin-node-resolve",
-      "allowedCategories": [ "proprietary" ]
+      "allowedCategories": [ "proprietary", "tools" ]
+    },
+    {
+      "name": "@rollup/plugin-replace",
+      "allowedCategories": [ "proprietary", "tools" ]
     },
     {
       "name": "@rushstack/eslint-patch",
       "allowedCategories": [ "production" ]
     },
     {
-      "name": "@webdoc/babel-preset",
+      "name": "@sentry/integrations",
       "allowedCategories": [ "production", "proprietary" ]
+    },
+    {
+      "name": "@sentry/node",
+      "allowedCategories": [ "production", "proprietary" ]
+    },
+    {
+      "name": "@sentry/tracing",
+      "allowedCategories": [ "production", "proprietary" ]
+    },
+    {
+      "name": "@webdoc/babel-preset",
+      "allowedCategories": [ "production", "proprietary", "tools" ]
     },
     {
       "name": "@webdoc/cli",
       "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@webdoc/configure-rollup",
+      "allowedCategories": [ "proprietary", "tools" ]
     },
     {
       "name": "@webdoc/default-template",
@@ -88,7 +112,7 @@
     },
     {
       "name": "@webdoc/eslint-config",
-      "allowedCategories": [ "production", "proprietary" ]
+      "allowedCategories": [ "production", "proprietary", "tools" ]
     },
     {
       "name": "@webdoc/externalize",
@@ -100,7 +124,7 @@
     },
     {
       "name": "@webdoc/model",
-      "allowedCategories": [ "production", "proprietary" ]
+      "allowedCategories": [ "production", "proprietary", "tools" ]
     },
     {
       "name": "@webdoc/parser",
@@ -111,12 +135,16 @@
       "allowedCategories": [ "production" ]
     },
     {
+      "name": "@webdoc/stub",
+      "allowedCategories": [ "proprietary" ]
+    },
+    {
       "name": "@webdoc/template-library",
       "allowedCategories": [ "production" ]
     },
     {
       "name": "@webdoc/types",
-      "allowedCategories": [ "production", "proprietary" ]
+      "allowedCategories": [ "production", "proprietary", "tools" ]
     },
     {
       "name": "array.prototype.flatmap",
@@ -200,11 +228,11 @@
     },
     {
       "name": "flow-bin",
-      "allowedCategories": [ "production", "proprietary" ]
+      "allowedCategories": [ "production", "proprietary", "tools" ]
     },
     {
       "name": "flow-typed",
-      "allowedCategories": [ "production", "proprietary" ]
+      "allowedCategories": [ "production", "proprietary", "tools" ]
     },
     {
       "name": "fs-extra",
@@ -252,7 +280,7 @@
     },
     {
       "name": "lodash",
-      "allowedCategories": [ "production", "proprietary" ]
+      "allowedCategories": [ "production", "proprietary", "tools" ]
     },
     {
       "name": "lodash.merge",
@@ -276,7 +304,7 @@
     },
     {
       "name": "missionlog",
-      "allowedCategories": [ "production", "proprietary" ]
+      "allowedCategories": [ "production", "proprietary", "tools" ]
     },
     {
       "name": "mocha",
@@ -284,7 +312,7 @@
     },
     {
       "name": "nanoid",
-      "allowedCategories": [ "production", "proprietary" ]
+      "allowedCategories": [ "production", "proprietary", "tools" ]
     },
     {
       "name": "node-fetch",
@@ -344,11 +372,11 @@
     },
     {
       "name": "rollup-plugin-sourcemaps",
-      "allowedCategories": [ "proprietary" ]
+      "allowedCategories": [ "proprietary", "tools" ]
     },
     {
       "name": "rollup-plugin-terser",
-      "allowedCategories": [ "proprietary" ]
+      "allowedCategories": [ "proprietary", "tools" ]
     },
     {
       "name": "rollup-terser-plugin",

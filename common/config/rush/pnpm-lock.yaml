@@ -17,9 +17,12 @@ specifiers:
   '@material-ui/lab': ^4.0.0-alpha.56
   '@rollup/plugin-babel': 5.3.1
   '@rollup/plugin-commonjs': 22.0.0
+  '@rollup/plugin-json': 4.1.0
   '@rollup/plugin-node-resolve': 13.1.3
+  '@rollup/plugin-replace': 4.0.0
   '@rush-temp/babel-preset': file:./projects/babel-preset.tgz
   '@rush-temp/cli': file:./projects/cli.tgz
+  '@rush-temp/configure-rollup': file:./projects/configure-rollup.tgz
   '@rush-temp/default-template': file:./projects/default-template.tgz
   '@rush-temp/eslint-config': file:./projects/eslint-config.tgz
   '@rush-temp/example': file:./projects/example.tgz
@@ -29,9 +32,12 @@ specifiers:
   '@rush-temp/model': file:./projects/model.tgz
   '@rush-temp/parser': file:./projects/parser.tgz
   '@rush-temp/plugin-markdown': file:./projects/plugin-markdown.tgz
+  '@rush-temp/stub': file:./projects/stub.tgz
   '@rush-temp/template-library': file:./projects/template-library.tgz
   '@rush-temp/types': file:./projects/types.tgz
   '@rushstack/eslint-patch': ~1.0.2
+  '@sentry/integrations': 7.2.0
+  '@sentry/node': 7.2.0
   array.prototype.flatmap: ~1.2.3
   babel-eslint: ^10.1.0
   babel-loader: ^8.1.0
@@ -110,9 +116,12 @@ dependencies:
   '@material-ui/lab': 4.0.0-alpha.61_1a1c59fe9141dd661131ff50854ba252
   '@rollup/plugin-babel': 5.3.1_@babel+core@7.18.5+rollup@2.75.6
   '@rollup/plugin-commonjs': 22.0.0_rollup@2.75.6
+  '@rollup/plugin-json': 4.1.0_rollup@2.75.6
   '@rollup/plugin-node-resolve': 13.1.3_rollup@2.75.6
+  '@rollup/plugin-replace': 4.0.0_rollup@2.75.6
   '@rush-temp/babel-preset': file:projects/babel-preset.tgz
   '@rush-temp/cli': file:projects/cli.tgz
+  '@rush-temp/configure-rollup': file:projects/configure-rollup.tgz_@babel+core@7.18.5+rollup@2.75.6
   '@rush-temp/default-template': file:projects/default-template.tgz
   '@rush-temp/eslint-config': file:projects/eslint-config.tgz
   '@rush-temp/example': file:projects/example.tgz
@@ -122,9 +131,12 @@ dependencies:
   '@rush-temp/model': file:projects/model.tgz
   '@rush-temp/parser': file:projects/parser.tgz
   '@rush-temp/plugin-markdown': file:projects/plugin-markdown.tgz
+  '@rush-temp/stub': file:projects/stub.tgz
   '@rush-temp/template-library': file:projects/template-library.tgz
   '@rush-temp/types': file:projects/types.tgz
   '@rushstack/eslint-patch': 1.0.9
+  '@sentry/integrations': 7.2.0
+  '@sentry/node': 7.2.0
   array.prototype.flatmap: 1.2.5
   babel-eslint: 10.1.0_eslint@6.8.0
   babel-loader: 8.2.5_7f01cabc6cae6b1bed6d7aa154f5ac58
@@ -1852,6 +1864,15 @@ packages:
       rollup: 2.75.6
     dev: false
 
+  /@rollup/plugin-json/4.1.0_rollup@2.75.6:
+    resolution: {integrity: sha512-yfLbTdNS6amI/2OpmbiBoW12vngr5NW2jCJVZSBEz+H5KfUJZ2M7sDjk0U6GOOdCWFVScShte29o9NezJ53TPw==}
+    peerDependencies:
+      rollup: ^1.20.0 || ^2.0.0
+    dependencies:
+      '@rollup/pluginutils': 3.1.0_rollup@2.75.6
+      rollup: 2.75.6
+    dev: false
+
   /@rollup/plugin-node-resolve/13.1.3_rollup@2.75.6:
     resolution: {integrity: sha512-BdxNk+LtmElRo5d06MGY4zoepyrXX1tkzX2hrnPEZ53k78GuOMWLqmJDGIIOPwVRIFZrLQOo+Yr6KtCuLIA0AQ==}
     engines: {node: '>= 10.0.0'}
@@ -1864,6 +1885,16 @@ packages:
       deepmerge: 4.2.2
       is-module: 1.0.0
       resolve: 1.22.1
+      rollup: 2.75.6
+    dev: false
+
+  /@rollup/plugin-replace/4.0.0_rollup@2.75.6:
+    resolution: {integrity: sha512-+rumQFiaNac9y64OHtkHGmdjm7us9bo1PlbgQfdihQtuNxzjpaB064HbRnewUOggLQxVCCyINfStkgmBeQpv1g==}
+    peerDependencies:
+      rollup: ^1.20.0 || ^2.0.0
+    dependencies:
+      '@rollup/pluginutils': 3.1.0_rollup@2.75.6
+      magic-string: 0.25.9
       rollup: 2.75.6
     dev: false
 
@@ -1881,6 +1912,64 @@ packages:
 
   /@rushstack/eslint-patch/1.0.9:
     resolution: {integrity: sha512-yk9Xj/3bUxyz3azMXW8qigLqXWEr2R0h9G7PVnnmjNQdlZLN+aESqCTnVN7ubtYUIQfW32/v8+AXsbpL1ryI1A==}
+    dev: false
+
+  /@sentry/core/7.2.0:
+    resolution: {integrity: sha512-9amsbB9/ePkJRgc0cVXCVW2hQUPImgTqBbnKu4frBXBza+9MBC5W3S8ZyZt2InCK22kuhNVo3z61a8mzCgXoCA==}
+    engines: {node: '>=8'}
+    dependencies:
+      '@sentry/hub': 7.2.0
+      '@sentry/types': 7.2.0
+      '@sentry/utils': 7.2.0
+      tslib: 1.14.1
+    dev: false
+
+  /@sentry/hub/7.2.0:
+    resolution: {integrity: sha512-uzd+GzD++Z4QopRh3AyRc4jz4AzomMnrXTOmdXgud1BH/Du9AYutVlBc5ZYwqCuJH7QPuAW3ySU3P+16UCinIg==}
+    engines: {node: '>=8'}
+    dependencies:
+      '@sentry/types': 7.2.0
+      '@sentry/utils': 7.2.0
+      tslib: 1.14.1
+    dev: false
+
+  /@sentry/integrations/7.2.0:
+    resolution: {integrity: sha512-plOD3tTEUqLpu/VNo5bE4ojSm86sYPk6PPxIBQKfKUNOMpJGSqxsLOJesVz5v/jcIW/CYXuMTHqgculovr7t/Q==}
+    engines: {node: '>=8'}
+    dependencies:
+      '@sentry/types': 7.2.0
+      '@sentry/utils': 7.2.0
+      localforage: 1.10.0
+      tslib: 1.14.1
+    dev: false
+
+  /@sentry/node/7.2.0:
+    resolution: {integrity: sha512-dSI+2DrT98+eqSAv3QG3jMrq4YefBaxRbSCR9Ok7oLQW2/eskbRWH4mgYssrDXEx319SBYHh90qq/EwCOEkHtw==}
+    engines: {node: '>=8'}
+    dependencies:
+      '@sentry/core': 7.2.0
+      '@sentry/hub': 7.2.0
+      '@sentry/types': 7.2.0
+      '@sentry/utils': 7.2.0
+      cookie: 0.4.2
+      https-proxy-agent: 5.0.1
+      lru_map: 0.3.3
+      tslib: 1.14.1
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /@sentry/types/7.2.0:
+    resolution: {integrity: sha512-e6w62C2AmE5ULr9w/BuVaKTRpKUMGWyw4PhcBlSdDRoS47QgURGgDFIvr3VlaDwkUfCbASwSv49fDhKRX3aoew==}
+    engines: {node: '>=8'}
+    dev: false
+
+  /@sentry/utils/7.2.0:
+    resolution: {integrity: sha512-uUKIsIXyb6ZXBbl/L8UwG4gy8PBXZl5pGCUFRPbns+vi0U6vtmDRDYa1A/7E17VkBJNRPVNJQr9Pq5Yd0I0MRA==}
+    engines: {node: '>=8'}
+    dependencies:
+      '@sentry/types': 7.2.0
+      tslib: 1.14.1
     dev: false
 
   /@sindresorhus/is/2.1.1:
@@ -2166,6 +2255,15 @@ packages:
     resolution: {integrity: sha512-Xx54uLJQZ19lKygFXOWsscKUbsBZW0CPykPhVQdhIeIwrbPmJzqeASDInc8nKBnp/JT6igTs82qPXz069H8I/A==}
     engines: {node: '>=0.4.0'}
     hasBin: true
+    dev: false
+
+  /agent-base/6.0.2:
+    resolution: {integrity: sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ==}
+    engines: {node: '>= 6.0.0'}
+    dependencies:
+      debug: 4.3.4
+    transitivePeerDependencies:
+      - supports-color
     dev: false
 
   /aggregate-error/3.1.0:
@@ -3265,10 +3363,6 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: false
 
-  /buffer-from/0.1.2:
-    resolution: {integrity: sha512-RiWIenusJsmI2KcvqQABB83tLxCByE3upSP8QU3rJDMVFGPWLvPQJt/O1Su9moRWeH7d+Q2HYb68f6+v+tw2vg==}
-    dev: false
-
   /buffer-from/1.1.2:
     resolution: {integrity: sha512-E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ==}
     dev: false
@@ -3784,6 +3878,11 @@ packages:
     resolution: {integrity: sha512-+OQdjP49zViI/6i7nIJpA8rAl4sV/JdPfU9nZs3VqOwGIgizICvuN2ru6fMd+4llL0tar18UYJXfZ/TWtmhUjA==}
     dependencies:
       safe-buffer: 5.1.2
+    dev: false
+
+  /cookie/0.4.2:
+    resolution: {integrity: sha512-aSWTXFzaKWkvHO1Ny/s+ePFpvKsPnjc551iI41v3ny/ow6tBG5Vd+FuqGNhh1LxOmVzOlGUriIlOaokOvhaStA==}
+    engines: {node: '>= 0.6'}
     dev: false
 
   /copy-concurrently/1.0.5:
@@ -5415,35 +5514,6 @@ packages:
       yargs: 7.1.2
     dev: false
 
-  /gulp-rollup-2/1.3.1:
-    resolution: {integrity: sha512-sKkHsbhmcFBorQ3AHUME8Kifj3Ud7d6BwUMntCigolJQxzbXH8Ja688WRc3dolSlcp31cIWTtJf9r+090gC+Ew==}
-    engines: {node: '>= 10.22.1'}
-    dependencies:
-      njfs: 1.2.5
-      object-hash: 2.2.0
-      rollup: 2.75.6
-      through2: 4.0.2
-      vinyl: 2.2.1
-      vinyl-sourcemaps-apply: 0.2.1
-    dev: false
-
-  /gulp-rollup-lightweight/1.0.11:
-    resolution: {integrity: sha512-GefPdOhxE8S/9kBmNEU11Ai4eDOioS0b2tvgk+b5TDdnyEg4jVip9Ebr9DqbURPTzKoav4CjKKv4NWrD+RsFEw==}
-    dependencies:
-      rollup: 1.32.1
-    dev: false
-
-  /gulp-rollup/2.17.0:
-    resolution: {integrity: sha512-L0Y1jqJz/Eb/67ApxbiVhJaXLI1riIIOne+M0rkc9bH7mC7IVzPWyoC3k46mBBY6UDxRXMpLEU/SaVjUrn0Lpw==}
-    dependencies:
-      buffer-from: 0.1.2
-      plugin-error: 1.0.1
-      readable-stream: 2.3.7
-      rollup: 0.68.2
-      rollup-plugin-hypothetical: 2.1.1
-      vinyl: 2.2.1
-    dev: false
-
   /gulp-util/3.0.8:
     resolution: {integrity: sha512-q5oWPc12lwSFS9h/4VIjG+1NuNDlJ48ywV2JKItY4Ycc/n1fXJeYPVQsfu5ZrhQi7FGSDBalwUCLar/GyHXKGw==}
     engines: {node: '>=0.10'}
@@ -5654,6 +5724,16 @@ packages:
     resolution: {integrity: sha512-J+FkSdyD+0mA0N+81tMotaRMfSL9SGi+xpD3T6YApKsc3bGSXJlfXri3VyFOeYkfLRQisDk1W+jIFFKBeUBbBg==}
     dev: false
 
+  /https-proxy-agent/5.0.1:
+    resolution: {integrity: sha512-dFcAjpTQFgoLMzC2VwU+C/CbS7uRL0lWmxDITmqm7C+7F0Odmj6s9l6alZc6AELXhrnggM2CeWSXHGOdX2YtwA==}
+    engines: {node: '>= 6'}
+    dependencies:
+      agent-base: 6.0.2
+      debug: 4.3.4
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
   /hyphenate-style-name/1.0.4:
     resolution: {integrity: sha512-ygGZLjmXfPHj+ZWh6LwbC37l43MhfztxetbFCoYTM2VjkIUpeHgSNn7QIyVFj7YQ1Wl9Cbw5sholVJPzWvC2MQ==}
     dev: false
@@ -5688,6 +5768,10 @@ packages:
   /ignore/5.2.0:
     resolution: {integrity: sha512-CmxgYGiEPCLhfLnpPp1MoRmifwEIOgjcHXxOBjv7mY96c+eWScsOP9c112ZyLdWHi0FxHjI+4uVhKYp/gcdRmQ==}
     engines: {node: '>= 4'}
+    dev: false
+
+  /immediate/3.0.6:
+    resolution: {integrity: sha512-XXOFtyqDjNDAQxVfYxuF7g9Il/IbWmmlQg2MYKOH8ExIT1qg6xc4zyS3HaEEATgs1btfzxq15ciUiY7gjSXRGQ==}
     dev: false
 
   /immutable/4.1.0:
@@ -6426,6 +6510,12 @@ packages:
       type-check: 0.3.2
     dev: false
 
+  /lie/3.1.1:
+    resolution: {integrity: sha512-RiNhHysUjhrDQntfYSfY4MU24coXXdEOgw9WGcKHNeEwffDYbF//u87M1EWaMGzuFoSbqW0C9C6lEEhDOAswfw==}
+    dependencies:
+      immediate: 3.0.6
+    dev: false
+
   /liftoff/3.1.0:
     resolution: {integrity: sha512-DlIPlJUkCV0Ips2zf2pJP0unEoT1kwYhiiPUGF3s/jtxTCjziNLoiVVh+jqWOWeFi6mmwQ5fNxvAUyPad4Dfog==}
     engines: {node: '>= 0.8'}
@@ -6482,6 +6572,12 @@ packages:
       big.js: 5.2.2
       emojis-list: 3.0.0
       json5: 2.2.1
+    dev: false
+
+  /localforage/1.10.0:
+    resolution: {integrity: sha512-14/H1aX7hzBBmmh7sGPd+AOMkkIrHM3Z1PAyGgZigA1H1p5O5ANnMyWzvpAETtG68/dC4pC0ncy3+PPGzXZHPg==}
+    dependencies:
+      lie: 3.1.1
     dev: false
 
   /locate-path/2.0.0:
@@ -6662,6 +6758,10 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       yallist: 4.0.0
+    dev: false
+
+  /lru_map/0.3.3:
+    resolution: {integrity: sha512-Pn9cox5CsMYngeDbmChANltQl+5pi6XmTrraMSzhPmMBbmgcxmqWry0U3PGapCU1yB4/LqCcom7qhHZiF/jGfQ==}
     dev: false
 
   /magic-string/0.25.9:
@@ -7046,10 +7146,6 @@ packages:
     resolution: {integrity: sha512-1nh45deeb5olNY7eX82BkPO7SSxR5SSYJiPTrTdFUVYwAl8CKMA5N9PjTYkHiRjisVcxcQ1HXdLhx2qxxJzLNQ==}
     dev: false
 
-  /njfs/1.2.5:
-    resolution: {integrity: sha512-Vnl1VDjSo7fO3RHAO5N9QrsyWaIpSTxHSwVoQOcepYAx3Lt+2JD/tUwgEJHfh1QqBjyy/H9WS5L79+hL+l99ug==}
-    dev: false
-
   /node-environment-flags/1.0.6:
     resolution: {integrity: sha512-5Evy2epuL+6TM0lCQGpFIj6KwiEsGh1SrHUhTbNX+sLbBtjidPZFAnVK9y5yU1+h//RitLbRHTIMyxQPtxMdHw==}
     dependencies:
@@ -7182,11 +7278,6 @@ packages:
       copy-descriptor: 0.1.1
       define-property: 0.2.5
       kind-of: 3.2.2
-    dev: false
-
-  /object-hash/2.2.0:
-    resolution: {integrity: sha512-gScRMn0bS5fH+IuwyIFgnh9zBdo4DV+6GhygmWM9HyNJSgS0hScp1f5vjtm7oIIOiT9trXrShAkLFSc2IqKNgw==}
-    engines: {node: '>= 6'}
     dev: false
 
   /object-inspect/1.12.2:
@@ -8599,11 +8690,6 @@ packages:
       inherits: 2.0.4
     dev: false
 
-  /rollup-plugin-hypothetical/2.1.1:
-    resolution: {integrity: sha512-Ne40a4qyXap1C41ObstbgfklT8VGEirJ57ZRIEgkEMaEIxdx5kNwdzrxfyS9cn59tAYROHh+2hfiFU4sTQt1rw==}
-    engines: {node: '>=0.12'}
-    dev: false
-
   /rollup-plugin-sourcemaps/0.6.3_rollup@2.75.6:
     resolution: {integrity: sha512-paFu+nT1xvuO1tPFYXGe+XnQvg4Hjqv/eIhG8i5EspfYYPBKL57X7iVbfv55aNVASg3dzWvES9dmWsL2KhfByw==}
     engines: {node: '>=10.0.0'}
@@ -8629,23 +8715,6 @@ packages:
       rollup: 2.75.6
       serialize-javascript: 4.0.0
       terser: 5.14.1
-    dev: false
-
-  /rollup/0.68.2:
-    resolution: {integrity: sha512-WgjNCXYv7ZbtStIap1+tz4pd2zwz0XYN//OILwEY6dINIFLVizK1iWdu+ZtUURL/OKnp8Lv2w8FBds8YihzX7Q==}
-    hasBin: true
-    dependencies:
-      '@types/estree': 0.0.39
-      '@types/node': 18.0.0
-    dev: false
-
-  /rollup/1.32.1:
-    resolution: {integrity: sha512-/2HA0Ec70TvQnXdzynFffkjA6XN+1e2pEv/uKS5Ulca40g2L7KuOE3riasHoNVHOsFD5KKZgDsMk1CP3Tw9s+A==}
-    hasBin: true
-    dependencies:
-      '@types/estree': 0.0.51
-      '@types/node': 18.0.0
-      acorn: 7.4.1
     dev: false
 
   /rollup/2.75.6:
@@ -9400,12 +9469,6 @@ packages:
     dependencies:
       readable-stream: 2.3.7
       xtend: 4.0.2
-    dev: false
-
-  /through2/4.0.2:
-    resolution: {integrity: sha512-iOqSav00cVxEEICeD7TjLB1sueEL+81Wpzp2bY17uZjZN0pWZPuo4suZ/61VujxmqSGFfgOcNuTZ85QJwNZQpw==}
-    dependencies:
-      readable-stream: 3.6.0
     dev: false
 
   /time-stamp/1.1.0:
@@ -10183,7 +10246,7 @@ packages:
     dev: false
 
   file:projects/cli.tgz:
-    resolution: {integrity: sha512-sB+GegnwatVDclPNsQysG3payJgO9A9nmlyzaAByM/oyy11HnPKmB12B+Yt61AOSEVCNUdlEWttU08vkHL7Z3g==, tarball: file:projects/cli.tgz}
+    resolution: {integrity: sha512-x7PL3F7JAUHEI4qSwa7lP+l/Y6T+W51QcLXrIbU2Ked2GZTshgCzIdYcGX1KOv26rSA8lEaYq/39Z9pc3d1NfA==, tarball: file:projects/cli.tgz}
     name: '@rush-temp/cli'
     version: 0.0.0
     dependencies:
@@ -10195,6 +10258,8 @@ packages:
       '@babel/preset-flow': 7.17.12_@babel+core@7.18.5
       '@babel/preset-react': 7.17.12_@babel+core@7.18.5
       '@babel/register': 7.17.7_@babel+core@7.18.5
+      '@sentry/integrations': 7.2.0
+      '@sentry/node': 7.2.0
       array.prototype.flatmap: 1.2.5
       chai: 4.3.6
       del: 5.1.0
@@ -10219,6 +10284,26 @@ packages:
     transitivePeerDependencies:
       - encoding
       - supports-color
+    dev: false
+
+  file:projects/configure-rollup.tgz_@babel+core@7.18.5+rollup@2.75.6:
+    resolution: {integrity: sha512-bmxeR4RRnNpbcDgDmPnEiP3IpJuz5Li5T3H3dYqUBx3CK0LTFsv3nlox55wHM4VswgA1MMpimYdW+puo44+lFg==, tarball: file:projects/configure-rollup.tgz}
+    id: file:projects/configure-rollup.tgz
+    name: '@rush-temp/configure-rollup'
+    version: 0.0.0
+    dependencies:
+      '@rollup/plugin-babel': 5.3.1_@babel+core@7.18.5+rollup@2.75.6
+      '@rollup/plugin-commonjs': 22.0.0_rollup@2.75.6
+      '@rollup/plugin-json': 4.1.0_rollup@2.75.6
+      '@rollup/plugin-node-resolve': 13.1.3_rollup@2.75.6
+      '@rollup/plugin-replace': 4.0.0_rollup@2.75.6
+      rollup-plugin-sourcemaps: 0.6.3_rollup@2.75.6
+      rollup-plugin-terser: 7.0.2_rollup@2.75.6
+    transitivePeerDependencies:
+      - '@babel/core'
+      - '@types/babel__core'
+      - '@types/node'
+      - rollup
     dev: false
 
   file:projects/default-template.tgz:
@@ -10336,7 +10421,7 @@ packages:
     dev: false
 
   file:projects/language-parser.tgz:
-    resolution: {integrity: sha512-4sZRbd3FcgfxnsTE/nGifqVBGqt0J5cOKxwujG5u9Syr/7XwL8iqyN0GTFIAyme0ATD9EDjzh7LaZ1noyvaSeQ==, tarball: file:projects/language-parser.tgz}
+    resolution: {integrity: sha512-URe5ekjMzHuk/uhEIPbHLTtmvm01OI4Il5j5FBRsLNiIhdHNDedcdMKlkEDu7szCkU/KrjonspcdCEkK1tbLiQ==, tarball: file:projects/language-parser.tgz}
     name: '@rush-temp/language-parser'
     version: 0.0.0
     dependencies:
@@ -10350,30 +10435,18 @@ packages:
       '@babel/register': 7.17.7_@babel+core@7.18.5
       '@babel/traverse': 7.9.5
       '@babel/types': 7.9.5
-      '@rollup/plugin-babel': 5.3.1_@babel+core@7.18.5+rollup@2.75.6
-      '@rollup/plugin-commonjs': 22.0.0_rollup@2.75.6
-      '@rollup/plugin-node-resolve': 13.1.3_rollup@2.75.6
+      '@sentry/node': 7.2.0
       chai: 4.3.6
       del: 5.1.0
       eslint: 6.8.0
       flow-bin: 0.130.0
       flow-typed: 3.7.0
-      gulp: 4.0.2
-      gulp-babel: 8.0.0_@babel+core@7.18.5
-      gulp-rollup: 2.17.0
-      gulp-rollup-2: 1.3.1
-      gulp-rollup-lightweight: 1.0.11
-      gulp-util: 3.0.8
       lodash: 4.17.21
       missionlog: 1.6.0
       mocha: 7.2.0
       nanoid: 3.1.32
       rollup: 2.75.6
-      rollup-plugin-sourcemaps: 0.6.3_rollup@2.75.6
-      rollup-plugin-terser: 7.0.2_rollup@2.75.6
     transitivePeerDependencies:
-      - '@types/babel__core'
-      - '@types/node'
       - encoding
       - supports-color
     dev: false
@@ -10485,6 +10558,24 @@ packages:
       gulp-util: 3.0.8
       highlight.js: 10.7.3
       markdown-it: 11.0.1
+    transitivePeerDependencies:
+      - encoding
+      - supports-color
+    dev: false
+
+  file:projects/stub.tgz:
+    resolution: {integrity: sha512-6f1RwliDD5e3ZAYFCfbtIR2BL379j1gkcHVMDfqRGQXhJ8tDeefEH7HVX58TzHP+qMajWfPqzeg/LVQFrwGeIg==, tarball: file:projects/stub.tgz}
+    name: '@rush-temp/stub'
+    version: 0.0.0
+    dependencies:
+      '@babel/parser': 7.18.5
+      '@babel/traverse': 7.9.5
+      '@babel/types': 7.9.5
+      flow-bin: 0.130.0
+      flow-typed: 3.7.0
+      lodash: 4.17.21
+      missionlog: 1.6.0
+      nanoid: 3.1.32
     transitivePeerDependencies:
       - encoding
       - supports-color

@@ -1,0 +1,40 @@
+{
+  "name": "@webdoc/configure-rollup",
+  "private": true,
+  "version": "1.6.6",
+  "description": "Rollup configuration",
+  "keywords": [
+    "parser",
+    "jsdoc",
+    "doctree"
+  ],
+  "author": "Shukant Pal <shukant@webdoclabs.com>",
+  "homepage": "https://www.webdoclabs.com",
+  "license": "UNLICENSED",
+  "main": "index.mjs",
+  "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://source.webdoclabs.com/webdoc-labs/monorepo"
+  },
+  "scripts": {
+    "build": "",
+    "lint": "eslint -c .eslintrc.json .",
+    "unit-test": ""
+  },
+  "bugs": {
+    "url": "https://source.webdoclabs.com/webdoc-labs/monorepo/issues"
+  },
+  "dependencies": {
+    "@rollup/plugin-babel": "5.3.1",
+    "@rollup/plugin-commonjs": "22.0.0",
+    "@rollup/plugin-json": "4.1.0",
+    "@rollup/plugin-node-resolve": "13.1.3",
+    "@rollup/plugin-replace": "4.0.0",
+    "rollup-plugin-terser": "7.0.2",
+    "rollup-plugin-sourcemaps": "0.6.3"
+  }
+}

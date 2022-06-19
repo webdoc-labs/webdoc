@@ -6,7 +6,7 @@
     "pnpmStore": "global",
     "strictPeerDependencies": false,
     "resolutionStrategy": "fast",
-    "preventManualShrinkwrapChanges": true,
+    "preventManualShrinkwrapChanges": true
   },
   "nodeSupportedVersionRange": ">=12.13.0 <13.0.0 || >=14.15.0 <15.0.0 || >=16.13.0 <17.0.0",
   "ensureConsistentVersions": true,
@@ -115,6 +115,18 @@
       "projectFolder": "language/language-parser",
       "reviewCategory": "proprietary",
       "shouldPublish": true
+    },
+    {
+      "packageName": "@webdoc/configure-rollup",
+      "projectFolder": "tool/configure-rollup",
+      "reviewCategory": "tools",
+      "shouldPublish": false
+    },
+    {
+      "packageName": "@webdoc/stub",
+      "projectFolder": "tool/stub",
+      "reviewCategory": "tools",
+      "shouldPublish": false
     }
   ]
 }
