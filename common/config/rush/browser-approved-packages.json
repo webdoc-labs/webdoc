@@ -183,6 +183,10 @@
       "allowedCategories": [ "production" ]
     },
     {
+      "name": "compression",
+      "allowedCategories": [ "proprietary" ]
+    },
+    {
       "name": "css-loader",
       "allowedCategories": [ "production" ]
     },
@@ -273,6 +277,10 @@
     {
       "name": "gulp-util",
       "allowedCategories": [ "production", "proprietary" ]
+    },
+    {
+      "name": "helmet",
+      "allowedCategories": [ "proprietary" ]
     },
     {
       "name": "highlight.js",

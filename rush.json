@@ -117,8 +117,8 @@
       "shouldPublish": true
     },
     {
-      "packageName": "@webdoc/proxy-registry",
-      "projectFolder": "server/proxy-registry",
+      "packageName": "@webdoc/rest",
+      "projectFolder": "server/rest",
       "reviewCategory": "proprietary",
       "shouldPublish": false
     },

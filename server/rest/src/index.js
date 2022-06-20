@@ -1,7 +1,9 @@
 // @flow
 
 import {Buffer} from "buffer";
+import compression from "compression";
 import express from "express";
+import helmet from "helmet";
 import https from "https";
 import type {$Request, $Response} from "express";
 
@@ -20,6 +22,9 @@ if (!FEED_ID || !PAT)
 const PAT_B64 = Buffer.from(`:${PAT}`).toString("base64");
 
 const app = express();
+
+app.use(compression());
+app.use(helmet());
 
 app.get('/@:scope/:name/versions/:version', async function (req: $Request, res: $Response) {
   const eula = req.header('X-EULA');

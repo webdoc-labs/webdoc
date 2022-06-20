@@ -32,7 +32,7 @@ specifiers:
   '@rush-temp/model': file:./projects/model.tgz
   '@rush-temp/parser': file:./projects/parser.tgz
   '@rush-temp/plugin-markdown': file:./projects/plugin-markdown.tgz
-  '@rush-temp/proxy-registry': file:./projects/proxy-registry.tgz
+  '@rush-temp/rest': file:./projects/rest.tgz
   '@rush-temp/stub': file:./projects/stub.tgz
   '@rush-temp/template-library': file:./projects/template-library.tgz
   '@rush-temp/types': file:./projects/types.tgz
@@ -48,6 +48,7 @@ specifiers:
   code-prettify: ^0.1.0
   color-themes-for-google-code-prettify: ^2.0.4
   common-path-prefix: ^3.0.0
+  compression: 1.7.4
   css-loader: ^3.6.0
   cuid: ^2.1.8
   del: 5.1.0
@@ -68,6 +69,7 @@ specifiers:
   gulp: ^4.0.2
   gulp-babel: ^8.0.0
   gulp-util: ^3.0.8
+  helmet: 5.1.0
   highlight.js: ~10.7.2
   klaw-sync: 6.0.0
   lodash: ^4.17.20
@@ -133,7 +135,7 @@ dependencies:
   '@rush-temp/model': file:projects/model.tgz
   '@rush-temp/parser': file:projects/parser.tgz
   '@rush-temp/plugin-markdown': file:projects/plugin-markdown.tgz
-  '@rush-temp/proxy-registry': file:projects/proxy-registry.tgz
+  '@rush-temp/rest': file:projects/rest.tgz
   '@rush-temp/stub': file:projects/stub.tgz
   '@rush-temp/template-library': file:projects/template-library.tgz
   '@rush-temp/types': file:projects/types.tgz
@@ -149,6 +151,7 @@ dependencies:
   code-prettify: 0.1.0
   color-themes-for-google-code-prettify: 2.0.4
   common-path-prefix: 3.0.0
+  compression: 1.7.4
   css-loader: 3.6.0_webpack@4.46.0
   cuid: 2.1.8
   del: 5.1.0
@@ -169,6 +172,7 @@ dependencies:
   gulp: 4.0.2
   gulp-babel: 8.0.0_@babel+core@7.18.5
   gulp-util: 3.0.8
+  helmet: 5.1.0
   highlight.js: 10.7.3
   klaw-sync: 6.0.0
   lodash: 4.17.21
@@ -3422,6 +3426,11 @@ packages:
     resolution: {integrity: sha512-HpGFw18DgFWlncDfjTa2rcQ4W88O1mC8e8yZ2AvQY5KDaktSTwo+KRf6nHK6FRI5FyRyb/5T6+TSxfP7QyGsmQ==}
     dev: false
 
+  /bytes/3.0.0:
+    resolution: {integrity: sha512-pMhOfFDPiv9t5jjIXkHosWmkSyQbvsgEVNkz0ERHbuLh2T/7j4Mqqpz523Fe8MVY89KC6Sh/QfS2sM+SjgFDcw==}
+    engines: {node: '>= 0.8'}
+    dev: false
+
   /bytes/3.1.2:
     resolution: {integrity: sha512-/Nf7TyzTx6S3yRJObOAV7956r8cr2+Oj8AC5dt8wSP3BQAoeX58NoHyCU8P8zGkNXStjTSi6fzO6F0pBdcYbEg==}
     engines: {node: '>= 0.8'}
@@ -3889,6 +3898,26 @@ packages:
     dependencies:
       '@types/json-buffer': 3.0.0
       json-buffer: 3.0.1
+    dev: false
+
+  /compressible/2.0.18:
+    resolution: {integrity: sha512-AF3r7P5dWxL8MxyITRMlORQNaOA2IkAFaTr4k7BUumjPtRpGDTZpl0Pb1XCO6JeDCBdp126Cgs9sMxqSjgYyRg==}
+    engines: {node: '>= 0.6'}
+    dependencies:
+      mime-db: 1.52.0
+    dev: false
+
+  /compression/1.7.4:
+    resolution: {integrity: sha512-jaSIDzP9pZVS4ZfQ+TzvtiWhdpFhE2RDHz8QJkpX9SIpLq88VueF5jJw6t+6CUQcAoA6t+x89MLrWAqpfDE8iQ==}
+    engines: {node: '>= 0.8.0'}
+    dependencies:
+      accepts: 1.3.8
+      bytes: 3.0.0
+      compressible: 2.0.18
+      debug: 2.6.9
+      on-headers: 1.0.2
+      safe-buffer: 5.1.2
+      vary: 1.1.2
     dev: false
 
   /concat-map/0.0.1:
@@ -5810,6 +5839,11 @@ packages:
     hasBin: true
     dev: false
 
+  /helmet/5.1.0:
+    resolution: {integrity: sha512-klsunXs8rgNSZoaUrNeuCiWUxyc+wzucnEnFejUg3/A+CaF589k9qepLZZ1Jehnzig7YbD4hEuscGXuBY3fq+g==}
+    engines: {node: '>=12.0.0'}
+    dev: false
+
   /hex-color-regex/1.1.0:
     resolution: {integrity: sha512-l9sfDFsuqtOqKDsQdqrMRk0U85RZc0RtOR9yPI7mRVOa4FsR/BVnZ0shmQRM96Ji99kYZP/7hn1cedc1+ApsTQ==}
     dev: false
@@ -7599,6 +7633,11 @@ packages:
     engines: {node: '>= 0.8'}
     dependencies:
       ee-first: 1.1.1
+    dev: false
+
+  /on-headers/1.0.2:
+    resolution: {integrity: sha512-pZAE+FJLoyITytdqK0U5s+FIpjN0JP3OzFi/u8Rx+EV5/W+JTWGXG8xFzevE7AjBfDqHv/8vL8qQsIhHnqRkrA==}
+    engines: {node: '>= 0.8'}
     dev: false
 
   /once/1.4.0:
@@ -10876,16 +10915,19 @@ packages:
       - supports-color
     dev: false
 
-  file:projects/proxy-registry.tgz:
-    resolution: {integrity: sha512-imxM5tkzO5PtnGk3YX03IjKAMSDUKJkNMvzRrLnhK5XkiQucivP+8MqAuYUV2RVYa9KKRMKPO259P+fmkFfD4Q==, tarball: file:projects/proxy-registry.tgz}
-    name: '@rush-temp/proxy-registry'
+  file:projects/rest.tgz:
+    resolution: {integrity: sha512-c8HKDfreRKJcRplPqMAIyRHUJKx+ndduaiJiwS4aCy1KBCVmwU1qP/bni5howTUioItad6x81PU20kpzenK/AA==, tarball: file:projects/rest.tgz}
+    name: '@rush-temp/rest'
     version: 0.0.0
     dependencies:
       '@babel/core': 7.18.5
       '@babel/register': 7.17.7_@babel+core@7.18.5
+      compression: 1.7.4
       express: 4.18.1
       flow-bin: 0.130.0
       flow-typed: 3.7.0
+      helmet: 5.1.0
+      rollup: 2.75.6
     transitivePeerDependencies:
       - encoding
       - supports-color
