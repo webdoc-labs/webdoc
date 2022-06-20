@@ -11,6 +11,10 @@
       "allowedCategories": [ "production", "proprietary" ]
     },
     {
+      "name": "@babel/eslint-parser",
+      "allowedCategories": [ "production" ]
+    },
+    {
       "name": "@babel/parser",
       "allowedCategories": [ "production", "proprietary", "tools" ]
     },
@@ -208,7 +212,7 @@
     },
     {
       "name": "eslint",
-      "allowedCategories": [ "production", "proprietary" ]
+      "allowedCategories": [ "production", "proprietary", "tools" ]
     },
     {
       "name": "eslint-config-google",

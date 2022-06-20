@@ -6,7 +6,11 @@ import * as path from "path";
 
 const WD_NOT_INSTALLED = "/* WD_NOT_INSTALLED */";
 
-export async function publishStub({ packageDirectory = process.cwd() }: { packageDirectory: string }) {
+export async function publishStub({
+  packageDirectory = process.cwd(),
+}: {
+  packageDirectory: string
+}) {
   const packageManifestPath = path.join(packageDirectory, "./package.json");
   const {
     name,
@@ -30,7 +34,7 @@ export async function publishStub({ packageDirectory = process.cwd() }: { packag
     devDependencies,
     peerDependencies,
     publishConfig: {
-      access: "public"
+      access: "public",
     },
     homepage: "https://www.webdoclabs.com",
     main,
@@ -41,11 +45,11 @@ export async function publishStub({ packageDirectory = process.cwd() }: { packag
       privateDependencies: []
         .concat(Object.keys(dependencies))
         .concat(Object.keys(peerDependencies))
-        .filter((pkg) => pkg.startsWith('@webdoc') &&
-          projects.find((project) => project.packageName === pkg
-            && project.reviewCategory === "proprietary")),
-      stubHeader: WD_NOT_INSTALLED
-    }
+        .filter((pkg) => pkg.startsWith("@webdoc") &&
+          projects.find((project) => project.packageName === pkg &&
+            project.reviewCategory === "proprietary")),
+      stubHeader: WD_NOT_INSTALLED,
+    },
   };
   const stubDirectory = path.join(__dirname, "../.stub", name);
   const scriptDirectory = path.dirname(path.join(stubDirectory, main));
@@ -53,7 +57,7 @@ export async function publishStub({ packageDirectory = process.cwd() }: { packag
   try {
     await fs.access(scriptDirectory);
   } catch {
-    await fs.mkdir(scriptDirectory, { recursive: true });
+    await fs.mkdir(scriptDirectory, {recursive: true});
   }
 
   await fs.writeFile(

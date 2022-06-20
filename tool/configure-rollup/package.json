@@ -22,7 +22,7 @@
   },
   "scripts": {
     "build": "",
-    "lint": "eslint -c .eslintrc.json .",
+    "lint": "eslint -c .eslintrc.json . --ext=js,mjs",
     "unit-test": ""
   },
   "bugs": {
@@ -36,5 +36,9 @@
     "@rollup/plugin-replace": "4.0.0",
     "rollup-plugin-terser": "7.0.2",
     "rollup-plugin-sourcemaps": "0.6.3"
+  },
+  "devDependencies": {
+    "eslint": "8.18.0",
+    "@webdoc/eslint-config": "^1.0.0"
   }
 }

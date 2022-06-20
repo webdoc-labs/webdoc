@@ -28,8 +28,8 @@
   "scripts": {
     "flow": "flow check",
     "build": "rollup -c rollup.config.mjs",
-    "lint": "eslint -c .eslintrc.json .",
-    "unit-test": "mocha ./test/* --require ../../scripts/configureWebdocTesting",
+    "lint": "eslint -c .eslintrc.json . --ext=js,mjs",
+    "unit-test": "",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
@@ -46,6 +46,7 @@
     "nanoid": "~3.1.16"
   },
   "devDependencies": {
+    "eslint": "8.18.0",
     "@webdoc/babel-preset": "^1.0.0",
     "@webdoc/configure-rollup": "^1.6.1",
     "@webdoc/eslint-config": "^1.0.0",

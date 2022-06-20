@@ -5,5 +5,5 @@
 import {registerValidator} from "./validators";
 
 export class WebdocParser {
-  installValidator = registerValidator
+  installValidator = registerValidator;
 }

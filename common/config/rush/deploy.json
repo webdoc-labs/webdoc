@@ -1,0 +1,15 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/deploy-scenario.schema.json",
+  "deploymentProjectNames": ["@webdoc/rest"],
+  "includeDevDependencies": false,
+  "includeNpmIgnoreFiles": false,
+  "omitPnpmWorkaroundLinks": true,
+  "projectSettings": [
+     {
+       "projectName": "@webdoc/rest",
+       "additionalProjectsToInclude": [],
+       "additionalDependenciesToInclude": [],
+       "dependenciesToExclude": []
+     }
+  ]
+}
