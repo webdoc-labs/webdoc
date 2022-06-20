@@ -73,7 +73,7 @@ export async function install({
     });
   }).end();
 
-  const writes: Promise<void> = [];
+  const writes: Promise<void>[] = [];
 
   await new Promise((resolve, reject) => {
     extract.on("entry", async function(header, stream, next) {

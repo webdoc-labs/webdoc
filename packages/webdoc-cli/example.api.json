@@ -1,0 +1,13 @@
+{
+	"version": "1.0.0",
+	"metadata": {
+		"linker": "(unsigned)",
+		"siteRoot": ""
+	},
+	"root": {
+		"id": "root-0KaFkZHA05MRnXzMQYgeb",
+		"name": "",
+		"type": "RootDoc"
+	},
+	"registry": {}
+}

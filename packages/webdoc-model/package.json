@@ -29,7 +29,7 @@
     "flow": "flow check",
     "build": "gulp build",
     "lint": "eslint -c .eslintrc.json .",
-    "unit-test": "mocha ./test/* --require ../../scripts/configureWebdocTesting",
+    "unit-test": "mocha ./test/*",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
@@ -43,8 +43,6 @@
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
-    "@babel/plugin-proposal-class-properties": "^7.8.3",
-    "@babel/plugin-transform-flow-comments": "^7.8.3",
     "@babel/preset-env": "^7.9.5",
     "@babel/preset-flow": "^7.10.1",
     "@babel/preset-react": "^7.10.1",
@@ -53,7 +51,7 @@
     "@webdoc/eslint-config": "^1.0.0",
     "chai": "~4.3.4",
     "del": "5.1.0",
-    "eslint": "^6.8.0",
+    "eslint": "8.18.0",
     "flow-bin": "^0.130.0",
     "flow-typed": "^3.2.1",
     "gulp": "^4.0.2",

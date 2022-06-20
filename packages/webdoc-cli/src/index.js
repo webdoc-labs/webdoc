@@ -4,7 +4,7 @@ import * as path from "path";
 import * as yargs from "yargs";
 import {install} from "./installer";
 
-async function start(args: yargs.Argv): void {
+async function start(args: yargs.Argv): Promise<void> {
   await install({
     api: args.api,
     pkg: "@webdoc/language-parser",
@@ -14,7 +14,7 @@ async function start(args: yargs.Argv): void {
   // require after package install
   const {main} = require("./main");
 
-  return main(args);
+  return (main: (args: yargs.Argv) => Promise<void>)(args);
 }
 
 const argv = yargs.scriptName("@webdoc/cli")

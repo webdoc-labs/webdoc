@@ -32,10 +32,6 @@ module.exports = {
     $Subtype: "readonly",
     $ReadOnlyArray: "readonly",
   },
-  parser: "babel-eslint",
-  parserOptions: {
-    ecmaVersion: 2018,
-  },
   rules: {
     "require-jsdoc": "off",
     "max-len": [
@@ -69,4 +65,20 @@ module.exports = {
     "eslint-plugin-import",
     "eslint-plugin-react",
   ],
+  overrides: [
+    {
+      files: ["*.js", "*.jsx"],
+      parser: "@babel/eslint-parser",
+      parserOptions: {
+        ecmaVersion: 2018,
+      },
+    },
+    {
+      files: ["*.mjs"],
+      parserOptions: {
+        ecmaVersion: 2022,
+        sourceType: "module"
+      }
+    }
+  ]
 };

@@ -57,7 +57,7 @@ export function initLogger(verbose: boolean = false, quiet: boolean = false) {
 }
 
 // main() is the default command.
-export async function main(argv: yargs.Argv) {
+export async function main(argv: yargs.Argv): Promise<void> {
   initLogger(!!argv.verbose, !!argv.quiet);
 
   const start = performance.now();
