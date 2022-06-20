@@ -52,12 +52,6 @@
       "versionPolicyName": "webdoc"
     },
     {
-      "packageName": "@webdoc/parser",
-      "projectFolder": "packages/webdoc-parser",
-      "reviewCategory": "production",
-      "versionPolicyName": "webdoc"
-    },
-    {
       "packageName": "@webdoc/plugin-markdown",
       "projectFolder": "packages/webdoc-plugin-markdown",
       "reviewCategory": "production",

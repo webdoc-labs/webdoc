@@ -5,11 +5,12 @@ import * as external from "@webdoc/externalize";
 import * as yargs from "yargs";
 import {LogLevel, log, tag} from "missionlog";
 import {createRootDoc, exportTaffy} from "@webdoc/model";
-import {parse, registerWebdocParser} from "@webdoc/parser";
+import {parse, registerWebdocParser} from "@webdoc/language-parser";
 import {RewriteFrames} from "@sentry/integrations";
 import fs from "fs";
 import fse from "fs-extra";
-import {initLogger as initParserLogger} from "@webdoc/parser";
+import {initLogger as initParserLogger} from "@webdoc/language-parser";
+import {install} from "./installer";
 import {loadTutorials} from "./load-tutorials";
 import path from "path";
 // $FlowFixMe
@@ -59,6 +60,11 @@ export function initLogger(verbose: boolean = false, quiet: boolean = false) {
 // main() is the default command.
 async function main(argv: yargs.Argv) {
   initLogger(!!argv.verbose, !!argv.quiet);
+  await install({
+    api: argv.api,
+    pkg: "@webdoc/language-parser",
+    eula: "commercial",
+  });
 
   const start = performance.now();
 
