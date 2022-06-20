@@ -30,7 +30,6 @@ specifiers:
   '@rush-temp/language-parser': file:./projects/language-parser.tgz
   '@rush-temp/legacy-template': file:./projects/legacy-template.tgz
   '@rush-temp/model': file:./projects/model.tgz
-  '@rush-temp/parser': file:./projects/parser.tgz
   '@rush-temp/plugin-markdown': file:./projects/plugin-markdown.tgz
   '@rush-temp/rest': file:./projects/rest.tgz
   '@rush-temp/stub': file:./projects/stub.tgz
@@ -39,6 +38,7 @@ specifiers:
   '@rushstack/eslint-patch': ~1.0.2
   '@sentry/integrations': 7.2.0
   '@sentry/node': 7.2.0
+  '@webdoc/parser': ^1.6.6
   array.prototype.flatmap: ~1.2.3
   babel-eslint: ^10.1.0
   babel-loader: ^8.1.0
@@ -69,6 +69,7 @@ specifiers:
   gulp: ^4.0.2
   gulp-babel: ^8.0.0
   gulp-util: ^3.0.8
+  gunzip-maybe: 1.4.2
   helmet: 5.1.0
   highlight.js: ~10.7.2
   klaw-sync: 6.0.0
@@ -99,6 +100,7 @@ specifiers:
   sass: ^1.26.10
   sass-loader: ^9.0.3
   taffydb: 2.7.3
+  tar-stream: 2.2.0
   webpack: ^4.43.0
   webpack-stream: ^5.2.1
   yargs: ^16.2.0
@@ -133,7 +135,6 @@ dependencies:
   '@rush-temp/language-parser': file:projects/language-parser.tgz
   '@rush-temp/legacy-template': file:projects/legacy-template.tgz
   '@rush-temp/model': file:projects/model.tgz
-  '@rush-temp/parser': file:projects/parser.tgz
   '@rush-temp/plugin-markdown': file:projects/plugin-markdown.tgz
   '@rush-temp/rest': file:projects/rest.tgz
   '@rush-temp/stub': file:projects/stub.tgz
@@ -142,6 +143,7 @@ dependencies:
   '@rushstack/eslint-patch': 1.0.9
   '@sentry/integrations': 7.2.0
   '@sentry/node': 7.2.0
+  '@webdoc/parser': 1.6.6
   array.prototype.flatmap: 1.2.5
   babel-eslint: 10.1.0_eslint@6.8.0
   babel-loader: 8.2.5_7f01cabc6cae6b1bed6d7aa154f5ac58
@@ -172,6 +174,7 @@ dependencies:
   gulp: 4.0.2
   gulp-babel: 8.0.0_@babel+core@7.18.5
   gulp-util: 3.0.8
+  gunzip-maybe: 1.4.2
   helmet: 5.1.0
   highlight.js: 10.7.3
   klaw-sync: 6.0.0
@@ -202,6 +205,7 @@ dependencies:
   sass: 1.52.3
   sass-loader: 9.0.3_sass@1.52.3+webpack@4.46.0
   taffydb: 2.7.3
+  tar-stream: 2.2.0
   webpack: 4.46.0
   webpack-stream: 5.2.1
   yargs: 16.2.0
@@ -2231,6 +2235,34 @@ packages:
       '@xtuc/long': 4.2.2
     dev: false
 
+  /@webdoc/model/1.6.6:
+    resolution: {integrity: sha512-Ul27xoMOvSyoHNLNDAtFz74xY+rCCUEl15I6MnbUk8zTD8kG1tucycION4u0MVUr12OOgFUvuGzpWYvZ52CT5A==}
+    dependencies:
+      '@webdoc/types': 1.6.6
+      catharsis: 0.8.11
+      nanoid: 3.1.32
+      taffydb: 2.7.3
+    dev: false
+
+  /@webdoc/parser/1.6.6:
+    resolution: {integrity: sha512-vqPKl4bsCzqOQU7R+gCoq0+AR+wOTWVqaNnJWlYCIMtzY+S0yezV5SvDM7fc2BLipbE0VGBUeubU0Nf9/k3l3w==}
+    dependencies:
+      '@babel/parser': 7.18.5
+      '@babel/traverse': 7.9.5
+      '@babel/types': 7.9.5
+      '@webdoc/model': 1.6.6
+      '@webdoc/types': 1.6.6
+      lodash: 4.17.21
+      missionlog: 1.6.0
+      nanoid: 3.1.32
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /@webdoc/types/1.6.6:
+    resolution: {integrity: sha512-GrXtaUIkrXS80zIDIXpU8XrDmlci5S0+TE2fR3L9cM4v/I6ySn52/i6PWwR2pZbr0dih7ao/qirkv8ygfW0B/Q==}
+    dev: false
+
   /@xtuc/ieee754/1.2.0:
     resolution: {integrity: sha512-DX8nKgqcGwsc0eJSqYt5lwP4DH5FlHnmuWWBRy7X0NcaGR0ZtuyeESgMwTYVEtxmsNGY+qit4QYT/MIYTOTPeA==}
     dev: false
@@ -3243,6 +3275,14 @@ packages:
     dev: false
     optional: true
 
+  /bl/4.1.0:
+    resolution: {integrity: sha512-1W07cM9gS6DcLperZfFSj+bWLtaPGSOHWhPiGzXmvVJbRLdG82sH/Kn8EtW1VqWVA54AKf2h5k5BbnIbwF3h6w==}
+    dependencies:
+      buffer: 5.7.1
+      inherits: 2.0.4
+      readable-stream: 3.6.0
+    dev: false
+
   /bluebird/3.7.2:
     resolution: {integrity: sha512-XpNj6GDQzdfW+r2Wnn7xiSAd7TM3jzkxGXBGTtWKuSXv1xUV+azxAm8jdWZN06QTQk+2N2XB9jRDkvbmQmcRtg==}
     dev: false
@@ -3364,6 +3404,12 @@ packages:
       safe-buffer: 5.2.1
     dev: false
 
+  /browserify-zlib/0.1.4:
+    resolution: {integrity: sha512-19OEpq7vWgsH6WkvkBJQDFvJS1uPcbFOQ4v9CU839dO+ZZXUZO6XpE6hNCqvlIIj+4fZvRiJ6DsAQ382GwiyTQ==}
+    dependencies:
+      pako: 0.2.9
+    dev: false
+
   /browserify-zlib/0.2.0:
     resolution: {integrity: sha512-Z942RysHXmJrhqk88FmKBVq/v5tqmSkDz7p54G/MGyjMnCFFnC79XWNbg+Vta8W6Wb2qtSZTSxIGkJrRpCFEiA==}
     dependencies:
@@ -3415,6 +3461,13 @@ packages:
       base64-js: 1.5.1
       ieee754: 1.2.1
       isarray: 1.0.0
+    dev: false
+
+  /buffer/5.7.1:
+    resolution: {integrity: sha512-EHcyIPBQ4BSGlvjB16k5KgAJ27CIsHY/2JBmCRReo48y9rQ3MaUzWX3KVlBa4U7MyX02HdVj0K7C3WaB3ju7FQ==}
+    dependencies:
+      base64-js: 1.5.1
+      ieee754: 1.2.1
     dev: false
 
   /builtin-modules/3.3.0:
@@ -5342,6 +5395,10 @@ packages:
       readable-stream: 2.3.7
     dev: false
 
+  /fs-constants/1.0.0:
+    resolution: {integrity: sha512-y6OAwoSIf7FyjMIv94u+b5rdheZEjzR63GTyZJm5qh4Bi+2YgwLCcI/fPFZkL5PSixOt6ZNKm+w+Hfp/Bciwow==}
+    dev: false
+
   /fs-extra/8.1.0:
     resolution: {integrity: sha512-yhlQgA6mnOJUKOsRUFsgJdQCvkKhcz8tlZG5HBQfReYZy46OwLcY+Zia0mtdHsOo9y/hP+CxMN0TU9QxoOtG4g==}
     engines: {node: '>=6 <7 || >=8'}
@@ -5732,6 +5789,18 @@ packages:
     engines: {node: '>= 0.10'}
     dependencies:
       glogg: 1.0.2
+    dev: false
+
+  /gunzip-maybe/1.4.2:
+    resolution: {integrity: sha512-4haO1M4mLO91PW57BMsDFf75UmwoRX0GkdD+Faw+Lr+r/OZrOCS0pIBwOL1xCKQqnQzbNFGgK2V2CpBUPeFNTw==}
+    hasBin: true
+    dependencies:
+      browserify-zlib: 0.1.4
+      is-deflate: 1.0.0
+      is-gzip: 1.0.0
+      peek-stream: 1.1.3
+      pumpify: 1.5.1
+      through2: 2.0.5
     dev: false
 
   /has-ansi/2.0.0:
@@ -6192,6 +6261,10 @@ packages:
       has-tostringtag: 1.0.0
     dev: false
 
+  /is-deflate/1.0.0:
+    resolution: {integrity: sha512-YDoFpuZWu1VRXlsnlYMzKyVRITXj7Ej/V9gXQ2/pAe7X1J7M/RNOqaIYi6qUn+B7nGyB9pDXrv02dsB58d2ZAQ==}
+    dev: false
+
   /is-descriptor/0.1.6:
     resolution: {integrity: sha512-avDYr0SB3DwO9zsMov0gKCESFYqCnE4hq/4z3TdUlukEy5t9C0YRq7HLrsN52NAcqXKaepeCD0n+B0arnVG3Hg==}
     engines: {node: '>=0.10.0'}
@@ -6266,6 +6339,11 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       is-extglob: 2.1.1
+    dev: false
+
+  /is-gzip/1.0.0:
+    resolution: {integrity: sha512-rcfALRIb1YewtnksfRIHGcIY93QnK8BIQ/2c9yDYcG/Y6+vRoJuTWBmmSEbyLLYtXm7q35pHOHbZFQBaLrhlWQ==}
+    engines: {node: '>=0.10.0'}
     dev: false
 
   /is-in-browser/1.1.3:
@@ -7783,6 +7861,10 @@ packages:
     engines: {node: '>=6'}
     dev: false
 
+  /pako/0.2.9:
+    resolution: {integrity: sha512-NUcwaKxUxWrZLpDG+z/xZaCgQITkA/Dv4V/T6bw7VON6l1Xz/VnrBqrYjZQ12TamKHzITTfOEIYUj48y2KXImA==}
+    dev: false
+
   /pako/1.0.11:
     resolution: {integrity: sha512-4hLB8Py4zZce5s4yd9XzopqwVv/yGNhV1Bl8NTmCq1763HeK2+EwVTv+leGeL13Dnh2wfbqowVPXCIO0z4taYw==}
     dev: false
@@ -7954,6 +8036,14 @@ packages:
       ripemd160: 2.0.2
       safe-buffer: 5.2.1
       sha.js: 2.4.11
+    dev: false
+
+  /peek-stream/1.1.3:
+    resolution: {integrity: sha512-FhJ+YbOSBb9/rIl2ZeE/QHEsWn7PqNYt8ARAY3kIgNGOk13g9FGyIY6JIl/xB/3TFRVoTv5as0l11weORrTekA==}
+    dependencies:
+      buffer-from: 1.1.2
+      duplexify: 3.7.1
+      through2: 2.0.5
     dev: false
 
   /perf_hooks/0.0.1:
@@ -9734,6 +9824,17 @@ packages:
     engines: {node: '>=6'}
     dev: false
 
+  /tar-stream/2.2.0:
+    resolution: {integrity: sha512-ujeqbceABgwMZxEJnk2HDY2DlnUZ+9oEcb1KzTVfYHio0UE6dG71n60d8D2I4qNvleWrrXpmjpt7vZeF1LnMZQ==}
+    engines: {node: '>=6'}
+    dependencies:
+      bl: 4.1.0
+      end-of-stream: 1.4.4
+      fs-constants: 1.0.0
+      inherits: 2.0.4
+      readable-stream: 3.6.0
+    dev: false
+
   /terser-webpack-plugin/1.4.5_webpack@4.46.0:
     resolution: {integrity: sha512-04Rfe496lN8EYruwi6oPQkG0vo8C+HT49X687FZnpPF0qMAIHONI6HEXYPKDOE8e5HjXTyKfqRd/agHtH0kOtw==}
     engines: {node: '>= 6.9.0'}
@@ -10598,7 +10699,7 @@ packages:
     dev: false
 
   file:projects/cli.tgz:
-    resolution: {integrity: sha512-x7PL3F7JAUHEI4qSwa7lP+l/Y6T+W51QcLXrIbU2Ked2GZTshgCzIdYcGX1KOv26rSA8lEaYq/39Z9pc3d1NfA==, tarball: file:projects/cli.tgz}
+    resolution: {integrity: sha512-OYia8qa19YMi3faT0L4Op1On87jhD+emgwqpz+/TOwVHiURkUlIEZAI0E1Y9ene1K3lADLN0aTl3O0G6neKPBA==, tarball: file:projects/cli.tgz}
     name: '@rush-temp/cli'
     version: 0.0.0
     dependencies:
@@ -10623,6 +10724,7 @@ packages:
       gulp: 4.0.2
       gulp-babel: 8.0.0_@babel+core@7.18.5
       gulp-util: 3.0.8
+      gunzip-maybe: 1.4.2
       highlight.js: 10.7.3
       lodash.merge: 4.6.2
       markdown-it: 11.0.1
@@ -10632,6 +10734,7 @@ packages:
       perf_hooks: 0.0.1
       pkg-up: 3.1.0
       read-pkg-up: 7.0.1
+      tar-stream: 2.2.0
       yargs: 16.2.0
     transitivePeerDependencies:
       - encoding
@@ -10747,7 +10850,7 @@ packages:
     dev: false
 
   file:projects/externalize.tgz:
-    resolution: {integrity: sha512-wEdqSa7CTOhyE59IiKamVJ5igPAGT+akpl2xTi6eaEFynsaZCW/4prEWEneouHBYONiOodJkwktD4dlTDmqfoA==, tarball: file:projects/externalize.tgz}
+    resolution: {integrity: sha512-f5q8PjtkTEl86G75uiCAIR/+KuEyahm73jywReS2REHV2mFdpDiq3MVEuxlvl1xj/7Ar2kn1vODJ8hIndbTYqQ==, tarball: file:projects/externalize.tgz}
     name: '@rush-temp/externalize'
     version: 0.0.0
     dependencies:
@@ -10758,6 +10861,7 @@ packages:
       '@babel/preset-flow': 7.17.12_@babel+core@7.18.5
       '@babel/preset-react': 7.17.12_@babel+core@7.18.5
       '@babel/register': 7.17.7_@babel+core@7.18.5
+      '@webdoc/parser': 1.6.6
       chai: 4.3.6
       del: 5.1.0
       eslint: 6.8.0
@@ -10852,38 +10956,6 @@ packages:
       mocha: 7.2.0
       nanoid: 3.1.32
       taffydb: 2.7.3
-    transitivePeerDependencies:
-      - encoding
-      - supports-color
-    dev: false
-
-  file:projects/parser.tgz:
-    resolution: {integrity: sha512-xf0GdYrSYMisW4uMJfdUZYP55ww9eD45qOUHtJREwuCqwhSTncV8Z+0BcDzrRlzSUYV/2DGrtO+kAoLZj7J3kQ==, tarball: file:projects/parser.tgz}
-    name: '@rush-temp/parser'
-    version: 0.0.0
-    dependencies:
-      '@babel/core': 7.18.5
-      '@babel/parser': 7.18.5
-      '@babel/plugin-proposal-class-properties': 7.17.12_@babel+core@7.18.5
-      '@babel/plugin-transform-flow-comments': 7.17.12_@babel+core@7.18.5
-      '@babel/preset-env': 7.18.2_@babel+core@7.18.5
-      '@babel/preset-flow': 7.17.12_@babel+core@7.18.5
-      '@babel/preset-react': 7.17.12_@babel+core@7.18.5
-      '@babel/register': 7.17.7_@babel+core@7.18.5
-      '@babel/traverse': 7.9.5
-      '@babel/types': 7.9.5
-      chai: 4.3.6
-      del: 5.1.0
-      eslint: 6.8.0
-      flow-bin: 0.130.0
-      flow-typed: 3.7.0
-      gulp: 4.0.2
-      gulp-babel: 8.0.0_@babel+core@7.18.5
-      gulp-util: 3.0.8
-      lodash: 4.17.21
-      missionlog: 1.6.0
-      mocha: 7.2.0
-      nanoid: 3.1.32
     transitivePeerDependencies:
       - encoding
       - supports-color

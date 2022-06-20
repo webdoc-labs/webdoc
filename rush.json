@@ -69,12 +69,6 @@
       "versionPolicyName": "webdoc"
     },
     {
-      "packageName": "@webdoc/parser",
-      "projectFolder": "foss/packages/webdoc-parser",
-      "reviewCategory": "production",
-      "versionPolicyName": "webdoc"
-    },
-    {
       "packageName": "@webdoc/plugin-markdown",
       "projectFolder": "foss/packages/webdoc-plugin-markdown",
       "reviewCategory": "production",

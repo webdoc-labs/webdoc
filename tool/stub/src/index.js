@@ -4,11 +4,7 @@
 import * as fs from "fs/promises";
 import * as path from "path";
 
-const stub = ({ WD_DEPS }) =>
-`/* © 2020-2022 webdoc Labs */
-
-module.exports.WD_INSTALLED = false;
-module.exports.WD_DEPS = ${JSON.stringify(WD_DEPS)};`
+const WD_NOT_INSTALLED = "/* WD_NOT_INSTALLED */";
 
 export async function publishStub({ packageDirectory = process.cwd() }: { packageDirectory: string }) {
   const packageManifestPath = path.join(packageDirectory, "./package.json");
@@ -22,6 +18,7 @@ export async function publishStub({ packageDirectory = process.cwd() }: { packag
     main = "lib/index.js",
   } = JSON.parse(
     await fs.readFile(packageManifestPath));
+  const {projects} = JSON.parse(await fs.readFile(path.join(__dirname, "../../../rush.json")));
 
   const stubManifest = {
     name,
@@ -39,9 +36,17 @@ export async function publishStub({ packageDirectory = process.cwd() }: { packag
     main,
     files: [
       main,
-    ]
+    ],
+    webdocConfig: {
+      privateDependencies: []
+        .concat(Object.keys(dependencies))
+        .concat(Object.keys(peerDependencies))
+        .filter((pkg) => pkg.startsWith('@webdoc') &&
+          projects.find((project) => project.packageName === pkg
+            && project.reviewCategory === "proprietary")),
+      stubHeader: WD_NOT_INSTALLED
+    }
   };
-  const {projects} = JSON.parse(await fs.readFile(path.join(__dirname, "../../../rush.json")));
   const stubDirectory = path.join(__dirname, "../.stub", name);
   const scriptDirectory = path.dirname(path.join(stubDirectory, main));
 
@@ -58,13 +63,6 @@ export async function publishStub({ packageDirectory = process.cwd() }: { packag
   );
   await fs.writeFile(
     path.join(stubDirectory, main),
-    stub({
-      WD_DEPS: []
-        .concat(Object.keys(dependencies))
-        .concat(Object.keys(peerDependencies))
-        .filter((pkg) => pkg.startsWith('@webdoc') &&
-          projects.find((project) => project.packageName === pkg
-            && project.reviewCategory === "proprietary"))
-    })
+    WD_NOT_INSTALLED,
   );
 }

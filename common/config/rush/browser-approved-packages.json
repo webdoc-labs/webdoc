@@ -119,6 +119,10 @@
       "allowedCategories": [ "production" ]
     },
     {
+      "name": "@webdoc/language-parser",
+      "allowedCategories": [ "production" ]
+    },
+    {
       "name": "@webdoc/legacy-template",
       "allowedCategories": [ "production" ]
     },
@@ -279,6 +283,14 @@
       "allowedCategories": [ "production", "proprietary" ]
     },
     {
+      "name": "gunzip",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "gunzip-maybe",
+      "allowedCategories": [ "production" ]
+    },
+    {
       "name": "helmet",
       "allowedCategories": [ "proprietary" ]
     },
@@ -404,6 +416,10 @@
     },
     {
       "name": "taffydb",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "tar-stream",
       "allowedCategories": [ "production" ]
     },
     {
