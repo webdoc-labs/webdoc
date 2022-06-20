@@ -73,31 +73,53 @@ export async function install({
     });
   }).end();
 
-  extract.on("entry", async function(header, stream, next) {
-    console.log(header);
+  const writes: Promise<void> = [];
 
-    stream.on("end", () => {
-      next();
+  await new Promise((resolve, reject) => {
+    extract.on("entry", async function(header, stream, next) {
+      console.log(header);
+
+      stream.on("end", () => {
+        next();
+      });
+
+      const file = path.join(packageDirectory, header.name.split("/").slice(1).join("/"));
+      const dir = path.dirname(file);
+
+      try {
+        await fsp.access(dir);
+      } catch {
+        await fsp.mkdir(dir, {recursive: true});
+      }
+
+      log.info(tag.CLI, "Writing " + file);
+
+      const fileStream = fs.createWriteStream(file);
+
+      writes.push(new Promise((resolve, reject) => {
+        fileStream.on("error", (e) => {
+          log.error(tag.CLI, e);
+          reject(e);
+        });
+        fileStream.on("end", () => {
+          resolve();
+        });
+      }));
+
+      stream.pipe(fileStream);
     });
 
-    const file = path.join(packageDirectory, header.name.split("/").slice(1).join("/"));
-    const dir = path.dirname(file);
-
-    try {
-      await fsp.access(dir);
-    } catch {
-      await fsp.mkdir(dir, {recursive: true});
-    }
-
-    log.info(tag.CLI, "Writing " + file);
-
-    const fileStream = fs.createWriteStream(file);
-
-    stream.pipe(fileStream);
-    fileStream.on("error", (e) => {
-      log.info(tag.CLI, fileStream);
+    extract.on("finish", () => {
+      resolve();
+    });
+    extract.on("error", (e) => {
+      reject(e);
     });
   });
+  await Promise.all(writes);
+
+  delete require.cache[require.resolve(pkg)];
+  delete require.cache[pkg];
 
   for (const privateDependency of manifest.webdocConfig.privateDependencies) {
     await install(privateDependency);
