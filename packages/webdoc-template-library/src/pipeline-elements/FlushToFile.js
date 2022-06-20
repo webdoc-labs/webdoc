@@ -15,8 +15,8 @@ type FlushData = {
  * @return {string} if {@code halt} is set to true, then undefined; otherwise, the {@code input}
  */
 export class FlushToFile implements TemplatePipelineElement<FlushData> {
-  halt: boolean
-  skipNullFile: boolean
+  halt: boolean;
+  skipNullFile: boolean;
 
   /**
    * @param {object} options
