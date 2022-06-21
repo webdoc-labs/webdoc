@@ -7,6 +7,9 @@ module.exports = function() {
           targets: {
             node: "current",
           },
+          exclude: [
+            "proposal-dynamic-import"
+          ]
         },
       ],
       "@babel/preset-react",

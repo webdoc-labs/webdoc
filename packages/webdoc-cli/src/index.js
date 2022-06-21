@@ -5,10 +5,41 @@ import * as yargs from "yargs";
 import {install} from "./installer";
 
 async function start(args: yargs.Argv): Promise<void> {
+  let eula = args.eula;
+
+  if (!args.eula) {
+    const {default: inquirer} = await import("inquirer");
+    const answer = await inquirer.prompt([
+      {
+        type: "list",
+        name: "eula",
+        message: "Which EULA are you using webdoc with? " +
+          "(pass it in --eula to skip question). " +
+          "Choose a license from http://www.webdoclabs.com/pricing/ :",
+        choices: [
+          {
+            name: "noncommercial " +
+              "(free for nonprofit open source only) " +
+              "http://www.webdoclabs.com/legal/license/license-noncommercial/",
+            value: "noncommercial",
+          },
+          {
+            name: "commercial    " +
+              "(subscription required)               " +
+              "http://www.webdoclabs.com/legal/license/license-commercial/",
+            value: "commercial",
+          },
+        ],
+      },
+    ]);
+
+    eula = answer.eula;
+  }
+
   await install({
     api: args.api,
     pkg: "@webdoc/language-parser",
-    eula: "commercial",
+    eula,
   });
 
   // require after package install
