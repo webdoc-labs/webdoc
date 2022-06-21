@@ -371,6 +371,10 @@
       "allowedCategories": [ "production" ]
     },
     {
+      "name": "prompt",
+      "allowedCategories": [ "production" ]
+    },
+    {
       "name": "react",
       "allowedCategories": [ "production" ]
     },
