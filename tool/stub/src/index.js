@@ -1,5 +1,6 @@
 // @flow
 
+import { exec } from "child_process";
 // $FlowFixMe
 import * as fs from "fs/promises";
 import * as path from "path";
@@ -69,4 +70,17 @@ export async function publishStub({
     path.join(stubDirectory, main),
     WD_NOT_INSTALLED,
   );
+
+  await new Promise((resolve, reject) => {
+    const proc = exec("npm publish", {
+      cwd: stubDirectory,
+    }, (err) => {
+      if (err) {
+        reject(err);
+      }
+    });
+
+    proc.stdout.on("data", console.log);
+    proc.stderr.on("data", console.error);
+  });
 }

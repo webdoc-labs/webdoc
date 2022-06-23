@@ -303,8 +303,16 @@
       "allowedCategories": [ "production" ]
     },
     {
+      "name": "inquirer",
+      "allowedCategories": [ "production" ]
+    },
+    {
       "name": "klaw-sync",
       "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "libnpmpublish",
+      "allowedCategories": [ "tools" ]
     },
     {
       "name": "lodash",
@@ -357,6 +365,10 @@
     {
       "name": "optimize-css-assets-webpack-plugin",
       "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "pacote",
+      "allowedCategories": [ "tools" ]
     },
     {
       "name": "parse-github-url",
