@@ -15,8 +15,8 @@ module.exports = function() {
       "@babel/preset-react",
     ],
     plugins: [
-      "@babel/plugin-transform-flow-comments",
       "@babel/plugin-proposal-class-properties",
+      "@babel/plugin-transform-flow-comments",
     ],
     comments: false,
   };

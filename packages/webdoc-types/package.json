@@ -38,5 +38,9 @@
   "bugs": {
     "url": "https://github.com/SukantPal/webdoc/issues"
   },
-  "gitHead": "326306f477098182404f813337c0c67cc90263c6"
+  "gitHead": "326306f477098182404f813337c0c67cc90263c6",
+  "dependencies": {
+    "@babel/plugin-proposal-class-properties": "7.17.12",
+    "@babel/plugin-transform-flow-comments": "7.17.12"
+  }
 }

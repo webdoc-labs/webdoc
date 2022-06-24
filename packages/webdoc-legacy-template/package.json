@@ -54,7 +54,9 @@
     "markdown-it-highlightjs": "^3.1.0",
     "marked": "^0.8.2",
     "missionlog": "1.6.0",
-    "open-sans-fonts": "^1.6.2"
+    "open-sans-fonts": "^1.6.2",
+    "@babel/plugin-proposal-class-properties": "7.17.12",
+    "@babel/plugin-transform-flow-comments": "7.17.12"
   },
   "devDependencies": {
     "@webdoc/babel-preset": "^1.0.0",
