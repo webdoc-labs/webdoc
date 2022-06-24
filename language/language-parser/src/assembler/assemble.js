@@ -1,6 +1,6 @@
 // @flow
 
-import {type Symbol} from "../types/Symbol";
+import {type Symbol} from "@webdoc/language-library";
 import modAssembly from "./assembly-modifiers";
 
 /**

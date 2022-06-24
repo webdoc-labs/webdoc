@@ -1,6 +1,6 @@
 // @flow
 
-import type {Symbol} from "./Symbol";
+import type {Symbol} from "@webdoc/language-library";
 
 export type AssemblyModifier = {
   name: string,

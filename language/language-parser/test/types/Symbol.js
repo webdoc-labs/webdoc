@@ -1,4 +1,4 @@
-const {findSymbol, findAccessedSymbol} = require("../../src/types/Symbol");
+const {findSymbol, findAccessedSymbol} = require("@webdoc/language-library");
 const {buildSymbolTree} = require("../../src/parse");
 
 const expect = require("chai").expect;

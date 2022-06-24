@@ -2,7 +2,7 @@
 
 import type {DocShape, Param} from "@webdoc/types";
 import {parserLogger, tag} from "../Logger";
-import type {SymbolSignature} from "../types/Symbol";
+import type {SymbolSignature} from "@webdoc/language-library";
 
 // Validate the parameters are structurally (not nominally) correct
 function validateParameters(doc: DocShape, meta: SymbolSignature): void {

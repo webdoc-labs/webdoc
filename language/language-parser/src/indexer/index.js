@@ -1,10 +1,10 @@
 // @flow
 
-import type {LanguageConfig, LanguageIntegration} from "../types/LanguageIntegration";
+import type {LanguageConfig, LanguageIntegration} from "@webdoc/language-library";
 import {parserLogger, tag} from "../Logger";
 import {IndexerWorkerPool} from "./IndexerWorkerPool";
 import {type SourceFile} from "@webdoc/types";
-import {type Symbol} from "../types/Symbol";
+import {type Symbol} from "@webdoc/language-library";
 import _ from "lodash";
 import fs from "fs";
 import os from "os";

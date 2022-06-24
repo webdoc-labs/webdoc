@@ -1,6 +1,6 @@
 // @flow
 import type {DataType} from "@webdoc/types";
-import {IDENTIFIER} from "../constants";
+import {IDENTIFIER} from "@webdoc/language-library";
 import {parseDataType} from "@webdoc/model";
 
 // Alias for RegEx matches & our own match function results

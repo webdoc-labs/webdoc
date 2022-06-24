@@ -2,7 +2,7 @@
 
 import type {Doc, RootDoc} from "@webdoc/types";
 import {addChildDoc, doc as findDoc} from "@webdoc/model";
-import {CANONICAL_DELIMITER} from "../constants";
+import {CANONICAL_DELIMITER} from "@webdoc/language-library";
 
 type PendingResolve = {
   doc: Doc,

@@ -1,7 +1,7 @@
 // @flow
 
 import {type Doc, type RootDoc} from "@webdoc/types";
-import {type Symbol, printSourceLocation} from "../types/Symbol";
+import {type Symbol, printSourceLocation} from "@webdoc/language-library";
 import {parserLogger, tag} from "../Logger";
 import {addChildDoc} from "@webdoc/model";
 import symbolToDoc from "./symbol-to-doc";

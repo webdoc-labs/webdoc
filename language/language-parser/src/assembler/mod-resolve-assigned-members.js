@@ -5,7 +5,7 @@ import {
   addChildSymbol,
   findAccessedSymbol,
   printSourceLocation,
-} from "../types/Symbol";
+} from "@webdoc/language-library";
 
 // This mod resolves symbols were "assigned" to another symbol parent in source code. For example,
 

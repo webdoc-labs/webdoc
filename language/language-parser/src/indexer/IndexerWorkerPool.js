@@ -1,10 +1,9 @@
 // @flow
 
+import {type LanguageConfig, type Symbol} from "@webdoc/language-library";
 import {type PackageDoc, type SourceFile} from "@webdoc/types";
 import {parserLogger, tag} from "../Logger";
 import EventEmitter from "events";
-import type {LanguageConfig} from "../types/LanguageIntegration";
-import {type Symbol} from "../types/Symbol";
 // $FlowFixMe
 import {Worker} from "worker_threads";
 import os from "os";

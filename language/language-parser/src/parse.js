@@ -1,20 +1,14 @@
 // @flow
 
 import * as Indexer from "./indexer";
+import type {LanguageConfig, Symbol} from "@webdoc/language-library";
 import type {RootDoc, SourceFile} from "@webdoc/types";
 import {createPackageDoc, createRootDoc} from "@webdoc/model";
-import {langJS, langTS} from "./symbols-babel";
-import type {LanguageConfig} from "./types/LanguageIntegration";
-import type {Symbol} from "./types/Symbol";
 import assemble from "./assembler";
 import mod from "./transformer/document-tree-modifiers";
 import transform from "./transformer";
 
 declare var Webdoc: any;
-
-// Register built-in languages
-Indexer.register(langJS);
-Indexer.register(langTS);
 
 // Default language-config for parsing documentation
 const DEFAULT_LANG_CONFIG: LanguageConfig = {
@@ -84,7 +78,7 @@ export function buildSymbolTree(
  */
 export async function parse(
   target: string | SourceFile[],
-  root?: RootDoc = createRootDoc(),
+  root: RootDoc = createRootDoc(),
   options?: $Shape<{
     mainThread: boolean
   }>,

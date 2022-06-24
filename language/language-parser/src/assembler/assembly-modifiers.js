@@ -2,7 +2,7 @@
 
 import {parserLogger, tag} from "../Logger";
 import type {AssemblyModifier} from "../types/AssemblyModifier";
-import type {Symbol} from "../types/Symbol";
+import type {Symbol} from "@webdoc/language-library";
 import modResolveAssignedMembers from "./mod-resolve-assigned-members";
 import modResolveLinks from "./mod-resolve-links";
 

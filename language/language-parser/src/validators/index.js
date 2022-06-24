@@ -4,7 +4,7 @@
 // correct.
 
 import type {DocShape} from "@webdoc/types";
-import type {SymbolSignature} from "../types/Symbol";
+import type {SymbolSignature} from "@webdoc/language-library";
 
 import ValidatorParameters from "./validate-parameters";
 

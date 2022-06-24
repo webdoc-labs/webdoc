@@ -7,7 +7,7 @@ import type {
   TagShape,
   TagType,
 } from "@webdoc/types";
-import type {Symbol, SymbolSignature} from "../types/Symbol";
+import type {Symbol, SymbolSignature} from "@webdoc/language-library";
 import {
   parseAbstract,
   parseAccess,

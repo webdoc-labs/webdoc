@@ -123,6 +123,14 @@
       "allowedCategories": [ "production" ]
     },
     {
+      "name": "@webdoc/language-babel",
+      "allowedCategories": [ "production", "proprietary" ]
+    },
+    {
+      "name": "@webdoc/language-library",
+      "allowedCategories": [ "production", "proprietary" ]
+    },
+    {
       "name": "@webdoc/language-parser",
       "allowedCategories": [ "production" ]
     },

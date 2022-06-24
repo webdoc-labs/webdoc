@@ -1,6 +1,6 @@
 // @flow
 
-import {type Symbol, findAccessedSymbol} from "../types/Symbol";
+import {type Symbol, findAccessedSymbol} from "@webdoc/language-library";
 
 // This mod resolves relational links between symbols. For example, it will try to replace the
 // names of the super-classes (in metadata.extends) by references to those super-class symbols.

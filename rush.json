@@ -105,6 +105,18 @@
       "shouldPublish": false
     },
     {
+      "packageName": "@webdoc/language-babel",
+      "projectFolder": "language/language-babel",
+      "reviewCategory": "proprietary",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@webdoc/language-library",
+      "projectFolder": "language/language-library",
+      "reviewCategory": "proprietary",
+      "shouldPublish": true
+    },
+    {
       "packageName": "@webdoc/language-parser",
       "projectFolder": "language/language-parser",
       "reviewCategory": "proprietary",
