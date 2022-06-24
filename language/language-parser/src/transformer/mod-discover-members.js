@@ -18,7 +18,7 @@ function ensureDiscovered(doc: Doc, depsChain: Set<Doc>): void {
     return;
   }
 
-  discoverMembers(doc, depsChain);
+  discoverMembers(doc, new Set(depsChain));
 }
 
 function findInherited(member: Doc): Doc {
