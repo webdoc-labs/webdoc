@@ -41,6 +41,8 @@
   },
   "devDependencies": {
     "eslint": "8.18.0",
-    "@webdoc/eslint-config": "^1.0.0"
+    "@webdoc/eslint-config": "^1.0.0",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/core": "7.18.5"
   }
 }

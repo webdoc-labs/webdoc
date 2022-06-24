@@ -129,19 +129,19 @@ dependencies:
   '@rollup/plugin-replace': 4.0.0_rollup@2.75.6
   '@rush-temp/babel-preset': file:projects/babel-preset.tgz_eslint@8.18.0
   '@rush-temp/cli': file:projects/cli.tgz
-  '@rush-temp/configure-rollup': file:projects/configure-rollup.tgz_@babel+core@7.18.5+rollup@2.75.6
+  '@rush-temp/configure-rollup': file:projects/configure-rollup.tgz_rollup@2.75.6
   '@rush-temp/default-template': file:projects/default-template.tgz
   '@rush-temp/eslint-config': file:projects/eslint-config.tgz
-  '@rush-temp/example': file:projects/example.tgz_@babel+core@7.18.5
+  '@rush-temp/example': file:projects/example.tgz
   '@rush-temp/externalize': file:projects/externalize.tgz
   '@rush-temp/language-parser': file:projects/language-parser.tgz
-  '@rush-temp/legacy-template': file:projects/legacy-template.tgz_@babel+core@7.18.5
+  '@rush-temp/legacy-template': file:projects/legacy-template.tgz
   '@rush-temp/model': file:projects/model.tgz
   '@rush-temp/plugin-markdown': file:projects/plugin-markdown.tgz
   '@rush-temp/rest': file:projects/rest.tgz
-  '@rush-temp/stub': file:projects/stub.tgz_@babel+core@7.18.5
+  '@rush-temp/stub': file:projects/stub.tgz
   '@rush-temp/template-library': file:projects/template-library.tgz
-  '@rush-temp/types': file:projects/types.tgz_@babel+core@7.18.5
+  '@rush-temp/types': file:projects/types.tgz
   '@rushstack/eslint-patch': 1.0.9
   '@sentry/integrations': 7.2.0
   '@sentry/node': 7.2.0
@@ -163,7 +163,7 @@ dependencies:
   eslint-config-google: 0.14.0_eslint@8.18.0
   eslint-plugin-flow: 2.29.1_eslint@8.18.0
   eslint-plugin-import: 2.26.0_eslint@8.18.0
-  eslint-plugin-react: 7.30.0_eslint@8.18.0
+  eslint-plugin-react: 7.30.1_eslint@8.18.0
   express: 4.18.1
   extract-loader: 5.1.0
   file-loader: 6.2.0_webpack@4.46.0
@@ -3462,7 +3462,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001358
-      electron-to-chromium: 1.4.167
+      electron-to-chromium: 1.4.168
     dev: false
 
   /browserslist/4.21.0:
@@ -3471,9 +3471,9 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001358
-      electron-to-chromium: 1.4.167
+      electron-to-chromium: 1.4.168
       node-releases: 2.0.5
-      update-browserslist-db: 1.0.3_browserslist@4.21.0
+      update-browserslist-db: 1.0.4_browserslist@4.21.0
     dev: false
 
   /btoa/1.2.1:
@@ -4652,8 +4652,8 @@ packages:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
     dev: false
 
-  /electron-to-chromium/1.4.167:
-    resolution: {integrity: sha512-lPHuHXBwpkr4RcfaZBKm6TKOWG/1N9mVggUpP4fY3l1JIUU2x4fkM8928smYdZ5lF+6KCTAxo1aK9JmqT+X71Q==}
+  /electron-to-chromium/1.4.168:
+    resolution: {integrity: sha512-yz247hclRBaP8ABB1hf9kL7AMfa+yC2hB9F3XF8Y87VWMnYgq4QYvV6acRACcDkTDxfGQ4GYK/aZPQiuFMGbaA==}
     dev: false
 
   /elliptic/6.5.4:
@@ -4892,8 +4892,8 @@ packages:
       tsconfig-paths: 3.14.1
     dev: false
 
-  /eslint-plugin-react/7.30.0_eslint@8.18.0:
-    resolution: {integrity: sha512-RgwH7hjW48BleKsYyHK5vUAvxtE9SMPDKmcPRQgtRCYaZA0XQPt5FSkrU3nhz5ifzMZcA8opwmRJ2cmOO8tr5A==}
+  /eslint-plugin-react/7.30.1_eslint@8.18.0:
+    resolution: {integrity: sha512-NbEvI9jtqO46yJA3wcRF9Mo0lF9T/jhdHqhCHXiXtD+Zcb98812wvokjWpU7Q4QH5edo6dmqrukxVvWWXHlsUg==}
     engines: {node: '>=4'}
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8
@@ -10344,8 +10344,8 @@ packages:
     engines: {node: '>=4'}
     dev: false
 
-  /update-browserslist-db/1.0.3_browserslist@4.21.0:
-    resolution: {integrity: sha512-ufSazemeh9Gty0qiWtoRpJ9F5Q5W3xdIPm1UZQqYQv/q0Nyb9EMHUB2lu+O9x1re9WsorpMAUu4Y6Lxcs5n+XQ==}
+  /update-browserslist-db/1.0.4_browserslist@4.21.0:
+    resolution: {integrity: sha512-jnmO2BEGUjsMOe/Fg9u0oczOe/ppIDZPebzccl1yDWGLFP16Pa1/RM5wEoKYPG2zstNcDuAStejyxsOuKINdGA==}
     hasBin: true
     peerDependencies:
       browserslist: '>= 4.21.0'
@@ -10891,14 +10891,16 @@ packages:
       - supports-color
     dev: false
 
-  file:projects/configure-rollup.tgz_@babel+core@7.18.5+rollup@2.75.6:
-    resolution: {integrity: sha512-QZzKni6gNOVcWGuFmNnd+JkkWNizCAKrk8lOEZ3AYRHN0c38H6uX3weuOINjYjLkoQwZTbMmF99pFl0SEvBVgw==, tarball: file:projects/configure-rollup.tgz}
+  file:projects/configure-rollup.tgz_rollup@2.75.6:
+    resolution: {integrity: sha512-nh8jRj7j4OZ63yGjWTllBfL9E95DHNwE1BpjGe4uHDUOYeej0sLJXNFTkMpvyyvK0w6njgQXhAeud6NjTe/1tw==, tarball: file:projects/configure-rollup.tgz}
     id: file:projects/configure-rollup.tgz
     name: '@rush-temp/configure-rollup'
     version: 0.0.0
     dependencies:
+      '@babel/core': 7.18.5
       '@babel/plugin-proposal-class-properties': 7.17.12_@babel+core@7.18.5
       '@babel/plugin-transform-flow-comments': 7.17.12_@babel+core@7.18.5
+      '@babel/preset-env': 7.18.2_@babel+core@7.18.5
       '@rollup/plugin-babel': 5.3.1_@babel+core@7.18.5+rollup@2.75.6
       '@rollup/plugin-commonjs': 22.0.0_rollup@2.75.6
       '@rollup/plugin-json': 4.1.0_rollup@2.75.6
@@ -10908,7 +10910,6 @@ packages:
       rollup-plugin-sourcemaps: 0.6.3_rollup@2.75.6
       rollup-plugin-terser: 7.0.2_rollup@2.75.6
     transitivePeerDependencies:
-      - '@babel/core'
       - '@types/babel__core'
       - '@types/node'
       - rollup
@@ -10986,24 +10987,24 @@ packages:
       eslint-config-google: 0.14.0_eslint@8.18.0
       eslint-plugin-flow: 2.29.1_eslint@8.18.0
       eslint-plugin-import: 2.26.0_eslint@8.18.0
-      eslint-plugin-react: 7.30.0_eslint@8.18.0
+      eslint-plugin-react: 7.30.1_eslint@8.18.0
       flow-typed: 3.7.0
     transitivePeerDependencies:
       - encoding
       - supports-color
     dev: false
 
-  file:projects/example.tgz_@babel+core@7.18.5:
-    resolution: {integrity: sha512-n6F5XNGksqZ2zGWkuErIuEeQu5SYFOfj85m1yoWlujV0aMDKjC4I/A5Py2OZoolL3VlUJ2vtAiSZPcQxVXrsnw==, tarball: file:projects/example.tgz}
-    id: file:projects/example.tgz
+  file:projects/example.tgz:
+    resolution: {integrity: sha512-N4zuQY1Fa4C2Psq0wZmnreOVjuGL0+wcflovUxtfalYSo2KwmDLPwnc/FQmagw7lagjNKLfx79qUAr4PPnVtRw==, tarball: file:projects/example.tgz}
     name: '@rush-temp/example'
     version: 0.0.0
     dependencies:
+      '@babel/core': 7.18.5
       '@babel/plugin-proposal-class-properties': 7.17.12_@babel+core@7.18.5
       '@babel/plugin-transform-flow-comments': 7.17.12_@babel+core@7.18.5
+      '@babel/preset-env': 7.18.2_@babel+core@7.18.5
       flow-typed: 3.7.0
     transitivePeerDependencies:
-      - '@babel/core'
       - encoding
       - supports-color
     dev: false
@@ -11066,14 +11067,15 @@ packages:
       - supports-color
     dev: false
 
-  file:projects/legacy-template.tgz_@babel+core@7.18.5:
-    resolution: {integrity: sha512-sh5Pyh+9AAFGScJYoAuWIxs6eVr3dfAEtxVQSc7eiAtldEk4/YWETamOWj14vCvGzvKIjcsgym/eA5rRdCWl6w==, tarball: file:projects/legacy-template.tgz}
-    id: file:projects/legacy-template.tgz
+  file:projects/legacy-template.tgz:
+    resolution: {integrity: sha512-eRX7Il/ieNXS0D8zUP+40RNgrnu/eU13huX1HBqhmh/lvQZl4mvqnFBYrlV/nTliW4M+bJf2RUsA+rJREx1h8Q==, tarball: file:projects/legacy-template.tgz}
     name: '@rush-temp/legacy-template'
     version: 0.0.0
     dependencies:
+      '@babel/core': 7.18.5
       '@babel/plugin-proposal-class-properties': 7.17.12_@babel+core@7.18.5
       '@babel/plugin-transform-flow-comments': 7.17.12_@babel+core@7.18.5
+      '@babel/preset-env': 7.18.2_@babel+core@7.18.5
       bluebird: 3.7.2
       code-prettify: 0.1.0
       color-themes-for-google-code-prettify: 2.0.4
@@ -11090,7 +11092,6 @@ packages:
       missionlog: 1.6.0
       open-sans-fonts: 1.6.2
     transitivePeerDependencies:
-      - '@babel/core'
       - encoding
       - supports-color
     dev: false
@@ -11151,13 +11152,14 @@ packages:
     dev: false
 
   file:projects/rest.tgz:
-    resolution: {integrity: sha512-S22pjBNGrZchkVmrBsBeljA1dRzfFfHbneWDBVfukhlxVwcxnNot+Bgj+AZ8htqPflRlXO0PRIoVnPjawEfAUQ==, tarball: file:projects/rest.tgz}
+    resolution: {integrity: sha512-NjrK0JaL2ijvT1eoHo1Yx5TH3Agc3b4TJSmoGo64mlSmEYVEuS3zWAbi2Vb55FiJgJrtvGj7s0j/rhrqOt75GQ==, tarball: file:projects/rest.tgz}
     name: '@rush-temp/rest'
     version: 0.0.0
     dependencies:
       '@babel/core': 7.18.5
       '@babel/plugin-proposal-class-properties': 7.17.12_@babel+core@7.18.5
       '@babel/plugin-transform-flow-comments': 7.17.12_@babel+core@7.18.5
+      '@babel/preset-env': 7.18.2_@babel+core@7.18.5
       '@babel/register': 7.17.7_@babel+core@7.18.5
       compression: 1.7.4
       express: 4.18.1
@@ -11170,15 +11172,16 @@ packages:
       - supports-color
     dev: false
 
-  file:projects/stub.tgz_@babel+core@7.18.5:
-    resolution: {integrity: sha512-2+p5SgR2q6Dk9VH4bPLR3/03ouKG51xaX7qt8IQ10Ihtq+sDqNaXahWk6UrJWcdB84nU6JRNhWoQAZuIhEBP6g==, tarball: file:projects/stub.tgz}
-    id: file:projects/stub.tgz
+  file:projects/stub.tgz:
+    resolution: {integrity: sha512-Sm1eD9rKX6tD+P9OT/S5vFXbKJXUulQSSwKsSZfGZuS+T8uQbrHdlGMEamiYxcQsKPcr222iS0TApZESDi59bg==, tarball: file:projects/stub.tgz}
     name: '@rush-temp/stub'
     version: 0.0.0
     dependencies:
+      '@babel/core': 7.18.5
       '@babel/parser': 7.18.5
       '@babel/plugin-proposal-class-properties': 7.17.12_@babel+core@7.18.5
       '@babel/plugin-transform-flow-comments': 7.17.12_@babel+core@7.18.5
+      '@babel/preset-env': 7.18.2_@babel+core@7.18.5
       '@babel/traverse': 7.9.5
       '@babel/types': 7.9.5
       eslint: 8.18.0
@@ -11188,7 +11191,6 @@ packages:
       missionlog: 1.6.0
       nanoid: 3.1.32
     transitivePeerDependencies:
-      - '@babel/core'
       - encoding
       - supports-color
     dev: false
@@ -11227,15 +11229,15 @@ packages:
       - supports-color
     dev: false
 
-  file:projects/types.tgz_@babel+core@7.18.5:
-    resolution: {integrity: sha512-WssaiXxMnc7mjoPbVEvIAy3XGBfnAWGgZLVPU9oGXoIn3da0SbeT0Z4K6bJAGYKxlb8cLQk2JZUfoMPt9kH15A==, tarball: file:projects/types.tgz}
-    id: file:projects/types.tgz
+  file:projects/types.tgz:
+    resolution: {integrity: sha512-N5PtpSGPUvSrCk6PDUaeskX3ox3WBJ5hJFCT2/PM4VQyYNJUdhvsqY2oZp1ujsxep0QOeM/B85U/h/c02dk1lg==, tarball: file:projects/types.tgz}
     name: '@rush-temp/types'
     version: 0.0.0
     dependencies:
+      '@babel/core': 7.18.5
       '@babel/plugin-proposal-class-properties': 7.17.12_@babel+core@7.18.5
       '@babel/plugin-transform-flow-comments': 7.17.12_@babel+core@7.18.5
+      '@babel/preset-env': 7.18.2_@babel+core@7.18.5
     transitivePeerDependencies:
-      - '@babel/core'
       - supports-color
     dev: false

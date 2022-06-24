@@ -1,3 +1,4 @@
+set -e
 rush lint
 rush build
 rush flow

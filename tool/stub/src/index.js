@@ -1,9 +1,9 @@
 // @flow
 
-import { exec } from "child_process";
 // $FlowFixMe
 import * as fs from "fs/promises";
 import * as path from "path";
+import {exec} from "child_process";
 
 const WD_NOT_INSTALLED = "/* WD_NOT_INSTALLED */";
 

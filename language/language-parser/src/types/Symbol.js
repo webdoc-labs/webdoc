@@ -263,6 +263,7 @@ export function coalescePair(symbol: Symbol, pair: Symbol): Symbol {
   symbol.comment = comment || pair.comment;
   symbol.members = members;
   symbol.flags = flags ? flags | pair.flags : pair.flags;
+  // $FlowFixMe
   symbol.meta = _.assignWith(symbol.meta, pair.meta, (objValue, srcValue) =>
     _.isNil(srcValue) ? objValue : srcValue);
   symbol.loc = symbol.loc || pair.loc;

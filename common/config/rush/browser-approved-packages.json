@@ -8,7 +8,7 @@
     },
     {
       "name": "@babel/core",
-      "allowedCategories": [ "production", "proprietary" ]
+      "allowedCategories": [ "production", "proprietary", "tools" ]
     },
     {
       "name": "@babel/eslint-parser",
@@ -24,11 +24,11 @@
     },
     {
       "name": "@babel/plugin-transform-flow-comments",
-      "allowedCategories": [ "production", "proprietary" ]
+      "allowedCategories": [ "production", "proprietary", "tools" ]
     },
     {
       "name": "@babel/preset-env",
-      "allowedCategories": [ "production", "proprietary" ]
+      "allowedCategories": [ "production", "proprietary", "tools" ]
     },
     {
       "name": "@babel/preset-flow",
