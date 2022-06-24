@@ -2,7 +2,7 @@ lockfileVersion: 5.3
 
 specifiers:
   '@babel/cli': ^7.8.4
-  '@babel/core': ^7.9.0
+  '@babel/core': 7.18.5
   '@babel/eslint-parser': 7.18.2
   '@babel/parser': ^7.9.4
   '@babel/plugin-proposal-class-properties': 7.17.12
@@ -127,21 +127,21 @@ dependencies:
   '@rollup/plugin-json': 4.1.0_rollup@2.75.6
   '@rollup/plugin-node-resolve': 13.1.3_rollup@2.75.6
   '@rollup/plugin-replace': 4.0.0_rollup@2.75.6
-  '@rush-temp/babel-preset': file:projects/babel-preset.tgz
+  '@rush-temp/babel-preset': file:projects/babel-preset.tgz_eslint@8.18.0
   '@rush-temp/cli': file:projects/cli.tgz
   '@rush-temp/configure-rollup': file:projects/configure-rollup.tgz_@babel+core@7.18.5+rollup@2.75.6
   '@rush-temp/default-template': file:projects/default-template.tgz
   '@rush-temp/eslint-config': file:projects/eslint-config.tgz
-  '@rush-temp/example': file:projects/example.tgz
+  '@rush-temp/example': file:projects/example.tgz_@babel+core@7.18.5
   '@rush-temp/externalize': file:projects/externalize.tgz
   '@rush-temp/language-parser': file:projects/language-parser.tgz
-  '@rush-temp/legacy-template': file:projects/legacy-template.tgz
+  '@rush-temp/legacy-template': file:projects/legacy-template.tgz_@babel+core@7.18.5
   '@rush-temp/model': file:projects/model.tgz
   '@rush-temp/plugin-markdown': file:projects/plugin-markdown.tgz
   '@rush-temp/rest': file:projects/rest.tgz
-  '@rush-temp/stub': file:projects/stub.tgz
+  '@rush-temp/stub': file:projects/stub.tgz_@babel+core@7.18.5
   '@rush-temp/template-library': file:projects/template-library.tgz
-  '@rush-temp/types': file:projects/types.tgz
+  '@rush-temp/types': file:projects/types.tgz_@babel+core@7.18.5
   '@rushstack/eslint-patch': 1.0.9
   '@sentry/integrations': 7.2.0
   '@sentry/node': 7.2.0
@@ -10827,13 +10827,15 @@ packages:
       yargs-parser: 5.0.1
     dev: false
 
-  file:projects/babel-preset.tgz:
-    resolution: {integrity: sha512-Geid54PMouDssUI/96xZiXySE6teIxPhtBDTstEaXiDbQGxVhk7/GWVwARTgk0LMJdeRLRVvQHhTInEUKYs5fw==, tarball: file:projects/babel-preset.tgz}
+  file:projects/babel-preset.tgz_eslint@8.18.0:
+    resolution: {integrity: sha512-sQ3QkATjMM9Ej3Fsi1fmp0T+IU5zdt3qs8Lu5tCAJumlNbO4QixZY973L51oitGm2rh0UXTWMMTTCl4/c4yjDA==, tarball: file:projects/babel-preset.tgz}
+    id: file:projects/babel-preset.tgz
     name: '@rush-temp/babel-preset'
     version: 0.0.0
     dependencies:
       '@babel/cli': 7.17.10_@babel+core@7.18.5
       '@babel/core': 7.18.5
+      '@babel/eslint-parser': 7.18.2_@babel+core@7.18.5+eslint@8.18.0
       '@babel/plugin-proposal-class-properties': 7.17.12_@babel+core@7.18.5
       '@babel/plugin-transform-flow-comments': 7.17.12_@babel+core@7.18.5
       '@babel/preset-env': 7.18.2_@babel+core@7.18.5
@@ -10841,16 +10843,19 @@ packages:
       '@babel/preset-react': 7.17.12_@babel+core@7.18.5
       '@babel/register': 7.17.7_@babel+core@7.18.5
     transitivePeerDependencies:
+      - eslint
       - supports-color
     dev: false
 
   file:projects/cli.tgz:
-    resolution: {integrity: sha512-4BxtUArezSBcKvUrHyo5TOLvrl0i/XLfu9ALwE2zFwn3v80im9hysI4SnVHRfZ3P73Qv1u281jEmnWs30WDXBw==, tarball: file:projects/cli.tgz}
+    resolution: {integrity: sha512-wnkQnZJT+ypEGDJx6aCD3I4ZfxHbiZHj1j8Zylj8Q/Kl33CFN+JrC/xvO8GdU7Pgfn+U7XIqidYlk4xPRVKDKA==, tarball: file:projects/cli.tgz}
     name: '@rush-temp/cli'
     version: 0.0.0
     dependencies:
       '@babel/cli': 7.17.10_@babel+core@7.18.5
       '@babel/core': 7.18.5
+      '@babel/plugin-proposal-class-properties': 7.17.12_@babel+core@7.18.5
+      '@babel/plugin-transform-flow-comments': 7.17.12_@babel+core@7.18.5
       '@babel/preset-env': 7.18.2_@babel+core@7.18.5
       '@babel/preset-flow': 7.17.12_@babel+core@7.18.5
       '@babel/preset-react': 7.17.12_@babel+core@7.18.5
@@ -10887,11 +10892,13 @@ packages:
     dev: false
 
   file:projects/configure-rollup.tgz_@babel+core@7.18.5+rollup@2.75.6:
-    resolution: {integrity: sha512-EsTsYt1iLkl8JK8O3Y6Ky8sXVYLOPjRHRNAa1pz8hPdiwXJphdXN5tqTBKSRDeSRyAlgO1RFbWLMF826HhD5yw==, tarball: file:projects/configure-rollup.tgz}
+    resolution: {integrity: sha512-QZzKni6gNOVcWGuFmNnd+JkkWNizCAKrk8lOEZ3AYRHN0c38H6uX3weuOINjYjLkoQwZTbMmF99pFl0SEvBVgw==, tarball: file:projects/configure-rollup.tgz}
     id: file:projects/configure-rollup.tgz
     name: '@rush-temp/configure-rollup'
     version: 0.0.0
     dependencies:
+      '@babel/plugin-proposal-class-properties': 7.17.12_@babel+core@7.18.5
+      '@babel/plugin-transform-flow-comments': 7.17.12_@babel+core@7.18.5
       '@rollup/plugin-babel': 5.3.1_@babel+core@7.18.5+rollup@2.75.6
       '@rollup/plugin-commonjs': 22.0.0_rollup@2.75.6
       '@rollup/plugin-json': 4.1.0_rollup@2.75.6
@@ -10909,12 +10916,14 @@ packages:
     dev: false
 
   file:projects/default-template.tgz:
-    resolution: {integrity: sha512-EfPYdaZHfACGq7qhzJA4xnKiPpAO/UmF3avQek6/2eUByadHlN7XUEtVT5XKeCYZVOCr23iGBP1b472Qn+PCIw==, tarball: file:projects/default-template.tgz}
+    resolution: {integrity: sha512-Lftivk2D7iTMxYJ5ZXqgshdg3SpJa+84mSmNnd7LkMlIqYAscQZmkg5wJtTC1OdHj+qG+wJY0b6b7sw6AGsCUQ==, tarball: file:projects/default-template.tgz}
     name: '@rush-temp/default-template'
     version: 0.0.0
     dependencies:
       '@babel/cli': 7.17.10_@babel+core@7.18.5
       '@babel/core': 7.18.5
+      '@babel/plugin-proposal-class-properties': 7.17.12_@babel+core@7.18.5
+      '@babel/plugin-transform-flow-comments': 7.17.12_@babel+core@7.18.5
       '@babel/preset-env': 7.18.2_@babel+core@7.18.5
       '@babel/preset-flow': 7.17.12_@babel+core@7.18.5
       '@babel/preset-react': 7.17.12_@babel+core@7.18.5
@@ -10960,7 +10969,7 @@ packages:
     dev: false
 
   file:projects/eslint-config.tgz:
-    resolution: {integrity: sha512-fJEGTakl7ujMWNT80qZzSbqASzFF1cMCjmKnwNkKOSdz3a0GUfjWbDke7fqaITCaGdYE8/SBJXdCyfpqM0loEw==, tarball: file:projects/eslint-config.tgz}
+    resolution: {integrity: sha512-nZpQMe3+S2z+225n5ZDlmL/TZNZWEPNEY+4pPTqzIVQJSOQJJnhgo7Ys3ebiUtnh2QjsU4+ZC4qB+VILLFXPLg==, tarball: file:projects/eslint-config.tgz}
     name: '@rush-temp/eslint-config'
     version: 0.0.0
     dependencies:
@@ -10984,22 +10993,29 @@ packages:
       - supports-color
     dev: false
 
-  file:projects/example.tgz:
-    resolution: {integrity: sha512-pmGwFYcYY6OutOWAmMYq5Fx2nPw3+ANas1VnCMpY7W0xCIR5oW2vmoqigap+DTPU5LasYfHZHnzPphZjlpE4XQ==, tarball: file:projects/example.tgz}
+  file:projects/example.tgz_@babel+core@7.18.5:
+    resolution: {integrity: sha512-n6F5XNGksqZ2zGWkuErIuEeQu5SYFOfj85m1yoWlujV0aMDKjC4I/A5Py2OZoolL3VlUJ2vtAiSZPcQxVXrsnw==, tarball: file:projects/example.tgz}
+    id: file:projects/example.tgz
     name: '@rush-temp/example'
     version: 0.0.0
     dependencies:
+      '@babel/plugin-proposal-class-properties': 7.17.12_@babel+core@7.18.5
+      '@babel/plugin-transform-flow-comments': 7.17.12_@babel+core@7.18.5
       flow-typed: 3.7.0
     transitivePeerDependencies:
+      - '@babel/core'
       - encoding
+      - supports-color
     dev: false
 
   file:projects/externalize.tgz:
-    resolution: {integrity: sha512-UrYeKc4L0K9adOeisG5VlMpxXkwxhrreoqyAyx/q5a8uqXwHHMiOALtFdtgj92DG49d+NghmqzXjFyhS6KcWEA==, tarball: file:projects/externalize.tgz}
+    resolution: {integrity: sha512-cSfkZ28lvWV6E1UBOJTl3Xv2bsZEBegQaOTe0NVJizu66A8l7AVXThm0laAGH7PcM5t4bivSqyVpHx1iTTjXuQ==, tarball: file:projects/externalize.tgz}
     name: '@rush-temp/externalize'
     version: 0.0.0
     dependencies:
       '@babel/core': 7.18.5
+      '@babel/plugin-proposal-class-properties': 7.17.12_@babel+core@7.18.5
+      '@babel/plugin-transform-flow-comments': 7.17.12_@babel+core@7.18.5
       '@babel/preset-env': 7.18.2_@babel+core@7.18.5
       '@babel/preset-flow': 7.17.12_@babel+core@7.18.5
       '@babel/preset-react': 7.17.12_@babel+core@7.18.5
@@ -11020,12 +11036,14 @@ packages:
     dev: false
 
   file:projects/language-parser.tgz:
-    resolution: {integrity: sha512-o84di+3F2rDpe4GUpEyBdZTHXXPUZ/zUUaRmq0AibOAwCH+KAfrvyW3WWEv875CSMdVyGbdet3awjBXfeaSg3A==, tarball: file:projects/language-parser.tgz}
+    resolution: {integrity: sha512-+BZaluzZ07M/I9e6nbAuAwSacMd+4hoHjrGNmOjt9g0gaFVMJWEOuqy1zOmloaLSfBS2MSeTWCR8UJHEm4MpnA==, tarball: file:projects/language-parser.tgz}
     name: '@rush-temp/language-parser'
     version: 0.0.0
     dependencies:
       '@babel/core': 7.18.5
       '@babel/parser': 7.18.5
+      '@babel/plugin-proposal-class-properties': 7.17.12_@babel+core@7.18.5
+      '@babel/plugin-transform-flow-comments': 7.17.12_@babel+core@7.18.5
       '@babel/preset-env': 7.18.2_@babel+core@7.18.5
       '@babel/preset-flow': 7.17.12_@babel+core@7.18.5
       '@babel/preset-react': 7.17.12_@babel+core@7.18.5
@@ -11048,11 +11066,14 @@ packages:
       - supports-color
     dev: false
 
-  file:projects/legacy-template.tgz:
-    resolution: {integrity: sha512-+FLgdIry/OyXpSo+ig61rtBAM+TU+Owqm64luY3BvtGP3mBw3m8lJOrAfpTBkgIsg38z9bHkhuuTp5BlrYy7zQ==, tarball: file:projects/legacy-template.tgz}
+  file:projects/legacy-template.tgz_@babel+core@7.18.5:
+    resolution: {integrity: sha512-sh5Pyh+9AAFGScJYoAuWIxs6eVr3dfAEtxVQSc7eiAtldEk4/YWETamOWj14vCvGzvKIjcsgym/eA5rRdCWl6w==, tarball: file:projects/legacy-template.tgz}
+    id: file:projects/legacy-template.tgz
     name: '@rush-temp/legacy-template'
     version: 0.0.0
     dependencies:
+      '@babel/plugin-proposal-class-properties': 7.17.12_@babel+core@7.18.5
+      '@babel/plugin-transform-flow-comments': 7.17.12_@babel+core@7.18.5
       bluebird: 3.7.2
       code-prettify: 0.1.0
       color-themes-for-google-code-prettify: 2.0.4
@@ -11069,16 +11090,19 @@ packages:
       missionlog: 1.6.0
       open-sans-fonts: 1.6.2
     transitivePeerDependencies:
+      - '@babel/core'
       - encoding
       - supports-color
     dev: false
 
   file:projects/model.tgz:
-    resolution: {integrity: sha512-oztjxdP9sPomQaBjOJmP88/Ed6Id+SPGflNR3U0c19JkkF0w0uOY7FCFdp6kuSqpiNP+pqZNLT6uy5v/A++Ohw==, tarball: file:projects/model.tgz}
+    resolution: {integrity: sha512-KGnYdkGzhaJH/BjmZkgtvkgBkUl75FCVk/1Le//n2JZSLeFFoYE0f73VQvsQ7vVQKNDplpjPqYUAzJNd1EaRzg==, tarball: file:projects/model.tgz}
     name: '@rush-temp/model'
     version: 0.0.0
     dependencies:
       '@babel/core': 7.18.5
+      '@babel/plugin-proposal-class-properties': 7.17.12_@babel+core@7.18.5
+      '@babel/plugin-transform-flow-comments': 7.17.12_@babel+core@7.18.5
       '@babel/preset-env': 7.18.2_@babel+core@7.18.5
       '@babel/preset-flow': 7.17.12_@babel+core@7.18.5
       '@babel/preset-react': 7.17.12_@babel+core@7.18.5
@@ -11101,11 +11125,13 @@ packages:
     dev: false
 
   file:projects/plugin-markdown.tgz:
-    resolution: {integrity: sha512-CuiqOpPi54USu/rZa/4Vc+LkE427YpeXlw8Yez8VyZGDZ0bgEkS9trPoyxwRJlo1gTAV/6hTePV4rV2cby/yfA==, tarball: file:projects/plugin-markdown.tgz}
+    resolution: {integrity: sha512-kmQOqYv+k5NqRuwf2oQwZ43DK4ljtpD3fjAwDv7wk4tf7M2ZRREDp2BgjsEyFl1JMv+h2VoiBtqVC0CsWHNy1w==, tarball: file:projects/plugin-markdown.tgz}
     name: '@rush-temp/plugin-markdown'
     version: 0.0.0
     dependencies:
       '@babel/core': 7.18.5
+      '@babel/plugin-proposal-class-properties': 7.17.12_@babel+core@7.18.5
+      '@babel/plugin-transform-flow-comments': 7.17.12_@babel+core@7.18.5
       '@babel/preset-env': 7.18.2_@babel+core@7.18.5
       '@babel/preset-flow': 7.17.12_@babel+core@7.18.5
       '@babel/preset-react': 7.17.12_@babel+core@7.18.5
@@ -11125,11 +11151,13 @@ packages:
     dev: false
 
   file:projects/rest.tgz:
-    resolution: {integrity: sha512-c8HKDfreRKJcRplPqMAIyRHUJKx+ndduaiJiwS4aCy1KBCVmwU1qP/bni5howTUioItad6x81PU20kpzenK/AA==, tarball: file:projects/rest.tgz}
+    resolution: {integrity: sha512-S22pjBNGrZchkVmrBsBeljA1dRzfFfHbneWDBVfukhlxVwcxnNot+Bgj+AZ8htqPflRlXO0PRIoVnPjawEfAUQ==, tarball: file:projects/rest.tgz}
     name: '@rush-temp/rest'
     version: 0.0.0
     dependencies:
       '@babel/core': 7.18.5
+      '@babel/plugin-proposal-class-properties': 7.17.12_@babel+core@7.18.5
+      '@babel/plugin-transform-flow-comments': 7.17.12_@babel+core@7.18.5
       '@babel/register': 7.17.7_@babel+core@7.18.5
       compression: 1.7.4
       express: 4.18.1
@@ -11142,12 +11170,15 @@ packages:
       - supports-color
     dev: false
 
-  file:projects/stub.tgz:
-    resolution: {integrity: sha512-Y6o8xCCwBXHNYkjd/EXnSCB5qHh/uXykEkSPTSKVFI4h7eq6Tyofd23PfhMBkDSBxhy/lKgOjNOwQY/eR7WmKA==, tarball: file:projects/stub.tgz}
+  file:projects/stub.tgz_@babel+core@7.18.5:
+    resolution: {integrity: sha512-2+p5SgR2q6Dk9VH4bPLR3/03ouKG51xaX7qt8IQ10Ihtq+sDqNaXahWk6UrJWcdB84nU6JRNhWoQAZuIhEBP6g==, tarball: file:projects/stub.tgz}
+    id: file:projects/stub.tgz
     name: '@rush-temp/stub'
     version: 0.0.0
     dependencies:
       '@babel/parser': 7.18.5
+      '@babel/plugin-proposal-class-properties': 7.17.12_@babel+core@7.18.5
+      '@babel/plugin-transform-flow-comments': 7.17.12_@babel+core@7.18.5
       '@babel/traverse': 7.9.5
       '@babel/types': 7.9.5
       eslint: 8.18.0
@@ -11157,16 +11188,19 @@ packages:
       missionlog: 1.6.0
       nanoid: 3.1.32
     transitivePeerDependencies:
+      - '@babel/core'
       - encoding
       - supports-color
     dev: false
 
   file:projects/template-library.tgz:
-    resolution: {integrity: sha512-00p/sWtLy64pNVw9+7K9WzqgtlbFxMm17LvjP1AKoAH+KPdPtqxajtCqHp8R1bkxWVZGfzxptFj6wLLmpLU3TA==, tarball: file:projects/template-library.tgz}
+    resolution: {integrity: sha512-yFfoig+i/OMw5cyQXflvw6F4RcBNdSoSc6t7Z/+M3zFgnHiKQGigWZtPlvft1Q82DaMiVuyQWFK4v0f9/9Dcig==, tarball: file:projects/template-library.tgz}
     name: '@rush-temp/template-library'
     version: 0.0.0
     dependencies:
       '@babel/core': 7.18.5
+      '@babel/plugin-proposal-class-properties': 7.17.12_@babel+core@7.18.5
+      '@babel/plugin-transform-flow-comments': 7.17.12_@babel+core@7.18.5
       '@babel/preset-env': 7.18.2_@babel+core@7.18.5
       '@babel/preset-flow': 7.17.12_@babel+core@7.18.5
       '@babel/preset-react': 7.17.12_@babel+core@7.18.5
@@ -11193,8 +11227,15 @@ packages:
       - supports-color
     dev: false
 
-  file:projects/types.tgz:
-    resolution: {integrity: sha512-maxudznjgJEhASCC8FSBY42y0jNeTsC8qD+VqHy4OwuohcnBX0UtjTX4e3yJauqjefEzEwQbGTP3ZninK/VazQ==, tarball: file:projects/types.tgz}
+  file:projects/types.tgz_@babel+core@7.18.5:
+    resolution: {integrity: sha512-WssaiXxMnc7mjoPbVEvIAy3XGBfnAWGgZLVPU9oGXoIn3da0SbeT0Z4K6bJAGYKxlb8cLQk2JZUfoMPt9kH15A==, tarball: file:projects/types.tgz}
+    id: file:projects/types.tgz
     name: '@rush-temp/types'
     version: 0.0.0
+    dependencies:
+      '@babel/plugin-proposal-class-properties': 7.17.12_@babel+core@7.18.5
+      '@babel/plugin-transform-flow-comments': 7.17.12_@babel+core@7.18.5
+    transitivePeerDependencies:
+      - '@babel/core'
+      - supports-color
     dev: false

@@ -20,7 +20,7 @@
     },
     {
       "name": "@babel/plugin-proposal-class-properties",
-      "allowedCategories": [ "production", "proprietary" ]
+      "allowedCategories": [ "production", "proprietary", "tools" ]
     },
     {
       "name": "@babel/plugin-transform-flow-comments",
