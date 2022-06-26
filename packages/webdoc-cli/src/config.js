@@ -5,7 +5,8 @@ import fs from "fs";
 import merge from "lodash.merge";
 
 type ConfigSchema = {
-  plugins?: Array<string>,
+  plugins: Array<string>,
+  languages?: Array<string>,
   docs?: {
     sort?: string | string[]
   },
@@ -76,6 +77,10 @@ type ConfigSchema = {
 
 /* eslint-disable no-multi-spaces */
 const defaultConfig: ConfigSchema = {
+  languages: [
+    "@webdoc/language-babel/Language-JavaScript",
+    "@webdoc/language-babel/Language-TypeScript",
+  ],
   docs: {
     sort: ["type", "scope", "access", "name"],                    // @webdoc/parser{mod:sort}
   },

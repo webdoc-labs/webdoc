@@ -5,7 +5,7 @@ import * as external from "@webdoc/externalize";
 import * as yargs from "yargs";
 import {LogLevel, log, tag} from "missionlog";
 import {createRootDoc, exportTaffy} from "@webdoc/model";
-import {parse, registerWebdocParser} from "@webdoc/language-parser";
+import {installLanguage, parse, registerWebdocParser} from "@webdoc/language-parser";
 import {RewriteFrames} from "@sentry/integrations";
 import fs from "fs";
 import fse from "fs-extra";
@@ -15,6 +15,7 @@ import path from "path";
 // $FlowFixMe
 import {performance} from "perf_hooks";
 import {sources} from "./sources";
+import {install} from "./installer";
 
 Sentry.init({
   dsn: "https://58a75d0c31524766b288a61751fd6690@o1292855.ingest.sentry.io/6514486",
@@ -87,6 +88,13 @@ export async function main(argv: yargs.Argv): Promise<void> {
   // $FlowFixMe
   global.Webdoc.env.conf = config;
   global.Webdoc.userConfig = config;
+
+  for (const lang of config.languages) {
+    await install(lang);
+    const {default: pkg} = await import(lang);
+
+    installLanguage(pkg);
+  }
 
   if (config.plugins) {
     for (const pluginPath of config.plugins) {

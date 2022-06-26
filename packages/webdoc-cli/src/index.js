@@ -76,5 +76,4 @@ yargs.scriptName("webdoc")
     "Setup webdoc and create configuration files",
     {},
     init)
-  .help()
   .argv;
