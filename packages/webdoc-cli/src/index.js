@@ -4,10 +4,10 @@ import * as path from "path";
 import * as yargs from "yargs";
 import {install} from "./installer";
 
-async function start(args: yargs.Argv): Promise<void> {
-  let eula = args.eula;
+async function start(argv: yargs.Argv): Promise<void> {
+  let eula = argv.eula;
 
-  if (!args.eula) {
+  if (!eula) {
     const {default: inquirer} = await import("inquirer");
     const answer = await inquirer.prompt([
       {
@@ -37,7 +37,7 @@ async function start(args: yargs.Argv): Promise<void> {
   }
 
   await install({
-    api: args.api,
+    api: argv.api,
     pkg: "@webdoc/language-parser",
     eula,
   });
@@ -45,23 +45,36 @@ async function start(args: yargs.Argv): Promise<void> {
   // require after package install
   const {main} = require("./main");
 
-  return (main: (args: yargs.Argv) => Promise<void>)(args);
+  return (main: (args: yargs.Argv) => Promise<void>)(argv);
 }
 
-const argv = yargs.scriptName("@webdoc/cli")
-  .usage("$0 -c <configFile> -u <tutorialDir> --verbose " +
+async function init(args: yargs.Argv): Promise<void> {
+  const {init: _init} = await import("./commands/init.js");
+  await _init(args);
+}
+
+yargs.scriptName("webdoc")
+  .usage("$0 <cmd> -c <configFile> -u <tutorialDir> --verbose " +
     "--site-root <siteRoot> " +
     "--site-domain <siteDomain>" +
     "--no-workers")
-  .default("workers", true)
-  .default("config", path.join(process.cwd(), "webdoc.conf.json"), "webdoc config file")
-  .alias("c", "config")
-  .alias("u", "tutorials")
-  .alias("v", "verbose")
-  .alias("q", "quiet")
-  .command("$0", "Run webdoc", () => {})
+  .command(
+    "$0",
+    "Run webdoc and generate documentation",
+    function(_) {
+      return _
+        .default("workers", true)
+        .default("config", path.join(process.cwd(), "webdoc.conf.json"), "webdoc config file")
+        .alias("c", "config")
+        .alias("u", "tutorials")
+        .alias("v", "verbose")
+        .alias("q", "quiet");
+    },
+    start)
+  .command(
+    "init",
+    "Setup webdoc and create configuration files",
+    {},
+    init)
+  .help()
   .argv;
-
-start(argv).catch((e) => {
-  throw e;
-});

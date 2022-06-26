@@ -1,4 +1,5 @@
 {
+  "$schema": "https://webdoc.nyc3.digitaloceanspaces.com/schemas/v1/webdoc.conf.schema.json",
   "source": {
       "include": "./src/**/*"
   },
