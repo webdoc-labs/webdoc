@@ -55,7 +55,8 @@ export async function run(
       const extension = fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length);
 
       if (!(extension in languages)) {
-        throw new Error(`.${extension} language is not registered with the Indexer!`);
+        throw new Error(`.${extension} language is not registered with the Indexer! ` +
+          `(parsing ${fileName})`);
       }
 
       const file = {
@@ -95,10 +96,11 @@ export function process(
   config: LanguageConfig,
 ): Symbol {
   const fileName = source.path;
-  const lang = languages[fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length)];
+  const extension = fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length);
+  const lang = languages[extension];
 
   if (!lang) {
-    throw new Error(`.${lang} file language is not registered`);
+    throw new Error(`.${extension} file language is not registered (parsing ${fileName})`);
   }
 
   return lang.parse(file, source, config);
