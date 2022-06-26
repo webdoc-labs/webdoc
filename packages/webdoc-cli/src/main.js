@@ -58,7 +58,7 @@ export function initLogger(verbose: boolean = false, quiet: boolean = false) {
 }
 
 // main() is the default command.
-export async function main(argv: yargs.Argv): Promise<void> {
+export async function main(argv: yargs.Argv, eula: string): Promise<void> {
   initLogger(!!argv.verbose, !!argv.quiet);
 
   const start = performance.now();
@@ -90,7 +90,10 @@ export async function main(argv: yargs.Argv): Promise<void> {
   global.Webdoc.userConfig = config;
 
   for (const lang of config.languages) {
-    await install(lang);
+    await install({
+      pkg: lang,
+      eula,
+    });
     const {default: pkg} = await import(lang);
 
     installLanguage(pkg);

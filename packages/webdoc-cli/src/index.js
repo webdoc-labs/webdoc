@@ -45,7 +45,7 @@ async function start(argv: yargs.Argv): Promise<void> {
   // require after package install
   const {main} = require("./main");
 
-  return (main: (args: yargs.Argv) => Promise<void>)(argv);
+  return (main: (args: yargs.Argv, eula: string) => Promise<void>)(argv, eula);
 }
 
 async function init(args: yargs.Argv): Promise<void> {
