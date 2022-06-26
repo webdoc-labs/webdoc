@@ -51,6 +51,10 @@
       "allowedCategories": [ "production", "proprietary", "tools" ]
     },
     {
+      "name": "@fork-of/git-branch",
+      "allowedCategories": [ "production" ]
+    },
+    {
       "name": "@material-ui/core",
       "allowedCategories": [ "production" ]
     },
@@ -204,6 +208,10 @@
     },
     {
       "name": "css-loader",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "css-minimizer-webpack-plugin",
       "allowedCategories": [ "production" ]
     },
     {
@@ -452,6 +460,10 @@
     },
     {
       "name": "webpack",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "webpack-cli",
       "allowedCategories": [ "production" ]
     },
     {
