@@ -78,8 +78,8 @@ type ConfigSchema = {
 /* eslint-disable no-multi-spaces */
 const defaultConfig: ConfigSchema = {
   languages: [
-    "@webdoc/language-babel/Language-JavaScript",
-    "@webdoc/language-babel/Language-TypeScript",
+    "@webdoc/language-babel/Language-JavaScript.js",
+    "@webdoc/language-babel/Language-TypeScript.js",
   ],
   docs: {
     sort: ["type", "scope", "access", "name"],                    // @webdoc/parser{mod:sort}
