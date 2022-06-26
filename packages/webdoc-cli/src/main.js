@@ -10,12 +10,12 @@ import {RewriteFrames} from "@sentry/integrations";
 import fs from "fs";
 import fse from "fs-extra";
 import {initLogger as initParserLogger} from "@webdoc/language-parser";
+import {install} from "./installer";
 import {loadTutorials} from "./load-tutorials";
 import path from "path";
 // $FlowFixMe
 import {performance} from "perf_hooks";
 import {sources} from "./sources";
-import {install} from "./installer";
 
 Sentry.init({
   dsn: "https://58a75d0c31524766b288a61751fd6690@o1292855.ingest.sentry.io/6514486",
