@@ -8,8 +8,10 @@ import {exec} from "child_process";
 const WD_NOT_INSTALLED = "/* WD_NOT_INSTALLED */";
 
 export async function publishStub({
+  dryRun,
   packageDirectory = process.cwd(),
 }: {
+  dryRun: boolean,
   packageDirectory: string
 }) {
   const packageManifestPath = path.join(packageDirectory, "./package.json");
@@ -71,6 +73,7 @@ export async function publishStub({
     WD_NOT_INSTALLED,
   );
 
+  if (dryRun) return;
   await new Promise((resolve, reject) => {
     const proc = exec("npm publish", {
       cwd: stubDirectory,

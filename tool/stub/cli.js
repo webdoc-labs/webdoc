@@ -1,7 +1,10 @@
 #!/usr/bin/env node
 
-if (process.argv[2] === "--publish") {
-  void require("./lib/index.js").publishStub({packageDirectory: process.cwd()});
+const dryRun = process.argv.includes("--dry-run");
+const publish = process.argv.includes("--publish");
+
+if (publish) {
+  void require("./lib/index.js").publishStub({dryRun, packageDirectory: process.cwd()});
 } else {
   console.warn("Usage: stub --publish");
 }
