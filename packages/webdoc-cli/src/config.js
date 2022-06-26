@@ -5,8 +5,8 @@ import fs from "fs";
 import merge from "lodash.merge";
 
 type ConfigSchema = {
-  plugins: Array<string>,
-  languages?: Array<string>,
+  plugins?: Array<string>,
+  languages: Array<string>,
   docs?: {
     sort?: string | string[]
   },

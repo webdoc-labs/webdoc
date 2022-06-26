@@ -94,6 +94,8 @@ export async function main(argv: yargs.Argv, eula: string): Promise<void> {
       pkg: lang,
       eula,
     });
+
+    // $FlowFixMe
     const {default: pkg} = await import(lang);
 
     installLanguage(pkg);
