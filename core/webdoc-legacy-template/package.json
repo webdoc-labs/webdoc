@@ -52,7 +52,6 @@
     "lodash": "^4.17.20",
     "markdown-it": "13.0.1",
     "markdown-it-highlightjs": "^3.1.0",
-    "marked": "^0.8.2",
     "missionlog": "1.6.0",
     "open-sans-fonts": "^1.6.2",
     "@babel/plugin-proposal-class-properties": "7.17.12",
