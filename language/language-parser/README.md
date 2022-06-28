@@ -1,6 +1,6 @@
 © 2020-2022 webdoc Labs
 
-# @webdoc/parser
+# @webdoc/language-parser
 
 This package parses a file and outputs it documentation tree.
 
