@@ -40,67 +40,67 @@
   "projects": [
     {
       "packageName": "@webdoc/cli",
-      "projectFolder": "foss/packages/webdoc-cli",
+      "projectFolder": "core/packages/webdoc-cli",
       "reviewCategory": "production",
       "versionPolicyName": "webdoc"
     },
     {
       "packageName": "@webdoc/default-template",
-      "projectFolder": "foss/packages/webdoc-default-template",
+      "projectFolder": "core/packages/webdoc-default-template",
       "reviewCategory": "production",
       "versionPolicyName": "webdoc"
     },
     {
       "packageName": "@webdoc/externalize",
-      "projectFolder": "foss/packages/webdoc-externalize",
+      "projectFolder": "core/packages/webdoc-externalize",
       "reviewCategory": "production",
       "versionPolicyName": "webdoc"
     },
     {
       "packageName": "@webdoc/legacy-template",
-      "projectFolder": "foss/packages/webdoc-legacy-template",
+      "projectFolder": "core/packages/webdoc-legacy-template",
       "reviewCategory": "production",
       "versionPolicyName": "webdoc"
     },
     {
       "packageName": "@webdoc/model",
-      "projectFolder": "foss/packages/webdoc-model",
+      "projectFolder": "core/packages/webdoc-model",
       "reviewCategory": "production",
       "versionPolicyName": "webdoc"
     },
     {
       "packageName": "@webdoc/plugin-markdown",
-      "projectFolder": "foss/packages/webdoc-plugin-markdown",
+      "projectFolder": "core/packages/webdoc-plugin-markdown",
       "reviewCategory": "production",
       "versionPolicyName": "webdoc"
     },
     {
       "packageName": "@webdoc/template-library",
-      "projectFolder": "foss/packages/webdoc-template-library",
+      "projectFolder": "core/packages/webdoc-template-library",
       "reviewCategory": "production",
       "versionPolicyName": "webdoc"
     },
     {
       "packageName": "@webdoc/types",
-      "projectFolder": "foss/packages/webdoc-types",
+      "projectFolder": "core/packages/webdoc-types",
       "reviewCategory": "production",
       "versionPolicyName": "webdoc"
     },
     {
       "packageName": "@webdoc/example",
-      "projectFolder": "foss/example",
+      "projectFolder": "core/example",
       "reviewCategory": "production",
       "shouldPublish": false
     },
     {
       "packageName": "@webdoc/eslint-config",
-      "projectFolder": "foss/packages/eslint-config",
+      "projectFolder": "core/packages/eslint-config",
       "reviewCategory": "production",
       "shouldPublish": false
     },
     {
       "packageName": "@webdoc/babel-preset",
-      "projectFolder": "foss/packages/babel-preset",
+      "projectFolder": "core/packages/babel-preset",
       "reviewCategory": "production",
       "shouldPublish": false
     },
