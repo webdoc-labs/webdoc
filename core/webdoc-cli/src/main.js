@@ -10,7 +10,6 @@ import {RewriteFrames} from "@sentry/integrations";
 import fs from "fs";
 import fse from "fs-extra";
 import {initLogger as initParserLogger} from "@webdoc/language-parser";
-import {install} from "./installer";
 import {loadTutorials} from "./load-tutorials";
 import path from "path";
 // $FlowFixMe
@@ -58,7 +57,7 @@ export function initLogger(verbose: boolean = false, quiet: boolean = false) {
 }
 
 // main() is the default command.
-export async function main(argv: yargs.Argv, eula: string): Promise<void> {
+export async function main(argv: yargs.Argv): Promise<void> {
   initLogger(!!argv.verbose, !!argv.quiet);
 
   const start = performance.now();
@@ -90,11 +89,6 @@ export async function main(argv: yargs.Argv, eula: string): Promise<void> {
   global.Webdoc.userConfig = config;
 
   for (const lang of config.languages) {
-    await install({
-      pkg: lang,
-      eula,
-    });
-
     // $FlowFixMe
     const {default: pkg} = await import(lang);
 
