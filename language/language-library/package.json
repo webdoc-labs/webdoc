@@ -30,8 +30,7 @@
     "flow": "flow check",
     "build": "rollup -c rollup.config.mjs",
     "lint": "eslint -c .eslintrc.json .",
-    "unit-test": "",
-    "prepublishOnly": "stub --publish"
+    "unit-test": ""
   },
   "bugs": {
     "url": "https://source.webdoclabs.com/webdoc-labs/monorepo/issues"
@@ -60,7 +59,6 @@
     "@webdoc/babel-preset": "^1.0.0",
     "@webdoc/configure-rollup": "^1.6.1",
     "@webdoc/eslint-config": "^1.0.0",
-    "@webdoc/stub": "^1.0.0",
     "chai": "~4.3.4",
     "del": "5.1.0",
     "eslint": "8.18.0",
@@ -68,10 +66,5 @@
     "flow-typed": "^3.2.1",
     "mocha": "^7.1.1",
     "rollup": "2.75.6"
-  },
-  "publishConfig": {
-    "access": "restricted",
-    "always-auth": true,
-    "registry": "https://pkgs.dev.azure.com/webdoc-labs/webdoc/_packaging/webdoc-labs/npm/registry/"
   }
 }
