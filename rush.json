@@ -86,7 +86,7 @@
     },
     {
       "packageName": "@webdoc/example",
-      "projectFolder": "core/example",
+      "projectFolder": "example",
       "reviewCategory": "production",
       "shouldPublish": false
     },
