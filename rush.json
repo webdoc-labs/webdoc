@@ -24,7 +24,7 @@
     "changeLogUpdateCommitMessage": "Update changelogs"
   },
   "repository": {
-    "url": "https://source.webdoclabs.com/webdoc-labs/monorepo",
+    "url": "https://github.com/webdoc-labs/webdoc",
     "defaultBranch": "release",
     "defaultRemote": "origin"
   },
@@ -105,17 +105,20 @@
     {
       "packageName": "@webdoc/language-babel",
       "projectFolder": "language/language-babel",
-      "reviewCategory": "production"
+      "reviewCategory": "production",
+      "versionPolicyName": "webdoc"
     },
     {
       "packageName": "@webdoc/language-library",
       "projectFolder": "language/language-library",
-      "reviewCategory": "production"
+      "reviewCategory": "production",
+      "versionPolicyName": "webdoc"
     },
     {
       "packageName": "@webdoc/language-parser",
       "projectFolder": "language/language-parser",
-      "reviewCategory": "production"
+      "reviewCategory": "production",
+      "versionPolicyName": "webdoc"
     },
     {
       "packageName": "@webdoc/configure-rollup",

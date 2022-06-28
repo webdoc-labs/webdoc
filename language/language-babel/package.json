@@ -1,6 +1,6 @@
 {
   "name": "@webdoc/language-babel",
-  "version": "1.6.6",
+  "version": "2.0.0-beta",
   "description": "Language support for JavaScript, TypeScript, and Flow with Babel",
   "keywords": [
     "parser",
@@ -27,7 +27,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://source.webdoclabs.com/webdoc-labs/monorepo"
+    "url": "git+https://github.com/webdoc-labs/webdoc"
   },
   "scripts": {
     "flow": "flow check",
@@ -37,15 +37,15 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
-    "url": "https://source.webdoclabs.com/webdoc-labs/monorepo/issues"
+    "url": "https://github.com/webdoc-labs/webdoc/issues"
   },
   "dependencies": {
     "@babel/parser": "^7.9.4",
     "@babel/traverse": "7.9.5",
     "@babel/types": "7.9.5",
-    "@webdoc/language-library": "^1.6.6",
-    "@webdoc/model": "^1.6.6",
-    "@webdoc/types": "^1.6.6",
+    "@webdoc/language-library": "^2.0.0-beta",
+    "@webdoc/model": "^2.0.0-beta",
+    "@webdoc/types": "^2.0.0-beta",
     "lodash": "^4.17.20",
     "missionlog": "1.6.0",
     "nanoid": "~3.1.16"
