@@ -112,7 +112,7 @@
     },
     {
       "name": "@webdoc/configure-rollup",
-      "allowedCategories": [ "proprietary", "tools" ]
+      "allowedCategories": [ "production", "proprietary", "tools" ]
     },
     {
       "name": "@webdoc/default-template",
@@ -424,7 +424,7 @@
     },
     {
       "name": "rollup",
-      "allowedCategories": [ "proprietary" ]
+      "allowedCategories": [ "production", "proprietary" ]
     },
     {
       "name": "rollup-plugin-node-resolve",
