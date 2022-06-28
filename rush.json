@@ -15,9 +15,7 @@
   "approvedPackagesPolicy": {
      "reviewCategories": [
        "production",
-       "tools",
-       "prototypes",
-       "proprietary"
+       "tools"
      ],
      "ignoredNpmScopes": ["@types"]
   },
@@ -107,20 +105,17 @@
     {
       "packageName": "@webdoc/language-babel",
       "projectFolder": "language/language-babel",
-      "reviewCategory": "proprietary",
-      "shouldPublish": true
+      "reviewCategory": "production"
     },
     {
       "packageName": "@webdoc/language-library",
       "projectFolder": "language/language-library",
-      "reviewCategory": "proprietary",
-      "shouldPublish": true
+      "reviewCategory": "production"
     },
     {
       "packageName": "@webdoc/language-parser",
       "projectFolder": "language/language-parser",
-      "reviewCategory": "proprietary",
-      "shouldPublish": true
+      "reviewCategory": "production"
     },
     {
       "packageName": "@webdoc/configure-rollup",
