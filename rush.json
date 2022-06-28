@@ -38,49 +38,49 @@
   "projects": [
     {
       "packageName": "@webdoc/cli",
-      "projectFolder": "core/packages/webdoc-cli",
+      "projectFolder": "core/webdoc-cli",
       "reviewCategory": "production",
       "versionPolicyName": "webdoc"
     },
     {
       "packageName": "@webdoc/default-template",
-      "projectFolder": "core/packages/webdoc-default-template",
+      "projectFolder": "core/webdoc-default-template",
       "reviewCategory": "production",
       "versionPolicyName": "webdoc"
     },
     {
       "packageName": "@webdoc/externalize",
-      "projectFolder": "core/packages/webdoc-externalize",
+      "projectFolder": "core/webdoc-externalize",
       "reviewCategory": "production",
       "versionPolicyName": "webdoc"
     },
     {
       "packageName": "@webdoc/legacy-template",
-      "projectFolder": "core/packages/webdoc-legacy-template",
+      "projectFolder": "core/webdoc-legacy-template",
       "reviewCategory": "production",
       "versionPolicyName": "webdoc"
     },
     {
       "packageName": "@webdoc/model",
-      "projectFolder": "core/packages/webdoc-model",
+      "projectFolder": "core/webdoc-model",
       "reviewCategory": "production",
       "versionPolicyName": "webdoc"
     },
     {
       "packageName": "@webdoc/plugin-markdown",
-      "projectFolder": "core/packages/webdoc-plugin-markdown",
+      "projectFolder": "core/webdoc-plugin-markdown",
       "reviewCategory": "production",
       "versionPolicyName": "webdoc"
     },
     {
       "packageName": "@webdoc/template-library",
-      "projectFolder": "core/packages/webdoc-template-library",
+      "projectFolder": "core/webdoc-template-library",
       "reviewCategory": "production",
       "versionPolicyName": "webdoc"
     },
     {
       "packageName": "@webdoc/types",
-      "projectFolder": "core/packages/webdoc-types",
+      "projectFolder": "core/webdoc-types",
       "reviewCategory": "production",
       "versionPolicyName": "webdoc"
     },
@@ -92,13 +92,13 @@
     },
     {
       "packageName": "@webdoc/eslint-config",
-      "projectFolder": "core/packages/eslint-config",
+      "projectFolder": "tool/eslint-config",
       "reviewCategory": "production",
       "shouldPublish": false
     },
     {
       "packageName": "@webdoc/babel-preset",
-      "projectFolder": "core/packages/babel-preset",
+      "projectFolder": "tool/babel-preset",
       "reviewCategory": "production",
       "shouldPublish": false
     },
