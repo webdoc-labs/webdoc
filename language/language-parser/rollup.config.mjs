@@ -6,11 +6,10 @@ export default await Promise.all([
   configureRollup({
     packageDirectory: path.dirname(fileURLToPath(import.meta.url)),
     minify: true,
-    sourcemaps: true,
   }),
   configureRollup({
     packageDirectory: path.dirname(fileURLToPath(import.meta.url)),
-    minify: true,
+    minify: false,
   }).then((config) => ({
     ...config,
     input: "./src/indexer/worker.js",
