@@ -9,7 +9,7 @@
   ],
   "author": "Shukant Pal <shukant@webdoclabs.com>",
   "homepage": "https://www.webdoclabs.com",
-  "license": "UNLICENSED",
+  "license": "The Prosperity Public License 3.0.0",
   "main": "lib/index.js",
   "directories": {
     "lib": "lib",

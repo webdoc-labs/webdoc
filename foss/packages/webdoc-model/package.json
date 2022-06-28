@@ -9,7 +9,7 @@
   ],
   "author": "Shukant Pal <shukantpal@outlook.com>",
   "homepage": "https://github.com/SukantPal/webdoc/tree/master/packages/js-docmodel#readme",
-  "license": "Polyform Shield",
+  "license": "The Prosperity Public License 3.0.0",
   "main": "index.js",
   "directories": {
     "lib": "lib",

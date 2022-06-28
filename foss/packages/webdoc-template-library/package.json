@@ -13,7 +13,7 @@
   ],
   "author": "Shukant Pal <shukantpal@outlook.com>",
   "homepage": "https://github.com/SukantPal/webdoc/tree/master/packages/webdoc-template-library#readme",
-  "license": "Polyform Shield",
+  "license": "The Prosperity Public License 3.0.0",
   "main": "index.js",
   "directories": {
     "lib": "lib",
