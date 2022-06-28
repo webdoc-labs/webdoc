@@ -1,0 +1,20 @@
+<?js
+  /* This component renders the main-page & the description page for packages! */
+
+  const mainPage /*: {
+      type: "mainPage",
+      readme?: string,
+      name ?: string,
+      version ?: string
+  } */ = obj;
+?>
+
+<?js if (mainPage.type === 'PackageDoc') { ?>
+    <h3><?js= mainPage.name ?> <?js= mainPage.version ?></h3>
+<?js } ?>
+
+<?js if (mainPage.readme) { ?>
+    <section>
+        <article><?js= mainPage.readme ?></article>
+    </section>
+<?js } ?>

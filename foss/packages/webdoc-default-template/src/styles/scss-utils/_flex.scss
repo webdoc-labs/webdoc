@@ -1,0 +1,19 @@
+// We're gonna flex here
+/**
+ * Flexbox builder
+ * @param {string} display         [flex]       - flex | inline-flex
+ * @param {string} flex-direction  [row]        - row | row-reverse | column | column-reverse
+ * @param {string} flex-wrap       [nowrap]     - nowrap | wrap | wrap-reverse
+ * @param {string} justify-content [flex-start] - flex-start | flex-end | center | space-between | space-around | space-evenly
+ * @param {string} align-items     [stretch]    - stretch | flex-start | flex-end | center | baseline
+ * @param {string} align-content   [stretch]    - stretch | flex-start | flex-end | center | space-between | space-around
+ */
+@mixin flex($display: flex, $flex-direction: row, $flex-wrap: nowrap, $justify-content: flex-start, $align-items: stretch, $align-content: stretch) {
+	display: $display;
+	//flex-direction: $flex-direction;
+	//flex-wrap: $flex-wrap;
+	flex-flow: $flex-direction $flex-wrap;
+	justify-content: $justify-content;
+	align-items: $align-items;
+	align-content: $align-content;
+}

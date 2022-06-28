@@ -1,0 +1,14 @@
+<?js
+var data = obj || {};
+?>
+
+<?js if (data.dataType) {?>
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        <?js= this.linkTo(data.dataType) ?>
+    </dd>
+</dl>
+<?js } ?>

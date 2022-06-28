@@ -1,0 +1,19 @@
+@import "./scss-utils/all";
+
+@import "vars";
+
+
+.footer {
+  bottom: 0;
+  width: 100%;
+  z-index: 10000;
+
+  &__container {
+    @include center(true);
+  }
+
+  &__text {
+    @include normalize();
+    background: white;
+  }
+}

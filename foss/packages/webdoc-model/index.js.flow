@@ -1,0 +1,11 @@
+declare module "@webdoc/model" {
+  import type {Doc, BaseDoc, DocType, RootDoc} from "@webdoc/types";
+
+  declare export function addChildDoc<T: BaseDoc>(doc: T, scope: BaseDoc): T;
+  declare export function addDoc<T: BaseDoc>(doc: BaseDoc, root: BaseDoc): ?T;
+  declare export function createDoc(name?: string, type?: DocType, options?: any): BaseDoc;
+  declare export function childDoc(lname: string, scope: BaseDoc): ?BaseDoc;
+  declare export function createRootDoc(): RootDoc;
+  declare export function doc(path: string | string[], root: BaseDoc): ?BaseDoc;
+  declare export function mangled(doc: Doc): string;
+}

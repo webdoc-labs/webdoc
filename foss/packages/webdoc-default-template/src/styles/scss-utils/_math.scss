@@ -1,0 +1,189 @@
+$pi  : 3.14159265;
+$e   : 2.71828183;
+$ln10: 2.30258509;
+
+// Factorial
+@function fact($value) {
+	$result: 1;
+	@if $value > 0 {
+		@for $i from 1 through $value {
+			$result: $result * $i;
+		}
+	}
+	@return $result;
+}
+
+// Summate function with defined initial input and call id
+@function summation($iteratee, $input, $initial: 0, $limit: 100) {
+	$sum: 0;
+	@for $i from $initial to $limit {
+		$sum: $sum + call($iteratee, $input, $i);
+	}
+	@return $sum;
+}
+
+// Maclaurin series
+@function exp-maclaurin($base, $exponent) {
+	@return (pow($base, $exponent) / fact($exponent));
+}
+
+// Exponent function
+@function exp($value) {
+	@return summation(get-function('exp-maclaurin'), $value, 0, 100);
+}
+
+// Maclaurin series
+@function ln-maclaurin($base, $exponent) {
+	@return (pow(-1, $exponent + 1) / $exponent) * (pow($base - 1, $exponent));
+}
+
+// Natural logarithm
+@function ln($value) {
+	$ten-exp: 1;
+	@while ($value > pow(10, $ten-exp)) {
+		$ten-exp: $ten-exp + 1;
+	}
+	@return summation(get-function('ln-maclaurin'), $value / pow(10, $ten-exp), 1, 100) + $ten-exp * $ln10;
+}
+
+// Logarithm
+@function log($base, $value) {
+	@return ln($value) / ln($base);
+}
+
+// Power function
+@function pow($base, $exponent) {
+	@if (round($exponent) != $exponent) {
+		@return exp($exponent * ln($base));
+	}
+	$value: $base;
+	@if $exponent > 1 {
+		@for $i from 2 through $exponent {
+			$value: $value * $base;
+		}
+	}
+	@if $exponent < 1{
+		@for $i from 0 through -$exponent {
+			$value: $value / $base;
+		}
+	}
+	@return $value;
+}
+
+// Square root
+@function sqrt($value) {
+	@return pow($value, 1 / 2);
+}
+
+// Convert any angle to unitless radians
+@function to-unitless-rad($angle) {
+	$factors: (
+		rad: 1rad,
+		deg: 180deg / $pi,
+		grad: 200grad / $pi,
+		turn: .5turn / $pi
+	);
+	$unit-name: unit($angle);
+	@if $unit-name == '' {
+		@return $angle;
+	}
+	@if not map-has-key($factors, $unit-name) {
+		@warn 'Unit `#{$unit-name}` is not a valid unit - please make sure it is either `deg`, `rad`, `grad` or `turn`';
+		@return $angle;
+	}
+	@return $angle / map-get($factors, $unit-name);
+}
+
+// Convert any angle to another units
+@function convert-angle($angle, $unit-name: 'rad') {
+	$factors: (
+		rad: 1rad,
+		deg: 180deg / $pi,
+		grad: 200grad / $pi,
+		turn: .5turn / $pi
+	);
+	@if not map-has-key($factors, $unit-name) {
+		@warn 'Unit `#{$unit-name}` is not a valid unit - please make sure it is either `deg`, `rad`, `grad` or `turn`';
+		@return $angle;
+	}
+	@return to-unitless-rad($angle) * map-get($factors, $unit-name);
+}
+
+// Sine of angle
+@function sin($angle){
+	$a: to-unitless-rad($angle);
+	$sin: $a;
+	@for $n from 1 through $_precision {
+		$sin: $sin + (pow(-1, $n) / fact(2 * $n + 1)) * pow($a, 2 * $n + 1);
+	}
+	@return $sin;
+}
+
+// Cosine of angle
+@function cos($angle){
+	$a: to-unitless-rad($angle);
+	$cos: 1;
+	@for $n from 1 through $_precision {
+		$cos: $cos + (pow(-1, $n) / fact(2 * $n)) * pow($a, 2 * $n);
+	}
+	@return $cos;
+}
+
+// Tangent of angle
+@function tan($angle){
+	@return sin($angle) / cos($angle);
+}
+
+
+// tan() alias
+@function tg($angle){
+	@return tan($angle);
+}
+
+// Arcsine series function
+@function arcsin-series($z, $n) {
+	@return (fact(2 * $n) * pow($z, 2 * $n + 1)) / (pow((pow(2, $n) * fact($n)), 2) * (2 * $n + 1));;
+}
+
+// Arcsine function
+@function arcsin($z) {
+	@return summation(get-function('arcsin-series'), $z, 0, 10);
+}
+
+// Arccosine function
+@function arccos($z) {
+	@return $pi/2 - arcsin($z);
+}
+
+// Arctangent function
+@function arctan($z) {
+	@return arcsin($z / sqrt(1 + pow($z, 2)));
+}
+
+// arcsin() alias
+@function asin($z) {
+	@return arcsin($z);
+}
+
+// arccos() alias
+@function acos($z) {
+	@return arccos($z);
+}
+
+// arctan() alias
+@function atan($z) {  
+	@return arctan($z);
+}
+
+@function atan2($x, $y) {
+	@if $x > 0 {
+		@return 2 * arctan($y / (sqrt(pow($x, 2) + pow($y, 2)) + $x));
+	}
+	@if $x <= 0 and $y != 0 {
+		@return 2 * arctan((sqrt(pow($x, 2) + pow($y, 2)) - $x) / $y);
+	}
+	@if $x < 0 and $y == 0 {
+		@return $pi;
+	}
+	@return 0; // undefined
+}

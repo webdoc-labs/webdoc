@@ -1,0 +1,62 @@
+<?js
+/**
+ * Object member parameters render component.
+ */
+const params = obj;
+
+// Determine if we need extra columns: "attributes" and "default"
+let hasAttributes = false;
+let hasDefault = false;
+let hasName = false;
+
+params.forEach((param) => {
+  if (!param) {
+    return;
+  }
+
+  if (param.optional || param.nullable || param.variable) {
+    hasAttributes = true;
+  }
+
+  if (param.identifier) {
+    hasName = true;
+  }
+
+  if (typeof param.default !== 'undefined') {
+    hasDefault = true;
+  }
+});
+?>
+<div class="table-wrapper">
+  <table class="member-parameters">
+    <caption class="member-parameters__caption">Parameters:</caption>
+    <thead class="member-parameters__head">
+      <tr class="member-parameter-header">
+        <?js if (hasName) {?><th class="member-parameter-header__name">Name</th><?js } ?>
+        <th class="member-parameter-header__type">Type</th>
+        <?js if (hasAttributes) {?><th class="member-parameter-header__attributes">Attributes</th><?js } ?>
+        <?js if (hasDefault) {?><th class="member-parameter-header__default">Default</th><?js } ?>
+        <th class="member-parameter-header__description">Description</th>
+      </tr>
+    </thead>
+    <tbody class="member-parameters__body">
+      <?js params.forEach((param) => { if (!param) { return; } ?><tr class="member-parameter">
+        <?js if (hasName) {?><td class="member-parameter__name">
+          <?js= param.identifier ?>
+        </td><?js } ?>
+        <td class="member-parameter__type">
+          <?js if (param.dataType) {?><?js= this.linkTo(param.dataType) ?><?js } ?>
+        </td>
+        <?js if (hasAttributes) {?><td class="member-parameter__attributes">
+          <?js if (param.optional) { ?><p>&lt;optional&gt;</p><?js } ?>
+          <?js if (param.nullable) { ?><p>&lt;nullable&gt;</p><?js } ?>
+          <?js if (param.variable) { ?><p>&lt;repeatable&gt;</p><?js } ?>
+        </td><?js } ?>
+        <?js if (hasDefault) {?><td class="member-parameter__default">
+          <?js if (typeof param.default !== 'undefined') { ?><?js= this.htmlText(param.default) ?><?js } ?>
+        </td><?js } ?>
+        <td class="member-parameter__description"><?js= this.partial("components/content/text.tmpl", param.description) ?></td>
+      </tr><?js }); ?>
+    </tbody>
+  </table>
+</div>

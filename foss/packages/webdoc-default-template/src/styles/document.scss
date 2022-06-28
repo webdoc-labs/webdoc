@@ -1,0 +1,47 @@
+@import "themes";
+
+.document {
+  font-size: 1em;
+  line-height: 1.6em;
+  width: 100%;
+
+  > .document__title {
+    margin: 18px 0;
+
+    > h1 {
+      font-size: 3em;
+      line-height: 1.4em;
+      margin: 0;
+    }
+
+    &_deprecated {
+      > h1 {
+        display: inline-block;
+      }
+
+      > h1:first-child {
+        color: #666;
+        text-decoration: line-through;
+      }
+    }
+  }
+
+  > .document__brief, > .document__description {
+    margin-left: 8px;
+  }
+
+  > *:not(h1, h2, h3, h4, h5, h6) {
+    margin: 10px 0 15px 0;
+  }
+}
+
+.breadcrumb {
+  a {
+    color: $colorText;
+    text-decoration: underline;
+  }
+
+  > *:last-child {
+    color: $colorPrimary;
+  }
+}

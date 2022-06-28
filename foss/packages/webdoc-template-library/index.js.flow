@@ -1,0 +1,38 @@
+declare module "@webdoc/template-library" {
+  import type {Log} from "missionlog";
+
+  declare var templateLogger: Log;
+  declare function initTemplateLogger(defaultLevel?: string): void;
+
+  declare type LinkOptions = {
+    cssClass?: string,
+    fragmentId?: string,
+    linkMap: { [id: string]: string },
+    monospace?: boolean,
+    shortenName?: boolean
+  };
+
+  declare type LinkTable = {
+    [string]: string;
+  };
+
+  declare var SymbolLinks: {
+    pathToUrl: Map<string, string>;
+    urlToPath: Map<String, string>;
+    registerID(docPath: string, fragment: string): void;
+    generateID(fileName: string, id: string): string;
+    getID(docPath: string, id?: string): string;
+    generateFileName(fileName: string, str: string): string;
+    getFileName(str: string): string;
+    registerLink(docPath: string, fileUrl: string): void;
+    createLink(doc: Doc): string;
+    buildLink(docPath: string, linkText: string, options: LinkOptions): string;
+    linkTo(docPath: string, linkText: string, cssClass?: string, fragmentId ?: string): String;
+    getAncestorLinks(doc: Doc, cssClass: string): string[]
+  }
+
+  declare class TemplateGenerator {
+    constructor(templateDir: string, docDatabase: any): TemplateGenerator;
+    render(filePath: string, data: any): string;
+  }
+}

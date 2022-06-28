@@ -1,0 +1,86 @@
+{
+  "name": "@webdoc/default-template",
+  "version": "1.6.6",
+  "description": "webdoc's default template",
+  "keywords": [
+    "webdoc",
+    "jsdoc",
+    "jsdoc-template",
+    "webdoc-template"
+  ],
+  "author": "Shukant Pal <shukantpal@outlook.com>",
+  "homepage": "https://github.com/SukantPal/webdoc/tree/master/packages/default-template#readme",
+  "license": "Polyform Shield",
+  "main": "publish.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "tmpl",
+    "static",
+    "publish.js",
+    "helper"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SukantPal/webdoc.git"
+  },
+  "scripts": {
+    "build": "webpack build --config ./webpack.config.js",
+    "lint": "eslint -c .eslintrc.json .",
+    "unit-test": "",
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/SukantPal/webdoc/issues"
+  },
+  "dependencies": {
+    "@babel/core": "7.18.5",
+    "@babel/preset-react": "^7.10.1",
+    "@webdoc/model": "^1.6.6",
+    "@webdoc/template-library": "^1.6.6",
+    "@webdoc/types": "^1.6.6",
+    "code-prettify": "^0.1.0",
+    "fs-extra": "^9.0.1",
+    "highlight.js": "~10.7.2",
+    "markdown-it": "13.0.1",
+    "@babel/plugin-proposal-class-properties": "7.17.12",
+    "@babel/plugin-transform-flow-comments": "7.17.12"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "7.18.5",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/preset-flow": "^7.10.1",
+    "@babel/preset-react": "^7.10.1",
+    "@babel/register": "^7.9.0",
+    "@material-ui/core": "^4.10.2",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.56",
+    "@webdoc/babel-preset": "^1.0.0",
+    "@webdoc/eslint-config": "^1.0.0",
+    "babel-loader": "^8.1.0",
+    "css-loader": "6.7.1",
+    "cuid": "^2.1.8",
+    "del": "5.1.0",
+    "eslint": "8.18.0",
+    "extract-loader": "^5.1.0",
+    "file-loader": "^6.0.0",
+    "flow-typed": "^3.2.1",
+    "lodash": "^4.17.20",
+    "mini-css-extract-plugin": "^0.9.0",
+    "css-minimizer-webpack-plugin": "4.0.0",
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0",
+    "react-redux": "^7.2.2",
+    "redux": "^4.0.5",
+    "sass": "1.53.0",
+    "sass-loader": "13.0.1",
+    "webpack": "5.73.0",
+    "webpack-cli": "4.10.0"
+  }
+}

@@ -1,0 +1,39 @@
+<?js
+  const { item } = obj;
+  const isParent = Object.keys(item.children || {}).length > 0;
+?>
+
+<li class="explorer-tree__target <?js if (isParent) { ?>explorer-tree__parent<?js } ?>">
+  <?js if (isParent) { ?>
+    <input type="checkbox" checked="true" />
+  <?js } ?>
+  <div>
+    <div>
+      <?js if (isParent) { ?>
+         <?js= this.partial("components/explorer/icon.tmpl") ?>
+      <?js } ?>
+      <?js if (item.page) { ?>
+        <a href="<?js= item.page ?>">
+          <?js= item.title ?>
+        </a>
+      <?js } else { ?>
+        <section><?js= item.title ?></section>
+      <?js } ?>
+    </div>
+  </div>
+  <?js if (isParent) { ?>
+    <ul role="group">
+      <div>
+        <div>
+          <?js Object.entries(item.children).forEach(([id, child]) => { ?>
+            <?js if (Array.isArray(child)) { ?>
+              <?js= this.partial("components/explorer/group.tmpl", { title: id, group: child }) ?>
+            <?js } else { ?>
+              <?js= this.partial("components/explorer/item.tmpl", { item: child }) ?>
+            <?js } ?>
+          <?js }); ?>
+        </div>
+      </div>
+    </ul>
+  <?js } ?>
+</li>

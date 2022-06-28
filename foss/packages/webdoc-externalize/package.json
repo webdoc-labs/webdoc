@@ -1,0 +1,64 @@
+{
+  "name": "@webdoc/externalize",
+  "version": "1.6.6",
+  "description": "Links your documentation to external APIs and vice versa!",
+  "keywords": [
+    "json",
+    "doc",
+    "jsdoc",
+    "doc-schema",
+    "webdoc"
+  ],
+  "author": "Shukant Pal <shukantpal@outlook.com>",
+  "homepage": "https://github.com/SukantPal/webdoc/tree/master/packages/webdoc-doc-schema#readme",
+  "license": "Polyform Shield",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SukantPal/webdoc.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "babel src --out-dir lib",
+    "flow": "flow check",
+    "unit-test": "mocha ./test/*",
+    "lint": "eslint -c .eslintrc.json ."
+  },
+  "bugs": {
+    "url": "https://github.com/SukantPal/webdoc/issues"
+  },
+  "dependencies": {
+    "@babel/core": "7.18.5",
+    "@webdoc/model": "^1.6.6",
+    "@webdoc/types": "^1.6.6",
+    "lodash": "^4.17.20",
+    "@babel/plugin-proposal-class-properties": "7.17.12",
+    "@babel/plugin-transform-flow-comments": "7.17.12"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "7.18.5",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/preset-flow": "^7.10.1",
+    "@babel/preset-react": "^7.10.1",
+    "@babel/register": "^7.9.0",
+    "@webdoc/babel-preset": "^1.0.0",
+    "@webdoc/eslint-config": "^1.0.0",
+    "@webdoc/parser": "^1.6.6",
+    "chai": "~4.3.4",
+    "del": "5.1.0",
+    "eslint": "8.18.0",
+    "flow-bin": "^0.130.0",
+    "flow-typed": "^3.2.1"
+  },
+  "gitHead": "326306f477098182404f813337c0c67cc90263c6"
+}

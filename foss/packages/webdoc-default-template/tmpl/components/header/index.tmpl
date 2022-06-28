@@ -1,0 +1,27 @@
+<?js
+    /** This component renders the header, and is only used in "plain" variants. */
+    const { appBar, applicationName } = obj;
+?>
+
+<div class="header__container">
+  <section class="explorer__header__title">
+    <?js= applicationName ?>
+  </section>
+  <div class="header__contents">
+    <?js Object.entries(appBar.items).forEach(([id, item]) => { ?>
+      <?js if (item.kind === "divider") { ?>
+        <section class="header__divider header__item-<?js= id ?>">
+          <?js= item.content ?>
+        </section>
+      <?js } else { ?>
+        <a
+          class="header__link <?js if (appBar.current === id) { ?>header__link--current<?js } ?>"
+          href="<?js= item.uri ?>"
+        >
+          <?js= item.name ?>
+        </a>
+        <div class="header__gap"></div>
+      <?js } ?>
+    <?js }); ?>
+  </div>
+</div>

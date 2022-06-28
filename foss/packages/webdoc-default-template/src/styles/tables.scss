@@ -1,0 +1,88 @@
+@import "vars";
+
+
+table {
+  border: 1px solid $colorBorders;
+  border-collapse: collapse;
+  margin: 8px 0;
+
+  caption {
+    font-weight: bold;
+    margin-bottom: 8px;
+    text-align: left;
+  }
+
+  th {
+    border-bottom: 1px solid $colorBorders;
+    font-weight: 500;
+    word-break: normal;
+
+    @at-root &, td {
+      padding: 8px;
+      font-size: 92%;
+      text-align: left;
+    }
+  }
+
+  tr:nth-child(even) {
+    background-color: rgb(246, 248, 250);
+    border-top: 1px solid rgb(216, 222, 228);
+    border-bottom: 1px solid rgb(216, 222, 228);
+  }
+
+  td {
+    word-break: normal;
+
+    p {
+      &:first-child {
+        margin-top: 0;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.table-wrapper {
+  display: block;
+  overflow-x: scroll;
+
+  > table {
+    min-width: 100%;
+  }
+}
+
+table.summary {
+  padding: 18px auto;
+  table-layout: fixed;
+  width: 100%;
+
+  tbody {
+    margin: 18px auto;
+  }
+
+  td {
+    vertical-align: top;
+
+    section:last-child {
+      color: #333;
+      margin-top: 18px;
+    }
+  }
+
+  td:first-child {
+    width: 36%;
+  }
+
+  td:last-child {
+    width: 64%;
+  }
+
+  .summary__signature {
+    a {
+      text-decoration: underline;
+    }
+  }
+}

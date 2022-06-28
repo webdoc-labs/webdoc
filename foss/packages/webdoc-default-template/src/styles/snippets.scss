@@ -1,0 +1,52 @@
+@import "./scss-utils/all";
+
+@import "vars";
+
+pre.hljs, pre.signature__container {
+  @include normalize();
+
+  width: 100%;
+
+  align-items: center;
+  display: flex;
+  border-color: 1px solid $colorBorders;
+  padding: 4px 6px;
+  overflow-x: auto;
+}
+
+pre.hljs, pre.signature__container, code {
+  font-family: "Roboto Mono", monospace;
+  font-size: $textSizeCode;
+  line-height: 1.4em;
+
+  border-radius: 8px;
+
+  vertical-align: baseline;
+  word-break: keep-all;
+}
+
+pre.hljs {
+  background-color: $colorSheetSecondary !important;
+  padding: 28px;
+}
+
+.hljs { /* Override markdown highlight-js */
+  background-color: $colorSheetSecondary !important;
+}
+
+.signature {
+  border-radius: 3px;
+  padding: 6px;
+
+  &__container {
+    background-color: white !important;
+    min-height: 42px;/* 48px minus 6px padding */
+    overflow-x: scroll;
+    overflow-y: visible;
+  }
+}
+
+.language-mermaid {
+  background-color: $colorSheetPrimary;
+  text-align: center;
+}

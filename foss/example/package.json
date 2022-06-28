@@ -1,0 +1,48 @@
+{
+  "name": "@webdoc/example",
+  "version": "1.0.0",
+  "description": "Example documented repository using webdoc",
+  "keywords": [
+    "example",
+    "webdoc"
+  ],
+  "author": "Shukant Pal <shukantpal@outlook.com>",
+  "homepage": "https://github.com/SukantPal/webdoc/tree/master/packages/example#readme",
+  "license": "Polyform Shield",
+  "main": "lib/example.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SukantPal/webdoc.git"
+  },
+  "scripts": {
+    "unit-test": "",
+    "build": "webdoc --tutorials ./tutorials --site-root example-documentation --site-domain https://webdoc-labs.github.io --verbose --eula=noncommercial",
+    "build-next": "cd .. && webdoc --eula=noncommercial && cd example",
+    "build-pixi-api": "cd ../../pixi-api && webdoc --eula=noncommercial --verbose && cd ../webdoc/example",
+    "build-pixi-api-prod": "cd ../../pixi-api && webdoc  --eula=noncommercial --site-root pixi-api && cd ../webdoc/example",
+    "build-pixi-api-gcp": "cd ../../pixi-api && webdoc --eula=noncommercial --verbose && cd ../webdoc/example",
+    "build-pixi-api-gcp-inspect": "cd ../../pixi-api && node --inspect-brk --trace-warnings ../webdoc/example/node_modules/@webdoc/cli/cli.js --verbose && cd ../webdoc/example",
+    "build-pixi-guides": "cd ../../guides && webdoc --eula=noncommercial --tutorials docs && cd ../webdoc/example",
+    "build-mongodb": "cd ../../node-mongodb-native && webdoc --eula=noncommercial --verbose && cd ../webdoc/example"
+  },
+  "bugs": {
+    "url": "https://github.com/SukantPal/webdoc/issues"
+  },
+  "dependencies": {
+    "@webdoc/cli": "^1.6.6",
+    "@babel/plugin-proposal-class-properties": "7.17.12",
+    "@babel/plugin-transform-flow-comments": "7.17.12"
+  },
+  "gitHead": "a2866c1a42f60180a74add7bc1b0f42d8bb16330",
+  "devDependencies": {
+    "flow-typed": "^3.2.1",
+    "@webdoc/eslint-config": "^1.0.0"
+  }
+}

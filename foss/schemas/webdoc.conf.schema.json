@@ -1,0 +1,171 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://webdoc.nyc3.digitaloceanspaces.com/schemas/v1/webdoc.conf.schema.json",
+  "title": "webdoc configuration format",
+  "description": "Configure @webdoc/cli",
+  "type": "object",
+  "properties": {
+    "plugins": {
+      "type": "array",
+      "description": "List of plugins to generate",
+      "items": {
+        "type": "string"
+      }
+    },
+    "source": {
+      "type": "object",
+      "description": "Specify which files webdoc should run on",
+      "properties": {
+        "include": {
+          "type": "array",
+          "description": "List of source files / globs to include",
+          "items": {
+            "type": "string"
+          }
+        },
+        "includePattern": {
+          "type": "array",
+          "description": "List of source file patterns / regular expressions to include",
+          "items": {
+            "type": "string"
+          }
+        },
+        "excludePattern": {
+          "type": "array",
+          "description": "List of source file patterns / regular expressions to exclude",
+          "items": {
+            "type": "string"
+          }
+        },
+        "exclude": {
+          "type": "array",
+          "description": "List of source files / globs to exclude",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "opts": {
+      "type": "object",
+      "description": "Options for @webdoc/cli",
+      "properties": {
+        "destination": {
+          "type": "string",
+          "description": "Output folder for generated documentation"
+        },
+        "export": {
+          "type": "string",
+          "description": "Path to export document tree"
+        },
+        "template": {
+          "type": "string",
+          "description": "Name of template to use (will be loaded using require() / import())"
+        },
+        "import": {
+          "type": "string",
+          "description": "URIs to import document trees so template can link to referenced symbols"
+        }
+      }
+    },
+    "template": {
+      "type": "object",
+      "description": "Options for @webdoc/default-template",
+      "properties": {
+        "assets": {
+          "type": "array",
+          "description": "List of folders with assets to import, so they work with custom HTML in documents",
+          "items": {
+            "type": "string"
+          }
+        },
+        "alias": {
+          "type": "object",
+          "description": "Alias template files to override one of the default template files"
+        },
+        "appBar": {
+          "type": "object",
+          "description": "Options for app bar",
+          "properties": {
+            "items": {
+              "type": "object",
+              "description": "List of items to include in the app bar",
+              "additionalProperties": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "Label to show in app bar"
+                  },
+                  "uri": {
+                    "type": "string",
+                    "description": "Link to go to when clicking item"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "applicationName": {
+          "type": "string",
+          "description": "Name / HTML for application to be shown in app bar or header"
+        },
+        "routes": {
+          "type": "object",
+          "description": "Overrides which route or URL generated docs go into",
+          "properties": {
+            "tutorials": {
+              "type": "string"
+            }
+          }
+        },
+        "sources": {
+          "type": "boolean",
+          "description": "Enable  or disable outputting source code"
+        },
+        "stylesheets": {
+          "type": "array",
+          "description": "List of stylesheets for CSS to include",
+          "items": {
+            "type": "string"
+          }
+        },
+        "siteDomain": {
+          "type": "string",
+          "description": "The website domain where you intend to publish the generated website."
+        },
+        "siteRoot": {
+          "type": "string",
+          "description": "The root folder on the server where you'll put the generated site. This is used for absolute href links"
+        },
+        "title": {
+          "type": "string",
+          "description": "The HTML title for the site"
+        },
+        "meta": {
+          "type": "object",
+          "description": "List of meta key-value pairs to add in each HTML page",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "repository": {
+          "type": "string",
+          "description": "Repository link to use instead of generating HTML pages for source code"
+        },
+        "integrations": {
+          "type": "string",
+          "description": "Untyped integrations to include in generated site"
+        },
+        "variant": {
+          "type": "string",
+          "description": "Variant of template to generate (see template documentation)"
+        }
+      }
+    },
+    "version": {
+      "type": "number",
+      "description": "Version of webdoc configuration format being used"
+    }
+  }
+}

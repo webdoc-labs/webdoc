@@ -1,0 +1,51 @@
+<?js
+const properties = obj;
+
+let hasAttributes = false;
+let hasType = false;
+let hasDefaultValue = false;
+let hasDataValue = false;
+
+for (const property of properties) {
+    if (!property) continue;
+
+    hasAttributes = hasAttributes
+        || property.constant
+        || property.optional
+        || property.readonly;
+    hasDefaultValue = hasDefaultValue || !!property.defaultValue;
+    hasDataValue = hasDataValue || !!property.dataValue;
+}
+?>
+<div class="table-wrapper">
+  <table class="member-properties">
+    <caption class="member-properties__caption">Properties:</caption>
+    <thead class="member-properties__head">
+      <th class="member-property-header__name">Name</th>
+      <th class="member-property-header__type">Type</th>
+      <?js if (hasAttributes) {?><th class="member-property-header__name">Attributes</th><?js } ?>
+      <?js if (hasDefaultValue) {?><th class="member-property-header__default">Default</th><?js } ?>
+      <?js if (hasDataValue) {?><th class="member-property-header__default">Value</th><?js } ?>
+      <th class="member-property-header__description">Description</th>
+    </thead>
+    <tbody class="member-properties__body">
+      <?js properties.forEach((property) => { if (!property) { return; } ?><tr class="member-property">
+        <td class="member-property__name">
+          <?js= property.name ?>
+        </td>
+        <td class="member-property__type">
+          <?js if (property.dataType) {?><?js= this.linkTo(property.dataType) ?><?js } ?>
+        </td>
+        <?js if (hasAttributes) {?><td class="member-property__attributes">
+          <?js if (property.optional) { ?><p>&lt;optional&gt;</p><?js } ?>
+          <?js if (property.constant) { ?><p>&lt;constant&gt;</p><?js } ?>
+          <?js if (property.readonly) { ?><p>&lt;readonly&gt;</p><?js } ?>
+        </td><?js } ?>
+        <?js if (hasDefaultValue) {?><td class="member-property__default">
+          <?js if (typeof property.defaultValue !== 'undefined') { ?><?js= this.htmlText(property.defaultValue) ?><?js } ?>
+        </td><?js } ?>
+        <td class="member-property__description"><?js= property.description ?></td>
+      </tr><?js }); ?>
+    </tbody>
+  </table>
+</div>

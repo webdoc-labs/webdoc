@@ -1,0 +1,30 @@
+<?js
+/**
+ * Global API objects list render component.
+ */
+const { title, documentList } = obj;
+const classIndex = this.plugins.generateIndex(documentList);
+?>
+<div class="page-content">
+  <div class="document">
+    <h1 class="document__title"><?js= title ?></h1>
+    <div class="api-index">
+    <?js classIndex.forEach(({ prefix, list}) => { ?>
+      <h2 class="api-index__title"><?js= prefix ?></h2>
+      <table class="api-index-list">
+        <tbody>
+          <?js list.forEach((doc) => { ?>
+            <tr class="api-index-list__row">
+              <td class="api-index-list__row-title"><?js= this.linkTo(doc) ?></td>
+              <td class="api-index-list__row-brief"><?js= doc.brief || "" ?></td>
+            </tr>
+          <?js }); ?>
+        </tbody>
+      </table>
+    <?js }); ?>
+    </div>
+  </div>
+</div>
+<div>
+  <?js /* This allows flexbox "space-between" spacing to work around document */ ?>
+</div>

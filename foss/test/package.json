@@ -1,0 +1,42 @@
+{
+  "name": "@webdoc/tests",
+  "version": "1.0.0",
+  "description": "Integration tests for the webdoc monorepo",
+  "keywords": [
+    "tests",
+    "mocha",
+    "webdoc",
+    "@webdoc"
+  ],
+  "author": "Shukant Pal <shukantpal@outlook.com>",
+  "homepage": "https://github.com/SukantPal/webdoc/tree/master/packages/test#readme",
+  "license": "Polyform Shield",
+  "main": "webdoc.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SukantPal/webdoc.git"
+  },
+  "scripts": {
+    "build": "",
+    "unit-test": "",
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/SukantPal/webdoc/issues"
+  },
+  "dependencies": {
+    "@webdoc/externalize": "^1.6.6",
+    "@webdoc/parser": "^1.6.6"
+  },
+  "gitHead": "a2866c1a42f60180a74add7bc1b0f42d8bb16330",
+  "devDependencies": {
+    "flow-typed": "^3.2.1"
+  }
+}

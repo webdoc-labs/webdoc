@@ -1,0 +1,27 @@
+declare module "@webdoc/externalize" {
+  import type {RootDoc} from "@webdoc/types";
+
+  declare export type Manifest = {
+    version: string;
+    metadata: {
+      linker?: "require('@webdoc/template-library').LinkerPlugin" | string;
+      [string]: string;
+    };
+    root: RootDoc;
+    registry: {
+      [string]: {
+        uri: string;
+      };
+    };
+  };
+
+  declare export function fromTree(tree: RootDoc): Manifest;
+  declare export function read(data: string): Manifest;
+  declare export function write(doc: Manifest): string;
+
+  declare export default {
+    fromTree,
+    read,
+    write,
+  };
+}

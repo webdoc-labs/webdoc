@@ -1,0 +1,78 @@
+<?js
+    /** Tutorial rendering component */
+    const document = obj.document;
+
+    // Navigation to next, previous tutorials (if any)
+    const { next, previous } = obj.navigation;
+    const onlyNext = next && !previous;
+    const onlyPrevious = previous && !next;
+    const both = next && previous;
+    let modifier;
+
+    if (onlyNext) modifier = "serial-navigation--only-next";
+    else if (onlyPrevious) modifier = "serial-navigation--only-previous";
+    else if (both) modifier = "serial-navigation--both";
+ ?>
+<main class="page-content">
+  <div class="document">
+    <?js /* Simplicity, at its finest! */ ?>
+    <?js= this.partial("components/content/text.tmpl", document.content) ?>
+  </div>
+  <?js if (next || previous) { ?>
+    <div class="serial-navigation <?js= modifier ?>">
+      <?js if (previous) { ?>
+        <a class="serial-navigation__previous" href="<?js= this.getPlugin("linker").getURI(previous) ?>">
+          <section>
+            <svg
+              class="serial-navigation-arrow"
+              version="1.1" xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              x="0px"
+              y="0px"
+              width="27px"
+              height="14px"
+              viewBox="0 0 23 14"
+              xml:space="preserve"
+            >
+              <line x1="0" y1="7" x2="6" y2="1" />
+              <line x1="0" y1="7" x2="6" y2="13" />
+              <line x1="0" y1="7" x2="23" y2="7" />
+            </svg>
+          </section>
+          <section>
+            <span>PREVIOUS GUIDE</span>
+            <?js= previous.title ?>
+          </section>
+        </a>
+      <?js } ?>
+      <?js if (previous && next) { ?>
+        <hr />
+      <?js } ?>
+      <?js if (next) { ?>
+        <a class="serial-navigation__next" href="<?js= this.getPlugin("linker").getURI(next) ?>">
+          <section>
+            <span>NEXT GUIDE</span>
+            <svg
+              class="serial-navigation-arrow"
+              version="1.1" xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              x="0px"
+              y="0px"
+              width="27px"
+              height="14px"
+              viewBox="0 0 23 14"
+              xml:space="preserve"
+            >
+              <line x1="22" y1="7" x2="16" y2="1" />
+              <line x1="22" y1="7" x2="16" y2="13" />
+              <line x1="0" y1="7" x2="23" y2="7" />
+            </svg>
+          </section>
+          <section><?js= next.title ?></section>
+        </a>
+      <?js } ?>
+    </div>
+  <?js } ?>
+  <div class="footer-gap" style="min-height: 48px;"></div>
+  <?js= this.partial("footer") ?>
+</main>

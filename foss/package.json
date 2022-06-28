@@ -1,0 +1,31 @@
+{
+  "name": "webdoc",
+  "version": "0.0.1-alpha.0",
+  "description": "Documentation generator for Javascript",
+  "main": "index.js",
+  "scripts": {
+    "prepare": "rush install",
+    "test": "",
+    "prepublishOnly": "npm run build",
+    "watchdog": "pwsh watchdog.ps1 -CMD rush -CMDArgs \"build\" -Debounce 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SukantPal/webdoc.git"
+  },
+  "keywords": [
+    "jsdoc",
+    "docs",
+    "javascript",
+    "esdoc"
+  ],
+  "author": "Shukant K. Pal <shukantpal@outlook.com>",
+  "license": "Polyform Shield",
+  "bugs": {
+    "url": "https://github.com/SukantPal/webdoc/issues"
+  },
+  "homepage": "https://github.com/SukantPal/webdoc#readme",
+  "dependencies": {
+    "webdoc": "link:"
+  }
+}

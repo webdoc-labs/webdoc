@@ -1,0 +1,2573 @@
+{
+	"version": "1.0.0",
+	"metadata": {
+		"linker": "(unsigned)",
+		"siteDomain": "https://webdoc-labs.github.io",
+		"siteRoot": "example-documentation"
+	},
+	"root": {
+		"id": "root-u2RJw_Fpcmmv3mHVc769j",
+		"name": "",
+		"type": "RootDoc",
+		"members": [
+			{
+				"id": "D3hEunKBUuF1R-t7J5LKb",
+				"name": "PIXI",
+				"brief": "",
+				"type": "NSDoc",
+				"members": [
+					{
+						"id": "OR8UCEQZ_FNtfZyqWC4q4",
+						"name": "utils",
+						"brief": "",
+						"defaultValue": "false",
+						"scope": "static",
+						"type": "NSDoc",
+						"members": [
+							{
+								"id": "ws4t9aWL37ZkoUhwjiSU8",
+								"name": "skipHello",
+								"brief": "<p>Skips the hello message of renderers that are created after this is run.</p>",
+								"deprecated": true,
+								"type": "FunctionDoc",
+								"params": [],
+								"returns": [
+									{
+										"dataType": {
+											"tokens": [
+												{
+													"value": "void",
+													"kind": "canonical"
+												}
+											],
+											"template": "void"
+										}
+									}
+								]
+							}
+						]
+					},
+					{
+						"id": "tQCPbrBuwwwm7-FrXpvtJ",
+						"name": "TilingSprite",
+						"brief": "",
+						"deprecated": "since 5.0.0",
+						"scope": "static",
+						"see": [
+							"PIXI.TilingSprite"
+						],
+						"type": "ClassDoc",
+						"members": [
+							{
+								"id": "HeCWlTR_PqjrLEa_33d_-",
+								"name": "constructor",
+								"brief": "",
+								"access": "public",
+								"scope": "instance",
+								"type": "MethodDoc"
+							}
+						]
+					},
+					{
+						"id": "az0hvzrL8WU6GACZHtSuH",
+						"name": "AbstractRenderer",
+						"brief": "",
+						"type": "ClassDoc",
+						"members": [
+							{
+								"id": "9ktCYQDmZmJlffGXsKPxj",
+								"name": "backgroundColor",
+								"brief": "<p>The background color to fill if not transparent</p>",
+								"scope": "instance",
+								"type": "PropertyDoc"
+							},
+							{
+								"id": "DF316xUJo0SRAqPm8Xpxv",
+								"name": "constructor",
+								"brief": "",
+								"access": "public",
+								"scope": "instance",
+								"type": "MethodDoc"
+							}
+						]
+					},
+					{
+						"id": "nN-gN3WCYB3WfOXc0oNy4",
+						"name": "ObjectRenderer",
+						"brief": "<p>Base for a common object renderer that can be used as a system renderer plugin.</p>",
+						"type": "ClassDoc",
+						"extends": [
+							"PIXI.System"
+						],
+						"members": [
+							{
+								"id": "o-accggKf0jCzbjHlsfKN",
+								"name": "renderer",
+								"brief": "<p>The renderer this manager works for.</p>",
+								"scope": "instance",
+								"type": "PropertyDoc"
+							},
+							{
+								"id": "GpufYcQJsda3qXmJke3DR",
+								"name": "constructor",
+								"brief": "",
+								"scope": "instance",
+								"type": "MethodDoc",
+								"params": [
+									{
+										"identifier": "renderer",
+										"optional": false,
+										"description": "<p>The renderer this manager works for.</p>",
+										"dataType": {
+											"tokens": [
+												{
+													"value": "PIXI.Renderer",
+													"kind": "canonical"
+												},
+												{
+													"value": "PIXI.Renderer",
+													"kind": "canonical"
+												}
+											],
+											"template": "%1"
+										}
+									}
+								],
+								"returns": []
+							},
+							{
+								"id": "xo9hNW194xJZjsW3LlaGe",
+								"name": "destroy",
+								"brief": "",
+								"scope": "instance",
+								"type": "MethodDoc",
+								"description": "<p>Generic destruction method that frees all resources. This\nshould be called by subclasses.</p>",
+								"params": [],
+								"returns": []
+							},
+							{
+								"id": "5O97ZazYxFRXcmTqymoqy",
+								"name": "flush",
+								"brief": "",
+								"scope": "instance",
+								"type": "MethodDoc",
+								"description": "<p>Stub method that should be used to empty the current\nbatch by rendering objects now.</p>",
+								"params": [],
+								"returns": []
+							},
+							{
+								"id": "Uh7dKFPgIO3qXnOBcnItv",
+								"name": "render",
+								"brief": "",
+								"scope": "instance",
+								"type": "MethodDoc",
+								"description": "<p>Keeps the object to render. It doesn't have to be\nrendered immediately.</p>",
+								"params": [
+									{
+										"identifier": "object",
+										"optional": false,
+										"description": "<p>The object to render.</p>",
+										"dataType": {
+											"tokens": [
+												{
+													"value": "PIXI.DisplayObject",
+													"kind": "canonical"
+												},
+												{
+													"value": "PIXI.DisplayObject",
+													"kind": "canonical"
+												}
+											],
+											"template": "%1"
+										}
+									}
+								],
+								"returns": []
+							},
+							{
+								"id": "t7VAmlgtQF3Byj5ZfqBIK",
+								"name": "start",
+								"brief": "",
+								"scope": "instance",
+								"type": "MethodDoc",
+								"description": "<p>Stub method that initializes any state required before\nrendering starts. It is different from the <code>prerender</code>\ns...",
+								"params": [],
+								"returns": []
+							},
+							{
+								"id": "sEGq-h5h8E7blm1eUBti4",
+								"name": "stop",
+								"brief": "",
+								"scope": "instance",
+								"type": "MethodDoc",
+								"description": "<p>Stops the renderer. It should free up any state and\nbecome dormant.</p>",
+								"params": [],
+								"returns": []
+							}
+						]
+					},
+					{
+						"id": "aXAUk5Nw6XkTuEP5aBrq5",
+						"name": "System",
+						"brief": "<p>System is a base class used for extending systems used by the {@link PIXI.AbstractRenderer}.</p>",
+						"see": [
+							"PIXI.Renderer#addSystem"
+						],
+						"type": "ClassDoc",
+						"description": "<p>Search more here: {@link https://www.google.com/}</p>",
+						"members": [
+							{
+								"id": "DVZ3ghCgUiLX6bDmaZVVm",
+								"name": "renderer",
+								"brief": "<p>The renderer this manager works for.</p>",
+								"scope": "instance",
+								"type": "PropertyDoc"
+							},
+							{
+								"id": "fQ_NBScmh5qy2OUQ9G-0G",
+								"name": "constructor",
+								"brief": "",
+								"scope": "instance",
+								"type": "MethodDoc",
+								"params": [
+									{
+										"identifier": "renderer",
+										"optional": false,
+										"description": "<p>The renderer this manager works for.</p>",
+										"dataType": {
+											"tokens": [
+												{
+													"value": "PIXI.Renderer",
+													"kind": "canonical"
+												},
+												{
+													"value": "PIXI.Renderer",
+													"kind": "canonical"
+												}
+											],
+											"template": "%1"
+										}
+									}
+								],
+								"returns": []
+							},
+							{
+								"id": "MKPPtvpdc6ULhkgYfs2Hr",
+								"name": "destroy",
+								"brief": "<p>Generic destroy methods to be overridden by the subclass</p>",
+								"scope": "instance",
+								"type": "MethodDoc",
+								"params": [],
+								"returns": []
+							}
+						]
+					},
+					{
+						"id": "LO7y8dUdFIKttfI5lVvsf",
+						"name": "AbstractBatchRenderer",
+						"brief": "<p>Renderer dedicated to drawing and batching sprites.</p>",
+						"access": "protected",
+						"readonly": true,
+						"type": "ClassDoc",
+						"description": "<p>This is the default batch renderer. It buffers objects\nwith texture-based geometries and renders them in\nbatches. It uploa...",
+						"extends": [
+							"PIXI.ObjectRenderer"
+						],
+						"members": [
+							{
+								"id": "jHLcvgQ53DRDUAfgy8yMU",
+								"name": "_drawCallPool",
+								"brief": "",
+								"scope": "static",
+								"type": "PropertyDoc",
+								"description": "<p>Pool of <code>BatchDrawCall</code> objects that <code>flush</code> used\nto create &quot;batches&quot; of the objects being..."
+							},
+							{
+								"id": "ZgEt7hm9BuCOKpGuWf7gh",
+								"name": "_textureArrayPool",
+								"brief": "",
+								"scope": "static",
+								"type": "PropertyDoc",
+								"description": "<p>Pool of <code>BatchDrawCall</code> objects that <code>flush</code> used\nto create &quot;batches&quot; of the objects being..."
+							},
+							{
+								"id": "UFcmhtkJkewXExA8sPo5x",
+								"name": "bufferSize",
+								"brief": "",
+								"scope": "instance",
+								"type": "PropertyDoc"
+							},
+							{
+								"id": "Ji6GmTq1aGM7MgvMIQXSW",
+								"name": "MAX_TEXTURES",
+								"brief": "",
+								"defaultValue": "1",
+								"readonly": true,
+								"scope": "instance",
+								"see": [
+									"PIXI.AbstractBatchRenderer#contextChange"
+								],
+								"type": "PropertyDoc",
+								"description": "<p>Maximum number of textures that can be uploaded to\nthe GPU under the current context. It is initialized\nproperly in <code>..."
+							},
+							{
+								"id": "WdPooO9xC3Bkz4UJJ2yPG",
+								"name": "renderer",
+								"brief": "<p>The renderer this manager works for.</p>",
+								"scope": "instance",
+								"type": "PropertyDoc"
+							},
+							{
+								"id": "SyumDA1GXtxdVpB1uvDUO",
+								"name": "size",
+								"brief": "",
+								"defaultValue": "settings.SPRITE_BATCH_SIZE * 4",
+								"scope": "instance",
+								"type": "PropertyDoc",
+								"description": "<p>The number of bufferable objects before a flush\noccurs automatically.</p>"
+							},
+							{
+								"id": "AvFdVhTE5Ra1SuynpQHF5",
+								"name": "state",
+								"brief": "<p>The WebGL state in which this renderer will work.</p>",
+								"readonly": true,
+								"scope": "instance",
+								"type": "PropertyDoc"
+							},
+							{
+								"id": "1gC01LswrijHLAZBBVT25",
+								"name": "vertexSize",
+								"brief": "",
+								"defaultValue": "undefined",
+								"readonly": true,
+								"scope": "instance",
+								"type": "PropertyDoc",
+								"description": "<p>Size of data being buffered per vertex in the\nattribute buffers (in floats). By default, the\nbatch-renderer plugin uses 6:..."
+							},
+							{
+								"id": "js5F-ZgclEdVsPJYpCE_C",
+								"name": "_shader",
+								"brief": "<p>This shader is generated by <code>this.shaderGenerator</code>.</p>",
+								"access": "protected",
+								"defaultValue": "undefined",
+								"scope": "instance",
+								"type": "PropertyDoc",
+								"description": "<p>It is generated specifically to handle the required\nnumber of textures being batched together.</p>"
+							},
+							{
+								"id": "WOHlssoUrJGqqScNmbkTj",
+								"name": "geometryClass",
+								"brief": "",
+								"access": "protected",
+								"defaultValue": "PIXI.BatchGeometry",
+								"scope": "instance",
+								"type": "PropertyDoc",
+								"description": "<p>The class that represents the geometry of objects\nthat are going to be batched with this.</p>"
+							},
+							{
+								"id": "qoA5tGR1IgGTvBynGHI3f",
+								"name": "shaderGenerator",
+								"brief": "",
+								"access": "protected",
+								"defaultValue": "undefined",
+								"scope": "instance",
+								"type": "PropertyDoc",
+								"description": "<p>This is used to generate a shader that can\ncolor each vertex based on a <code>aTextureId</code>\nattribute that points to a..."
+							},
+							{
+								"id": "lda_v86Kl80TEdOUIsqhh",
+								"name": "_aBuffers",
+								"brief": "",
+								"access": "private",
+								"scope": "instance",
+								"see": [
+									"PIXI.AbstractBatchRenderer#getAttributeBuffer"
+								],
+								"type": "PropertyDoc",
+								"description": "<p>Pool of <code>ViewableBuffer</code> objects that are sorted in\norder of increasing size. The flush method uses\nthe buffer ..."
+							},
+							{
+								"id": "XHM-fCFAb6AQVZ7fFWxIw",
+								"name": "_bufferedElements",
+								"brief": "<p>Buffer of objects that are yet to be rendered.</p>",
+								"access": "private",
+								"scope": "instance",
+								"type": "PropertyDoc"
+							},
+							{
+								"id": "HZiv5Wemqpjh1YPFTsW2I",
+								"name": "_bufferedTextures",
+								"brief": "",
+								"access": "private",
+								"scope": "instance",
+								"type": "PropertyDoc",
+								"description": "<p>Data for texture batch builder, helps to save a bit of CPU on a pass</p>"
+							},
+							{
+								"id": "WUjBKbaRr-96Vdl-eIij5",
+								"name": "_bufferSize",
+								"brief": "",
+								"access": "private",
+								"defaultValue": "0",
+								"scope": "instance",
+								"type": "PropertyDoc",
+								"description": "<p>Number of elements that are buffered and are\nwaiting to be flushed.</p>"
+							},
+							{
+								"id": "pP895np3JYRZn4kZJ-p-8",
+								"name": "_flushId",
+								"brief": "",
+								"access": "private",
+								"defaultValue": "0",
+								"scope": "instance",
+								"type": "PropertyDoc",
+								"description": "<p>A flush may occur multiple times in a single\nframe. On iOS devices or when\n<code>settings.CAN_UPLOAD_SAME_BUFFER</code> is..."
+							},
+							{
+								"id": "O6J92GQMCt_nKu3jShBi-",
+								"name": "_iBuffers",
+								"brief": "",
+								"access": "private",
+								"scope": "instance",
+								"see": [
+									"PIXI.AbstractBatchRenderer#getIndexBuffer"
+								],
+								"type": "PropertyDoc",
+								"description": "<p>Pool of <code>Uint16Array</code> objects that are sorted in\norder of increasing size. The flush method uses\nthe buffer wit..."
+							},
+							{
+								"id": "qNxkp3EdzUjVv18yiOXEs",
+								"name": "_indexCount",
+								"brief": "",
+								"access": "private",
+								"defaultValue": "0",
+								"scope": "instance",
+								"type": "PropertyDoc",
+								"description": "<p>Total count of all indices used by the currently\nbuffered objects.</p>"
+							},
+							{
+								"id": "vly1BJ0srs3bLDYr0QRVn",
+								"name": "_packedGeometries",
+								"brief": "",
+								"access": "private",
+								"scope": "instance",
+								"see": [
+									"PIXI.AbstractBatchRenderer.contextChange"
+								],
+								"type": "PropertyDoc",
+								"description": "<p>Pool of <code>this.geometryClass</code> geometry objects\nthat store buffers. They are used to pass data\nto the shader on e..."
+							},
+							{
+								"id": "mGQQ6OIJt58rNZQyR_Z2k",
+								"name": "_packedGeometryPoolSize",
+								"brief": "",
+								"access": "private",
+								"defaultValue": "2",
+								"scope": "instance",
+								"type": "PropertyDoc",
+								"description": "<p>Size of <code>this._packedGeometries</code>. It can be expanded\nif more than <code>this._packedGeometryPoolSize</code> flu..."
+							},
+							{
+								"id": "fq3y471VvnHsARZ53ozon",
+								"name": "_vertexCount",
+								"brief": "",
+								"access": "private",
+								"defaultValue": "0",
+								"scope": "instance",
+								"type": "PropertyDoc",
+								"description": "<p>Total count of all vertices used by the currently\nbuffered objects.</p>"
+							},
+							{
+								"id": "FZY2BdsVJT_CgIcnovAPs",
+								"name": "bindAndClearTexArray",
+								"brief": "<p>Bind textures for current rendering</p>",
+								"scope": "instance",
+								"type": "MethodDoc",
+								"params": [
+									{
+										"identifier": "texArray",
+										"optional": false,
+										"dataType": {
+											"tokens": [
+												{
+													"value": "PIXI.BatchTextureArray",
+													"kind": "canonical"
+												},
+												{
+													"value": "PIXI.BatchTextureArray",
+													"kind": "canonical"
+												}
+											],
+											"template": "%1"
+										}
+									}
+								],
+								"returns": []
+							},
+							{
+								"id": "4yejJEFsqtuISkw3meKLD",
+								"name": "buildDrawCalls",
+								"brief": "<p>Populating drawcalls for rendering</p>",
+								"scope": "instance",
+								"type": "MethodDoc",
+								"params": [
+									{
+										"identifier": "texArray",
+										"optional": false,
+										"dataType": {
+											"tokens": [
+												{
+													"value": "PIXI.BatchTextureArray",
+													"kind": "canonical"
+												},
+												{
+													"value": "PIXI.BatchTextureArray",
+													"kind": "canonical"
+												}
+											],
+											"template": "%1"
+										}
+									},
+									{
+										"identifier": "start",
+										"optional": false,
+										"dataType": {
+											"tokens": [
+												{
+													"value": "number",
+													"kind": "canonical"
+												},
+												{
+													"value": "number",
+													"kind": "canonical"
+												}
+											],
+											"template": "%1"
+										}
+									},
+									{
+										"identifier": "finish",
+										"optional": false,
+										"dataType": {
+											"tokens": [
+												{
+													"value": "number",
+													"kind": "canonical"
+												},
+												{
+													"value": "number",
+													"kind": "canonical"
+												}
+											],
+											"template": "%1"
+										}
+									}
+								],
+								"returns": []
+							},
+							{
+								"id": "ZwVwqUi4GOvlogIroNfeH",
+								"name": "constructor",
+								"brief": "",
+								"scope": "instance",
+								"type": "MethodDoc",
+								"description": "<p>This will hook onto the renderer's <code>contextChange</code>\nand <code>prerender</code> signals.</p>",
+								"params": [
+									{
+										"identifier": "renderer",
+										"optional": false,
+										"description": "<p>The renderer this works for.</p>",
+										"dataType": {
+											"tokens": [
+												{
+													"value": "PIXI.Renderer",
+													"kind": "canonical"
+												},
+												{
+													"value": "PIXI.Renderer",
+													"kind": "canonical"
+												}
+											],
+											"template": "%1"
+										}
+									}
+								],
+								"returns": []
+							},
+							{
+								"id": "RBf8krpmgluRlFEnAPHYG",
+								"name": "contextChange",
+								"brief": "<p>Handles the <code>contextChange</code> signal.</p>",
+								"scope": "instance",
+								"type": "MethodDoc",
+								"description": "<p>It calculates <code>this.MAX_TEXTURES</code> and allocating the\npacked-geometry object pool.</p>",
+								"params": [],
+								"returns": []
+							},
+							{
+								"id": "yc9wg8DwHSIE7N4y0TtMj",
+								"name": "destroy",
+								"brief": "<p>Destroys this <code>AbstractBatchRenderer</code>. It cannot be used again.</p>",
+								"scope": "instance",
+								"type": "MethodDoc",
+								"params": [],
+								"returns": []
+							},
+							{
+								"id": "01qEl_IIu6XYRZfcKTsoM",
+								"name": "drawBatches",
+								"brief": "",
+								"scope": "instance",
+								"type": "MethodDoc",
+								"params": [],
+								"returns": []
+							},
+							{
+								"id": "6zdcj5zXk3ANmPQeaTBae",
+								"name": "flush",
+								"brief": "<p>Renders the content <em>now</em> and empties the current batch.</p>",
+								"scope": "instance",
+								"type": "MethodDoc",
+								"params": [],
+								"returns": []
+							},
+							{
+								"id": "JGiUQL5W6NulnkI_Pe2OC",
+								"name": "initFlushBuffers",
+								"brief": "<p>Makes sure that static and dynamic flush pooled objects have correct dimensions</p>",
+								"scope": "instance",
+								"type": "MethodDoc",
+								"params": [],
+								"returns": []
+							},
+							{
+								"id": "3fCiVuA60PWHZPcYi-4at",
+								"name": "onPrerender",
+								"brief": "<p>Handles the <code>prerender</code> signal.</p>",
+								"scope": "instance",
+								"type": "MethodDoc",
+								"description": "<p>It ensures that flushes start from the first geometry\nobject again.</p>",
+								"params": [],
+								"returns": []
+							},
+							{
+								"id": "tJCffcRDdacEQpu2mv0VV",
+								"name": "packInterleavedGeometry",
+								"brief": "",
+								"scope": "instance",
+								"type": "MethodDoc",
+								"description": "<p>Takes the four batching parameters of <code>element</code>, interleaves\nand pushes them into the batching attribute/index ...",
+								"params": [
+									{
+										"identifier": "element",
+										"optional": false,
+										"description": "<p>element being rendered</p>",
+										"dataType": {
+											"tokens": [
+												{
+													"value": "PIXI.Sprite",
+													"kind": "canonical"
+												},
+												{
+													"value": "PIXI.Sprite",
+													"kind": "canonical"
+												}
+											],
+											"template": "%1"
+										}
+									},
+									{
+										"identifier": "attributeBuffer",
+										"optional": false,
+										"description": "<p>attribute buffer.</p>",
+										"dataType": {
+											"tokens": [
+												{
+													"value": "PIXI.ViewableBuffer",
+													"kind": "canonical"
+												},
+												{
+													"value": "PIXI.ViewableBuffer",
+													"kind": "canonical"
+												}
+											],
+											"template": "%1"
+										}
+									},
+									{
+										"identifier": "indexBuffer",
+										"optional": false,
+										"description": "<p>index buffer</p>",
+										"dataType": {
+											"tokens": [
+												{
+													"value": "Uint16Array",
+													"kind": "canonical"
+												},
+												{
+													"value": "Uint16Array",
+													"kind": "canonical"
+												}
+											],
+											"template": "%1"
+										}
+									},
+									{
+										"identifier": "aIndex",
+										"optional": false,
+										"description": "<p>number of floats already in the attribute buffer</p>",
+										"dataType": {
+											"tokens": [
+												{
+													"value": "number",
+													"kind": "canonical"
+												},
+												{
+													"value": "number",
+													"kind": "canonical"
+												}
+											],
+											"template": "%1"
+										}
+									},
+									{
+										"identifier": "iIndex",
+										"optional": false,
+										"description": "<p>number of indices already in <code>indexBuffer</code></p>",
+										"dataType": {
+											"tokens": [
+												{
+													"value": "number",
+													"kind": "canonical"
+												},
+												{
+													"value": "number",
+													"kind": "canonical"
+												}
+											],
+											"template": "%1"
+										}
+									}
+								],
+								"returns": []
+							},
+							{
+								"id": "IRLk3LTaXgcet-fNnVCfI",
+								"name": "render",
+								"brief": "",
+								"scope": "instance",
+								"type": "MethodDoc",
+								"description": "<p>Buffers the &quot;batchable&quot; object. It need not be rendered\nimmediately.</p>",
+								"params": [
+									{
+										"identifier": "element",
+										"optional": false,
+										"description": "<p>the element to render when\nusing this renderer</p>",
+										"dataType": {
+											"tokens": [
+												{
+													"value": "PIXI.DisplayObject",
+													"kind": "canonical"
+												},
+												{
+													"value": "PIXI.DisplayObject",
+													"kind": "canonical"
+												}
+											],
+											"template": "%1"
+										}
+									}
+								],
+								"returns": []
+							},
+							{
+								"id": "48CpczdGdoY78r1hpZjMF",
+								"name": "start",
+								"brief": "<p>Starts a new sprite batch.</p>",
+								"scope": "instance",
+								"type": "MethodDoc",
+								"params": [],
+								"returns": []
+							},
+							{
+								"id": "F5rf-sEgeeBnU9bjeZw8A",
+								"name": "stop",
+								"brief": "<p>Stops and flushes the current batch.</p>",
+								"scope": "instance",
+								"type": "MethodDoc",
+								"params": [],
+								"returns": []
+							},
+							{
+								"id": "s81cNRcgp_HHC6nlJlqgu",
+								"name": "getAttributeBuffer",
+								"brief": "",
+								"access": "private",
+								"scope": "instance",
+								"type": "MethodDoc",
+								"description": "<p>Fetches an attribute buffer from <code>this._aBuffers</code> that\ncan hold atleast <code>size</code> floats.</p>",
+								"params": [
+									{
+										"identifier": "size",
+										"optional": false,
+										"description": "<p>minimum capacity required</p>",
+										"dataType": {
+											"tokens": [
+												{
+													"value": "number",
+													"kind": "canonical"
+												},
+												{
+													"value": "number",
+													"kind": "canonical"
+												}
+											],
+											"template": "%1"
+										}
+									}
+								],
+								"returns": [
+									{
+										"description": "<ul>\n<li>buffer than can hold atleast <code>size</code> floats</li>\n</ul>",
+										"dataType": {
+											"tokens": [
+												{
+													"value": "ViewableBuffer",
+													"kind": "canonical"
+												},
+												{
+													"value": "ViewableBuffer",
+													"kind": "canonical"
+												}
+											],
+											"template": "%1"
+										}
+									}
+								]
+							},
+							{
+								"id": "0er-x1LWCmdDTeuqxrMIW",
+								"name": "getIndexBuffer",
+								"brief": "",
+								"access": "private",
+								"scope": "instance",
+								"type": "MethodDoc",
+								"description": "<p>Fetches an index buffer from <code>this._iBuffers</code> that can\nhas atleast <code>size</code> capacity.</p>",
+								"params": [
+									{
+										"identifier": "size",
+										"optional": false,
+										"description": "<p>minimum required capacity</p>",
+										"dataType": {
+											"tokens": [
+												{
+													"value": "number",
+													"kind": "canonical"
+												},
+												{
+													"value": "number",
+													"kind": "canonical"
+												}
+											],
+											"template": "%1"
+										}
+									}
+								],
+								"returns": [
+									{
+										"description": "<ul>\n<li>buffer that can fit <code>size</code>\nindices.</li>\n</ul>",
+										"dataType": {
+											"tokens": [
+												{
+													"value": "Uint16Array",
+													"kind": "canonical"
+												},
+												{
+													"value": "Uint16Array",
+													"kind": "canonical"
+												}
+											],
+											"template": "%1"
+										}
+									}
+								]
+							}
+						]
+					},
+					{
+						"id": "o-fPV5rM3AxrWx849nTzA",
+						"name": "",
+						"brief": "",
+						"type": "TypedefDoc",
+						"extends": [],
+						"members": [
+							{
+								"id": "75XreK847raoclsm7xING",
+								"name": "destroy",
+								"brief": "",
+								"access": "public",
+								"scope": "static",
+								"type": "PropertyDoc",
+								"description": "<p>Called when destroying Application, scoped to Application instance</p>"
+							},
+							{
+								"id": "ojPZxbyW9NR_vpv2Giqpl",
+								"name": "init",
+								"brief": "",
+								"access": "public",
+								"scope": "static",
+								"type": "PropertyDoc",
+								"description": "<p>Called when Application is constructed, scoped to Application instance.\nPasses in <code>options</code> as the only argumen..."
+							}
+						]
+					},
+					{
+						"id": "oWgPTPzz3NH3hUr3ne5ux",
+						"name": "SVG_SIZE",
+						"brief": "",
+						"deprecated": "since 5.0.0",
+						"scope": "static",
+						"see": [
+							"PIXI.resources.SVGResource.SVG_SIZE"
+						],
+						"type": "PropertyDoc"
+					},
+					{
+						"id": "_Lc40ibTChqYzZTvtfylM",
+						"name": "TRANSFORM_MODE",
+						"brief": "<p>Constants that specify the transform type.</p>",
+						"deprecated": "since 5.0.0",
+						"scope": "static",
+						"type": "PropertyDoc",
+						"members": [
+							{
+								"id": "DHwI-B-JAm71o5ywN4Tkx",
+								"name": "DYNAMIC",
+								"brief": "",
+								"access": "public",
+								"scope": "static",
+								"type": "PropertyDoc"
+							},
+							{
+								"id": "1yUgR74MuMLHxavWePLAb",
+								"name": "STATIC",
+								"brief": "",
+								"access": "public",
+								"scope": "static",
+								"type": "PropertyDoc"
+							}
+						]
+					}
+				]
+			},
+			{
+				"id": "ElzF9zFTlSREwChyROsnM",
+				"name": "R",
+				"brief": "<p>A namespace dedicated to road manipulation utilites.</p>",
+				"readonly": true,
+				"type": "NSDoc",
+				"members": [
+					{
+						"id": "7M2TSrgY8Q5MtB6DBNFNq",
+						"name": "Road",
+						"brief": "<p>This is another road class.</p>",
+						"type": "ClassDoc",
+						"members": [
+							{
+								"id": "2BUGf1agSEAVe0r_OraTT",
+								"name": "constructor",
+								"brief": "<p>This is another road class.</p>",
+								"access": "public",
+								"scope": "instance",
+								"type": "MethodDoc"
+							}
+						]
+					},
+					{
+						"id": "VtVfPG9MQUkPc0O--dcCc",
+						"name": "DEFAULT_LANES",
+						"brief": "<p>The default no. of lanes per one side of road</p>",
+						"defaultValue": "4",
+						"scope": "static",
+						"type": "PropertyDoc"
+					},
+					{
+						"id": "DWzMI2BxtNMzhfuNmkHki",
+						"name": "buildRoad",
+						"brief": "<p>Builds a road</p>",
+						"scope": "instance",
+						"type": "MethodDoc",
+						"params": [
+							{
+								"identifier": "address",
+								"optional": false,
+								"dataType": {
+									"tokens": [
+										{
+											"value": "string",
+											"kind": "canonical"
+										}
+									],
+									"template": "string"
+								}
+							}
+						],
+						"returns": [
+							{
+								"dataType": {
+									"tokens": [
+										{
+											"value": "ExampleFactory",
+											"kind": "canonical"
+										},
+										{
+											"value": "ExampleFactory",
+											"kind": "link"
+										}
+									],
+									"template": "%1"
+								}
+							}
+						]
+					}
+				]
+			},
+			{
+				"id": "NolUR9O5Qy0Pyj7fTmLlf",
+				"name": "Ts",
+				"brief": "",
+				"type": "NSDoc",
+				"members": [
+					{
+						"id": "Uh-aCBVWOxi3lBpK-YOaa",
+						"name": "Transaction",
+						"brief": "",
+						"type": "ClassDoc",
+						"members": [
+							{
+								"id": "xDsxOM3USBg0su8esv0nx",
+								"name": "constructor",
+								"brief": "",
+								"access": "public",
+								"scope": "instance",
+								"type": "MethodDoc"
+							}
+						]
+					}
+				]
+			},
+			{
+				"id": "0jh0owoeC5QZ3AD5HlWEd",
+				"name": "Bean",
+				"brief": "<p>Bean class</p>",
+				"type": "ClassDoc",
+				"members": [
+					{
+						"id": "29sugboUPqpm8Kye2LtH2",
+						"name": "constructor",
+						"brief": "<p>Bean class</p>",
+						"access": "public",
+						"scope": "instance",
+						"type": "MethodDoc"
+					},
+					{
+						"id": "9ZJpGEPTNs5F9EpPOzM9Q",
+						"name": "roast",
+						"brief": "<p>(optional) roasting method</p>",
+						"abstract": true,
+						"scope": "instance",
+						"type": "MethodDoc",
+						"params": [],
+						"returns": [
+							{
+								"dataType": {
+									"tokens": [
+										{
+											"value": "void",
+											"kind": "canonical"
+										}
+									],
+									"template": "void"
+								}
+							}
+						]
+					}
+				]
+			},
+			{
+				"id": "Zen1Etmyb5qKkygmNTMeY",
+				"name": "Car",
+				"brief": "<p><em>Simulation</em> for a automobile that can drive on a manifold surface.</p>",
+				"type": "ClassDoc",
+				"description": "<pre><code class=\"hljs language-js\"><span class=\"hljs-keyword\">const</span> car = <span class=\"hljs-keyword\">new</span> Car({...",
+				"extends": [
+					"PhysicalObject"
+				],
+				"members": [
+					{
+						"id": "fhd_-xmLIGBh7_vuA_4lV",
+						"name": "DEFAULT_DRIVE_SHIFT",
+						"brief": "",
+						"defaultValue": "\"manual\"",
+						"scope": "static",
+						"type": "PropertyDoc"
+					},
+					{
+						"id": "78_dshuJQOMES8t9D7PUy",
+						"name": "bounds",
+						"brief": "",
+						"scope": "instance",
+						"type": "PropertyDoc",
+						"description": "<p>The mesh enclosing this object. By default, it is a &quot;point&quot; object at the its own\nposition.</p>"
+					},
+					{
+						"id": "bzSkNorx4t90hlWAJctIm",
+						"name": "interactions",
+						"brief": "<p>All causal interactions with other objects</p>",
+						"scope": "instance",
+						"type": "PropertyDoc"
+					},
+					{
+						"id": "CClioAgH9Tsz74Y7Ubx0G",
+						"name": "mass",
+						"brief": "<p>The mass of this object in kilograms.</p>",
+						"defaultValue": "0",
+						"scope": "instance",
+						"type": "PropertyDoc"
+					},
+					{
+						"id": "PNyWEISE4XSdq4qivg2H1",
+						"name": "position",
+						"brief": "<p>The absolute position of this object's center of mass (in the universal reference frame)</p>",
+						"defaultValue": "[0, 0, 0]",
+						"scope": "instance",
+						"type": "PropertyDoc"
+					},
+					{
+						"id": "YYqASqEbBP1eVrfkeIG0D",
+						"name": "velocity",
+						"brief": "<p>The absolute velocity of this object (in the universal reference frame)</p>",
+						"defaultValue": "[0, 0, 0]",
+						"scope": "instance",
+						"type": "PropertyDoc"
+					},
+					{
+						"id": "7DtPuc6vEDTOWBvu17lS1",
+						"name": "vin",
+						"brief": "",
+						"defaultValue": "0",
+						"scope": "instance",
+						"type": "PropertyDoc"
+					},
+					{
+						"id": "umLmEzQZXlyzL1o2oB-JA",
+						"name": "registerRetail",
+						"brief": "<p>Register a retail dealer for buying a car from</p>",
+						"scope": "static",
+						"type": "MethodDoc",
+						"params": [
+							{
+								"identifier": "name",
+								"optional": false,
+								"dataType": {
+									"tokens": [
+										{
+											"value": "string",
+											"kind": "canonical"
+										}
+									],
+									"template": "string"
+								}
+							}
+						],
+						"returns": []
+					},
+					{
+						"id": "WCwsXdlXgCJcuhqCbvFZw",
+						"name": "constructor",
+						"brief": "<p><em>Simulation</em> for a automobile that can drive on a manifold surface.</p>",
+						"access": "public",
+						"scope": "instance",
+						"type": "MethodDoc"
+					},
+					{
+						"id": "vHdGMlm1r7J2fB8c_RWgk",
+						"name": "onCrash",
+						"brief": "",
+						"examples": [
+							{
+								"caption": "",
+								"code": "\n car.onCrash((car) => console.logicalAssignment(car.id + \" crashed!\"))\n"
+							}
+						],
+						"scope": "instance",
+						"type": "MethodDoc",
+						"params": [
+							{
+								"identifier": "callback",
+								"optional": false,
+								"dataType": {
+									"tokens": [
+										{
+											"value": "Function",
+											"kind": "canonical"
+										}
+									],
+									"template": "Function"
+								}
+							},
+							{
+								"identifier": "callback.name",
+								"dataType": {
+									"tokens": [
+										{
+											"value": "string",
+											"kind": "canonical"
+										}
+									],
+									"template": "string"
+								}
+							}
+						],
+						"returns": []
+					}
+				]
+			},
+			{
+				"id": "aFlWQh5qHW2hdCy9gKXSM",
+				"name": "CoffeeBean",
+				"brief": "<p>This class illustrates how you can create a Java-bean like component in JavaScript</p>",
+				"type": "ClassDoc",
+				"extends": [
+					"Bean"
+				],
+				"members": [
+					{
+						"id": "j9WSpD3CKTI65cvN7HVf8",
+						"name": "maturity",
+						"brief": "",
+						"scope": "instance",
+						"type": "PropertyDoc"
+					},
+					{
+						"id": "4nLkXUV_1vqbgkwLWjjkX",
+						"name": "roasted",
+						"brief": "",
+						"scope": "instance",
+						"type": "PropertyDoc"
+					},
+					{
+						"id": "4SKD42lvLl-0unQxwRLz_",
+						"name": "constructor",
+						"brief": "",
+						"scope": "instance",
+						"type": "MethodDoc",
+						"params": [
+							{
+								"identifier": "options",
+								"optional": true,
+								"dataType": {
+									"tokens": [
+										{
+											"value": "object",
+											"kind": "canonical"
+										}
+									],
+									"template": "object"
+								}
+							},
+							{
+								"identifier": "options.roasted",
+								"optional": true,
+								"description": "<p>whether the bean is <code>roasted</code></p>",
+								"dataType": {
+									"tokens": [
+										{
+											"value": "boolean",
+											"kind": "canonical"
+										}
+									],
+									"template": "boolean"
+								}
+							},
+							{
+								"identifier": "options.maturity",
+								"optional": true,
+								"dataType": {
+									"tokens": [
+										{
+											"value": "number",
+											"kind": "canonical"
+										},
+										{
+											"value": "number",
+											"kind": "canonical"
+										}
+									],
+									"template": "%1"
+								}
+							}
+						],
+						"returns": []
+					},
+					{
+						"id": "SCnXbSKW9-vRsLeACkMOJ",
+						"name": "roast",
+						"brief": "<p>Roast this coffee bean.</p>",
+						"scope": "instance",
+						"type": "MethodDoc",
+						"description": "<p>NOTE: You cannot re-roast coffee beans and an error will be thrown if you try to\nroast a roasted coffee bean.</p>",
+						"params": [],
+						"returns": []
+					}
+				]
+			},
+			{
+				"id": "fB7TQYro3MfsDrss0eAS1",
+				"name": "ExampleFactory",
+				"type": "ClassDoc",
+				"description": "<p>{@link ExampleFactory} can be used to build examples.</p>\n<pre><code class=\"hljs language-js\"><span class=\"hljs-comment\">/...",
+				"params": [
+					{
+						"identifier": "context",
+						"optional": true,
+						"default": "null",
+						"description": "<p>A custom context for the factory.</p>",
+						"dataType": {
+							"tokens": [
+								{
+									"value": "ExampleContext",
+									"kind": "canonical"
+								},
+								{
+									"value": "ExampleContext",
+									"kind": "canonical"
+								}
+							],
+							"template": "%1"
+						}
+					}
+				],
+				"returns": [],
+				"members": [
+					{
+						"id": "QEeBeG3NXhiFUYo3XmNZj",
+						"name": "getInstance",
+						"brief": "<p>Gets a lazily-initialized, shared singleton instance of {@link ExampleFactory}.</p>",
+						"scope": "static",
+						"type": "MethodDoc",
+						"params": [],
+						"returns": [
+							{
+								"dataType": {
+									"tokens": [
+										{
+											"value": "ExampleFactory",
+											"kind": "canonical"
+										},
+										{
+											"value": "ExampleFactory",
+											"kind": "link"
+										}
+									],
+									"template": "%1"
+								}
+							}
+						]
+					},
+					{
+						"id": "FR861hmSGjorJwi9Sgs_9",
+						"name": "build",
+						"brief": "<p>Build the road.</p>",
+						"scope": "instance",
+						"type": "MethodDoc",
+						"params": [],
+						"returns": []
+					},
+					{
+						"id": "EsfpfpLTHKqNoi_-JcNRC",
+						"name": "constructor",
+						"brief": "<p>This constructor should only be used for custom contexts.</p>",
+						"access": "public",
+						"scope": "instance",
+						"type": "MethodDoc",
+						"params": [
+							{
+								"identifier": "context",
+								"optional": true,
+								"default": "null",
+								"description": "<p>A custom context for the factory.</p>",
+								"dataType": {
+									"tokens": [
+										{
+											"value": "ExampleContext",
+											"kind": "canonical"
+										},
+										{
+											"value": "ExampleContext",
+											"kind": "canonical"
+										}
+									],
+									"template": "%1"
+								}
+							}
+						],
+						"returns": []
+					},
+					{
+						"id": "7htWrH1bG0u8sBmEfIB0L",
+						"name": "getContext",
+						"brief": "<p>Get the context of this factory.</p>",
+						"scope": "instance",
+						"type": "MethodDoc",
+						"params": [],
+						"returns": [
+							{
+								"dataType": {
+									"tokens": [
+										{
+											"value": "ExampleContext",
+											"kind": "canonical"
+										},
+										{
+											"value": "ExampleContext",
+											"kind": "canonical"
+										}
+									],
+									"template": "%1"
+								}
+							}
+						]
+					}
+				]
+			},
+			{
+				"id": "4LMTP9xVGMSZIUL01L5F0",
+				"name": "Gravity",
+				"brief": "<p>This class shouldn't be documented!</p>",
+				"type": "ClassDoc",
+				"extends": [
+					"PhysicalInteraction"
+				],
+				"members": [
+					{
+						"id": "h4XaC3mhaPb-9b19WlKtC",
+						"name": "constructor",
+						"brief": "<p>This class shouldn't be documented!</p>",
+						"access": "public",
+						"scope": "instance",
+						"type": "MethodDoc"
+					},
+					{
+						"id": "3t0UAlfmuAVBvDP3UZoyH",
+						"name": "force",
+						"brief": "<p>This method should be overriden to calculate the force at the given instant.</p>",
+						"scope": "instance",
+						"type": "MethodDoc",
+						"params": [],
+						"returns": [
+							{
+								"dataType": {
+									"tokens": [
+										{
+											"value": "Vector<3>",
+											"kind": "canonical"
+										},
+										{
+											"value": "Vector",
+											"kind": "link"
+										},
+										{
+											"value": "3",
+											"kind": "canonical"
+										}
+									],
+									"template": "%1<%2>"
+								}
+							}
+						]
+					}
+				]
+			},
+			{
+				"id": "LbF7oHIi8eJxVrbI1uKqY",
+				"name": "PhysicalInteraction",
+				"brief": "",
+				"readonly": true,
+				"type": "ClassDoc",
+				"description": "<p>A physical interaction is a force causes object positions to be re-evaulated each frame based on\nforce's magnitude.</p>",
+				"members": [
+					{
+						"id": "BuBuiCD_0953cqMYkrT2k",
+						"name": "GRAVITATIONAL_CONSTANT",
+						"brief": "",
+						"defaultValue": "1",
+						"scope": "static",
+						"type": "PropertyDoc"
+					},
+					{
+						"id": "uXHGqdoEMMyVXPCGaJSpf",
+						"name": "createGravity",
+						"brief": "<p>Creates a graviational force</p>",
+						"scope": "static",
+						"type": "MethodDoc",
+						"params": [
+							{
+								"identifier": "objects",
+								"optional": false,
+								"dataType": {
+									"tokens": [
+										{
+											"value": "Tuple<PhysicalObject, 2><PhysicalObject, 2>",
+											"kind": "canonical"
+										},
+										{
+											"value": "Tuple",
+											"kind": "canonical"
+										},
+										{
+											"value": "PhysicalObject",
+											"kind": "link"
+										},
+										{
+											"value": "2",
+											"kind": "canonical"
+										}
+									],
+									"template": "%1<%3, %2>"
+								}
+							}
+						],
+						"returns": [
+							{
+								"dataType": {
+									"tokens": [
+										{
+											"value": "PhysicalInteraction",
+											"kind": "canonical"
+										},
+										{
+											"value": "PhysicalInteraction",
+											"kind": "link"
+										}
+									],
+									"template": "%1"
+								}
+							}
+						]
+					},
+					{
+						"id": "HKXraPuWsQ4t3L1AL1Fct",
+						"name": "force",
+						"brief": "<p>This method should be overriden to calculate the force at the given instant.</p>",
+						"scope": "instance",
+						"type": "MethodDoc",
+						"params": [],
+						"returns": [
+							{
+								"dataType": {
+									"tokens": [
+										{
+											"value": "Vector<3>",
+											"kind": "canonical"
+										},
+										{
+											"value": "Vector",
+											"kind": "link"
+										},
+										{
+											"value": "3",
+											"kind": "canonical"
+										}
+									],
+									"template": "%1<%2>"
+								}
+							}
+						]
+					}
+				]
+			},
+			{
+				"id": "QivmavGyBJGs_DoobOGsT",
+				"name": "PhysicalObject",
+				"brief": "",
+				"type": "ClassDoc",
+				"description": "<p>Represents a physical-object and its intrinsic properties. This is useful for approximating\nextended objects as a uniform,...",
+				"members": [
+					{
+						"id": "LXwNc7tALjWOkKLCAKVk1",
+						"name": "bounds",
+						"brief": "",
+						"scope": "instance",
+						"type": "PropertyDoc",
+						"description": "<p>The mesh enclosing this object. By default, it is a &quot;point&quot; object at the its own\nposition.</p>"
+					},
+					{
+						"id": "WXQRk3HT7bwoKTRvnNFDR",
+						"name": "interactions",
+						"brief": "<p>All causal interactions with other objects</p>",
+						"scope": "instance",
+						"type": "PropertyDoc"
+					},
+					{
+						"id": "FDUV6zf6qX_oaUKAp6kC4",
+						"name": "mass",
+						"brief": "<p>The mass of this object in kilograms.</p>",
+						"defaultValue": "0",
+						"scope": "instance",
+						"type": "PropertyDoc"
+					},
+					{
+						"id": "9ahKW61Dfa_o-hZCYqjjq",
+						"name": "position",
+						"brief": "<p>The absolute position of this object's center of mass (in the universal reference frame)</p>",
+						"defaultValue": "[0, 0, 0]",
+						"scope": "instance",
+						"type": "PropertyDoc"
+					},
+					{
+						"id": "GEb03U-R6pPgCe6WEQTn4",
+						"name": "velocity",
+						"brief": "<p>The absolute velocity of this object (in the universal reference frame)</p>",
+						"defaultValue": "[0, 0, 0]",
+						"scope": "instance",
+						"type": "PropertyDoc"
+					}
+				]
+			},
+			{
+				"id": "LqbpF5kiqDo4ZirD12v4o",
+				"name": "Vector",
+				"brief": "",
+				"type": "ClassDoc",
+				"extends": [
+					"Array"
+				],
+				"members": [
+					{
+						"id": "8fOGCLM52Ls4l3r6K23K3",
+						"name": "dimensions",
+						"brief": "",
+						"scope": "instance",
+						"type": "PropertyDoc",
+						"description": "<p>The no. of components of this vector</p>"
+					},
+					{
+						"id": "7iQJ-zSK1axqU2K-Wrfaa",
+						"name": "add",
+						"brief": "<p>Add <code>vec</code> to this</p>",
+						"scope": "instance",
+						"type": "MethodDoc",
+						"params": [
+							{
+								"identifier": "vec",
+								"optional": false,
+								"dataType": {
+									"tokens": [
+										{
+											"value": "Vector",
+											"kind": "canonical"
+										},
+										{
+											"value": "Vector",
+											"kind": "link"
+										}
+									],
+									"template": "%1"
+								}
+							}
+						],
+						"returns": []
+					},
+					{
+						"id": "7ACNWnHXRqli1AxdNUj2z",
+						"name": "equalTo",
+						"brief": "<p>Whether this and <code>vec</code> are equal vectors</p>",
+						"scope": "instance",
+						"type": "MethodDoc",
+						"params": [
+							{
+								"identifier": "vec",
+								"optional": false,
+								"dataType": {
+									"tokens": [
+										{
+											"value": "Vector",
+											"kind": "canonical"
+										},
+										{
+											"value": "Vector",
+											"kind": "link"
+										}
+									],
+									"template": "%1"
+								}
+							}
+						],
+						"returns": [
+							{
+								"dataType": {
+									"tokens": [
+										{
+											"value": "boolean",
+											"kind": "canonical"
+										}
+									],
+									"template": "boolean"
+								}
+							}
+						]
+					},
+					{
+						"id": "KNeVgCx0oSirDlDrSNqhq",
+						"name": "isCompat",
+						"brief": "",
+						"scope": "instance",
+						"type": "MethodDoc",
+						"description": "<p>Whether this and <code>vec</code> are compatible vectors (same dimensions)</p>",
+						"params": [
+							{
+								"identifier": "vec",
+								"optional": false,
+								"dataType": {
+									"tokens": [
+										{
+											"value": "Vector",
+											"kind": "canonical"
+										},
+										{
+											"value": "Vector",
+											"kind": "link"
+										}
+									],
+									"template": "%1"
+								}
+							}
+						],
+						"returns": [
+							{
+								"dataType": {
+									"tokens": [
+										{
+											"value": "boolean",
+											"kind": "canonical"
+										}
+									],
+									"template": "boolean"
+								}
+							}
+						]
+					}
+				]
+			},
+			{
+				"id": "67Y0aMhzHDzrWJn_VEsaj",
+				"name": "CAR_MAKES",
+				"brief": "",
+				"see": [
+					"CarDealer"
+				],
+				"type": "EnumDoc",
+				"description": "<p>These are the possible types of car makes.</p>",
+				"members": [
+					{
+						"id": "HnKKaTiXXAgTciXXvYKnw",
+						"name": "FERRARI",
+						"brief": "",
+						"access": "public",
+						"scope": "static",
+						"type": "PropertyDoc"
+					},
+					{
+						"id": "Xbe3bx4gjyUCDBpXF5QN-",
+						"name": "FORD",
+						"brief": "",
+						"access": "public",
+						"scope": "static",
+						"type": "PropertyDoc"
+					},
+					{
+						"id": "5MJvbNQp4SHDAlr9F_Vuk",
+						"name": "GENERAL_MOTORS",
+						"brief": "",
+						"access": "public",
+						"scope": "static",
+						"type": "PropertyDoc"
+					},
+					{
+						"id": "UoNJOpYC0_f60nKTrz-so",
+						"name": "JAGUAR",
+						"brief": "",
+						"access": "public",
+						"scope": "static",
+						"type": "PropertyDoc"
+					},
+					{
+						"id": "3L0TObFxJdnbNtDbSuY9e",
+						"name": "KIA",
+						"brief": "",
+						"access": "public",
+						"scope": "static",
+						"type": "PropertyDoc"
+					},
+					{
+						"id": "-Mx3XNvx1gaGa-l0zrzI8",
+						"name": "LAMBORGHINI",
+						"brief": "",
+						"access": "public",
+						"scope": "static",
+						"type": "PropertyDoc"
+					},
+					{
+						"id": "vWPZtXVwEIQEzV6dMXbiU",
+						"name": "TOYOTA",
+						"brief": "",
+						"access": "public",
+						"scope": "static",
+						"type": "PropertyDoc",
+						"description": "<p>toyota make</p>"
+					}
+				]
+			},
+			{
+				"id": "iRL7cAXls5hdbcqZ4bhkA",
+				"name": "VectorArray",
+				"brief": "",
+				"type": "TypedefDoc",
+				"description": "<p>A 3D vector</p>",
+				"members": [
+					{
+						"id": "v7YBLiGbdzDxiNN57kmht",
+						"name": "meta",
+						"brief": "",
+						"access": "public",
+						"scope": "static",
+						"type": "PropertyDoc"
+					}
+				]
+			},
+			{
+				"id": "WWmvVh8FARa3_zl1PQRKd",
+				"name": "CarDealer",
+				"brief": "<p>This is the interface for dealing with car dealers.</p>",
+				"type": "InterfaceDoc",
+				"members": [
+					{
+						"id": "vZJM6AvFAtocglE_1JK8d",
+						"name": "closeTransaction",
+						"brief": "<p>Close transaction. If you respond to the counteroffer, then it won't be closed.</p>",
+						"type": "MethodDoc",
+						"params": [
+							{
+								"identifier": "trans",
+								"optional": false,
+								"dataType": {
+									"tokens": [
+										{
+											"value": "Transaction",
+											"kind": "canonical"
+										},
+										{
+											"value": "Ts.Transaction",
+											"kind": "link"
+										}
+									],
+									"template": "%1"
+								}
+							},
+							{
+								"identifier": "counteroffer",
+								"optional": false,
+								"dataType": {
+									"tokens": [
+										{
+											"value": "(...t: Transaction) => void",
+											"kind": "canonical"
+										},
+										{
+											"value": "Ts.Transaction",
+											"kind": "link"
+										}
+									],
+									"template": "(...t: %1) => void"
+								}
+							}
+						],
+						"returns": [
+							{
+								"dataType": {
+									"tokens": [
+										{
+											"value": "trans is Transaction",
+											"kind": "canonical"
+										},
+										{
+											"value": "Ts.Transaction",
+											"kind": "link"
+										}
+									],
+									"template": "trans is %1"
+								}
+							}
+						]
+					},
+					{
+						"id": "epZqq7zSD7IbbfcJym6Ks",
+						"name": "initiateTransaction",
+						"brief": "<p>Initiate a transaction/negotiation with a car dealer</p>",
+						"type": "MethodDoc",
+						"params": [
+							{
+								"identifier": "x",
+								"optional": true,
+								"description": "<p>info</p>",
+								"dataType": {
+									"tokens": [
+										{
+											"value": "object",
+											"kind": "canonical"
+										}
+									],
+									"template": "object"
+								}
+							}
+						],
+						"returns": [
+							{
+								"dataType": {
+									"tokens": [
+										{
+											"value": "typeof Transaction",
+											"kind": "canonical"
+										},
+										{
+											"value": "Ts.Transaction",
+											"kind": "link"
+										}
+									],
+									"template": "typeof %1"
+								}
+							}
+						]
+					},
+					{
+						"id": "oslNKT8p3Bofdu0XB4oSw",
+						"name": "offerAsk",
+						"brief": "<p>Offer a price to sell the car.</p>",
+						"type": "MethodDoc",
+						"description": "<p>NOTE: This is invalid behaviour if you are the buyer in the transaction.</p>",
+						"params": [
+							{
+								"identifier": "on",
+								"optional": false,
+								"dataType": {
+									"tokens": [
+										{
+											"value": "Transaction",
+											"kind": "canonical"
+										},
+										{
+											"value": "Ts.Transaction",
+											"kind": "link"
+										}
+									],
+									"template": "%1"
+								}
+							},
+							{
+								"identifier": "counteroffer",
+								"optional": true,
+								"dataType": {
+									"tokens": [
+										{
+											"value": "(t: Car) => void",
+											"kind": "canonical"
+										},
+										{
+											"value": "Car",
+											"kind": "link"
+										}
+									],
+									"template": "(t: %1) => void"
+								}
+							},
+							{
+								"identifier": "test",
+								"optional": false,
+								"dataType": {
+									"tokens": [
+										{
+											"value": "",
+											"kind": "canonical"
+										}
+									],
+									"template": "{ [testProperty in keyof keyof] }: number"
+								}
+							}
+						],
+						"returns": [
+							{
+								"description": "<p>type inference is working</p>",
+								"dataType": {
+									"tokens": [
+										{
+											"value": "boolean",
+											"kind": "canonical"
+										}
+									],
+									"template": "boolean"
+								}
+							}
+						]
+					},
+					{
+						"id": "kMv2W9QLhCm8pw6DpoBXQ",
+						"name": "offerBid",
+						"brief": "<p>Offer a price to buy the car.</p>",
+						"type": "MethodDoc",
+						"description": "<p>NOTE: This is invalid behaviour if you are the seller in the transaction.</p>",
+						"params": [
+							{
+								"identifier": "on",
+								"optional": true,
+								"dataType": {
+									"tokens": [
+										{
+											"value": "{ t : Transaction, : Transaction[] }",
+											"kind": "canonical"
+										},
+										{
+											"value": "Ts.Transaction",
+											"kind": "link"
+										},
+										{
+											"value": "Ts.Transaction",
+											"kind": "link"
+										}
+									],
+									"template": "{ t : %1, [id: string]: %2[] }"
+								}
+							},
+							{
+								"identifier": "counteroffer",
+								"optional": true,
+								"variadic": true,
+								"dataType": {
+									"tokens": [
+										{
+											"value": "Car | Vector",
+											"kind": "canonical"
+										},
+										{
+											"value": "Car",
+											"kind": "link"
+										},
+										{
+											"value": "Vector",
+											"kind": "link"
+										}
+									],
+									"template": "%1 | %2"
+								}
+							}
+						],
+						"returns": [
+							{
+								"dataType": {
+									"tokens": [
+										{
+											"value": "boolean",
+											"kind": "canonical"
+										}
+									],
+									"template": "boolean"
+								}
+							}
+						]
+					}
+				]
+			},
+			{
+				"id": "ZqkDKi1OIa8yeA5H-aewW",
+				"name": "installBean",
+				"brief": "<p>Install a bean class</p>",
+				"type": "FunctionDoc",
+				"params": [
+					{
+						"identifier": "bean",
+						"optional": false,
+						"description": "<p>the bean class</p>",
+						"dataType": {
+							"tokens": [
+								{
+									"value": "{ : Bean }",
+									"kind": "canonical"
+								},
+								{
+									"value": "Bean",
+									"kind": "link"
+								}
+							],
+							"template": "{ new (): %1 }"
+						}
+					}
+				],
+				"returns": [
+					{
+						"dataType": {
+							"tokens": [
+								{
+									"value": "void",
+									"kind": "canonical"
+								}
+							],
+							"template": "void"
+						}
+					}
+				]
+			},
+			{
+				"id": "Y5dKqyn4ybs3h1nQJHq9M",
+				"name": "isPhysicalObject",
+				"brief": "",
+				"authors": [
+					"Shukant K. Pal &lt;shukantpal@outlook.com&gt;"
+				],
+				"copyright": "Shukant K. Pal (C) 2020",
+				"license": "Polyform Shield",
+				"see": [
+					"PhysicalObject"
+				],
+				"since": "2020",
+				"type": "FunctionDoc",
+				"description": "<p>Checks whether the object is an instance of {@code PhysicalObject}.</p>",
+				"params": [
+					{
+						"identifier": "object",
+						"optional": false,
+						"dataType": {
+							"tokens": [
+								{
+									"value": "Object",
+									"kind": "canonical"
+								}
+							],
+							"template": "Object"
+						}
+					}
+				],
+				"returns": [
+					{
+						"dataType": {
+							"tokens": [
+								{
+									"value": "boolean",
+									"kind": "canonical"
+								}
+							],
+							"template": "boolean"
+						}
+					}
+				]
+			}
+		]
+	},
+	"registry": {
+		"pkg-nJUXfPkwIbfz72Or_eMRB": {
+			"uri": "/example-documentation/@webdoc/example.html"
+		},
+		"D3hEunKBUuF1R-t7J5LKb": {
+			"uri": "/example-documentation/@webdoc/example/PIXI.html"
+		},
+		"OR8UCEQZ_FNtfZyqWC4q4": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/utils.html"
+		},
+		"ws4t9aWL37ZkoUhwjiSU8": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/utils/skipHello.html"
+		},
+		"tQCPbrBuwwwm7-FrXpvtJ": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/TilingSprite.html"
+		},
+		"HeCWlTR_PqjrLEa_33d_-": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/TilingSprite.html#constructor"
+		},
+		"az0hvzrL8WU6GACZHtSuH": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/AbstractRenderer.html"
+		},
+		"9ktCYQDmZmJlffGXsKPxj": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/AbstractRenderer.html#backgroundColor"
+		},
+		"DF316xUJo0SRAqPm8Xpxv": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/AbstractRenderer.html#constructor"
+		},
+		"nN-gN3WCYB3WfOXc0oNy4": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/ObjectRenderer.html"
+		},
+		"o-accggKf0jCzbjHlsfKN": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/ObjectRenderer.html#renderer"
+		},
+		"GpufYcQJsda3qXmJke3DR": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/ObjectRenderer.html#constructor"
+		},
+		"xo9hNW194xJZjsW3LlaGe": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/ObjectRenderer.html#destroy"
+		},
+		"5O97ZazYxFRXcmTqymoqy": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/ObjectRenderer.html#flush"
+		},
+		"Uh7dKFPgIO3qXnOBcnItv": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/ObjectRenderer.html#render"
+		},
+		"t7VAmlgtQF3Byj5ZfqBIK": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/ObjectRenderer.html#start"
+		},
+		"sEGq-h5h8E7blm1eUBti4": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/ObjectRenderer.html#stop"
+		},
+		"aXAUk5Nw6XkTuEP5aBrq5": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/System.html"
+		},
+		"DVZ3ghCgUiLX6bDmaZVVm": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/System.html#renderer"
+		},
+		"fQ_NBScmh5qy2OUQ9G-0G": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/System.html#constructor"
+		},
+		"MKPPtvpdc6ULhkgYfs2Hr": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/System.html#destroy"
+		},
+		"LO7y8dUdFIKttfI5lVvsf": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/AbstractBatchRenderer.html"
+		},
+		"jHLcvgQ53DRDUAfgy8yMU": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/AbstractBatchRenderer.html#_drawCallPool"
+		},
+		"ZgEt7hm9BuCOKpGuWf7gh": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/AbstractBatchRenderer.html#_textureArrayPool"
+		},
+		"UFcmhtkJkewXExA8sPo5x": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/AbstractBatchRenderer.html#bufferSize"
+		},
+		"Ji6GmTq1aGM7MgvMIQXSW": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/AbstractBatchRenderer.html#MAX_TEXTURES"
+		},
+		"WdPooO9xC3Bkz4UJJ2yPG": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/AbstractBatchRenderer.html#renderer"
+		},
+		"SyumDA1GXtxdVpB1uvDUO": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/AbstractBatchRenderer.html#size"
+		},
+		"AvFdVhTE5Ra1SuynpQHF5": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/AbstractBatchRenderer.html#state"
+		},
+		"1gC01LswrijHLAZBBVT25": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/AbstractBatchRenderer.html#vertexSize"
+		},
+		"js5F-ZgclEdVsPJYpCE_C": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/AbstractBatchRenderer.html#_shader"
+		},
+		"WOHlssoUrJGqqScNmbkTj": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/AbstractBatchRenderer.html#geometryClass"
+		},
+		"qoA5tGR1IgGTvBynGHI3f": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/AbstractBatchRenderer.html#shaderGenerator"
+		},
+		"lda_v86Kl80TEdOUIsqhh": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/AbstractBatchRenderer.html#_aBuffers"
+		},
+		"XHM-fCFAb6AQVZ7fFWxIw": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/AbstractBatchRenderer.html#_bufferedElements"
+		},
+		"HZiv5Wemqpjh1YPFTsW2I": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/AbstractBatchRenderer.html#_bufferedTextures"
+		},
+		"WUjBKbaRr-96Vdl-eIij5": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/AbstractBatchRenderer.html#_bufferSize"
+		},
+		"pP895np3JYRZn4kZJ-p-8": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/AbstractBatchRenderer.html#_flushId"
+		},
+		"O6J92GQMCt_nKu3jShBi-": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/AbstractBatchRenderer.html#_iBuffers"
+		},
+		"qNxkp3EdzUjVv18yiOXEs": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/AbstractBatchRenderer.html#_indexCount"
+		},
+		"vly1BJ0srs3bLDYr0QRVn": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/AbstractBatchRenderer.html#_packedGeometries"
+		},
+		"mGQQ6OIJt58rNZQyR_Z2k": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/AbstractBatchRenderer.html#_packedGeometryPoolSize"
+		},
+		"fq3y471VvnHsARZ53ozon": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/AbstractBatchRenderer.html#_vertexCount"
+		},
+		"FZY2BdsVJT_CgIcnovAPs": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/AbstractBatchRenderer.html#bindAndClearTexArray"
+		},
+		"4yejJEFsqtuISkw3meKLD": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/AbstractBatchRenderer.html#buildDrawCalls"
+		},
+		"ZwVwqUi4GOvlogIroNfeH": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/AbstractBatchRenderer.html#constructor"
+		},
+		"RBf8krpmgluRlFEnAPHYG": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/AbstractBatchRenderer.html#contextChange"
+		},
+		"yc9wg8DwHSIE7N4y0TtMj": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/AbstractBatchRenderer.html#destroy"
+		},
+		"01qEl_IIu6XYRZfcKTsoM": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/AbstractBatchRenderer.html#drawBatches"
+		},
+		"6zdcj5zXk3ANmPQeaTBae": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/AbstractBatchRenderer.html#flush"
+		},
+		"JGiUQL5W6NulnkI_Pe2OC": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/AbstractBatchRenderer.html#initFlushBuffers"
+		},
+		"3fCiVuA60PWHZPcYi-4at": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/AbstractBatchRenderer.html#onPrerender"
+		},
+		"tJCffcRDdacEQpu2mv0VV": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/AbstractBatchRenderer.html#packInterleavedGeometry"
+		},
+		"IRLk3LTaXgcet-fNnVCfI": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/AbstractBatchRenderer.html#render"
+		},
+		"48CpczdGdoY78r1hpZjMF": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/AbstractBatchRenderer.html#start"
+		},
+		"F5rf-sEgeeBnU9bjeZw8A": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/AbstractBatchRenderer.html#stop"
+		},
+		"s81cNRcgp_HHC6nlJlqgu": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/AbstractBatchRenderer.html#getAttributeBuffer"
+		},
+		"0er-x1LWCmdDTeuqxrMIW": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/AbstractBatchRenderer.html#getIndexBuffer"
+		},
+		"o-fPV5rM3AxrWx849nTzA": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/.html"
+		},
+		"75XreK847raoclsm7xING": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/.html#destroy"
+		},
+		"ojPZxbyW9NR_vpv2Giqpl": {
+			"uri": "/example-documentation/@webdoc/example/PIXI/.html#init"
+		},
+		"oWgPTPzz3NH3hUr3ne5ux": {
+			"uri": "/example-documentation/@webdoc/example/PIXI.html#SVG_SIZE"
+		},
+		"_Lc40ibTChqYzZTvtfylM": {
+			"uri": "/example-documentation/@webdoc/example/PIXI.html#TRANSFORM_MODE"
+		},
+		"DHwI-B-JAm71o5ywN4Tkx": {
+			"uri": "/example-documentation/@webdoc/example/PIXI.html#TRANSFORM_MODE#DYNAMIC"
+		},
+		"1yUgR74MuMLHxavWePLAb": {
+			"uri": "/example-documentation/@webdoc/example/PIXI.html#TRANSFORM_MODE#STATIC"
+		},
+		"ElzF9zFTlSREwChyROsnM": {
+			"uri": "/example-documentation/@webdoc/example/R.html"
+		},
+		"7M2TSrgY8Q5MtB6DBNFNq": {
+			"uri": "/example-documentation/@webdoc/example/R/Road.html"
+		},
+		"2BUGf1agSEAVe0r_OraTT": {
+			"uri": "/example-documentation/@webdoc/example/R/Road.html#constructor"
+		},
+		"VtVfPG9MQUkPc0O--dcCc": {
+			"uri": "/example-documentation/@webdoc/example/R.html#DEFAULT_LANES"
+		},
+		"DWzMI2BxtNMzhfuNmkHki": {
+			"uri": "/example-documentation/@webdoc/example/R.html#buildRoad"
+		},
+		"NolUR9O5Qy0Pyj7fTmLlf": {
+			"uri": "/example-documentation/@webdoc/example/Ts.html"
+		},
+		"Uh-aCBVWOxi3lBpK-YOaa": {
+			"uri": "/example-documentation/@webdoc/example/Ts/Transaction.html"
+		},
+		"xDsxOM3USBg0su8esv0nx": {
+			"uri": "/example-documentation/@webdoc/example/Ts/Transaction.html#constructor"
+		},
+		"0jh0owoeC5QZ3AD5HlWEd": {
+			"uri": "/example-documentation/@webdoc/example/Bean.html"
+		},
+		"29sugboUPqpm8Kye2LtH2": {
+			"uri": "/example-documentation/@webdoc/example/Bean.html#constructor"
+		},
+		"9ZJpGEPTNs5F9EpPOzM9Q": {
+			"uri": "/example-documentation/@webdoc/example/Bean.html#roast"
+		},
+		"Zen1Etmyb5qKkygmNTMeY": {
+			"uri": "/example-documentation/@webdoc/example/Car.html"
+		},
+		"fhd_-xmLIGBh7_vuA_4lV": {
+			"uri": "/example-documentation/@webdoc/example/Car.html#DEFAULT_DRIVE_SHIFT"
+		},
+		"78_dshuJQOMES8t9D7PUy": {
+			"uri": "/example-documentation/@webdoc/example/Car.html#bounds"
+		},
+		"bzSkNorx4t90hlWAJctIm": {
+			"uri": "/example-documentation/@webdoc/example/Car.html#interactions"
+		},
+		"CClioAgH9Tsz74Y7Ubx0G": {
+			"uri": "/example-documentation/@webdoc/example/Car.html#mass"
+		},
+		"PNyWEISE4XSdq4qivg2H1": {
+			"uri": "/example-documentation/@webdoc/example/Car.html#position"
+		},
+		"YYqASqEbBP1eVrfkeIG0D": {
+			"uri": "/example-documentation/@webdoc/example/Car.html#velocity"
+		},
+		"7DtPuc6vEDTOWBvu17lS1": {
+			"uri": "/example-documentation/@webdoc/example/Car.html#vin"
+		},
+		"umLmEzQZXlyzL1o2oB-JA": {
+			"uri": "/example-documentation/@webdoc/example/Car.html#registerRetail"
+		},
+		"WCwsXdlXgCJcuhqCbvFZw": {
+			"uri": "/example-documentation/@webdoc/example/Car.html#constructor"
+		},
+		"vHdGMlm1r7J2fB8c_RWgk": {
+			"uri": "/example-documentation/@webdoc/example/Car.html#onCrash"
+		},
+		"aFlWQh5qHW2hdCy9gKXSM": {
+			"uri": "/example-documentation/@webdoc/example/CoffeeBean.html"
+		},
+		"j9WSpD3CKTI65cvN7HVf8": {
+			"uri": "/example-documentation/@webdoc/example/CoffeeBean.html#maturity"
+		},
+		"4nLkXUV_1vqbgkwLWjjkX": {
+			"uri": "/example-documentation/@webdoc/example/CoffeeBean.html#roasted"
+		},
+		"4SKD42lvLl-0unQxwRLz_": {
+			"uri": "/example-documentation/@webdoc/example/CoffeeBean.html#constructor"
+		},
+		"SCnXbSKW9-vRsLeACkMOJ": {
+			"uri": "/example-documentation/@webdoc/example/CoffeeBean.html#roast"
+		},
+		"fB7TQYro3MfsDrss0eAS1": {
+			"uri": "/example-documentation/@webdoc/example/ExampleFactory.html"
+		},
+		"QEeBeG3NXhiFUYo3XmNZj": {
+			"uri": "/example-documentation/@webdoc/example/ExampleFactory.html#getInstance"
+		},
+		"FR861hmSGjorJwi9Sgs_9": {
+			"uri": "/example-documentation/@webdoc/example/ExampleFactory.html#build"
+		},
+		"EsfpfpLTHKqNoi_-JcNRC": {
+			"uri": "/example-documentation/@webdoc/example/ExampleFactory.html#constructor"
+		},
+		"7htWrH1bG0u8sBmEfIB0L": {
+			"uri": "/example-documentation/@webdoc/example/ExampleFactory.html#getContext"
+		},
+		"4LMTP9xVGMSZIUL01L5F0": {
+			"uri": "/example-documentation/@webdoc/example/Gravity.html"
+		},
+		"h4XaC3mhaPb-9b19WlKtC": {
+			"uri": "/example-documentation/@webdoc/example/Gravity.html#constructor"
+		},
+		"3t0UAlfmuAVBvDP3UZoyH": {
+			"uri": "/example-documentation/@webdoc/example/Gravity.html#force"
+		},
+		"LbF7oHIi8eJxVrbI1uKqY": {
+			"uri": "/example-documentation/@webdoc/example/PhysicalInteraction.html"
+		},
+		"BuBuiCD_0953cqMYkrT2k": {
+			"uri": "/example-documentation/@webdoc/example/PhysicalInteraction.html#GRAVITATIONAL_CONSTANT"
+		},
+		"uXHGqdoEMMyVXPCGaJSpf": {
+			"uri": "/example-documentation/@webdoc/example/PhysicalInteraction.html#createGravity"
+		},
+		"HKXraPuWsQ4t3L1AL1Fct": {
+			"uri": "/example-documentation/@webdoc/example/PhysicalInteraction.html#force"
+		},
+		"QivmavGyBJGs_DoobOGsT": {
+			"uri": "/example-documentation/@webdoc/example/PhysicalObject.html"
+		},
+		"LXwNc7tALjWOkKLCAKVk1": {
+			"uri": "/example-documentation/@webdoc/example/PhysicalObject.html#bounds"
+		},
+		"WXQRk3HT7bwoKTRvnNFDR": {
+			"uri": "/example-documentation/@webdoc/example/PhysicalObject.html#interactions"
+		},
+		"FDUV6zf6qX_oaUKAp6kC4": {
+			"uri": "/example-documentation/@webdoc/example/PhysicalObject.html#mass"
+		},
+		"9ahKW61Dfa_o-hZCYqjjq": {
+			"uri": "/example-documentation/@webdoc/example/PhysicalObject.html#position"
+		},
+		"GEb03U-R6pPgCe6WEQTn4": {
+			"uri": "/example-documentation/@webdoc/example/PhysicalObject.html#velocity"
+		},
+		"LqbpF5kiqDo4ZirD12v4o": {
+			"uri": "/example-documentation/@webdoc/example/Vector.html"
+		},
+		"8fOGCLM52Ls4l3r6K23K3": {
+			"uri": "/example-documentation/@webdoc/example/Vector.html#dimensions"
+		},
+		"7iQJ-zSK1axqU2K-Wrfaa": {
+			"uri": "/example-documentation/@webdoc/example/Vector.html#add"
+		},
+		"7ACNWnHXRqli1AxdNUj2z": {
+			"uri": "/example-documentation/@webdoc/example/Vector.html#equalTo"
+		},
+		"KNeVgCx0oSirDlDrSNqhq": {
+			"uri": "/example-documentation/@webdoc/example/Vector.html#isCompat"
+		},
+		"67Y0aMhzHDzrWJn_VEsaj": {
+			"uri": "/example-documentation/@webdoc/example/CAR_MAKES.html"
+		},
+		"HnKKaTiXXAgTciXXvYKnw": {
+			"uri": "/example-documentation/@webdoc/example/CAR_MAKES.html#FERRARI"
+		},
+		"Xbe3bx4gjyUCDBpXF5QN-": {
+			"uri": "/example-documentation/@webdoc/example/CAR_MAKES.html#FORD"
+		},
+		"5MJvbNQp4SHDAlr9F_Vuk": {
+			"uri": "/example-documentation/@webdoc/example/CAR_MAKES.html#GENERAL_MOTORS"
+		},
+		"UoNJOpYC0_f60nKTrz-so": {
+			"uri": "/example-documentation/@webdoc/example/CAR_MAKES.html#JAGUAR"
+		},
+		"3L0TObFxJdnbNtDbSuY9e": {
+			"uri": "/example-documentation/@webdoc/example/CAR_MAKES.html#KIA"
+		},
+		"-Mx3XNvx1gaGa-l0zrzI8": {
+			"uri": "/example-documentation/@webdoc/example/CAR_MAKES.html#LAMBORGHINI"
+		},
+		"vWPZtXVwEIQEzV6dMXbiU": {
+			"uri": "/example-documentation/@webdoc/example/CAR_MAKES.html#TOYOTA"
+		},
+		"iRL7cAXls5hdbcqZ4bhkA": {
+			"uri": "/example-documentation/@webdoc/example/VectorArray.html"
+		},
+		"v7YBLiGbdzDxiNN57kmht": {
+			"uri": "/example-documentation/@webdoc/example/VectorArray.html#meta"
+		},
+		"WWmvVh8FARa3_zl1PQRKd": {
+			"uri": "/example-documentation/@webdoc/example/CarDealer.html"
+		},
+		"vZJM6AvFAtocglE_1JK8d": {
+			"uri": "/example-documentation/@webdoc/example/CarDealer.html#closeTransaction"
+		},
+		"epZqq7zSD7IbbfcJym6Ks": {
+			"uri": "/example-documentation/@webdoc/example/CarDealer.html#initiateTransaction"
+		},
+		"oslNKT8p3Bofdu0XB4oSw": {
+			"uri": "/example-documentation/@webdoc/example/CarDealer.html#offerAsk"
+		},
+		"kMv2W9QLhCm8pw6DpoBXQ": {
+			"uri": "/example-documentation/@webdoc/example/CarDealer.html#offerBid"
+		},
+		"ZqkDKi1OIa8yeA5H-aewW": {
+			"uri": "/example-documentation/@webdoc/example/installBean.html"
+		},
+		"Y5dKqyn4ybs3h1nQJHq9M": {
+			"uri": "/example-documentation/@webdoc/example/isPhysicalObject.html"
+		}
+	}
+}

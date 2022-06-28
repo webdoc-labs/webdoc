@@ -1,0 +1,97 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/rush.schema.json",
+  "rushVersion": "5.29.1",
+  "pnpmVersion": "4.14.4",
+  "pnpmOptions": {
+    "pnpmStore": "global",
+    "strictPeerDependencies": false,
+    "resolutionStrategy": "fast"
+  },
+  "nodeSupportedVersionRange": ">=10.0.0",
+  "ensureConsistentVersions": false,
+  "repository": {
+    "url": "https://github.com/webdoc-js/webdoc",
+    "defaultBranch": "release",
+    "defaultRemote": "origin"
+  },
+  "eventHooks": {
+    "preRushInstall": [],
+    "postRushInstall": [],
+    "preRushBuild": [],
+    "postRushBuild": []
+  },
+  "projects": [
+    {
+      "packageName": "@webdoc/cli",
+      "projectFolder": "packages/webdoc-cli",
+      "reviewCategory": "production",
+      "versionPolicyName": "webdoc"
+    },
+    {
+      "packageName": "@webdoc/default-template",
+      "projectFolder": "packages/webdoc-default-template",
+      "reviewCategory": "production",
+      "versionPolicyName": "webdoc"
+    },
+    {
+      "packageName": "@webdoc/externalize",
+      "projectFolder": "packages/webdoc-externalize",
+      "reviewCategory": "production",
+      "versionPolicyName": "webdoc"
+    },
+    {
+      "packageName": "@webdoc/legacy-template",
+      "projectFolder": "packages/webdoc-legacy-template",
+      "reviewCategory": "production",
+      "versionPolicyName": "webdoc"
+    },
+    {
+      "packageName": "@webdoc/model",
+      "projectFolder": "packages/webdoc-model",
+      "reviewCategory": "production",
+      "versionPolicyName": "webdoc"
+    },
+    {
+      "packageName": "@webdoc/plugin-markdown",
+      "projectFolder": "packages/webdoc-plugin-markdown",
+      "reviewCategory": "production",
+      "versionPolicyName": "webdoc"
+    },
+    {
+      "packageName": "@webdoc/template-library",
+      "projectFolder": "packages/webdoc-template-library",
+      "reviewCategory": "production",
+      "versionPolicyName": "webdoc"
+    },
+    {
+      "packageName": "@webdoc/types",
+      "projectFolder": "packages/webdoc-types",
+      "reviewCategory": "production",
+      "versionPolicyName": "webdoc"
+    },
+    {
+      "packageName": "@webdoc/example",
+      "projectFolder": "example",
+      "reviewCategory": "production",
+      "shouldPublish": false
+    },
+    {
+      "packageName": "@webdoc/eslint-config",
+      "projectFolder": "packages/eslint-config",
+      "reviewCategory": "production",
+      "shouldPublish": false
+    },
+    {
+      "packageName": "@webdoc/babel-preset",
+      "projectFolder": "packages/babel-preset",
+      "reviewCategory": "production",
+      "shouldPublish": false
+    },
+    {
+      "packageName": "@webdoc/tests",
+      "projectFolder": "test",
+      "reviewCategory": "production",
+      "shouldPublish": false
+    }
+  ]
+}

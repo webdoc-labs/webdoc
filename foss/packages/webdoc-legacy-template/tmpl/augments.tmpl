@@ -1,0 +1,12 @@
+<?js
+    const augmentedSymbols = obj;
+    var self = this;
+?>
+
+<ul>
+  <?js augmentedSymbols.forEach((symbolLink) => {
+      const symbolPath = typeof symbolLink === "string" ? symbolLink : symbolLink.path;
+    ?>
+    <li><?js= self.linkTo(symbolPath, symbolPath) ?></li>
+  <?js }) ?>
+</ul>

@@ -1,0 +1,141 @@
+<?js
+    /* This component renders an array of properties (PropertyDoc) in a tabular format. */
+
+    /*::
+        declare obj = PropertyDoc[] | {
+          properties: PropertyDoc[],
+          noAttributes: boolean,
+          noType: boolean
+        }
+     */
+
+    let properties /*: PropertyDoc */;
+    let noAttributes = false;
+    let noType = false;
+
+    if (Array.isArray(obj)) {
+      properties = obj;
+    } else {
+      properties = obj.properties;
+      noAttributes = !!obj.noAttributes;
+      noType = !!obj.noType;
+    }
+
+    /* Determine if we need these extra columns - "attributes", "default" */
+    let hasName = false;
+    let hasType = !noType;
+    let hasAttributes = false;
+    let hasDefaultValue = false;
+    let hasDataValue = false;
+
+    properties.forEach((prop) => {
+        if (!prop) { return; }
+
+        if (prop.name) {
+            hasName = true;
+        }
+        if (!noAttributes && (prop.optional || prop.nullable || prop.constant)) {
+            hasAttributes = true;
+        }
+        if (typeof prop.defaultValue !== "undefined") {
+            hasDefaultValue = true;
+        }
+        if (typeof prop.dataValue !== "undefined") {
+            hasDataValue = true;
+        }
+    });
+?>
+
+<table class="properties">
+    <thead>
+    <tr>
+        <?js if (hasName) { ?>
+            <th>Name</th>
+        <?js } ?>
+
+        <?js if (hasType) { ?>
+          <th>Type</th>
+        <?js } ?>
+
+        <?js if (hasAttributes) { ?>
+            <th>Attributes</th>
+        <?js } ?>
+        <?js if (hasDefaultValue) { ?>
+            <th>Default</th>
+        <?js } ?>
+        <?js if (hasDataValue) { ?>
+            <th>Value</th>
+        <?js } ?>
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?js
+        var self = this;
+        properties.forEach((prop) => {
+            if (!prop) { return; }
+    ?>
+
+        <tr>
+            <?js if (hasName) { ?>
+                <td class="name"><code><?js= prop.name ?></code></td>
+            <?js } ?>
+
+            <?js if (hasType) { ?>
+                <td class="type">
+                <?js if (prop.dataType && prop.dataType.length) {?>
+                    <?js= this.linkTo(prop.dataType) ?>
+                <?js } ?>
+                </td>
+            <?js } ?>
+
+            <?js if (hasAttributes) { ?>
+                <td class="attributes">
+                    <?js if (prop.optional) { ?>
+                        &lt;optional><br>
+                    <?js } ?>
+
+                    <?js if (prop.nullable) { ?>
+                        &lt;nullable><br>
+                    <?js } ?>
+
+                    <?js if (prop.constant) { ?>
+                        &lt;constant><br>
+                    <?js } ?>
+                </td>
+            <?js } ?>
+
+            <?js if (hasDefaultValue) { ?>
+                <td class="default">
+                <?js if (typeof prop.defaultValue !== 'undefined') { ?>
+                    <?js= self.htmlsafe(prop.defaultValue) ?>
+                <?js } ?>
+                </td>
+            <?js } ?>
+
+            <?js if (hasDataValue) { ?>
+                <td class="default">
+                <?js if (typeof prop.dataValue !== 'undefined') { ?>
+                    <?js= self.htmlsafe(prop.dataValue) ?>
+                <?js }?>
+                </td>
+            <?js } ?>
+
+            <td class="description last">
+                <?js= prop.description ?>
+
+                <?js
+                  // Add sub-properties inside the description cell
+                  const subprops = this.getProperties(prop);
+
+                  if (subprops.length) { ?>
+                    <h6>Properties</h6>
+
+                    <?js= self.partial('components/property-table.tmpl', subprops) ?>
+                <?js } ?>
+            </td>
+        </tr>
+    <?js }); ?>
+    </tbody>
+</table>

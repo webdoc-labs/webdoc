@@ -1,0 +1,147 @@
+<?js
+const currentDoc = obj;
+var doc = obj;
+var self = this;
+?>
+<?js if (doc.type !== 'ModuleDoc' && !doc.hideconstructor) { ?>
+    <?js if (doc.name === "constructor" && doc.parent && doc.parent.type === "ClassDoc") { ?>
+        <h2>Constructor</h2>
+    <?js } ?>
+
+    <?js if (doc.type !== 'NSDoc') { ?>
+        <h4 class="name" id="<?js= id ?>">
+            <?js= doc.attribs + (doc.name === "constructor" && doc.parent
+                ? `new ${doc.parent.path}` : doc.name) + (doc.signature || '') ?>
+        </h4>
+    <?js } ?>
+<?js } ?>
+
+<?js if (doc.brief && !doc.hideconstructor) { ?>
+    <div class="description">
+        <?js= doc.brief ?>
+    </div>
+<?js } ?>
+
+<?js if (doc.type !== 'ModuleDoc' && doc.description && !doc.hideconstructor) { ?>
+    <div class="description">
+        <?js= doc.description ?>
+    </div>
+<?js } ?>
+
+<?js if (currentDoc.type !== "ClassDoc" && doc.augments && doc.alias && doc.alias.indexOf('module:') === 0) { ?>
+    <h5>Extends:</h5>
+    <?js= self.partial('augments.tmpl', doc) ?>
+<?js } ?>
+
+<?js if (type === 'EventDoc' && doc.dataType) {?>
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            <?js= this.linkTo(doc.dataType) ?>
+        </li>
+    </ul>
+<?js } ?>
+
+<?js if (doc['this']) { ?>
+    <h5>This:</h5>
+    <ul><li><?js= this.linkto(doc['this'], doc['this']) ?></li></ul>
+<?js } ?>
+
+<?js
+    const params = doc.params;
+
+    if (params && params.length && !doc.hideconstructor) { ?>
+        <h5>Parameters:</h5>
+        <?js= this.partial('components/params-table.tmpl', params) ?>
+<?js } ?>
+
+<?js= this.partial('components/details.tmpl', doc) ?>
+
+<?js if (doc.type !== 'module' && doc.requires && doc.requires.length) { ?>
+<h5>Requires:</h5>
+<ul><?js doc.requires.forEach(function(r) { ?>
+    <li><?js= self.linkto(r) ?></li>
+<?js }); ?></ul>
+<?js } ?>
+
+<?js if (doc.fires && fires.length) { ?>
+<h5>Fires:</h5>
+<ul><?js fires.forEach(function(f) { ?>
+    <li><?js= self.linkto(f) ?></li>
+<?js }); ?></ul>
+<?js } ?>
+
+<?js if (doc.listens && listens.length) { ?>
+<h5>Listens to Events:</h5>
+<ul><?js listens.forEach(function(f) { ?>
+    <li><?js= self.linkto(f) ?></li>
+<?js }); ?></ul>
+<?js } ?>
+
+<?js if (doc.listeners && listeners.length) { ?>
+<h5>Listeners of This Event:</h5>
+<ul><?js listeners.forEach(function(f) { ?>
+    <li><?js= self.linkto(f) ?></li>
+<?js }); ?></ul>
+<?js } ?>
+
+<?js if (doc.modifies && modifies.length) {?>
+<h5>Modifies:</h5>
+<?js if (modifies.length > 1) { ?><ul><?js
+    modifies.forEach(function(m) { ?>
+        <li><?js= self.partial('modifies.tmpl', m) ?></li>
+    <?js });
+?></ul><?js } else {
+    modifies.forEach(function(m) { ?>
+        <?js= self.partial('modifies.tmpl', m) ?>
+    <?js });
+} } ?>
+
+<?js if (doc.throws && throws.length) { ?>
+<h5>Throws:</h5>
+<?js if (throws.length > 1) { ?><ul><?js
+    throws.forEach((r) => { ?>
+        <li><?js= self.partial('exceptions.tmpl', r) ?></li>
+    <?js });
+?></ul><?js } else {
+    throws.forEach(function(r) { ?>
+        <?js= self.partial('exceptions.tmpl', r) ?>
+    <?js });
+} } ?>
+
+<?js
+    const returns = doc.returns;
+
+    if (returns && returns.length) { ?>
+        <h5>Returns:</h5>
+
+        <?js if (returns.length > 1) { ?>
+            <ul>
+            <?js
+                returns.forEach(function(r) { ?>
+                    <li><?js= self.partial('returns.tmpl', r) ?></li>
+                <?js }); ?>
+            </ul>
+            <?js } else {
+                returns.forEach(function(r) { ?>
+                <?js= self.partial('returns.tmpl', r) ?>
+        <?js });
+} } ?>
+
+<?js if (doc.yields && yields.length) { ?>
+<h5>Yields:</h5>
+<?js if (yields.length > 1) { ?><ul><?js
+    yields.forEach(function(r) { ?>
+        <li><?js= self.partial('returns.tmpl', r) ?></li>
+    <?js });
+?></ul><?js } else {
+    yields.forEach(function(r) { ?>
+        <?js= self.partial('returns.tmpl', r) ?>
+    <?js });
+} } ?>
+
+<?js
+    if (doc.examples && doc.examples.length) { ?>
+        <h5>Example<?js= doc.examples.length > 1 ? 's':'' ?></h5>
+        <?js= this.partial('examples.tmpl', doc.examples) ?>
+<?js } ?>

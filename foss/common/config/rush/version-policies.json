@@ -1,0 +1,8 @@
+[
+  {
+   "definitionName": "lockStepVersion",
+   "policyName": "webdoc",
+   "version": "1.6.6",
+   "nextBump": "patch"
+  }
+]

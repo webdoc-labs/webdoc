@@ -1,0 +1,79 @@
+<?js
+/**
+ * Object member render component.
+ */
+const { doc, require, sources } = obj;
+const linkSvg = this.getPlugin("linker").getResourceURI("icons/link.svg");
+const pkgName = doc.loc && doc.loc.file && doc.loc.file.package && doc.loc.file.package.name || "";
+const pkgRelativePath = (doc.loc && doc.loc.file && doc.loc.file.package
+    && require("path").relative(doc.loc.file.package.location || "", doc.loc.file.path));
+const source = doc.loc && doc.loc.file && doc.loc.file.path
+    && this.getPlugin("linker").getResourceURI(require("path").join(pkgName, pkgRelativePath + ".html"));
+const sourceName = source && require("path").basename(doc.loc.file.path);
+const sourceStart = source && doc.loc.start ? ":" + doc.loc.start.line : "";
+const sourceLinkFragment = source && doc.loc.start ? "#" + doc.loc.start.line : "";
+const properties = doc.members.filter(child => child.type === "PropertyDoc");
+const examples = doc.examples ? doc.examples : [];
+
+const modifiers = [
+  doc.deprecated ? "member__title_deprecated" : ""
+].join(" ");
+?>
+<div class="member" id="<?js= doc.name ?>">
+  <?js if (doc.name !== "constructor") { ?>
+    <section class="member__title <?js= modifiers ?>">
+      <a href="<?js= this.getPlugin("linker").getURI(doc) ?>">
+        <img
+          src="<?js= linkSvg ?>"
+          width="16px"
+          height="16px"
+        />
+      </a>
+      <span class="member__title_content">
+        <span><?js= doc.name ?></span>
+        <?js if (doc.deprecated === true) { ?>
+          (deprecated)
+        <?js } ?>
+      </span>
+      <?js if (source && sources) { ?>
+        <span class="tag--source">
+          <?js if (this.plugins.repository) { ?>
+            <?js= this.plugins.repository.linkTo(doc) ?>
+          <?js } else { ?>
+            <a href="<?js= source + sourceLinkFragment ?>">
+              <?js= sourceName + sourceStart ?>
+            </a>
+          <?js } ?>
+        </span>
+      <?js } ?>
+    </section>
+  <?js } ?>
+  <?js= this.partial("components/signature.tmpl", doc) ?>
+  <section class="member__tags">
+    <?js if (typeof doc.deprecated === "string") { ?>
+      <div class="member__tag member__tag_red">
+        <b>Deprecated:</b> <?js= doc.deprecated ?>
+      </div>
+    <?js } ?>
+  </section>
+
+  <div class="member__brief"><?js= this.partial("components/content/text.tmpl", doc.brief) ?></div>
+  <div class="member__description"><?js= this.partial("components/content/text.tmpl", doc.description) ?></div>
+
+  <?js for (const example of examples) { ?>
+    <?js= this.partial("components/content/example.tmpl", example.code) ?>
+  <?js } ?>
+
+  <?js if (properties.length) { ?>
+    <?js= this.partial("components/member/properties.tmpl", properties) ?>
+  <?js } ?>
+
+  <?js if (doc.params && doc.params.length) { ?>
+    <?js= this.partial("components/member/params.tmpl", doc.params) ?>
+  <?js } ?>
+
+  <?js if (doc.returns && doc.returns.length) { ?>
+    <?js= this.partial("components/member/returns.tmpl", doc.returns) ?>
+  <?js } ?>
+  <?js= this.partial("components/member/see.tmpl", doc.see) ?>
+</div>

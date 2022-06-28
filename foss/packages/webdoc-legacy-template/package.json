@@ -1,0 +1,68 @@
+{
+  "name": "@webdoc/legacy-template",
+  "version": "1.6.6",
+  "description": "Port of the JSDoc default template to webdoc!",
+  "keywords": [
+    "webdoc",
+    "jsdoc",
+    "template",
+    "jsdoc-template",
+    "webdoc-template",
+    "legacy"
+  ],
+  "author": "Shukant Pal <shukantpal@outlook.com>",
+  "homepage": "https://github.com/webdoc-js/webdoc/tree/master/packages/webdoc-legacy-template#readme",
+  "license": "Polyform Shield",
+  "main": "publish.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "static",
+    "tmpl",
+    "helper.js",
+    "publish.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SukantPal/webdoc.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "",
+    "unit-test": "",
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/SukantPal/webdoc/issues"
+  },
+  "dependencies": {
+    "@webdoc/model": "^1.6.6",
+    "@webdoc/template-library": "^1.6.6",
+    "bluebird": "^3.7.2",
+    "code-prettify": "^0.1.0",
+    "color-themes-for-google-code-prettify": "^2.0.4",
+    "common-path-prefix": "^3.0.0",
+    "escape-string-regexp": "^3.0.0",
+    "fs-extra": "^9.0.1",
+    "klaw-sync": "6.0.0",
+    "lodash": "^4.17.20",
+    "markdown-it": "13.0.1",
+    "markdown-it-highlightjs": "^3.1.0",
+    "marked": "^0.8.2",
+    "missionlog": "1.6.0",
+    "open-sans-fonts": "^1.6.2",
+    "@babel/plugin-proposal-class-properties": "7.17.12",
+    "@babel/plugin-transform-flow-comments": "7.17.12"
+  },
+  "devDependencies": {
+    "@webdoc/babel-preset": "^1.0.0",
+    "@webdoc/eslint-config": "^1.0.0",
+    "eslint": "8.18.0",
+    "flow-typed": "^3.2.1"
+  },
+  "gitHead": "326306f477098182404f813337c0c67cc90263c6"
+}

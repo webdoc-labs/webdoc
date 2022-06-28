@@ -1,0 +1,19 @@
+<?js
+    var data = obj || {};
+    if (data.description) {?>
+
+    <div class="param-desc">
+        <?js= description ?>
+    </div>
+<?js } ?>
+
+<?js if (data.dataType) {?>
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        <?js= this.linkTo(data.dataType) ?>
+    </dd>
+</dl>
+<?js } ?>

@@ -1,0 +1,63 @@
+{
+  "name": "@webdoc/model",
+  "version": "1.6.6",
+  "description": "Doclet API for JavaScript",
+  "keywords": [
+    "doclet",
+    "docs",
+    "jsdoc"
+  ],
+  "author": "Shukant Pal <shukantpal@outlook.com>",
+  "homepage": "https://github.com/SukantPal/webdoc/tree/master/packages/js-docmodel#readme",
+  "license": "Polyform Shield",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SukantPal/webdoc.git"
+  },
+  "scripts": {
+    "flow": "flow check",
+    "build": "babel src --out-dir lib",
+    "lint": "eslint -c .eslintrc.json .",
+    "unit-test": "mocha ./test/*",
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/SukantPal/webdoc/issues"
+  },
+  "dependencies": {
+    "@webdoc/types": "^1.6.6",
+    "catharsis": "0.8.11",
+    "nanoid": "~3.1.16",
+    "taffydb": "2.7.3",
+    "@babel/plugin-proposal-class-properties": "7.17.12",
+    "@babel/plugin-transform-flow-comments": "7.17.12"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "7.18.5",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/preset-flow": "^7.10.1",
+    "@babel/preset-react": "^7.10.1",
+    "@babel/register": "^7.9.0",
+    "@webdoc/babel-preset": "^1.0.0",
+    "@webdoc/eslint-config": "^1.0.0",
+    "chai": "~4.3.4",
+    "del": "5.1.0",
+    "eslint": "8.18.0",
+    "flow-bin": "^0.130.0",
+    "flow-typed": "^3.2.1",
+    "mocha": "^7.1.1"
+  },
+  "gitHead": "326306f477098182404f813337c0c67cc90263c6"
+}

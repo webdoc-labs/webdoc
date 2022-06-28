@@ -1,0 +1,53 @@
+@mixin keyframes($name) {
+	@-webkit-keyframes #{$name} {
+		@content;
+	}
+	@-moz-keyframes #{$name} {
+		@content;
+	}
+	@-ms-keyframes #{$name} {
+		@content;
+	}
+	@keyframes #{$name} {
+		@content;
+	}
+}
+
+@mixin animation($name, $duration, $timing-function: ease-in-out, $delay: 0, $direction: normal, $iteration-count: infinite, $fill-mode: none, $play-state: running) {
+	// Webkit
+	-webkit-animation-name: $name;
+	-webkit-animation-duration: $duration;
+	-webkit-animation-timing-function: $timing-function;
+	-webkit-animation-delay: $delay;
+	-webkit-animation-direction: $direction;
+	-webkit-animation-iteration-count: $iteration-count;
+	-webkit-animation-fill-mode: $fill-mode;
+	-webkit-animation-play-state: $play-state;
+	// Mozilla
+	-moz-animation-name: $name;
+	-moz-animation-duration: $duration;
+	-moz-animation-timing-function: $timing-function;
+	-moz-animation-delay: $delay;
+	-moz-animation-direction: $direction;
+	-moz-animation-iteration-count: $iteration-count;
+	-moz-animation-fill-mode: $fill-mode;
+	-moz-animation-play-state: $play-state;
+	// Opera
+	-o-animation-name: $name;
+	-o-animation-duration: $duration;
+	-o-animation-timing-function: $timing-function;
+	-o-animation-delay: $delay;
+	-o-animation-direction: $direction;
+	-o-animation-iteration-count: $iteration-count;
+	-o-animation-fill-mode: $fill-mode;
+	-o-animation-play-state: $play-state;
+	// Normal
+	animation-name: $name;
+	animation-duration: $duration;
+	animation-timing-function: $timing-function;
+	animation-delay: $delay;
+	animation-direction: $direction;
+	animation-iteration-count: $iteration-count;
+	animation-fill-mode: $fill-mode;
+	animation-play-state: $play-state;
+}

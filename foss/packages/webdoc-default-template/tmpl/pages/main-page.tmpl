@@ -1,0 +1,15 @@
+<?js
+/**
+ * Global homepage (a.k.a. ReadMe) render component.
+ */
+const mainPageData = obj
+?>
+<div class="page-content">
+  <div class="homepage">
+  <?js if (mainPageData.readme) { ?>
+    <div class="homepage__readme md">
+      <?js= mainPageData.readme ?>
+    </div>
+  <?js } ?>
+  </div>
+</div>

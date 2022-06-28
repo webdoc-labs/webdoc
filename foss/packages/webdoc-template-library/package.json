@@ -1,0 +1,74 @@
+{
+  "name": "@webdoc/template-library",
+  "version": "1.6.6",
+  "description": "Goodies for @webdoc template packages! See @webdoc/legacy-template for an example!",
+  "keywords": [
+    "webdoc",
+    "jsdoc",
+    "template",
+    "jsdoc-template",
+    "template-helpers",
+    "template-library",
+    "doc"
+  ],
+  "author": "Shukant Pal <shukantpal@outlook.com>",
+  "homepage": "https://github.com/SukantPal/webdoc/tree/master/packages/webdoc-template-library#readme",
+  "license": "Polyform Shield",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SukantPal/webdoc.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "babel src --out-dir lib",
+    "flow": "flow check",
+    "lint": "eslint -c .eslintrc.json .",
+    "unit-test": "mocha ./test/*",
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/SukantPal/webdoc/issues"
+  },
+  "dependencies": {
+    "@webdoc/externalize": "^1.6.6",
+    "@webdoc/model": "^1.6.6",
+    "@webdoc/types": "^1.6.6",
+    "catharsis": "0.8.11",
+    "fs-extra": "^9.0.1",
+    "@fork-of/git-branch": "2.1.1",
+    "lodash": "^4.17.20",
+    "missionlog": "1.6.0",
+    "nanoid": "~3.1.16",
+    "node-fetch": "~2.6.1",
+    "parse-github-url": "1.0.2",
+    "@babel/plugin-proposal-class-properties": "7.17.12",
+    "@babel/plugin-transform-flow-comments": "7.17.12"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "7.18.5",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/preset-flow": "^7.10.1",
+    "@babel/preset-react": "^7.10.1",
+    "@babel/register": "^7.9.0",
+    "@webdoc/babel-preset": "^1.0.0",
+    "@webdoc/eslint-config": "^1.0.0",
+    "chai": "~4.3.4",
+    "del": "5.1.0",
+    "eslint": "8.18.0",
+    "flow-bin": "^0.130.0",
+    "flow-typed": "^3.2.1",
+    "mocha": "^7.1.1"
+  },
+  "gitHead": "a2866c1a42f60180a74add7bc1b0f42d8bb16330"
+}

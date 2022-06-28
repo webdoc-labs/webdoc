@@ -1,0 +1,53 @@
+resources:
+  repositories:
+    - repository: ExampleDocs
+      type: github
+      endpoint: PalConnection
+      name: webdoc-labs/example-documentation
+
+trigger:
+- master
+
+pr: none
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- checkout: self
+- checkout: ExampleDocs
+  persistCredentials: true
+
+- task: NodeTool@0
+  inputs:
+    versionSpec: '14.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    ls -a | grep -Fv -e README.md -e .git -e . -e .. | xargs -r rm -r
+  displayName: "Clear example-documentation"
+  workingDirectory: example-documentation
+
+- script: |
+    ls -a
+    npm install -g  @microsoft/rush
+    rush install
+  displayName: "Install webdoc"
+  workingDirectory: webdoc
+
+- script: |
+    rm -rf ./example/docs
+    rush rebuild -t @webdoc/example
+    cp -r ./example/example-documentation/* ../example-documentation/
+  displayName: "Generate example documentation & copy to webdoc-js/example-documentation"
+  workingDirectory: webdoc
+
+- script: |
+    git config --global user.email "sukantk2002@outlook.com"
+    git config --global user.name "Shukant Pal"
+    git checkout master
+    git add .
+    git commit . -m "Automatic documentation update"
+    git push --force origin master
+  displayName: "Checkout example-documentation and push generated documentation"
+  workingDirectory: example-documentation

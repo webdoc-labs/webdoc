@@ -1,0 +1,122 @@
+<?js
+  /**
+   * Documentation object render component.
+   */
+  const doc = obj.document;
+  const require = obj.require;
+  const sources = obj.sources;
+
+  const titleMods = [
+    doc.deprecated ? "document__title_deprecated" : ""
+  ].join(" ");
+?>
+<main class="page-content">
+  <div class="document">
+    <div class="breadcrumb">
+      <?js if (doc.loc.file.package) { ?>
+        <?js= this.linkTo(doc.loc.file.package) ?>
+        &gt;
+      <?js } ?>
+      <?js if (doc.parent && doc.parent.type !== "RootDoc") { ?>
+        <?js= this.getPlugin("linker").linksToAncestors(doc).join(" &gt; ") ?>
+        &gt;
+      <?js } ?>
+      <span><?js= doc.name ?></span>
+    </div>
+    <section class="document__title <?js= titleMods ?>">
+      <h1>
+        <?js= doc.path ?>
+      </h1>
+      <?js if (doc.deprecated) { ?>
+        <?js if (typeof doc.deprecated === "string") { ?>
+          <section>(deprecated: <?js= doc.deprecated ?>)</section>
+        <?js } else { ?>
+          <h1>&nbsp;(deprecated)</h1>
+        <?js } ?>
+      <?js } ?>
+    </section>
+
+    <?js= this.partial("components/signature.tmpl", doc) ?>
+
+    <div class="document__brief"><?js= this.partial("components/content/text.tmpl", doc.brief) ?></div>
+    <div class="document__description"><?js= this.partial("components/content/text.tmpl", doc.description) ?></div>
+
+    <?js for (const example of doc.examples ?? []) { ?>
+      <?js= this.partial("components/content/example.tmpl", example.code) ?>
+    <?js } ?>
+
+    <?js= this.partial("components/member/see.tmpl", doc.see) ?>
+
+    <?js if (doc.type === "ClassDoc") { ?>
+      <?js= this.partial("components/members.tmpl", {
+        title: "Constructor",
+        parent: doc,
+        constraints: {
+          type: "constructor",
+        },
+        require,
+        sources,
+      }) ?>
+    <?js } else if (doc.type === "FunctionDoc") { ?>
+       <?js if (doc.params) { ?><?js= this.partial("components/member/params.tmpl", doc.params) ?><?js } ?>
+       <?js if (doc.returns) { ?><?js= this.partial("components/member/returns.tmpl", doc.returns) ?><?js } ?>
+    <?js } ?>
+
+    <?js if (doc.members.length > 0) { ?>
+      <?js= this.partial("components/summary/index.tmpl", doc) ?>
+    <?js } ?>
+
+    <?js= this.partial("components/members.tmpl", {
+      title: "Public Properties",
+      parent: doc,
+      constraints: {
+        access: "public",
+        type: "PropertyDoc",
+      },
+      require,
+      sources,
+    }) ?>
+    <?js= this.partial("components/members.tmpl", {
+      title: "Protected Properties",
+      parent: doc,
+      constraints: {
+        access: "protected",
+        type: "PropertyDoc"
+      },
+      require,
+      sources,
+    }) ?>
+    <?js= this.partial("components/members.tmpl", {
+      title: "Public Methods",
+      parent: doc,
+      constraints: {
+        access: "public",
+        type: ["MethodDoc", "FunctionDoc"],
+      },
+      require,
+      sources,
+    }) ?>
+    <?js= this.partial("components/members.tmpl", {
+      title: "Protected Methods",
+      parent: doc,
+      constraints: {
+        access: "protected",
+        type: ["MethodDoc", "FunctionDoc"]
+      },
+      require,
+      sources,
+    }) ?>
+    <?js= this.partial("components/members.tmpl", {
+      title: "Events",
+      parent: doc,
+      constraints: {
+        type: "EventDoc"
+      },
+      require,
+      sources,
+    }) ?>
+  </div>
+  <div class="footer-gap" style="min-height: 48px;"></div>
+  <?js= this.partial("footer") ?>
+</main>
+<?js= this.partial("components/members-explorer/index.tmpl", doc) ?>

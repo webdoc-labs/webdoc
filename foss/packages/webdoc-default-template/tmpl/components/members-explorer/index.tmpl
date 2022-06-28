@@ -1,0 +1,62 @@
+<?js
+    /**
+     * This renders the right-hand side explorer of the current doc's members.
+     */
+
+    /*::
+    import type {Doc} from "@webdoc/types";
+
+    declare var obj: Doc;
+    */
+
+    const doc = obj;
+    const members = doc.members;
+
+    if (members.length === 0) return;
+
+    const publicProperties = this.plugins.categoryFilter(doc, {
+      access: "public",
+      type: "PropertyDoc"
+    });
+    const protectedProperties = this.plugins.categoryFilter(doc, {
+      access: "protected",
+      type: "PropertyDoc"
+    });
+    const publicMethods = this.plugins.categoryFilter(doc, {
+      access: "public",
+      type: ["FunctionDoc", "MethodDoc"]
+    });
+    const protectedMethods = this.plugins.categoryFilter(doc, {
+      access: "protected",
+      type: "MethodDoc"
+    });
+    const events = this.plugins.categoryFilter(doc, { type: "EventDoc" });
+  ?>
+<hr class="page-r-divider" />
+<nav class="page-members-explorer">
+  <div class="page-members-explorer-category">
+    <section class="page-members-explorer-category__title">
+      Summary
+    </section>
+  </div>
+  <?js= this.partial("components/members-explorer/category.tmpl", {
+    title: "Public Properties",
+    members: publicProperties
+  }) ?>
+  <?js= this.partial("components/members-explorer/category.tmpl", {
+    title: "Protected Properties",
+    members: protectedProperties
+  }) ?>
+  <?js= this.partial("components/members-explorer/category.tmpl", {
+    title: "Public Methods",
+    members: publicMethods
+  }) ?>
+  <?js= this.partial("components/members-explorer/category.tmpl", {
+    title: "Protected Methods",
+    members: protectedMethods
+  }) ?>
+  <?js= this.partial("components/members-explorer/category.tmpl", {
+    title: "Events",
+    members: events,
+  }) ?>
+</nav>

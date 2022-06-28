@@ -1,0 +1,73 @@
+@import "themes";
+
+/** The serial-navigation block is the previous/next button group placed at the end of tutorials. */
+.serial-navigation {
+  color: $colorSecondaryText;
+  display: flex;
+  margin-top: 24px;
+  padding-bottom: 16px;
+
+  > a {
+    cursor: pointer;
+    color: $colorSecondaryText;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  /** .serial-navigation__previous is the previous button+arrow. */
+  &__previous {
+    display: flex;
+    transition: 300ms color;
+
+    > section:last-child {
+      display: flex;
+      flex-direction: column;
+
+      > *:first-child {
+        margin-bottom: 6px;
+      }
+    }
+
+    svg {
+      margin-right: 14px;
+    }
+
+    &:hover {
+      color: $colorPrimaryText;
+    }
+  }
+
+  /** .serial-navigation__next is then next button_arrow. */
+  &__next {
+    display: block;
+    transition: 300ms color;
+
+    > section:first-child {
+      display: flex;
+      margin-bottom: 6px;
+    }
+
+    svg {
+      margin-left: 14px;
+    }
+
+    &:hover {
+      color: $colorPrimaryText;
+    }
+  }
+
+  > hr {
+    border: 1px solid $colorSecondaryText;
+    height: 41px;
+    margin: 0 28px;
+  }
+
+  &-arrow {
+    stroke: currentColor;
+    stroke-width: 2px;
+    width: 27px;
+    height: 14px;
+  }
+}

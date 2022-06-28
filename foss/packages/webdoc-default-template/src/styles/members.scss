@@ -1,0 +1,155 @@
+@import "themes";
+@import "vars";
+
+
+.members {
+  &__category {
+    font-size: 1.5em;
+    font-weight: bold;
+    line-height: 1.4em;
+    padding: 8px;
+  }
+
+  &__subcategory {
+    color: #333;
+    font-size: 1.125em;
+    font-weight: normal;
+    line-height: 1.4em;
+    margin: 14px 8px 14px 0;
+  }
+
+  > hr {
+    border: 1px solid $colorSheetSecondary;
+    margin-bottom: 10px;
+  }
+
+  > * {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}
+
+.member {
+  position: relative;
+  padding-bottom: 12px;
+  width: 100%;
+
+  &__title {
+    align-items: center;
+    display: flex;
+    margin-left: 12px;
+    margin-bottom: 10px;
+
+    > a {
+      height: 16px;
+    }
+
+    &_content {
+      flex-grow: 1;
+      font-size: 1.3em;
+      margin-left: 8px;
+      line-height: 1.4em;
+    }
+
+    &_deprecated > &_content {
+      > span:first-child {
+        color: #666;
+        text-decoration: line-through;
+      }
+    }
+  }
+
+  &__tags {
+    align-items: center;
+    display: flex;
+    margin-left: 8px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+
+  &__tag {
+    border-radius: 8px;
+    font-size: .8em;
+    margin-right: 12px;
+    padding: 0 8px;
+
+    &_red {
+      background-color: #d73a49;
+      color: white;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__brief, &__description, > .table-wrapper, &__see {
+    margin-left: 8px;
+  }
+
+  &__see > span:first-child {
+    font-weight: bold;
+  }
+
+  &__see > ul {
+    margin-top: 0;
+  }
+}
+
+.tag--source {
+  font-size: 14px;
+}
+
+.accordion {
+  &__toggle {
+    align-items: center;
+    border-radius: 8px;
+    display: flex;
+    transition-duration: 200ms;
+
+    button {
+      background: transparent;
+      border: none;
+      height: 40px;
+      padding: 0;
+      width: 40px;
+
+      .accordion__bg-active {
+        display: none;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.04);
+    }
+  }
+
+  &__content {
+    max-height: 0;
+    overflow: hidden;
+    visibility: hidden;
+  }
+}
+
+.accordion-active {
+  > .accordion__content {
+    max-height: max-content;
+    visibility: visible;
+  }
+
+  .accordion__toggle {
+    button {
+      .accordion__bg-inactive {
+        display: none;
+      }
+
+      .accordion__bg-active {
+        display: inline;
+      }
+    }
+  }
+}

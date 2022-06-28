@@ -1,0 +1,88 @@
+@import "./scss-utils/all";
+
+@import "vars";
+
+.header-content-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-width: 0;
+  max-height: 100%;
+
+  &__content {
+    display: grid;
+    grid-template-rows: 100%;
+    grid-template-columns: fit-content(100%) minmax(0, max-content) fit-content(100%) minmax(0, 1fr);
+    height: 100vh;
+    overflow: hidden;/* child element must overflow/scroll on their own */
+
+    @media only screen and (max-width: 800px) {
+      grid-template-columns: fit-content(100%) minmax(0, max-content);
+    }
+  }
+}
+
+.header {
+  background-color: white;
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.16);
+  height: $header-height;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+
+  &__container {
+    align-items: center;
+    backdrop-filter: blur(48px);
+    display: flex;
+    height: 100%;
+    justify-content: space-around;
+  }
+
+  &__contents {
+    align-items: center;
+    backdrop-filter: blur(48px);
+    display: flex;
+    flex-grow: 1;
+    padding-right: 110px;
+    justify-content: flex-end;
+    height: 100%;
+
+    > *:last-child {
+      @media only screen and (max-width: 1025px) {
+        margin-right: 0;
+      }
+    }
+
+    @media only screen and (max-width: 1025px) {
+      padding-right: 10.7vw;
+    }
+    @media only screen and (max-width: 768px) {
+      padding-right: 5.3vw;
+    }
+  }
+
+  &__link {
+    color: black;
+    text-decoration: underline;
+
+    &:hover {
+      color: $colorPrimary;
+    }
+
+    &--current {
+      color: $colorPrimary;
+      text-decoration: none;
+    }
+  }
+
+  &__title {
+    @include normalize();
+    max-width: 80%;
+    width: 100%;
+  }
+
+  &__gap {
+    flex-grow: 1;
+    max-width: 42px;
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://webdoc.nyc3.digitaloceanspaces.com/schemas/v1/webdoc.conf.schema.json",
+  "source": {
+      "include": "./src/**/*"
+  },
+  "plugins": [
+    "plugins/markdown",
+    "./plugins/plugin-hello-world.js"
+  ],
+  "template": {
+    "readme": "./README.md",
+    "outputSourceFiles": true,
+    "meta": {
+      "og:title": "webdoc",
+      "og:description": "The documentation for webdoc, by webdoc!",
+      "title": "webdoc"
+    }
+  },
+  "opts": {
+    "destination": "example-documentation",
+    "import": ["./gl-matrix.api.json"],
+    "export": "./example-documentation/webdoc.api.json"
+  }
+}

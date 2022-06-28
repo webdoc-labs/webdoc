@@ -1,0 +1,48 @@
+resources:
+  repositories:
+    - repository: ExampleDocs
+      type: github
+      endpoint: PalConnection
+      name: webdoc-labs/example-documentation
+
+trigger:
+- master
+- feature/*
+- refactor/*
+- parser/*
+- template/*
+- cli/*
+- model/*
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- checkout: self
+- checkout: ExampleDocs
+- task: NodeTool@0
+  inputs:
+    versionSpec: '14.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    npm install -g pnpm @microsoft/rush
+    rush install
+    rush build
+  displayName: "Install and build project"
+  workingDirectory: webdoc
+
+- script: |
+    rush flow
+  displayName: "Type check"
+  workingDirectory: webdoc
+
+- script: |
+    rush lint
+  displayName: "Lint"
+  workingDirectory: webdoc
+
+- script: |
+    rush unit-test
+  displayName: "Run unit tests"
+  workingDirectory: webdoc
