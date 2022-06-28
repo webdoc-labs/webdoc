@@ -19,7 +19,8 @@
     "lib/index.js",
     "Language-JavaScript.js",
     "Language-TypeScript.js",
-    "index.flow.js"
+    "index.flow.js",
+    "README.md"
   ],
   "publishConfig": {
     "access": "public"

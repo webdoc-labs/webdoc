@@ -17,7 +17,8 @@
   },
   "files": [
     "lib/index.js",
-    "index.flow.js"
+    "index.flow.js",
+    "README.md"
   ],
   "publishConfig": {
     "access": "public"
