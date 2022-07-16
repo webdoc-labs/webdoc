@@ -1,3 +1,4 @@
+import "./toc";
 import Explorer from "./components/Explorer";
 import Footer from "./components/Footer";
 import Header from "./components/Header";

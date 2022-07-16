@@ -18,10 +18,11 @@ const examples = doc.examples ? doc.examples : [];
 const modifiers = [
   doc.deprecated ? "member__title_deprecated" : ""
 ].join(" ");
+const uniqueId = this.mangled(doc);
 ?>
-<div class="member" id="<?js= doc.name ?>">
+<div class="member" id="<?js= doc.name ?>" data-id="<?js= uniqueId ?>">
   <?js if (doc.name !== "constructor") { ?>
-    <section class="member__title <?js= modifiers ?>">
+    <section class="member__title <?js= modifiers ?>" data-id="<?js= uniqueId ?>">
       <a href="<?js= this.getPlugin("linker").getURI(doc) ?>">
         <img
           src="<?js= linkSvg ?>"

@@ -8,6 +8,7 @@ import type {
 import {tag, templateLogger} from "./Logger";
 import {SymbolLinks} from "./SymbolLinks";
 import fs from "fs";
+import {mangled} from "@webdoc/model";
 import {merge} from "lodash";
 import path from "path";
 
@@ -258,6 +259,10 @@ export class TemplateRenderer {
 
     return str.replace(/&/g, "&amp;").replace(/</g, "&lt;");
   };
+
+  mangled(doc: Doc): string {
+    return mangled(doc);
+  }
 
   /**
    * Finds all the members namespaces of {@code doc}.
