@@ -1,11 +1,14 @@
-export function isSamePage(data) {
-  const path = window.location.pathname.includes(".html") ?
-    window.location.pathname :
-    `${window.location.pathname}.html`;
+const paths = window.location.pathname.includes(".html") ?
+  [window.location.pathname] :
+  [
+    `${window.location.pathname}.html`,
+    `${window.location.pathname}/index.html`.replace("//", "/"),
+  ];
 
-  if (data.page.startsWith("/") && data.page === path) {
+export function isSamePage(data) {
+  if (data.page.startsWith("/") && paths.includes(data.page)) {
     return true;
-  } else if (!data.page.startsWith("/") && path.includes(`/${data.page}`)) {
+  } else if (!data.page.startsWith("/") && paths.some((path) => path.includes(`/${data.page}`))) {
     return true;
   }
 
