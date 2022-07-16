@@ -18,7 +18,9 @@
   <section class="page-members-explorer-category__title"><?js= title ?></section>
   <ul class="page-members-explorer-category__items">
     <?js members.forEach((member) => { ?>
-      <li class="page-members-explorer__item"><?js= this.linkTo(member.path, member.name) ?></li>
+      <li class="page-members-explorer__item" data-id="<?js= this.mangled(member) ?>">
+        <?js= this.linkTo(member.path, member.name) ?>
+      </li>
     <?js }) ?>
   </ul>
 </div>
