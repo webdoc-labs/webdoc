@@ -1,6 +1,6 @@
 {
   "name": "@webdoc/language-library",
-  "version": "2.0.0-beta",
+  "version": "2.0.0",
   "description": "Language support library",
   "keywords": [
     "parser",
@@ -40,8 +40,8 @@
     "@babel/parser": "^7.9.4",
     "@babel/traverse": "7.9.5",
     "@babel/types": "7.9.5",
-    "@webdoc/model": "^2.0.0-beta",
-    "@webdoc/types": "^2.0.0-beta",
+    "@webdoc/model": "^2.0.0",
+    "@webdoc/types": "^2.0.0",
     "lodash": "^4.17.20",
     "missionlog": "1.6.0",
     "nanoid": "~3.1.16"

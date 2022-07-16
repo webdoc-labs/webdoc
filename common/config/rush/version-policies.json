@@ -2,8 +2,8 @@
   {
     "definitionName": "lockStepVersion",
     "policyName": "webdoc",
-    "version": "2.0.0-beta",
-    "nextBump": "major",
+    "version": "2.0.0",
+    "nextBump": "patch",
     "includeEmailInChangeFile": true
   }
 ]
