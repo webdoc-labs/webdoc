@@ -313,4 +313,27 @@ describe("@webdoc/parser.parse (Typescript)", function() {
     expect(parentClass.members.filter(div).length).to.equal(1);
     expect(childClass.members.filter(div)[0].overrides).to.not.equal(undefined);
   });
+
+  it.only("should cast property to @method properly", async () => {
+    await parse([{
+      content: `
+        /** DO */
+        class DisplayObject {
+          public displayObjectUpdateTransform: () => void;
+        }
+        
+        /**
+         * Here
+         *
+         * @method DisplayObject#displayObjectUpdateTransform
+         */
+        DisplayObject.prototype.displayObjectUpdateTransform =
+          DisplayObject.prototype.updateTransform;
+          
+        /** Container */
+        class Container extends DisplayObject {}
+      `,
+      path: "*.ts",
+    }]);
+  });
 });
