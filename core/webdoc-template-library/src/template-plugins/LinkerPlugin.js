@@ -219,14 +219,15 @@ function LinkerPluginShell() {
      * @return {LinkerFileRecord} All the data this linker has on the output file.
      */
     getFileRecord(uri: string): LinkerFileRecord {
-      const recordHit = this.fileRegistry.get(uri.toLowerCase());
+      const key = uri.toLowerCase();
+      const recordHit = this.fileRegistry.get(key);
 
       if (!recordHit) {
         const record: LinkerFileRecord = {
           uriFragments: new Set<string>(),
         };
 
-        this.fileRegistry.set(uri, record);
+        this.fileRegistry.set(key, record);
 
         return record;
       }
@@ -446,8 +447,6 @@ function LinkerPluginShell() {
     createURI(preferredUri: string, outputRelative?: boolean): string {
       const uri = this.generateBaseURI(preferredUri);
 
-      this.getFileRecord(uri);
-
       return this.processInternalURI(uri, {outputRelative});
     }
 
@@ -520,12 +519,14 @@ function LinkerPluginShell() {
       // Append enough underscores to make the filename unique
       while (nonUnique) {
         if (this.fileRegistry.has(probeKey)) {
-          probeURI += "_";
-          probeKey += "_";
+          probeURI = probeURI.replace(".html", "_.html");
+          probeKey = probeKey.replace(".html", "_.html");
         } else {
           nonUnique = false;
         }
       }
+
+      this.getFileRecord(probeURI);
 
       return probeURI;
     }
