@@ -8,9 +8,11 @@ export default function mergeReturns(docReturns: Return[], metaReturns: Return[]
     return docReturns || metaReturns;
   }
 
-  // ASSUMPTION: docReturns & metaReturns have atleast one Return
-
-  docReturns[0].dataType = docReturns[0].dataType || metaReturns[0].dataType;
+  if (docReturns[0]) {
+    docReturns[0].dataType = docReturns[0].dataType || metaReturns[0].dataType;
+  } else {
+    docReturns[0] = metaReturns[0];
+  }
 
   return docReturns;
 }
