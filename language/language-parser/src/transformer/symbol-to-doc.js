@@ -295,8 +295,8 @@ export default function symbolToDoc(symbol: Symbol): ?Doc {
 
 // Infer everything we can from the metadata
 function infer(doc: any, meta: SymbolSignature) {
-  doc.params = mergeParams(doc.params ?? [], meta.params);
-  doc.returns = mergeReturns(doc.returns ?? [], meta.returns);
+  doc.params = mergeParams(doc.params, meta.params) ?? [];
+  doc.returns = mergeReturns(doc.returns, meta.returns) ?? [];
   doc.extends = doc.extends || meta.extends || [];
   doc.implements = doc.implements || meta.implements || [];
   doc.typeParameters = doc.typeParameters || meta.typeParameters || [];
