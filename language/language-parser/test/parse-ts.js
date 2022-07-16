@@ -314,7 +314,7 @@ describe("@webdoc/parser.parse (Typescript)", function() {
     expect(childClass.members.filter(div)[0].overrides).to.not.equal(undefined);
   });
 
-  it.only("should cast property to @method properly", async () => {
+  it("should cast property to @method properly", async function() {
     await parse([{
       content: `
         /** DO */
@@ -335,5 +335,23 @@ describe("@webdoc/parser.parse (Typescript)", function() {
       `,
       path: "*.ts",
     }]);
+  });
+
+  it("can model literal data types", async function() {
+    await parse([
+      {
+        content: `
+          class Graph {}
+        
+          class Tree extends Graph {
+            /** True */
+            public empty: true;
+          }
+          
+          class TestTree extends Tree {}
+        `,
+        path: "*.ts",
+      },
+    ]);
   });
 });
