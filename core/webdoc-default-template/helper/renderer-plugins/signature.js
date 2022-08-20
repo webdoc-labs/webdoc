@@ -68,13 +68,13 @@ exports.signaturePlugin = {
       }
       break;
     case "ClassDoc":
-      if (doc.extends) {
+      if (doc.extends && doc.extends.length > 0) {
         signature += ` extends ${
           (doc.extends || [])
             .map((superClass) => linker.linkTo(superClass, undefined, {htmlSafe: false})).join(", ")
         }`;
       }
-      if (doc.implements) {
+      if (doc.implements && doc.implements.length > 0) {
         signature += ` implements ${
           (doc.implements || [])
             .map((ifc) => linker.linkTo(ifc, undefined, {htmlSafe: false})).join(", ")
