@@ -47,19 +47,23 @@ self.addEventListener("fetch", function(e: FetchEvent) {
         "x-manifest-hash": settings.manifestHash || "Not Available",
       };
 
-      const finalResponse = new Response(response.body, {
-        status: response.status || 200,
-        statusText: response.statusText,
-        headers,
-      });
+      try {
+        const finalResponse = new Response(response.body, {
+          status: response.status || 200,
+          statusText: response.statusText,
+          headers,
+        });
 
-      if (VERSIONED_APP_SHELL_FILES.some((file) => e.request.url.endsWith(file))) {
-        mainCache.put(e.request, finalResponse.clone());
-      } else if (EPHEMERAL_APP_SHELL_FILES.some((file) => e.request.url.endsWith(file))) {
-        ephemeralCache.put(e.request, finalResponse.clone());
+        if (VERSIONED_APP_SHELL_FILES.some((file) => e.request.url.endsWith(file))) {
+          mainCache.put(e.request, finalResponse.clone());
+        } else if (EPHEMERAL_APP_SHELL_FILES.some((file) => e.request.url.endsWith(file))) {
+          ephemeralCache.put(e.request, finalResponse.clone());
+        }
+
+        return finalResponse;
+      } catch {
+        return response;
       }
-
-      return finalResponse;
     }),
   );
 });

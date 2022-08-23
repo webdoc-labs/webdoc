@@ -1,5 +1,5 @@
 import React from "react";
-import {getResourceURI} from "../../resource";
+import {getResourceURI} from "../../../protocol";
 
 export default function Search({
   integration,

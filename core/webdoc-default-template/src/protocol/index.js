@@ -24,12 +24,11 @@ export type SwMessage = SwInitMessage | SwSettingsTriggerMessage;
 
 export function getResourceURI(path) {
   const root = window.appData.siteRoot;
-
   if (!path.startsWith("/")) {
     path = `/${path}`;
   }
 
-  return root + path;
+  return (root + path).replace("//", "/");
 }
 
 export class webdocService {
@@ -73,7 +72,7 @@ export class webdocService {
     if (!APP_MANIFEST) return currentHash;
 
     try {
-      const response = await fetch("/" + APP_MANIFEST + ".md5");
+      const response = await fetch(APP_MANIFEST + ".md5");
       const text = await response.text();
 
       return text;
@@ -85,8 +84,7 @@ export class webdocService {
 }
 
 export async function registerServiceWorker(): Promise<webdocService> {
-  const registration = await navigator.serviceWorker.register(
-    "/" + getResourceURI("service-worker.js"));
+  const registration = await navigator.serviceWorker.register(getResourceURI("service-worker.js"));
   const waitOn = navigator.serviceWorker.controller ?
     Promise.resolve() :
     new Promise((resolve, reject) => {

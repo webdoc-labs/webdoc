@@ -82,7 +82,7 @@ exports.publish = async function publish(options /*: PublishOptions */) {
   const settingsRelative = settings.replace(`/${linker.siteRoot}/`, "");
   const manifestNormalized = path.normalize(config.opts.export);
   const manifest = config.opts.export && manifestNormalized.startsWith(outDir) ?
-    manifestNormalized :
+    path.join(linker.siteRoot, manifestNormalized.replace(outDir, "")) :
     null;
 
   fse.ensureDir(outDir);
