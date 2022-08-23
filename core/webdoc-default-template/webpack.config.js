@@ -14,6 +14,10 @@ module.exports = {
       import: ["./src/app/index.js", "./src/styles/index.scss"],
       filename: "scripts/default-template.js",
     },
+    sw: {
+      import: ["./src/service-worker/index.js"],
+      filename: "service-worker.js",
+    },
   },
   externals: {
     "react": "React",

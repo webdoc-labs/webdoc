@@ -73,7 +73,6 @@ specifiers:
   lodash.merge: 4.6.2
   markdown-it: 13.0.1
   markdown-it-highlightjs: ^3.1.0
-  marked: ^0.8.2
   mini-css-extract-plugin: ^0.9.0
   missionlog: 1.6.0
   mocha: ^7.1.1
@@ -173,7 +172,6 @@ dependencies:
   lodash.merge: 4.6.2
   markdown-it: 13.0.1
   markdown-it-highlightjs: 3.6.0
-  marked: 0.8.2
   mini-css-extract-plugin: 0.9.0_webpack@5.73.0
   missionlog: 1.6.0
   mocha: 7.2.0
@@ -7939,7 +7937,7 @@ packages:
     dev: false
 
   file:projects/cli.tgz:
-    resolution: {integrity: sha512-BflHHIn7anG5ZilUf1QeC0UXJ62x/VcpYzJw6hfGP8sRJMpaUJaA+gJmNwknC0OgyRHHlMonUEh5HAH3ArCWIg==, tarball: file:projects/cli.tgz}
+    resolution: {integrity: sha512-U6UZ+fw4DnzlkCpZ3ix0KUYR1X2b4pFvDD90+CDBD0lpbOSSvykqu/sfSUw0rRpuXedUf1VzxDRm1GaFMng8uw==, tarball: file:projects/cli.tgz}
     name: '@rush-temp/cli'
     version: 0.0.0
     dependencies:
@@ -8005,7 +8003,7 @@ packages:
     dev: false
 
   file:projects/default-template.tgz:
-    resolution: {integrity: sha512-+lpwqPRTxagjoPgg2tEYtc2o2Nh4ERVq96MtrLB6/5q70Ph6eO4FLisrfHO8fELKUC3dixdN5pwmsZqADQKWEw==, tarball: file:projects/default-template.tgz}
+    resolution: {integrity: sha512-cDMFkinj3lyN9rWotK6l88eslKaixRoTooM2abEiO4eAe8xtWdfT+1lSMwfJC6bTn9Tug39qNH4RFeumMglPpg==, tarball: file:projects/default-template.tgz}
     name: '@rush-temp/default-template'
     version: 0.0.0
     dependencies:
@@ -8029,6 +8027,7 @@ packages:
       eslint: 8.18.0
       extract-loader: 5.1.0
       file-loader: 6.2.0_webpack@5.73.0
+      flow-bin: 0.130.0
       flow-typed: 3.8.0
       fs-extra: 9.1.0
       highlight.js: 10.7.3
@@ -8089,7 +8088,7 @@ packages:
     dev: false
 
   file:projects/example.tgz_@babel+core@7.18.5:
-    resolution: {integrity: sha512-n6F5XNGksqZ2zGWkuErIuEeQu5SYFOfj85m1yoWlujV0aMDKjC4I/A5Py2OZoolL3VlUJ2vtAiSZPcQxVXrsnw==, tarball: file:projects/example.tgz}
+    resolution: {integrity: sha512-//X1VvvGCXAnnJKxYoouRa+07vWbOJzlRNgfNLyfuY/K7yDJ42QDisXibia2yN6JrxUEqvnrBUd1tzrU3HLuuA==, tarball: file:projects/example.tgz}
     id: file:projects/example.tgz
     name: '@rush-temp/example'
     version: 0.0.0
@@ -8104,7 +8103,7 @@ packages:
     dev: false
 
   file:projects/externalize.tgz:
-    resolution: {integrity: sha512-za8wPqj+6JhDjZmPqm0Mh3ezjGxtyIOOw97RxMl0XGpiW3IVZH6+OTggmgJrwBKa3bRea4I/T9/EYeGoG64fCw==, tarball: file:projects/externalize.tgz}
+    resolution: {integrity: sha512-0wAv9Fr4PASfLWOClFKt7dQNMeDtDpxaQ4c2yd/GNPg8RYkRa+R7jBFAoLKC0CCZHgjONsfcVs8Vxp9ASaXfGw==, tarball: file:projects/externalize.tgz}
     name: '@rush-temp/externalize'
     version: 0.0.0
     dependencies:
@@ -8129,7 +8128,7 @@ packages:
     dev: false
 
   file:projects/language-babel.tgz:
-    resolution: {integrity: sha512-yjv3/1SmH+DtSxnedZ+jRgJAzc8nvBo4/Aa36nbcrWuyw0mXkiXCAzQQa5FYf5NSup1kDEjYSvbyjClZj69mWw==, tarball: file:projects/language-babel.tgz}
+    resolution: {integrity: sha512-WfeT4/dK3TtrGlJQEkt2SRu/8JSYaBu2+AKZ2hqK7TXKWOGJz+n7U6+Bk+tQMHzMMaoo642DFKVkf42csFr6ug==, tarball: file:projects/language-babel.tgz}
     name: '@rush-temp/language-babel'
     version: 0.0.0
     dependencies:
@@ -8160,7 +8159,7 @@ packages:
     dev: false
 
   file:projects/language-library.tgz:
-    resolution: {integrity: sha512-1XhkRfediYilDiQxELc0lWd6zFYHqNf2llXNUEU7+tcBI5/2/ZkArR/4gebEW1K45HgCul/a75KHA7293bgGhA==, tarball: file:projects/language-library.tgz}
+    resolution: {integrity: sha512-W9q9BZ11QFtzdFCTL55UUQF1QtgnuEnJBaperCRQllmmAO1sESh8sdBzK5r9YH5KTLN3x2IFK3ouuAxxPEjbbA==, tarball: file:projects/language-library.tgz}
     name: '@rush-temp/language-library'
     version: 0.0.0
     dependencies:
@@ -8191,7 +8190,7 @@ packages:
     dev: false
 
   file:projects/language-parser.tgz:
-    resolution: {integrity: sha512-UBkJ+Z3rX+z319BUAaIzmgiN81ia99V/pJN0kH6qXAYpzq0/UnmfSwyl/2HcUaiCuoIlHUJwfqq/vjAaJGG3gQ==, tarball: file:projects/language-parser.tgz}
+    resolution: {integrity: sha512-8xiWZIEvWtNEpzFfYwnP/xhuVzOdJB7/6KI69KZ4q8E8nhUHaGo5xDLCIz1BPRC6V2LNd2xHZ7nIf2n+oTkJIw==, tarball: file:projects/language-parser.tgz}
     name: '@rush-temp/language-parser'
     version: 0.0.0
     dependencies:
@@ -8222,7 +8221,7 @@ packages:
     dev: false
 
   file:projects/legacy-template.tgz_@babel+core@7.18.5:
-    resolution: {integrity: sha512-zErRXKCzFvuiVxit3j4Rrbh9M/WcT6VfjqZzFOUyHRGpCQBcmfznQAgIBBe+PoqQXb1WfBGymlg7JzjBieowxA==, tarball: file:projects/legacy-template.tgz}
+    resolution: {integrity: sha512-mE3apaooFClpP2yn5LsfUF0dTeZM0ce5aidmDEZX8U0ir3q/an5W+tGriqXuuTKAwE8DOtbadZ94/py1WRd3vg==, tarball: file:projects/legacy-template.tgz}
     id: file:projects/legacy-template.tgz
     name: '@rush-temp/legacy-template'
     version: 0.0.0
@@ -8251,7 +8250,7 @@ packages:
     dev: false
 
   file:projects/model.tgz:
-    resolution: {integrity: sha512-axOagJG430lABb+GCMD1r84dxQwvU6swdOdIZqu4jatEgZQssuf7jow1VUzJ4no6ASRURxaNF/LiuQASkREuIw==, tarball: file:projects/model.tgz}
+    resolution: {integrity: sha512-wF7nlJIULetdsxs3weiGHYw7XHvABzqJFiV1LLolZFxFTd/74u3WC2u4SIHMnWlD+qSwtM0gr8PguUeyPNslzg==, tarball: file:projects/model.tgz}
     name: '@rush-temp/model'
     version: 0.0.0
     dependencies:
@@ -8302,7 +8301,7 @@ packages:
     dev: false
 
   file:projects/template-library.tgz:
-    resolution: {integrity: sha512-UdTcrd2KnNNTRWUKTFLRnN6tfKmBETu/VvtQm+u/WnkN9nsROVRdsIzc0Ve+Dc2b+nF4z2k7hSmsyxKDNc7fXA==, tarball: file:projects/template-library.tgz}
+    resolution: {integrity: sha512-5mreEu+Z7ZxpWXWT0YiM3UzSHdXJrA0bHUzQWq/iT2eMbz3YjYBou6sIW+ynF324wkoI7J4LDsU3NjsUwYpoGg==, tarball: file:projects/template-library.tgz}
     name: '@rush-temp/template-library'
     version: 0.0.0
     dependencies:

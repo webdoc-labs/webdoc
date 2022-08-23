@@ -8,7 +8,7 @@ import type {
   Doc,
   DocType,
   PackageDoc,
-  RootDoc
+  RootDoc,
 } from "@webdoc/types";
 import type {CategorizedDocumentList} from "./crawl";
 */
@@ -30,7 +30,7 @@ const HINTS = {
 };
 
 // Crawls the tree searching for the API reference
-function crawlReference(doc /*: Doc */, index /*: string */) {
+function crawlReference(doc /*: RootDoc */, index /*: string */) {
   if (!doc.members.length) {
     return null;
   }
@@ -52,6 +52,7 @@ function getPage(doc /*: Doc */) {
 type ExplorerNode = {
   doc: Doc,
   children: CategorizedDocumentList,
+};
 */
 
 function buildExplorerHierarchy(rootDoc /*: RootDoc */, multiPackage = false) /*: ExplorerNode */ {
