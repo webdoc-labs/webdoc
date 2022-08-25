@@ -1,6 +1,7 @@
 // @flow
 
 import * as Sentry from "@sentry/node";
+import * as crypto from "crypto";
 import * as external from "@webdoc/externalize";
 import * as yargs from "yargs";
 import {LogLevel, log, tag} from "missionlog";
@@ -134,7 +135,8 @@ export async function main(argv: yargs.Argv): Promise<void> {
   } catch (e) {
     // Make sure we get that API structure out so the user can debug the problem!
     if (config.opts && config.opts.export) {
-      fs.writeFileSync(config.opts.export, external.write(external.fromTree(documentTree), true));
+      fs.writeFileSync((config.opts.export: any),
+        external.write(external.fromTree(documentTree), true));
     }
 
     throw e;
@@ -181,7 +183,15 @@ export async function main(argv: yargs.Argv): Promise<void> {
   }
 
   if (config.opts && config.opts.export) {
-    fs.writeFileSync(config.opts.export, external.write(manifest, argv.verbose));
+    const file = config.opts.export;
+    const contents = external.write(manifest, argv.verbose);
+    const hash = crypto
+      .createHash("md5")
+      .update(contents)
+      .digest("hex");
+
+    fs.writeFileSync(file, contents);
+    fs.writeFileSync(`${file}.md5`, hash);
   }
 
   console.log(`@webdoc took ${Math.ceil(performance.now() - start)}ms to run!`);

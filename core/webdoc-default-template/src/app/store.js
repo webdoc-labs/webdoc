@@ -45,6 +45,20 @@ function globalReducer(state = {}, action) {
       expandedItems,
     };
   }
+  case "setDatabase": {
+    return {
+      ...state,
+      database: action.value,
+    };
+  }
+  case "setService": {
+    return {
+      ...state,
+      service: action.value,
+      offline: action.value.offline,
+      stale: action.value.stale,
+    };
+  }
   default:
     return state;
   }
@@ -55,4 +69,8 @@ export default createStore(globalReducer, {
   explorerOpen: true,
   expandedItemsBeforeQuery: new Set(),
   query: "",
+  database: null,
+  service: null,
+  offline: false,
+  stale: false,
 });

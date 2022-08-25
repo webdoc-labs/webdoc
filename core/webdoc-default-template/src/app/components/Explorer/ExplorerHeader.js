@@ -1,6 +1,5 @@
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
-import {appData} from "../../resource";
 import {makeStyles} from "@material-ui/core/styles";
 
 const useToggleButtonStyles = makeStyles({
@@ -32,7 +31,7 @@ export default function ExplorerHeader({
       <span
         className="explorer__header__title"
         dangerouslySetInnerHTML={{
-          __html: appData.applicationName,
+          __html: window.appData.applicationName,
         }}
       />
     </section>

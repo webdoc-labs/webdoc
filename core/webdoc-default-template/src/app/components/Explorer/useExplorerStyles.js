@@ -21,6 +21,7 @@ const itemStyle = {
     backgroundColor: "none",
   },
   root: {
+    flexGrow: 1,
     padding: "0 8px",
   },
 };

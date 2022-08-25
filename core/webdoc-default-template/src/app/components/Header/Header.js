@@ -1,6 +1,5 @@
 import {ExplorerHeader} from "../Explorer";
 import Search from "./Search";
-import {appData} from "../../resource";
 import {connect} from "react-redux";
 import store from "../../store";
 
@@ -11,8 +10,8 @@ export default connect(({explorerOpen}) => ({
   explorerOpen,
   setExplorerOpen,
 }) {
-  const items = Object.entries(appData.appBar.items);
-  const currentItemId = appData.appBar.current;
+  const items = Object.entries(window.appData.appBar.items);
+  const currentItemId = window.appData.appBar.current;
 
   return (
     <div className="header__container">
@@ -38,7 +37,8 @@ export default connect(({explorerOpen}) => ({
               </React.Fragment>
             )
         ))}
-        {appData.integrations.search && <Search integration={appData.integrations.search} />}
+        {window.appData.integrations.search &&
+          <Search integration={window.appData.integrations.search} />}
       </div>
     </div>
   );

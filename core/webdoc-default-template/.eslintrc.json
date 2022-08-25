@@ -2,5 +2,13 @@
     "ignorePatterns": "static/scripts/*",
     "extends": [
         "@webdoc/eslint-config"
+    ],
+    "overrides": [
+        {
+            "files": ["./src/service-worker/**"],
+            "env": {
+                "serviceworker": true
+            }
+        }
     ]
 }

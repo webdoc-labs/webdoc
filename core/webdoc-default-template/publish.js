@@ -78,6 +78,12 @@ exports.publish = async function publish(options /*: PublishOptions */) {
   const assetsDir = path.join(outDir, "./assets");
   const index = config.template.readme ? linker.createURI("index") : null;
   const indexRelative = index ? index.replace(`/${linker.siteRoot}/`, "") : null;
+  const settings = linker.createURI("settings");
+  const settingsRelative = settings.replace(`/${linker.siteRoot}/`, "");
+  const manifestNormalized = config.opts.export ? path.normalize(config.opts.export) : null;
+  const manifest = config.opts.export && manifestNormalized.startsWith(outDir) ?
+    path.join(linker.siteRoot, manifestNormalized.replace(outDir, "")) :
+    null;
 
   fse.ensureDir(outDir);
 
@@ -133,6 +139,13 @@ exports.publish = async function publish(options /*: PublishOptions */) {
       appBar: {
         items: appBarItems,
       },
+      manifest: {url: manifest},
+      pages: {
+        settings,
+        relative: {
+          settings: settingsRelative,
+        },
+      },
       variant: config.template.variant,
     });
   if (config.template.repository) {
@@ -169,6 +182,7 @@ exports.publish = async function publish(options /*: PublishOptions */) {
     outSource(outDir, pipeline, options.config, source, options.cmdLine.mainThread || false),
     outExplorerData(outDir, crawlData),
     outMainPage(indexRelative ? path.join(outDir, indexRelative) : null, pipeline, options.config),
+    outPages(outDir, pipeline, options.config),
     outIndexes(outDir, pipeline, options.config, crawlData.index),
     outReference(outDir, pipeline, options.config, docTree, crawlData.reference),
     outTutorials(outDir, pipeline, options.config, docTree, crawlData.tutorials),
@@ -289,6 +303,19 @@ async function outMainPage(
       readmeFile,
     );
   }
+}
+
+async function outPages(
+  outDir /*: string */,
+  pipeline /*: TemplatePipeline */,
+  config /*: WebdocConfig */,
+)/*: Promise<void> */ {
+  pipeline.render("pages/settings.tmpl", {
+    env: config,
+    title: "Site Settings",
+  }, {
+    outputFile: path.join(outDir, pipeline.renderer.data.pages.relative.settings),
+  });
 }
 
 async function outSource(

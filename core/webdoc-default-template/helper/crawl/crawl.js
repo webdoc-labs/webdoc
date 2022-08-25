@@ -79,6 +79,13 @@ function buildLinks(manifest /*: Manifest */) /*: void */ {
 
         registry[packageDoc.id].uri = linker.getURI(packageDoc);
       });
+      for (const tutorialDoc of doc.tutorials) {
+        if (tutorialDoc.route) {
+          if (!registry[tutorialDoc.id]) registry[tutorialDoc.id] = {};
+          registry[tutorialDoc.id].uri = linker.getURI(tutorialDoc);
+        }
+      }
+
 
       return;
     }

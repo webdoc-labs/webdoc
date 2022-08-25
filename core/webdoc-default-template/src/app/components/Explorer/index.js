@@ -4,6 +4,7 @@ import ExplorerFilter from "./ExplorerFilter";
 import ExplorerHeader from "./ExplorerHeader";
 import ExplorerTarget from "./ExplorerItem";
 import ExplorerTargetGroup from "./ExplorerCategoryItem";
+import ExplorerToolbar from "./ExplorerToolbar";
 import React from "react";
 import TreeView from "@material-ui/lab/TreeView";
 import {connect} from "react-redux";
@@ -166,6 +167,7 @@ export default connect(({
       >
         {children}
       </TreeView>
+      <ExplorerToolbar />
     </div>
   );
 });
