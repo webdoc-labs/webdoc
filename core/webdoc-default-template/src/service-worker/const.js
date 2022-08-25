@@ -1,7 +1,5 @@
 // @flow
 
-// TODO(Shukant): Implement un-versioned app shell by custom cache TTL
-
 export const VERSIONED_APP_SHELL_FILES = [
   // Icons
   "icons/chevron-down.svg",

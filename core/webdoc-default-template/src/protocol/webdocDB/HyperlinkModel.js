@@ -54,8 +54,6 @@ export class HyperlinkModel {
     const transaction = this.db.transaction(HyperlinkModel.STORE, "readwrite");
     const store = transaction.objectStore(HyperlinkModel.STORE);
 
-    // TODO(Shukant): We have to delete records for the app,
-    //    but right now only 1 app would exist anyway
     const clearRequest = store.clear();
     await new Promise((resolve, reject) => {
       clearRequest.onsuccess = resolve;
