@@ -80,7 +80,7 @@ exports.publish = async function publish(options /*: PublishOptions */) {
   const indexRelative = index ? index.replace(`/${linker.siteRoot}/`, "") : null;
   const settings = linker.createURI("settings");
   const settingsRelative = settings.replace(`/${linker.siteRoot}/`, "");
-  const manifestNormalized = path.normalize(config.opts.export);
+  const manifestNormalized = config.opts.export ? path.normalize(config.opts.export) : null;
   const manifest = config.opts.export && manifestNormalized.startsWith(outDir) ?
     path.join(linker.siteRoot, manifestNormalized.replace(outDir, "")) :
     null;

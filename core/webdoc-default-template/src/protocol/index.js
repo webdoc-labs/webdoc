@@ -44,6 +44,10 @@ export class webdocService {
   }
 
   async init(): webdocService {
+    if (!APP_MANIFEST) {
+      throw new Error("The documentation manifest was not exported to the website");
+    }
+
     const {manifest, manifestHash, version} = await this.db.settings.get(APP_NAME);
     const {hash: verifiedHash, offline} = await webdocService.verifyManifestHash(manifestHash);
 

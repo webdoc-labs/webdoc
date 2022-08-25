@@ -32,7 +32,7 @@ self.addEventListener("fetch", function(e: FetchEvent) {
       const db = await webdocDB.open();
       const settings = await db.settings.findByOrigin(origin);
 
-      if (ephemeralCacheHit) {
+      if (settings && ephemeralCacheHit) {
         const manifestHash = ephemeralCacheHit.headers.get("x-manifest-hash");
 
         if (settings.manifestHash === manifestHash) return ephemeralCacheHit;
@@ -48,8 +48,9 @@ self.addEventListener("fetch", function(e: FetchEvent) {
         if (VERSIONED_APP_SHELL_FILES.some((file) => e.request.url.endsWith(file))) {
           await mainCache.put(e.request, response.clone());
         } else if (
-          EPHEMERAL_APP_SHELL_FILES.some((file) => e.request.url.endsWith(file)) ||
-          e.request.url.endsWith(".html")) {
+          settings && (
+            EPHEMERAL_APP_SHELL_FILES.some((file) => e.request.url.endsWith(file)) ||
+          e.request.url.endsWith(".html"))) {
           await ephemeralCache.put(e.request, response.clone());
         }
 
