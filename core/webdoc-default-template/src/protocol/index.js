@@ -23,12 +23,15 @@ export type SwSettingsTriggerMessage = {
 export type SwMessage = SwInitMessage | SwSettingsTriggerMessage;
 
 export function getResourceURI(path) {
-  const root = window.appData.siteRoot;
-  if (!path.startsWith("/")) {
-    path = `/${path}`;
-  }
+  let root = window.appData.siteRoot;
+  if (root && !root.startsWith("/")) root = `/${root}`;
+  if (!path.startsWith("/")) path = `/${path}`;
 
   return (root + path).replace("//", "/");
+}
+
+export function ensureAbsolutePath(path) {
+  return path.startsWith("/") ? path : `/${path}`;
 }
 
 export class webdocService {
@@ -72,7 +75,7 @@ export class webdocService {
     if (!APP_MANIFEST) return currentHash;
 
     try {
-      const response = await fetch(APP_MANIFEST + ".md5");
+      const response = await fetch(ensureAbsolutePath(APP_MANIFEST + ".md5"));
       const text = await response.text();
 
       return text;

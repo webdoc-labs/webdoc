@@ -56,7 +56,9 @@ self.addEventListener("fetch", function(e: FetchEvent) {
 
         if (VERSIONED_APP_SHELL_FILES.some((file) => e.request.url.endsWith(file))) {
           mainCache.put(e.request, finalResponse.clone());
-        } else if (EPHEMERAL_APP_SHELL_FILES.some((file) => e.request.url.endsWith(file))) {
+        } else if (
+          EPHEMERAL_APP_SHELL_FILES.some((file) => e.request.url.endsWith(file)) ||
+          e.request.url.endsWith(".html")) {
           ephemeralCache.put(e.request, finalResponse.clone());
         }
 
@@ -71,7 +73,7 @@ self.addEventListener("fetch", function(e: FetchEvent) {
 async function cachePagesOffline(app: string): Promise<void> {
   const [db, appCache]: [webdocDB, Cache] = await Promise.all([
     webdocDB.open(),
-    caches.open(MAIN_CACHE_KEY),
+    caches.open(EPHEMERAL_CACHE_KEY),
   ]);
 
   for await (const {uri} of db.hyperlinks.list(app, {page: true})) {
