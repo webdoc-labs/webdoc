@@ -7,6 +7,7 @@ import {
   VERSIONED_APP_SHELL_FILES,
 } from "./const";
 import type {SwInitMessage, SwMessage, SwSettingsTriggerMessage} from "../protocol";
+import {fetchVersioned} from "./cache";
 import {webdocDB} from "../protocol";
 
 self.addEventListener("install", function(e: ExtendableEvent) {
@@ -41,30 +42,23 @@ self.addEventListener("fetch", function(e: FetchEvent) {
         }
       }
 
-      const response = await fetch(e.request);
-      const headers = {
-        ...Object.fromEntries([...response.headers.entries()]),
-        "x-manifest-hash": settings.manifestHash || "Not Available",
-      };
-
       try {
-        const finalResponse = new Response(response.body, {
-          status: response.status || 200,
-          statusText: response.statusText,
-          headers,
-        });
+        const response = await fetchVersioned(e.request);
 
         if (VERSIONED_APP_SHELL_FILES.some((file) => e.request.url.endsWith(file))) {
-          mainCache.put(e.request, finalResponse.clone());
+          await mainCache.put(e.request, response.clone());
         } else if (
           EPHEMERAL_APP_SHELL_FILES.some((file) => e.request.url.endsWith(file)) ||
           e.request.url.endsWith(".html")) {
-          ephemeralCache.put(e.request, finalResponse.clone());
+          await ephemeralCache.put(e.request, response.clone());
         }
 
-        return finalResponse;
-      } catch {
         return response;
+      } catch (e) {
+        // Finish with cached response if network offline, even if we know it's stale
+        console.error(e);
+        if (ephemeralCacheHit) return ephemeralCacheHit;
+        else throw e;
       }
     }),
   );
@@ -76,10 +70,11 @@ async function cachePagesOffline(app: string): Promise<void> {
     caches.open(EPHEMERAL_CACHE_KEY),
   ]);
 
-  for await (const {uri} of db.hyperlinks.list(app, {page: true})) {
-    console.info("Caching ", uri);
-    appCache.add(new URL(uri, new URL(registration.scope).origin));
-  }
+  db.hyperlinks.list(app, {page: true}, ({uri}) => {
+    const url = new URL(uri, new URL(registration.scope).origin).href;
+    console.log("Caching ", url);
+    fetchVersioned(url).then((response) => appCache.put(url, response));
+  });
 }
 
 self.addEventListener("message", async function(e) {

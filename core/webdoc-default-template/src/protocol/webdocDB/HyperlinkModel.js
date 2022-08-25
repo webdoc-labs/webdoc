@@ -18,12 +18,10 @@ export class HyperlinkModel {
   }
 
   // eslint-disable-next-line no-undef
-  async* list(app: string, filter: { page?: boolean }): Iterable<HyperlinkData> {
+  list(app: string, filter: { page?: boolean }, cb: (link: HyperlinkData) => void): void {
     const transaction = this.db.transaction(HyperlinkModel.STORE, "readonly");
     const store = transaction.objectStore(HyperlinkModel.STORE);
     const request = store.openCursor();
-    let cont: ?(() => void) = null;
-    let done = false;
 
     const evaluateFilter = (value: ?HyperlinkData): boolean => {
       if (!value) return false;
@@ -31,31 +29,18 @@ export class HyperlinkModel {
       return true;
     };
 
-    while (!done) {
-      try {
-        const [value, _cont] = await new Promise((resolve, reject) => {
-          request.onsuccess = (e) => {
-            const cursor = e.target.result;
+    request.onerror = (e) => {
+      console.error(e);
+    };
 
-            if (!cursor || !cursor.value) {
-              done = true;
-            }
+    request.onsuccess = (e) => {
+      const cursor = e.target.result;
 
-            request.onsuccess = null;
-            resolve([cursor && cursor.value, () => cursor.continue()]);
-          };
-          request.onerror = reject;
-
-          if (cont) cont();
-        });
-
-        if (evaluateFilter(value)) yield value;
-        cont = _cont;
-      } catch (e) {
-        console.error(e);
-        throw e;
+      if (cursor && cursor.value) {
+        if (evaluateFilter(cursor.value)) cb(cursor.value);
+        cursor.continue();
       }
-    }
+    };
   }
 
   async put(app: string, registry: { [string]: { uri: string } }): Promise<void> {

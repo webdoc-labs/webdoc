@@ -36,6 +36,8 @@ export function ensureAbsolutePath(path) {
 
 export class webdocService {
   db: webdocDB;
+  offline: boolean;
+  stale: boolean;
 
   constructor(db: webdocDB) {
     this.db = db;
@@ -43,7 +45,7 @@ export class webdocService {
 
   async init(): webdocService {
     const {manifest, manifestHash, version} = await this.db.settings.get(APP_NAME);
-    const verifiedHash = await webdocService.verifyManifestHash(manifestHash);
+    const {hash: verifiedHash, offline} = await webdocService.verifyManifestHash(manifestHash);
 
     if (manifest !== APP_MANIFEST ||
           manifestHash !== verifiedHash ||
@@ -62,7 +64,11 @@ export class webdocService {
           manifest: APP_MANIFEST,
         });
       }
+
+      this.stale = true;
     }
+
+    this.offline = offline;
 
     return this;
   }
@@ -71,17 +77,23 @@ export class webdocService {
     navigator.serviceWorker.controller.postMessage(data);
   }
 
-  static async verifyManifestHash(currentHash: string): Promise<string> {
-    if (!APP_MANIFEST) return currentHash;
+  static async verifyManifestHash(currentHash: string): Promise<{
+    hash: string,
+    offline: boolean,
+  }> {
+    if (!APP_MANIFEST) return {hash: currentHash, offline: false};
 
     try {
       const response = await fetch(ensureAbsolutePath(APP_MANIFEST + ".md5"));
       const text = await response.text();
 
-      return text;
+      return {hash: text, offline: false};
     } catch (e) {
       console.error("Failed to verify manifest hash", e);
-      return currentHash;// Don't invalidate if request fails
+      return {
+        hash: currentHash,
+        offline: e.message && e.message.includes("Failed to fetch"),
+      };// Don't invalidate if request fails
     }
   }
 }

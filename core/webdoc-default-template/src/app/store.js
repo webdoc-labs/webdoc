@@ -55,6 +55,8 @@ function globalReducer(state = {}, action) {
     return {
       ...state,
       service: action.value,
+      offline: action.value.offline,
+      stale: action.value.stale,
     };
   }
   default:
@@ -69,4 +71,6 @@ export default createStore(globalReducer, {
   query: "",
   database: null,
   service: null,
+  offline: false,
+  stale: false,
 });
