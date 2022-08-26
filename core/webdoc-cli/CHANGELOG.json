@@ -2,6 +2,18 @@
   "name": "@webdoc/cli",
   "entries": [
     {
+      "version": "2.1.0",
+      "tag": "@webdoc/cli_v2.1.0",
+      "date": "Fri, 26 Aug 2022 09:26:31 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "A new md5 hash file is emitted next to exported manifests"
+          }
+        ]
+      }
+    },
+    {
       "version": "2.0.0",
       "tag": "@webdoc/cli_v2.0.0",
       "date": "Sat, 16 Jul 2022 23:37:07 GMT",

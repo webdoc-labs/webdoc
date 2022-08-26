@@ -2,6 +2,18 @@
   "name": "@webdoc/default-template",
   "entries": [
     {
+      "version": "2.1.0",
+      "tag": "@webdoc/default-template_v2.1.0",
+      "date": "Fri, 26 Aug 2022 09:26:31 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "Faster page reloads and an offline storage option developed on top of a service worker!"
+          }
+        ]
+      }
+    },
+    {
       "version": "2.0.0",
       "tag": "@webdoc/default-template_v2.0.0",
       "date": "Sat, 16 Jul 2022 23:37:07 GMT",
