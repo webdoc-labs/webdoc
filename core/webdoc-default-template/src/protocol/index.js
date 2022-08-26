@@ -69,7 +69,8 @@ export class webdocService {
         });
       }
 
-      this.stale = true;
+      // The manifest changed from a previous non-null value
+      if (manifest) this.stale = true;
     }
 
     this.offline = offline;
