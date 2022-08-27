@@ -1,6 +1,6 @@
 {
   "name": "@webdoc/language-babel",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Language support for JavaScript, TypeScript, and Flow with Babel",
   "keywords": [
     "parser",
@@ -43,9 +43,9 @@
     "@babel/parser": "^7.9.4",
     "@babel/traverse": "7.9.5",
     "@babel/types": "7.9.5",
-    "@webdoc/language-library": "^2.1.1",
-    "@webdoc/model": "^2.1.1",
-    "@webdoc/types": "^2.1.1",
+    "@webdoc/language-library": "^2.1.2",
+    "@webdoc/model": "^2.1.2",
+    "@webdoc/types": "^2.1.2",
     "lodash": "^4.17.20",
     "missionlog": "1.6.0",
     "nanoid": "~3.1.16"

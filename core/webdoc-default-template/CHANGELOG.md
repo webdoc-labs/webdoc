@@ -1,6 +1,13 @@
 # Change Log - @webdoc/default-template
 
-This log was last generated on Sat, 27 Aug 2022 09:27:43 GMT and should not be manually modified.
+This log was last generated on Sat, 27 Aug 2022 10:38:56 GMT and should not be manually modified.
+
+## 2.1.2
+Sat, 27 Aug 2022 10:38:56 GMT
+
+### Updates
+
+- Fix analytics scripts not loading due to service worker
 
 ## 2.1.1
 Sat, 27 Aug 2022 09:27:43 GMT

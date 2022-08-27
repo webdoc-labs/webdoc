@@ -2,6 +2,12 @@
   "name": "@webdoc/language-parser",
   "entries": [
     {
+      "version": "2.1.2",
+      "tag": "@webdoc/language-parser_v2.1.2",
+      "date": "Sat, 27 Aug 2022 10:38:56 GMT",
+      "comments": {}
+    },
+    {
       "version": "2.1.1",
       "tag": "@webdoc/language-parser_v2.1.1",
       "date": "Sat, 27 Aug 2022 09:27:43 GMT",

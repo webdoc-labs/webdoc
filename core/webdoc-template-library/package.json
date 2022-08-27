@@ -1,6 +1,6 @@
 {
   "name": "@webdoc/template-library",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Goodies for @webdoc template packages! See @webdoc/legacy-template for an example!",
   "keywords": [
     "webdoc",
@@ -40,9 +40,9 @@
     "url": "https://github.com/SukantPal/webdoc/issues"
   },
   "dependencies": {
-    "@webdoc/externalize": "^2.1.1",
-    "@webdoc/model": "^2.1.1",
-    "@webdoc/types": "^2.1.1",
+    "@webdoc/externalize": "^2.1.2",
+    "@webdoc/model": "^2.1.2",
+    "@webdoc/types": "^2.1.2",
     "catharsis": "0.8.11",
     "fs-extra": "^9.0.1",
     "@fork-of/git-branch": "2.1.1",

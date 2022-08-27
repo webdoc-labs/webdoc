@@ -1,6 +1,6 @@
 {
   "name": "@webdoc/cli",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "CLI for @webdoc monorepo",
   "bin": {
     "webdoc": "./cli.js"
@@ -42,15 +42,15 @@
   "dependencies": {
     "@sentry/node": "7.2.0",
     "@sentry/integrations": "7.2.0",
-    "@webdoc/default-template": "^2.1.1",
-    "@webdoc/externalize": "^2.1.1",
-    "@webdoc/legacy-template": "^2.1.1",
-    "@webdoc/model": "^2.1.1",
-    "@webdoc/language-babel": "^2.1.1",
-    "@webdoc/language-parser": "^2.1.1",
-    "@webdoc/plugin-markdown": "^2.1.1",
-    "@webdoc/template-library": "^2.1.1",
-    "@webdoc/types": "^2.1.1",
+    "@webdoc/default-template": "^2.1.2",
+    "@webdoc/externalize": "^2.1.2",
+    "@webdoc/legacy-template": "^2.1.2",
+    "@webdoc/model": "^2.1.2",
+    "@webdoc/language-babel": "^2.1.2",
+    "@webdoc/language-parser": "^2.1.2",
+    "@webdoc/plugin-markdown": "^2.1.2",
+    "@webdoc/template-library": "^2.1.2",
+    "@webdoc/types": "^2.1.2",
     "array.prototype.flatmap": "~1.2.3",
     "fs-extra": "^9.0.1",
     "globby": "11.0.0",

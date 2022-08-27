@@ -1,6 +1,6 @@
 {
   "name": "@webdoc/externalize",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Links your documentation to external APIs and vice versa!",
   "keywords": [
     "json",
@@ -38,8 +38,8 @@
   },
   "dependencies": {
     "@babel/core": "7.18.5",
-    "@webdoc/model": "^2.1.1",
-    "@webdoc/types": "^2.1.1",
+    "@webdoc/model": "^2.1.2",
+    "@webdoc/types": "^2.1.2",
     "lodash": "^4.17.20",
     "@babel/plugin-proposal-class-properties": "7.17.12",
     "@babel/plugin-transform-flow-comments": "7.17.12"
