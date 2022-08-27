@@ -14,6 +14,12 @@
       "og:title": "webdoc",
       "og:description": "The documentation for webdoc, by webdoc!",
       "title": "webdoc"
+    },
+    "integrations": {
+      "analytics": {
+        "provider": "plausible",
+        "nakedDomain": "webdoc-labs.github.io"
+      }
     }
   },
   "opts": {

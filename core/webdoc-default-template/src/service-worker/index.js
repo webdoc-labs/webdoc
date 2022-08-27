@@ -19,6 +19,10 @@ self.addEventListener("activate", function(e: ExtendableEvent) {
 });
 
 self.addEventListener("fetch", function(e: FetchEvent) {
+  if (new URL(e.request.url).origin !== new URL(registration.scope).origin) {
+    return;
+  }
+
   e.respondWith(
     Promise.all([
       caches.open(MAIN_CACHE_KEY),
