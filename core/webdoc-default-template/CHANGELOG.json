@@ -2,6 +2,18 @@
   "name": "@webdoc/default-template",
   "entries": [
     {
+      "version": "2.1.1",
+      "tag": "@webdoc/default-template_v2.1.1",
+      "date": "Sat, 27 Aug 2022 09:27:43 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fix \"body\" tag misplaced in HTML layout"
+          }
+        ]
+      }
+    },
+    {
       "version": "2.1.0",
       "tag": "@webdoc/default-template_v2.1.0",
       "date": "Fri, 26 Aug 2022 09:26:31 GMT",

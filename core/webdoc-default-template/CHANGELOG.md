@@ -1,6 +1,13 @@
 # Change Log - @webdoc/default-template
 
-This log was last generated on Fri, 26 Aug 2022 09:26:31 GMT and should not be manually modified.
+This log was last generated on Sat, 27 Aug 2022 09:27:43 GMT and should not be manually modified.
+
+## 2.1.1
+Sat, 27 Aug 2022 09:27:43 GMT
+
+### Updates
+
+- Fix "body" tag misplaced in HTML layout
 
 ## 2.1.0
 Fri, 26 Aug 2022 09:26:31 GMT
