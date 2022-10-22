@@ -8,4 +8,5 @@ if (doc.type === "EventDoc" && !doc.dataType) {
   return;
 }
 ?>
-<pre class="signature__container"><code class="signature"><?js= this.plugins.signature.generateSignature(doc) ?></code></pre>
+<pre class="signature__container"><code class="signature"><?js= this.plugins.signature.generateSignature(doc) ?><?js if (doc.dataType) { ?>
+<?js= "\n" + this.linkTo(doc.dataType) ?><?js } ?></code></pre>

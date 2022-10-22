@@ -151,6 +151,10 @@
       "allowedCategories": [ "production" ]
     },
     {
+      "name": "@webdoc/plugin-format",
+      "allowedCategories": [ "production" ]
+    },
+    {
       "name": "@webdoc/plugin-markdown",
       "allowedCategories": [ "production" ]
     },

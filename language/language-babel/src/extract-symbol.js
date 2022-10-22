@@ -39,6 +39,7 @@ import {
   isTSMethodSignature,
   isTSParameterProperty,
   isTSPropertySignature,
+  isTSTypeAliasDeclaration,
   isTSTypeElement,
   isThisExpression, isVariableDeclarator,
 } from "@babel/types";
@@ -319,6 +320,14 @@ export default function extractSymbol(
 
     // Don't traverse through the initializer even if it isn't a literal
     flags |= OBLIGATE_LEAF;
+  } else if (isTSTypeAliasDeclaration(node)) {
+    // Example:
+    // type TypeName = {}
+
+    name = node.id.name;
+
+    nodeSymbol.meta.type = "TypedefDoc";
+    nodeSymbol.meta.dataType = extractType(node);
   } else if (isTSTypeElement(node)) {
     // This type of node occurs when declaring interface members.
     // Example:

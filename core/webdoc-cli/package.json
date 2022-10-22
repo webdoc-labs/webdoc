@@ -48,6 +48,7 @@
     "@webdoc/model": "^2.1.2",
     "@webdoc/language-babel": "^2.1.2",
     "@webdoc/language-parser": "^2.1.2",
+    "@webdoc/plugin-format": "^2.1.2",
     "@webdoc/plugin-markdown": "^2.1.2",
     "@webdoc/template-library": "^2.1.2",
     "@webdoc/types": "^2.1.2",

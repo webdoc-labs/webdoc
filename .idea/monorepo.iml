@@ -4,6 +4,15 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/core/webdoc-template-library/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/core/webdoc-cli/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/plugins/format/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/example/example-documentation" />
+      <excludeFolder url="file://$MODULE_DIR$/core/webdoc-externalize/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/core/webdoc-model/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/core/webdoc-plugin-markdown/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/language/language-babel/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/language/language-library/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/language/language-parser/lib" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
