@@ -95,11 +95,46 @@ export function parseDeprecated(value: string, options: $Shape<BaseDoc>): $Shape
 }
 
 export function parseExample(value: string, options: $Shape<BaseDoc>): $Shape<ExampleTag> {
+  const lines = value.split("\n");
+  let start = 0;
+  let end = lines.length;
+  for (let i = 0; i < lines.length; i++) {
+    if (lines[i].trim() === "") start = i + 1;
+    else break;
+  }
+  for (let i = lines.length - 1; i >= 0; i--) {
+    if (lines[i].trim() === "") end = i;
+    else break;
+  }
+
+  const linesTrimmed: string[] = lines.slice(start, end);
+
+  if (linesTrimmed.length > 0) {
+    let snippetIndent = 100; // stay away from Infinity
+
+    for (const line of linesTrimmed) {
+      let lineIndent = 0;
+      for (const ch of line) {
+        if (ch === " ") lineIndent++;
+        else break;
+      }
+
+      snippetIndent = Math.min(snippetIndent, lineIndent);
+    }
+
+    for (let i = 0; i < linesTrimmed.length; i++) {
+      linesTrimmed[i] = linesTrimmed[i].slice(snippetIndent);
+    }
+  }
+
   if (!options.examples) {
     options.examples = [];
   }
 
-  options.examples.push({caption: "", code: value});
+  options.examples.push({
+    caption: "",
+    code: linesTrimmed.join("\n"),
+  });
 
   return {
     name: "example",

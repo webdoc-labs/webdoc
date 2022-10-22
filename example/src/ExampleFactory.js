@@ -32,6 +32,10 @@ const R = {
  *  .build()
  * ```
  *
+ * @example
+ * ExampleFactory.getInstance()
+ *  .build()
+ *
  * @param {ExampleContext}[context=null] - A custom context for the factory.
  * @class
  */
