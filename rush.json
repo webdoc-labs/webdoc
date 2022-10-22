@@ -74,7 +74,7 @@
     },
     {
       "packageName": "@webdoc/plugin-markdown",
-      "projectFolder": "core/webdoc-plugin-markdown",
+      "projectFolder": "plugins/markdown",
       "reviewCategory": "production",
       "versionPolicyName": "webdoc"
     },
