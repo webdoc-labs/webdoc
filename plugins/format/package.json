@@ -1,0 +1,64 @@
+{
+  "name": "@webdoc/plugin-format",
+  "version": "2.1.2",
+  "description": "Format data types in webdoc using ESLint",
+  "keywords": [
+    "flow",
+    "ts",
+    "typescript",
+    "types",
+    "webdoc",
+    "jsdoc",
+    "documentation"
+  ],
+  "author": "Shukant Pal <shukantpal@outlook.com>",
+  "homepage": "https://github.com/SukantPal/webdoc/tree/master/packages/webdoc-types#readme",
+  "license": "The Prosperity Public License 3.0.0",
+  "main": "lib/index.js",
+  "types": "index.js.flow",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webdoc-labs/webdoc.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "flow": "flow check",
+    "build": "babel src --out-dir lib",
+    "unit-test": "",
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/SukantPal/webdoc/issues"
+  },
+  "gitHead": "326306f477098182404f813337c0c67cc90263c6",
+  "dependencies": {
+    "@webdoc/model": "^2.1.2",
+    "@webdoc/types": "^2.1.2",
+    "@babel/core": "7.18.5",
+    "@babel/plugin-proposal-class-properties": "7.17.12",
+    "@babel/plugin-transform-flow-comments": "7.17.12"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "7.18.5",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/preset-flow": "^7.10.1",
+    "@babel/preset-react": "^7.10.1",
+    "@babel/register": "^7.9.0",
+    "@webdoc/babel-preset": "^1.0.0",
+    "@webdoc/eslint-config": "^1.0.0",
+    "del": "5.1.0",
+    "eslint": "8.18.0",
+    "flow-bin": "^0.130.0",
+    "flow-typed": "^3.2.1"
+  }
+}

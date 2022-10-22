@@ -107,12 +107,12 @@ export async function main(argv: yargs.Argv): Promise<void> {
       try {
         // $FlowFixMe
         require(pluginPath);
-      } catch {
+      } catch (pe) {
         try {
           // $FlowFixMe
           require(path.join(path.dirname(argv.config), pluginPath));
-        } catch {
-          log.error(tag.CLI, `Failed to resolve plugin: ${pluginPath}`);
+        } catch (ce) {
+          log.error(tag.CLI, `Failed to resolve plugin ${pluginPath}.\n${pe}\n${ce}`);
         }
       }
     }

@@ -1,5 +1,5 @@
 declare module "@webdoc/model" {
-  import type {Doc, BaseDoc, DocType, RootDoc} from "@webdoc/types";
+  import type {DataType, Doc, BaseDoc, DocType, RootDoc} from "@webdoc/types";
 
   declare export function addChildDoc<T: BaseDoc>(doc: T, scope: BaseDoc): T;
   declare export function addDoc<T: BaseDoc>(doc: BaseDoc, root: BaseDoc): ?T;
@@ -8,4 +8,23 @@ declare module "@webdoc/model" {
   declare export function createRootDoc(): RootDoc;
   declare export function doc(path: string | string[], root: BaseDoc): ?BaseDoc;
   declare export function mangled(doc: Doc): string;
+  declare export function traverse(doc: Doc, callback: ((doc: Doc) => void) | TraversalContext);
+
+  declare export function isDataType(obj: ?DataType): boolean %checks;
+  declare export function createDataType(): DataType;
+
+  declare export function isConstructor(doc: Doc): boolean;
+  declare export function isClass(doc: Doc): boolean;
+  declare export function isEvent(doc: Doc): boolean;
+  declare export function isExternal(doc: Doc): boolean;
+  declare export function isFunction(doc: Doc): boolean;
+  declare export function isInterface(doc: Doc): boolean;
+  declare export function isMethod(doc: Doc): boolean;
+  declare export function isModule(doc: Doc): boolean;
+  declare export function isMixin(doc: Doc): boolean;
+  declare export function isNamespace(doc: Doc): boolean;
+  declare export function isObject(doc: Doc): boolean;
+  declare export function isProperty(doc: Doc): boolean;
+  declare export function isTypedef(doc: Doc): boolean;
+
 }

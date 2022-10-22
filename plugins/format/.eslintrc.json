@@ -1,0 +1,6 @@
+{
+  "ignorePatterns" : ["lib"],
+  "extends": [
+    "@webdoc/eslint-config"
+  ]
+}

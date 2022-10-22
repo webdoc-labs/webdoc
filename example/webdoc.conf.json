@@ -4,7 +4,8 @@
       "include": "./src/**/*"
   },
   "plugins": [
-    "plugins/markdown",
+    "@webdoc/plugin-markdown",
+    "@webdoc/plugin-format",
     "./plugins/plugin-hello-world.js"
   ],
   "template": {

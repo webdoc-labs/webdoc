@@ -67,6 +67,12 @@
       "versionPolicyName": "webdoc"
     },
     {
+      "packageName": "@webdoc/plugin-format",
+      "projectFolder": "plugins/format",
+      "reviewCategory": "production",
+      "versionPolicyName": "webdoc"
+    },
+    {
       "packageName": "@webdoc/plugin-markdown",
       "projectFolder": "core/webdoc-plugin-markdown",
       "reviewCategory": "production",

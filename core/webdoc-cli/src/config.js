@@ -77,6 +77,9 @@ type ConfigSchema = {
 
 /* eslint-disable no-multi-spaces */
 const defaultConfig: ConfigSchema = {
+  plugins: [
+    "@webdoc/plugin-format",
+  ],
   languages: [
     "@webdoc/language-babel/Language-JavaScript.js",
     "@webdoc/language-babel/Language-TypeScript.js",

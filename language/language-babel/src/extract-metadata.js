@@ -74,6 +74,7 @@ import {
   isTSIntersectionType,
   isTSLiteralType,
   isTSMappedType,
+  isTSMethodSignature,
   isTSNeverKeyword,
   isTSNullKeyword,
   isTSNumberKeyword,
@@ -104,8 +105,7 @@ import {
   isTupleTypeAnnotation,
   isTypeAnnotation,
   isTypeParameterInstantiation,
-  isTypeofTypeAnnotation,
-  isUnaryExpression, isUnionTypeAnnotation, isVoidTypeAnnotation,
+  isTypeofTypeAnnotation, isUnaryExpression, isUnionTypeAnnotation, isVoidTypeAnnotation,
 } from "@babel/types";
 
 import type {DataType, Param, Return} from "@webdoc/types";
@@ -879,6 +879,26 @@ function resolveTSDataType(type: TSTypeAnnotation | TSType | any): DataType {
     dataType.template = `${attribs}${key} : ${dataType.template}`;
 
     return dataType;
+  }
+  if (isTSMethodSignature(type)) {
+    const returnType = type.typeAnnotation ?
+      resolveTSDataType(type.typeAnnotation) :
+      createSimpleKeywordType("void");
+    const params = extractParams(type).map((param) => createComplexType(
+      ": ",
+      param.identifier,
+      param.dataType || createSimpleKeywordType("unknown")),
+    );
+    const paramTypes = params.length > 0 ?
+      createComplexType(", ", params) :
+      createSimpleKeywordType("");
+    paramTypes[0] = `(${paramTypes[0]})`;
+    paramTypes.template = `(${paramTypes.template})`;
+
+    const signatureType = createComplexType(": ", paramTypes, returnType);
+    const identifierType = type.key ? resolveTSDataType(type.key) : createSimpleKeywordType("");
+
+    return createComplexType("", identifierType, signatureType);
   }
   if (isTSIndexSignature(type)) {
     const params = createComplexType(", ", ...type.parameters.map((param) => {

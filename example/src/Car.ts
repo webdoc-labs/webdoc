@@ -120,3 +120,37 @@ export class Car extends PhysicalObject {
 class Transaction {
 
 }
+
+/**
+ * Banana
+ *
+ * @memberof Ts
+ */
+type Banana = {
+  /** Peels in banana */
+  peels: number;
+
+  /** Color of banana */
+  color: 'yellow' | 'green';
+
+  /**
+   * Analytics around how many people have interacted with this banana
+   */
+  usage: {
+    /** How many people touched this banana */
+    touchedBy: number
+
+    /** How many people have eaten this banana */
+    eatenBy: number
+  }
+
+  /**
+   * Evaluate if banana is ripe for eating
+   */
+  ripe(): boolean
+
+  /**
+   * Check if banana has rotten
+   */
+  rotten(): boolean
+}

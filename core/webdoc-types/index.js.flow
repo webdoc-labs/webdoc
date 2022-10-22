@@ -233,6 +233,7 @@ export type TypedefDoc = {
   ...BaseDoc,
   of: [string],
   alias: string,
+  dataType?: ?DataType,
   type: "TypedefDoc",
   implements?: DocLink[]
 };

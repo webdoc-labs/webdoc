@@ -327,6 +327,7 @@ export default function extractSymbol(
     name = node.id.name;
 
     nodeSymbol.meta.type = "TypedefDoc";
+    nodeSymbol.meta.dataType = extractType(node);
   } else if (isTSTypeElement(node)) {
     // This type of node occurs when declaring interface members.
     // Example:
