@@ -1,6 +1,6 @@
 {
   "name": "@webdoc/plugin-format",
-  "version": "2.1.2",
+  "version": "2.2.0",
   "description": "Format data types in webdoc using ESLint",
   "keywords": [
     "flow",
@@ -41,8 +41,8 @@
   },
   "gitHead": "326306f477098182404f813337c0c67cc90263c6",
   "dependencies": {
-    "@webdoc/model": "^2.1.2",
-    "@webdoc/types": "^2.1.2",
+    "@webdoc/model": "^2.2.0",
+    "@webdoc/types": "^2.2.0",
     "@babel/core": "7.18.5",
     "@babel/plugin-proposal-class-properties": "7.17.12",
     "@babel/plugin-transform-flow-comments": "7.17.12"

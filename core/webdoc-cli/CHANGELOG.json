@@ -2,6 +2,18 @@
   "name": "@webdoc/cli",
   "entries": [
     {
+      "version": "2.2.0",
+      "tag": "@webdoc/cli_v2.2.0",
+      "date": "Sun, 23 Oct 2022 01:05:11 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "Add @webdoc/plugin-format automatically in the plugin list configuration"
+          }
+        ]
+      }
+    },
+    {
       "version": "2.1.2",
       "tag": "@webdoc/cli_v2.1.2",
       "date": "Sat, 27 Aug 2022 10:38:56 GMT",

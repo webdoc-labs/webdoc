@@ -1,6 +1,13 @@
 # Change Log - @webdoc/default-template
 
-This log was last generated on Sat, 27 Aug 2022 10:38:56 GMT and should not be manually modified.
+This log was last generated on Sun, 23 Oct 2022 01:05:11 GMT and should not be manually modified.
+
+## 2.2.0
+Sun, 23 Oct 2022 01:05:11 GMT
+
+### Updates
+
+- Add support for typedef data-type signatures
 
 ## 2.1.2
 Sat, 27 Aug 2022 10:38:56 GMT

@@ -2,6 +2,18 @@
   "name": "@webdoc/language-babel",
   "entries": [
     {
+      "version": "2.2.0",
+      "tag": "@webdoc/language-babel_v2.2.0",
+      "date": "Sun, 23 Oct 2022 01:05:11 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "Add support for parsing TypeScript type aliases"
+          }
+        ]
+      }
+    },
+    {
       "version": "2.1.2",
       "tag": "@webdoc/language-babel_v2.1.2",
       "date": "Sat, 27 Aug 2022 10:38:56 GMT",

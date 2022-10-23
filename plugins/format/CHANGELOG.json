@@ -1,0 +1,23 @@
+{
+  "name": "@webdoc/plugin-format",
+  "entries": [
+    {
+      "version": "2.2.0",
+      "tag": "@webdoc/plugin-format_v2.2.0",
+      "date": "Sun, 23 Oct 2022 01:05:11 GMT",
+      "comments": {}
+    },
+    {
+      "version": "2.1.2",
+      "tag": "@webdoc/plugin-format_v2.1.2",
+      "date": "Sun, 23 Oct 2022 01:04:28 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "New plugin for formatting typedef data-types!"
+          }
+        ]
+      }
+    }
+  ]
+}
