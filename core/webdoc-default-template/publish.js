@@ -325,7 +325,7 @@ async function outSource(
   source /*: ?$ReadOnlyArray<SourceFile> */,
   mainThread /*:: ?: boolean */,
 )/*: Promise<void> */ {
-  if (!source || !config.template.sources) return;
+  if (!source || !config.template.sources || config.template.repository) return;
 
   function renderSource(file /*: SourceFile */, raw /*: string */) {
     const pkgName = file.package.name || "";
