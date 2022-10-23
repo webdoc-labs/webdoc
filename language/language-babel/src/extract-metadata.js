@@ -882,11 +882,11 @@ function resolveTSDataType(type: TSTypeAnnotation | TSType | any): DataType {
   }
   if (isTSMethodSignature(type)) {
     const returnType = type.typeAnnotation ?
-      resolveTSDataType(type.typeAnnotation) :
+      resolveTSDataType(type.typeAnnotation) ?? createSimpleKeywordType("unknown") :
       createSimpleKeywordType("void");
     const params = extractParams(type).map((param) => createComplexType(
       ": ",
-      param.identifier,
+      createSimpleKeywordType(param.identifier ?? "unknown"),
       param.dataType || createSimpleKeywordType("unknown")),
     );
     const paramTypes = params.length > 0 ?
