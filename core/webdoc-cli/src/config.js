@@ -71,7 +71,7 @@ type ConfigSchema = {
     variant: string,
   },
   version: {
-    number?: 1
+    number?: number,
   }
 };
 
@@ -133,7 +133,7 @@ const defaultConfig: ConfigSchema = {
     variant: "normal",
   },
   version: {
-    number: 1,
+    number: 2,
   },
 };
 /* eslint-enable no-multi-spaces */
