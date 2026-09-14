@@ -2,6 +2,12 @@
   "name": "@webdoc/tests",
   "version": "1.0.0",
   "description": "Integration tests for the webdoc monorepo",
+  "webdoc": {
+    "maintenance": {
+      "status": "previously published legacy integration fixture; outside the Rush project list and no longer released or supported",
+      "upgrade": "Use the root Rush test commands and the public @webdoc/cli API instead of depending on @webdoc/tests."
+    }
+  },
   "keywords": [
     "tests",
     "mocha",

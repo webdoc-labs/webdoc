@@ -1,7 +1,14 @@
 {
   "name": "@webdoc/language-parser",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "Language parser for webdoc",
+  "webdoc": {
+    "maintenance": {
+      "status": "legacy @webdoc/parser maintenance and deprecation decision pending owner approval",
+      "legacyPackage": "@webdoc/parser@1.6.6",
+      "upgrade": "For new Webdoc 2.x integrations, migrate to @webdoc/language-parser after validating API compatibility and tests."
+    }
+  },
   "keywords": [
     "parser",
     "jsdoc",
@@ -42,9 +49,9 @@
     "@babel/parser": "^7.9.4",
     "@babel/traverse": "7.9.5",
     "@babel/types": "7.9.5",
-    "@webdoc/language-library": "^2.2.0",
-    "@webdoc/model": "^2.2.0",
-    "@webdoc/types": "^2.2.0",
+    "@webdoc/language-library": "^2.2.1",
+    "@webdoc/model": "^2.2.1",
+    "@webdoc/types": "^2.2.1",
     "lodash": "^4.17.20",
     "missionlog": "1.6.0",
     "nanoid": "~3.1.16",
@@ -63,7 +70,7 @@
     "@webdoc/babel-preset": "^1.0.0",
     "@webdoc/configure-rollup": "^1.6.1",
     "@webdoc/eslint-config": "^1.0.0",
-    "@webdoc/language-babel": "^2.2.0",
+    "@webdoc/language-babel": "^2.2.1",
     "chai": "~4.3.4",
     "del": "5.1.0",
     "eslint": "8.18.0",

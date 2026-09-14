@@ -2,6 +2,12 @@
   "name": "@webdoc/example",
   "version": "1.0.0",
   "description": "Example documented repository using webdoc",
+  "webdoc": {
+    "maintenance": {
+      "status": "reference-only; excluded from Rush publishing",
+      "upgrade": "Use @webdoc/cli in a consuming project and copy only the example configuration or source patterns that you need."
+    }
+  },
   "keywords": [
     "example",
     "webdoc"
@@ -36,7 +42,7 @@
     "url": "https://github.com/SukantPal/webdoc/issues"
   },
   "dependencies": {
-    "@webdoc/cli": "^2.2.0",
+    "@webdoc/cli": "^2.2.1",
     "@babel/plugin-proposal-class-properties": "7.17.12",
     "@babel/plugin-transform-flow-comments": "7.17.12"
   },

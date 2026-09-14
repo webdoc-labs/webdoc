@@ -1,6 +1,13 @@
 # Change Log - @webdoc/cli
 
-This log was last generated on Sun, 23 Oct 2022 01:05:11 GMT and should not be manually modified.
+This log was last generated on Mon, 14 Sep 2026 07:40:10 GMT and should not be manually modified.
+
+## 2.2.1
+Mon, 14 Sep 2026 07:40:10 GMT
+
+### Patches
+
+- Correct the default generated version number to 2.
 
 ## 2.2.0
 Sun, 23 Oct 2022 01:05:11 GMT

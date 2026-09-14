@@ -2,6 +2,18 @@
   "name": "@webdoc/cli",
   "entries": [
     {
+      "version": "2.2.1",
+      "tag": "@webdoc/cli_v2.2.1",
+      "date": "Mon, 14 Sep 2026 07:40:10 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Correct the default generated version number to 2."
+          }
+        ]
+      }
+    },
+    {
       "version": "2.2.0",
       "tag": "@webdoc/cli_v2.2.0",
       "date": "Sun, 23 Oct 2022 01:05:11 GMT",
