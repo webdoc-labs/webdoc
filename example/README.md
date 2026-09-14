@@ -4,6 +4,14 @@
 
 Example documented package.
 
+## Maintenance status
+
+This is a reference-only example and is excluded from Rush publishing. The
+published `@webdoc/example` 1.0.0 package is not a supported runtime
+dependency. For supported use, install `@webdoc/cli` in the project you want
+to document, then copy only the configuration or source patterns needed from
+this example.
+
 This package contains all sorts of fun stuff while demonstrating what things webdoc can document.
 
 ## Usage
