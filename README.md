@@ -8,31 +8,11 @@
   <a href="https://www.codetriage.com/webdoc-labs/webdoc"><img src="https://www.codetriage.com/webdoc-js/webdoc/badges/users.svg" /></a>
 </p>
 
-<table align="center">
-  <tr>
-  <th align="center">webdoc</th>
-  <th align="center">Example documentation</th>
-  </tr>
-  <tbody align="center">
-    <tr>
-      <td>
-        <a href="https://dev.azure.com/webdoc-labs/webdoc/_build/latest?definitionId=2&branchName=master">
-          <img src="https://dev.azure.com/webdoc-labs/webdoc/_apis/build/status/Build%2C%20unit-test%2C%20type-check?repoName=webdoc-labs%2Fwebdoc&branchName=master"></img>
-        </a>
-      </td>
-      <td>
-        <a href="https://dev.azure.com/webdoc-labs/webdoc/_build/latest?definitionId=3&branchName=master">
-          <img src="https://dev.azure.com/webdoc-labs/webdoc/_apis/build/status/webdoc-example%20documentation%20generator?repoName=webdoc-labs%2Fwebdoc&branchName=master"></img>
-        </a>
-      </td>
-    </tr>
-  </tbody>
-</table>
+[![CI](https://github.com/webdoc-labs/webdoc/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/webdoc-labs/webdoc/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/webdoc-labs/webdoc/actions/workflows/codeql.yml/badge.svg?branch=master)](https://github.com/webdoc-labs/webdoc/actions/workflows/codeql.yml)
 
 webdoc is the next generation documentation generator for the family of web languages. It supports the JSDoc notation
 and infers type data from TypeScript definitions.
-
-You can checkout the documentation for `example/` [here](https://webdoc-labs.github.io/example-documentation/index.html)!
 
 ## Usage :newspaper_roll:
 
@@ -61,7 +41,7 @@ To get started, create a `webdoc.conf.json` file in your project directory.
 }
 ```
 
-The only required field is `source.include` which tells webdoc where the source files are. [@webdoc/cli](packages/webdoc-cli)'s README details more configuration options
+The only required field is `source.include` which tells webdoc where the source files are. [@webdoc/cli](core/webdoc-cli)'s README details more configuration options
 
 You can now run `webdoc` in your terminal and documentation will be generated. Be sure to serve the documentation from the folder it is generated in. If you need to serve from an ancestor directory, provide the documentation path relative to the root using the `--site-root` option, e.g. `webdoc --site-root docs`.
 

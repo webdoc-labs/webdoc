@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: Build, type-check, lint, and test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Rush 5.74.0 supports Node 16, while this repository's declared range
+      # intentionally excludes newer Node releases.
+      - name: Use Node.js 16
+        uses: actions/setup-node@v4
+        with:
+          node-version: 16.20.2
+
+      - name: Install Rush
+        run: npm install --global @microsoft/rush@5.74.0
+
+      - name: Install dependencies
+        run: rush install
+
+      - name: Build packages
+        run: rush build
+
+      - name: Type-check packages
+        run: rush flow
+
+      - name: Lint packages
+        run: rush lint
+
+      - name: Run unit tests
+        run: rush unit-test

@@ -2,7 +2,7 @@
 
 # @webdoc/model
 
-This package is the API for editing and querying in-memory documentation tree models.  [@webdoc/types](/packages/webdoc-types) defines the node structure.
+This package is the API for editing and querying in-memory documentation tree models.  [@webdoc/types](/core/webdoc-types) defines the node structure.
 
 ## Installation :package:
 
@@ -45,7 +45,7 @@ model.createFunctionType(
 );
 ```
 
-@webdoc/model exports helper functions for creating and joining data types. The `DataType` type is defined in [@webdoc/types](/packages/webdoc-types).
+@webdoc/model exports helper functions for creating and joining data types. The `DataType` type is defined in [@webdoc/types](/core/webdoc-types).
 
 ### Querying
 
