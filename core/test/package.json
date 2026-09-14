@@ -9,7 +9,7 @@
     "@webdoc"
   ],
   "author": "Shukant Pal <shukantpal@outlook.com>",
-  "homepage": "https://github.com/SukantPal/webdoc/tree/master/packages/test#readme",
+  "homepage": "https://github.com/webdoc-labs/webdoc/tree/master/core/test#readme",
   "license": "Polyform Shield",
   "main": "webdoc.js",
   "directories": {

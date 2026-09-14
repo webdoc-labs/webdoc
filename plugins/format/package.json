@@ -12,7 +12,7 @@
     "documentation"
   ],
   "author": "Shukant Pal <shukantpal@outlook.com>",
-  "homepage": "https://github.com/SukantPal/webdoc/tree/master/packages/webdoc-types#readme",
+  "homepage": "https://github.com/webdoc-labs/webdoc/tree/master/plugins/format#readme",
   "license": "The Prosperity Public License 3.0.0",
   "main": "lib/index.js",
   "types": "index.js.flow",

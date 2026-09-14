@@ -10,7 +10,7 @@
     "webdoc"
   ],
   "author": "Shukant Pal <shukantpal@outlook.com>",
-  "homepage": "https://github.com/SukantPal/webdoc/tree/master/packages/webdoc-doc-schema#readme",
+  "homepage": "https://github.com/webdoc-labs/webdoc/tree/master/core/webdoc-externalize#readme",
   "license": "The Prosperity Public License 3.0.0",
   "main": "index.js",
   "directories": {

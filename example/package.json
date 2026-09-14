@@ -7,7 +7,7 @@
     "webdoc"
   ],
   "author": "Shukant Pal <shukant@webdoclabs.com>",
-  "homepage": "https://github.com/SukantPal/webdoc/tree/master/packages/example#readme",
+  "homepage": "https://github.com/webdoc-labs/webdoc/tree/master/example#readme",
   "license": "The Prosperity Public License 3.0.0",
   "main": "lib/example.js",
   "directories": {

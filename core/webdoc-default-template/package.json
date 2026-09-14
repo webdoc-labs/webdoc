@@ -9,7 +9,7 @@
     "webdoc-template"
   ],
   "author": "Shukant Pal <shukantpal@outlook.com>",
-  "homepage": "https://github.com/webdoc-labs/webdoc/tree/master/packages/default-template#readme",
+  "homepage": "https://github.com/webdoc-labs/webdoc/tree/master/core/webdoc-default-template#readme",
   "license": "The Prosperity Public License 3.0.0",
   "main": "publish.js",
   "directories": {

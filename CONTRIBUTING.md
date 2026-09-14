@@ -16,4 +16,4 @@ This should generate a few HTML files in "examples/docs". To show them in your b
 * Install "live-server" via `npm install -g live-server`
 * Run "live-server docs" (in the example folder)
 
-This should automatically open your browser with something that looks like this: https://webdoc-labs.github.io/example-documentation/index.html
+This will serve the generated documentation from your local `docs` directory.
