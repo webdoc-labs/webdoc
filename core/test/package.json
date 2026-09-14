@@ -4,7 +4,7 @@
   "description": "Integration tests for the webdoc monorepo",
   "webdoc": {
     "maintenance": {
-      "status": "legacy integration fixture; outside the Rush project list and not released",
+      "status": "previously published legacy integration fixture; outside the Rush project list and no longer released or supported",
       "upgrade": "Use the root Rush test commands and the public @webdoc/cli API instead of depending on @webdoc/tests."
     }
   },

@@ -4,9 +4,9 @@
   "description": "Language parser for webdoc",
   "webdoc": {
     "maintenance": {
-      "status": "active successor to the legacy @webdoc/parser package",
+      "status": "legacy @webdoc/parser maintenance and deprecation decision pending owner approval",
       "legacyPackage": "@webdoc/parser@1.6.6",
-      "upgrade": "Replace @webdoc/parser with @webdoc/language-parser."
+      "upgrade": "For new Webdoc 2.x integrations, migrate to @webdoc/language-parser after validating API compatibility and tests."
     }
   },
   "keywords": [
