@@ -40,36 +40,36 @@
     "url": "https://github.com/webdoc-labs/webdoc/issues"
   },
   "dependencies": {
-    "@babel/parser": "^7.9.4",
-    "@babel/traverse": "7.9.5",
-    "@babel/types": "7.9.5",
+    "@babel/parser": "7.29.8",
+    "@babel/traverse": "7.29.8",
+    "@babel/types": "7.29.8",
     "@webdoc/language-library": "^2.2.0",
     "@webdoc/model": "^2.2.0",
     "@webdoc/types": "^2.2.0",
-    "lodash": "^4.17.20",
+    "lodash": "4.18.1",
     "missionlog": "1.6.0",
-    "nanoid": "~3.1.16"
+    "nanoid": "3.3.19"
   },
   "peerDependencies": {
     "@sentry/node": "7.2.0"
   },
   "devDependencies": {
-    "@babel/core": "7.18.5",
+    "@babel/core": "7.29.7",
     "@babel/plugin-proposal-class-properties": "7.17.12",
-    "@babel/plugin-transform-flow-comments": "7.17.12",
-    "@babel/preset-env": "^7.9.5",
-    "@babel/preset-flow": "^7.10.1",
-    "@babel/preset-react": "^7.10.1",
-    "@babel/register": "^7.9.0",
+    "@babel/plugin-transform-flow-comments": "7.29.7",
+    "@babel/preset-env": "7.29.7",
+    "@babel/preset-flow": "7.29.7",
+    "@babel/preset-react": "7.29.7",
+    "@babel/register": "7.29.7",
     "@webdoc/babel-preset": "^1.0.0",
     "@webdoc/configure-rollup": "^1.6.1",
     "@webdoc/eslint-config": "^1.0.0",
     "chai": "~4.3.4",
     "del": "5.1.0",
     "eslint": "8.18.0",
-    "flow-bin": "^0.130.0",
-    "flow-typed": "^3.2.1",
-    "mocha": "^7.1.1",
-    "rollup": "2.75.6"
+    "flow-bin": "0.130.0",
+    "flow-typed": "3.8.0",
+    "mocha": "9.2.2",
+    "rollup": "2.80.0"
   }
 }

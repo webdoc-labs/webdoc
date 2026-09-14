@@ -5,6 +5,7 @@ const path = require("path");
 const {parse} = require("@webdoc/parser");
 const {writeDoctree} = require("@webdoc/externalize");
 
+
 describe("webdoc", function() {
   it("Documents a class and its methods, properties correctly", function() {
     return fs.readFile(

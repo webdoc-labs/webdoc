@@ -15,6 +15,7 @@ async function init(args: yargs.Argv): Promise<void> {
   await _init(args);
 }
 
+// eslint-disable-next-line import/namespace -- Flow types expose this CommonJS API.
 yargs.scriptName("webdoc")
   .usage("$0 <cmd> -c <configFile> -u <tutorialDir> --verbose " +
     "--site-root <siteRoot> " +
