@@ -1,8 +1,12 @@
 const external = require("../lib");
 const model = require("@webdoc/model");
-const parser = require("@webdoc/parser");
+const parser = require("@webdoc/language-parser");
+const {langJS, langTS} = require("@webdoc/language-babel");
 
 const expect = require("chai").expect;
+
+parser.installLanguage(langJS);
+parser.installLanguage(langTS);
 
 describe("@webdoc/externalize (read-write test)", function() {
   it("should deserialize a serialized documented interface properly", async function() {

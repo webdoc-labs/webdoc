@@ -43,22 +43,22 @@
   "dependencies": {
     "@webdoc/model": "^2.2.0",
     "@webdoc/types": "^2.2.0",
-    "@babel/core": "7.18.5",
+    "@babel/core": "7.29.7",
     "@babel/plugin-proposal-class-properties": "7.17.12",
-    "@babel/plugin-transform-flow-comments": "7.17.12"
+    "@babel/plugin-transform-flow-comments": "7.29.7"
   },
   "devDependencies": {
-    "@babel/cli": "^7.8.4",
-    "@babel/core": "7.18.5",
-    "@babel/preset-env": "^7.9.5",
-    "@babel/preset-flow": "^7.10.1",
-    "@babel/preset-react": "^7.10.1",
-    "@babel/register": "^7.9.0",
+    "@babel/cli": "7.29.7",
+    "@babel/core": "7.29.7",
+    "@babel/preset-env": "7.29.7",
+    "@babel/preset-flow": "7.29.7",
+    "@babel/preset-react": "7.29.7",
+    "@babel/register": "7.29.7",
     "@webdoc/babel-preset": "^1.0.0",
     "@webdoc/eslint-config": "^1.0.0",
     "del": "5.1.0",
     "eslint": "8.18.0",
-    "flow-bin": "^0.130.0",
-    "flow-typed": "^3.2.1"
+    "flow-bin": "0.130.0",
+    "flow-typed": "3.8.0"
   }
 }

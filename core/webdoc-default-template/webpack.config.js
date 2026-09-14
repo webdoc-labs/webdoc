@@ -2,12 +2,18 @@ const {
   resolve: resolvePath,
 } = require("path");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   optimization: {
     minimize: true,
     minimizer: [new CssMinimizerPlugin(), "..."],
   },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: "styles/index.css",
+    }),
+  ],
   mode: process.env.NODE_ENV || "production",
   entry: {
     core: {
@@ -47,13 +53,7 @@ module.exports = {
       {
         test: /\.(css|scss|sass)$/i,
         use: [
-          {
-            loader: "file-loader",
-            options: {
-              name: "styles/[name].css",
-            },
-          },
-          "extract-loader",
+          MiniCssExtractPlugin.loader,
           "css-loader",
           "sass-loader",
         ],
