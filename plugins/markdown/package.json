@@ -36,7 +36,7 @@
   },
   "dependencies": {
     "highlight.js": "~10.7.2",
-    "markdown-it": "13.0.1",
+    "markdown-it": "14.3.3",
     "@babel/plugin-proposal-class-properties": "7.17.12",
     "@babel/plugin-transform-flow-comments": "7.17.12"
   },
