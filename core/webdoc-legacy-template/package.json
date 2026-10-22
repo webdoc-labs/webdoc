@@ -50,7 +50,7 @@
     "fs-extra": "^9.0.1",
     "klaw-sync": "6.0.0",
     "lodash": "^4.17.20",
-    "markdown-it": "13.0.1",
+    "markdown-it": "14.3.3",
     "markdown-it-highlightjs": "^3.1.0",
     "missionlog": "1.6.0",
     "open-sans-fonts": "^1.6.2",
